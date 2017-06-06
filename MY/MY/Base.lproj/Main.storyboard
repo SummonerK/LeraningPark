@@ -31,7 +31,7 @@
         <!--View Controller-->
         <scene sceneID="Xhx-fX-k1C">
             <objects>
-                <viewController id="nKx-tF-3hI" sceneMemberID="viewController">
+                <viewController id="nKx-tF-3hI" customClass="ViewController" customModule="MY" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zv0-h5-hMe"/>
                         <viewControllerLayoutGuide type="bottom" id="Sdk-BQ-cpf"/>
