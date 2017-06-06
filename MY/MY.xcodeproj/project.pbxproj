@@ -7,17 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631780F61EE69C0800BF9223 /* IBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631780F51EE69C0800BF9223 /* IBError.swift */; };
 		63521E7E1EE541AF00AF3FC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63521E7D1EE541AF00AF3FC2 /* AppDelegate.swift */; };
 		63521E801EE541AF00AF3FC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63521E7F1EE541AF00AF3FC2 /* ViewController.swift */; };
 		63521E831EE541AF00AF3FC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63521E811EE541AF00AF3FC2 /* Main.storyboard */; };
 		63521E861EE541AF00AF3FC2 /* MY.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63521E841EE541AF00AF3FC2 /* MY.xcdatamodeld */; };
 		63521E881EE541AF00AF3FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63521E871EE541AF00AF3FC2 /* Assets.xcassets */; };
 		63521E8B1EE541AF00AF3FC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63521E891EE541AF00AF3FC2 /* LaunchScreen.storyboard */; };
+		636D52CE1EE640F500CC2B69 /* CCellFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D52CD1EE640F500CC2B69 /* CCellFill.swift */; };
 		C79A6E4A47E8F2245D5E3CF5 /* Pods_MY.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACE3257683132E81AC9FE50 /* Pods_MY.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2647DA91169D24177E26FA51 /* Pods-MY.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MY.release.xcconfig"; path = "Pods/Target Support Files/Pods-MY/Pods-MY.release.xcconfig"; sourceTree = "<group>"; };
+		631780F51EE69C0800BF9223 /* IBError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBError.swift; sourceTree = "<group>"; };
 		63521E7A1EE541AF00AF3FC2 /* MY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63521E7D1EE541AF00AF3FC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63521E7F1EE541AF00AF3FC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		63521E871EE541AF00AF3FC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63521E8A1EE541AF00AF3FC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63521E8C1EE541AF00AF3FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		636D52CD1EE640F500CC2B69 /* CCellFill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCellFill.swift; sourceTree = "<group>"; };
 		7FD4937BCC6DE671AA20E0D0 /* Pods-MY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MY/Pods-MY.debug.xcconfig"; sourceTree = "<group>"; };
 		BACE3257683132E81AC9FE50 /* Pods_MY.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MY.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -65,11 +69,13 @@
 			children = (
 				63521E7D1EE541AF00AF3FC2 /* AppDelegate.swift */,
 				63521E7F1EE541AF00AF3FC2 /* ViewController.swift */,
+				631780F51EE69C0800BF9223 /* IBError.swift */,
 				63521E811EE541AF00AF3FC2 /* Main.storyboard */,
 				63521E871EE541AF00AF3FC2 /* Assets.xcassets */,
 				63521E891EE541AF00AF3FC2 /* LaunchScreen.storyboard */,
 				63521E8C1EE541AF00AF3FC2 /* Info.plist */,
 				63521E841EE541AF00AF3FC2 /* MY.xcdatamodeld */,
+				636D52CD1EE640F500CC2B69 /* CCellFill.swift */,
 			);
 			path = MY;
 			sourceTree = "<group>";
@@ -214,8 +220,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				636D52CE1EE640F500CC2B69 /* CCellFill.swift in Sources */,
 				63521E801EE541AF00AF3FC2 /* ViewController.swift in Sources */,
 				63521E7E1EE541AF00AF3FC2 /* AppDelegate.swift in Sources */,
+				631780F61EE69C0800BF9223 /* IBError.swift in Sources */,
 				63521E861EE541AF00AF3FC2 /* MY.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +390,7 @@
 				63521E911EE541AF00AF3FC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
