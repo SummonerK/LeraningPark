@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:GoodAdding/GoodAdding.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:meiyue/meiyue.xcodeproj">
    </FileRef>
    <FileRef
