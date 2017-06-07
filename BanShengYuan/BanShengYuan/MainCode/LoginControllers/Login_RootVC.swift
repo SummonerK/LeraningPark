@@ -21,6 +21,16 @@ class Login_RootVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func loginAction(_ sender: Any) {
+        PrintFM("登录")
+        
+        let window = UIApplication.shared.delegate?.window as? UIWindow
+        let storyboard_HOME = UIStoryboard.init(name: "Main", bundle: nil)
+        window?.rootViewController = storyboard_HOME.instantiateInitialViewController()
+        
+        UIApplication.shared.keyWindow?.layer
+        
+    }
     
 
     /*

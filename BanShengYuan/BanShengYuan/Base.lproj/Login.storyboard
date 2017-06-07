@@ -12,7 +12,7 @@
         <!--注册登录主页面-->
         <scene sceneID="NH9-bR-86c">
             <objects>
-                <viewController id="uLX-TH-ySB" userLabel="注册登录主页面" customClass="Login_RootVC" sceneMemberID="viewController">
+                <viewController id="uLX-TH-ySB" userLabel="注册登录主页面" customClass="Login_RootVC" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NcS-aJ-D7b"/>
                         <viewControllerLayoutGuide type="bottom" id="x7U-lr-Say"/>
@@ -64,6 +64,9 @@
                                     <constraint firstAttribute="width" constant="300" id="LVB-bs-79e"/>
                                 </constraints>
                                 <state key="normal" title="登陆"/>
+                                <connections>
+                                    <action selector="loginAction:" destination="uLX-TH-ySB" eventType="touchUpInside" id="Klo-Zw-Y9c"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -21,8 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         
-        var storyboard_HOME = UIStoryboard.init(name: "Main", bundle: nil)
-        storyboard_HOME.instantiateInitialViewController()?.isFirstResponder
+        let storyboard_HOME = UIStoryboard.init(name: "Login", bundle: nil)
         window?.rootViewController = storyboard_HOME.instantiateInitialViewController()
         window?.makeKeyAndVisible()
         
