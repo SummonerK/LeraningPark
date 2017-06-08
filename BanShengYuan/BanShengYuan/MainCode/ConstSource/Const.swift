@@ -65,9 +65,32 @@ let IBStatusBarHeight = 20.0;
 /// Tab栏高度
 let IBTabBarHeight = 49.0;
 
-//根据图片名称获取图片
+// MARK:根据图片名称获取图片
+///从bundle 中获取图片
 let IBImageWithName: (String) -> UIImage? = {imageName in
     return UIImage(named: imageName);
+}
+
+let BundleImageWithName:(String) ->UIImage? = {imageName in
+    
+    if let str = Bundle.main.path(forResource: "Source", ofType: "bundle") , let filePath = Bundle(path: str)?.path(forResource: imageName, ofType: "png"){
+        return UIImage(contentsOfFile: filePath)
+    }else{
+        return createImageWithColor(color: UIColor.white)
+    }
+    
+}
+///根据颜色获取图片
+func createImageWithColor(color: UIColor) -> UIImage
+{
+    let rect = CGRect.init(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+    UIGraphicsBeginImageContext(rect.size)
+    let context = UIGraphicsGetCurrentContext()
+    context!.setFillColor(color.cgColor)
+    context!.fill(rect)
+    let theImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return theImage!
 }
 
 // MARK:封装的日志输出功能（T表示不指定日志信息参数类型）
@@ -80,3 +103,6 @@ func PrintFM<T>(_ message:T, file:String = #file, function:String = #function,
         print("☆☆【☆】\(fileName)\t【☆】ATLine:\(line)\t【☆】\(function)\n【☆】LOG:\(message)")
     #endif
 }
+
+
+
