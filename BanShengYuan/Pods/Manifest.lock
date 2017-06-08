@@ -1,0 +1,50 @@
+PODS:
+  - Alamofire (4.0.1)
+  - IQKeyboardManagerSwift (4.0.10)
+  - Kingfisher (3.10.1)
+  - Moya/Core (8.0.0-beta.1):
+    - Alamofire (~> 4.0.0)
+    - Result
+  - Moya/RxSwift (8.0.0-beta.1):
+    - Moya/Core
+    - RxSwift (= 3.0.0-beta.1)
+  - ObjectMapper (2.2.7)
+  - Result (3.2.3)
+  - RxCocoa (3.0.0-beta.1):
+    - RxSwift (~> 3.0.0-beta.1)
+  - RxSwift (3.0.0-beta.1)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - Kingfisher
+  - Moya/RxSwift (from `https://github.com/Moya/Moya.git`, tag `8.0.0-beta.1`)
+  - ObjectMapper
+  - RxCocoa (= 3.0.0-beta.1)
+  - RxSwift (= 3.0.0-beta.1)
+  - SwiftyJSON
+
+EXTERNAL SOURCES:
+  Moya:
+    :git: https://github.com/Moya/Moya.git
+    :tag: 8.0.0-beta.1
+
+CHECKOUT OPTIONS:
+  Moya:
+    :git: https://github.com/Moya/Moya.git
+    :tag: 8.0.0-beta.1
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
+  Kingfisher: 33a1b82140fcb14a9fc13f78dfde2a03ff8de8cb
+  Moya: 63c4a59d2643c824df8c5a3b3a5f38dc2b48b055
+  ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
+  Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
+  RxCocoa: 8cecf331302b8ae5381bbab1bccba4ede2eae6a8
+  RxSwift: 0823e8d7969c23bfa9ddfb2afa4881e424a1a710
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: 6cb71496228ccf34214649d6fd95f7bac3ac059e
+
+COCOAPODS: 1.2.1

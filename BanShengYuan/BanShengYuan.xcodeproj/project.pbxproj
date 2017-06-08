@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		635380D21EE8E52A006C0375 /* Source.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 635380D11EE8E52A006C0375 /* Source.bundle */; };
+		635381081EE8FDFD006C0375 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635381071EE8FDFD006C0375 /* QuartzCore.framework */; };
+		6353810A1EE8FE05006C0375 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635381091EE8FE05006C0375 /* CoreGraphics.framework */; };
 		63657D961EE7CE3B00DA24F4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63657D941EE7CE3B00DA24F4 /* Login.storyboard */; };
 		63657DA01EE7CE5900DA24F4 /* Login_RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657D991EE7CE5900DA24F4 /* Login_RootVC.swift */; };
 		63657DA11EE7CE5900DA24F4 /* Home_RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657D9C1EE7CE5900DA24F4 /* Home_RootVC.swift */; };
@@ -20,10 +22,16 @@
 		638536361EE7A1F800DB7BA1 /* BanShengYuan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 638536341EE7A1F800DB7BA1 /* BanShengYuan.xcdatamodeld */; };
 		638536381EE7A1F800DB7BA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 638536371EE7A1F800DB7BA1 /* Assets.xcassets */; };
 		6385363B1EE7A1F800DB7BA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638536391EE7A1F800DB7BA1 /* LaunchScreen.storyboard */; };
+		88F9197225FFA7C0201230C0 /* Pods_BanShengYuan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AAF75A0826C20B886A2998A /* Pods_BanShengYuan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A84C5F4F53F71BED1098F95 /* Pods-BanShengYuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanShengYuan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BanShengYuan/Pods-BanShengYuan.debug.xcconfig"; sourceTree = "<group>"; };
+		0DF03F0D152022F36A26F6B4 /* Pods-BanShengYuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanShengYuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-BanShengYuan/Pods-BanShengYuan.release.xcconfig"; sourceTree = "<group>"; };
+		4AAF75A0826C20B886A2998A /* Pods_BanShengYuan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BanShengYuan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		635380D11EE8E52A006C0375 /* Source.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Source.bundle; sourceTree = "<group>"; };
+		635381071EE8FDFD006C0375 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		635381091EE8FE05006C0375 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		63657D951EE7CE3B00DA24F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		63657D991EE7CE5900DA24F4 /* Login_RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login_RootVC.swift; sourceTree = "<group>"; };
 		63657D9C1EE7CE5900DA24F4 /* Home_RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home_RootVC.swift; sourceTree = "<group>"; };
@@ -45,15 +53,60 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6353810A1EE8FE05006C0375 /* CoreGraphics.framework in Frameworks */,
+				635381081EE8FDFD006C0375 /* QuartzCore.framework in Frameworks */,
+				88F9197225FFA7C0201230C0 /* Pods_BanShengYuan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3DA09152760784B8EEB1AC7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				635381091EE8FE05006C0375 /* CoreGraphics.framework */,
+				635381071EE8FDFD006C0375 /* QuartzCore.framework */,
+				4AAF75A0826C20B886A2998A /* Pods_BanShengYuan.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3DC082737194BD4C8E7E96F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A84C5F4F53F71BED1098F95 /* Pods-BanShengYuan.debug.xcconfig */,
+				0DF03F0D152022F36A26F6B4 /* Pods-BanShengYuan.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		635380D31EE8FC41006C0375 /* BaseFiles */ = {
+			isa = PBXGroup;
+			children = (
+				63657D941EE7CE3B00DA24F4 /* Login.storyboard */,
+				6385362D1EE7A1F800DB7BA1 /* AppDelegate.swift */,
+				6385362F1EE7A1F800DB7BA1 /* ViewController.swift */,
+				638536311EE7A1F800DB7BA1 /* Main.storyboard */,
+				638536371EE7A1F800DB7BA1 /* Assets.xcassets */,
+				638536391EE7A1F800DB7BA1 /* LaunchScreen.storyboard */,
+				6385363C1EE7A1F800DB7BA1 /* Info.plist */,
+				638536341EE7A1F800DB7BA1 /* BanShengYuan.xcdatamodeld */,
+			);
+			name = BaseFiles;
+			sourceTree = "<group>";
+		};
+		635380D41EE8FD59006C0375 /* ThirdSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ThirdSource;
+			sourceTree = "<group>";
+		};
 		63657D971EE7CE5900DA24F4 /* MainCode */ = {
 			isa = PBXGroup;
 			children = (
+				635380D41EE8FD59006C0375 /* ThirdSource */,
 				63657DA31EE7D00800DA24F4 /* ConstSource */,
 				63657D981EE7CE5900DA24F4 /* LoginControllers */,
 				63657D9A1EE7CE5900DA24F4 /* MainControllers */,
@@ -117,6 +170,8 @@
 			children = (
 				6385362C1EE7A1F800DB7BA1 /* BanShengYuan */,
 				6385362B1EE7A1F800DB7BA1 /* Products */,
+				3DC082737194BD4C8E7E96F6 /* Pods */,
+				3DA09152760784B8EEB1AC7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,15 +186,8 @@
 		6385362C1EE7A1F800DB7BA1 /* BanShengYuan */ = {
 			isa = PBXGroup;
 			children = (
+				635380D31EE8FC41006C0375 /* BaseFiles */,
 				63657D971EE7CE5900DA24F4 /* MainCode */,
-				63657D941EE7CE3B00DA24F4 /* Login.storyboard */,
-				6385362D1EE7A1F800DB7BA1 /* AppDelegate.swift */,
-				6385362F1EE7A1F800DB7BA1 /* ViewController.swift */,
-				638536311EE7A1F800DB7BA1 /* Main.storyboard */,
-				638536371EE7A1F800DB7BA1 /* Assets.xcassets */,
-				638536391EE7A1F800DB7BA1 /* LaunchScreen.storyboard */,
-				6385363C1EE7A1F800DB7BA1 /* Info.plist */,
-				638536341EE7A1F800DB7BA1 /* BanShengYuan.xcdatamodeld */,
 			);
 			path = BanShengYuan;
 			sourceTree = "<group>";
@@ -151,9 +199,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6385363F1EE7A1F800DB7BA1 /* Build configuration list for PBXNativeTarget "BanShengYuan" */;
 			buildPhases = (
+				12144245E40650617B600C45 /* [CP] Check Pods Manifest.lock */,
 				638536261EE7A1F800DB7BA1 /* Sources */,
 				638536271EE7A1F800DB7BA1 /* Frameworks */,
 				638536281EE7A1F800DB7BA1 /* Resources */,
+				4E641BEA6905B780E4CBCFDC /* [CP] Embed Pods Frameworks */,
+				B86C6974BB2118B521F3EF10 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,6 +264,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12144245E40650617B600C45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4E641BEA6905B780E4CBCFDC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BanShengYuan/Pods-BanShengYuan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B86C6974BB2118B521F3EF10 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BanShengYuan/Pods-BanShengYuan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		638536261EE7A1F800DB7BA1 /* Sources */ = {
@@ -354,6 +453,7 @@
 		};
 		638536401EE7A1F800DB7BA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A84C5F4F53F71BED1098F95 /* Pods-BanShengYuan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BanShengYuan/Info.plist;
@@ -367,6 +467,7 @@
 		};
 		638536411EE7A1F800DB7BA1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DF03F0D152022F36A26F6B4 /* Pods-BanShengYuan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BanShengYuan/Info.plist;

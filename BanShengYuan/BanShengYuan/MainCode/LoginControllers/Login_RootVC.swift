@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class Login_RootVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //MARK: 设置键盘
+        //键盘监听开关
+        IQKeyboardManager.sharedManager().enable = false
 
         ShowWelecomeV()
         
@@ -45,8 +50,6 @@ class Login_RootVC: UIViewController {
             button.setImage(BundleImageWithName("button_start")!, for:UIControlState.normal)
             return button
         }
-        
-        
         
         welecomeV.showGuideView()
         

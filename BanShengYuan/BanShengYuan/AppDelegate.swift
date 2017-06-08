@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
+
 
 @available(iOS 10.0, *)
 @UIApplicationMain
@@ -25,6 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard_HOME = UIStoryboard.init(name: "Login", bundle: nil)
         window?.rootViewController = storyboard_HOME.instantiateInitialViewController()
         window?.makeKeyAndVisible()
+        
+        //MARK: 设置键盘
+        //键盘监听开关
+        IQKeyboardManager.sharedManager().enable = false
+        //键盘顶部导航
+        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+        //键盘顶部与输入栏底部距离
+        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 66
+        //点击背景 关闭键盘
+        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
         return true
     }
