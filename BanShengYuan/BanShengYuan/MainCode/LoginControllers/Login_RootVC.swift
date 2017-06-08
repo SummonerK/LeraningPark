@@ -55,6 +55,8 @@ class Login_RootVC: UIViewController {
         
     }
     
+    let duration = 0.3
+    
     @IBAction func loginAction(_ sender: Any) {
         PrintFM("登录")
         
@@ -63,12 +65,42 @@ class Login_RootVC: UIViewController {
         window?.rootViewController = storyboard_HOME.instantiateInitialViewController()
         
         let animation = CATransition.init()
-        animation.duration = 0.6
+        animation.duration = duration
 //        animation.type = "rippleEffect" //波纹
-        animation.type = kCATransitionFade //波纹
+        animation.type = kCATransitionFade 
         
         UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
         
     }
+    @IBAction func goToRegist(_ sender: Any) {
+        
+        let Vc = self.storyboard?.instantiateViewController(withIdentifier: "RegistVC") as! RegistVC
+        
+        self.present(Vc, animated: false, completion: nil)
+        
+        let animation = CATransition.init()
+        animation.duration = duration
+        //        animation.type = "rippleEffect" //波纹
+        animation.type = kCATransitionFade
+        
+        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+        
+    }
+    
+    @IBAction func goToReSetting(_ sender: Any) {
+        
+        let Vc = self.storyboard?.instantiateViewController(withIdentifier: "getResetCodeVC") as! getResetCodeVC
+        
+        self.present(Vc, animated: false, completion: nil)
+        
+        let animation = CATransition.init()
+        animation.duration = duration
+        //        animation.type = "rippleEffect" //波纹
+        animation.type = kCATransitionFade
+        
+        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+    }
+    
+    
 
 }
