@@ -9,7 +9,9 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class Login_RootVC: UIViewController {
+class Login_RootVC: UIViewController,UITextFieldDelegate{
+    @IBOutlet weak var tf_phone: UITextField!
+    @IBOutlet weak var tf_pwd: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +103,28 @@ class Login_RootVC: UIViewController {
         UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
     }
     
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+        
+//        PrintFM(string)
+        
+        if textField == tf_phone , let str = textField.text{
+            
+            let strLength = str.length - range.length  + string.length
+            
+            if strLength > 11 {
+                return false
+            }else if strLength==4 || strLength==5{
+                
+                PrintFM("\(String(describing: str)) is \(str.isTelNumber())")
+                
+                return str.isTelNumber()
+            }
+            
+        }
+        
+        return true
+        
+    }
 
 }
+

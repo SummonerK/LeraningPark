@@ -33,6 +33,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="uLX-TH-ySB" id="7MH-hc-VaV"/>
+                                        </connections>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="8D5-ye-bTh">
                                         <rect key="frame" x="10" y="15" width="20" height="24"/>
@@ -70,6 +73,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="uLX-TH-ySB" id="XXj-Au-21m"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -133,6 +139,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="faC-LW-nbI"/>
+                    <connections>
+                        <outlet property="tf_phone" destination="Nqa-1t-Jh4" id="5fw-lc-99b"/>
+                        <outlet property="tf_pwd" destination="RA1-Qe-nIP" id="ntu-z0-mvu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZI-hG-ncQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

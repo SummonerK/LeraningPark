@@ -104,5 +104,45 @@ func PrintFM<T>(_ message:T, file:String = #file, function:String = #function,
     #endif
 }
 
+extension String{
+    
+    func isTelNumber()->Bool{
+        
+        let eight = self.length-3
+        var seven = self.length-4
+        
+        if self.length == 3{
+            seven = 0
+        }
+        
+        PrintFM("\(self) \(eight),\(seven)")
+        
+        let IBCM = String.init("^((13[0-2])|(145)|(15[5-6])|(17[0,6])|(18[5,6]))\\d{\(eight)}$|(1709)\\d{\(seven)}$")
+        let IBCU = String.init("^((13[4-9])|(147)|(15[0-2,7-9])|(17[0,8])|(18[2-4,7-8]))\\d{\(eight)}$|(1705)\\d{\(seven)}$")
+        let IBCT = String.init("^((133)|(153)|(17[3,7,9])|(149)|(18[0,1,9]))\\d{\(eight)}$|(1349)\\d{\(seven)}$")
+        
+//        let CM = "^((13[0-2])|(145)|(15[5-6])|(176)|(18[5,6]))\\d{8}|(1709)\\d{7}$"
+//        let CU = "^((13[4-9])|(147)|(15[0-2,7-9])|(17[0,8])|(18[2-4,7-8]))\\d{8}|(1705)\\d{7}$"
+//        let CT = "^((133)|(153)|(177)|(173)|(149)|(18[0,1,9]))\\d{8}$|(1349)\\d{7}$"
+        
+        let regextestcm = NSPredicate(format: "SELF MATCHES %@",IBCM!)
+        let regextestcu = NSPredicate(format: "SELF MATCHES %@" ,IBCU!)
+        let regextestct = NSPredicate(format: "SELF MATCHES %@" ,IBCT!)
+        if ((regextestcm.evaluate(with: self) == true)
+            || (regextestct.evaluate(with: self) == true)
+            || (regextestcu.evaluate(with: self) == true))
+        {
+            return true
+        }else{
+            return false
+        } 
+    }
+    
+    // readonly computed property
+    var length: Int {
+        return self.utf16.count
+    }
+    
+}
 
 
