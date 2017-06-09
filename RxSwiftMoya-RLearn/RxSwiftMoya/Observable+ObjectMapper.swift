@@ -105,8 +105,6 @@ extension Observable {
                 
                 throw MyErrorEnum.IBError(resultCode: json[RESULT_CODE].int, resultMsg: json[RESULT_MSG].string)
                 
-//                throw RxSwiftMoyaError.IBFromCodeStatus
-                
             }
 
         }

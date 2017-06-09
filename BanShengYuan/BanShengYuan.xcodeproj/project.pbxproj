@@ -25,6 +25,9 @@
 		638536361EE7A1F800DB7BA1 /* BanShengYuan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 638536341EE7A1F800DB7BA1 /* BanShengYuan.xcdatamodeld */; };
 		638536381EE7A1F800DB7BA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 638536371EE7A1F800DB7BA1 /* Assets.xcassets */; };
 		6385363B1EE7A1F800DB7BA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638536391EE7A1F800DB7BA1 /* LaunchScreen.storyboard */; };
+		6386466B1EEA398F0077C6A0 /* Activity_RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386466A1EEA398F0077C6A0 /* Activity_RootVC.swift */; };
+		6386466D1EEA39A60077C6A0 /* UserCenter_RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386466C1EEA39A60077C6A0 /* UserCenter_RootVC.swift */; };
+		6386466F1EEA6F400077C6A0 /* TCellHomeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6386466E1EEA6F400077C6A0 /* TCellHomeActivity.swift */; };
 		88F9197225FFA7C0201230C0 /* Pods_BanShengYuan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AAF75A0826C20B886A2998A /* Pods_BanShengYuan.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +55,9 @@
 		638536371EE7A1F800DB7BA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6385363A1EE7A1F800DB7BA1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6385363C1EE7A1F800DB7BA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6386466A1EEA398F0077C6A0 /* Activity_RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity_RootVC.swift; sourceTree = "<group>"; };
+		6386466C1EEA39A60077C6A0 /* UserCenter_RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenter_RootVC.swift; sourceTree = "<group>"; };
+		6386466E1EEA6F400077C6A0 /* TCellHomeActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellHomeActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				63657D9C1EE7CE5900DA24F4 /* Home_RootVC.swift */,
+				6386466E1EEA6F400077C6A0 /* TCellHomeActivity.swift */,
 			);
 			path = Tab_1_Home;
 			sourceTree = "<group>";
@@ -155,6 +162,7 @@
 		63657D9D1EE7CE5900DA24F4 /* Tab_2_Activitys */ = {
 			isa = PBXGroup;
 			children = (
+				6386466A1EEA398F0077C6A0 /* Activity_RootVC.swift */,
 			);
 			path = Tab_2_Activitys;
 			sourceTree = "<group>";
@@ -162,6 +170,7 @@
 		63657D9E1EE7CE5900DA24F4 /* Tab_3_UserCenter */ = {
 			isa = PBXGroup;
 			children = (
+				6386466C1EEA39A60077C6A0 /* UserCenter_RootVC.swift */,
 			);
 			path = Tab_3_UserCenter;
 			sourceTree = "<group>";
@@ -328,10 +337,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6353810D1EE93266006C0375 /* RegistVC.swift in Sources */,
+				6386466F1EEA6F400077C6A0 /* TCellHomeActivity.swift in Sources */,
 				638536301EE7A1F800DB7BA1 /* ViewController.swift in Sources */,
 				6353810F1EE93EA5006C0375 /* getResetCodeVC.swift in Sources */,
 				63657DA11EE7CE5900DA24F4 /* Home_RootVC.swift in Sources */,
+				6386466B1EEA398F0077C6A0 /* Activity_RootVC.swift in Sources */,
 				6385362E1EE7A1F800DB7BA1 /* AppDelegate.swift in Sources */,
+				6386466D1EEA39A60077C6A0 /* UserCenter_RootVC.swift in Sources */,
 				63657DA01EE7CE5900DA24F4 /* Login_RootVC.swift in Sources */,
 				635381111EE93EC8006C0375 /* resetPwdVC.swift in Sources */,
 				63657DA71EE7F51800DA24F4 /* GuideView.swift in Sources */,

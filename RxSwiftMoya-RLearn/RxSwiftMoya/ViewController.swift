@@ -45,7 +45,7 @@ class ViewController: UIViewController {
                     
                     print("\(post.description)")
                     
-                },onError:{error in
+                },onError:{error in 
                     print("Error//////Error \(error)")
                 })
                 .addDisposableTo(disposeBag)
