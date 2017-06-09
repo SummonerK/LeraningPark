@@ -1,5 +1,5 @@
 //
-//  TCellHomeActivity.swift
+//  TCellActivity.swift
 //  BanShengYuan
 //
 //  Created by Luofei on 2017/6/9.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TCellHomeActivity: UITableViewCell {
+class TCellActivity: UITableViewCell {
 
-    @IBOutlet weak var imageV_Activity: UIImageView!
+    @IBOutlet weak var imageV_activity: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +22,5 @@ class TCellHomeActivity: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
