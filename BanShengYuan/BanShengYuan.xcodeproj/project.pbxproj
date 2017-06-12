@@ -19,6 +19,10 @@
 		63657DA21EE7CE5900DA24F4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63657D9F1EE7CE5900DA24F4 /* Media.xcassets */; };
 		63657DA51EE7D03200DA24F4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657DA41EE7D03200DA24F4 /* Const.swift */; };
 		63657DA71EE7F51800DA24F4 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657DA61EE7F51800DA24F4 /* GuideView.swift */; };
+		6381FDC71EEE2E1F000731DB /* CCellHomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6381FDC51EEE2E1F000731DB /* CCellHomeHeader.swift */; };
+		6381FDC81EEE2E1F000731DB /* CCellHomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6381FDC61EEE2E1F000731DB /* CCellHomeHeader.xib */; };
+		6381FDCD1EEE38BE000731DB /* HomeHeaderV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6381FDCB1EEE38BE000731DB /* HomeHeaderV.swift */; };
+		6381FDCE1EEE38BE000731DB /* HomeHeaderV.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6381FDCC1EEE38BE000731DB /* HomeHeaderV.xib */; };
 		6385362E1EE7A1F800DB7BA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385362D1EE7A1F800DB7BA1 /* AppDelegate.swift */; };
 		638536301EE7A1F800DB7BA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385362F1EE7A1F800DB7BA1 /* ViewController.swift */; };
 		638536331EE7A1F800DB7BA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638536311EE7A1F800DB7BA1 /* Main.storyboard */; };
@@ -48,6 +52,10 @@
 		63657D9F1EE7CE5900DA24F4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		63657DA41EE7D03200DA24F4 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		63657DA61EE7F51800DA24F4 /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		6381FDC51EEE2E1F000731DB /* CCellHomeHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCellHomeHeader.swift; sourceTree = "<group>"; };
+		6381FDC61EEE2E1F000731DB /* CCellHomeHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellHomeHeader.xib; sourceTree = "<group>"; };
+		6381FDCB1EEE38BE000731DB /* HomeHeaderV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHeaderV.swift; sourceTree = "<group>"; };
+		6381FDCC1EEE38BE000731DB /* HomeHeaderV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeHeaderV.xib; sourceTree = "<group>"; };
 		6385362A1EE7A1F800DB7BA1 /* BanShengYuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanShengYuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6385362D1EE7A1F800DB7BA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6385362F1EE7A1F800DB7BA1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +164,10 @@
 			isa = PBXGroup;
 			children = (
 				63657D9C1EE7CE5900DA24F4 /* Home_RootVC.swift */,
+				6381FDC51EEE2E1F000731DB /* CCellHomeHeader.swift */,
+				6381FDC61EEE2E1F000731DB /* CCellHomeHeader.xib */,
+				6381FDCB1EEE38BE000731DB /* HomeHeaderV.swift */,
+				6381FDCC1EEE38BE000731DB /* HomeHeaderV.xib */,
 			);
 			path = Tab_1_Home;
 			sourceTree = "<group>";
@@ -276,6 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				63657DA21EE7CE5900DA24F4 /* Media.xcassets in Resources */,
+				6381FDC81EEE2E1F000731DB /* CCellHomeHeader.xib in Resources */,
+				6381FDCE1EEE38BE000731DB /* HomeHeaderV.xib in Resources */,
 				6385363B1EE7A1F800DB7BA1 /* LaunchScreen.storyboard in Resources */,
 				638646731EEAAC420077C6A0 /* TCellActivity.xib in Resources */,
 				638536381EE7A1F800DB7BA1 /* Assets.xcassets in Resources */,
@@ -340,12 +354,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6381FDC71EEE2E1F000731DB /* CCellHomeHeader.swift in Sources */,
 				6353810D1EE93266006C0375 /* RegistVC.swift in Sources */,
 				638536301EE7A1F800DB7BA1 /* ViewController.swift in Sources */,
 				6353810F1EE93EA5006C0375 /* getResetCodeVC.swift in Sources */,
 				63657DA11EE7CE5900DA24F4 /* Home_RootVC.swift in Sources */,
 				6386466B1EEA398F0077C6A0 /* Activity_RootVC.swift in Sources */,
 				6385362E1EE7A1F800DB7BA1 /* AppDelegate.swift in Sources */,
+				6381FDCD1EEE38BE000731DB /* HomeHeaderV.swift in Sources */,
 				638646721EEAAC420077C6A0 /* TCellActivity.swift in Sources */,
 				6386466D1EEA39A60077C6A0 /* UserCenter_RootVC.swift in Sources */,
 				63657DA01EE7CE5900DA24F4 /* Login_RootVC.swift in Sources */,

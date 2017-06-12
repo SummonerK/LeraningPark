@@ -22,6 +22,7 @@ class Home_RootVC: UIViewController{
         super.viewDidLoad()
         
         tableV_main.register(UINib.init(nibName: "TCellActivity", bundle: nil), forCellReuseIdentifier: "TCellActivity")
+        tableV_main.register(UINib.init(nibName: "HomeHeaderV", bundle: nil), forCellReuseIdentifier: "HomeHeaderV")
         
     }
 
@@ -36,11 +37,19 @@ class Home_RootVC: UIViewController{
 extension Home_RootVC:UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return 3
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,6 +68,39 @@ extension Home_RootVC:UITableViewDataSource{
 }
 
 extension Home_RootVC: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+        
+        switch section {
+        case 0:
+            return IBScreenHeight*0.4
+        case 1:
+            return 0
+        default:
+            return 0
+        }
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        
+        switch section {
+        case 0:
+            let headerCell = self.tableV_main.dequeueReusableCell(withIdentifier: "HomeHeaderV") as! HomeHeaderV
+            
+            headerCell.imgv_HomeHeader.image = createImageWithColor(color: UIColor.brown)
+            
+            return headerCell
+        case 1:
+            return nil
+        default:
+            return nil
+        }
+        
+        
+        
+    }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{

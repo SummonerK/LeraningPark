@@ -75,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="876" y="367"/>
         </scene>
-        <!--Home RootVC-->
+        <!--首页-->
         <scene sceneID="a4P-M5-ZCE">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="Iwy-w2-AdS" customClass="Home_RootVC" customModule="BanShengYuan" sceneMemberID="viewController">
@@ -99,6 +99,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeHeaderV" id="20O-j4-InU" customClass="HomeHeaderV" customModule="BanShengYuan">
+                                        <rect key="frame" x="0.0" y="118" width="375" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="20O-j4-InU" id="d7A-mY-oEv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Iwy-w2-AdS" id="uoQ-cH-ulC"/>
@@ -114,32 +122,7 @@
                             <constraint firstAttribute="trailing" secondItem="yfm-Su-rGV" secondAttribute="trailing" id="iHC-xB-HLy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xnV-Um-49C">
-                        <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="LmY-gl-wmc">
-                            <rect key="frame" x="37.5" y="0.0" width="300" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="搜索商家" translatesAutoresizingMaskIntoConstraints="NO" id="WS7-Qc-DKE">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44.5" id="EX9-wl-l6a"/>
-                                    </constraints>
-                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <color key="barTintColor" red="0.12637259066104889" green="0.12639245390892029" blue="0.12636536359786987" alpha="1" colorSpace="calibratedRGB"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="WS7-Qc-DKE" firstAttribute="centerY" secondItem="LmY-gl-wmc" secondAttribute="centerY" id="F7J-jP-TXD"/>
-                                <constraint firstAttribute="trailing" secondItem="WS7-Qc-DKE" secondAttribute="trailing" id="Sne-xQ-Qva"/>
-                                <constraint firstItem="WS7-Qc-DKE" firstAttribute="leading" secondItem="LmY-gl-wmc" secondAttribute="leading" id="WbV-a9-CYA"/>
-                            </constraints>
-                        </view>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="首页" id="xnV-Um-49C"/>
                     <connections>
                         <outlet property="tableV_main" destination="yfm-Su-rGV" id="mSA-j4-iaP"/>
                     </connections>
