@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63532AB71EEF89DE00E9F1ED /* Center.png in Resources */ = {isa = PBXBuildFile; fileRef = 63532AB61EEF89DE00E9F1ED /* Center.png */; };
 		635380D21EE8E52A006C0375 /* Source.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 635380D11EE8E52A006C0375 /* Source.bundle */; };
 		635381081EE8FDFD006C0375 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635381071EE8FDFD006C0375 /* QuartzCore.framework */; };
 		6353810A1EE8FE05006C0375 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635381091EE8FE05006C0375 /* CoreGraphics.framework */; };
@@ -42,6 +43,7 @@
 		0A84C5F4F53F71BED1098F95 /* Pods-BanShengYuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanShengYuan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BanShengYuan/Pods-BanShengYuan.debug.xcconfig"; sourceTree = "<group>"; };
 		0DF03F0D152022F36A26F6B4 /* Pods-BanShengYuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanShengYuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-BanShengYuan/Pods-BanShengYuan.release.xcconfig"; sourceTree = "<group>"; };
 		4AAF75A0826C20B886A2998A /* Pods_BanShengYuan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BanShengYuan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63532AB61EEF89DE00E9F1ED /* Center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Center.png; sourceTree = "<group>"; };
 		635380D11EE8E52A006C0375 /* Source.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Source.bundle; sourceTree = "<group>"; };
 		635381071EE8FDFD006C0375 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		635381091EE8FE05006C0375 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -160,6 +162,7 @@
 				63657D9B1EE7CE5900DA24F4 /* Tab_1_Home */,
 				63657D9D1EE7CE5900DA24F4 /* Tab_2_Activitys */,
 				63657D9E1EE7CE5900DA24F4 /* Tab_3_UserCenter */,
+				63532AB61EEF89DE00E9F1ED /* Center.png */,
 				63B3FCE11EEE8A2500FDA5FA /* IBTabbarC.swift */,
 			);
 			path = MainControllers;
@@ -301,6 +304,7 @@
 				638536381EE7A1F800DB7BA1 /* Assets.xcassets in Resources */,
 				63657D961EE7CE3B00DA24F4 /* Login.storyboard in Resources */,
 				638536331EE7A1F800DB7BA1 /* Main.storyboard in Resources */,
+				63532AB71EEF89DE00E9F1ED /* Center.png in Resources */,
 				635380D21EE8E52A006C0375 /* Source.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

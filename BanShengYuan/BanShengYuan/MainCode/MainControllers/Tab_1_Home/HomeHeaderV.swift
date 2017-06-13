@@ -39,6 +39,11 @@ class HomeHeaderV: UITableViewCell {
     func setupView(){
         CollectionV_HomeHeader.register(UINib.init(nibName: "CCellHomeHeader", bundle: nil), forCellWithReuseIdentifier: "CCellHomeHeader")
         
+        CollectionV_HomeHeader.layer.cornerRadius = 8
+        CollectionV_HomeHeader.bounces = true
+        
+        setshadowFor(aview: CollectionV_HomeHeader, OffSet: CGSize.init(width: 0, height: 1.5))
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

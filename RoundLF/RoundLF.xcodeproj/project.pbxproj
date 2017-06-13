@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63532AB91EEFC48300E9F1ED /* bton_round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63532AB81EEFC48300E9F1ED /* bton_round.swift */; };
 		63B3FCF01EEE9B3500FDA5FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3FCEF1EEE9B3500FDA5FA /* AppDelegate.swift */; };
 		63B3FCF21EEE9B3500FDA5FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3FCF11EEE9B3500FDA5FA /* ViewController.swift */; };
 		63B3FCF51EEE9B3500FDA5FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B3FCF31EEE9B3500FDA5FA /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63532AB81EEFC48300E9F1ED /* bton_round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bton_round.swift; sourceTree = "<group>"; };
 		63B3FCEC1EEE9B3500FDA5FA /* RoundLF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoundLF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B3FCEF1EEE9B3500FDA5FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63B3FCF11EEE9B3500FDA5FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				63B3FCFB1EEE9B3500FDA5FA /* LaunchScreen.storyboard */,
 				63B3FCFE1EEE9B3500FDA5FA /* Info.plist */,
 				63B3FCF61EEE9B3500FDA5FA /* RoundLF.xcdatamodeld */,
+				63532AB81EEFC48300E9F1ED /* bton_round.swift */,
 			);
 			path = RoundLF;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B3FCF21EEE9B3500FDA5FA /* ViewController.swift in Sources */,
+				63532AB91EEFC48300E9F1ED /* bton_round.swift in Sources */,
 				63B3FCF01EEE9B3500FDA5FA /* AppDelegate.swift in Sources */,
 				63B3FCF81EEE9B3500FDA5FA /* RoundLF.xcdatamodeld in Sources */,
 			);
@@ -303,6 +307,7 @@
 				63B3FD031EEE9B3500FDA5FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
