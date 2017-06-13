@@ -18,12 +18,14 @@ class ViewModel {
 //            .filterSuccessfulStatusCodes()
 //            .mapJSON()
             .mapArray(type: Post.self)
+        .showError()
     }
     
     func createPost(title: String, body: String, userId: Int) -> Observable<Post> {
         return provider.request(.Create(title: title, body: body, userId: userId))
 //            .mapJSON()
             .mapObject(type: Post.self)
+        .showError()
     }
     
     func getVCode(cTel:String,type:String) -> Observable<PostCV> {
@@ -31,6 +33,7 @@ class ViewModel {
 //        .filterStatusCode(200)
 //        .mapJSON()
         .mapObject(type: PostCV.self)
+        .showError()
     }
     
 }

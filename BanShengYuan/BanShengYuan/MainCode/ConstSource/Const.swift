@@ -104,6 +104,13 @@ func PrintFM<T>(_ message:T, file:String = #file, function:String = #function,
     #endif
 }
 
+func setshadowFor(aview:UIView, OffSet:CGSize){
+    aview.layer.shadowColor = UIColor.init(red: 155.0/255.0, green: 155.0/255.0, blue: 155.0/255.0, alpha: 0.9).cgColor
+    aview.layer.shadowOpacity = 0.7
+    aview.layer.shadowRadius = 1.5
+    aview.layer.shadowOffset = OffSet
+}
+
 extension String{
     
     func isTelNumber()->Bool{
@@ -120,10 +127,6 @@ extension String{
         let IBCM = String.init("^((13[0-2])|(145)|(15[5-6])|(17[0,6])|(18[5,6]))\\d{\(eight)}$|(1709)\\d{\(seven)}$")
         let IBCU = String.init("^((13[4-9])|(147)|(15[0-2,7-9])|(17[0,8])|(18[2-4,7-8]))\\d{\(eight)}$|(1705)\\d{\(seven)}$")
         let IBCT = String.init("^((133)|(153)|(17[3,7,9])|(149)|(18[0,1,9]))\\d{\(eight)}$|(1349)\\d{\(seven)}$")
-        
-//        let CM = "^((13[0-2])|(145)|(15[5-6])|(176)|(18[5,6]))\\d{8}|(1709)\\d{7}$"
-//        let CU = "^((13[4-9])|(147)|(15[0-2,7-9])|(17[0,8])|(18[2-4,7-8]))\\d{8}|(1705)\\d{7}$"
-//        let CT = "^((133)|(153)|(177)|(173)|(149)|(18[0,1,9]))\\d{8}$|(1349)\\d{7}$"
         
         let regextestcm = NSPredicate(format: "SELF MATCHES %@",IBCM!)
         let regextestcu = NSPredicate(format: "SELF MATCHES %@" ,IBCU!)

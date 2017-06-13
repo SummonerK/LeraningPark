@@ -256,7 +256,7 @@
         <!--TabbarC-->
         <scene sceneID="DUG-bz-Xe3">
             <objects>
-                <tabBarController id="OZA-PH-ld0" customClass="IBTabbarC" customModule="BanShengYuan" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="OZA-PH-ld0" customClass="IBTabbarC" customModule="BanShengYuan" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="xC5-SM-7IB"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="fQS-EE-kYy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>

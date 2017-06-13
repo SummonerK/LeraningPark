@@ -12,11 +12,10 @@ class IBTabbarC: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let item = self.tabBar.items?[1] as! UITabBarItem
         
         setLayer()
-//        self.dropShadowWithOffSet(offset: CGSize.init(width: 0, height: -0.5), radius: 1, color: UIColor.lightGray, opacity: 0.5)
+//        setshadowFor(aview: tabBar)
+        self.dropShadowWithOffSet(offset: CGSize.init(width: 0, height: -0.5), radius: 1, color: UIColor.lightGray, opacity: 0.5)
         
     }
 
@@ -45,36 +44,30 @@ class IBTabbarC: UITabBarController {
         
         tabBar.shadowImage = UIImage()
         tabBar.backgroundImage = UIImage()
+        
+       
+        
     }
     
-    /*// Creating shadow path for better performance
-     CGMutablePathRef path = CGPathCreateMutable();
-     CGPathAddRect(path, NULL, self.tabBar.bounds);
-     self.tabBar.layer.shadowPath = path;
-     CGPathCloseSubpath(path);
-     CGPathRelease(path);
-     
-     self.tabBar.layer.shadowColor = color.CGColor;
-     self.tabBar.layer.shadowOffset = offset;
-     self.tabBar.layer.shadowRadius = radius;
-     self.tabBar.layer.shadowOpacity = opacity;
-     
-     // Default clipsToBounds is YES, will clip off the shadow, so we disable it.
-     self.tabBar.clipsToBounds = NO;  */
-    
-//    func dropShadowWithOffSet(offset:CGSize , radius:CGFloat ,color:UIColor,opacity:CGFloat){
-//        let path = CGMutablePath.init()
-//        path.addRect(self.tabBar.bounds)
-//        self.tabBar.layer.shadowPath = path
-//        path.closeSubpath()
-//        
+    func dropShadowWithOffSet(offset:CGSize , radius:CGFloat ,color:UIColor,opacity:CGFloat){
+        let path = CGMutablePath.init()
+        path.addRect(self.tabBar.bounds)
+        self.tabBar.layer.shadowPath = path
+        path.closeSubpath()
+        
 //        self.tabBar.layer.shadowColor = color.cgColor
 //        self.tabBar.layer.shadowOffset = offset
 //        self.tabBar.layer.shadowRadius = radius
 //        self.tabBar.layer.shadowOpacity = Float(opacity)
-//        
-//        
-//    }
+        self.tabBar.layer.shadowColor = UIColor.init(red: 155.0/255.0, green: 155.0/255.0, blue: 155.0/255.0, alpha: 0.9).cgColor
+        self.tabBar.layer.shadowOpacity = 0.7
+        self.tabBar.layer.shadowRadius = 1.5
+        self.tabBar.layer.shadowOffset = CGSize.init(width: 0, height: -1)
+        
+//        setshadowFor(aview: self.tabBar)
+        
+        
+    }
 
 }
 
