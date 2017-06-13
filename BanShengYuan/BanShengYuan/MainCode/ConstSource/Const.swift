@@ -138,7 +138,6 @@ extension String{
         } 
     }
     
-    // readonly computed property
     var length: Int {
         return self.utf16.count
     }

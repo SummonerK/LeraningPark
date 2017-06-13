@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -91,19 +92,86 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeHeaderV" rowHeight="234" id="20O-j4-InU" customClass="HomeHeaderV" customModule="BanShengYuan">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="234"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="20O-j4-InU" id="d7A-mY-oEv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="234"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MYZ-Sj-QD6">
+                                                    <rect key="frame" x="0.0" y="117" width="375" height="117"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7ke-dR-27A">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CCellHomeHeader" id="vn1-JR-mYH" customClass="CCellHomeHeader" customModule="BanShengYuan">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </view>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="20O-j4-InU" id="MUg-Po-OhD"/>
+                                                        <outlet property="delegate" destination="20O-j4-InU" id="r9R-DD-JoE"/>
+                                                        <outlet property="prefetchDataSource" destination="20O-j4-InU" id="EyX-vz-260"/>
+                                                    </connections>
+                                                </collectionView>
+                                                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="搜索商户" translatesAutoresizingMaskIntoConstraints="NO" id="YJd-st-nBa">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="3Ll-db-iMp"/>
+                                                    </constraints>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </searchBar>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="enR-6L-dUs">
+                                                    <rect key="frame" x="0.0" y="44" width="375" height="73"/>
+                                                    <gestureRecognizers/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="FeM-IZ-IHz" appends="YES" id="i93-5G-N9G"/>
+                                                    </connections>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="MYZ-Sj-QD6" secondAttribute="trailing" id="4Jb-Sk-Icn"/>
+                                                <constraint firstAttribute="trailing" secondItem="enR-6L-dUs" secondAttribute="trailing" id="55A-bW-a4h"/>
+                                                <constraint firstItem="YJd-st-nBa" firstAttribute="top" secondItem="d7A-mY-oEv" secondAttribute="top" id="LDA-x9-HU7"/>
+                                                <constraint firstItem="enR-6L-dUs" firstAttribute="top" secondItem="YJd-st-nBa" secondAttribute="bottom" id="OxS-Je-tgz"/>
+                                                <constraint firstItem="YJd-st-nBa" firstAttribute="leading" secondItem="d7A-mY-oEv" secondAttribute="leading" id="Uhw-RJ-gNx"/>
+                                                <constraint firstAttribute="trailing" secondItem="YJd-st-nBa" secondAttribute="trailing" id="c1J-sz-JxW"/>
+                                                <constraint firstItem="MYZ-Sj-QD6" firstAttribute="height" secondItem="d7A-mY-oEv" secondAttribute="height" multiplier="0.5" id="ijb-Af-Kxk"/>
+                                                <constraint firstItem="enR-6L-dUs" firstAttribute="leading" secondItem="d7A-mY-oEv" secondAttribute="leading" id="nOQ-vH-hrP"/>
+                                                <constraint firstItem="MYZ-Sj-QD6" firstAttribute="leading" secondItem="d7A-mY-oEv" secondAttribute="leading" id="qaC-Hs-a3N"/>
+                                                <constraint firstItem="MYZ-Sj-QD6" firstAttribute="top" secondItem="enR-6L-dUs" secondAttribute="bottom" id="rhW-ZZ-H8m"/>
+                                                <constraint firstAttribute="bottom" secondItem="MYZ-Sj-QD6" secondAttribute="bottom" id="yBB-GR-Hdj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="CollectionV_HomeHeader" destination="MYZ-Sj-QD6" id="Y1d-mC-jWp"/>
+                                            <outlet property="imgv_HomeHeader" destination="enR-6L-dUs" id="3nt-wG-ptZ"/>
+                                            <outlet property="search_homeHeader" destination="YJd-st-nBa" id="HAW-lU-0Ob"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TCellActivity" id="Dgt-SW-7sU" customClass="TCellActivity" customModule="BanShengYuan">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="262" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dgt-SW-7sU" id="C0n-BD-VN0">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeHeaderV" id="20O-j4-InU" customClass="HomeHeaderV" customModule="BanShengYuan">
-                                        <rect key="frame" x="0.0" y="118" width="375" height="90"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TCell_Footer" rowHeight="40" id="zHW-lQ-gZv" customClass="TCell_Footer" customModule="BanShengYuan">
+                                        <rect key="frame" x="0.0" y="352" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="20O-j4-InU" id="d7A-mY-oEv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zHW-lQ-gZv" id="yj4-jd-j2a">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -128,6 +196,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95h-5u-duD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="FeM-IZ-IHz"/>
             </objects>
             <point key="canvasLocation" x="876" y="-290.10494752623691"/>
         </scene>
@@ -184,10 +253,10 @@
             </objects>
             <point key="canvasLocation" x="87" y="-290"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--TabbarC-->
         <scene sceneID="DUG-bz-Xe3">
             <objects>
-                <tabBarController id="OZA-PH-ld0" sceneMemberID="viewController">
+                <tabBarController id="OZA-PH-ld0" customClass="IBTabbarC" customModule="BanShengYuan" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="xC5-SM-7IB"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="fQS-EE-kYy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>

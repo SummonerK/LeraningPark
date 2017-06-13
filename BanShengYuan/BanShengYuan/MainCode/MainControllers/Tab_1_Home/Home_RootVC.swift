@@ -22,7 +22,9 @@ class Home_RootVC: UIViewController{
         super.viewDidLoad()
         
         tableV_main.register(UINib.init(nibName: "TCellActivity", bundle: nil), forCellReuseIdentifier: "TCellActivity")
-        tableV_main.register(UINib.init(nibName: "HomeHeaderV", bundle: nil), forCellReuseIdentifier: "HomeHeaderV")
+        tableV_main.register(UINib.init(nibName: "TCell_Footer", bundle: nil), forCellReuseIdentifier: "TCell_Footer")
+//        tableV_main.register(HomeHeaderV.self, forHeaderFooterViewReuseIdentifier: "HomeHeaderV")
+        
         
     }
 
@@ -33,20 +35,29 @@ class Home_RootVC: UIViewController{
 }
 
 
+extension Home_RootVC:MyDelegate{
+    func moreActivitiesAction(selected : Bool){
+        if selected {
+            PrintFM("GetMore")
+        }
+    }
+}
 
 extension Home_RootVC:UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
         case 0:
-            return 0
+            return 1
         case 1:
             return 3
+        case 2:
+            return 1
         default:
             return 0
         }
@@ -54,66 +65,69 @@ extension Home_RootVC:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TCellActivity", for: indexPath) as! TCellActivity
-        
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-        
-        let url = URL(string: urlStr)
-        
-        cell.imageV_activity.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
-        
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeHeaderV", for: indexPath) as! HomeHeaderV
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            
+            let url = URL(string: urlStr)
+            
+            cell.imgv_HomeHeader.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+            
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TCellActivity", for: indexPath) as! TCellActivity
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            
+            let url = URL(string: urlStr)
+            
+            cell.imageV_activity.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+            
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TCell_Footer", for: indexPath) as! TCell_Footer
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            
+            cell.delegate = self
+            
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TCellActivity", for: indexPath)
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            return cell
+        }
     }
     
 }
 
 extension Home_RootVC: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         
-        switch section {
+        switch indexPath.section {
         case 0:
             return IBScreenHeight*0.4
         case 1:
-            return 0
+            return IBScreenHeight * 0.12
+        case 2:
+            return 40
         default:
             return 0
         }
         
-        
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        
-        switch section {
-        case 0:
-            let headerCell = self.tableV_main.dequeueReusableCell(withIdentifier: "HomeHeaderV") as! HomeHeaderV
-            
-            headerCell.imgv_HomeHeader.image = createImageWithColor(color: UIColor.brown)
-            
-            return headerCell
-        case 1:
-            return nil
-        default:
-            return nil
-        }
-        
-        
-        
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return IBScreenHeight * 0.15
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print("\(indexPath.row)")
         
-        guard let cell = tableView.cellForRow(at: indexPath) as? TCellActivity else {
-            return
-        }
+//        guard let cell = tableView.cellForRow(at: indexPath) as? TCellActivity else {
+//            return
+//        }
         
     }
 }
