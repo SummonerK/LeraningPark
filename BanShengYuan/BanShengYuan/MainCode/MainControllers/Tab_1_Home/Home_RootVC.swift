@@ -54,7 +54,7 @@ extension Home_RootVC:UITableViewDataSource{
         case 0:
             return 1
         case 1:
-            return 3
+            return 1
         case 2:
             return 1
         default:
@@ -76,6 +76,14 @@ extension Home_RootVC:UITableViewDataSource{
             
             return cell
         case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TCell_Footer", for: indexPath) as! TCell_Footer
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            
+            cell.delegate = self
+            
+            return cell
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TCellActivity", for: indexPath) as! TCellActivity
             
             cell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -83,14 +91,6 @@ extension Home_RootVC:UITableViewDataSource{
             let url = URL(string: urlStr)
             
             cell.imageV_activity.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
-            
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TCell_Footer", for: indexPath) as! TCell_Footer
-            
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
-            
-            cell.delegate = self
             
             return cell
         default:
@@ -109,11 +109,11 @@ extension Home_RootVC: UITableViewDelegate {
         
         switch indexPath.section {
         case 0:
-            return IBScreenHeight*0.6
+            return 52+(IBScreenWidth*(205+160)/375)
         case 1:
-            return IBScreenHeight * 0.12
-        case 2:
             return 40
+        case 2:
+            return IBScreenHeight * 0.12
         default:
             return 0
         }

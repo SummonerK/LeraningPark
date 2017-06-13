@@ -91,7 +91,7 @@ extension HomeHeaderV:UICollectionViewDelegateFlowLayout{
     
     //返回cell 上下左右的间距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        return CGSize.init(width: IBScreenWidth/5, height: self.CollectionV_HomeHeader.frame.height/2)
+        return CGSize.init(width: IBScreenWidth/6, height: self.CollectionV_HomeHeader.frame.height/2)
     }
     
 }

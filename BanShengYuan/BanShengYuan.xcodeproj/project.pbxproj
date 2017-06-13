@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63532AB71EEF89DE00E9F1ED /* Center.png in Resources */ = {isa = PBXBuildFile; fileRef = 63532AB61EEF89DE00E9F1ED /* Center.png */; };
+		63532AC01EEFF1E200E9F1ED /* TCellHomeActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63532ABE1EEFF1E200E9F1ED /* TCellHomeActivities.swift */; };
+		63532AC11EEFF1E200E9F1ED /* TCellHomeActivities.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63532ABF1EEFF1E200E9F1ED /* TCellHomeActivities.xib */; };
 		635380D21EE8E52A006C0375 /* Source.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 635380D11EE8E52A006C0375 /* Source.bundle */; };
 		635381081EE8FDFD006C0375 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635381071EE8FDFD006C0375 /* QuartzCore.framework */; };
 		6353810A1EE8FE05006C0375 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635381091EE8FE05006C0375 /* CoreGraphics.framework */; };
@@ -35,7 +36,6 @@
 		638646731EEAAC420077C6A0 /* TCellActivity.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638646711EEAAC420077C6A0 /* TCellActivity.xib */; };
 		63B3FCDF1EEE7EDA00FDA5FA /* TCell_Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3FCDD1EEE7EDA00FDA5FA /* TCell_Footer.swift */; };
 		63B3FCE01EEE7EDA00FDA5FA /* TCell_Footer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B3FCDE1EEE7EDA00FDA5FA /* TCell_Footer.xib */; };
-		63B3FCE21EEE8A2500FDA5FA /* IBTabbarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3FCE11EEE8A2500FDA5FA /* IBTabbarC.swift */; };
 		88F9197225FFA7C0201230C0 /* Pods_BanShengYuan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AAF75A0826C20B886A2998A /* Pods_BanShengYuan.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +43,8 @@
 		0A84C5F4F53F71BED1098F95 /* Pods-BanShengYuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanShengYuan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BanShengYuan/Pods-BanShengYuan.debug.xcconfig"; sourceTree = "<group>"; };
 		0DF03F0D152022F36A26F6B4 /* Pods-BanShengYuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanShengYuan.release.xcconfig"; path = "Pods/Target Support Files/Pods-BanShengYuan/Pods-BanShengYuan.release.xcconfig"; sourceTree = "<group>"; };
 		4AAF75A0826C20B886A2998A /* Pods_BanShengYuan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BanShengYuan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		63532AB61EEF89DE00E9F1ED /* Center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Center.png; sourceTree = "<group>"; };
+		63532ABE1EEFF1E200E9F1ED /* TCellHomeActivities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellHomeActivities.swift; sourceTree = "<group>"; };
+		63532ABF1EEFF1E200E9F1ED /* TCellHomeActivities.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCellHomeActivities.xib; sourceTree = "<group>"; };
 		635380D11EE8E52A006C0375 /* Source.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Source.bundle; sourceTree = "<group>"; };
 		635381071EE8FDFD006C0375 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		635381091EE8FE05006C0375 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,7 +74,6 @@
 		638646711EEAAC420077C6A0 /* TCellActivity.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCellActivity.xib; sourceTree = "<group>"; };
 		63B3FCDD1EEE7EDA00FDA5FA /* TCell_Footer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCell_Footer.swift; sourceTree = "<group>"; };
 		63B3FCDE1EEE7EDA00FDA5FA /* TCell_Footer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCell_Footer.xib; sourceTree = "<group>"; };
-		63B3FCE11EEE8A2500FDA5FA /* IBTabbarC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBTabbarC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,8 +162,6 @@
 				63657D9B1EE7CE5900DA24F4 /* Tab_1_Home */,
 				63657D9D1EE7CE5900DA24F4 /* Tab_2_Activitys */,
 				63657D9E1EE7CE5900DA24F4 /* Tab_3_UserCenter */,
-				63532AB61EEF89DE00E9F1ED /* Center.png */,
-				63B3FCE11EEE8A2500FDA5FA /* IBTabbarC.swift */,
 			);
 			path = MainControllers;
 			sourceTree = "<group>";
@@ -177,6 +175,8 @@
 				6381FDC61EEE2E1F000731DB /* CCellHomeHeader.xib */,
 				63B3FCDD1EEE7EDA00FDA5FA /* TCell_Footer.swift */,
 				63B3FCDE1EEE7EDA00FDA5FA /* TCell_Footer.xib */,
+				63532ABE1EEFF1E200E9F1ED /* TCellHomeActivities.swift */,
+				63532ABF1EEFF1E200E9F1ED /* TCellHomeActivities.xib */,
 			);
 			path = Tab_1_Home;
 			sourceTree = "<group>";
@@ -304,7 +304,7 @@
 				638536381EE7A1F800DB7BA1 /* Assets.xcassets in Resources */,
 				63657D961EE7CE3B00DA24F4 /* Login.storyboard in Resources */,
 				638536331EE7A1F800DB7BA1 /* Main.storyboard in Resources */,
-				63532AB71EEF89DE00E9F1ED /* Center.png in Resources */,
+				63532AC11EEFF1E200E9F1ED /* TCellHomeActivities.xib in Resources */,
 				635380D21EE8E52A006C0375 /* Source.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,7 +364,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63B3FCE21EEE8A2500FDA5FA /* IBTabbarC.swift in Sources */,
 				6381FDC71EEE2E1F000731DB /* CCellHomeHeader.swift in Sources */,
 				6353810D1EE93266006C0375 /* RegistVC.swift in Sources */,
 				638536301EE7A1F800DB7BA1 /* ViewController.swift in Sources */,
@@ -377,6 +376,7 @@
 				6386466D1EEA39A60077C6A0 /* UserCenter_RootVC.swift in Sources */,
 				63657DA01EE7CE5900DA24F4 /* Login_RootVC.swift in Sources */,
 				635381111EE93EC8006C0375 /* resetPwdVC.swift in Sources */,
+				63532AC01EEFF1E200E9F1ED /* TCellHomeActivities.swift in Sources */,
 				63657DA71EE7F51800DA24F4 /* GuideView.swift in Sources */,
 				638536361EE7A1F800DB7BA1 /* BanShengYuan.xcdatamodeld in Sources */,
 				63657DA51EE7D03200DA24F4 /* Const.swift in Sources */,
