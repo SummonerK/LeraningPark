@@ -10,14 +10,12 @@ import UIKit
 
 class TCellHomeActivities: UITableViewCell {
     
+    @IBOutlet weak var img_left: UIImageView!
     
     
     
-    
-    
-    
-    
-    
+    @IBOutlet weak var img_right_down: UIImageView!
+    @IBOutlet weak var img_right_up: UIImageView!
     
 
     override func awakeFromNib() {

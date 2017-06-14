@@ -10,7 +10,11 @@ import UIKit
 
 class CCellHomeHeader: UICollectionViewCell {
 
+    @IBOutlet weak var image_icon: UIImageView!
+    @IBOutlet weak var label_title: UILabel!
+    
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         // Initialization code
     }
