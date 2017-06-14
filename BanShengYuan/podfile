@@ -13,7 +13,7 @@ target 'BanShengYuan' do
   pod 'IQKeyboardManagerSwift'
 
   # Pods Color
-  
+  pod 'DynamicColor', '~> 3.3'  
 
   # KingFisher Image
   pod 'Kingfisher'

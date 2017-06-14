@@ -19,14 +19,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDa-B4-r71">
-                        <rect key="frame" x="0.0" y="18.5" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="16.5" width="320" height="1"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="qoj-Dr-fBc"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNE-Vx-Yje">
-                        <rect key="frame" x="40" y="10" width="53" height="18"/>
+                        <rect key="frame" x="40" y="8" width="53" height="18"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="B4F-Is-61d"/>
@@ -37,23 +37,25 @@
                         </state>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="8Bu-OW-lAk">
-                        <rect key="frame" x="266" y="11.5" width="8" height="15"/>
+                        <rect key="frame" x="266" y="9.5" width="8" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="CX1-jX-ynf"/>
                             <constraint firstAttribute="width" constant="8" id="QdK-lr-AqW"/>
                         </constraints>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="DDa-B4-r71" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="5hf-T5-RTz"/>
                     <constraint firstItem="FNE-Vx-Yje" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="6it-k6-Kvd"/>
                     <constraint firstItem="DDa-B4-r71" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="CAS-9e-nkv"/>
-                    <constraint firstItem="FNE-Vx-Yje" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="5" id="KB8-9U-SaG"/>
-                    <constraint firstItem="DDa-B4-r71" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="5" id="NOm-CF-p88"/>
-                    <constraint firstItem="8Bu-OW-lAk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="5" id="gvE-rh-3Be"/>
+                    <constraint firstItem="FNE-Vx-Yje" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="3" id="KB8-9U-SaG"/>
+                    <constraint firstItem="DDa-B4-r71" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="3" id="NOm-CF-p88"/>
+                    <constraint firstItem="8Bu-OW-lAk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="3" id="gvE-rh-3Be"/>
                     <constraint firstAttribute="trailing" secondItem="8Bu-OW-lAk" secondAttribute="trailing" constant="46" id="sQI-Ci-hQg"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
         </tableViewCell>
     </objects>
     <resources>

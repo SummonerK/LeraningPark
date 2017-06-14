@@ -166,9 +166,9 @@ extension Home_RootVC: UITableViewDelegate {
         
         switch indexPath.section {
         case 0:
-            return 44+(IBScreenWidth*(208 + 155)/375)
+            return 44+(IBScreenWidth*(208 + 144)/375)
         case 1:
-            return 28
+            return 24
         case 2:
             return IBScreenWidth*180/375
         default:

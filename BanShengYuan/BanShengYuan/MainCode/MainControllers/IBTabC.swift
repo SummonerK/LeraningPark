@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DynamicColor
 
 class IBTabC: UITabBarController {
 
@@ -14,7 +15,7 @@ class IBTabC: UITabBarController {
         super.viewDidLoad()
         
         self.tabBar.isTranslucent = false //半透明
-        self.tabBar.tintColor = UIColor.brown
+        self.tabBar.tintColor = UIColor(hexString: "#f3b919")
 
         // Do any additional setup after loading the view.
     }

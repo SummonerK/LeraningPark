@@ -67,7 +67,7 @@
         <!--2Activity-->
         <scene sceneID="yLG-5s-c8f">
             <objects>
-                <viewController restorationIdentifier="Home_pActivity" storyboardIdentifier="Home_pActivity" id="lD2-cK-J2P" userLabel="2Activity" customClass="Home_pActivity" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Home_pActivity" storyboardIdentifier="Home_pActivity" hidesBottomBarWhenPushed="YES" id="lD2-cK-J2P" userLabel="2Activity" customClass="Home_pActivity" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IaG-IC-Yr3"/>
                         <viewControllerLayoutGuide type="bottom" id="mOh-WD-fuq"/>
@@ -85,7 +85,7 @@
         <!--3shanghu-->
         <scene sceneID="07P-T1-kzG">
             <objects>
-                <viewController restorationIdentifier="Home_pShanghu" storyboardIdentifier="Home_pShanghu" id="XeC-Vm-5Oo" userLabel="3shanghu" customClass="Home_pShanghu" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Home_pShanghu" storyboardIdentifier="Home_pShanghu" hidesBottomBarWhenPushed="YES" id="XeC-Vm-5Oo" userLabel="3shanghu" customClass="Home_pShanghu" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4AU-tq-Lxi"/>
                         <viewControllerLayoutGuide type="bottom" id="31z-ut-cMb"/>
@@ -103,7 +103,7 @@
         <!--4Parking-->
         <scene sceneID="76h-Ba-HTh">
             <objects>
-                <viewController restorationIdentifier="Home_pParking" storyboardIdentifier="Home_pParking" id="Lp9-l7-0Db" userLabel="4Parking" customClass="Home_pParking" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Home_pParking" storyboardIdentifier="Home_pParking" hidesBottomBarWhenPushed="YES" id="Lp9-l7-0Db" userLabel="4Parking" customClass="Home_pParking" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Kb-e2-AWr"/>
                         <viewControllerLayoutGuide type="bottom" id="GLo-Kb-uSN"/>
@@ -121,7 +121,7 @@
         <!--5moMenMusic-->
         <scene sceneID="I9Q-j1-0uV">
             <objects>
-                <viewController restorationIdentifier="Home_pMusic" storyboardIdentifier="Home_pMusic" id="ReP-uG-Jlt" userLabel="5moMenMusic" customClass="Home_pMusic" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Home_pMusic" storyboardIdentifier="Home_pMusic" hidesBottomBarWhenPushed="YES" id="ReP-uG-Jlt" userLabel="5moMenMusic" customClass="Home_pMusic" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZGy-Gf-JyL"/>
                         <viewControllerLayoutGuide type="bottom" id="Rgm-Vo-1zm"/>
@@ -157,7 +157,7 @@
         <!--7VipIntegral-->
         <scene sceneID="JBW-xw-3UA">
             <objects>
-                <viewController restorationIdentifier="Home_pVip" storyboardIdentifier="Home_pVip" id="kAM-tY-h2Y" userLabel="7VipIntegral" customClass="Home_pVip" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Home_pVip" storyboardIdentifier="Home_pVip" hidesBottomBarWhenPushed="YES" id="kAM-tY-h2Y" userLabel="7VipIntegral" customClass="Home_pVip" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e8m-pf-b2Z"/>
                         <viewControllerLayoutGuide type="bottom" id="w6l-A1-IL8"/>
@@ -175,7 +175,7 @@
         <!--8More-->
         <scene sceneID="3kg-no-6KX">
             <objects>
-                <viewController restorationIdentifier="Home_pMore" storyboardIdentifier="Home_pMore" id="EXS-XK-DfS" userLabel="8More" customClass="Home_pMore" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Home_pMore" storyboardIdentifier="Home_pMore" hidesBottomBarWhenPushed="YES" id="EXS-XK-DfS" userLabel="8More" customClass="Home_pMore" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r5k-8x-cz0"/>
                         <viewControllerLayoutGuide type="bottom" id="9oj-11-aSF"/>

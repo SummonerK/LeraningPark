@@ -1,0 +1,6 @@
+framework module Pods_meiyue {
+  umbrella header "Pods-meiyue-umbrella.h"
+
+  export *
+  module * { export * }
+}

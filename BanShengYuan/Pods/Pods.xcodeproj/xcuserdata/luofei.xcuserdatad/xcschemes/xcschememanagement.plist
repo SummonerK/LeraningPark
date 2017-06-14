@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DynamicColor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,7 +62,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>200CC73BBA2C8757AC6014E4F3769DAA</key>
+		<key>19864AB8F7B8E9064740E008772C4404</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24587F0270BE14503B99A9134FD5C20A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F0C0F810568D3E82219429D9D870F04</key>
+		<key>2C814469ABD8C96E1675F21CF4C3B2E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6710CD8699BEC4CD1A5ECD323AFC088F</key>
+		<key>2F0C0F810568D3E82219429D9D870F04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,7 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D6F1DF8E059CCE89051DDEC107462090</key>
+		<key>E095A9AB6B99A464B252D179F825DFC3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
