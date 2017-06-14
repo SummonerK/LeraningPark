@@ -48,6 +48,8 @@
 		638F18571EF113CA00A33412 /* Home_pHuashi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638F18561EF113CA00A33412 /* Home_pHuashi.swift */; };
 		638F18591EF114C700A33412 /* BaseTabHiden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638F18581EF114C700A33412 /* BaseTabHiden.swift */; };
 		638F185B1EF1198300A33412 /* IBTabC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638F185A1EF1198300A33412 /* IBTabC.swift */; };
+		638F185F1EF13B5B00A33412 /* ScrollViewIBHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638F185E1EF13B5B00A33412 /* ScrollViewIBHome.swift */; };
+		63D1B8191EF14D5E0066281B /* PIC.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D1B8181EF14D5E0066281B /* PIC.png */; };
 		63EC60391EF10DAB001F56D8 /* NextPages_FromHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EC60371EF10DAB001F56D8 /* NextPages_FromHome.storyboard */; };
 		88F9197225FFA7C0201230C0 /* Pods_BanShengYuan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AAF75A0826C20B886A2998A /* Pods_BanShengYuan.framework */; };
 /* End PBXBuildFile section */
@@ -99,6 +101,8 @@
 		638F18561EF113CA00A33412 /* Home_pHuashi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home_pHuashi.swift; sourceTree = "<group>"; };
 		638F18581EF114C700A33412 /* BaseTabHiden.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabHiden.swift; sourceTree = "<group>"; };
 		638F185A1EF1198300A33412 /* IBTabC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBTabC.swift; sourceTree = "<group>"; };
+		638F185E1EF13B5B00A33412 /* ScrollViewIBHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewIBHome.swift; sourceTree = "<group>"; };
+		63D1B8181EF14D5E0066281B /* PIC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PIC.png; sourceTree = "<group>"; };
 		63EC60381EF10DAB001F56D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NextPages_FromHome.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,6 +269,7 @@
 		638F18291EF1116C00A33412 /* Home_All */ = {
 			isa = PBXGroup;
 			children = (
+				63D1B8181EF14D5E0066281B /* PIC.png */,
 				638F182A1EF1116C00A33412 /* CCellHomeHeader.swift */,
 				638F182B1EF1116C00A33412 /* CCellHomeHeader.xib */,
 				638F182C1EF1116C00A33412 /* Home_RootVC.swift */,
@@ -273,6 +278,7 @@
 				638F182F1EF1116C00A33412 /* TCell_Footer.xib */,
 				638F18301EF1116C00A33412 /* TCellHomeActivities.swift */,
 				638F18311EF1116C00A33412 /* TCellHomeActivities.xib */,
+				638F185E1EF13B5B00A33412 /* ScrollViewIBHome.swift */,
 			);
 			path = Home_All;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 			files = (
 				63657DA21EE7CE5900DA24F4 /* Media.xcassets in Resources */,
 				638F18371EF1116C00A33412 /* TCell_Footer.xib in Resources */,
+				63D1B8191EF14D5E0066281B /* PIC.png in Resources */,
 				6385363B1EE7A1F800DB7BA1 /* LaunchScreen.storyboard in Resources */,
 				638646731EEAAC420077C6A0 /* TCellActivity.xib in Resources */,
 				638F18471EF111DD00A33412 /* CCell_pinPai.xib in Resources */,
@@ -508,6 +515,7 @@
 				63657DA71EE7F51800DA24F4 /* GuideView.swift in Sources */,
 				638F18321EF1116C00A33412 /* CCellHomeHeader.swift in Sources */,
 				638F18461EF111DD00A33412 /* CCell_pinPai.swift in Sources */,
+				638F185F1EF13B5B00A33412 /* ScrollViewIBHome.swift in Sources */,
 				638F18381EF1116C00A33412 /* TCellHomeActivities.swift in Sources */,
 				638536361EE7A1F800DB7BA1 /* BanShengYuan.xcdatamodeld in Sources */,
 				63657DA51EE7D03200DA24F4 /* Const.swift in Sources */,

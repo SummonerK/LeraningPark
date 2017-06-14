@@ -42,10 +42,30 @@ class HomeHeaderV: UITableViewCell {
         
         CollectionV_HomeHeader.register(UINib.init(nibName: "CCellHomeHeader", bundle: nil), forCellWithReuseIdentifier: "CCellHomeHeader")
         
-//        CollectionV_HomeHeader.layer.cornerRadius = 8
-//        CollectionV_HomeHeader.bounces = true
-//        
-//        setshadowFor(aview: CollectionV_HomeHeader, OffSet: CGSize.init(width: 0, height: 1.5))
+//        search_homeHeader.backgroundImage = UIImage()
+        
+//        let seachTextFeild = search_homeHeader.subviews.first?.subviews.last
+////        seachTextFeild?.backgroundColor = UIColor.white
+        
+        
+        
+        
+//        let  textFieldInsideSearchBar=search_homeHeader.value(forKey: "searchField")as?UITextField
+////        textFieldInsideSearchBar?.textColor=UIColor.white
+//        textFieldInsideSearchBar?.background = createImageWithColor(color: UIColor.brown)
+//        textFieldInsideSearchBar?.backgroundColor = UIColor.brown
+        
+//        search_homeHeader.layer.cornerRadius = 4
+//        search_homeHeader.layer.borderColor = UIColor.black.cgColor
+//        search_homeHeader.layer.borderWidth = 2
+
+//        textFieldInsideSearchBar?.layer.cornerRadius = 4
+//        textFieldInsideSearchBar?.layer.borderColor = UIColor.lightGray.cgColor
+//        textFieldInsideSearchBar?.layer.borderWidth = 2
+        
+        
+//        search_homeHeader.tintColor = UIColor.white
+//        search_homeHeader.backgroundImage = createImageWithColor(color: UIColor.white)
         
     }
     
@@ -97,7 +117,15 @@ extension HomeHeaderV:UICollectionViewDelegateFlowLayout{
     
     //返回cell 上下左右的间距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        return CGSize.init(width: IBScreenWidth*0.9/5, height: IBScreenWidth*70/375)
+        return CGSize.init(width: IBScreenWidth*0.9/5, height: IBScreenWidth*60/375)
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
+        return IBScreenWidth*10/375
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
+        return UIEdgeInsetsMake(IBScreenWidth*10/375, 0, 0, 0)
     }
     
 }

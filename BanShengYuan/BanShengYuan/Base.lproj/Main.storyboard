@@ -93,11 +93,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeHeaderV" rowHeight="403" id="20O-j4-InU" customClass="HomeHeaderV" customModule="BanShengYuan">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="403"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeHeaderV" rowHeight="392" id="20O-j4-InU" customClass="HomeHeaderV" customModule="BanShengYuan">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="392"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="20O-j4-InU" id="d7A-mY-oEv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="392"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_home" translatesAutoresizingMaskIntoConstraints="NO" id="5eG-bo-mQ4">
@@ -112,6 +112,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="jKd-uv-R3z"/>
                                                     </constraints>
+                                                    <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <offsetWrapper key="searchTextPositionAdjustment" horizontal="3" vertical="0.0"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </searchBar>
@@ -121,12 +122,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="enR-6L-dUs" secondAttribute="height" multiplier="75:41" id="CJx-MD-QdC"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="FeM-IZ-IHz" appends="YES" id="i93-5G-N9G"/>
-                                                    </connections>
                                                 </imageView>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MYZ-Sj-QD6">
-                                                    <rect key="frame" x="19" y="261" width="337.5" height="140"/>
+                                                    <rect key="frame" x="19" y="250" width="337.5" height="140"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="140" id="1jV-qB-ULt"/>
@@ -176,7 +174,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TCellActivity" id="Dgt-SW-7sU" customClass="TCellActivity" customModule="BanShengYuan">
-                                        <rect key="frame" x="0.0" y="431" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="420" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dgt-SW-7sU" id="C0n-BD-VN0">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -184,7 +182,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TCell_Footer" rowHeight="40" id="zHW-lQ-gZv" customClass="TCell_Footer" customModule="BanShengYuan">
-                                        <rect key="frame" x="0.0" y="521" width="375" height="40"/>
+                                        <rect key="frame" x="0.0" y="510" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zHW-lQ-gZv" id="yj4-jd-j2a">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
@@ -212,7 +210,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95h-5u-duD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="FeM-IZ-IHz"/>
             </objects>
             <point key="canvasLocation" x="876" y="-290.10494752623691"/>
         </scene>
