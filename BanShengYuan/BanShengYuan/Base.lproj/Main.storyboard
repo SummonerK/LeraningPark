@@ -49,7 +49,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="er6-Lg-G6a" id="WcP-su-0iO">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="88"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -124,7 +124,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MYZ-Sj-QD6">
-                                                    <rect key="frame" x="19" y="250" width="337.5" height="140"/>
+                                                    <rect key="frame" x="19" y="250" width="338" height="140"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="140" id="1jV-qB-ULt"/>
@@ -166,6 +166,11 @@
                                                 <constraint firstItem="5eG-bo-mQ4" firstAttribute="top" secondItem="d7A-mY-oEv" secondAttribute="top" constant="6" id="iVJ-zG-uNv"/>
                                                 <constraint firstAttribute="trailing" secondItem="YJd-st-nBa" secondAttribute="trailing" constant="15" id="uGV-qW-D6R"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="enR-6L-dUs"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="CollectionV_HomeHeader" destination="MYZ-Sj-QD6" id="Y1d-mC-jWp"/>

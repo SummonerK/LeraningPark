@@ -32,11 +32,20 @@ class HomeHeaderV: UITableViewCell {
   
     }
     
+    override func layoutSubviews() {
+        let frame = CGRect(x: 0, y: 44, width: IBScreenWidth, height: IBScreenWidth*205/375)
+        let imageView = ["PIC","PIC","PIC"]
+        let loopView = XHAdLoopView(frame: frame, images: imageView as NSArray, autoPlay: true, delay: 3, isFromNet: false)
+        loopView.delegate = self
+        
+        self.contentView.addSubview(loopView)
+    }
+    
+    
     @IBAction func HomeImageVAction(_ sender:Any){
         
         self.delegate?.activitiesAction(path: "homePath")
     }
-    
     
     func setupView(){
         
@@ -77,6 +86,13 @@ class HomeHeaderV: UITableViewCell {
     
 }
 
+
+//遵循协议代理，调用代理方法
+extension HomeHeaderV : XHAdLoopViewDelegate {
+    func adLoopView(_ adLoopView: XHAdLoopView, IconClick index: NSInteger) {
+        print(index)
+    }
+}
 
 extension HomeHeaderV:UICollectionViewDelegate{
     

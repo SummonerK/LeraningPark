@@ -26,6 +26,18 @@ class Home_RootVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
+        PrintFM("---1\(String(describing: UserDefaults.standard.value(forKey: "IBKey")))")
+        
+        if let value = UserDefaults.standard.value(forKey: "IBKey") {
+            PrintFM("\(value)")
+        }else{
+            UserDefaults.standard.set("", forKey: "IBKey")
+        }
+
+        PrintFM("---2\(String(describing: UserDefaults.standard.value(forKey: "IBKey")))")
+        
         tableV_main.register(UINib.init(nibName: "TCellActivity", bundle: nil), forCellReuseIdentifier: "TCellActivity")
         tableV_main.register(UINib.init(nibName: "TCellHomeActivities", bundle: nil), forCellReuseIdentifier: "TCellHomeActivities")
         tableV_main.register(UINib.init(nibName: "TCell_Footer", bundle: nil), forCellReuseIdentifier: "TCell_Footer")
@@ -170,7 +182,7 @@ extension Home_RootVC: UITableViewDelegate {
         case 1:
             return 24
         case 2:
-            return IBScreenWidth*180/375
+            return IBScreenWidth*176/375
         default:
             return 0
         }

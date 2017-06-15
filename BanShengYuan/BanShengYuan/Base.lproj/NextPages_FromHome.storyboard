@@ -67,7 +67,7 @@
         <!--2Activity-->
         <scene sceneID="yLG-5s-c8f">
             <objects>
-                <viewController restorationIdentifier="Home_pActivity" storyboardIdentifier="Home_pActivity" hidesBottomBarWhenPushed="YES" id="lD2-cK-J2P" userLabel="2Activity" customClass="Home_pActivity" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Home_pActivity" storyboardIdentifier="Home_pActivity" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="lD2-cK-J2P" userLabel="2Activity" customClass="Home_pActivity" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IaG-IC-Yr3"/>
                         <viewControllerLayoutGuide type="bottom" id="mOh-WD-fuq"/>
@@ -75,25 +75,7 @@
                     <view key="view" contentMode="scaleToFill" id="MMg-Ol-B1h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYs-WM-Kxv" customClass="ScrollViewIBHome" customModule="BanShengYuan">
-                                <rect key="frame" x="0.0" y="86" width="375" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="fnA-52-JJ1"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="HIGHT">
-                                        <real key="value" value="150"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="FYs-WM-Kxv" firstAttribute="top" secondItem="IaG-IC-Yr3" secondAttribute="bottom" constant="66" id="6se-yZ-dfW"/>
-                            <constraint firstItem="FYs-WM-Kxv" firstAttribute="centerX" secondItem="MMg-Ol-B1h" secondAttribute="centerX" id="oPf-Vz-Qrz"/>
-                            <constraint firstItem="FYs-WM-Kxv" firstAttribute="width" secondItem="MMg-Ol-B1h" secondAttribute="width" id="zTv-Z0-O0P"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VM6-UH-nfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -103,7 +85,7 @@
         <!--3shanghu-->
         <scene sceneID="07P-T1-kzG">
             <objects>
-                <viewController restorationIdentifier="Home_pShanghu" storyboardIdentifier="Home_pShanghu" hidesBottomBarWhenPushed="YES" id="XeC-Vm-5Oo" userLabel="3shanghu" customClass="Home_pShanghu" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Home_pShanghu" storyboardIdentifier="Home_pShanghu" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="XeC-Vm-5Oo" userLabel="3shanghu" customClass="Home_pShanghu" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4AU-tq-Lxi"/>
                         <viewControllerLayoutGuide type="bottom" id="31z-ut-cMb"/>
@@ -111,8 +93,27 @@
                     <view key="view" contentMode="scaleToFill" id="jji-C5-1Mm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yi5-KG-7e0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XeC-Vm-5Oo" id="b7N-A9-S3x"/>
+                                    <outlet property="delegate" destination="XeC-Vm-5Oo" id="HZQ-dD-CDU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="31z-ut-cMb" firstAttribute="top" secondItem="yi5-KG-7e0" secondAttribute="bottom" id="D1d-qY-6E8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yi5-KG-7e0" secondAttribute="trailing" constant="-16" id="DVJ-zS-1PF"/>
+                            <constraint firstItem="yi5-KG-7e0" firstAttribute="top" secondItem="4AU-tq-Lxi" secondAttribute="bottom" constant="-20" id="hXV-ge-qPw"/>
+                            <constraint firstItem="yi5-KG-7e0" firstAttribute="leading" secondItem="jji-C5-1Mm" secondAttribute="leadingMargin" constant="-16" id="jOk-hW-qzk"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableV_main" destination="yi5-KG-7e0" id="TDB-1y-HyF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psf-EV-pQr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
