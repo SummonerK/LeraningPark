@@ -128,6 +128,7 @@ extension Home_RootVC:HomeHeaderDelegate{
     func activitiesAction(path : String){
         
     }
+    
     func itemActionWithIndexPath(indexPath : IndexPath){
         
         switch indexPath.row {

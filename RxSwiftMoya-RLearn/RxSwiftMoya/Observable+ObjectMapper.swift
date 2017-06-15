@@ -127,9 +127,11 @@ enum RxSwiftMoyaError: String {
 }
 
 extension RxSwiftMoyaError: Swift.Error {
-
+    
 }
+
 
 public enum MyErrorEnum : Swift.Error {
     case IBError(resultCode:Int? ,resultMsg:String?)
 }
+

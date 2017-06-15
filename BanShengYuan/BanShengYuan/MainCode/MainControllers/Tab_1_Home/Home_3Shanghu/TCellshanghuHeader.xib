@@ -17,25 +17,8 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dk-t5-Ayv" customClass="INOScrollView" customModule="BanShengYuan">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
-                        <color key="backgroundColor" red="0.9212072491645813" green="0.84832113981246948" blue="0.62377804517745972" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="139" id="hQw-CI-pRm"/>
-                        </constraints>
-                    </view>
-                </subviews>
                 <color key="backgroundColor" red="0.2418571412563324" green="0.17698898911476135" blue="0.1230514720082283" alpha="1" colorSpace="calibratedRGB"/>
-                <constraints>
-                    <constraint firstAttribute="trailing" secondItem="9dk-t5-Ayv" secondAttribute="trailing" id="7KD-ML-B4t"/>
-                    <constraint firstItem="9dk-t5-Ayv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8EM-nP-E9G"/>
-                    <constraint firstItem="9dk-t5-Ayv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bEb-cy-5Hm"/>
-                </constraints>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="IBScrollView" destination="9dk-t5-Ayv" id="hjb-Kr-Ont"/>
-            </connections>
         </tableViewCell>
     </objects>
 </document>

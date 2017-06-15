@@ -18,6 +18,15 @@ target 'BanShengYuan' do
   # KingFisher Image
   pod 'Kingfisher'
 
+  #progress
+  pod 'SVProgressHUD'
+
+  #list holder
+  pod 'DZNEmptyDataSet'
+
+
+
+
 
 
 end
