@@ -15,12 +15,15 @@ class Post: Mappable {
     var body: String?
     var userId: Int?
     
+    init() {
+        
+    }
     
     required init?(map: Map) {
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
+        id <- map["title2"]
         title <- map["title"]
         body <- map["body"]
         userId <- map["userId"]
