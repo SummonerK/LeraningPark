@@ -86,7 +86,7 @@ extension home_pinPaiVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-        return 3
+        return 13
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
@@ -96,7 +96,6 @@ extension home_pinPaiVC:UICollectionViewDataSource{
         let url = URL(string: urlStr)
         
         cell.imageV_shopIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
-        
         
         return cell
         

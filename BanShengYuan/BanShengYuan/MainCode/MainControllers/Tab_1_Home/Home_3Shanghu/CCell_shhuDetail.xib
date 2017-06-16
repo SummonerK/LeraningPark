@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CCell_shhuDetail" customModule="BanShengYuan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="232"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="160" height="232"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CAz-01-rAU">
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="170"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="CAz-01-rAU" secondAttribute="height" multiplier="16:17" id="8RR-Wv-1fi"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这里是商品名字 xxxx年最新款 英伦风XXXX" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3K-8B-eaI">
+                        <rect key="frame" x="4" y="170" width="152" height="42"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="42" id="D7U-1i-Kvr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥299" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7e-ph-qhm">
+                        <rect key="frame" x="4" y="210" width="80" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="Weh-ul-icb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.85490196078431369" green="0.69803921568627447" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销量:1.2万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMG-f9-b3G">
+                        <rect key="frame" x="104" y="211" width="52" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="gNe-bJ-WFm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="d7e-ph-qhm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="73H-H8-RPd"/>
+                <constraint firstItem="d7e-ph-qhm" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.5" id="E5F-QM-pDR"/>
+                <constraint firstItem="CAz-01-rAU" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Kay-1o-fvh"/>
+                <constraint firstItem="Q3K-8B-eaI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="ORv-MA-9hC"/>
+                <constraint firstAttribute="trailing" secondItem="VMG-f9-b3G" secondAttribute="trailing" constant="4" id="R3G-91-ErL"/>
+                <constraint firstItem="Q3K-8B-eaI" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" constant="-8" id="Tby-kh-c9T"/>
+                <constraint firstItem="Q3K-8B-eaI" firstAttribute="top" secondItem="CAz-01-rAU" secondAttribute="bottom" id="c9m-Lo-Clc"/>
+                <constraint firstItem="CAz-01-rAU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="l0S-qE-YAM"/>
+                <constraint firstItem="CAz-01-rAU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pDz-8X-JFq"/>
+                <constraint firstAttribute="bottom" secondItem="VMG-f9-b3G" secondAttribute="bottom" id="pcD-o0-7gs"/>
+                <constraint firstAttribute="bottom" secondItem="d7e-ph-qhm" secondAttribute="bottom" id="r0N-Q5-eGR"/>
+                <constraint firstItem="VMG-f9-b3G" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.5" priority="100" id="wm5-Op-zHs"/>
+            </constraints>
+            <size key="customSize" width="50" height="254"/>
+            <connections>
+                <outlet property="imageV_shangpin" destination="CAz-01-rAU" id="Cpy-Fr-jK6"/>
+                <outlet property="label_pirce" destination="d7e-ph-qhm" id="F62-Xa-TIP"/>
+                <outlet property="label_sales" destination="VMG-f9-b3G" id="nF9-YF-QwI"/>
+                <outlet property="label_title" destination="Q3K-8B-eaI" id="T7H-SC-JJj"/>
+            </connections>
+            <point key="canvasLocation" x="-474" y="-218"/>
+        </collectionViewCell>
+    </objects>
+</document>

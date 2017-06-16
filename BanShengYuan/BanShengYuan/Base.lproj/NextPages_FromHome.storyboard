@@ -6,14 +6,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--1Pinpai-->
         <scene sceneID="8Dt-YK-7AX">
             <objects>
-                <viewController restorationIdentifier="home_pinPaiVC" storyboardIdentifier="home_pinPaiVC" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="Kci-dd-qTX" userLabel="1Pinpai" customClass="home_pinPaiVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="home_pinPaiVC" storyboardIdentifier="home_pinPaiVC" hidesBottomBarWhenPushed="YES" id="Kci-dd-qTX" userLabel="1Pinpai" customClass="home_pinPaiVC" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d83-Zz-zTb"/>
                         <viewControllerLayoutGuide type="bottom" id="k5Q-sv-FTY"/>
@@ -50,10 +49,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OqS-Ix-Xwc" firstAttribute="leading" secondItem="GuT-jp-RCL" secondAttribute="leadingMargin" constant="-16" id="Dhl-Ei-lzx"/>
-                            <constraint firstItem="OqS-Ix-Xwc" firstAttribute="top" secondItem="d83-Zz-zTb" secondAttribute="bottom" constant="-20" id="NEp-NA-Td5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OqS-Ix-Xwc" secondAttribute="trailing" constant="-16" id="jrh-Ue-u7o"/>
-                            <constraint firstItem="k5Q-sv-FTY" firstAttribute="top" secondItem="OqS-Ix-Xwc" secondAttribute="bottom" id="rOS-rQ-tCh"/>
+                            <constraint firstItem="k5Q-sv-FTY" firstAttribute="top" secondItem="OqS-Ix-Xwc" secondAttribute="bottom" id="0sl-Hj-4LJ"/>
+                            <constraint firstItem="OqS-Ix-Xwc" firstAttribute="top" secondItem="GuT-jp-RCL" secondAttribute="top" id="6qc-cc-9zx"/>
+                            <constraint firstItem="OqS-Ix-Xwc" firstAttribute="leading" secondItem="GuT-jp-RCL" secondAttribute="leading" id="Ccm-aO-AQf"/>
+                            <constraint firstAttribute="trailing" secondItem="OqS-Ix-Xwc" secondAttribute="trailing" id="lY6-a4-Z6l"/>
                         </constraints>
                     </view>
                     <connections>
@@ -67,7 +66,7 @@
         <!--2Activity-->
         <scene sceneID="yLG-5s-c8f">
             <objects>
-                <viewController restorationIdentifier="Home_pActivity" storyboardIdentifier="Home_pActivity" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="lD2-cK-J2P" userLabel="2Activity" customClass="Home_pActivity" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Home_pActivity" storyboardIdentifier="Home_pActivity" hidesBottomBarWhenPushed="YES" id="lD2-cK-J2P" userLabel="2Activity" customClass="Home_pActivity" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IaG-IC-Yr3"/>
                         <viewControllerLayoutGuide type="bottom" id="mOh-WD-fuq"/>
@@ -76,17 +75,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lXb-8Y-LKS">
-                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lXb-8Y-LKS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TCell_pActivity" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TCell_pActivity" id="33K-aJ-NT4" customClass="TCell_pActivity" customModule="BanShengYuan">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="33K-aJ-NT4" id="Bgn-7C-lXE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lD2-cK-J2P" id="jeF-PR-PQI"/>
+                                    <outlet property="delegate" destination="lD2-cK-J2P" id="le8-Kk-xdk"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mOh-WD-fuq" firstAttribute="top" secondItem="lXb-8Y-LKS" secondAttribute="bottom" id="KXh-L8-Oi0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lXb-8Y-LKS" secondAttribute="trailing" id="Qmg-o3-Non"/>
-                            <constraint firstItem="lXb-8Y-LKS" firstAttribute="top" secondItem="IaG-IC-Yr3" secondAttribute="bottom" id="YaK-dz-lVw"/>
-                            <constraint firstItem="lXb-8Y-LKS" firstAttribute="leading" secondItem="MMg-Ol-B1h" secondAttribute="leadingMargin" id="v3s-3f-Z1T"/>
+                            <constraint firstItem="lXb-8Y-LKS" firstAttribute="top" secondItem="MMg-Ol-B1h" secondAttribute="top" id="1Eu-NV-vBO"/>
+                            <constraint firstItem="mOh-WD-fuq" firstAttribute="top" secondItem="lXb-8Y-LKS" secondAttribute="bottom" id="DZ3-cE-J6N"/>
+                            <constraint firstItem="lXb-8Y-LKS" firstAttribute="leading" secondItem="MMg-Ol-B1h" secondAttribute="leading" id="lHb-va-Xcw"/>
+                            <constraint firstAttribute="trailing" secondItem="lXb-8Y-LKS" secondAttribute="trailing" id="vOf-tT-Gv7"/>
                         </constraints>
                     </view>
                     <connections>
@@ -96,6 +109,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VM6-UH-nfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="698" y="-931"/>
+        </scene>
+        <!--商户DetailVC-->
+        <scene sceneID="sWx-OX-6bD">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SJY-K4-ytc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController restorationIdentifier="shangHu_DetailVC" storyboardIdentifier="shangHu_DetailVC" title="商户DetailVC" hidesBottomBarWhenPushed="YES" id="f1N-07-Cap" customClass="shangHu_DetailVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pup-7U-9ms"/>
+                        <viewControllerLayoutGuide type="bottom" id="0R3-tF-u3k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HMz-t4-FY1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Zj-04-qUe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JUO-0q-jpR">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CCell_shhuDetail" reuseIdentifier="CCell_shhuDetail" id="vdf-S0-2UT" customClass="CCell_shhuDetail" customModule="BanShengYuan">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="f1N-07-Cap" id="pZc-uL-uip"/>
+                                    <outlet property="delegate" destination="f1N-07-Cap" id="Vf2-bn-yfb"/>
+                                    <outlet property="prefetchDataSource" destination="f1N-07-Cap" id="AzN-oW-4Lb"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Zj-04-qUe" firstAttribute="leading" secondItem="HMz-t4-FY1" secondAttribute="leading" id="5Vy-Vf-CgZ"/>
+                            <constraint firstAttribute="trailing" secondItem="6Zj-04-qUe" secondAttribute="trailing" id="Hvu-wh-xNo"/>
+                            <constraint firstItem="0R3-tF-u3k" firstAttribute="top" secondItem="6Zj-04-qUe" secondAttribute="bottom" id="MbU-bc-Ftc"/>
+                            <constraint firstItem="6Zj-04-qUe" firstAttribute="top" secondItem="HMz-t4-FY1" secondAttribute="top" id="jgz-Uc-Zai"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="CV_main" destination="6Zj-04-qUe" id="Ram-fF-IZP"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1446" y="-1639"/>
         </scene>
         <!--3shanghu-->
         <scene sceneID="07P-T1-kzG">

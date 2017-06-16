@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +31,7 @@
         <!--Activity RootVC-->
         <scene sceneID="hpm-Hg-UIt">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="rbg-c3-Qan" customClass="Activity_RootVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController id="rbg-c3-Qan" customClass="Activity_RootVC" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TK7-lD-v7V"/>
                         <viewControllerLayoutGuide type="bottom" id="DBi-wS-iKE"/>
@@ -41,15 +40,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IlH-7e-Hkl">
-                                <rect key="frame" x="16" y="64" width="343" height="554"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IlH-7e-Hkl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TCellActivity" id="er6-Lg-G6a" customClass="TCellActivity" customModule="BanShengYuan">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="88"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="er6-Lg-G6a" id="WcP-su-0iO">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="87"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -62,10 +61,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IlH-7e-Hkl" firstAttribute="top" secondItem="TK7-lD-v7V" secondAttribute="bottom" id="CSq-P0-qcD"/>
-                            <constraint firstItem="DBi-wS-iKE" firstAttribute="top" secondItem="IlH-7e-Hkl" secondAttribute="bottom" id="MFN-A7-tsR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IlH-7e-Hkl" secondAttribute="trailing" id="qTL-KR-r4v"/>
-                            <constraint firstItem="IlH-7e-Hkl" firstAttribute="leading" secondItem="X5r-ug-JyD" secondAttribute="leadingMargin" id="zno-2w-tJS"/>
+                            <constraint firstAttribute="bottom" secondItem="IlH-7e-Hkl" secondAttribute="bottom" id="8cf-pb-IGJ"/>
+                            <constraint firstItem="IlH-7e-Hkl" firstAttribute="top" secondItem="X5r-ug-JyD" secondAttribute="top" id="BG3-9N-B5J"/>
+                            <constraint firstItem="IlH-7e-Hkl" firstAttribute="leading" secondItem="X5r-ug-JyD" secondAttribute="leading" id="U5N-e7-9us"/>
+                            <constraint firstAttribute="trailing" secondItem="IlH-7e-Hkl" secondAttribute="trailing" id="UEx-D9-iRn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yYl-Vy-6HK"/>

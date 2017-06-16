@@ -18,6 +18,8 @@ class Activity_RootVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "精彩活动"
+        
         tableV_main.register(UINib.init(nibName: "TCellActivity", bundle: nil), forCellReuseIdentifier: "TCellActivity")
 
         // Do any additional setup after loading the view.
@@ -41,7 +43,7 @@ extension Activity_RootVC:UITableViewDataSource{
         case 0:
             return 0
         case 1:
-            return 3
+            return 5
         default:
             return 0
         }
@@ -65,27 +67,27 @@ extension Activity_RootVC:UITableViewDataSource{
 extension Activity_RootVC: UITableViewDelegate {
     
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        
-        return (section==0) ? 130 : 0
-        
-    }
-
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-
-        viewheader = UIView()
-        viewheader?.frame = CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: 64)
-        viewheader?.backgroundColor = UIColor.blue
-        return viewheader
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+//        
+//        return (section==0) ? 130 : 0
+//        
+//    }
+//
+//    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+//
+//        viewheader = UIView()
+//        viewheader?.frame = CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: 64)
+//        viewheader?.backgroundColor = UIColor.blue
+//        return viewheader
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        return IBScreenHeight * 0.15
+        return IBScreenWidth*176/375
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("\(indexPath.row)")
+        PrintFM("\(indexPath.row)")
         
         guard let cell = tableView.cellForRow(at: indexPath) as? TCellActivity else {
             return

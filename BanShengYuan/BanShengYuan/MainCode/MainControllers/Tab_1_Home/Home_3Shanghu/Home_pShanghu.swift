@@ -97,7 +97,12 @@ extension Home_pShanghu: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("\(indexPath.row)")
+        //品牌
+        let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
+        let Vc = storyboard.instantiateViewController(withIdentifier: "shangHu_DetailVC") as! shangHu_DetailVC
+        self.navigationController?.pushViewController(Vc, animated: true)
+        
+        PrintFM("\(indexPath.row)")
         
     }
 }

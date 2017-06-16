@@ -8,6 +8,8 @@
 
 import UIKit
 
+import DZNEmptyDataSet
+
 class Home_pActivity: BaseTabHiden {
     
     @IBOutlet weak var tableView_main: UITableView!
@@ -16,6 +18,8 @@ class Home_pActivity: BaseTabHiden {
         super.viewDidLoad()
 
         self.navigationItem.title = "活动"
+        
+        tableView_main.register(UINib.init(nibName: "TCell_pActivity", bundle: nil), forCellReuseIdentifier: "TCell_pActivity")
         
         // Do any additional setup after loading the view.
     }
@@ -26,14 +30,61 @@ class Home_pActivity: BaseTabHiden {
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension Home_pActivity:DZNEmptyDataSetSource{
+    
+    public func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!{
+        
     }
-    */
+    
+}
 
+extension Home_pActivity:DZNEmptyDataSetDelegate{
+    
+}
+
+
+extension Home_pActivity:UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TCell_pActivity", for: indexPath) as! TCell_pActivity
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
+        let url = URL(string: urlStr)
+        
+        cell.imageV_activity.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+        
+        return cell
+        
+    }
+    
+}
+
+
+extension Home_pActivity: UITableViewDelegate {
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        
+        return IBScreenWidth*176/375
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("\(indexPath.row)")
+        
+    }
 }
