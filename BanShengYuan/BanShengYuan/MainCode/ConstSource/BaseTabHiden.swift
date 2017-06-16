@@ -8,6 +8,8 @@
 
 import UIKit
 
+import DZNEmptyDataSet
+
 class BaseTabHiden: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,4 +39,46 @@ class BaseTabHiden: UIViewController {
     }
     */
 
+}
+
+extension BaseTabHiden:DZNEmptyDataSetSource{
+    
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat{
+        return IBScreenHeight*0.1
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!{
+        
+        let text = "没有数据咯"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: text, attributes: attrs)
+    }
+    
+    //Add description/subtitle on empty dataset
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Get no more Data from servicer, place check again!"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    //Add your image
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "item2_activity")
+    }
+    
+    //Add your button
+    
+//    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+//        let str = "Add Grokkleglob"
+//        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
+//        return NSAttributedString(string: str, attributes: attrs)
+//    }
+    
+    //Add action for button
+    func emptyDataSetDidTapButton(_ scrollView: UIScrollView!) {
+        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Hurray", style: .default, handler: nil))
+        present(ac, animated: true, completion: nil)
+    }
+    
 }

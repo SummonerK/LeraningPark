@@ -43,6 +43,8 @@
                                 <connections>
                                     <outlet property="dataSource" destination="Kci-dd-qTX" id="H87-wE-Hm7"/>
                                     <outlet property="delegate" destination="Kci-dd-qTX" id="Skk-H7-mar"/>
+                                    <outlet property="emptyDataSetDelegate" destination="Kci-dd-qTX" id="8Ok-Z7-oek"/>
+                                    <outlet property="emptyDataSetSource" destination="Kci-dd-qTX" id="Ssd-PG-VYe"/>
                                     <outlet property="prefetchDataSource" destination="Kci-dd-qTX" id="7lR-qE-Cb2"/>
                                 </connections>
                             </collectionView>
@@ -112,7 +114,7 @@
             </objects>
             <point key="canvasLocation" x="698" y="-931"/>
         </scene>
-        <!--商户DetailVC-->
+        <!--Empty Data Set Delegate-->
         <scene sceneID="sWx-OX-6bD">
             <objects>
                 <viewController restorationIdentifier="shangHu_DetailVC" storyboardIdentifier="shangHu_DetailVC" title="商户DetailVC" hidesBottomBarWhenPushed="YES" id="f1N-07-Cap" customClass="shangHu_DetailVC" customModule="BanShengYuan" sceneMemberID="viewController">
@@ -146,6 +148,8 @@
                                 <connections>
                                     <outlet property="dataSource" destination="f1N-07-Cap" id="pZc-uL-uip"/>
                                     <outlet property="delegate" destination="f1N-07-Cap" id="Vf2-bn-yfb"/>
+                                    <outlet property="emptyDataSetDelegate" destination="f1N-07-Cap" id="anJ-fm-mfm"/>
+                                    <outlet property="emptyDataSetSource" destination="f1N-07-Cap" id="IcR-sb-OsU"/>
                                     <outlet property="prefetchDataSource" destination="f1N-07-Cap" id="AzN-oW-4Lb"/>
                                 </connections>
                             </collectionView>
@@ -181,9 +185,21 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Azl-md-bAV">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TCellshanghu" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TCellshanghu" id="7wV-Ja-J73" customClass="TCellshanghu" customModule="BanShengYuan">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7wV-Ja-J73" id="Dec-fu-x0b">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="XeC-Vm-5Oo" id="Ncd-C1-3QP"/>
                                     <outlet property="delegate" destination="XeC-Vm-5Oo" id="38R-r7-30f"/>
+                                    <outlet property="emptyDataSetDelegate" destination="XeC-Vm-5Oo" id="9Gj-aL-d25"/>
+                                    <outlet property="emptyDataSetSource" destination="XeC-Vm-5Oo" id="GuF-eO-wLB"/>
                                 </connections>
                             </tableView>
                         </subviews>

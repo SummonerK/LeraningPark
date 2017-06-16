@@ -14,6 +14,7 @@
 		634DE7291EF36FA300E44AFA /* CCell_shhuDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634DE7271EF36FA300E44AFA /* CCell_shhuDetail.xib */; };
 		634DE72C1EF381D200E44AFA /* TCell_pActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DE72A1EF381D200E44AFA /* TCell_pActivity.swift */; };
 		634DE72D1EF381D200E44AFA /* TCell_pActivity.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634DE72B1EF381D200E44AFA /* TCell_pActivity.xib */; };
+		634DE72F1EF3B07000E44AFA /* view_shanghuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DE72E1EF3B07000E44AFA /* view_shanghuHeader.swift */; };
 		635380D21EE8E52A006C0375 /* Source.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 635380D11EE8E52A006C0375 /* Source.bundle */; };
 		635381081EE8FDFD006C0375 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635381071EE8FDFD006C0375 /* QuartzCore.framework */; };
 		6353810A1EE8FE05006C0375 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635381091EE8FE05006C0375 /* CoreGraphics.framework */; };
@@ -23,8 +24,6 @@
 		635D83E21EF226BA007A2C05 /* XHAdLoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83E11EF226BA007A2C05 /* XHAdLoopView.swift */; };
 		635D83E61EF22B72007A2C05 /* INOScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83E41EF22B72007A2C05 /* INOScrollView.swift */; };
 		635D83E71EF22B72007A2C05 /* INOScrollViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83E51EF22B72007A2C05 /* INOScrollViewCell.swift */; };
-		635D83EE1EF22F50007A2C05 /* TCellshanghuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83EC1EF22F50007A2C05 /* TCellshanghuHeader.swift */; };
-		635D83EF1EF22F50007A2C05 /* TCellshanghuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635D83ED1EF22F50007A2C05 /* TCellshanghuHeader.xib */; };
 		635D83F21EF22F67007A2C05 /* TCellshanghu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83F01EF22F67007A2C05 /* TCellshanghu.swift */; };
 		635D83F31EF22F67007A2C05 /* TCellshanghu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635D83F11EF22F67007A2C05 /* TCellshanghu.xib */; };
 		635D840F1EF286AE007A2C05 /* Reflect+ArcFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D84041EF286AE007A2C05 /* Reflect+ArcFile.swift */; };
@@ -86,6 +85,7 @@
 		634DE7271EF36FA300E44AFA /* CCell_shhuDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCell_shhuDetail.xib; sourceTree = "<group>"; };
 		634DE72A1EF381D200E44AFA /* TCell_pActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCell_pActivity.swift; sourceTree = "<group>"; };
 		634DE72B1EF381D200E44AFA /* TCell_pActivity.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCell_pActivity.xib; sourceTree = "<group>"; };
+		634DE72E1EF3B07000E44AFA /* view_shanghuHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = view_shanghuHeader.swift; sourceTree = "<group>"; };
 		635380D11EE8E52A006C0375 /* Source.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Source.bundle; sourceTree = "<group>"; };
 		635381071EE8FDFD006C0375 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		635381091EE8FE05006C0375 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -95,8 +95,6 @@
 		635D83E11EF226BA007A2C05 /* XHAdLoopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHAdLoopView.swift; sourceTree = "<group>"; };
 		635D83E41EF22B72007A2C05 /* INOScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INOScrollView.swift; sourceTree = "<group>"; };
 		635D83E51EF22B72007A2C05 /* INOScrollViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INOScrollViewCell.swift; sourceTree = "<group>"; };
-		635D83EC1EF22F50007A2C05 /* TCellshanghuHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellshanghuHeader.swift; sourceTree = "<group>"; };
-		635D83ED1EF22F50007A2C05 /* TCellshanghuHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCellshanghuHeader.xib; sourceTree = "<group>"; };
 		635D83F01EF22F67007A2C05 /* TCellshanghu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellshanghu.swift; sourceTree = "<group>"; };
 		635D83F11EF22F67007A2C05 /* TCellshanghu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCellshanghu.xib; sourceTree = "<group>"; };
 		635D84041EF286AE007A2C05 /* Reflect+ArcFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reflect+ArcFile.swift"; sourceTree = "<group>"; };
@@ -407,8 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				638F184C1EF1134600A33412 /* Home_pShanghu.swift */,
-				635D83EC1EF22F50007A2C05 /* TCellshanghuHeader.swift */,
-				635D83ED1EF22F50007A2C05 /* TCellshanghuHeader.xib */,
+				634DE72E1EF3B07000E44AFA /* view_shanghuHeader.swift */,
 				635D83F01EF22F67007A2C05 /* TCellshanghu.swift */,
 				635D83F11EF22F67007A2C05 /* TCellshanghu.xib */,
 				634DE71C1EF36E8C00E44AFA /* shangHu_DetailVC.swift */,
@@ -538,7 +535,6 @@
 				638F18371EF1116C00A33412 /* TCell_Footer.xib in Resources */,
 				63D1B8191EF14D5E0066281B /* PIC.png in Resources */,
 				6385363B1EE7A1F800DB7BA1 /* LaunchScreen.storyboard in Resources */,
-				635D83EF1EF22F50007A2C05 /* TCellshanghuHeader.xib in Resources */,
 				638646731EEAAC420077C6A0 /* TCellActivity.xib in Resources */,
 				638F18471EF111DD00A33412 /* CCell_pinPai.xib in Resources */,
 				638536381EE7A1F800DB7BA1 /* Assets.xcassets in Resources */,
@@ -638,6 +634,7 @@
 				63657DA01EE7CE5900DA24F4 /* Login_RootVC.swift in Sources */,
 				635381111EE93EC8006C0375 /* resetPwdVC.swift in Sources */,
 				63657DA71EE7F51800DA24F4 /* GuideView.swift in Sources */,
+				634DE72F1EF3B07000E44AFA /* view_shanghuHeader.swift in Sources */,
 				635D84101EF286AE007A2C05 /* Reflect+Parse.swift in Sources */,
 				638F18321EF1116C00A33412 /* CCellHomeHeader.swift in Sources */,
 				638F18461EF111DD00A33412 /* CCell_pinPai.swift in Sources */,
@@ -648,7 +645,6 @@
 				63657DA51EE7D03200DA24F4 /* Const.swift in Sources */,
 				635D83E71EF22B72007A2C05 /* INOScrollViewCell.swift in Sources */,
 				638F18341EF1116C00A33412 /* Home_RootVC.swift in Sources */,
-				635D83EE1EF22F50007A2C05 /* TCellshanghuHeader.swift in Sources */,
 				635D840F1EF286AE007A2C05 /* Reflect+ArcFile.swift in Sources */,
 				635D84131EF286AE007A2C05 /* Reflect+Other.swift in Sources */,
 				638F18361EF1116C00A33412 /* TCell_Footer.swift in Sources */,

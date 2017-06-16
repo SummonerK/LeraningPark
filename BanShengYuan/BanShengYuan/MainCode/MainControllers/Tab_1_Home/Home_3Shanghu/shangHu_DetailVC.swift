@@ -8,6 +8,8 @@
 
 import UIKit
 
+import DZNEmptyDataSet
+
 class shangHu_DetailVC: BaseTabHiden {
 
     @IBOutlet weak var CV_main: UICollectionView!
@@ -35,15 +37,14 @@ class shangHu_DetailVC: BaseTabHiden {
         CV_main.collectionViewLayout = flowLayout
         
         CV_main.register(UINib.init(nibName: "CCell_shhuDetail", bundle: nil), forCellWithReuseIdentifier: "CCell_shhuDetail")
-        CV_main.register(UINib.init(nibName: "CCell_shhuDetailHeader", bundle: nil), forCellWithReuseIdentifier: "CCell_shhuDetailHeader")
+        
+        CV_main.register(UINib.init(nibName: "CCell_shhuDetailHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CCell_shhuDetailHeader")
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
 
 }
 
@@ -59,39 +60,33 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
 
 extension shangHu_DetailVC:UICollectionViewDataSource{
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize.init(width: IBScreenWidth, height: IBScreenWidth*176/375)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CCell_shhuDetailHeader", for: indexPath)
+        return headerView
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int{
         
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 6
-        default:
-            return 0
-        }
+        return 0
 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        
-        if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCell_shhuDetailHeader", for: indexPath) as! CCell_shhuDetailHeader
-            
-            return cell
-        }
-        
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCell_shhuDetail", for: indexPath) as! CCell_shhuDetail
         
         let url = URL(string: urlStr)
         
         cell.imageV_shangpin.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
-        
         
         return cell
         
@@ -102,10 +97,6 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
 extension shangHu_DetailVC:UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        
-        if indexPath.section == 0{
-            return CGSize.init(width: Int(IBScreenWidth - 20), height: Int((IBScreenWidth - 20)*0.6))
-        }
         
         let numPreRow = 2
         let ItemW = (Int(IBScreenWidth) - PinPaiCellPadding*(numPreRow + 1))/numPreRow
