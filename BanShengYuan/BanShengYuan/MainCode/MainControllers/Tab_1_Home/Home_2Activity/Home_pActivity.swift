@@ -10,11 +10,13 @@ import UIKit
 
 class Home_pActivity: BaseTabHiden {
     
+    @IBOutlet weak var tableView_main: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.title = "活动"
+        
         // Do any additional setup after loading the view.
     }
 

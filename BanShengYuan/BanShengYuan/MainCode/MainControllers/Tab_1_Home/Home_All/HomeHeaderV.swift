@@ -90,7 +90,9 @@ class HomeHeaderV: UITableViewCell {
 //遵循协议代理，调用代理方法
 extension HomeHeaderV : XHAdLoopViewDelegate {
     func adLoopView(_ adLoopView: XHAdLoopView, IconClick index: NSInteger) {
-        print(index)
+//        print(index)
+        PrintFM(index)
+        self.endEditing(true)
     }
 }
 
