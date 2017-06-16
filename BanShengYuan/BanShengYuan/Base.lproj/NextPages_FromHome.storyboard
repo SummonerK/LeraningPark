@@ -91,6 +91,8 @@
                                 <connections>
                                     <outlet property="dataSource" destination="lD2-cK-J2P" id="jeF-PR-PQI"/>
                                     <outlet property="delegate" destination="lD2-cK-J2P" id="le8-Kk-xdk"/>
+                                    <outlet property="emptyDataSetDelegate" destination="lD2-cK-J2P" id="kg4-xU-hIl"/>
+                                    <outlet property="emptyDataSetSource" destination="lD2-cK-J2P" id="61J-KF-87n"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -113,7 +115,6 @@
         <!--商户DetailVC-->
         <scene sceneID="sWx-OX-6bD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SJY-K4-ytc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController restorationIdentifier="shangHu_DetailVC" storyboardIdentifier="shangHu_DetailVC" title="商户DetailVC" hidesBottomBarWhenPushed="YES" id="f1N-07-Cap" customClass="shangHu_DetailVC" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pup-7U-9ms"/>
@@ -161,6 +162,7 @@
                         <outlet property="CV_main" destination="6Zj-04-qUe" id="Ram-fF-IZP"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SJY-K4-ytc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1446" y="-1639"/>
         </scene>
