@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import MBProgressHUD
 
 let urlStr = "http://pic35.photophoto.cn/20150601/0030014594765207_b.jpg"
 
@@ -22,11 +23,24 @@ class Home_RootVC: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+//        HUDShowMsgQuick(msg: "欢迎来到半生缘", toView: self.view, time: 1.2)
+        HUDcustomShow(toview: self.view)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+//        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+////        hud.label.text = "请稍等，数据加载中,预计10秒中"
+//        
+//        hud.show(animated: true, whileExecuting: {
+//            //异步任务，在后台运行的任务
+//            sleep(5)
+//        }) {
+//            //执行完成后的操作，移除
+//            hud.removeFromSuperview()
+//        }
         
         PrintFM("---1\(String(describing: UserDefaults.standard.value(forKey: "IBKey")))")
         

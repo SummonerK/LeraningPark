@@ -19,7 +19,7 @@ target 'BanShengYuan' do
   pod 'Kingfisher'
 
   #progress
-  pod 'SVProgressHUD'
+  pod 'MBProgressHUD'
 
   #list holder
   pod 'DZNEmptyDataSet'

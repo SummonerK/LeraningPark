@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+import MBProgressHUD
+
 // MARK: - 字体设置
 /// 系统普通字体
 var IBFontWithSize: (CGFloat) -> UIFont = {size in
@@ -147,6 +149,73 @@ extension String{
         return self.utf16.count
     }
     
+}
+
+// MARK:MBProgressHUD
+
+///-默认菊花样式提示
+func HUDdefaultShow(toview:UIView){
+    
+    let hud = MBProgressHUD.showAdded(to: toview, animated: true)
+    hud.label.text = "这是默认带菊花的提示"
+    //背景渐变效果
+    hud.dimBackground = true
+    //延迟隐藏
+    hud.hide(animated: true, afterDelay: 0.8)
+}
+
+///-纯文本提示
+func HUDtextShow(toview:UIView ,msg:String ,subMsg:String){
+    let hud = MBProgressHUD.showAdded(to: toview, animated: true)
+    hud.mode = MBProgressHUDMode.text
+    hud.label.text = msg
+    hud.detailsLabel.text = subMsg
+    //延迟隐藏
+    hud.hide(animated: true, afterDelay: 0.8)
+}
+
+///-自定义视图提示
+func HUDcustomShow(toview:UIView){
+    
+    let hud = MBProgressHUD.showAdded(to: toview, animated: true)
+    hud.mode = MBProgressHUDMode.customView
+    hud.customView = UIImageView(image: UIImage(named: "item2_activity")!)
+//    hud.customView?.backgroundColor = UIColor.clear
+    hud.bezelView.color = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+//    hud.backgroundView.color = UIColor.clear
+//    hud.contentColor = UIColor.clear
+//    hud.tintColor = UIColor.clear
+    hud.bezelView.style = .solidColor
+//    hud.label.text = "这是自定义视图"
+    //延迟隐藏
+    hud.hide(animated: true, afterDelay:3)
+}
+
+///-使用异步功能 示例
+
+func HUDasyncShow(toview:UIView){
+    
+    let hud = MBProgressHUD.showAdded(to: toview, animated: true)
+    hud.label.text = "请稍等，数据加载中,预计10秒中"
+    
+    hud.show(animated: true, whileExecuting: {
+        //异步任务，在后台运行的任务
+        sleep(10)
+    }) {
+        //执行完成后的操作，移除
+        hud.removeFromSuperview()
+    }
+}
+
+func HUDShowMsgQuick(msg:String,toView:UIView,time:Float){
+
+    
+    let hud = MBProgressHUD.showAdded(to: toView, animated: true)
+    hud.mode = MBProgressHUDMode.text
+    hud.label.text = msg
+    hud.tintColor = UIColor.clear
+    //延迟隐藏
+    hud.hide(animated: true, afterDelay: TimeInterval(time))
 }
 
 
