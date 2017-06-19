@@ -52,6 +52,10 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
+        let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
+        let Vc = storyboard.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
+        self.navigationController?.pushViewController(Vc, animated: true)
+        
         PrintFM("商户\t\(indexPath.row)")
         
     }
@@ -76,7 +80,7 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-        return 0
+        return 3
 
     }
     

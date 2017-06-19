@@ -50,32 +50,6 @@ class HomeHeaderV: UITableViewCell {
     func setupView(){
         
         CollectionV_HomeHeader.register(UINib.init(nibName: "CCellHomeHeader", bundle: nil), forCellWithReuseIdentifier: "CCellHomeHeader")
-        
-//        search_homeHeader.backgroundImage = UIImage()
-        
-//        let seachTextFeild = search_homeHeader.subviews.first?.subviews.last
-////        seachTextFeild?.backgroundColor = UIColor.white
-        
-        
-        
-        
-//        let  textFieldInsideSearchBar=search_homeHeader.value(forKey: "searchField")as?UITextField
-////        textFieldInsideSearchBar?.textColor=UIColor.white
-//        textFieldInsideSearchBar?.background = createImageWithColor(color: UIColor.brown)
-//        textFieldInsideSearchBar?.backgroundColor = UIColor.brown
-        
-//        search_homeHeader.layer.cornerRadius = 4
-//        search_homeHeader.layer.borderColor = UIColor.black.cgColor
-//        search_homeHeader.layer.borderWidth = 2
-
-//        textFieldInsideSearchBar?.layer.cornerRadius = 4
-//        textFieldInsideSearchBar?.layer.borderColor = UIColor.lightGray.cgColor
-//        textFieldInsideSearchBar?.layer.borderWidth = 2
-        
-        
-//        search_homeHeader.tintColor = UIColor.white
-//        search_homeHeader.backgroundImage = createImageWithColor(color: UIColor.white)
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

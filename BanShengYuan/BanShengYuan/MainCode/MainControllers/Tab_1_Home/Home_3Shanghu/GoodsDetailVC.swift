@@ -1,26 +1,22 @@
 //
-//  Home_pShanghu.swift
+//  GoodsDetailVC.swift
 //  BanShengYuan
 //
-//  Created by Luofei on 2017/6/14.
+//  Created by Luofei on 2017/6/19.
 //  Copyright © 2017年 Luofei. All rights reserved.
 //
 
 import UIKit
 
-class Home_pShanghu: BaseTabHiden {
-    
-    @IBOutlet weak var tableV_main: UITableView!
+class GoodsDetailVC: BaseTabHiden {
 
+    @IBOutlet weak var tableV_main: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationItem.title = "商户"
+        tableV_main.register(UINib.init(nibName: "TCellGoodsinfo", bundle: nil), forCellReuseIdentifier: "TCellGoodsinfo")
         
-        tableV_main.register(UINib.init(nibName: "TCellshanghu", bundle: nil), forCellReuseIdentifier: "TCellshanghu")
-
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,22 +25,22 @@ class Home_pShanghu: BaseTabHiden {
     
 }
 
-extension Home_pShanghu:UITableViewDataSource{
+extension GoodsDetailVC:UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-
-        return (section==0) ? IBScreenWidth*176/375 : 0
-
+        
+        return (section==0) ? IBScreenWidth*276/375 : 0
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         let imageArray = [
-                    "http://wx3.sinaimg.cn/mw690/62eeaba5ly1fee5yt59wrj20fa08lafr.jpg",
-                    "http://wx4.sinaimg.cn/mw690/6a624f11ly1fed4bwlbb0j20go0h6q5h.jpg",
-                    "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
-                    "http://wx2.sinaimg.cn/mw690/af0d43ddgy1fdjzefvub1j20dw09q48s.jpg"
-                ]
+            "http://wx3.sinaimg.cn/mw690/62eeaba5ly1fee5yt59wrj20fa08lafr.jpg",
+            "http://wx4.sinaimg.cn/mw690/6a624f11ly1fed4bwlbb0j20go0h6q5h.jpg",
+            "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
+            "http://wx2.sinaimg.cn/mw690/af0d43ddgy1fdjzefvub1j20dw09q48s.jpg"
+        ]
         
         let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*176/375))
         
@@ -66,7 +62,7 @@ extension Home_pShanghu:UITableViewDataSource{
         case 0:
             return 0
         case 1:
-            return 6
+            return 1
         default:
             return 0
         }
@@ -76,13 +72,9 @@ extension Home_pShanghu:UITableViewDataSource{
         
         switch indexPath.section {
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TCellshanghu", for: indexPath) as! TCellshanghu
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TCellGoodsinfo", for: indexPath) as! TCellGoodsinfo
             
             cell.selectionStyle = UITableViewCellSelectionStyle.none
-            
-            let url = URL(string: urlStr)
-            
-            cell.imageV_shanghuIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
             
             return cell
         default:
@@ -94,7 +86,7 @@ extension Home_pShanghu:UITableViewDataSource{
     
 }
 
-extension Home_pShanghu: UITableViewDelegate {
+extension GoodsDetailVC: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{

@@ -114,10 +114,57 @@
             </objects>
             <point key="canvasLocation" x="698" y="-931"/>
         </scene>
-        <!--Empty Data Set Delegate-->
+        <!--商品详情-->
+        <scene sceneID="tFQ-Pn-bcj">
+            <objects>
+                <viewController restorationIdentifier="GoodsDetailVC" storyboardIdentifier="GoodsDetailVC" title="商品详情" id="iyZ-4V-Tsx" customClass="GoodsDetailVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LIh-it-DIF"/>
+                        <viewControllerLayoutGuide type="bottom" id="04h-ia-boN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d4G-sP-klK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i7p-D5-Z7N">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TCellGoodsinfo" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TCellGoodsinfo" id="LMq-eG-eVy" customClass="TCellGoodsinfo" customModule="BanShengYuan">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LMq-eG-eVy" id="evN-fB-0w9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="iyZ-4V-Tsx" id="UL8-Yx-PUC"/>
+                                    <outlet property="delegate" destination="iyZ-4V-Tsx" id="wWw-ZH-ygU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="i7p-D5-Z7N" secondAttribute="trailing" id="1Hu-BF-IBT"/>
+                            <constraint firstItem="i7p-D5-Z7N" firstAttribute="leading" secondItem="d4G-sP-klK" secondAttribute="leading" id="hPa-zB-aHU"/>
+                            <constraint firstItem="i7p-D5-Z7N" firstAttribute="top" secondItem="d4G-sP-klK" secondAttribute="top" id="o89-fO-ckQ"/>
+                            <constraint firstItem="04h-ia-boN" firstAttribute="top" secondItem="i7p-D5-Z7N" secondAttribute="bottom" id="toY-lE-Iph"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableV_main" destination="i7p-D5-Z7N" id="Y8v-Xm-IWL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P9k-i0-nc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1446" y="-2337"/>
+        </scene>
+        <!--shanghuDetail-->
         <scene sceneID="sWx-OX-6bD">
             <objects>
-                <viewController restorationIdentifier="shangHu_DetailVC" storyboardIdentifier="shangHu_DetailVC" title="商户DetailVC" hidesBottomBarWhenPushed="YES" id="f1N-07-Cap" customClass="shangHu_DetailVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                <viewController restorationIdentifier="shangHu_DetailVC" storyboardIdentifier="shangHu_DetailVC" title="商户DetailVC" hidesBottomBarWhenPushed="YES" id="f1N-07-Cap" userLabel="shanghuDetail" customClass="shangHu_DetailVC" customModule="BanShengYuan" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pup-7U-9ms"/>
                         <viewControllerLayoutGuide type="bottom" id="0R3-tF-u3k"/>

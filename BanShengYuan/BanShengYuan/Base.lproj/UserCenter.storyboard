@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--order-->
+        <scene sceneID="m8y-kq-RkV">
+            <objects>
+                <viewController restorationIdentifier="user_OrderVC" storyboardIdentifier="user_OrderVC" title="我的订单" hidesBottomBarWhenPushed="YES" id="iw7-2o-f0y" userLabel="order" customClass="user_OrderVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yvb-tb-IcR"/>
+                        <viewControllerLayoutGuide type="bottom" id="1fP-es-vUC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XUp-pc-1YX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nRf-1l-sm3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TCell_UserOrder" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TCell_UserOrder" id="UHn-8Q-POi" customClass="TCell_UserOrder" customModule="BanShengYuan">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UHn-8Q-POi" id="0ah-ev-kzT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="iw7-2o-f0y" id="MCX-e3-le9"/>
+                                    <outlet property="delegate" destination="iw7-2o-f0y" id="riC-hO-K0s"/>
+                                    <outlet property="emptyDataSetDelegate" destination="iw7-2o-f0y" id="FDf-T9-D1V"/>
+                                    <outlet property="emptyDataSetSource" destination="iw7-2o-f0y" id="Urz-1t-Lrv"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nRf-1l-sm3" firstAttribute="leading" secondItem="XUp-pc-1YX" secondAttribute="leading" id="3dD-Sv-n5l"/>
+                            <constraint firstItem="nRf-1l-sm3" firstAttribute="top" secondItem="XUp-pc-1YX" secondAttribute="top" id="7RS-ti-7kx"/>
+                            <constraint firstItem="1fP-es-vUC" firstAttribute="top" secondItem="nRf-1l-sm3" secondAttribute="bottom" id="XIT-sY-9R1"/>
+                            <constraint firstAttribute="trailing" secondItem="nRf-1l-sm3" secondAttribute="trailing" id="XSI-01-b9F"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableV_main" destination="nRf-1l-sm3" id="q51-gB-bEb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d4p-Ry-2k7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-279" y="131"/>
+        </scene>
+        <!--address-->
+        <scene sceneID="1BR-it-fh1">
+            <objects>
+                <viewController restorationIdentifier="user_AddressVC" storyboardIdentifier="user_AddressVC" title="我的地址" hidesBottomBarWhenPushed="YES" id="LTm-II-LIe" userLabel="address" customClass="user_AddressVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3d2-6r-hlU"/>
+                        <viewControllerLayoutGuide type="bottom" id="6qy-37-ZNI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kuh-9z-ivv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TsO-OX-5JG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="LTm-II-LIe" id="7Od-tJ-QdB"/>
+                                    <outlet property="delegate" destination="LTm-II-LIe" id="8JP-Qk-M2w"/>
+                                    <outlet property="emptyDataSetDelegate" destination="LTm-II-LIe" id="OhT-Qu-ipC"/>
+                                    <outlet property="emptyDataSetSource" destination="LTm-II-LIe" id="Gkn-ni-er6"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6qy-37-ZNI" firstAttribute="top" secondItem="TsO-OX-5JG" secondAttribute="bottom" id="Czq-Li-SGG"/>
+                            <constraint firstAttribute="trailing" secondItem="TsO-OX-5JG" secondAttribute="trailing" id="Mcc-er-2gM"/>
+                            <constraint firstItem="TsO-OX-5JG" firstAttribute="top" secondItem="kuh-9z-ivv" secondAttribute="top" id="ONh-z5-a0p"/>
+                            <constraint firstItem="TsO-OX-5JG" firstAttribute="leading" secondItem="kuh-9z-ivv" secondAttribute="leading" id="raN-rq-bBT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableV_main" destination="TsO-OX-5JG" id="JIW-Xa-Xud"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oen-W3-pTt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="420" y="131"/>
+        </scene>
+        <!--我的资料-->
+        <scene sceneID="0gr-Pk-RJo">
+            <objects>
+                <viewController restorationIdentifier="user_infoVC" storyboardIdentifier="user_infoVC" title="我的资料" hidesBottomBarWhenPushed="YES" id="O0p-4K-uTZ" customClass="user_infoVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wHt-ZY-bM2"/>
+                        <viewControllerLayoutGuide type="bottom" id="f8g-Jv-GtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gqJ-hC-A1M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uJq-Wb-m2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1100" y="131"/>
+        </scene>
+    </scenes>
+</document>

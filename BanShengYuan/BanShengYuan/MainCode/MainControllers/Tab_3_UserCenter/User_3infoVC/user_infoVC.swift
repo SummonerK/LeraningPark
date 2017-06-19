@@ -1,18 +1,19 @@
 //
-//  UserCenter_RootVC.swift
+//  user_infoVC.swift
 //  BanShengYuan
 //
-//  Created by Luofei on 2017/6/9.
+//  Created by Luofei on 2017/6/19.
 //  Copyright © 2017年 Luofei. All rights reserved.
 //
 
 import UIKit
 
-class UserCenter_RootVC: UIViewController {
+class user_infoVC: BaseTabHiden {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "我的资料"
         // Do any additional setup after loading the view.
     }
 
