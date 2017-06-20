@@ -32,6 +32,13 @@ class ViewController: UIViewController {
             })
             .addDisposableTo(disposeBag)
 
+        let dic_temp = NSMutableDictionary()
+        let dic = ["key":"value"]
+        
+        dic_temp.setValue(dic, forKey: "newkey")
+        
+//        PrintFM("---\(dic_temp)")
+        
         viewModel.createPost(title: "Title 1", body: "Body 1", userId: 1)
             .subscribe(onNext: { (post: Post) in
                 //do something with post

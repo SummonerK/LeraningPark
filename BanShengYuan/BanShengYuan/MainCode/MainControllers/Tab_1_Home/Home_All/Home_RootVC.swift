@@ -41,6 +41,15 @@ class Home_RootVC: UIViewController{
             UserDefaults.standard.set("", forKey: "IBKey")
         }
 
+        let dic_temp = NSMutableDictionary()
+        let dic = ["key":"value"]
+        
+        dic_temp.setValue(dic, forKey: "newkey")
+        
+        PrintFM("---\(dic_temp)")
+        
+        
+
         PrintFM("---2\(String(describing: UserDefaults.standard.value(forKey: "IBKey")))")
         
         tableV_main.register(UINib.init(nibName: "TCellActivity", bundle: nil), forCellReuseIdentifier: "TCellActivity")

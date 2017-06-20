@@ -61,8 +61,4 @@ extension UIImage {
         }
     }
     
-//    static func loadOrReadImage(withUrlPath:String) -> UIImage? {
-//        
-//    }
-    
 }

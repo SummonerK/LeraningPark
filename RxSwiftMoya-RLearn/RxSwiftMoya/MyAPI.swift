@@ -58,7 +58,7 @@ extension MyAPI: TargetType {
             return ["title": title, "body": body, "userId": userId]
             
         case .getVerifyCode(let cTel, let type):
-            return ["cTel":cTel ,"type":type]
+            return ["cTel":cTel ,"type":type,"data":["key":"value"]]
         }
     }
     
