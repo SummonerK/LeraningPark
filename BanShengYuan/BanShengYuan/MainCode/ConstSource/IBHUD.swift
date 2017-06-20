@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import MBProgressHUD
 import ImageIO
+import Kingfisher
 // keyWindow
 let KeyWindow : UIWindow = UIApplication.shared.keyWindow!
 
@@ -59,4 +60,9 @@ extension UIImage {
             return UIImage.animatedImage(with: gif, duration: TimeInterval(gif.count) * 0.1)
         }
     }
+    
+//    static func loadOrReadImage(withUrlPath:String) -> UIImage? {
+//        
+//    }
+    
 }

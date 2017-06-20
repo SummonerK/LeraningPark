@@ -14,6 +14,7 @@ class GoodsDetailVC: BaseTabHiden {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableV_main.register(UINib.init(nibName: "TCellGoodsinfo", bundle: nil), forCellReuseIdentifier: "TCellGoodsinfo")
+        tableV_main.register(UINib.init(nibName: "TCellGoodsImage", bundle: nil), forCellReuseIdentifier: "TCellGoodsImage")
         
     }
     
@@ -53,7 +54,7 @@ extension GoodsDetailVC:UITableViewDataSource{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,6 +63,8 @@ extension GoodsDetailVC:UITableViewDataSource{
         case 0:
             return 0
         case 1:
+            return 1
+        case 2:
             return 1
         default:
             return 0
@@ -75,6 +78,17 @@ extension GoodsDetailVC:UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TCellGoodsinfo", for: indexPath) as! TCellGoodsinfo
             
             cell.selectionStyle = UITableViewCellSelectionStyle.none
+            
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TCellGoodsImage", for: indexPath) as! TCellGoodsImage
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            
+            let longurl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497878307246&di=2ba97ccfa0be61143a61baa61eee95ba&imgtype=0&src=http%3A%2F%2Fimg.bbs.cnhubei.com%2Fforum%2Fdvbbs%2F2004-4%2F200441915031894.jpg"
+            let url = URL(string: longurl)
+            
+            cell.imageV_content.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
             
             return cell
         default:
@@ -93,7 +107,20 @@ extension GoodsDetailVC: UITableViewDelegate {
         
         switch indexPath.section {
         case 1:
-            return IBScreenWidth*110/375
+            return 90
+        case 2:
+            
+            
+            if let image = UIImage(named: "paris.jpg"){
+                let hight =  image.size.height / image.size.width * IBScreenWidth
+                
+                PrintFM("imageHight \(hight)")
+                
+                return CGFloat(hight)
+            }else{
+                return 0
+            }
+            
         default:
             return 0
         }
@@ -101,11 +128,6 @@ extension GoodsDetailVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //品牌
-        let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-        let Vc = storyboard.instantiateViewController(withIdentifier: "shangHu_DetailVC") as! shangHu_DetailVC
-        self.navigationController?.pushViewController(Vc, animated: true)
         
         PrintFM("\(indexPath.row)")
         

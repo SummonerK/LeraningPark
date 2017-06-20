@@ -34,6 +34,7 @@
 		635D84141EF286AE007A2C05 /* Reflect+Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D840C1EF286AE007A2C05 /* Reflect+Property.swift */; };
 		635D84151EF286AE007A2C05 /* Reflect+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D840D1EF286AE007A2C05 /* Reflect+Type.swift */; };
 		635D84161EF286AE007A2C05 /* Reflect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D840E1EF286AE007A2C05 /* Reflect.swift */; };
+		6362C0141EF8B52B00B22CE5 /* paris.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6362C0131EF8B52B00B22CE5 /* paris.jpg */; };
 		63657D961EE7CE3B00DA24F4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63657D941EE7CE3B00DA24F4 /* Login.storyboard */; };
 		63657DA01EE7CE5900DA24F4 /* Login_RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657D991EE7CE5900DA24F4 /* Login_RootVC.swift */; };
 		63657DA21EE7CE5900DA24F4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63657D9F1EE7CE5900DA24F4 /* Media.xcassets */; };
@@ -124,6 +125,7 @@
 		635D840C1EF286AE007A2C05 /* Reflect+Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reflect+Property.swift"; sourceTree = "<group>"; };
 		635D840D1EF286AE007A2C05 /* Reflect+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reflect+Type.swift"; sourceTree = "<group>"; };
 		635D840E1EF286AE007A2C05 /* Reflect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reflect.swift; sourceTree = "<group>"; };
+		6362C0131EF8B52B00B22CE5 /* paris.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paris.jpg; sourceTree = "<group>"; };
 		63657D951EE7CE3B00DA24F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		63657D991EE7CE5900DA24F4 /* Login_RootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login_RootVC.swift; sourceTree = "<group>"; };
 		63657D9F1EE7CE5900DA24F4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				638DE6261EF7D04B0017DA72 /* GoodsDetailVC.swift */,
 				638DE6281EF7D3710017DA72 /* TCellGoodsinfo.swift */,
 				638DE6301EF7D6E60017DA72 /* TCellGoodsinfo.xib */,
+				6362C0131EF8B52B00B22CE5 /* paris.jpg */,
 				638DE62C1EF7D3DF0017DA72 /* TCellGoodsImage.swift */,
 				638DE62D1EF7D3DF0017DA72 /* TCellGoodsImage.xib */,
 			);
@@ -648,6 +651,7 @@
 				638DE6101EF7B8080017DA72 /* TCell_User.xib in Resources */,
 				635D83F31EF22F67007A2C05 /* TCellshanghu.xib in Resources */,
 				638F18391EF1116C00A33412 /* TCellHomeActivities.xib in Resources */,
+				6362C0141EF8B52B00B22CE5 /* paris.jpg in Resources */,
 				638536331EE7A1F800DB7BA1 /* Main.storyboard in Resources */,
 				638F18331EF1116C00A33412 /* CCellHomeHeader.xib in Resources */,
 				638DE6251EF7C0620017DA72 /* TCell_userAddress.xib in Resources */,
