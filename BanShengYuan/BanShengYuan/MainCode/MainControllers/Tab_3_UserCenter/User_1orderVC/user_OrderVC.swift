@@ -11,12 +11,31 @@ import UIKit
 class user_OrderVC: BaseTabHiden {
     @IBOutlet weak var tableV_main: UITableView!
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "我的订单"
+        setNavi()
+        
         tableV_main.register(UINib.init(nibName: "TCell_UserOrder", bundle: nil), forCellReuseIdentifier: "TCell_UserOrder")
         
+    }
+    
+    func setNavi() {
+        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(actionBack(_:)))
+        item.image = UIImage(named: "arrow_left")
+        
+        self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.title = "我的订单"
+    }
+    
+    func actionBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func didReceiveMemoryWarning() {

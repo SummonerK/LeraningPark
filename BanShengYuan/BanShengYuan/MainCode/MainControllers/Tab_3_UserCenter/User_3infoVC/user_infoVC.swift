@@ -11,11 +11,31 @@ import UIKit
 class user_infoVC: BaseTabHiden {
 
 //    @IBOutlet weak var tableV_main: UITableView!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "个人信息"
+        setNavi()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func setNavi() {
+        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(actionBack(_:)))
+        item.image = UIImage(named: "arrow_left")
+        
+        self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.title = "个人信息"
+    }
+    
+    func actionBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

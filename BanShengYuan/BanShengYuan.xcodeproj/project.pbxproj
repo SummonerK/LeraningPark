@@ -27,6 +27,9 @@
 		63559AAF1EFA1BE9003FC6E5 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AAE1EFA1BE9003FC6E5 /* Strings.swift */; };
 		63559AB11EFA48C2003FC6E5 /* LoginNaviC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AB01EFA48C2003FC6E5 /* LoginNaviC.swift */; };
 		63559AB31EFA5639003FC6E5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AB21EFA5639003FC6E5 /* Colors.swift */; };
+		63559AB51EFA6D4F003FC6E5 /* HomeNaviC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AB41EFA6D4F003FC6E5 /* HomeNaviC.swift */; };
+		63559AB71EFA6D6E003FC6E5 /* ActivityNaviC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AB61EFA6D6E003FC6E5 /* ActivityNaviC.swift */; };
+		63559AB91EFA6D7F003FC6E5 /* UserCenterNaviC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AB81EFA6D7F003FC6E5 /* UserCenterNaviC.swift */; };
 		635D83E21EF226BA007A2C05 /* XHAdLoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83E11EF226BA007A2C05 /* XHAdLoopView.swift */; };
 		635D83E61EF22B72007A2C05 /* INOScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83E41EF22B72007A2C05 /* INOScrollView.swift */; };
 		635D83E71EF22B72007A2C05 /* INOScrollViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83E51EF22B72007A2C05 /* INOScrollViewCell.swift */; };
@@ -129,6 +132,9 @@
 		63559AAE1EFA1BE9003FC6E5 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		63559AB01EFA48C2003FC6E5 /* LoginNaviC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNaviC.swift; sourceTree = "<group>"; };
 		63559AB21EFA5639003FC6E5 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		63559AB41EFA6D4F003FC6E5 /* HomeNaviC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNaviC.swift; sourceTree = "<group>"; };
+		63559AB61EFA6D6E003FC6E5 /* ActivityNaviC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityNaviC.swift; sourceTree = "<group>"; };
+		63559AB81EFA6D7F003FC6E5 /* UserCenterNaviC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterNaviC.swift; sourceTree = "<group>"; };
 		635D83E11EF226BA007A2C05 /* XHAdLoopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHAdLoopView.swift; sourceTree = "<group>"; };
 		635D83E41EF22B72007A2C05 /* INOScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INOScrollView.swift; sourceTree = "<group>"; };
 		635D83E51EF22B72007A2C05 /* INOScrollViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INOScrollViewCell.swift; sourceTree = "<group>"; };
@@ -375,6 +381,7 @@
 		63657D9B1EE7CE5900DA24F4 /* Tab_1_Home */ = {
 			isa = PBXGroup;
 			children = (
+				63559AB41EFA6D4F003FC6E5 /* HomeNaviC.swift */,
 				638F18291EF1116C00A33412 /* Home_All */,
 				638F183A1EF111DD00A33412 /* Home_1PinPai */,
 				638F183E1EF111DD00A33412 /* Home_2Activity */,
@@ -391,6 +398,7 @@
 		63657D9D1EE7CE5900DA24F4 /* Tab_2_Activitys */ = {
 			isa = PBXGroup;
 			children = (
+				63559AB61EFA6D6E003FC6E5 /* ActivityNaviC.swift */,
 				6386466A1EEA398F0077C6A0 /* Activity_RootVC.swift */,
 				638646701EEAAC420077C6A0 /* TCellActivity.swift */,
 				638646711EEAAC420077C6A0 /* TCellActivity.xib */,
@@ -401,6 +409,7 @@
 		63657D9E1EE7CE5900DA24F4 /* Tab_3_UserCenter */ = {
 			isa = PBXGroup;
 			children = (
+				63559AB81EFA6D7F003FC6E5 /* UserCenterNaviC.swift */,
 				638DE6091EF7B8080017DA72 /* User_Home */,
 				638DE6061EF7B8080017DA72 /* User_1orderVC */,
 				638DE6071EF7B8080017DA72 /* User_2addressVC */,
@@ -760,6 +769,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				638F185B1EF1198300A33412 /* IBTabC.swift in Sources */,
+				63559AB91EFA6D7F003FC6E5 /* UserCenterNaviC.swift in Sources */,
 				638F18591EF114C700A33412 /* BaseTabHiden.swift in Sources */,
 				63559AAB1EFA0ECB003FC6E5 /* Datas.swift in Sources */,
 				6353810D1EE93266006C0375 /* RegistVC.swift in Sources */,
@@ -779,6 +789,7 @@
 				638F184F1EF1135500A33412 /* Home_pParking.swift in Sources */,
 				6362C0271EF9174700B22CE5 /* TCell_info.swift in Sources */,
 				6386466B1EEA398F0077C6A0 /* Activity_RootVC.swift in Sources */,
+				63559AB51EFA6D4F003FC6E5 /* HomeNaviC.swift in Sources */,
 				638DE6111EF7B8080017DA72 /* UserCenter_RootVC.swift in Sources */,
 				63559AB31EFA5639003FC6E5 /* Colors.swift in Sources */,
 				6385362E1EE7A1F800DB7BA1 /* AppDelegate.swift in Sources */,
@@ -799,6 +810,7 @@
 				638DE6171EF7B86C0017DA72 /* user_AddressVC.swift in Sources */,
 				634DE71D1EF36E8C00E44AFA /* shangHu_DetailVC.swift in Sources */,
 				634DE72C1EF381D200E44AFA /* TCell_pActivity.swift in Sources */,
+				63559AB71EFA6D6E003FC6E5 /* ActivityNaviC.swift in Sources */,
 				63657DA01EE7CE5900DA24F4 /* Login_RootVC.swift in Sources */,
 				635381111EE93EC8006C0375 /* resetPwdVC.swift in Sources */,
 				6362C0211EF9172100B22CE5 /* TCell_infoHeader.swift in Sources */,

@@ -11,14 +11,34 @@ import UIKit
 class user_AddressVC: BaseTabHiden {
 
     @IBOutlet weak var tableV_main: UITableView!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "我的地址"
+        setNavi()
 
         tableV_main.register(UINib.init(nibName: "TCell_userAddress", bundle: nil), forCellReuseIdentifier: "TCell_userAddress")
         
     }
+    
+    func setNavi() {
+        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(actionBack(_:)))
+        item.image = UIImage(named: "arrow_left")
+        
+        self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.title = "我的地址"
+    }
+    
+    func actionBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     @IBAction func AddAction(_ sender: Any) {
         let storyboard = UIStoryboard.init(name: "UserCenter", bundle: nil)

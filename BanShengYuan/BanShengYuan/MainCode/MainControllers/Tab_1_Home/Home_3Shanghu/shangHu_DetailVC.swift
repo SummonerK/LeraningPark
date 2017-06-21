@@ -11,6 +11,9 @@ import UIKit
 import DZNEmptyDataSet
 
 class shangHu_DetailVC: BaseTabHiden {
+    
+    var sectionNum:Int? = 1
+    
 
     @IBOutlet weak var CV_main: UICollectionView!
     override func viewDidLoad() {
@@ -52,14 +55,17 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
-        let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-        let Vc = storyboard.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
-        self.navigationController?.pushViewController(Vc, animated: true)
+//        let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
+//        let Vc = storyboard.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
+//        self.navigationController?.pushViewController(Vc, animated: true)
         
         PrintFM("商户\t\(indexPath.row)")
         
+        sectionNum = 2
+        
+        CV_main.reloadData()
+        
     }
-    
 }
 
 extension shangHu_DetailVC:UICollectionViewDataSource{
@@ -71,6 +77,8 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CCell_shhuDetailHeader", for: indexPath) as! CCell_shhuDetailHeader
         
+        PrintFM("section Index \(indexPath.section)")
+        
         headerView.test = "sdflajfds"
         
         return headerView
@@ -78,7 +86,9 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
         
-        return 1
+        PrintFM("history \(sectionNum!)")
+        
+        return sectionNum!
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -99,6 +109,7 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
         
     }
     
+    
 }
 
 extension shangHu_DetailVC:UICollectionViewDelegateFlowLayout{
@@ -108,7 +119,7 @@ extension shangHu_DetailVC:UICollectionViewDelegateFlowLayout{
         let numPreRow = 2
         let ItemW = (Int(IBScreenWidth) - PinPaiCellPadding*(numPreRow + 1))/numPreRow
         
-        PrintFM("SW:\(IBScreenWidth),ItemW:\(ItemW)")
+//        PrintFM("SW:\(IBScreenWidth),ItemW:\(ItemW)")
         return CGSize.init(width: ItemW, height: Int(Double(ItemW)*1.1)+62)
     }
     

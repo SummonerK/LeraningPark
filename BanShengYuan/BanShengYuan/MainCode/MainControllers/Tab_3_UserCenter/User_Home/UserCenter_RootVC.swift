@@ -13,14 +13,15 @@ class UserCenter_RootVC: UIViewController {
     
     let array_title:Array? = ["我的订单","我的地址","我的资料"]
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = FlatWhiteLight
         
         self.navigationItem.title = "我的"
         

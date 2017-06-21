@@ -11,25 +11,29 @@ import UIKit
 
 func FontPFMedium(size:CGFloat)->UIFont{
     
-    return UIFont(name: "PingFangSC-Medium", size: size)!
+//    return UIFont(name: "PingFangSC-Medium", size: size)!
+    return IBFontWithSize(size)
     
 }
 
 func FontPFRegular(size:CGFloat)->UIFont{
     
-    return UIFont(name: "PingFangSC-Regular", size: size)!
+//    return UIFont(name: "PingFangSC-Regular", size: size)!
+    return IBFontWithSize(size)
     
 }
 
 func FontPFThin(size:CGFloat)->UIFont{
     
-    return UIFont(name: "PingFangSC-Thin", size: size)!
+//    return UIFont(name: "PingFangSC-Thin", size: size)!
+    return IBFontWithSize(size)
     
 }
 
 func FontPFLight(size:CGFloat)->UIFont{
     
-    return UIFont(name: "PingFangSC-Light", size: size)!
+//    return UIFont(name: "PingFangSC-Light", size: size)!
+    return IBFontWithSize(size)
     
 }
 

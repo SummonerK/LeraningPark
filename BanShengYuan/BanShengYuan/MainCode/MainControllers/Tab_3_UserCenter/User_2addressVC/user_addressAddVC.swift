@@ -11,13 +11,30 @@ import UIKit
 class user_addressAddVC: UIViewController {
     
     var tag_pagefrom:Int? = 1
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = tag_pagefrom==2 ? "编辑收货人" : "新建收货人"
+        setNavi()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func setNavi() {
+        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(actionBack(_:)))
+        item.image = UIImage(named: "arrow_left")
+        
+        self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.title = tag_pagefrom==2 ? "编辑收货人" : "新建收货人"
+    }
+    
+    func actionBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

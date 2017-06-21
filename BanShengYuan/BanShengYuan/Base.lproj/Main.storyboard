@@ -14,7 +14,7 @@
         <!--精彩活动-->
         <scene sceneID="ADx-mv-Vte">
             <objects>
-                <navigationController id="fWK-Q1-W2d" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="ActivityNaviC" storyboardIdentifier="ActivityNaviC" id="fWK-Q1-W2d" customClass="ActivityNaviC" customModule="BanShengYuan" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="精彩活动" image="actyvity" id="c1d-N2-jTe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MyJ-DV-SRS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -220,7 +220,7 @@
         <!--我的-->
         <scene sceneID="iJt-dw-Boq">
             <objects>
-                <navigationController id="MBN-fP-GaO" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="UserCenterNaviC" storyboardIdentifier="UserCenterNaviC" navigationBarHidden="YES" id="MBN-fP-GaO" customClass="UserCenterNaviC" customModule="BanShengYuan" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="user" id="rzq-ss-UkH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OfP-cu-8qf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -285,7 +285,7 @@
         <!--首页-->
         <scene sceneID="xn2-Xx-CVT">
             <objects>
-                <navigationController navigationBarHidden="YES" id="W7H-Sg-Z7Y" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="HomeNaviC" storyboardIdentifier="HomeNaviC" navigationBarHidden="YES" id="W7H-Sg-Z7Y" customClass="HomeNaviC" customModule="BanShengYuan" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="home" id="nAW-zQ-fQ2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jbH-zk-Wjz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
