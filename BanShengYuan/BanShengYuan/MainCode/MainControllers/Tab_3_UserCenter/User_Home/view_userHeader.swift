@@ -29,10 +29,13 @@ class view_userHeader: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageV_Header.layer.cornerRadius = IBScreenWidth*176/375*0.7/2
-        imageV_Header.layer.borderColor = UIColor.white.cgColor
-        imageV_Header.layer.borderWidth = 2
-        imageV_Header.layer.masksToBounds = true
+//        imageV_Header.layer.cornerRadius = IBScreenWidth*176/375*0.7/2
+//        imageV_Header.layer.borderColor = UIColor.white.cgColor
+//        imageV_Header.layer.borderWidth = 2
+//        imageV_Header.layer.masksToBounds = true
+        setRadiusFor(toview: imageV_Header, radius: IBScreenWidth*176/375*0.7/2, lineWidth: 2.0, lineColor: UIColor.white)
+        setshadowFor(aview: imageV_Header, OffSet: CGSize.init(width: -1, height: -1))
+        
     }
     
     override func layoutSubviews() {

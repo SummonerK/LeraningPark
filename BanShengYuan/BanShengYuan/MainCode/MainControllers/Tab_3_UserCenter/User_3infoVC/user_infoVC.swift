@@ -10,11 +10,11 @@ import UIKit
 
 class user_infoVC: BaseTabHiden {
 
-    @IBOutlet weak var tableV_main: UITableView!
+//    @IBOutlet weak var tableV_main: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "我的资料"
+        self.navigationItem.title = "个人信息"
         // Do any additional setup after loading the view.
     }
 
@@ -30,38 +30,30 @@ class user_infoVC: BaseTabHiden {
         PrintFM("Action")
 
     }
-    
-//    //MARK: - Action Manager
-//    ///编辑头像
-//    @IBAction func HeaderAction(_ sender: Any) {
-//        
-//        PrintFM("Action")
-//        
-//    }
-//    ///编辑用户名
-//    @IBAction func VipAction(_ sender: Any) {
-//        
-//        PrintFM("Action")
-//        
-//    }
-//    ///编辑昵称
-//    @IBAction func nicNameAction(_ sender: Any) {
-//        
-//        PrintFM("Action")
-//        
-//    }
-//    ///编辑性别
-//    @IBAction func sexAction(_ sender: Any) {
-//        
-//        PrintFM("Action")
-//        
-//    }
-//    ///编辑出生日期
-//    @IBAction func birthdayAction(_ sender: Any) {
-//        
-//        PrintFM("Action")
-//        
-//    }
+    ///编辑头像
+    @IBAction func HeaderAction(_ sender: Any) {
+        
+        PrintFM("Action")
+        
+    }
+    ///编辑昵称
+    @IBAction func nicNameAction(_ sender: Any) {
+        
+        PrintFM("Action")
+        
+    }
+    ///编辑性别
+    @IBAction func sexAction(_ sender: Any) {
+        
+        PrintFM("Action")
+        
+    }
+    ///编辑出生日期
+    @IBAction func birthdayAction(_ sender: Any) {
+        
+        PrintFM("Action")
+        
+    }
     
 
     /*

@@ -9,6 +9,8 @@
 import UIKit
 
 class CCell_shhuDetailHeader: UICollectionReusableView {
+    
+    var test:String?
 
     override func awakeFromNib() {
         super.awakeFromNib()

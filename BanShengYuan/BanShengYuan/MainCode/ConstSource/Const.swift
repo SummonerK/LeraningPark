@@ -106,13 +106,6 @@ func PrintFM<T>(_ message:T, file:String = #file, function:String = #function,
     #endif
 }
 
-func setshadowFor(aview:UIView, OffSet:CGSize){
-    aview.layer.shadowColor = UIColor.init(red: 125.0/255.0, green: 125.0/255.0, blue: 125.0/255.0, alpha: 0.7).cgColor
-    aview.layer.shadowOpacity = 0.7
-    aview.layer.shadowRadius = 1.5
-    aview.layer.shadowOffset = OffSet
-}
-
 let radius:CGFloat = 40
 
 extension String{
