@@ -24,6 +24,9 @@
 		63559AA91EFA0EC2003FC6E5 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AA81EFA0EC2003FC6E5 /* Views.swift */; };
 		63559AAB1EFA0ECB003FC6E5 /* Datas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AAA1EFA0ECB003FC6E5 /* Datas.swift */; };
 		63559AAD1EFA0ED8003FC6E5 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AAC1EFA0ED8003FC6E5 /* Dates.swift */; };
+		63559AAF1EFA1BE9003FC6E5 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AAE1EFA1BE9003FC6E5 /* Strings.swift */; };
+		63559AB11EFA48C2003FC6E5 /* LoginNaviC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AB01EFA48C2003FC6E5 /* LoginNaviC.swift */; };
+		63559AB31EFA5639003FC6E5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AB21EFA5639003FC6E5 /* Colors.swift */; };
 		635D83E21EF226BA007A2C05 /* XHAdLoopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83E11EF226BA007A2C05 /* XHAdLoopView.swift */; };
 		635D83E61EF22B72007A2C05 /* INOScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83E41EF22B72007A2C05 /* INOScrollView.swift */; };
 		635D83E71EF22B72007A2C05 /* INOScrollViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635D83E51EF22B72007A2C05 /* INOScrollViewCell.swift */; };
@@ -123,6 +126,9 @@
 		63559AA81EFA0EC2003FC6E5 /* Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		63559AAA1EFA0ECB003FC6E5 /* Datas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datas.swift; sourceTree = "<group>"; };
 		63559AAC1EFA0ED8003FC6E5 /* Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
+		63559AAE1EFA1BE9003FC6E5 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		63559AB01EFA48C2003FC6E5 /* LoginNaviC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNaviC.swift; sourceTree = "<group>"; };
+		63559AB21EFA5639003FC6E5 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		635D83E11EF226BA007A2C05 /* XHAdLoopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHAdLoopView.swift; sourceTree = "<group>"; };
 		635D83E41EF22B72007A2C05 /* INOScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INOScrollView.swift; sourceTree = "<group>"; };
 		635D83E51EF22B72007A2C05 /* INOScrollViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = INOScrollViewCell.swift; sourceTree = "<group>"; };
@@ -266,6 +272,8 @@
 				63559AA81EFA0EC2003FC6E5 /* Views.swift */,
 				63559AAA1EFA0ECB003FC6E5 /* Datas.swift */,
 				63559AAC1EFA0ED8003FC6E5 /* Dates.swift */,
+				63559AAE1EFA1BE9003FC6E5 /* Strings.swift */,
+				63559AB21EFA5639003FC6E5 /* Colors.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -343,6 +351,7 @@
 		63657D981EE7CE5900DA24F4 /* LoginControllers */ = {
 			isa = PBXGroup;
 			children = (
+				63559AB01EFA48C2003FC6E5 /* LoginNaviC.swift */,
 				63657D991EE7CE5900DA24F4 /* Login_RootVC.swift */,
 				63657DA61EE7F51800DA24F4 /* GuideView.swift */,
 				6353810C1EE93266006C0375 /* RegistVC.swift */,
@@ -771,6 +780,7 @@
 				6362C0271EF9174700B22CE5 /* TCell_info.swift in Sources */,
 				6386466B1EEA398F0077C6A0 /* Activity_RootVC.swift in Sources */,
 				638DE6111EF7B8080017DA72 /* UserCenter_RootVC.swift in Sources */,
+				63559AB31EFA5639003FC6E5 /* Colors.swift in Sources */,
 				6385362E1EE7A1F800DB7BA1 /* AppDelegate.swift in Sources */,
 				638F184B1EF1133400A33412 /* Home_pActivity.swift in Sources */,
 				638DE6241EF7C0620017DA72 /* TCell_userAddress.swift in Sources */,
@@ -803,8 +813,10 @@
 				634DE7221EF36F6E00E44AFA /* CCell_shhuDetailHeader.swift in Sources */,
 				638F18381EF1116C00A33412 /* TCellHomeActivities.swift in Sources */,
 				638536361EE7A1F800DB7BA1 /* BanShengYuan.xcdatamodeld in Sources */,
+				63559AB11EFA48C2003FC6E5 /* LoginNaviC.swift in Sources */,
 				635D84151EF286AE007A2C05 /* Reflect+Type.swift in Sources */,
 				63657DA51EE7D03200DA24F4 /* Const.swift in Sources */,
+				63559AAF1EFA1BE9003FC6E5 /* Strings.swift in Sources */,
 				635D83E71EF22B72007A2C05 /* INOScrollViewCell.swift in Sources */,
 				638F18341EF1116C00A33412 /* Home_RootVC.swift in Sources */,
 				635D840F1EF286AE007A2C05 /* Reflect+ArcFile.swift in Sources */,

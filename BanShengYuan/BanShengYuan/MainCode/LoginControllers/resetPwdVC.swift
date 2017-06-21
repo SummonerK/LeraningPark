@@ -8,17 +8,43 @@
 
 import UIKit
 
+import IQKeyboardManagerSwift
+
 class resetPwdVC: UIViewController {
 
+    @IBOutlet weak var tf_fistPwd: UITextField!
+    
+    @IBOutlet weak var tf_againPwd: UITextField!
+    
+    @IBOutlet weak var bton_resetPwd: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setRadiusFor(toview: bton_resetPwd, radius: 6, lineWidth: 0, lineColor: UIColor.clear)
+        
+        //MARK: 设置键盘
+        //键盘监听开关
+        IQKeyboardManager.sharedManager().enable = true
+        
+        setNavi()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setNavi() {
+        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(actionBack(_:)))
+        item.image = UIImage(named: "arrow_left")
+        
+        self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.title = "忘记密码"
+    }
+    
+    func actionBack(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     let duration = 0.3
@@ -35,14 +61,16 @@ class resetPwdVC: UIViewController {
 //        //释放所有下级视图
 //        rootVC?.dismiss(animated: true, completion: nil)
         
-        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+//        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+//        
+//        let animation = CATransition.init()
+//        animation.duration = duration
+//        //        animation.type = "rippleEffect" //波纹
+//        animation.type = kCATransitionFade 
+//        
+//        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
         
-        let animation = CATransition.init()
-        animation.duration = duration
-        //        animation.type = "rippleEffect" //波纹
-        animation.type = kCATransitionFade 
-        
-        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+        self.navigationController?.popToRootViewController(animated: true)
         
     }
 

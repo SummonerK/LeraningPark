@@ -9,20 +9,33 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class Login_RootVC: UIViewController,UITextFieldDelegate{
+class Login_RootVC: UIViewController{
     @IBOutlet weak var tf_phone: UITextField!
     @IBOutlet weak var tf_pwd: UITextField!
+    @IBOutlet weak var bton_login: UIButton!
+    @IBOutlet weak var bton_register: UIButton!
+    @IBOutlet weak var bton_forget: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavi()
+        
+        setRadiusFor(toview: bton_login, radius: 6, lineWidth: 0, lineColor: UIColor.clear)
+        setRadiusFor(toview: bton_register, radius: 6, lineWidth: 0.6, lineColor: FlatGrayDark)
+        let attributestr = NSMutableAttributedString(string: "忘记密码", attributes: setUnderLineToString(tocolor: FlatGrayLight))
+        bton_forget.setAttributedTitle(attributestr, for: UIControlState.normal)
+        
         //MARK: 设置键盘
         //键盘监听开关
-        IQKeyboardManager.sharedManager().enable = false
+        IQKeyboardManager.sharedManager().enable = true
 
         ShowWelecomeV()
         
-        // Do any additional setup after loading the view.
+    }
+    
+    func setNavi() {
+        self.navigationItem.title = "账号登录"
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,36 +89,42 @@ class Login_RootVC: UIViewController,UITextFieldDelegate{
     }
     @IBAction func goToRegist(_ sender: Any) {
         
-        let Vc = self.storyboard?.instantiateViewController(withIdentifier: "RegistVC") as! RegistVC
-        
-        self.present(Vc, animated: false, completion: nil)
-        
-        let animation = CATransition.init()
-        animation.duration = duration
-        //        animation.type = "rippleEffect" //波纹
-        animation.type = kCATransitionFade
-        
-        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+//        let Vc = self.storyboard?.instantiateViewController(withIdentifier: "RegistVC") as! RegistVC
+//        
+//        self.present(Vc, animated: false, completion: nil)
+//        
+//        let animation = CATransition.init()
+//        animation.duration = duration
+//        //        animation.type = "rippleEffect" //波纹
+//        animation.type = kCATransitionFade
+//        
+//        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
         
     }
     
     @IBAction func goToReSetting(_ sender: Any) {
+//        
+//        let Vc = self.storyboard?.instantiateViewController(withIdentifier: "getResetCodeVC") as! getResetCodeVC
+//        
+//        self.present(Vc, animated: false, completion: nil)
+//        
+//        let animation = CATransition.init()
+//        animation.duration = duration
+//        //        animation.type = "rippleEffect" //波纹
+//        animation.type = kCATransitionFade
+//        
+//        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
         
-        let Vc = self.storyboard?.instantiateViewController(withIdentifier: "getResetCodeVC") as! getResetCodeVC
-        
-        self.present(Vc, animated: false, completion: nil)
-        
-        let animation = CATransition.init()
-        animation.duration = duration
-        //        animation.type = "rippleEffect" //波纹
-        animation.type = kCATransitionFade
-        
-        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
     }
+
+}
+
+extension Login_RootVC:UITextFieldDelegate{
+    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
-//        PrintFM(string)
+        //        PrintFM(string)
         
         if textField == tf_phone , let str = textField.text{
             
@@ -125,6 +144,7 @@ class Login_RootVC: UIViewController,UITextFieldDelegate{
         return true
         
     }
-
+    
+    
 }
 
