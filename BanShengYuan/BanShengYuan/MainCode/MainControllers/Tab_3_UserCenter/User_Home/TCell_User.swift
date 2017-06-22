@@ -10,6 +10,7 @@ import UIKit
 
 class TCell_User: UITableViewCell {
     @IBOutlet weak var label_title: UILabel!
+    @IBOutlet weak var imageV_icon: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -38,8 +38,19 @@ func FontPFLight(size:CGFloat)->UIFont{
 }
 
 //MARK:-设置底部画线的attributeString
+func setCenterLineToString(tocolor:UIColor) -> [String:Any] {
+    let firstAttributes = [NSForegroundColorAttributeName:tocolor,NSStrikethroughColorAttributeName: tocolor, NSStrikethroughStyleAttributeName:1,NSStrokeColorAttributeName:tocolor] as [String : Any]
+    
+    return firstAttributes
+}
+
+//MARK:-设置底部画线的attributeString
 func setUnderLineToString(tocolor:UIColor) -> [String:Any] {
     let firstAttributes = [NSForegroundColorAttributeName:tocolor,NSUnderlineColorAttributeName: tocolor, NSUnderlineStyleAttributeName:1,NSStrokeColorAttributeName:tocolor] as [String : Any]
+    
+//    let firstAttributes = [NSForegroundColorAttributeName:tocolor] as [String : Any]
+    
+//    let firstAttributes = [NSForegroundColorAttributeName:tocolor,NSStrikethroughColorAttributeName: tocolor, NSStrikethroughStyleAttributeName:1,NSStrokeColorAttributeName:tocolor,NSFontAttributeName:FontPFLight(size: 12)] as [String : Any]
     
 //    attributedString.addAttributes(firstAttributes, range: string.rangeOfString("Testing"))
     return firstAttributes

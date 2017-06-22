@@ -12,6 +12,7 @@ class UserCenter_RootVC: UIViewController {
     @IBOutlet weak var TableV_main: UITableView!
     
     let array_title:Array? = ["我的订单","我的地址","我的资料"]
+    let array_image:Array? = ["homeList_icon","homeList_icon","homeList_icon"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -21,11 +22,17 @@ class UserCenter_RootVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.edgesForExtendedLayout = []
+        
         self.view.backgroundColor = FlatWhiteLight
         
         self.navigationItem.title = "我的"
         
         TableV_main.register(UINib.init(nibName: "TCell_User", bundle: nil), forCellReuseIdentifier: "TCell_User")
+        
+        TableV_main.backgroundColor = UIColor.white
+        
+        TableV_main.tableFooterView = UIView()
 
     }
 
@@ -88,6 +95,8 @@ extension UserCenter_RootVC:UITableViewDataSource{
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             
             cell.label_title.text = array_title?[indexPath.row]
+            
+            cell.imageV_icon.image = IBImageWithName((array_image?[indexPath.row])!)
             
             return cell
         default:

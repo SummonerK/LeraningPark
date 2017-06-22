@@ -24,7 +24,19 @@ class Login_RootVC: UIViewController{
         setRadiusFor(toview: bton_login, radius: 6, lineWidth: 0, lineColor: UIColor.clear)
         setRadiusFor(toview: bton_register, radius: 6, lineWidth: 0.6, lineColor: FlatGrayDark)
         let attributestr = NSMutableAttributedString(string: "忘记密码", attributes: setUnderLineToString(tocolor: FlatGrayLight))
+        
         bton_forget.setAttributedTitle(attributestr, for: UIControlState.normal)
+        
+////      ？？？？？
+//        let string = "¥9.9" as NSString
+//        let attributedString = NSMutableAttributedString(string: string as String)
+//        PrintFM(attributedString)
+////        attributedString.addAttributes(setUnderLineToString(tocolor: FlatGrayLight), range: string.range(of: "¥"))
+////        PrintFM(attributedString)
+//        attributedString.addAttributes(setCenterLineToString(tocolor: FlatGrayLight), range: string.range(of: "9.9"))
+//        PrintFM(attributedString)
+//        bton_forget.titleLabel?.attributedText = attributedString
+//        bton_forget.setAttributedTitle(attributedString, for: UIControlState.normal)
         
         //MARK: 设置键盘
         //键盘监听开关
