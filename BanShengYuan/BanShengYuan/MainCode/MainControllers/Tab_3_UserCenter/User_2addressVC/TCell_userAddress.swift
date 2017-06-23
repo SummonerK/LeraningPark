@@ -58,11 +58,11 @@ class TCell_userAddress: UITableViewCell {
     }
     
     @IBAction func action_delete(_ sender: Any) {
-        self.delegate?.setAction(indexPath: addressIndex!,actionType: .EDIT)
+        self.delegate?.setAction(indexPath: addressIndex!,actionType: .DELETE)
     }
     
     @IBAction func action_edit(_ sender: Any) {
-        self.delegate?.setAction(indexPath: addressIndex!,actionType: .DELETE)
+        self.delegate?.setAction(indexPath: addressIndex!,actionType: .EDIT)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

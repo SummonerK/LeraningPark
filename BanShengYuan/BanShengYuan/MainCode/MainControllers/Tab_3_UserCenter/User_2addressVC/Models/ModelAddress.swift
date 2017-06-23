@@ -13,22 +13,22 @@ class ModelAddress: Reflect {
     /**
      *  收货人
      */
-    var name:NSString!
+    var name:String!
     /**
      *  联系方式
      */
-    var phone:NSString!
+    var phone:String!
     /**
      *  所在区域
      */
-    var address_area:NSString!
+    var address_area:String!
     /**
      *  详细地址
      */
-    var address_Detail:NSString!
+    var address_Detail:String!
     /**
      *  设置默认
      */
-    var isFirst:Bool!
+    var isFirst:Bool! = false
     
 }

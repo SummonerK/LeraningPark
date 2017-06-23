@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+
+let StoryBoard_Main = UIStoryboard.init(name: "Main", bundle: nil)
+let StoryBoard_Login = UIStoryboard.init(name: "Login", bundle: nil)
+let StoryBoard_NextPages = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
+let StoryBoard_UserCenter = UIStoryboard.init(name: "UserCenter", bundle: nil)
+
 //MARK:-设置阴影
 func setshadowFor(aview:UIView, OffSet:CGSize){
     aview.layer.shadowColor = UIColor.init(red: 125.0/255.0, green: 125.0/255.0, blue: 125.0/255.0, alpha: 0.7).cgColor

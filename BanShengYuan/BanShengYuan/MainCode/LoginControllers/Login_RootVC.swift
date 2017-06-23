@@ -88,8 +88,7 @@ class Login_RootVC: UIViewController{
         PrintFM("登录")
         
         let window = UIApplication.shared.delegate?.window as? UIWindow
-        let storyboard_HOME = UIStoryboard.init(name: "Main", bundle: nil)
-        window?.rootViewController = storyboard_HOME.instantiateInitialViewController()
+        window?.rootViewController = StoryBoard_Main.instantiateInitialViewController()
         
         let animation = CATransition.init()
         animation.duration = duration

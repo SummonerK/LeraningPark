@@ -42,10 +42,11 @@ class user_AddressVC: BaseTabHiden {
         address1.phone = "15611112222"
         address1.address_area = "上海 普陀"
         address1.address_Detail = "祁连山路1888号 耀光国际B座 1803室"
+        address1.isFirst = true
         
         array_address.add(address1)
         
-        PrintFM(address1.toDict())
+//        PrintFM(address1.toDict())
         
         tableV_main.reloadData()
         
@@ -66,16 +67,34 @@ class user_AddressVC: BaseTabHiden {
     
     
     @IBAction func AddAction(_ sender: Any) {
-        let storyboard = UIStoryboard.init(name: "UserCenter", bundle: nil)
         //添加地址页面
-        let Vc = storyboard.instantiateViewController(withIdentifier: "user_addressAddVC") as! user_addressAddVC
-        Vc.tag_pagefrom = 2
+        let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_addressAddVC") as! user_addressAddVC
+        Vc.tag_pagefrom = 1
+        Vc.addressBack = {(model)  -> Void in
+            self.array_address.add(model)
+            self.tableV_main.reloadData()
+        }
         self.navigationController?.pushViewController(Vc, animated: true)
         
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+//    func checkModelsInArray(){
+//        
+//        let array_temp = NSMutableArray(array: array_address as! [ModelAddress], copyItems: true)
+//        
+//        for I in 0...array_temp.count {
+//            if (array_temp[I] as! ModelAddress).isFirst{
+//                array_address.insert(array_temp[I], at: 0)
+//            }else{
+//                array_address.add(array_temp[I])
+//            }
+//
+//        }
+//        
+//    }
     
 }
 
@@ -100,7 +119,7 @@ extension user_AddressVC:UITableViewDataSource{
         cell.addressIndex = indexPath
         cell.setModel(toModel: (array_address[indexPath.section] as? ModelAddress)!)
         
-        if indexPath.section == 0 {
+        if (array_address[indexPath.section] as! ModelAddress).isFirst {
             cell.bton_set.isSelected = true
         }else{
             cell.bton_set.isSelected = false
@@ -111,15 +130,40 @@ extension user_AddressVC:UITableViewDataSource{
     
 }
 
+
 extension user_AddressVC: UserAddressDelegate{
     func setAction(indexPath:IndexPath, actionType:AddressActionType){
-        
         switch actionType {
         case .SET:
             PrintFM("set\(indexPath)")
+            
+//            for I in 0...self.array_address.count {
+//                (self.array_address[I] as? ModelAddress)?.isFirst = false
+//            }
+//            
+//            let model = self.array_address[indexPath.section] as! ModelAddress
+//            model.isFirst = true
+//            
+//            self.array_address.removeObject(at: indexPath.section)
+//            self.array_address.insert(model, at: 0)
+//            
+//            self.tableV_main.reloadData()
+            
+            
         case .EDIT:
             PrintFM("edit\(indexPath)")
+            //添加地址页面
+            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_addressAddVC") as! user_addressAddVC
+            Vc.tag_pagefrom = 2
+            Vc.modelEdit = array_address[indexPath.section] as? ModelAddress
+            Vc.addressBack = {(model)  -> Void in
+                self.array_address[indexPath.section] = model
+                self.tableV_main.reloadData()
+            }
+            self.navigationController?.pushViewController(Vc, animated: true)
         case .DELETE:
+            self.array_address.removeObject(at: indexPath.section)
+            self.tableV_main.reloadData()
             PrintFM("delete\(indexPath)")
         }
     }

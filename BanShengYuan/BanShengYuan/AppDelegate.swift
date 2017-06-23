@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         
-        let storyboard_HOME = UIStoryboard.init(name: "Login", bundle: nil)
-        window?.rootViewController = storyboard_HOME.instantiateInitialViewController()
+        
+        window?.rootViewController = StoryBoard_Login.instantiateInitialViewController()
         window?.makeKeyAndVisible()
         
         //MARK: 设置键盘

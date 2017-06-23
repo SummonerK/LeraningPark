@@ -55,8 +55,7 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
-        let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-        let Vc = storyboard.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
         self.navigationController?.pushViewController(Vc, animated: true)
         
         PrintFM("商户\t\(indexPath.row)")

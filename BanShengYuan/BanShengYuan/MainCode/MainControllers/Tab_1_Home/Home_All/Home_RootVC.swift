@@ -147,36 +147,28 @@ extension Home_RootVC:HomeHeaderDelegate{
         
         switch indexPath.row {
         case 0://品牌
-            let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-            let Vc = storyboard.instantiateViewController(withIdentifier: "home_pinPaiVC") as! home_pinPaiVC
+            let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "home_pinPaiVC") as! home_pinPaiVC
             self.navigationController?.pushViewController(Vc, animated: true)
         case 1://活动
-            let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-            let Vc = storyboard.instantiateViewController(withIdentifier: "Home_pActivity") as! Home_pActivity
+            let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "Home_pActivity") as! Home_pActivity
             self.navigationController?.pushViewController(Vc, animated: true)
         case 2://商户
-            let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-            let Vc = storyboard.instantiateViewController(withIdentifier: "Home_pShanghu") as! Home_pShanghu
+            let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "Home_pShanghu") as! Home_pShanghu
             self.navigationController?.pushViewController(Vc, animated: true)
         case 3://停车
-            let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-            let Vc = storyboard.instantiateViewController(withIdentifier: "Home_pParking") as! Home_pParking
+            let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "Home_pParking") as! Home_pParking
             self.navigationController?.pushViewController(Vc, animated: true)
         case 4://魔门音乐
-            let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-            let Vc = storyboard.instantiateViewController(withIdentifier: "Home_pMusic") as! Home_pMusic
+            let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "Home_pMusic") as! Home_pMusic
             self.navigationController?.pushViewController(Vc, animated: true)
         case 5://空中花市
-            let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-            let Vc = storyboard.instantiateViewController(withIdentifier: "Home_pHuashi") as! Home_pHuashi
+            let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "Home_pHuashi") as! Home_pHuashi
             self.navigationController?.pushViewController(Vc, animated: true)
         case 6://会员积分
-            let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-            let Vc = storyboard.instantiateViewController(withIdentifier: "Home_pVip") as! Home_pVip
+            let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "Home_pVip") as! Home_pVip
             self.navigationController?.pushViewController(Vc, animated: true)
         case 7://更多
-            let storyboard = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
-            let Vc = storyboard.instantiateViewController(withIdentifier: "Home_pMore") as! Home_pMore
+            let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "Home_pMore") as! Home_pMore
             self.navigationController?.pushViewController(Vc, animated: true)
         default:
             return

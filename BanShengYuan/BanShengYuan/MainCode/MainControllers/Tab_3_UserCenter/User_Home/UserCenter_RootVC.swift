@@ -124,19 +124,18 @@ extension UserCenter_RootVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let storyboard = UIStoryboard.init(name: "UserCenter", bundle: nil)
         switch indexPath.row {
         case 0:
             //我的订单
-            let Vc = storyboard.instantiateViewController(withIdentifier: "user_OrderVC") as! user_OrderVC
+            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_OrderVC") as! user_OrderVC
             self.navigationController?.pushViewController(Vc, animated: true)
         case 1:
             //我的地址
-            let Vc = storyboard.instantiateViewController(withIdentifier: "user_AddressVC") as! user_AddressVC
+            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_AddressVC") as! user_AddressVC
             self.navigationController?.pushViewController(Vc, animated: true)
         case 2:
             //我的资料
-            let Vc = storyboard.instantiateViewController(withIdentifier: "user_infoVC") as! user_infoVC
+            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_infoVC") as! user_infoVC
             self.navigationController?.pushViewController(Vc, animated: true)
             
         default:
