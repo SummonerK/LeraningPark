@@ -20,39 +20,6 @@ public protocol Mapable {
 let RESULT_CODE = "statusCode"  //约定的code格式
 let RESULT_MSG = "msg"     //约定的msg格式
 
-
-protocol ErrorType {
-    var _domain: Swift.String { get }
-    var _code: Swift.Int { get }
-}
-
-struct MyErrorStruct : ErrorType {
-    let _domain: String
-    let _code: Int
-}
-
-class MyErrorClass : ErrorType {
-    let _domain: String
-    let _code: Int
-    
-    init(domain: String, code: Int) {
-        _domain = domain
-        _code = code
-    }
-}
-
-struct GoodError : ErrorType {
-    let domain: String
-    let code: Int
-    
-    var _domain: String {
-        return domain
-    }
-    var _code: Int {
-        return code
-    }
-}
-
 extension Observable {
     func mapObject<T: Mappable>(type: T.Type) -> Observable<T> {
         return self.map { response in

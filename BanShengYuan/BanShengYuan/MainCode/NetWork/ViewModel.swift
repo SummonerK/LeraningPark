@@ -10,7 +10,27 @@ import Foundation
 import RxSwift
 import Moya
 
+let headerFields: Dictionary<String, String> = [
+    "platform": "iOS",
+    "sys_ver": String(UIDevice.version())
+]
+
+let appendedParams: Dictionary<String, AnyObject> = [
+    "uid": "123456" as AnyObject
+]
+
+let endpoint = { (target: MyAPI) -> Endpoint<MyAPI> in
+    let url = target.baseURL.appendingPathComponent(target.path).absoluteString
+    return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
+        .endpointByAddingParameters(appendedParams)
+        .endpointByAddingHTTPHeaderFields(headerFields)
+    
+}
+
 class ViewModel {
+
+    let apiProvider = RxMoyaProvider<MyAPI>(endpointClosure:endpoint)
+    
     private let provider = RxMoyaProvider<MyAPI>()
     
     func loginLogin(amodel:ModelLoginPost) -> Observable<ModelCommonBack> {

@@ -49,7 +49,7 @@ extension MyAPI: TargetType {
         case .addressGetDetail(_):
             return ""
         case .addressUpdate(_):
-            return ""
+            return "/member/deliveraddress"
         case .addressDelete(_):
             return ""
         case .userUpdate(_):

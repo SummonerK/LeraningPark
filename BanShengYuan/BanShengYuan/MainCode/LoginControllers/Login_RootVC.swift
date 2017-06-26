@@ -57,6 +57,25 @@ class Login_RootVC: UIViewController{
             })
             .addDisposableTo(disposeBag)
         
+        let model_address = ModelAddressUpdatePost()
+        model_address.partnerId = "a8bee0dd-09d1-4fa9-a9eb-80cb36d3d611"
+        model_address.memberId = "3dbab43e-6383-47d5-b176-ea4cad3daf85"
+        model_address.receiverName = "03"
+        model_address.phone = "18900001111"
+        model_address.address = "大街51号"
+        model_address.area = "上海-上海-普陀区"
+        
+        VM.addressUpdate(amodel: model_address)
+            .subscribe(onNext: { (common:ModelCommonBack) in
+                PrintFM("添加\(String(describing: common.description))")
+            }, onError: { (error:MyErrorEnum) in
+                PrintFM("添加\(error.drawCodeValue)")
+                } as? ((Error) -> Void),
+               onCompleted: {
+                PrintFM("添加Completed")
+            })
+            .addDisposableTo(disposeBag)
+        
     }
     
     func setNavi() {
