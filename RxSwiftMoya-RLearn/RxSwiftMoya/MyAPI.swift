@@ -18,8 +18,6 @@ enum MyAPI {
 }
 
 let basepath = "http://112.124.113.234:8080/zhizuobang-wap/"
-//let basepath = "http://jsonplaceholder.typicode.com"
-//let path = "http://www.323232323.com"
 
 
 extension MyAPI: TargetType {

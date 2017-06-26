@@ -177,24 +177,27 @@ class ViewController: UIViewController {
     //
     
     func fmGroup() {
+        
         let globalQ = DispatchQueue.global(qos:.default)
         let group = DispatchGroup()
+        group.wait(timeout: DispatchTime(uptimeNanoseconds: 10*NSEC_PER_SEC))
         globalQ.async(group: group, execute: {
+            
+            sleep(3)
             PrintFM("Q1")
         })
         globalQ.async(group: group, execute: {
+            sleep(3)
             PrintFM("Q2")
         })
         globalQ.async(group: group, execute: {
+            sleep(5)
             PrintFM("Q3")
         })
         
-//        group.notify(queue: globalQ) { 
-//            PrintFM("完成")
-//        }
-//        group.wait(timeout: DispatchTime(uptimeNanoseconds: 10*NSEC_PER_SEC))
-        
-        PrintFM("completed")
+        group.notify(queue: globalQ) { 
+            PrintFM("完成")
+        }
         
         
         //需要注意的是，dispatch_group_wait实际上会使当前的线程处于等待的状态，也就是说如果是在主线程执行dispatch_group_wait，在上面的Block执行完之前，主线程会处于卡死的状态。可以注意到dispatch_group_wait的第二个参数是指定超时的时间，如果指定为DISPATCH_TIME_FOREVER（如上面这个例子）则表示会永久等待，直到上面的Block全部执行完，除此之外，还可以指定为具体的等待时间，根据dispatch_group_wait的返回值来判断是上面block执行完了还是等待超时了。

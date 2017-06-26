@@ -24,7 +24,6 @@ class LoginNaviC: UINavigationController {
         
         UINavigationBar.appearance().tintColor = FlatBlackDark
         
-        
     }
 
     override func didReceiveMemoryWarning() {

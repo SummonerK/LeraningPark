@@ -9,6 +9,10 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 class Login_RootVC: UIViewController{
     @IBOutlet weak var tf_phone: UITextField!
     @IBOutlet weak var tf_pwd: UITextField!
@@ -27,22 +31,31 @@ class Login_RootVC: UIViewController{
         
         bton_forget.setAttributedTitle(attributestr, for: UIControlState.normal)
         
-////      ？？？？？
-//        let string = "¥9.9" as NSString
-//        let attributedString = NSMutableAttributedString(string: string as String)
-//        PrintFM(attributedString)
-////        attributedString.addAttributes(setUnderLineToString(tocolor: FlatGrayLight), range: string.range(of: "¥"))
-////        PrintFM(attributedString)
-//        attributedString.addAttributes(setCenterLineToString(tocolor: FlatGrayLight), range: string.range(of: "9.9"))
-//        PrintFM(attributedString)
-//        bton_forget.titleLabel?.attributedText = attributedString
-//        bton_forget.setAttributedTitle(attributedString, for: UIControlState.normal)
-        
         //MARK: 设置键盘
         //键盘监听开关
         IQKeyboardManager.sharedManager().enable = true
 
         ShowWelecomeV()
+        
+        
+        let disposeBag = DisposeBag()
+        let VM = ViewModel()
+        
+        let model = ModelLoginPost()
+        model.partnerId = "a8bee0dd-09d1-4fa9-a9eb-80cb36d3d611"
+        model.phone = "13914748543"
+        model.password = "697651309772"
+        
+        VM.loginLogin(amodel: model)
+            .subscribe(onNext: { (common:ModelCommonBack) in
+                PrintFM("登录\(String(describing: common.description))")
+            }, onError: { (error:MyErrorEnum) in
+                PrintFM("登陆\(error.drawCodeValue)")
+                } as? ((Error) -> Void),
+               onCompleted: {
+                PrintFM("登陆Completed")
+            })
+            .addDisposableTo(disposeBag)
         
     }
     

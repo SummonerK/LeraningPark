@@ -1,9 +1,9 @@
 //
 //  Observable+ObjectMapper.swift
-//  RxSwiftMoya
+//  BanShengYuan
 //
-//  Created by Chao Li on 9/20/16.
-//  Copyright © 2016 ERStone. All rights reserved.
+//  Created by Luofei on 2017/6/26.
+//  Copyright © 2017年 Luofei. All rights reserved.
 //
 
 import Foundation
@@ -17,8 +17,8 @@ public protocol Mapable {
     init?(jsonData:JSON)
 }
 
-let RESULT_CODE = "code"  //约定的code格式
-let RESULT_MSG = "message"     //约定的msg格式
+let RESULT_CODE = "statusCode"  //约定的code格式
+let RESULT_MSG = "msg"     //约定的msg格式
 
 
 protocol ErrorType {
@@ -62,10 +62,10 @@ extension Observable {
             guard let response = response as? Moya.Response else{
                 throw RxSwiftMoyaError.NoRepresentor
             }
-            guard ((200...209) ~= response.statusCode) else {
+            guard ((100...209) ~= response.statusCode) else {
                 throw RxSwiftMoyaError.NotSuccessfulHTTP
             }
-//
+            //
             //json shell
             let json = JSON.init(data: response.data)
             print("\(json)")
@@ -84,9 +84,8 @@ extension Observable {
             }else{
                 
                 throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string!)
-                
             }
-            
+
         }
     }
     
@@ -120,14 +119,52 @@ extension Observable {
                     throw RxSwiftMoyaError.ParseJSONError
                 }
                 
-                return Mapper<T>().mapArray(JSONArray: dicts)!
+                return Mapper<T>().mapArray(JSONArray: dicts)
                 
             }else{
                 
                 throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string!)
                 
             }
-
+            
+        }
+    }
+    
+    func mapAddList<T: Mappable>(type: T.Type) -> Observable<[T]> {
+        return self.map { response in
+        
+            guard let response = response as? Moya.Response else{
+                
+                throw RxSwiftMoyaError.NoRepresentor
+            }
+            
+            guard ((200...209) ~= response.statusCode) else {
+                throw RxSwiftMoyaError.NotSuccessfulHTTP
+            }
+            
+            let json = JSON.init(data: response.data)
+            
+            print("\(String(describing: json[RESULT_CODE].string))")
+            print("\(String(describing: json[RESULT_MSG].string))")
+            
+            if json[RESULT_CODE].int == Int(RxSwiftMoyaError.IBSuccess.rawValue){
+                
+                guard let array = json.rawValue as? [Any] else {
+                    throw RxSwiftMoyaError.ParseJSONError
+                }
+                
+                guard let dicts = array as? [[String: Any]] else {
+                    throw RxSwiftMoyaError.ParseJSONError
+                }
+                
+                return Mapper<T>().mapArray(JSONArray: dicts)
+                
+            }else{
+                
+                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string!)
+                
+            }
+            
         }
     }
     
@@ -143,7 +180,7 @@ enum RxSwiftMoyaError: String {
     case NotSuccessfulHTTP = "网络错误"
     case pramsError = "参数错误"
     case ServierError = "服务器错误"
-    case IBSuccess = "200"
+    case IBSuccess = "100"
     case IBFromCodeStatus = "StatusCodeError"
 }
 
@@ -168,6 +205,3 @@ public enum MyErrorEnum {
     }
     
 }
-
-
-
