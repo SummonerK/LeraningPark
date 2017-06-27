@@ -13,9 +13,12 @@ class TCellshanghu: UITableViewCell {
     @IBOutlet weak var label_name: UILabel!
     @IBOutlet weak var label_info: UILabel!
 
+    @IBOutlet weak var label_local: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        setRadiusFor(toview: label_local, radius: 2, lineWidth: 0.8, lineColor: FlatPowderBlueDark)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

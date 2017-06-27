@@ -15,8 +15,7 @@ class Home_pParking: BaseTabHiden {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "停车"
-        // Do any additional setup after loading the view.
+        setNavi()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +23,17 @@ class Home_pParking: BaseTabHiden {
         // Dispose of any resources that can be recreated.
     }
     
+    func setNavi() {
+        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
+        item.image = UIImage(named: "arrow_left")
+        
+        self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.title = "停车"
+    }
+    
+    func actionBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 
     /*
     // MARK: - Navigation

@@ -16,10 +16,21 @@ class home_pinPaiVC: BaseTabHiden {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "品牌"
-
+        setNavi()
+        
         setupCollectionView()
-        // Do any additional setup after loading the view.
+    }
+    
+    func setNavi() {
+        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
+        item.image = UIImage(named: "arrow_left")
+        
+        self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.title = "品牌"
+    }
+    
+    func actionBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func setupCollectionView() {

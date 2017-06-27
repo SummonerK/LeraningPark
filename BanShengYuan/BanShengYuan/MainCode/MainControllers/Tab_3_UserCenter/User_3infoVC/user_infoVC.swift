@@ -68,7 +68,7 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
     }
     func setNavi() {
         
-        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(actionBack(_:)))
+        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
         item.image = UIImage(named: "arrow_left")
         
         self.navigationItem.leftBarButtonItem = item

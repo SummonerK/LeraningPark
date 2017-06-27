@@ -14,6 +14,12 @@ class shangHu_DetailVC: BaseTabHiden {
     
     var sectionNum:Int? = 1
     
+    @IBOutlet weak var searchbar: UISearchBar!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 
     @IBOutlet weak var CV_main: UICollectionView!
     override func viewDidLoad() {
@@ -22,6 +28,15 @@ class shangHu_DetailVC: BaseTabHiden {
         self.navigationItem.title = "一家商户"
         
         setupCollection()
+    }
+    @IBAction func NaviBack(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func NaviMenu(_ sender: Any) {
+        
+        PrintFM("meun")
+        
     }
     
     func setupCollection() {
@@ -70,7 +85,7 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
 extension shangHu_DetailVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize.init(width: IBScreenWidth, height: IBScreenWidth*176/375)
+        return CGSize.init(width: IBScreenWidth, height: 110 + IBScreenWidth*180/375)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{

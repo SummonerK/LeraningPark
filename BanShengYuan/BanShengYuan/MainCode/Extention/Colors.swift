@@ -15,3 +15,5 @@ let FlatGrayDark = UIColor(hexString: "#6D797A")
 let FlatGrayLight = UIColor(hexString: "#849495")
 let FlatWhiteDark = UIColor(hexString: "#B0B6BB")
 let FlatWhiteLight = UIColor(hexString: "#E8ECEE")
+let FlatPowderBlueDark = UIColor(hexString: "#8898D0")
+

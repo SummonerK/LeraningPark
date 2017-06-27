@@ -222,7 +222,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X6c-OF-56K">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHeaderplaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="X6c-OF-56K">
                                                 <rect key="frame" x="287" y="10" width="60" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="1R4-LQ-Qyx"/>
@@ -871,6 +871,7 @@
     <resources>
         <image name="arrow_right" width="8" height="14"/>
         <image name="man" width="15" height="15"/>
+        <image name="userHeaderplaceHolder" width="47" height="47"/>
         <image name="woman" width="15" height="15"/>
     </resources>
 </document>

@@ -18,11 +18,23 @@ class Home_pActivity: BaseTabHiden {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "活动"
+        setNavi()
         
         tableView_main.register(UINib.init(nibName: "TCell_pActivity", bundle: nil), forCellReuseIdentifier: "TCell_pActivity")
         
-        // Do any additional setup after loading the view.
+    }
+    
+    func setNavi() {
+        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
+        item.image = UIImage(named: "arrow_left")
+        
+        self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.title = "活动"
+
+    }
+    
+    func actionBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

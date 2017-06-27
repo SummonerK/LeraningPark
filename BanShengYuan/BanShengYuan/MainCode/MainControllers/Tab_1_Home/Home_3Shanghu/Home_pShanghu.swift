@@ -11,14 +11,31 @@ import UIKit
 class Home_pShanghu: BaseTabHiden {
     
     @IBOutlet weak var tableV_main: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationItem.title = "商户"
+        
+        setNavi()
         
         tableV_main.register(UINib.init(nibName: "TCellshanghu", bundle: nil), forCellReuseIdentifier: "TCellshanghu")
 
+    }
+    
+    func setNavi() {
+        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
+        item.image = UIImage(named: "arrow_left")
+        
+        self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.title = "商铺列表"
+    }
+    
+    func actionBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +51,7 @@ extension Home_pShanghu:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
 
-        return (section==0) ? IBScreenWidth*176/375 : 0
+        return (section==0) ? IBScreenWidth*156/375 : 0
 
     }
     
@@ -46,7 +63,7 @@ extension Home_pShanghu:UITableViewDataSource{
                     "http://wx2.sinaimg.cn/mw690/af0d43ddgy1fdjzefvub1j20dw09q48s.jpg"
                 ]
         
-        let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*176/375))
+        let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*156/375))
         
         viewheader.contentImages = {
             
@@ -101,7 +118,7 @@ extension Home_pShanghu: UITableViewDelegate {
         
         switch indexPath.section {
         case 1:
-            return IBScreenWidth*110/375
+            return IBScreenWidth*120/375
         default:
             return 0
         }

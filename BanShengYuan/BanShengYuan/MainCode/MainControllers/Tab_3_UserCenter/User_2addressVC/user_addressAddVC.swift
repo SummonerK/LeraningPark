@@ -76,7 +76,7 @@ class user_addressAddVC: UIViewController {
     }
     
     func setNavi() {
-        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(actionBack(_:)))
+        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
         item.image = UIImage(named: "arrow_left")
         self.navigationItem.leftBarButtonItem = item
         self.navigationItem.title = tag_pagefrom==2 ? "编辑收货人" : "新建收货人"

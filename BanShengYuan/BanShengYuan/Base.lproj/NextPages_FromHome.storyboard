@@ -173,8 +173,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aO-ui-LwF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tw5-UN-Kgw">
+                                        <rect key="frame" x="2" y="20" width="40" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="PfP-z6-bXL"/>
+                                            <constraint firstAttribute="height" constant="44" id="gXH-AJ-4bH"/>
+                                        </constraints>
+                                        <state key="normal" title=" " image="arrow_left"/>
+                                        <connections>
+                                            <action selector="NaviBack:" destination="f1N-07-Cap" eventType="touchUpInside" id="4Ub-Ps-bMn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqL-Su-8Dq">
+                                        <rect key="frame" x="333" y="20" width="40" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="rac-PF-5nK"/>
+                                            <constraint firstAttribute="height" constant="44" id="v5g-t4-xtm"/>
+                                        </constraints>
+                                        <state key="normal" title=" " image="right"/>
+                                        <connections>
+                                            <action selector="NaviMenu:" destination="f1N-07-Cap" eventType="touchUpInside" id="da7-k0-47f"/>
+                                        </connections>
+                                    </button>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="搜索商品" translatesAutoresizingMaskIntoConstraints="NO" id="Xgl-Jw-0HW">
+                                        <rect key="frame" x="44" y="20" width="287" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="rq2-oi-ZgF"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="tw5-UN-Kgw" firstAttribute="leading" secondItem="8aO-ui-LwF" secondAttribute="leading" constant="2" id="681-MP-MSg"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xgl-Jw-0HW" secondAttribute="bottom" id="FtZ-9t-Itr"/>
+                                    <constraint firstAttribute="bottom" secondItem="tw5-UN-Kgw" secondAttribute="bottom" id="MyX-fh-Xlq"/>
+                                    <constraint firstAttribute="bottom" secondItem="yqL-Su-8Dq" secondAttribute="bottom" id="U1N-rf-KIU"/>
+                                    <constraint firstAttribute="height" constant="64" id="ePK-vf-Syw"/>
+                                    <constraint firstItem="Xgl-Jw-0HW" firstAttribute="leading" secondItem="tw5-UN-Kgw" secondAttribute="trailing" constant="2" id="i9f-HW-RlX"/>
+                                    <constraint firstItem="yqL-Su-8Dq" firstAttribute="leading" secondItem="Xgl-Jw-0HW" secondAttribute="trailing" constant="2" id="ny1-wD-ig1"/>
+                                    <constraint firstAttribute="trailing" secondItem="yqL-Su-8Dq" secondAttribute="trailing" constant="2" id="tgF-5i-Px7"/>
+                                    <constraint firstItem="Xgl-Jw-0HW" firstAttribute="centerX" secondItem="8aO-ui-LwF" secondAttribute="centerX" id="wvi-iC-88S"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Zj-04-qUe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JUO-0q-jpR">
                                     <size key="itemSize" width="50" height="50"/>
@@ -206,11 +252,15 @@
                             <constraint firstItem="6Zj-04-qUe" firstAttribute="leading" secondItem="HMz-t4-FY1" secondAttribute="leading" id="5Vy-Vf-CgZ"/>
                             <constraint firstAttribute="trailing" secondItem="6Zj-04-qUe" secondAttribute="trailing" id="Hvu-wh-xNo"/>
                             <constraint firstItem="0R3-tF-u3k" firstAttribute="top" secondItem="6Zj-04-qUe" secondAttribute="bottom" id="MbU-bc-Ftc"/>
-                            <constraint firstItem="6Zj-04-qUe" firstAttribute="top" secondItem="HMz-t4-FY1" secondAttribute="top" id="jgz-Uc-Zai"/>
+                            <constraint firstItem="8aO-ui-LwF" firstAttribute="top" secondItem="HMz-t4-FY1" secondAttribute="top" id="ecy-Iq-o5H"/>
+                            <constraint firstAttribute="trailing" secondItem="8aO-ui-LwF" secondAttribute="trailing" id="hu6-dF-DPW"/>
+                            <constraint firstItem="6Zj-04-qUe" firstAttribute="top" secondItem="HMz-t4-FY1" secondAttribute="top" constant="64" id="jgz-Uc-Zai"/>
+                            <constraint firstItem="8aO-ui-LwF" firstAttribute="leading" secondItem="HMz-t4-FY1" secondAttribute="leading" id="vuR-lb-0Pq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="CV_main" destination="6Zj-04-qUe" id="Ram-fF-IZP"/>
+                        <outlet property="searchbar" destination="Xgl-Jw-0HW" id="MT9-SU-9QN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJY-K4-ytc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -357,4 +407,8 @@
             <point key="canvasLocation" x="2185" y="-197"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow_left" width="12" height="21"/>
+        <image name="right" width="21" height="14"/>
+    </resources>
 </document>
