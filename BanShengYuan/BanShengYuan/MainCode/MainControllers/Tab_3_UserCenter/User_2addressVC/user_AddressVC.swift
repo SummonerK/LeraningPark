@@ -74,12 +74,19 @@ class user_AddressVC: BaseTabHiden {
             self.array_address.add(model)
             self.tableV_main.reloadData()
         }
+        
         self.navigationController?.pushViewController(Vc, animated: true)
         
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+//    func getBack(_ back:ModelAddress,_ page:Int) -> Void{
+//        
+//        PrintFM("\(back.toDict()) --- from page \(page)")
+//        
+//    }
     
 //    func checkModelsInArray(){
 //        
