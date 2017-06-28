@@ -10,16 +10,35 @@ import UIKit
 
 class chooseVC: UIViewController {
 
+    @IBOutlet weak var imageVsub: UIImageView!
+    
+    @IBOutlet weak var label_count: UILabel!
+    
+    @IBOutlet weak var collection_main: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        imageVsub.image = createImageWithColor(color: UIColor.white)
+        setRadiusFor(toview: imageVsub, radius: 3, lineWidth: 0, lineColor: UIColor.white)
+   
+    }
+    @IBAction func closeCover(_ sender: Any) {
+        
+    }
+    @IBAction func buyNow(_ sender: Any) {
+        
+    }
+    @IBAction func countAdd(_ sender: Any) {
+        
+    }
+    @IBAction func countFls(_ sender: Any) {
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
-    
 
 }

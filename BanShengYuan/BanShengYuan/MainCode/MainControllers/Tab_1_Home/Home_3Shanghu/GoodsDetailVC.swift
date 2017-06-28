@@ -14,6 +14,8 @@ class GoodsDetailVC: BaseTabHiden {
     
     var coverVC: chooseVC! = nil
     
+    var _tapGesture: UITapGestureRecognizer!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -22,14 +24,47 @@ class GoodsDetailVC: BaseTabHiden {
         
         setNavi()
         
-        coverVC = StoryBoard_NextPages.instantiateViewController(withIdentifier: "chooseVC") as? chooseVC
-        
-        self.addChildViewController(coverVC.self)
-        
         super.viewDidLoad()
         tableV_main.register(UINib.init(nibName: "TCellGoodsinfo", bundle: nil), forCellReuseIdentifier: "TCellGoodsinfo")
         tableV_main.register(UINib.init(nibName: "TCellGoodsImage", bundle: nil), forCellReuseIdentifier: "TCellGoodsImage")
         
+        setCoverView()
+        
+    }
+    
+    func setCoverView(){
+        
+        coverVC = StoryBoard_NextPages.instantiateViewController(withIdentifier: "chooseVC") as? chooseVC
+        
+        self.navigationController!.addChildViewController(coverVC.self)
+        
+        coverVC.view.frame = CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenHeight)
+        
+        self.navigationController!.view.addSubview(coverVC.view)
+        
+        self.navigationController!.view.sendSubview(toBack: coverVC.view)
+        
+        _tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized(_:)))
+        
+        coverVC.view.addGestureRecognizer(_tapGesture)
+    }
+    
+    func showCoverView() {
+        
+        self.navigationController!.view.bringSubview(toFront: coverVC.view)
+    }
+    
+    func closeCoverView() {
+        
+        self.navigationController!.view.sendSubview(toBack: coverVC.view)
+    }
+    
+    internal func tapRecognized(_ gesture: UITapGestureRecognizer) {
+        
+        if gesture.state == UIGestureRecognizerState.ended {
+            
+            closeCoverView()
+        }
     }
     
     func setNavi() {
@@ -111,10 +146,12 @@ extension GoodsDetailVC:UITableViewDataSource{
             
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             
-            let longurl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497878307246&di=2ba97ccfa0be61143a61baa61eee95ba&imgtype=0&src=http%3A%2F%2Fimg.bbs.cnhubei.com%2Fforum%2Fdvbbs%2F2004-4%2F200441915031894.jpg"
-            let url = URL(string: longurl)
+//            let longurl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497878307246&di=2ba97ccfa0be61143a61baa61eee95ba&imgtype=0&src=http%3A%2F%2Fimg.bbs.cnhubei.com%2Fforum%2Fdvbbs%2F2004-4%2F200441915031894.jpg"
+//            let url = URL(string: longurl)
+//            
+//            cell.imageV_content.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
             
-            cell.imageV_content.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+            cell.imageV_content.image = UIImage(named: "detail.jpg")
             
             return cell
         default:
@@ -137,12 +174,13 @@ extension GoodsDetailVC: UITableViewDelegate {
         case 2:
             
             
-            if let image = UIImage(named: "paris.jpg"){
+            if let image = UIImage(named: "detail.jpg"){
                 let hight =  image.size.height / image.size.width * IBScreenWidth
-                
+            
                 PrintFM("imageHight \(hight)")
                 
                 return CGFloat(hight)
+//                return 1488
             }else{
                 return 0
             }
@@ -157,9 +195,7 @@ extension GoodsDetailVC: UITableViewDelegate {
         
         PrintFM("\(indexPath.row)")
         
-        coverVC.view.frame = CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenHeight)
-        
-        self.view.addSubview(coverVC.view)
+        showCoverView()
                 
     }
 }
