@@ -119,8 +119,7 @@ class Login_RootVC: UIViewController{
     @IBAction func loginAction(_ sender: Any) {
         PrintFM("登录")
         
-        let window = UIApplication.shared.delegate?.window as? UIWindow
-        window?.rootViewController = StoryBoard_Main.instantiateInitialViewController()
+        KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
         
         let animation = CATransition.init()
         animation.duration = duration

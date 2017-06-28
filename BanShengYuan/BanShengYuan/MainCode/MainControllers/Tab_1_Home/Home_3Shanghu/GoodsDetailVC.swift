@@ -12,6 +12,8 @@ class GoodsDetailVC: BaseTabHiden {
 
     @IBOutlet weak var tableV_main: UITableView!
     
+    var coverVC: chooseVC! = nil
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -19,6 +21,10 @@ class GoodsDetailVC: BaseTabHiden {
     override func viewDidLoad() {
         
         setNavi()
+        
+        coverVC = StoryBoard_NextPages.instantiateViewController(withIdentifier: "chooseVC") as? chooseVC
+        
+        self.addChildViewController(coverVC.self)
         
         super.viewDidLoad()
         tableV_main.register(UINib.init(nibName: "TCellGoodsinfo", bundle: nil), forCellReuseIdentifier: "TCellGoodsinfo")
@@ -151,5 +157,9 @@ extension GoodsDetailVC: UITableViewDelegate {
         
         PrintFM("\(indexPath.row)")
         
+        coverVC.view.frame = CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenHeight)
+        
+        self.view.addSubview(coverVC.view)
+                
     }
 }

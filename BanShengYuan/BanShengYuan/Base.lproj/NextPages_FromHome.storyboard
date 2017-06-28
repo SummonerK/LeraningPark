@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -160,6 +161,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9k-i0-nc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1446" y="-2337"/>
+        </scene>
+        <!--ChooseVC-->
+        <scene sceneID="cSj-Q5-pty">
+            <objects>
+                <viewController restorationIdentifier="chooseVC" storyboardIdentifier="chooseVC" id="DHb-JU-4mU" customClass="chooseVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qbn-pZ-JOp"/>
+                        <viewControllerLayoutGuide type="bottom" id="EJe-4t-6CW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oZl-qm-3zX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10o-dG-0pM">
+                                <rect key="frame" x="0.0" y="267" width="375" height="400"/>
+                                <color key="backgroundColor" red="0.47660902142524719" green="0.37373736500740051" blue="0.28653344511985779" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.68888300657272339" green="0.71366006135940552" blue="0.73448425531387329" alpha="0.40402932363013699" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="10o-dG-0pM" firstAttribute="leading" secondItem="oZl-qm-3zX" secondAttribute="leading" id="58p-po-lUu"/>
+                            <constraint firstAttribute="trailing" secondItem="10o-dG-0pM" secondAttribute="trailing" id="Rrz-uY-taa"/>
+                            <constraint firstItem="10o-dG-0pM" firstAttribute="height" secondItem="oZl-qm-3zX" secondAttribute="height" multiplier="0.6" id="eHz-wh-Gaa"/>
+                            <constraint firstItem="EJe-4t-6CW" firstAttribute="top" secondItem="10o-dG-0pM" secondAttribute="bottom" id="euu-bc-A3x"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DBO-cf-CBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2185" y="-2337"/>
         </scene>
         <!--shanghuDetail-->
         <scene sceneID="sWx-OX-6bD">

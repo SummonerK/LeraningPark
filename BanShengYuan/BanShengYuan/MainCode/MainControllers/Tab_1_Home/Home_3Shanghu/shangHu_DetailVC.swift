@@ -25,8 +25,6 @@ class shangHu_DetailVC: BaseTabHiden {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "一家商户"
-        
         setupCollection()
     }
     @IBAction func NaviBack(_ sender: Any) {
@@ -85,7 +83,9 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
 extension shangHu_DetailVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
         return CGSize.init(width: IBScreenWidth, height: 110 + IBScreenWidth*180/375)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
@@ -93,7 +93,9 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
         
         PrintFM("section Index \(indexPath.section)")
         
-        headerView.test = "sdflajfds"
+//        headerView.test = "sdflajfds"
+        
+        headerView.layoutIfNeeded()
         
         return headerView
     }

@@ -24,6 +24,7 @@
 		634DE72C1EF381D200E44AFA /* TCell_pActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DE72A1EF381D200E44AFA /* TCell_pActivity.swift */; };
 		634DE72D1EF381D200E44AFA /* TCell_pActivity.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634DE72B1EF381D200E44AFA /* TCell_pActivity.xib */; };
 		634DE72F1EF3B07000E44AFA /* view_shanghuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DE72E1EF3B07000E44AFA /* view_shanghuHeader.swift */; };
+		634F41F91F035BF8004C0A98 /* chooseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F41F81F035BF8004C0A98 /* chooseVC.swift */; };
 		635380D21EE8E52A006C0375 /* Source.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 635380D11EE8E52A006C0375 /* Source.bundle */; };
 		635381081EE8FDFD006C0375 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635381071EE8FDFD006C0375 /* QuartzCore.framework */; };
 		6353810A1EE8FE05006C0375 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635381091EE8FE05006C0375 /* CoreGraphics.framework */; };
@@ -145,6 +146,7 @@
 		634DE72A1EF381D200E44AFA /* TCell_pActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCell_pActivity.swift; sourceTree = "<group>"; };
 		634DE72B1EF381D200E44AFA /* TCell_pActivity.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCell_pActivity.xib; sourceTree = "<group>"; };
 		634DE72E1EF3B07000E44AFA /* view_shanghuHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = view_shanghuHeader.swift; sourceTree = "<group>"; };
+		634F41F81F035BF8004C0A98 /* chooseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chooseVC.swift; sourceTree = "<group>"; };
 		635380D11EE8E52A006C0375 /* Source.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Source.bundle; sourceTree = "<group>"; };
 		635381071EE8FDFD006C0375 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		635381091EE8FE05006C0375 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -646,6 +648,7 @@
 				6362C0131EF8B52B00B22CE5 /* paris.jpg */,
 				638DE62C1EF7D3DF0017DA72 /* TCellGoodsImage.swift */,
 				638DE62D1EF7D3DF0017DA72 /* TCellGoodsImage.xib */,
+				634F41F81F035BF8004C0A98 /* chooseVC.swift */,
 			);
 			path = Home_3Shanghu;
 			sourceTree = "<group>";
@@ -865,6 +868,7 @@
 				638F185B1EF1198300A33412 /* IBTabC.swift in Sources */,
 				635A78AE1EFBA14B00F0BCD3 /* ModelAddress.swift in Sources */,
 				63559AB91EFA6D7F003FC6E5 /* UserCenterNaviC.swift in Sources */,
+				634F41F91F035BF8004C0A98 /* chooseVC.swift in Sources */,
 				638F18591EF114C700A33412 /* BaseTabHiden.swift in Sources */,
 				635524E01F01EFB90038AA1C /* info_NameVC.swift in Sources */,
 				63559AAB1EFA0ECB003FC6E5 /* Datas.swift in Sources */,

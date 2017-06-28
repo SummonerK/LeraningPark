@@ -33,6 +33,10 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        _tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized(_:)))
+        
+        KeyWindow.addGestureRecognizer(_tapGesture)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -49,10 +53,6 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
         
         self.view.backgroundColor = FlatWhiteLight
         setDatePicker()
-        
-        _tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized(_:)))
-        
-        KeyWindow.addGestureRecognizer(_tapGesture)
         
     }
     
