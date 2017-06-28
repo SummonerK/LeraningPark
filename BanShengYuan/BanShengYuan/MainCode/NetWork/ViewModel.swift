@@ -24,7 +24,6 @@ let endpoint = { (target: MyAPI) -> Endpoint<MyAPI> in
     return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
         .endpointByAddingParameters(appendedParams)
         .endpointByAddingHTTPHeaderFields(headerFields)
-    
 }
 
 class ViewModel {

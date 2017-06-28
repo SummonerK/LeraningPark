@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CCell_shhuDetailHeader: UICollectionReusableView {
+class CCell_shhuDetailHeader: UICollectionViewCell {
     
     @IBOutlet weak var imageV_icon: UIImageView!
     
