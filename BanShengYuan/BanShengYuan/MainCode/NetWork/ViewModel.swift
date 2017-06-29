@@ -26,12 +26,18 @@ let endpoint = { (target: MyAPI) -> Endpoint<MyAPI> in
         .endpointByAddingHTTPHeaderFields(headerFields)
 }
 
-class ViewModel {
+let apiProvider = RxMoyaProvider<MyAPI>(endpointClosure:endpoint)
 
-    let apiProvider = RxMoyaProvider<MyAPI>(endpointClosure:endpoint)
+let provider = RxMoyaProvider<MyAPI>()
+
+class ViewModel {
     
-    private let provider = RxMoyaProvider<MyAPI>()
-    
+    func TESTHttps(amodel:ModelTestPost) -> Observable<ModelTestBack> {
+        return provider.request(.test(PostModel: amodel))
+            .mapObject(type: ModelTestBack.self)
+            .showError()
+    }
+
     func loginLogin(amodel:ModelLoginPost) -> Observable<ModelCommonBack> {
         return provider.request(.loginLogin(PostModel: amodel))
             .mapObject(type: ModelCommonBack.self)

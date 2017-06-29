@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func testATS(){
     //先导入证书，找到证书的路径
+//        let Path Bundle.main.
     
     }
 

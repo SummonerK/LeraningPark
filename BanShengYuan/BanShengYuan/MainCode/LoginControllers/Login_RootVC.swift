@@ -19,11 +19,18 @@ class Login_RootVC: UIViewController{
     @IBOutlet weak var bton_login: UIButton!
     @IBOutlet weak var bton_register: UIButton!
     @IBOutlet weak var bton_forget: UIButton!
+    
+    let disposeBag = DisposeBag()
+    let VM = ViewModel()
+    let model = ModelLoginPost()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavi()
+        
+        tf_phone.attributedPlaceholder = NSAttributedString(string:"请输入手机号",attributes:[NSForegroundColorAttributeName: UIColor.white])
+        tf_pwd.attributedPlaceholder = NSAttributedString(string:"请输入密码",attributes:[NSForegroundColorAttributeName: UIColor.white])
         
         setRadiusFor(toview: bton_login, radius: 6, lineWidth: 0, lineColor: UIColor.clear)
         setRadiusFor(toview: bton_register, radius: 6, lineWidth: 0.6, lineColor: FlatGrayDark)
@@ -37,22 +44,10 @@ class Login_RootVC: UIViewController{
 
         ShowWelecomeV()
         
+        tf_phone.text = "13914748543"
+        tf_pwd.text = "697651309772"
         
-        let disposeBag = DisposeBag()
-        let VM = ViewModel()
-        
-        let model = ModelLoginPost()
         model.partnerId = "a8bee0dd-09d1-4fa9-a9eb-80cb36d3d611"
-        model.phone = "13914748543"
-        model.password = "697651309772"
-        
-        VM.loginLogin(amodel: model)
-            .subscribe(onNext: { (common:ModelCommonBack) in
-                PrintFM("登录\(String(describing: common.description))")
-            },onError:{error in
-                print("3333333333Error//////Error \((error as! MyErrorEnum).drawMsgValue)")
-            })
-            .addDisposableTo(disposeBag)
         
 //        let model_address = ModelAddressUpdatePost()
 //        model_address.partnerId = "a8bee0dd-09d1-4fa9-a9eb-80cb36d3d611"
@@ -113,15 +108,34 @@ class Login_RootVC: UIViewController{
     
     @IBAction func loginAction(_ sender: Any) {
         PrintFM("登录")
+        model.phone = tf_phone.text
+        model.password = tf_pwd.text
+
         
-        KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
+        VM.loginLogin(amodel: model)
+            .subscribe(onNext: { (common:ModelCommonBack) in
+                PrintFM("登录\(String(describing: common.description))")
+                
+                KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
+                let animation = CATransition.init()
+                animation.duration = self.duration
+                animation.type = kCATransitionFade
+                UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+                
+            },onError:{error in
+                print("3333333333Error//////Error \((error as! MyErrorEnum).drawMsgValue)")
+                
+                HUDShowMsgQuick(msg: (error as! MyErrorEnum).drawMsgValue, toView: self.view, time: 0.8)
+            })
+            .addDisposableTo(disposeBag)
         
-        let animation = CATransition.init()
-        animation.duration = duration
-//        animation.type = "rippleEffect" //波纹
-        animation.type = kCATransitionFade 
-        
-        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+//        
+//        KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
+//        
+//        let animation = CATransition.init()
+//        animation.duration = duration
+//        animation.type = kCATransitionFade
+//        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
         
     }
     @IBAction func goToRegist(_ sender: Any) {

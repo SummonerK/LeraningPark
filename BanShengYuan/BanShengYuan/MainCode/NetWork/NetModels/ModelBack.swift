@@ -14,6 +14,34 @@ import ObjectMapper
  *  statusCode:100
  *  msg:String
  */
+class ModelTestBack: Mappable {
+    var current_user_url: String?
+    var current_user_authorizations_html_url: String?
+    var authorizations_url: String?
+    var code_search_url: String?
+    var commit_search_url: String?
+
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        current_user_url <- map["current_user_url"]
+        current_user_authorizations_html_url <- map["current_user_authorizations_html_url"]
+        authorizations_url <- map["authorizations_url"]
+        code_search_url <- map["code_search_url"]
+        commit_search_url <- map["commit_search_url"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+//MARK:通用返回结构
+/*
+ *  statusCode:100
+ *  msg:String
+ */
 class ModelCommonBack: Mappable {
     var msg: String?
     var statusCode: Int?

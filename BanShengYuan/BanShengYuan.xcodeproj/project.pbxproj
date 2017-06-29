@@ -16,6 +16,7 @@
 		63020C3B1EFD0236003F8199 /* view_orderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63020C361EFD0236003F8199 /* view_orderHeader.swift */; };
 		63020C3C1EFD0236003F8199 /* view_orderHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63020C371EFD0236003F8199 /* view_orderHeader.xib */; };
 		63020C411EFD0934003F8199 /* ModelUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63020C401EFD0934003F8199 /* ModelUserInfo.swift */; };
+		634463991F04A62E000085E7 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 634463981F04A62D000085E7 /* login.png */; };
 		634DE71D1EF36E8C00E44AFA /* shangHu_DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DE71C1EF36E8C00E44AFA /* shangHu_DetailVC.swift */; };
 		634DE7221EF36F6E00E44AFA /* CCell_shhuDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DE7201EF36F6E00E44AFA /* CCell_shhuDetailHeader.swift */; };
 		634DE7231EF36F6E00E44AFA /* CCell_shhuDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634DE7211EF36F6E00E44AFA /* CCell_shhuDetailHeader.xib */; };
@@ -140,6 +141,7 @@
 		63020C361EFD0236003F8199 /* view_orderHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = view_orderHeader.swift; sourceTree = "<group>"; };
 		63020C371EFD0236003F8199 /* view_orderHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = view_orderHeader.xib; sourceTree = "<group>"; };
 		63020C401EFD0934003F8199 /* ModelUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUserInfo.swift; sourceTree = "<group>"; };
+		634463981F04A62D000085E7 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		634DE71C1EF36E8C00E44AFA /* shangHu_DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shangHu_DetailVC.swift; sourceTree = "<group>"; };
 		634DE7201EF36F6E00E44AFA /* CCell_shhuDetailHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCell_shhuDetailHeader.swift; sourceTree = "<group>"; };
 		634DE7211EF36F6E00E44AFA /* CCell_shhuDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCell_shhuDetailHeader.xib; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 		63657D981EE7CE5900DA24F4 /* LoginControllers */ = {
 			isa = PBXGroup;
 			children = (
+				634463981F04A62D000085E7 /* login.png */,
 				63559AB01EFA48C2003FC6E5 /* LoginNaviC.swift */,
 				63657D991EE7CE5900DA24F4 /* Login_RootVC.swift */,
 				63657DA61EE7F51800DA24F4 /* GuideView.swift */,
@@ -803,6 +806,7 @@
 				6362C0221EF9172100B22CE5 /* TCell_infoHeader.xib in Resources */,
 				638DE6131EF7B8080017DA72 /* view_userHeader.xib in Resources */,
 				638DE6101EF7B8080017DA72 /* TCell_User.xib in Resources */,
+				634463991F04A62E000085E7 /* login.png in Resources */,
 				635D83F31EF22F67007A2C05 /* TCellshanghu.xib in Resources */,
 				638F18391EF1116C00A33412 /* TCellHomeActivities.xib in Resources */,
 				6362C0141EF8B52B00B22CE5 /* paris.jpg in Resources */,

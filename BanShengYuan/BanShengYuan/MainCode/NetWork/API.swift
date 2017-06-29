@@ -13,6 +13,7 @@ import Moya
 import Alamofire
 
 enum MyAPI {
+    case test(PostModel:ModelTestPost)//测试https
     //MARK:- 登录模块
     case loginLogin(PostModel:ModelLoginPost)//MARK:登录
     case loginGetVCode(PostModel:ModelVCodePost)//MARK:获取验证码
@@ -29,6 +30,8 @@ enum MyAPI {
 
 let basepath = "http://115.159.124.30:8735"
 
+//let basepath = "https://api.github.com"
+
 extension MyAPI: TargetType {
     var baseURL: URL {
         return URL(string: basepath)!
@@ -36,6 +39,8 @@ extension MyAPI: TargetType {
     
     var path: String {
         switch self {
+        case .test(_):
+            return ""
         case .loginLogin(_):
             return "/member/login"
         case .loginGetVCode(_):
@@ -59,6 +64,8 @@ extension MyAPI: TargetType {
     
     var method: Moya.Method {
         switch self {
+        case .test(_):
+            return .GET
         case .loginLogin(_):
             return .GET
         case .loginGetVCode(_):
@@ -83,6 +90,9 @@ extension MyAPI: TargetType {
     
     var parameters: [String: Any]? {
         switch self {
+        case .test(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
         case .loginLogin(let model):
             PrintFM(model.toDict())
             return model.toDict()
@@ -109,9 +119,10 @@ extension MyAPI: TargetType {
         switch self {
         case .loginLogin(_):
             return "Create post successfully".data(using: String.Encoding.utf8)!
+        case .test(_):
+            return "get successfully".data(using: String.Encoding.utf8)!
         default:
             return "Create post successfully".data(using: String.Encoding.utf8)!
-
         }
         
     }

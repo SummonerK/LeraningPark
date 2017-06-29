@@ -10,6 +10,18 @@ import UIKit
 
 //MARK:登录 postmodel
 
+class ModelTestPost: Reflect {
+    
+    /**
+     *  商户编号
+     *  必传:True
+     */
+    var sort:String!
+    
+}
+
+//MARK:登录 postmodel
+
 class ModelLoginPost: Reflect {
     
     /**
