@@ -24,15 +24,14 @@ class Home_RootVC: UIViewController{
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-//        HUDShowMsgQuick(msg: "欢迎来到半生缘", toView: self.view, time: 1.2)
+        HUDShowMsgQuick(msg: "欢迎来到半生缘", toView: self.view, time: 0.8)
 //        HUDcustomShow(toview: self.view)
-        HUDGifCustomShow()
+//        HUDGifCustomShow()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
+    
         PrintFM("---1\(String(describing: UserDefaults.standard.value(forKey: "IBKey")))")
         
         if let value = UserDefaults.standard.value(forKey: "IBKey") {
@@ -47,8 +46,6 @@ class Home_RootVC: UIViewController{
         dic_temp.setValue(dic, forKey: "newkey")
         
         PrintFM("---\(dic_temp)")
-        
-        
 
         PrintFM("---2\(String(describing: UserDefaults.standard.value(forKey: "IBKey")))")
         

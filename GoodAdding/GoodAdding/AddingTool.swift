@@ -22,11 +22,7 @@ class AddingTool: NSObject,CAAnimationDelegate {
     //MARK: - 开始走的方法
     func startAnimation(view : UIView,andRect rect : CGRect,andFinishedRect finishPoint : CGPoint, andFinishBlock completion : @escaping animationFinishedBlock) -> Void{
         
-        let img = UIImage.createImageWithColor(color: .blue)
-        
         layer = CALayer()
-//        layer?.contents = view.layer.contents
-//        layer?.contents = img
         layer?.backgroundColor = UIColor.blue.cgColor
         layer?.contentsGravity = kCAGravityResize
         layer?.frame = rect
@@ -38,22 +34,14 @@ class AddingTool: NSObject,CAAnimationDelegate {
         let path : UIBezierPath = UIBezierPath()
         path.move(to: (layer?.position)!)
         path.addQuadCurve(to: finishPoint, controlPoint:CGPoint(x: myWindow.frame.size.width/2, y: rect.origin.y - 40))
-        
-        //这里要使用组合动画 一个负责旋转，另一个负责曲线的运动
+
         //创建 关键帧动画 负责曲线的运动
         let pathAnimation : CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "position")//位置的平移
         pathAnimation.path = path.cgPath
-        //负责旋转 rotation
-        let basicAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        basicAnimation.isRemovedOnCompletion = true
-        basicAnimation.fromValue = NSNumber(value: 0)
-        basicAnimation.toValue = NSNumber(value: 3 * 2 * M_PI)//这里是旋转的角度 共是：3圈 （2 * M_PI）是一圈
-        basicAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-        
-        //创建组合动画 主要是负责时间的相关设置 如下
+
         let groups : CAAnimationGroup = CAAnimationGroup()
-        groups.animations = [pathAnimation,basicAnimation]
-        groups.duration = 1.5//国际单位制 S
+        groups.animations = [pathAnimation]
+        groups.duration = 1.5// S
         groups.fillMode = kCAFillModeForwards
         groups.isRemovedOnCompletion = false
         groups.delegate = self
@@ -68,7 +56,7 @@ class AddingTool: NSObject,CAAnimationDelegate {
         basicAnimation.fromValue = NSNumber(value: -5)
         basicAnimation.toValue = NSNumber(value: 5)
         basicAnimation.autoreverses = true
-        shakeView.layer.add(basicAnimation, forKey: "Asong")
+        shakeView.layer.add(basicAnimation, forKey: "shake")
     }
     //MARK: -CAAnimationDelegate
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {

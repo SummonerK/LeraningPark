@@ -18,6 +18,11 @@ class resetPwdVC: UIViewController {
     
     @IBOutlet weak var bton_resetPwd: UIButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

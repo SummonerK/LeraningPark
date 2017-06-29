@@ -23,6 +23,11 @@ class Login_RootVC: UIViewController{
     let disposeBag = DisposeBag()
     let VM = ViewModel()
     let model = ModelLoginPost()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +38,10 @@ class Login_RootVC: UIViewController{
         tf_pwd.attributedPlaceholder = NSAttributedString(string:"请输入密码",attributes:[NSForegroundColorAttributeName: UIColor.white])
         
         setRadiusFor(toview: bton_login, radius: 6, lineWidth: 0, lineColor: UIColor.clear)
-        setRadiusFor(toview: bton_register, radius: 6, lineWidth: 0.6, lineColor: FlatGrayDark)
-        let attributestr = NSMutableAttributedString(string: "忘记密码", attributes: setUnderLineToString(tocolor: FlatGrayLight))
-        
-        bton_forget.setAttributedTitle(attributestr, for: UIControlState.normal)
+        setRadiusFor(toview: bton_register, radius: 6, lineWidth: 0.6, lineColor: UIColor.white)
+//        let attributestr = NSMutableAttributedString(string: "忘记密码", attributes: setUnderLineToString(tocolor: FlatGrayLight))
+//        
+//        bton_forget.setAttributedTitle(attributestr, for: UIControlState.normal)
         
         //MARK: 设置键盘
         //键盘监听开关

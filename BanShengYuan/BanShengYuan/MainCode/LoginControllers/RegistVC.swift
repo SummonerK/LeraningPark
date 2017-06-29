@@ -23,6 +23,11 @@ class RegistVC: UIViewController,UITextFieldDelegate{
     @IBOutlet weak var tf_againPwd: UITextField!
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,7 +103,7 @@ class RegistVC: UIViewController,UITextFieldDelegate{
         if rtcount<=0 {
             rtimer?.invalidate()
             rtimer = nil
-            bton_getVcode.setTitle("获取验证码", for: UIControlState.normal)
+            bton_getVcode.setTitle("重新发送", for: UIControlState.normal)
             rtcount = 60
             bton_getVcode.isEnabled = true
         }else{

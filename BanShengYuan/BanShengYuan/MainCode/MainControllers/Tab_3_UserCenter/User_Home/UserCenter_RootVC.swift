@@ -12,7 +12,7 @@ class UserCenter_RootVC: UIViewController {
     @IBOutlet weak var TableV_main: UITableView!
     
     let array_title:Array? = ["我的订单","我的地址","我的资料"]
-    let array_image:Array? = ["homeList_icon","homeList_icon","homeList_icon"]
+    let array_image:Array? = ["homeList_icon","user_address","user_info"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -115,7 +115,7 @@ extension UserCenter_RootVC: UITableViewDelegate {
         
         switch indexPath.section {
         case 1:
-            return 44
+            return 49
         default:
             return 0
         }

@@ -16,19 +16,28 @@ class GoodsDetailVC: BaseTabHiden {
     
     var _tapGesture: UITapGestureRecognizer!
     
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(true)
+//        coverVC.view.removeFromSuperview()
+//    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
     override func viewDidLoad() {
-        
-        setNavi()
-        
+ 
         super.viewDidLoad()
+
+        self.edgesForExtendedLayout = []
+        
         tableV_main.register(UINib.init(nibName: "TCellGoodsinfo", bundle: nil), forCellReuseIdentifier: "TCellGoodsinfo")
         tableV_main.register(UINib.init(nibName: "TCellGoodsImage", bundle: nil), forCellReuseIdentifier: "TCellGoodsImage")
         
         setCoverView()
+        
+//        showCoverView()
         
     }
     
@@ -36,27 +45,30 @@ class GoodsDetailVC: BaseTabHiden {
         
         coverVC = StoryBoard_NextPages.instantiateViewController(withIdentifier: "chooseVC") as? chooseVC
         
-        self.navigationController!.addChildViewController(coverVC.self)
+//        self.addChildViewController(coverVC.self)
         
         coverVC.view.frame = CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenHeight)
         
-        self.navigationController!.view.addSubview(coverVC.view)
+        LastWindow.addSubview(coverVC.view)
         
-        self.navigationController!.view.sendSubview(toBack: coverVC.view)
+        LastWindow.sendSubview(toBack: coverVC.view)
         
         _tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized(_:)))
         
         coverVC.view.addGestureRecognizer(_tapGesture)
     }
     
+//    LastWindow
+//    self.view.window?
+    
     func showCoverView() {
         
-        self.navigationController!.view.bringSubview(toFront: coverVC.view)
+        LastWindow.bringSubview(toFront: coverVC.view)
     }
     
     func closeCoverView() {
         
-        self.navigationController!.view.sendSubview(toBack: coverVC.view)
+        LastWindow.sendSubview(toBack: coverVC.view)
     }
     
     internal func tapRecognized(_ gesture: UITapGestureRecognizer) {
@@ -77,6 +89,16 @@ class GoodsDetailVC: BaseTabHiden {
     
     func actionBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    //支付
+    @IBAction func buyNow(_ sender: Any) {
+        
+//        coverVC.view.removeFromSuperview()
+        
+        
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
+        self.navigationController?.pushViewController(Vc, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

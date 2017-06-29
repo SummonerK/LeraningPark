@@ -49,7 +49,6 @@ extension ViewController:UITableViewDataSource{
             imageViewRect.origin.y = rect.origin.y + imageViewRect.origin.y
             
             AddingTool().startAnimation(view: view_temp, andRect: imageViewRect, andFinishedRect: CGPoint(x:self.view.frame.size.width/4 * 3,  y:self.view.frame.size.height-49), andFinishBlock: { (finished : Bool) in
-                
                 let tabBtn : UIView = (self.tabBarController?.tabBar.subviews[2])!
                 AddingTool().shakeAnimation(shakeView: tabBtn)
             })
@@ -62,7 +61,7 @@ extension ViewController:UITableViewDataSource{
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? TCellGoods else {
+        guard (tableView.cellForRow(at: indexPath) as? TCellGoods) != nil else {
             return
         }
         

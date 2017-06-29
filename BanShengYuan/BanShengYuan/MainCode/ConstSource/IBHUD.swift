@@ -14,6 +14,9 @@ import Kingfisher
 // keyWindow
 let KeyWindow : UIWindow = UIApplication.shared.keyWindow!
 
+// LastWindow
+let LastWindow : UIWindow = UIApplication.shared.windows.last!
+
 let HUDGIFData = try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "demo", ofType: "gif")!))
 
 private var HUDKey = "HUDKey"

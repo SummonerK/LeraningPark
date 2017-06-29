@@ -33,12 +33,12 @@ class info_SexVC: UIViewController {
         
         if let nick = sexChoose {
             if nick == "1" {
-                bton_man.setBackgroundImage(createImageWithColor(color: FlatWhiteDark), for: UIControlState.normal)
+                bton_man.setBackgroundImage(createImageWithColor(color: FlatLocalMain), for: UIControlState.normal)
                 bton_woman.setBackgroundImage(createImageWithColor(color: UIColor.white), for: UIControlState.normal)
             }
             
             if nick == "2" {
-                bton_woman.setBackgroundImage(createImageWithColor(color: FlatWhiteDark), for: UIControlState.normal)
+                bton_woman.setBackgroundImage(createImageWithColor(color: FlatLocalMain), for: UIControlState.normal)
                 bton_man.setBackgroundImage(createImageWithColor(color: UIColor.white), for: UIControlState.normal)
             }
         }
@@ -69,14 +69,14 @@ class info_SexVC: UIViewController {
     @IBAction func chooseMan(_ sender: Any) {
         PrintFM("choose")
         sexChoose = "1"
-        bton_man.setBackgroundImage(createImageWithColor(color: FlatWhiteDark), for: UIControlState.normal)
+        bton_man.setBackgroundImage(createImageWithColor(color: FlatLocalMain), for: UIControlState.normal)
         bton_woman.setBackgroundImage(createImageWithColor(color: UIColor.white), for: UIControlState.normal)
     }
 
     @IBAction func chooseWoman(_ sender: Any) {
         PrintFM("choose")
         sexChoose = "2"
-        bton_woman.setBackgroundImage(createImageWithColor(color: FlatWhiteDark), for: UIControlState.normal)
+        bton_woman.setBackgroundImage(createImageWithColor(color: FlatLocalMain), for: UIControlState.normal)
         bton_man.setBackgroundImage(createImageWithColor(color: UIColor.white), for: UIControlState.normal)
     }
     override func didReceiveMemoryWarning() {

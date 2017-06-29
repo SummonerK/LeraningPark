@@ -18,7 +18,7 @@ class TCellshanghu: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setRadiusFor(toview: label_local, radius: 2, lineWidth: 0.8, lineColor: FlatPowderBlueDark)
+        setRadiusFor(toview: label_local, radius: 2, lineWidth: 0.8, lineColor: FlatLocalMain)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

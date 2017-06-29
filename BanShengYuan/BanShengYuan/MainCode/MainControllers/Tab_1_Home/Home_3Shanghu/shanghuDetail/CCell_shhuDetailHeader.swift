@@ -61,7 +61,7 @@ class CCell_shhuDetailHeader: UICollectionViewCell {
             line_price.isHidden = true
             line_newProduct.isHidden = true
             
-            bton_xiaoliang.setTitleColor(FlatPowderBlueDark, for: UIControlState.normal)
+            bton_xiaoliang.setTitleColor(FlatLocalMain, for: UIControlState.normal)
             bton_price.setTitleColor(UIColor.black, for: UIControlState.normal)
             bton_newProduct.setTitleColor(UIColor.black, for: UIControlState.normal)
             
@@ -73,7 +73,7 @@ class CCell_shhuDetailHeader: UICollectionViewCell {
             line_newProduct.isHidden = true
             
             bton_xiaoliang.setTitleColor(UIColor.black, for: UIControlState.normal)
-            bton_price.setTitleColor(FlatPowderBlueDark, for: UIControlState.normal)
+            bton_price.setTitleColor(FlatLocalMain, for: UIControlState.normal)
             bton_newProduct.setTitleColor(UIColor.black, for: UIControlState.normal)
         }
         
@@ -84,7 +84,7 @@ class CCell_shhuDetailHeader: UICollectionViewCell {
             
             bton_xiaoliang.setTitleColor(UIColor.black, for: UIControlState.normal)
             bton_price.setTitleColor(UIColor.black, for: UIControlState.normal)
-            bton_newProduct.setTitleColor(FlatPowderBlueDark, for: UIControlState.normal)
+            bton_newProduct.setTitleColor(FlatLocalMain, for: UIControlState.normal)
         }
         
     }

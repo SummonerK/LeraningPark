@@ -61,6 +61,12 @@ extension user_OrderVC:UITableViewDataSource{
         
     }
     
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?{
+        let viewfooter = Bundle.main.loadNibNamed("view_orderFooter", owner: nil, options: nil)?.first as? view_orderFooter
+        
+        return viewfooter
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -87,16 +93,16 @@ extension user_OrderVC:UITableViewDataSource{
 extension user_OrderVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        return 60
+        return 85
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
-        return 6
+        return 90
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         
-        return 110
+        return 80
         
     }
     

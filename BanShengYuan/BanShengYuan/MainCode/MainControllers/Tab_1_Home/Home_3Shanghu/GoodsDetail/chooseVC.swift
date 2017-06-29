@@ -26,12 +26,18 @@ class chooseVC: UIViewController {
     @IBAction func closeCover(_ sender: Any) {
         
     }
+    
+    //支付
     @IBAction func buyNow(_ sender: Any) {
-        
+//        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
+//        self.navigationController?.pushViewController(Vc, animated: true)
     }
+    
+    //添加数量
     @IBAction func countAdd(_ sender: Any) {
         
     }
+    //减少商品数量
     @IBAction func countFls(_ sender: Any) {
         
     }

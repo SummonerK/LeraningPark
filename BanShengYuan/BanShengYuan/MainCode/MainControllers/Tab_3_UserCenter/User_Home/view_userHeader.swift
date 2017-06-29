@@ -29,7 +29,7 @@ class view_userHeader: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setRadiusFor(toview: imageV_Header, radius: IBScreenWidth*176/375*0.4/2, lineWidth: 1.6, lineColor: UIColor.white)
+        setRadiusFor(toview: imageV_Header, radius: IBScreenWidth*176/375*0.36/2, lineWidth: 1.6, lineColor: UIColor.white)
         setshadowFor(aview: imageV_Header, OffSet: CGSize.init(width: -1, height: -1))
         
     }
@@ -40,9 +40,10 @@ class view_userHeader: UIView {
     
     func setupSubviews(){
         
-        let url = URL(string: dic_data["url"] as! String)
+//        let url = URL(string: dic_data["url"] as! String)
         
-        imageV_Header.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+//        imageV_Header.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+        
         label_name.text = dic_data["name"] as? String
         label_phone.text = dic_data["phone"] as? String
         
