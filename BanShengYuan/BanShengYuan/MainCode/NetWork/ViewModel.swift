@@ -11,24 +11,23 @@ import RxSwift
 import Moya
 
 let headerFields: Dictionary<String, String> = [
-    "platform": "iOS",
-    "sys_ver": String(UIDevice.version())
+    "Content-Type": "application/json"
 ]
 
 let appendedParams: Dictionary<String, AnyObject> = [
-    "uid": "123456" as AnyObject
+    "Content-Type": "application/x-www-form-urlencoded" as AnyObject
 ]
 
 let endpoint = { (target: MyAPI) -> Endpoint<MyAPI> in
     let url = target.baseURL.appendingPathComponent(target.path).absoluteString
     return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
-        .endpointByAddingParameters(appendedParams)
+//        .endpointByAddingParameters(appendedParams)
         .endpointByAddingHTTPHeaderFields(headerFields)
 }
 
-let apiProvider = RxMoyaProvider<MyAPI>(endpointClosure:endpoint)
+//let apiProvider = RxMoyaProvider<MyAPI>(endpointClosure:endpoint,plugins:[loadingPlugin,logPlugin])
 
-let provider = RxMoyaProvider<MyAPI>()
+let provider = RxMoyaProvider<MyAPI>(plugins:[loadingPlugin,logPlugin])
 
 class ViewModel {
     
@@ -60,7 +59,7 @@ class ViewModel {
     }
     func addressGetList(amodel:ModelAddressListPost) -> Observable<[ModelAddressItem]> {
         return provider.request(.addressGetList(PostModel: amodel))
-            .mapArray(type: ModelAddressItem.self)
+            .mapAddList(type: ModelAddressItem.self)
             .showError()
     }
     func addressGetDetail(amodel:ModelAddressDetailPost) -> Observable<ModelAddressDetail> {
@@ -70,6 +69,11 @@ class ViewModel {
     }
     func addressUpdate(amodel:ModelAddressUpdatePost) -> Observable<ModelCommonBack> {
         return provider.request(.addressUpdate(PostModel: amodel))
+            .mapObject(type: ModelCommonBack.self)
+            .showError()
+    }
+    func addressAdd(amodel:ModelAddressAddPost) -> Observable<ModelCommonBack> {
+        return provider.request(.addressAdd(PostModel: amodel))
             .mapObject(type: ModelCommonBack.self)
             .showError()
     }

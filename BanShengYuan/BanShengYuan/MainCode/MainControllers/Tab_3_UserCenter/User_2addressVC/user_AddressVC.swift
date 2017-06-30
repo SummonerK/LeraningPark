@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
 
 class user_AddressVC: BaseTabHiden {
+    //network
+    let disposeBag = DisposeBag()
+    let VM = ViewModel()
 
+    //layoutView
     @IBOutlet weak var tableV_main: UITableView!
     
+    //data
     let array_address = NSMutableArray()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +51,19 @@ class user_AddressVC: BaseTabHiden {
         address1.address_area = "上海 普陀"
         address1.address_Detail = "祁连山路1888号 耀光国际B座 1803室"
         address1.isFirst = true
+        
+        let model_address = ModelAddressListPost()
+        model_address.partnerId = PartNerID
+        model_address.memberId = "3dbab43e-6383-47d5-b176-ea4cad3daf85"
+
+        VM.addressGetList(amodel: model_address)
+            .subscribe(onNext: { (posts: [ModelAddressItem]) in
+                PrintFM("log\(String(describing: posts.count))")
+            },onError:{error in
+                print("3333333333Error//////Error \(error)")
+
+            })
+            .addDisposableTo(disposeBag)
         
         array_address.add(address1)
         

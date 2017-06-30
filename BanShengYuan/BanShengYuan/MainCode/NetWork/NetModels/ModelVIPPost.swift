@@ -1,0 +1,84 @@
+//
+//  ModelShop.swift
+//  BanShengYuan
+//
+//  Created by Luofei on 2017/6/30.
+//  Copyright © 2017年 Luofei. All rights reserved.
+//
+
+import UIKit
+
+import Foundation
+import ObjectMapper
+
+//MARK:获商户门店列表 postmodel
+
+class ModelShopListPost: Reflect {
+    
+    /**
+     *  商户编号
+     *  必传:True Y 36 string
+     */
+    var partnerId:String!
+    /**
+     *  页数
+     *  必传:True int默认10
+     */
+    var pageSize:Int!
+    /**
+     *  页号 int默认 1
+     *  必传:True
+     */
+    var pageNo:Int!
+    
+}
+
+//MARK:获商户门店列表 backModel
+
+class ModelShopItem: Mappable {
+    var address: String?
+    var briefName: String?
+    var latitude: String?
+    var businessHours: String?
+    var fullName: String?
+    var active: String?
+    
+    var remark: String?
+    var deliveryPrice: Int?
+    var typeFlag: Int?
+    var phone: String?
+    var storeName: String?
+    var businessImages: NSMutableArray?
+    
+    var deliveryRadius: Int?
+    var storeCode: String?
+    var longitude: String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        briefName <- map["briefName"]
+        briefName <- map["briefName"]
+        latitude <- map["latitude"]
+        businessHours <- map["businessHours"]
+        fullName <- map["fullName"]
+        active <- map["active"]
+        
+        remark <- map["remark"]
+        deliveryPrice <- map["deliveryPrice"]
+        typeFlag <- map["typeFlag"]
+        phone <- map["phone"]
+        storeName <- map["storeName"]
+        businessImages <- map["businessImages"]
+        
+        deliveryRadius <- map["deliveryRadius"]
+        storeCode <- map["storeCode"]
+        longitude <- map["longitude"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}

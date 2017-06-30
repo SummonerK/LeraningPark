@@ -24,6 +24,9 @@ class Login_RootVC: UIViewController{
     let VM = ViewModel()
     let model = ModelLoginPost()
     
+    let VipM = vipModel()
+    let modellistPost = ModelShopListPost()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -49,27 +52,22 @@ class Login_RootVC: UIViewController{
 
         ShowWelecomeV()
         
-        tf_phone.text = "13914748543"
-        tf_pwd.text = "697651309772"
+        tf_phone.text = "15600703631"
+        tf_pwd.text = "123456"
+        model.partnerId = PartNerID
         
-        model.partnerId = "a8bee0dd-09d1-4fa9-a9eb-80cb36d3d611"
-        
-//        let model_address = ModelAddressUpdatePost()
-//        model_address.partnerId = "a8bee0dd-09d1-4fa9-a9eb-80cb36d3d611"
-//        model_address.memberId = "3dbab43e-6383-47d5-b176-ea4cad3daf85"
-//        model_address.receiverName = "03"
-//        model_address.phone = "18900001111"
-//        model_address.address = "大街51号"
-//        model_address.area = "上海-上海-普陀区"
+//        modellistPost.partnerId = "178a14ba-85a8-40c7-9ff4-6418418f5a0c"
+//        modellistPost.pageSize = 10
+//        modellistPost.pageNo = 1
 //        
-//        VM.addressUpdate(amodel: model_address)
-//            .subscribe(onNext: { (common:ModelCommonBack) in
-//                PrintFM("添加\(String(describing: common.description))")
+//        VipM.vipgetShopList(amodel: modellistPost)
+//            .subscribe(onNext: { (posts: [ModelShopItem]) in
+//                PrintFM("shopList\(posts)")
 //            },onError:{error in
-//                print("3333333333Error//////Error \(error)")
-//                
+//                HUDShowMsgQuick(msg: (error as! MyErrorEnum).drawMsgValue, toView: self.view, time: 0.8)
 //            })
 //            .addDisposableTo(disposeBag)
+        
         
     }
     

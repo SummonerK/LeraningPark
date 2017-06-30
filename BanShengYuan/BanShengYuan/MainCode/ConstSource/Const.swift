@@ -138,11 +138,54 @@ extension String{
         } 
     }
     
+    func isFullTelNumber()->Bool{
+        
+        if self.length < 11{
+            return false
+        }else{
+            let eight = self.length-3
+            var seven = self.length-4
+            
+            if self.length == 3{
+                seven = 0
+            }
+            
+            PrintFM("\(self) \(eight),\(seven)")
+            
+            let IBCM = String.init("^((13[0-2])|(145)|(15[5-6])|(17[0,6])|(18[5,6]))\\d{\(eight)}$|(1709)\\d{\(seven)}$")
+            let IBCU = String.init("^((13[4-9])|(147)|(15[0-2,7-9])|(17[0,8])|(18[2-4,7-8]))\\d{\(eight)}$|(1705)\\d{\(seven)}$")
+            let IBCT = String.init("^((133)|(153)|(17[3,7,9])|(149)|(18[0,1,9]))\\d{\(eight)}$|(1349)\\d{\(seven)}$")
+            
+            let regextestcm = NSPredicate(format: "SELF MATCHES %@",IBCM!)
+            let regextestcu = NSPredicate(format: "SELF MATCHES %@" ,IBCU!)
+            let regextestct = NSPredicate(format: "SELF MATCHES %@" ,IBCT!)
+            if ((regextestcm.evaluate(with: self) == true)
+                || (regextestct.evaluate(with: self) == true)
+                || (regextestcu.evaluate(with: self) == true))
+            {
+                return true
+            }else{
+                return false
+            }
+        }
+
+    }
+    
+    func pwdisSafe() -> Bool {
+        let passWordRegex = "^[a-zA-Z0-9]{6,20}+$"
+        let passWordPredicate = NSPredicate(format: "SELF MATCHES%@", passWordRegex)
+        return passWordPredicate.evaluate(with: self)
+    }
+    
     var length: Int {
         return self.utf16.count
     }
     
 }
+
+//let numb = "^[0-9]{6,20}+$"
+//let numbAndEng = "^[a-zA-Z0-9]{6,20}+$"
+//let numbAndEngAndXN = "^[a-zA-Z0-9]{6,20}+$"
 
 // MARK:MBProgressHUD
 

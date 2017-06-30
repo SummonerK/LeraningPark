@@ -8,6 +8,8 @@
 
 import UIKit
 
+import ObjectMapper
+
 //MARK:登录 postmodel
 
 class ModelTestPost: Reflect {
@@ -61,7 +63,7 @@ class ModelVCodePost: Reflect {
 
 //MARK:注册 postmodel
 
-class ModelRegisterPost: Reflect {
+class ModelRegisterPost: Mappable {
     
     /**
      *  商户编号
@@ -83,6 +85,24 @@ class ModelRegisterPost: Reflect {
      *  必传:True
      */
     var password:String!
+    
+    init() {
+        
+    }
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        partnerId <- map["partnerId"]
+        phone <- map["phone"]
+        smsCode <- map["smsCode"]
+        password <- map["password"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
     
 }
 

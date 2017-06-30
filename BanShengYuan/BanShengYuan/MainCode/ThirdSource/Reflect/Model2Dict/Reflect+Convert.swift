@@ -60,5 +60,16 @@ extension Reflect{
         
         return dict
     }
+    
+    func  toJsonString() -> String {
+        if (!JSONSerialization.isValidJSONObject(self.toDict())) {
+            print("无法解析出JSONString")
+            return ""
+        }
+        let data : NSData! = try? JSONSerialization.data(withJSONObject: self.toDict(), options: []) as NSData!
+        let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
+        return JSONString! as String
+    }
+    
 }
 

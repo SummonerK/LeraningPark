@@ -12,6 +12,16 @@ import RxSwift
 import Moya
 import Alamofire
 
+func jsonToDictionary(jsonString:String) -> [String:Any] {
+    
+    let jsonData:Data  = jsonString.data(using: .utf8)!
+    let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
+    if dict != nil {
+        return dict as! [String:Any]
+    }
+    return NSDictionary() as! [String : Any]
+}
+
 enum MyAPI {
     case test(PostModel:ModelTestPost)//测试https
     //MARK:- 登录模块
@@ -23,6 +33,7 @@ enum MyAPI {
     case addressGetList(PostModel:ModelAddressListPost)//MARK:获取收货地址List
     case addressGetDetail(PostModel:ModelAddressDetailPost)//MARK:获取收货地址详情
     case addressUpdate(PostModel:ModelAddressUpdatePost)//MARK:收货地址新增／修改
+    case addressAdd(PostModel:ModelAddressAddPost)//MARK:收货地址新增／修改
     case addressDelete(PostModel:ModelAddressDeletePost)//MARK:收货地址删除
     //MARK:- 用户信息模块
     case userUpdate(PostModel:ModelUserUpdateInfoPost)//MARK:个人信息设置
@@ -44,21 +55,32 @@ extension MyAPI: TargetType {
         case .loginLogin(_):
             return "/member/login"
         case .loginGetVCode(_):
-            return ""
+            return "/member/sms"
         case .loginRegister(_):
-            return ""
+            return "/member/register"
         case .loginUpdatePWD(_):
-            return ""
+            return "/member/updatePwd"
         case .addressGetList(_):
-            return ""
+            return "/member/deliveraddress/list"
         case .addressGetDetail(_):
-            return ""
+            return "/member/deliveraddress"
         case .addressUpdate(_):
             return "/member/deliveraddress"
+        case .addressAdd(_):
+            return "/member/deliveraddress"
         case .addressDelete(_):
-            return ""
+            return "/member/deliveraddress"
         case .userUpdate(_):
-            return ""
+            return "/member/info"
+        }
+    }
+    
+    var parameterEncoding: ParameterEncoding {
+        switch self {
+        case .loginLogin,.test,.loginGetVCode,.addressGetList,.addressGetDetail:
+            return URLEncoding.default
+        case .loginRegister,.loginUpdatePWD,.addressUpdate,.addressDelete,.userUpdate,.addressAdd:
+            return JSONEncoding.default
         }
     }
     
@@ -80,6 +102,8 @@ extension MyAPI: TargetType {
             return .GET
         case .addressUpdate(_):
             return .POST
+        case .addressAdd(_):
+            return .POST
         case .addressDelete(_):
             return .DELETE
         case .userUpdate(_):
@@ -97,35 +121,47 @@ extension MyAPI: TargetType {
             PrintFM(model.toDict())
             return model.toDict()
         case .loginGetVCode(let model):
+            PrintFM(model.toDict())
             return model.toDict()
         case .loginRegister(let model):
-            return model.toDict()
+            
+            let request = jsonToDictionary(jsonString: model.description)
+            return request
         case .loginUpdatePWD(let model):
+            PrintFM(model.toDict())
             return model.toDict()
         case .addressGetList(let model):
+            PrintFM(model.toDict())
             return model.toDict()
         case .addressGetDetail(let model):
+            PrintFM(model.toDict())
             return model.toDict()
         case .addressUpdate(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .addressAdd(let model):
+            PrintFM(model.toDict())
             return model.toDict()
         case .addressDelete(let model):
+            PrintFM(model.toDict())
             return model.toDict()
         case .userUpdate(let model):
+            PrintFM(model.toDict())
             return model.toDict()
         }
     }
     
     var sampleData: Data {
         switch self {
-        case .loginLogin(_):
-            return "Create post successfully".data(using: String.Encoding.utf8)!
         case .test(_):
-            return "get successfully".data(using: String.Encoding.utf8)!
+            return "test successfully".data(using: String.Encoding.utf8)!
         default:
-            return "Create post successfully".data(using: String.Encoding.utf8)!
+            return "API successfully".data(using: String.Encoding.utf8)!
         }
         
     }
+    
+    // MARK: URLRequestConvertible
     
     var task: Task {
         return .request

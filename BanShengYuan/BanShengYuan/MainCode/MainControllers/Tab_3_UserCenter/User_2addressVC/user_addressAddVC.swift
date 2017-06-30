@@ -10,6 +10,10 @@ import UIKit
 
 import IQKeyboardManagerSwift
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 typealias AddressBack =  (_ back:ModelAddress) -> Void
 
 class user_addressAddVC: UIViewController {
@@ -31,6 +35,9 @@ class user_addressAddVC: UIViewController {
     
     // tag_pagefrom = 1 新建
     // tag_pagefrom = 2 编辑
+    
+    let disposeBag = DisposeBag()
+    let VM = ViewModel()
     
     var _tapGesture: UITapGestureRecognizer!
     
@@ -62,6 +69,23 @@ class user_addressAddVC: UIViewController {
         _tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized(_:)))
 
         KeyWindow.addGestureRecognizer(_tapGesture)
+        
+        let model_address = ModelAddressAddPost()
+        model_address.partnerId = PartNerID
+        model_address.memberId = "3dbab43e-6383-47d5-b176-ea4cad3daf85"
+        model_address.receiverName = "03"
+        model_address.phone = "18900001111"
+        model_address.address = "大街51号"
+        model_address.area = "上海-上海-普陀区"
+        
+        VM.addressAdd(amodel: model_address)
+            .subscribe(onNext: { (common:ModelCommonBack) in
+                PrintFM("添加\(String(describing: common.description))")
+            },onError:{error in
+                print("3333333333Error//////Error \(error)")
+                
+            })
+            .addDisposableTo(disposeBag)
 
     }
     

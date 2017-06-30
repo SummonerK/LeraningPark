@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 extension Reflect {
     
     override var description: String {

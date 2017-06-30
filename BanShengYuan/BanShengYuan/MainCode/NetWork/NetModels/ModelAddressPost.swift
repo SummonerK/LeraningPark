@@ -49,6 +49,43 @@ class ModelAddressDetailPost: Reflect {
 
 //MARK:收货地址新增／修改 postmodel
 
+class ModelAddressAddPost: Reflect {
+    
+    /**
+     *  商户编号
+     *  必传:True
+     */
+    var partnerId:String!
+    /**
+     *  会员编号
+     *  必传:True
+     */
+    var memberId:String!
+    /**
+     *  收货地址 ID
+     *  必传:True
+     */
+    var receiverName:String!
+    /**
+     *  手机号
+     *  必传:True
+     */
+    var phone:String!
+    /**
+     *  区域,省市区，注意是英文-
+     *  必传:True
+     */
+    var area:String!
+    /**
+     *  详细地址
+     *  必传:True
+     */
+    var address:String!
+    
+}
+
+//MARK:收货地址新增／修改 postmodel
+
 class ModelAddressUpdatePost: Reflect {
     
     /**
@@ -65,7 +102,7 @@ class ModelAddressUpdatePost: Reflect {
      *  收货地址 ID
      *  必传:True
      */
-    var deliverId:String!
+    var id:Int!
     /**
      *  收货地址 ID
      *  必传:True

@@ -29,6 +29,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.viewModel.getPosts()
+            .subscribe(onNext: { (posts: [Post]) in
+//                do something with posts
+                print(posts.count)
+                
+            },onError:{error in
+                
+                print("11111111Error////Error \((error as! RxSwiftMoyaError).rawValue)")
+                
+                sleep(10)
+                
+            })
+            .addDisposableTo(self.disposeBag)
 
         // Do any additional setup after loading the view, typically from a nib.
         /*方法二
@@ -76,46 +90,46 @@ class ViewController: UIViewController {
         */
         
         
-        let myQueue = DispatchQueue(label: "第一条线程")
-        
-        let group = DispatchGroup()
-        
-        myQueue.async {
-            self.viewModel.getPosts()
-                .subscribe(onNext: { (posts: [Post]) in
-                    //do something with posts
-                    print(posts.count)
-                    
-                },onError:{error in
-                    
-                    print("11111111Error//////Error \((error as! RxSwiftMoyaError).rawValue)")
-                    
-                    sleep(10)
-                    
-                })
-                .addDisposableTo(self.disposeBag)
-        }
-        
-        myQueue.async {
-            self.viewModel.getVCode(cTel: "15600703631", type: "1")
-                .subscribe(onNext: { (post: PostCV) in
-                    //do something with post
-                    
-                    print("3333333333\(post.description)")
-                    sleep(5)
-                    
-                    
-                },onError:{error in
-                    print("3333333333Error//////Error \(error)")
-                    
-                })
-                .addDisposableTo(self.disposeBag)
-            //            PrintFM("Q3")
-        }
-        
-        myQueue.async(group: nil, qos: .default, flags: .barrier) {
-            PrintFM("完成")
-        }
+//        let myQueue = DispatchQueue(label: "第一条线程")
+//        
+//        let group = DispatchGroup()
+//        
+//        myQueue.async {
+//            self.viewModel.getPosts()
+//                .subscribe(onNext: { (posts: [Post]) in
+//                    //do something with posts
+//                    print(posts.count)
+//                    
+//                },onError:{error in
+//                    
+//                    print("11111111Error//////Error \((error as! RxSwiftMoyaError).rawValue)")
+//                    
+//                    sleep(10)
+//                    
+//                })
+//                .addDisposableTo(self.disposeBag)
+//        }
+//        
+//        myQueue.async {
+//            self.viewModel.getVCode(cTel: "15600703631", type: "1")
+//                .subscribe(onNext: { (post: PostCV) in
+//                    //do something with post
+//                    
+//                    print("3333333333\(post.description)")
+//                    sleep(5)
+//                    
+//                    
+//                },onError:{error in
+//                    print("3333333333Error//////Error \(error)")
+//                    
+//                })
+//                .addDisposableTo(self.disposeBag)
+//            //            PrintFM("Q3")
+//        }
+//        
+//        myQueue.async(group: nil, qos: .default, flags: .barrier) {
+//            PrintFM("完成")
+//        }
 
         /* 方法1 信号量
         let globalQ = DispatchQueue.global(qos:.default)
@@ -129,18 +143,18 @@ class ViewController: UIViewController {
             
             self.viewModel.getPosts()
                 .subscribe(onNext: { (posts: [Post]) in
-                    //do something with posts
+                    do something with posts
                     print(posts.count)
                     
                 },onError:{error in
                     
-                    print("11111111Error//////Error \((error as! RxSwiftMoyaError).rawValue)")
+                    print("11111111Error////Error \((error as! RxSwiftMoyaError).rawValue)")
                     
                     sleep(10)
                     
                 })
                 .addDisposableTo(self.disposeBag)
-            
+         
 //            PrintFM("Q1")
         })
         
