@@ -664,7 +664,6 @@
                                         </state>
                                         <connections>
                                             <action selector="goToResetVC:" destination="mJO-2B-2aI" eventType="touchUpInside" id="2VL-a7-4J8"/>
-                                            <segue destination="1IR-J8-7oA" kind="show" id="ZOv-7a-Ida"/>
                                         </connections>
                                     </button>
                                 </subviews>

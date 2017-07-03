@@ -82,7 +82,11 @@ class user_addressAddVC: UIViewController {
             .subscribe(onNext: { (common:ModelCommonBack) in
                 PrintFM("添加\(String(describing: common.description))")
             },onError:{error in
-                print("3333333333Error//////Error \(error)")
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
                 
             })
             .addDisposableTo(disposeBag)

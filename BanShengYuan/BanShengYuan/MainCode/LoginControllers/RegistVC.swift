@@ -107,8 +107,11 @@ class RegistVC: UIViewController,UITextFieldDelegate{
                     HUDShowMsgQuick(msg: common.msg!, toView: KeyWindow, time: 0.8)
                     self.navigationController?.popToRootViewController(animated: true)
                 },onError:{error in
-                    PrintFM("Error \((error as! MyErrorEnum).drawMsgValue)")
-                    HUDShowMsgQuick(msg: (error as! MyErrorEnum).drawMsgValue, toView: KeyWindow, time: 0.8)
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    }
                 })
                 .addDisposableTo(disposeBag)
         }else{
@@ -132,8 +135,11 @@ class RegistVC: UIViewController,UITextFieldDelegate{
                     self.setRunTimer()
                     
                 },onError:{error in
-                    print("3333333333Error//////Error \((error as! MyErrorEnum).drawMsgValue)")
-                    HUDShowMsgQuick(msg: (error as! MyErrorEnum).drawMsgValue, toView: self.view, time: 0.8)
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    }
                 })
                 .addDisposableTo(disposeBag)
         }else{

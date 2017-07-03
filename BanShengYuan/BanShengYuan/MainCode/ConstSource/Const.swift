@@ -75,6 +75,16 @@ let IBImageWithName: (String) -> UIImage? = {imageName in
 
 let BundleImageWithName:(String) ->UIImage? = {imageName in
     
+    if let str = Bundle.main.path(forResource: "Source", ofType: "bundle") , let filePath = Bundle(path: str)?.path(forResource: imageName, ofType: "jpg"){
+        return UIImage(contentsOfFile: filePath)
+    }else{
+        return createImageWithColor(color: UIColor.white)
+    }
+    
+}
+
+let BundlePngWithName:(String) ->UIImage? = {imageName in
+    
     if let str = Bundle.main.path(forResource: "Source", ofType: "bundle") , let filePath = Bundle(path: str)?.path(forResource: imageName, ofType: "png"){
         return UIImage(contentsOfFile: filePath)
     }else{

@@ -27,6 +27,7 @@ enum MyAPI {
     //MARK:- 登录模块
     case loginLogin(PostModel:ModelLoginPost)//MARK:登录
     case loginGetVCode(PostModel:ModelVCodePost)//MARK:获取验证码
+    case loginVCodeVerify(PostModel:ModelVCodeVerifyPost)//MARK:验证短信码
     case loginRegister(PostModel:ModelRegisterPost)//MARK:注册
     case loginUpdatePWD(PostModel:ModelUpdatePwdPost)//MARK:修改密码
     //MARK:- 收货地址模块
@@ -39,9 +40,7 @@ enum MyAPI {
     case userUpdate(PostModel:ModelUserUpdateInfoPost)//MARK:个人信息设置
 }
 
-let basepath = "http://115.159.124.30:8735"
-
-//let basepath = "https://api.github.com"
+let basepath = "https://member-api-tst.sandload.cn:8735"
 
 extension MyAPI: TargetType {
     var baseURL: URL {
@@ -55,6 +54,8 @@ extension MyAPI: TargetType {
         case .loginLogin(_):
             return "/member/login"
         case .loginGetVCode(_):
+            return "/member/sms"
+        case .loginVCodeVerify(_):
             return "/member/sms"
         case .loginRegister(_):
             return "/member/register"
@@ -76,8 +77,9 @@ extension MyAPI: TargetType {
     }
     
     var parameterEncoding: ParameterEncoding {
+        PrintFM("parameterEncoding")
         switch self {
-        case .loginLogin,.test,.loginGetVCode,.addressGetList,.addressGetDetail:
+        case .loginLogin,.test,.loginGetVCode,.addressGetList,.addressGetDetail,.loginVCodeVerify:
             return URLEncoding.default
         case .loginRegister,.loginUpdatePWD,.addressUpdate,.addressDelete,.userUpdate,.addressAdd:
             return JSONEncoding.default
@@ -87,27 +89,29 @@ extension MyAPI: TargetType {
     var method: Moya.Method {
         switch self {
         case .test(_):
-            return .GET
+            return .get
         case .loginLogin(_):
-            return .GET
+            return .get
         case .loginGetVCode(_):
-            return .GET
+            return .get
+        case .loginVCodeVerify(_):
+            return .get
         case .loginRegister(_):
-            return .POST
+            return .post
         case .loginUpdatePWD(_):
-            return .POST
+            return .post
         case .addressGetList(_):
-            return .GET
+            return .get
         case .addressGetDetail(_):
-            return .GET
+            return .get
         case .addressUpdate(_):
-            return .POST
+            return .post
         case .addressAdd(_):
-            return .POST
+            return .post
         case .addressDelete(_):
-            return .DELETE
+            return .delete
         case .userUpdate(_):
-            return .POST
+            return .post
         }
         
     }
@@ -123,9 +127,12 @@ extension MyAPI: TargetType {
         case .loginGetVCode(let model):
             PrintFM(model.toDict())
             return model.toDict()
+        case .loginVCodeVerify(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
         case .loginRegister(let model):
-            
             let request = jsonToDictionary(jsonString: model.description)
+            PrintFM("\(request)")
             return request
         case .loginUpdatePWD(let model):
             PrintFM(model.toDict())
@@ -152,11 +159,12 @@ extension MyAPI: TargetType {
     }
     
     var sampleData: Data {
+        PrintFM("")
         switch self {
         case .test(_):
-            return "test successfully".data(using: String.Encoding.utf8)!
+            return "test successfully".data(using: .utf8)!
         default:
-            return "API successfully".data(using: String.Encoding.utf8)!
+            return "API successfully".data(using: .utf8)!
         }
         
     }

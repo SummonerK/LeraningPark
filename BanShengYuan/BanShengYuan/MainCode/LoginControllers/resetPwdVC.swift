@@ -8,9 +8,20 @@
 
 import UIKit
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 import IQKeyboardManagerSwift
 
 class resetPwdVC: UIViewController {
+    
+    var model_verify = ModelVCodeVerifyPost()
+    
+    //network
+    let disposeBag = DisposeBag()
+    let VM = ViewModel()
+    let model_newPwd = ModelUpdatePwdPost()
 
     @IBOutlet weak var tf_fistPwd: UITextField!
     
@@ -33,6 +44,11 @@ class resetPwdVC: UIViewController {
         IQKeyboardManager.sharedManager().enable = true
         
         setNavi()
+        
+        model_newPwd.partnerId = model_verify.partnerId
+        model_newPwd.phone = model_verify.phone
+        model_newPwd.smsCode = model_verify.smsCode
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,26 +72,59 @@ class resetPwdVC: UIViewController {
     
     @IBAction func resetPwdCompleted(_ sender: Any) {
         
-//        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-//        
-//        //获取根VC
-//        var rootVC = self.presentingViewController
-//        while let parent = rootVC?.presentingViewController {
-//            rootVC = parent
-//        }
-//        //释放所有下级视图
-//        rootVC?.dismiss(animated: true, completion: nil)
+        var FPwd = String()
         
-//        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
-//        
-//        let animation = CATransition.init()
-//        animation.duration = duration
-//        //        animation.type = "rippleEffect" //波纹
-//        animation.type = kCATransitionFade 
-//        
-//        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+        var APwd = String()
         
-        self.navigationController?.popToRootViewController(animated: true)
+        if let strP = tf_fistPwd.text ,strP.pwdisSafe(){
+            FPwd = strP
+        
+        }else{
+            HUDShowMsgQuick(msg: "建议密码为6-20位字母和数字", toView: KeyWindow, time: 0.8)
+            
+            return
+        }
+        
+        if let strP = tf_againPwd.text ,strP.pwdisSafe(),strP != ""{
+            APwd = strP
+            
+        }else{
+            HUDShowMsgQuick(msg: "建议密码为6-20位字母和数字", toView: KeyWindow, time: 0.8)
+            
+            return
+        }
+        
+        
+        if FPwd == APwd {
+            
+            model_newPwd.password = APwd
+            
+            self.navigationController?.popToRootViewController(animated: true)
+            
+        }else{
+            HUDShowMsgQuick(msg: "密码不一致", toView: KeyWindow, time: 0.8)
+            
+            return
+        }
+        
+        
+        
+        //            VM.loginUpdatePWD(amodel: model_newPwd)
+        //                .subscribe(onNext: { (common:ModelCommonBack) in
+        //                    HUDShowMsgQuick(msg: common.msg!, toView: KeyWindow, time: 0.8)
+        //                    //返回登录页
+        //                    self.navigationController?.popToRootViewController(animated: true)
+        //
+        //                },onError:{error in
+        //                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+        //                        HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
+        //
+        //                    }else{
+        //                        HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
+        //                    }
+        //                })
+        //                .addDisposableTo(disposeBag)
+        
         
     }
 

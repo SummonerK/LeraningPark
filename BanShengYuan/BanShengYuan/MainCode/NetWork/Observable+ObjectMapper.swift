@@ -38,15 +38,16 @@ extension Observable {
             //
             //json shell
             let json = JSON.init(data: response.data)
-            print("\(json)")
-            print("\(String(describing: json[RESULT_CODE].int))")
-            print("\(String(describing: json[RESULT_MSG].string))")
+            PrintFM("\(json)")
+            PrintFM("\(String(describing: json[RESULT_CODE].int))")
+            PrintFM("\(String(describing: json[RESULT_MSG].string))")
             
             
             if json[RESULT_CODE].int == Int(RxSwiftMoyaError.IBSuccess.rawValue){
                 
                 guard let dict = json.rawValue as? [String: Any] else {
-                    throw RxSwiftMoyaError.ParseJSONError
+                    
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 }
                 
                 return Mapper<T>().map(JSON: dict)!
@@ -75,17 +76,17 @@ extension Observable {
             //json shell
             let json = JSON.init(data: response.data)
             
-            print("\(String(describing: json[RESULT_CODE].string))")
-            print("\(String(describing: json[RESULT_MSG].string))")
+            PrintFM("\(String(describing: json[RESULT_CODE].string))")
+            PrintFM("\(String(describing: json[RESULT_MSG].string))")
             
             if json[RESULT_CODE].int == Int(RxSwiftMoyaError.IBSuccess.rawValue){
                 
                 guard let array = json.rawValue as? [Any] else {
-                    throw RxSwiftMoyaError.ParseJSONError
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 }
                 
                 guard let dicts = array as? [[String: Any]] else {
-                    throw RxSwiftMoyaError.ParseJSONError
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 }
                 
                 return Mapper<T>().mapArray(JSONArray: dicts)
@@ -112,17 +113,17 @@ extension Observable {
             
             let json = JSON.init(data: response.data)
             
-            print("\(String(describing: json[RESULT_CODE].string))")
-            print("\(String(describing: json[RESULT_MSG].string))")
+            PrintFM("\(String(describing: json[RESULT_CODE].string))")
+            PrintFM("\(String(describing: json[RESULT_MSG].string))")
             
             if json[RESULT_CODE].int == Int(RxSwiftMoyaError.IBSuccess.rawValue){
                 
                 guard let array = json["deliverAddList"].rawValue as? [Any] else {
-                    throw RxSwiftMoyaError.ParseJSONError
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 }
                 
                 guard let dicts = array as? [[String: Any]] else {
-                    throw RxSwiftMoyaError.ParseJSONError
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 }
                 
                 return Mapper<T>().mapArray(JSONArray: dicts)
@@ -151,21 +152,63 @@ extension Observable {
             
             let json = JSON.init(data: response.data)
             
-            print("\(String(describing: json["errcode"].string))")
-            print("\(String(describing: json["errmsg"].string))")
+            PrintFM("\(String(describing: json["errcode"].string))")
+            PrintFM("\(String(describing: json["errmsg"].string))")
             
             if json["errcode"].int == Int(RxSwiftMoyaError.IBVIPSuccess.rawValue){
                 
                 guard let data = json["data"].rawValue as? [String: Any] else {
-                    throw RxSwiftMoyaError.ParseJSONError
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 }
                 
                 guard let array = data["list"] as? [Any] else {
-                    throw RxSwiftMoyaError.ParseJSONError
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 }
                 
                 guard let dicts = array as? [[String: Any]] else {
-                    throw RxSwiftMoyaError.ParseJSONError
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
+                }
+                
+                return Mapper<T>().mapArray(JSONArray: dicts)
+                
+            }else{
+                
+                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string!)
+                
+            }
+            
+        }
+    }
+    
+    //
+    func mapShopDetailProductList<T: Mappable>(type: T.Type) -> Observable<[T]> {
+        return self.map { response in
+            
+            guard let response = response as? Moya.Response else{
+                throw MyErrorEnum.HttpError(Code: 1002, Msg: "请求出错")
+            }
+            
+            guard ((200...209) ~= response.statusCode) else {
+                throw MyErrorEnum.HttpError(Code: response.statusCode, Msg: "HttpError")
+            }
+            
+            let json = JSON.init(data: response.data)
+            
+            print("\(String(describing: json["errcode"].string))")
+            print("\(String(describing: json["errmsg"].string))")
+            
+            if json["errcode"].int == Int(RxSwiftMoyaError.IBSuccess.rawValue){
+                
+                guard let data = json["data"].rawValue as? [String: Any] else {
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
+                }
+                
+                guard let array = data["result"] as? [Any] else {
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
+                }
+                
+                guard let dicts = array as? [[String: Any]] else {
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 }
                 
                 return Mapper<T>().mapArray(JSONArray: dicts)
@@ -245,8 +288,7 @@ let loadingPlugin = NetworkActivityPlugin { (change) -> () in
 
 let logPlugin = NetworkLoggerPlugin.init(verbose: true, cURL: true, output: {(_ separator: String, _ terminator: String, _ items: Any...) in
     for item in items{
-        print("---\(item)")
-        
+        PrintFM("---\(item)")
     }
     
 }, responseDataFormatter: nil)

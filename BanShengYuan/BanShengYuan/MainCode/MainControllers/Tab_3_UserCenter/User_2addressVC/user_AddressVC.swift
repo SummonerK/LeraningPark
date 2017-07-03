@@ -60,7 +60,11 @@ class user_AddressVC: BaseTabHiden {
             .subscribe(onNext: { (posts: [ModelAddressItem]) in
                 PrintFM("log\(String(describing: posts.count))")
             },onError:{error in
-                print("3333333333Error//////Error \(error)")
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
 
             })
             .addDisposableTo(disposeBag)

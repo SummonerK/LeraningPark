@@ -14,14 +14,24 @@ import Alamofire
 
 enum vipAPI {
     case test(PostModel:ModelTestPost)//测试https
-    //MARK:- 商户模块
+    //MARK:- 商户
     case vipgetShopList(PostModel:ModelShopListPost)//MARK:获取获取门店列表
-    case addressGetList(PostModel:ModelAddressListPost)//MARK:获取收货地址List
+    case addressGetList(PostModel:ModelAddressListPost)//MARK:
 }
 
 let basevippath = "http://console.freemudvip.com/service/restful/base"
 
 extension vipAPI: TargetType {
+    /// The method used for parameter encoding.
+    var parameterEncoding: ParameterEncoding {
+        switch self {
+        case .test,.addressGetList:
+            return URLEncoding.default
+        case .vipgetShopList:
+            return JSONEncoding.default
+        }
+    }
+
     var baseURL: URL {
         return URL(string: basevippath)!
     }
@@ -31,7 +41,7 @@ extension vipAPI: TargetType {
         case .test(_):
             return ""
         case .vipgetShopList(_):
-            return "?op=getShopList"
+            return ""
         case .addressGetList(_):
             return ""
         }
@@ -40,11 +50,11 @@ extension vipAPI: TargetType {
     var method: Moya.Method {
         switch self {
         case .test(_):
-            return .GET
+            return .get
         case .vipgetShopList(_):
-            return .POST
+            return .post
         case .addressGetList(_):
-            return .GET
+            return .get
         }
         
     }

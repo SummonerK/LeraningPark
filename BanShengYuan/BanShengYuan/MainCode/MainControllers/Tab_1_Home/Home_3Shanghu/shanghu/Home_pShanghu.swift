@@ -8,7 +8,17 @@
 
 import UIKit
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 class Home_pShanghu: BaseTabHiden {
+    
+    //network
+    
+    let VipM = vipModel()
+    let modellistPost = ModelShopListPost()
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var tableV_main: UITableView!
     
@@ -23,6 +33,8 @@ class Home_pShanghu: BaseTabHiden {
         setNavi()
         
         tableV_main.register(UINib.init(nibName: "TCellshanghu", bundle: nil), forCellReuseIdentifier: "TCellshanghu")
+        
+        getData()
 
     }
     
@@ -41,6 +53,26 @@ class Home_pShanghu: BaseTabHiden {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getData(){
+        
+        modellistPost.op = "getShopList"
+        modellistPost.partnerId = "178a14ba-85a8-40c7-9ff4-6418418f5a0c"
+        modellistPost.pageSize = 10
+        modellistPost.pageNo = 1
+
+        VipM.vipgetShopList(amodel: modellistPost)
+            .subscribe(onNext: { (posts: [ModelShopItem]) in
+                PrintFM("shopList\(posts)")
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
     }
     
     

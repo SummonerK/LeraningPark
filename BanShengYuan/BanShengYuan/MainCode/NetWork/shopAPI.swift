@@ -14,14 +14,25 @@ import Alamofire
 
 enum shopAPI {
     case test(PostModel:ModelTestPost)//测试https
-    //MARK:- 商户模块
-    case shopGetNearList(PostModel:ModelAddressListPost)//MARK:获取获取门店列表
-    case addressGetList(PostModel:ModelAddressListPost)//MARK:获取收货地址List
+    //MARK:- 商户-商品
+    case shopGetAllProducts(PostModel:ModelShopDetailPost)//MARK:获取门店商品
+    case addressGetList(PostModel:ModelAddressListPost)//MARK:
 }
 
 let baseshoppath = "http://118.89.192.122:9998"
 
 extension shopAPI: TargetType {
+    /// The method used for parameter encoding.
+    var parameterEncoding: ParameterEncoding {
+        switch self {
+        case .test,.addressGetList:
+            return URLEncoding.default
+        case .shopGetAllProducts:
+            return URLEncoding.default
+            
+        }
+    }
+
     var baseURL: URL {
         return URL(string: baseshoppath)!
     }
@@ -30,7 +41,7 @@ extension shopAPI: TargetType {
         switch self {
         case .test(_):
             return ""
-        case .shopGetNearList(_):
+        case .shopGetAllProducts(_):
             return "/Query/Shop/GetAllProducts"
         case .addressGetList(_):
             return ""
@@ -40,11 +51,11 @@ extension shopAPI: TargetType {
     var method: Moya.Method {
         switch self {
         case .test(_):
-            return .GET
-        case .shopGetNearList(_):
-            return .POST
+            return .get
+        case .shopGetAllProducts(_):
+            return .get
         case .addressGetList(_):
-            return .GET
+            return .get
         }
         
     }
@@ -54,14 +65,17 @@ extension shopAPI: TargetType {
         case .test(let model):
             PrintFM(model.toDict())
             return model.toDict()
-        case .shopGetNearList(let model):
+        case .shopGetAllProducts(let model):
+            PrintFM(model.toDict())
             return model.toDict()
         case .addressGetList(let model):
+            PrintFM(model.toDict())
             return model.toDict()
         }
     }
     
     var sampleData: Data {
+        PrintFM("")
         switch self {
         case .test(_):
             return "test successfully".data(using: String.Encoding.utf8)!

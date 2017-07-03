@@ -21,9 +21,9 @@ let shopappendedParams: Dictionary<String, AnyObject> = [
 
 let shopendpoint = { (target: shopAPI) -> Endpoint<shopAPI> in
     let url = target.baseURL.appendingPathComponent(target.path).absoluteString
-    return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
-        .endpointByAddingParameters(appendedParams)
-        .endpointByAddingHTTPHeaderFields(headerFields)
+    return Endpoint<shopAPI>(url: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
+        .adding(newParameters: appendedParams)
+        .adding(newHTTPHeaderFields: headerFields)
 }
 
 let shopapiProvider = RxMoyaProvider<shopAPI>(endpointClosure:shopendpoint,plugins:[loadingPlugin,logPlugin])
@@ -35,18 +35,18 @@ class shopModel {
     func TESTHttps(amodel:ModelTestPost) -> Observable<ModelTestBack> {
         return shopprovider.request(.test(PostModel: amodel))
             .mapObject(type: ModelTestBack.self)
-            .showError()
+            //.showError()
     }
     
     func addressGetList(amodel:ModelAddressListPost) -> Observable<[ModelAddressItem]> {
         return shopprovider.request(.addressGetList(PostModel: amodel))
             .mapArray(type: ModelAddressItem.self)
-            .showError()
+            //.showError()
     }
-    func shopGetNearList(amodel:ModelAddressListPost) -> Observable<ModelAddressDetail> {
-        return shopprovider.request(.shopGetNearList(PostModel: amodel))
-            .mapObject(type: ModelAddressDetail.self)
-            .showError()
+    func shopGetAllProducts(amodel:ModelShopDetailPost) -> Observable<[ModelShopDetailItem]> {
+        return shopprovider.request(.shopGetAllProducts(PostModel: amodel))
+            .mapShopDetailProductList(type: ModelShopDetailItem.self)
+            //.showError()
     }
     
 }

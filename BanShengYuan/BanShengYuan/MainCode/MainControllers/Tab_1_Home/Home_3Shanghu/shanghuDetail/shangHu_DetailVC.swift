@@ -8,9 +8,20 @@
 
 import UIKit
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 import DZNEmptyDataSet
 
 class shangHu_DetailVC: BaseTabHiden {
+    
+    //network
+    
+    let VipM = shopModel()
+    let modelshopDetailPost = ModelShopDetailPost()
+    let disposeBag = DisposeBag()
+
     
     var sectionNum:Int? = 1
     
@@ -26,6 +37,9 @@ class shangHu_DetailVC: BaseTabHiden {
         super.viewDidLoad()
         
         setupCollection()
+        
+        getData()
+        
     }
     @IBAction func NaviBack(_ sender: Any) {
         
@@ -35,6 +49,36 @@ class shangHu_DetailVC: BaseTabHiden {
         
         PrintFM("meun")
         
+    }
+    
+/*
+
+     
+http://118.89.192.122:9998/Query/Shop/GetAllProducts?pagesize=10&pagenumber=1&shopId=178a14ba-85a8-40c7-9ff4-6418418f5a0c_31310040&nsukey=Bvc49gQ+pn6PeND1mZWngaBRxMWiqclFWKzklffE8t6KVEOaCV997IFnPHhKJV3Tz+9/j8ZNHjSgSqJbGkVdLXDMLyFcAw4Bt4UqUuDjkOgM1vm58hHhVm0ZpXBR0wNKidHNkhDCUD194P5RndaQ4n5ztVxlwc0GTO3Q6bUls+lSXuCOV+UVjh5Q4uSV+Yox
+     
+ */
+    
+    let shipid = "178a14ba-85a8-40c7-9ff4-6418418f5a0c_31310040"
+    let nsukey = "Bvc49gQ+pn6PeND1mZWngaBRxMWiqclFWKzklffE8t6KVEOaCV997IFnPHhKJV3Tz+9/j8ZNHjSgSqJbGkVdLXDMLyFcAw4Bt4UqUuDjkOgM1vm58hHhVm0ZpXBR0wNKidHNkhDCUD194P5RndaQ4n5ztVxlwc0GTO3Q6bUls+lSXuCOV+UVjh5Q4uSV+Yox"
+    
+    
+    func getData() {
+        modelshopDetailPost.shopId = shipid
+        modelshopDetailPost.pagesize = 10
+        modelshopDetailPost.pagenumber = 1
+        modelshopDetailPost.nsukey = nsukey
+        
+        VipM.shopGetAllProducts(amodel: modelshopDetailPost)
+            .subscribe(onNext: { (posts: [ModelShopDetailItem]) in
+                PrintFM("shopDetailItem\(posts)")
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
     }
     
     func setupCollection() {
@@ -71,7 +115,7 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
         self.navigationController?.pushViewController(Vc, animated: true)
         
-        PrintFM("商户\t\(indexPath.row)")
+//        PrintFM("商户\t\(indexPath.row)")
         
 //        sectionNum = 2
 //        
@@ -102,7 +146,7 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
         
-        PrintFM("history \(sectionNum!)")
+//        PrintFM("history \(sectionNum!)")
         
         return sectionNum!
     }

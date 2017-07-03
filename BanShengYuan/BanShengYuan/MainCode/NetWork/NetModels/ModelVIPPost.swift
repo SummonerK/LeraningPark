@@ -14,7 +14,11 @@ import ObjectMapper
 //MARK:获商户门店列表 postmodel
 
 class ModelShopListPost: Reflect {
-    
+    /**
+     *  商户编号
+     *  必传:True Y 36 string
+     */
+    var op:String!
     /**
      *  商户编号
      *  必传:True Y 36 string

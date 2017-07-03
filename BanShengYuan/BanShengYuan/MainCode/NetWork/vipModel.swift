@@ -21,9 +21,9 @@ let vipappendedParams: Dictionary<String, AnyObject> = [
 
 let vipendpoint = { (target: vipAPI) -> Endpoint<vipAPI> in
     let url = target.baseURL.appendingPathComponent(target.path).absoluteString
-    return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
+    return Endpoint<vipAPI>(url: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
 //        .endpointByAddingParameters(appendedParams)
-        .endpointByAddingHTTPHeaderFields(headerFields)
+        .adding(newHTTPHeaderFields: headerFields)
 }
 
 let vipapiProvider = RxMoyaProvider<vipAPI>(endpointClosure:vipendpoint,plugins:[loadingPlugin,logPlugin])
@@ -35,18 +35,18 @@ class vipModel {
     func TESTHttps(amodel:ModelTestPost) -> Observable<ModelTestBack> {
         return vipprovider.request(.test(PostModel: amodel))
             .mapObject(type: ModelTestBack.self)
-            .showError()
+            //.showError()
     }
     
     func vipgetShopList(amodel:ModelShopListPost) -> Observable<[ModelShopItem]> {
         return vipprovider.request(.vipgetShopList(PostModel: amodel))
             .mapshopList(type: ModelShopItem.self)
-            .showError()
+            //.showError()
     }
     func addressGetList(amodel:ModelAddressListPost) -> Observable<ModelAddressDetail> {
         return vipprovider.request(.addressGetList(PostModel: amodel))
             .mapObject(type: ModelAddressDetail.self)
-            .showError()
+            //.showError()
     }
     
 }

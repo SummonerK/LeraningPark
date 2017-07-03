@@ -20,9 +20,9 @@ let appendedParams: Dictionary<String, AnyObject> = [
 
 let endpoint = { (target: MyAPI) -> Endpoint<MyAPI> in
     let url = target.baseURL.appendingPathComponent(target.path).absoluteString
-    return Endpoint(URL: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
+    return Endpoint<MyAPI>(url: url, sampleResponseClosure: {.networkResponse(200, target.sampleData)}, method: target.method, parameters: target.parameters)
 //        .endpointByAddingParameters(appendedParams)
-        .endpointByAddingHTTPHeaderFields(headerFields)
+        .adding(newHTTPHeaderFields: headerFields)
 }
 
 //let apiProvider = RxMoyaProvider<MyAPI>(endpointClosure:endpoint,plugins:[loadingPlugin,logPlugin])
@@ -34,72 +34,78 @@ class ViewModel {
     func TESTHttps(amodel:ModelTestPost) -> Observable<ModelTestBack> {
         return provider.request(.test(PostModel: amodel))
             .mapObject(type: ModelTestBack.self)
-            .showError()
+            //.showError()
     }
 
     func loginLogin(amodel:ModelLoginPost) -> Observable<ModelCommonBack> {
         return provider.request(.loginLogin(PostModel: amodel))
             .mapObject(type: ModelCommonBack.self)
-            .showError()
+            //.showError()
     }
     func loginGetVCode(amodel:ModelVCodePost) -> Observable<ModelCommonBack> {
         return provider.request(.loginGetVCode(PostModel: amodel))
             .mapObject(type: ModelCommonBack.self)
-            .showError()
+            //.showError()
+    }
+    func loginVCodeVerify(amodel:ModelVCodeVerifyPost) -> Observable<ModelCommonBack> {
+        return provider.request(.loginVCodeVerify(PostModel: amodel))
+            .mapObject(type: ModelCommonBack.self)
+            //.showError()
     }
     func loginRegister(amodel:ModelRegisterPost) -> Observable<ModelCommonBack> {
         return provider.request(.loginRegister(PostModel: amodel))
             .mapObject(type: ModelCommonBack.self)
-            .showError()
+            //.showError()
     }
     func loginUpdatePWD(amodel:ModelUpdatePwdPost) -> Observable<ModelCommonBack> {
         return provider.request(.loginUpdatePWD(PostModel: amodel))
             .mapObject(type: ModelCommonBack.self)
-            .showError()
+            //.showError()
     }
     func addressGetList(amodel:ModelAddressListPost) -> Observable<[ModelAddressItem]> {
         return provider.request(.addressGetList(PostModel: amodel))
             .mapAddList(type: ModelAddressItem.self)
-            .showError()
+            //.showError()
     }
     func addressGetDetail(amodel:ModelAddressDetailPost) -> Observable<ModelAddressDetail> {
         return provider.request(.addressGetDetail(PostModel: amodel))
             .mapObject(type: ModelAddressDetail.self)
-            .showError()
+            //.showError()
     }
     func addressUpdate(amodel:ModelAddressUpdatePost) -> Observable<ModelCommonBack> {
         return provider.request(.addressUpdate(PostModel: amodel))
             .mapObject(type: ModelCommonBack.self)
-            .showError()
+            //.showError()
     }
     func addressAdd(amodel:ModelAddressAddPost) -> Observable<ModelCommonBack> {
         return provider.request(.addressAdd(PostModel: amodel))
             .mapObject(type: ModelCommonBack.self)
-            .showError()
+            //.showError()
     }
     func addressDelete(amodel:ModelAddressDeletePost) -> Observable<ModelCommonBack> {
         return provider.request(.addressDelete(PostModel: amodel))
             .mapObject(type: ModelCommonBack.self)
-            .showError()
+            //.showError()
     }
     func userUpdate(amodel:ModelUserUpdateInfoPost) -> Observable<ModelCommonBack> {
         return provider.request(.userUpdate(PostModel: amodel))
             .mapObject(type: ModelCommonBack.self)
-            .showError()
+            //.showError()
     }
     
 }
 
 //MARK:-statusMapping 监控Error
 public extension Observable {
-    func showError() -> Observable<Element> {
-        return self.doOn {event in
-            switch event{
-            case .error(let e):
-                print("showError \(e)")
-            default:
-                print("default")
-            }
-        }
+    func showError() -> Void {
+//
+//         self.subscribe(onError: {event in
+//            switch event{
+//                            case Error(let e):
+//                                print("showError \(e)")
+//                            default:
+//                                print("default")
+//                            }
+//        })
     }
 }

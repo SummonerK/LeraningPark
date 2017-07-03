@@ -24,9 +24,6 @@ class Login_RootVC: UIViewController{
     let VM = ViewModel()
     let model = ModelLoginPost()
     
-    let VipM = vipModel()
-    let modellistPost = ModelShopListPost()
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -53,20 +50,8 @@ class Login_RootVC: UIViewController{
         ShowWelecomeV()
         
         tf_phone.text = "15600703631"
-        tf_pwd.text = "123456"
+        tf_pwd.text = "qwer1234"
         model.partnerId = PartNerID
-        
-//        modellistPost.partnerId = "178a14ba-85a8-40c7-9ff4-6418418f5a0c"
-//        modellistPost.pageSize = 10
-//        modellistPost.pageNo = 1
-//        
-//        VipM.vipgetShopList(amodel: modellistPost)
-//            .subscribe(onNext: { (posts: [ModelShopItem]) in
-//                PrintFM("shopList\(posts)")
-//            },onError:{error in
-//                HUDShowMsgQuick(msg: (error as! MyErrorEnum).drawMsgValue, toView: self.view, time: 0.8)
-//            })
-//            .addDisposableTo(disposeBag)
         
         
     }
@@ -86,20 +71,20 @@ class Login_RootVC: UIViewController{
         
         welecomeV.contentImages = {
             
-            let array : Array<UIImage> = [BundleImageWithName("guide1")!,BundleImageWithName("guide2")!,BundleImageWithName("guide3")!,BundleImageWithName("guide4")!]
+            let array : Array<UIImage> = [BundleImageWithName("guide1")!,BundleImageWithName("guide2")!,BundleImageWithName("guide3")!]
             
             return array
         }
-        welecomeV.titles = {
-            return ["文章分类,方便阅读","纯黑设计,极客最爱","代码高亮,尊重技术","一键分享,保留精彩"]
-        }
+//        welecomeV.titles = {
+//            return ["文章分类,方便阅读","纯黑设计,极客最爱","代码高亮,尊重技术","一键分享,保留精彩"]
+//        }
         welecomeV.contentSize = {
-            return CGSize.init(width: 220, height: 220)
+            return CGSize.init(width: IBScreenWidth, height: IBScreenHeight)
         }
         
         welecomeV.doneButton = {
             let button : UIButton = UIButton(frame:CGRect.init(x: welecomeV.frame.size.width * 0.1, y: welecomeV.frame.size.height - 50, width: welecomeV.frame.size.width * 0.8, height: 33))
-            button.setImage(BundleImageWithName("button_start")!, for:UIControlState.normal)
+            button.setImage(BundlePngWithName("button_start")!, for:UIControlState.normal)
             return button
         }
         
@@ -126,9 +111,13 @@ class Login_RootVC: UIViewController{
                 UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
                 
             },onError:{error in
-                print("3333333333Error//////Error \((error as! MyErrorEnum).drawMsgValue)")
                 
-                HUDShowMsgQuick(msg: (error as! MyErrorEnum).drawMsgValue, toView: self.view, time: 0.8)
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+
             })
             .addDisposableTo(disposeBag)
         

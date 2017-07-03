@@ -49,7 +49,7 @@ open class GuideView: UIView {
     
     fileprivate lazy var cc_contentImages : Array<UIImage> = {
         
-        return self.contentImages?() ?? [BundleImageWithName("guide1")!,BundleImageWithName("guide2")!,BundleImageWithName("guide3")!,BundleImageWithName("guide4")!]
+        return self.contentImages?() ?? [BundleImageWithName("guide1")!,BundleImageWithName("guide2")!,BundleImageWithName("guide3")!]
     }()
     fileprivate lazy var cc_contentSize : CGSize = {
         return self.contentSize?() ?? self.frame.size
@@ -199,9 +199,9 @@ extension GuideView{
     
     public func showGuideView(){
         //检查版本号 和 是否首次启动
-        if checkVersionAndFirstLaunch() {
-            return
-        }
+//        if checkVersionAndFirstLaunch() {
+//            return
+//        }
         //显示
         self.setUp()
         w.addSubview(self)

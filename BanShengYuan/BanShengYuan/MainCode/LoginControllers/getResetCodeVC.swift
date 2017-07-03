@@ -8,9 +8,20 @@
 
 import UIKit
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 import IQKeyboardManagerSwift
 
 class getResetCodeVC: UIViewController,UITextFieldDelegate{
+    
+    //network
+    let disposeBag = DisposeBag()
+    let VM = ViewModel()
+    let model = ModelVCodePost()
+
+    let model_verify = ModelVCodeVerifyPost()
 
     @IBOutlet weak var tf_phone: UITextField!
     
@@ -35,6 +46,10 @@ class getResetCodeVC: UIViewController,UITextFieldDelegate{
         //键盘监听开关
         IQKeyboardManager.sharedManager().enable = true
         
+        tf_phone.text = "15600703631"
+        model.partnerId = PartNerID
+        model_verify.partnerId = PartNerID
+        
     }
 
 
@@ -58,23 +73,73 @@ class getResetCodeVC: UIViewController,UITextFieldDelegate{
     let duration = 0.3
 
     @IBAction func goToResetVC(_ sender: Any) {
-//
-//        let resetVc = self.storyboard?.instantiateViewController(withIdentifier: "resetPwdVC") as! resetPwdVC
-//        
-//        self.present(resetVc, animated: false, completion: nil)
-//        
-//        let animation = CATransition.init()
-//        animation.duration = duration
-//        //        animation.type = "rippleEffect" //波纹
-//        animation.type = kCATransitionFade 
-//        
-//        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+
+        if let str = tf_phone.text , str.isFullTelNumber(){
+            model_verify.phone = str
+        }else{
+            HUDShowMsgQuick(msg: "手机号不合法", toView: KeyWindow, time: 0.8)
+            return
+        }
+        
+        if let str = tf_vCode.text , str != ""{
+            model_verify.smsCode = str
+            
+            VM.loginVCodeVerify(amodel: model_verify)
+                .subscribe(onNext: { (common:ModelCommonBack) in
+                    HUDShowMsgQuick(msg: common.msg!, toView: KeyWindow, time: 0.8)
+                    //空中花市
+                    let Vc = StoryBoard_Login.instantiateViewController(withIdentifier: "resetPwdVC") as! resetPwdVC
+                    Vc.model_verify = self.model_verify
+                    self.navigationController?.pushViewController(Vc, animated: true)
+                    
+                },onError:{error in
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                        
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    }
+                })
+                .addDisposableTo(disposeBag)
+        }else{
+            HUDShowMsgQuick(msg: "验证码不能为空", toView: KeyWindow, time: 0.8)
+            return
+        }
+        
 
     }
     
     @IBAction func getVCode(_ sender: Any) {
         
-        setRunTimer()
+        PrintFM("")
+        
+//        self.setRunTimer()
+        
+        
+        if let str = tf_phone.text , str.isFullTelNumber(){
+            
+            bton_getVCode.isEnabled = false
+            
+            model.phone = str
+            
+            VM.loginGetVCode(amodel: model)
+                .subscribe(onNext: { (common:ModelCommonBack) in
+                    
+                    HUDShowMsgQuick(msg: common.msg!, toView: KeyWindow, time: 0.8)
+                    self.setRunTimer()
+                    
+                },onError:{error in
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    }
+                })
+                .addDisposableTo(disposeBag)
+        }else{
+            HUDShowMsgQuick(msg: "手机号不合法", toView: KeyWindow, time: 0.8)
+        }
+        
     }
     
     var rtcount: TimeInterval = 60
@@ -100,7 +165,7 @@ class getResetCodeVC: UIViewController,UITextFieldDelegate{
         if rtcount<=0 {
             rtimer?.invalidate()
             rtimer = nil
-            bton_getVCode.setTitle("获取验证码", for: UIControlState.normal)
+            bton_getVCode.setTitle("重新发送", for: UIControlState.normal)
             rtcount = 60
             bton_getVCode.isEnabled = true
         }else{

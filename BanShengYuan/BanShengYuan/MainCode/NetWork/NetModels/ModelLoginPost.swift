@@ -139,5 +139,27 @@ class ModelUpdatePwdPost: Reflect {
 }
 
 
+//MARK:修改密码 postmodel
+
+class ModelVCodeVerifyPost: Reflect {
+    
+    /**
+     *  商户编号
+     *  必传:True
+     */
+    var partnerId:String!
+    /**
+     *  手机号
+     *  必传:True
+     */
+    var phone:String!
+    /**
+     *  短信验证码
+     *  必传:True
+     */
+    var smsCode:String!
+    
+}
+
 
 
