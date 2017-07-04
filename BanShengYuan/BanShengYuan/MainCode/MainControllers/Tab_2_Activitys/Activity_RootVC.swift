@@ -13,10 +13,14 @@ class Activity_RootVC: UIViewController {
     
     @IBOutlet weak var tableV_main: UITableView!
     
+    let array_image:[(String,String)]! = [("activity3","subactivity3"),("activity2","subactivity2"),("activity1","subactivity1")]
+    
     var viewheader:UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = FlatWhiteLight
         
         self.navigationItem.title = "精彩活动"
         
@@ -35,18 +39,12 @@ class Activity_RootVC: UIViewController {
 extension Activity_RootVC:UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return array_image.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 0
-        case 1:
-            return 5
-        default:
-            return 0
-        }
+        
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,9 +53,11 @@ extension Activity_RootVC:UITableViewDataSource{
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        let url = URL(string: urlStr)
+        cell.imageV_activity.image = BundleImageWithName(array_image[indexPath.section].1)
         
-        cell.imageV_activity.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+//        let url = URL(string: urlStr)
+//        
+//        cell.imageV_activity.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
         
         return cell
     }
@@ -67,11 +67,13 @@ extension Activity_RootVC:UITableViewDataSource{
 extension Activity_RootVC: UITableViewDelegate {
     
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-//        
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+        
 //        return (section==0) ? 130 : 0
-//        
-//    }
+        
+        return 10
+        
+    }
 //
 //    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
 //
@@ -81,17 +83,24 @@ extension Activity_RootVC: UITableViewDelegate {
 //        return viewheader
 //    }
     
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
+//        
+//        return (section==array_image.count-1) ? 0 : 10
+//    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         return IBScreenWidth*176/375
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        PrintFM("\(indexPath.row)")
+        PrintFM("\(indexPath.section)")
         
-        guard let cell = tableView.cellForRow(at: indexPath) as? TCellActivity else {
-            return
-        }
+        let Vc = StoryBoard_ActivityPages.instantiateViewController(withIdentifier: "activityDetailVC") as! activityDetailVC
+        
+        Vc.imagename = array_image[indexPath.section].0
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
         
     }
 }

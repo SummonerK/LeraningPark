@@ -14,6 +14,7 @@ let StoryBoard_Main = UIStoryboard.init(name: "Main", bundle: nil)
 let StoryBoard_Login = UIStoryboard.init(name: "Login", bundle: nil)
 let StoryBoard_NextPages = UIStoryboard.init(name: "NextPages_FromHome", bundle: nil)
 let StoryBoard_UserCenter = UIStoryboard.init(name: "UserCenter", bundle: nil)
+let StoryBoard_ActivityPages = UIStoryboard.init(name: "NextPageActivity", bundle: nil)
 
 //MARK:-设置阴影
 func setshadowFor(aview:UIView, OffSet:CGSize){

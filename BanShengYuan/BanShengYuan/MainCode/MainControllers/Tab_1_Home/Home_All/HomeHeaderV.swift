@@ -34,7 +34,7 @@ class HomeHeaderV: UITableViewCell {
     
     override func layoutSubviews() {
         let frame = CGRect(x: 0, y: 44, width: IBScreenWidth, height: IBScreenWidth*205/375)
-        let imageView = ["PIC","PIC","PIC"]
+        let imageView = ["banner1","banner2","banner3"]
         let loopView = XHAdLoopView(frame: frame, images: imageView as NSArray, autoPlay: true, delay: 3, isFromNet: false)
         loopView.delegate = self
         

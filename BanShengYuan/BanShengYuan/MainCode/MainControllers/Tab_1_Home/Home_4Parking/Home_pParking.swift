@@ -10,12 +10,14 @@ import UIKit
 
 class Home_pParking: BaseTabHiden {
     
-    
+    @IBOutlet weak var imageV_content: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setNavi()
+        
+        imageV_content.image = BundleImageWithName("detailnone")
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,8 +28,11 @@ class Home_pParking: BaseTabHiden {
     func setNavi() {
         let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
         item.image = UIImage(named: "arrow_left")
+        let itemr = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionRight(_:)))
+        itemr.image = UIImage(named: "right")
         
         self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.rightBarButtonItem = itemr
         self.navigationItem.title = "停车"
     }
     
@@ -35,6 +40,10 @@ class Home_pParking: BaseTabHiden {
         self.navigationController?.popViewController(animated: true)
     }
 
+    func actionRight(_ sender: Any) {
+        PrintFM("")
+    }
+    
     /*
     // MARK: - Navigation
 

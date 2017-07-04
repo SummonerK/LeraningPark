@@ -91,7 +91,9 @@ class XHAdLoopView: UIView {
                 
             }
             else{
-                imageView.image = UIImage(named: self.currentImages![index] as! String);
+//                imageView.image = UIImage(named: self.currentImages![index] as! String);
+                
+                imageView.image = BundleImageWithName(self.currentImages![index] as! String)
             }
             imageScrollView?.addSubview(imageView)
         }
@@ -133,7 +135,8 @@ class XHAdLoopView: UIView {
                 
             }
             else{
-                imageView.image = UIImage(named: self.currentImages![i] as! String);
+//                imageView.image = UIImage(named: self.currentImages![i] as! String);
+                imageView.image = BundleImageWithName(self.currentImages![i] as! String)
             }
         }
         

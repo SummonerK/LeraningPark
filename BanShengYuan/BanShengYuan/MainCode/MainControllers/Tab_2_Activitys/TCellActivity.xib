@@ -15,24 +15,24 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="130.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S2n-Au-hJF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="130.5"/>
+                        <rect key="frame" x="8" y="0.0" width="304" height="130.5"/>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="S2n-Au-hJF" secondAttribute="bottom" id="5np-WE-2sx"/>
                     <constraint firstItem="S2n-Au-hJF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GSC-db-sUx"/>
-                    <constraint firstAttribute="trailing" secondItem="S2n-Au-hJF" secondAttribute="trailing" id="Leq-9C-Aoq"/>
-                    <constraint firstItem="S2n-Au-hJF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gPz-4U-kVV"/>
+                    <constraint firstAttribute="trailing" secondItem="S2n-Au-hJF" secondAttribute="trailing" constant="8" id="Leq-9C-Aoq"/>
+                    <constraint firstItem="S2n-Au-hJF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="gPz-4U-kVV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imageV_activity" destination="S2n-Au-hJF" id="jVJ-PL-Eif"/>
             </connections>
-            <point key="canvasLocation" x="-441" y="67"/>
+            <point key="canvasLocation" x="-441" y="66.5"/>
         </tableViewCell>
     </objects>
 </document>

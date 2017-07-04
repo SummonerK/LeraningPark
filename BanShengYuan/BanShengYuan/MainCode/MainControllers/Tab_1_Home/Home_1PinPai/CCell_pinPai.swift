@@ -12,6 +12,8 @@ class CCell_pinPai: UICollectionViewCell {
 
     @IBOutlet weak var imageV_shopIcon: UIImageView!
     
+    @IBOutlet weak var label_name: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,13 +26,10 @@ class CCell_pinPai: UICollectionViewCell {
         
 //        self.contentView.backgroundColor = UIColor.white
         
-        let numPreRow = 2
-        let ItemW = (Int(IBScreenWidth) - PinPaiCellPadding*(numPreRow + 1))/numPreRow
+//        let numPreRow = 2
+//        let ItemW = (Int(IBScreenWidth) - PinPaiCellPadding*(numPreRow + 1))/numPreRow
         
-        imageV_shopIcon.layer.cornerRadius = CGFloat(ItemW)*0.75*0.5
-        imageV_shopIcon.layer.borderColor = UIColor.init(red: 125.0/255.0, green: 125.0/255.0, blue: 125.0/255.0, alpha: 0.7).cgColor
-        imageV_shopIcon.layer.masksToBounds = true
-        imageV_shopIcon.layer.borderWidth = 2
+        setRadiusFor(toview: imageV_shopIcon, radius: 50, lineWidth: 0, lineColor: UIColor.clear)
         
     }
 

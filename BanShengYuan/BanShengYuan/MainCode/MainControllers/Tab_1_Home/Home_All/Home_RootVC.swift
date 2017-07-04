@@ -118,11 +118,14 @@ extension Home_RootVC:UITableViewDataSource{
             
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             
-            let url = URL(string: urlStr)
+            cell.img_left.image = BundleImageWithName("hbleft")
+            cell.img_right_down.image = BundleImageWithName("hbright1")
+            cell.img_right_up.image = BundleImageWithName("hbright2")
             
-            cell.img_left.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
-            cell.img_right_up.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
-            cell.img_right_down.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+//            let url = URL(string: urlStr)
+//            cell.img_left.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+//            cell.img_right_up.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+//            cell.img_right_down.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
             
             return cell
         default:

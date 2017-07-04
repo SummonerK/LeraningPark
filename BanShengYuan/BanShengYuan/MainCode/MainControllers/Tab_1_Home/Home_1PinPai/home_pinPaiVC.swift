@@ -12,6 +12,8 @@ let PinPaiCellPadding = 10
 
 class home_pinPaiVC: BaseTabHiden {
     @IBOutlet weak var CollectionV_main: UICollectionView!
+    
+    let array_image:[(String,String)]! = [("pplms","LMS 服装店"),("ppjuanfu","卷福餐厅"),("ppdaiso","大创生活馆"),("ppmore","敬请期待")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +27,19 @@ class home_pinPaiVC: BaseTabHiden {
         let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
         item.image = UIImage(named: "arrow_left")
         
+        let itemr = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionRight(_:)))
+        itemr.image = UIImage(named: "right")
+        
         self.navigationItem.leftBarButtonItem = item
+        self.navigationItem.rightBarButtonItem = itemr
         self.navigationItem.title = "品牌"
     }
     
     func actionBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    func actionRight(_ sender: Any) {
+        PrintFM("")
     }
     
     func setupCollectionView() {
@@ -97,16 +106,20 @@ extension home_pinPaiVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-        return 0
+        return array_image.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCell_pinPai", for: indexPath) as! CCell_pinPai
         
-        let url = URL(string: urlStr)
+//        let url = URL(string: urlStr)
+//        
+//        cell.imageV_shopIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
         
-        cell.imageV_shopIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+        cell.imageV_shopIcon.image = BundlePngWithName(array_image[indexPath.row].0)
+        
+        cell.label_name.text = array_image[indexPath.row].1
         
         return cell
         
@@ -122,8 +135,9 @@ extension home_pinPaiVC:UICollectionViewDelegateFlowLayout{
         let numPreRow = 2
         let ItemW = (Int(IBScreenWidth) - PinPaiCellPadding*(numPreRow + 1))/numPreRow
         
+        
         PrintFM("SW:\(IBScreenWidth),ItemW:\(ItemW)")
-        return CGSize.init(width: ItemW, height: ItemW)
+        return CGSize.init(width: ItemW, height: 150)
     }
     
 }
