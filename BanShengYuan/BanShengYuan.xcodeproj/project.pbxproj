@@ -16,6 +16,8 @@
 		63020C3B1EFD0236003F8199 /* view_orderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63020C361EFD0236003F8199 /* view_orderHeader.swift */; };
 		63020C3C1EFD0236003F8199 /* view_orderHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63020C371EFD0236003F8199 /* view_orderHeader.xib */; };
 		63020C411EFD0934003F8199 /* ModelUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63020C401EFD0934003F8199 /* ModelUserInfo.swift */; };
+		630E7D1E1F0BB3CB00A5F86A /* CCellChooseCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630E7D1C1F0BB3CB00A5F86A /* CCellChooseCover.swift */; };
+		630E7D1F1F0BB3CB00A5F86A /* CCellChooseCover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630E7D1D1F0BB3CB00A5F86A /* CCellChooseCover.xib */; };
 		6321237B1F0B3D6000DA9B5C /* activityDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6321237A1F0B3D6000DA9B5C /* activityDetailVC.swift */; };
 		6321237E1F0B403A00DA9B5C /* NextPageActivity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6321237C1F0B403A00DA9B5C /* NextPageActivity.storyboard */; };
 		634463991F04A62E000085E7 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 634463981F04A62D000085E7 /* login.png */; };
@@ -156,6 +158,8 @@
 		63020C361EFD0236003F8199 /* view_orderHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = view_orderHeader.swift; sourceTree = "<group>"; };
 		63020C371EFD0236003F8199 /* view_orderHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = view_orderHeader.xib; sourceTree = "<group>"; };
 		63020C401EFD0934003F8199 /* ModelUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelUserInfo.swift; sourceTree = "<group>"; };
+		630E7D1C1F0BB3CB00A5F86A /* CCellChooseCover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCellChooseCover.swift; sourceTree = "<group>"; };
+		630E7D1D1F0BB3CB00A5F86A /* CCellChooseCover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellChooseCover.xib; sourceTree = "<group>"; };
 		6321237A1F0B3D6000DA9B5C /* activityDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = activityDetailVC.swift; sourceTree = "<group>"; };
 		6321237D1F0B403A00DA9B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NextPageActivity.storyboard; sourceTree = "<group>"; };
 		634463981F04A62D000085E7 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
@@ -578,6 +582,8 @@
 			isa = PBXGroup;
 			children = (
 				636635EA1F05047E0060E7D4 /* chooseVC.swift */,
+				630E7D1C1F0BB3CB00A5F86A /* CCellChooseCover.swift */,
+				630E7D1D1F0BB3CB00A5F86A /* CCellChooseCover.xib */,
 				636635EB1F05047E0060E7D4 /* detail.jpg */,
 				636635EC1F05047E0060E7D4 /* GoodsDetailVC.swift */,
 				636635ED1F05047E0060E7D4 /* paris.jpg */,
@@ -833,9 +839,9 @@
 				TargetAttributes = {
 					638536291EE7A1F800DB7BA1 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = P2PF46GCFF;
+						DevelopmentTeam = BLJ7K274RB;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -893,6 +899,7 @@
 				638F18391EF1116C00A33412 /* TCellHomeActivities.xib in Resources */,
 				638536331EE7A1F800DB7BA1 /* Main.storyboard in Resources */,
 				63020C3C1EFD0236003F8199 /* view_orderHeader.xib in Resources */,
+				630E7D1F1F0BB3CB00A5F86A /* CCellChooseCover.xib in Resources */,
 				638F18331EF1116C00A33412 /* CCellHomeHeader.xib in Resources */,
 				638DE6251EF7C0620017DA72 /* TCell_userAddress.xib in Resources */,
 				635380D21EE8E52A006C0375 /* Source.bundle in Resources */,
@@ -1040,6 +1047,7 @@
 				6361701F1F00E04700EB8A26 /* ModelUserPost.swift in Sources */,
 				635D84151EF286AE007A2C05 /* Reflect+Type.swift in Sources */,
 				63657DA51EE7D03200DA24F4 /* Const.swift in Sources */,
+				630E7D1E1F0BB3CB00A5F86A /* CCellChooseCover.swift in Sources */,
 				636170161F00B05000EB8A26 /* ViewModel.swift in Sources */,
 				63547EDE1F05E18D000D006F /* shopAPI.swift in Sources */,
 				636635FF1F05047E0060E7D4 /* chooseVC.swift in Sources */,
@@ -1208,17 +1216,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = P2PF46GCFF;
+				CODE_SIGN_IDENTITY = "iPhone Developer: qiyuan wang (36536N9J6G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qiyuan wang (36536N9J6G)";
+				DEVELOPMENT_TEAM = BLJ7K274RB;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_TESTABILITY = NO;
 				INFOPLIST_FILE = BanShengYuan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Freemud.CN.BanShengYuan;
+				PRODUCT_BUNDLE_IDENTIFIER = BanShengYuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8dac34c3-c240-4936-9490-7a3979ff96c3";
+				PROVISIONING_PROFILE_SPECIFIER = buy_test;
 				SWIFT_OBJC_BRIDGING_HEADER = "BanShengYuan/MainCode/ThirdSource/MBProgressHUD/BanShengYuan-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1233,17 +1242,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = P2PF46GCFF;
+				CODE_SIGN_IDENTITY = "iPhone Developer: qiyuan wang (36536N9J6G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qiyuan wang (36536N9J6G)";
+				DEVELOPMENT_TEAM = BLJ7K274RB;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_TESTABILITY = NO;
 				INFOPLIST_FILE = BanShengYuan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Freemud.CN.BanShengYuan;
+				PRODUCT_BUNDLE_IDENTIFIER = BanShengYuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8dac34c3-c240-4936-9490-7a3979ff96c3";
+				PROVISIONING_PROFILE_SPECIFIER = buy_test;
 				SWIFT_OBJC_BRIDGING_HEADER = "BanShengYuan/MainCode/ThirdSource/MBProgressHUD/BanShengYuan-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

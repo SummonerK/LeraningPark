@@ -16,10 +16,6 @@ class GoodsDetailVC: BaseTabHiden {
     
     var _tapGesture: UITapGestureRecognizer!
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(true)
-//        coverVC.view.removeFromSuperview()
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,65 +33,43 @@ class GoodsDetailVC: BaseTabHiden {
         
         setCoverView()
         
-//        showCoverView()
+    }
+    @IBAction func actionBack(_ sender: Any) {
         
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func actionMenu(_ sender: Any) {
+        
+        PrintFM("")
     }
     
     func setCoverView(){
         
         coverVC = StoryBoard_NextPages.instantiateViewController(withIdentifier: "chooseVC") as? chooseVC
         
-//        self.addChildViewController(coverVC.self)
-        
         coverVC.view.frame = CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenHeight)
         
-        LastWindow.addSubview(coverVC.view)
+        coverVC.delegate = self
         
-        LastWindow.sendSubview(toBack: coverVC.view)
+        self.view.addSubview(coverVC.view)
         
-        _tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized(_:)))
+        self.view.sendSubview(toBack: coverVC.view)
         
-        coverVC.view.addGestureRecognizer(_tapGesture)
     }
-    
-//    LastWindow
-//    self.view.window?
     
     func showCoverView() {
         
-        LastWindow.bringSubview(toFront: coverVC.view)
+        self.view.bringSubview(toFront: coverVC.view)
     }
     
     func closeCoverView() {
         
-        LastWindow.sendSubview(toBack: coverVC.view)
-    }
-    
-    internal func tapRecognized(_ gesture: UITapGestureRecognizer) {
-        
-        if gesture.state == UIGestureRecognizerState.ended {
-            
-            closeCoverView()
-        }
-    }
-    
-    func setNavi() {
-        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
-        item.image = UIImage(named: "arrow_left")
-        
-        self.navigationItem.leftBarButtonItem = item
-        self.navigationItem.title = "详细"
-    }
-    
-    func actionBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.view.sendSubview(toBack: coverVC.view)
     }
     
     //支付
     @IBAction func buyNow(_ sender: Any) {
-        
-//        coverVC.view.removeFromSuperview()
-        
         
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
         self.navigationController?.pushViewController(Vc, animated: true)
@@ -107,6 +81,27 @@ class GoodsDetailVC: BaseTabHiden {
     }
     
     
+}
+
+extension GoodsDetailVC:ChooseCoverVDelegate{
+    
+    func setAction(actionType:ChooseCoverActionType){
+        switch actionType {
+        case .ADD:
+            PrintFM("")
+        case .Fls:
+            PrintFM("")
+        case .CLOSE:
+            PrintFM("")
+            closeCoverView()
+        }
+    }
+    
+    func buyNowAction(items:NSArray){
+        closeCoverView()
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
+        self.navigationController?.pushViewController(Vc, animated: true)
+    }
 }
 
 extension GoodsDetailVC:UITableViewDataSource{
@@ -195,7 +190,6 @@ extension GoodsDetailVC: UITableViewDelegate {
             return 90
         case 2:
             
-            
             if let image = UIImage(named: "detail.jpg"){
                 let hight =  image.size.height / image.size.width * IBScreenWidth
             
@@ -217,7 +211,9 @@ extension GoodsDetailVC: UITableViewDelegate {
         
         PrintFM("\(indexPath.row)")
         
-        showCoverView()
-                
+        if indexPath.section == 1 {
+            showCoverView()
+        }
+        
     }
 }

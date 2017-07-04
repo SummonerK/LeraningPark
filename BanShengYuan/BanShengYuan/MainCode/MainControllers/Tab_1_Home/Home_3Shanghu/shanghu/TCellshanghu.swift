@@ -23,7 +23,10 @@ class TCellshanghu: UITableViewCell {
     
     func setData(Model:ModelShopItem){
         
-        PrintFM(Model.description)
+//        PrintFM(Model.description)
+        
+        label_name.text = Model.storeName
+        label_info.text = Model.fullName
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -16,11 +16,16 @@ import DZNEmptyDataSet
 
 class shangHu_DetailVC: BaseTabHiden {
     
+    @IBOutlet weak var CV_main: UICollectionView!
+    
     //network
     
     let VipM = shopModel()
     let modelshopDetailPost = ModelShopDetailPost()
     let disposeBag = DisposeBag()
+    
+    //data
+    var array_items = NSMutableArray()
 
     
     var sectionNum:Int? = 1
@@ -32,7 +37,9 @@ class shangHu_DetailVC: BaseTabHiden {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
-    @IBOutlet weak var CV_main: UICollectionView!
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,7 +77,12 @@ http://118.89.192.122:9998/Query/Shop/GetAllProducts?pagesize=10&pagenumber=1&sh
         
         VipM.shopGetAllProducts(amodel: modelshopDetailPost)
             .subscribe(onNext: { (posts: [ModelShopDetailItem]) in
-                PrintFM("shopDetailItem\(posts)")
+//                PrintFM("shopDetailItem\(posts)")
+                
+                self.array_items = posts as! NSMutableArray
+                
+                self.CV_main.reloadData()
+                
             },onError:{error in
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                     HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
@@ -112,6 +124,8 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
+        PrintFM("\((array_items[indexPath.row] as! ModelShopDetailItem).description)")
+        
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
         self.navigationController?.pushViewController(Vc, animated: true)
         
@@ -135,7 +149,7 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CCell_shhuDetailHeader", for: indexPath) as! CCell_shhuDetailHeader
         
-        PrintFM("section Index \(indexPath.section)")
+//        PrintFM("section Index \(indexPath.section)")
         
 //        headerView.test = "sdflajfds"
         
@@ -153,7 +167,7 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-        return 3
+        return array_items.count
 
     }
     
@@ -161,9 +175,11 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCell_shhuDetail", for: indexPath) as! CCell_shhuDetail
         
-        let url = URL(string: urlStr)
+        cell.setData(Model: array_items[indexPath.row] as! ModelShopDetailItem)
         
-        cell.imageV_shangpin.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+//        let url = URL(string: urlStr)
+//        
+//        cell.imageV_shangpin.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
         
         return cell
         

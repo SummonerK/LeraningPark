@@ -68,7 +68,7 @@ class Home_pShanghu: BaseTabHiden {
 
         VipM.vipgetShopList(amodel: modellistPost)
             .subscribe(onNext: { (posts: [ModelShopItem]) in
-                PrintFM("shopList\(posts)")
+//                PrintFM("shopList\(posts)")
                 
                 self.array_items = posts as! NSMutableArray
                 
@@ -169,6 +169,8 @@ extension Home_pShanghu: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        PrintFM("\((array_items[indexPath.row] as! ModelShopItem).description)")
         
         //品牌
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "shangHu_DetailVC") as! shangHu_DetailVC
