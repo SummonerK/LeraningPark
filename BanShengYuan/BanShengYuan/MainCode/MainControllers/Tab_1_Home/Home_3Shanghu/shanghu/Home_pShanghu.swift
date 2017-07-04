@@ -70,7 +70,10 @@ class Home_pShanghu: BaseTabHiden {
             .subscribe(onNext: { (posts: [ModelShopItem]) in
                 PrintFM("shopList\(posts)")
                 
-                array_items = posts as! NSMutableArray
+                self.array_items = posts as! NSMutableArray
+                
+                self.tableV_main.reloadData()
+                
             },onError:{error in
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                     HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
@@ -139,7 +142,7 @@ extension Home_pShanghu:UITableViewDataSource{
             
             cell.imageV_shanghuIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
             
-            cell.setData(Model: array_items[indexPath.row])
+            cell.setData(Model: array_items[indexPath.row] as! ModelShopItem)
             
             return cell
         default:
