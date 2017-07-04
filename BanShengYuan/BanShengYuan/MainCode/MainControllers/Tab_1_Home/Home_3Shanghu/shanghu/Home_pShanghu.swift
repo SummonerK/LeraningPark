@@ -20,6 +20,10 @@ class Home_pShanghu: BaseTabHiden {
     let modellistPost = ModelShopListPost()
     let disposeBag = DisposeBag()
     
+    //data
+    var array_items = NSMutableArray()
+
+    //layoutView
     @IBOutlet weak var tableV_main: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +69,8 @@ class Home_pShanghu: BaseTabHiden {
         VipM.vipgetShopList(amodel: modellistPost)
             .subscribe(onNext: { (posts: [ModelShopItem]) in
                 PrintFM("shopList\(posts)")
+                
+                array_items = posts as! NSMutableArray
             },onError:{error in
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                     HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
@@ -115,7 +121,7 @@ extension Home_pShanghu:UITableViewDataSource{
         case 0:
             return 0
         case 1:
-            return 6
+            return array_items.count
         default:
             return 0
         }
@@ -132,6 +138,8 @@ extension Home_pShanghu:UITableViewDataSource{
             let url = URL(string: urlStr)
             
             cell.imageV_shanghuIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+            
+            cell.setData(Model: array_items[indexPath.row])
             
             return cell
         default:

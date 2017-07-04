@@ -24,7 +24,7 @@ class TCell_userAddress: UITableViewCell {
     
     var delegate:UserAddressDelegate?
     
-    var model_address:ModelAddress?
+    var model_address:ModelAddressItem?
     
     
     @IBOutlet weak var bton_set: UIButton!
@@ -46,11 +46,11 @@ class TCell_userAddress: UITableViewCell {
         
     }
     
-    func setModel(toModel:ModelAddress){
+    func setModel(toModel:ModelAddressItem){
         model_address = toModel
-        label_name.text = toModel.name! as String
+        label_name.text = toModel.receiverName! as String
         label_phone.text = toModel.phone! as String
-        label_address.text = "\(toModel.address_area!) \(toModel.address_Detail!)"
+        label_address.text = "\(toModel.area!) \(toModel.address!)"
     }
 
     @IBAction func action_set(_ sender: Any) {

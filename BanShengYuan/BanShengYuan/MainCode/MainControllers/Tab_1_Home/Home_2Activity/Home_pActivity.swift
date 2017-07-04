@@ -14,6 +14,8 @@ import DZNEmptyDataSet
 class Home_pActivity: BaseTabHiden {
     
     @IBOutlet weak var tableView_main: UITableView!
+    
+    let array_image:[(String,String)]! = [("activity3","subactivity3"),("activity2","subactivity2"),("activity1","subactivity1")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,12 +50,12 @@ class Home_pActivity: BaseTabHiden {
 extension Home_pActivity:UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return array_image.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,9 +64,11 @@ extension Home_pActivity:UITableViewDataSource{
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        let url = URL(string: urlStr)
+        cell.imageV_activity.image = BundleImageWithName(array_image[indexPath.section].1)
         
-        cell.imageV_activity.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+//        let url = URL(string: urlStr)
+//        
+//        cell.imageV_activity.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
         
         return cell
         
@@ -75,6 +79,13 @@ extension Home_pActivity:UITableViewDataSource{
 
 extension Home_pActivity: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+        
+        //        return (section==0) ? 130 : 0
+        
+        return 10
+        
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         
@@ -84,7 +95,13 @@ extension Home_pActivity: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("\(indexPath.row)")
+        PrintFM("\(indexPath.section)")
+        
+        let Vc = StoryBoard_ActivityPages.instantiateViewController(withIdentifier: "activityDetailVC") as! activityDetailVC
+        
+        Vc.imagename = array_image[indexPath.section].0
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
         
     }
 }

@@ -96,30 +96,30 @@ class Login_RootVC: UIViewController{
     
     @IBAction func loginAction(_ sender: Any) {
         PrintFM("登录")
-        model.phone = tf_phone.text
-        model.password = tf_pwd.text
-
+//        model.phone = tf_phone.text
+//        model.password = tf_pwd.text
+//
+//        
+//        VM.loginLogin(amodel: model)
+//            .subscribe(onNext: { (common:ModelCommonBack) in
+//                PrintFM("登录\(String(describing: common.description))")
         
-        VM.loginLogin(amodel: model)
-            .subscribe(onNext: { (common:ModelCommonBack) in
-                PrintFM("登录\(String(describing: common.description))")
-                
                 KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
                 let animation = CATransition.init()
                 animation.duration = self.duration
                 animation.type = kCATransitionFade
                 UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
                 
-            },onError:{error in
-                
-                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
-                }else{
-                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
-                }
-
-            })
-            .addDisposableTo(disposeBag)
+//            },onError:{error in
+//                
+//                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+//                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+//                }else{
+//                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+//                }
+//
+//            })
+//            .addDisposableTo(disposeBag)
         
 //        
 //        KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()

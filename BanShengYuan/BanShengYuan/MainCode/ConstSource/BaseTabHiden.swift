@@ -43,9 +43,9 @@ class BaseTabHiden: UIViewController {
 
 extension BaseTabHiden:DZNEmptyDataSetSource{
     
-    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat{
-        return IBScreenHeight*0.1
-    }
+//    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat{
+//        return 40
+//    }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!{
         

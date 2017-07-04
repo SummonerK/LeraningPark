@@ -27,9 +27,11 @@ class user_addressAddVC: UIViewController {
     
     @IBOutlet weak var bton_area: UIButton!
     
+    @IBOutlet weak var image_default: UIImageView!
+    
     var addressBack:AddressBack?
     
-    var modelEdit:ModelAddress?
+    var modelEdit:ModelAddressItem?
     
     var tag_pagefrom:Int? = 1
     
@@ -60,10 +62,10 @@ class user_addressAddVC: UIViewController {
 //        self.view.addSubview(ypbinputAccessoryView)
         
         if tag_pagefrom == 2 {
-            tf_name.text = modelEdit?.name
+            tf_name.text = modelEdit?.receiverName
             tf_phone.text = modelEdit?.phone
-            label_addressArea.text = modelEdit?.address_area
-            tf_addressDetail.text = modelEdit?.address_Detail
+            label_addressArea.text = modelEdit?.area
+            tf_addressDetail.text = modelEdit?.address
         }
         
         _tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized(_:)))
@@ -137,6 +139,17 @@ class user_addressAddVC: UIViewController {
         openAddress()
     }
     
+    @IBAction func receiveDateChoose(_ sender: Any) {
+//        PrintFM("choose Location Address")
+//        openAddress()
+        
+        HUDShowMsgQuick(msg: "此功能暂未开放", toView: KeyWindow, time: 0.8)
+    }
+    
+    @IBAction func defaultAddressChoose(_ sender: Any) {
+        
+        HUDShowMsgQuick(msg: "选择默认地址", toView: KeyWindow, time: 0.8)
+    }
     
     let duration: TimeInterval = 0.5
     
@@ -184,7 +197,7 @@ extension user_addressAddVC: AddressCityPickerViewDelegate {
     
     func addressCityPickerView(view: AddressCityPickerView, cityDidChange province: String, city: String, area: String) {
         
-        label_addressArea.text = province + " " + city + " " + area
+        label_addressArea.text = province + "-" + city + "-" + area
         
     }
     

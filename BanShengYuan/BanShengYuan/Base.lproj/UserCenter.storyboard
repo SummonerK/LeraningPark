@@ -706,10 +706,10 @@
                                             <constraint firstItem="XUH-DD-sPh" firstAttribute="centerY" secondItem="2pR-9R-Qo7" secondAttribute="centerY" id="v0g-j3-SPJ"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="addressAction:" destination="O0p-4K-uTZ" eventType="touchUpInside" id="Bey-7M-CCu"/>
+                                            <action selector="receiveDateChoose:" destination="O0p-4K-uTZ" eventType="touchUpInside" id="mqz-tW-jSo"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcF-HE-WcG">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcF-HE-WcG" customClass="UIButton">
                                         <rect key="frame" x="0.0" y="258" width="375" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设为默认地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrW-y4-N5l">
@@ -738,6 +738,9 @@
                                             <constraint firstItem="izB-1v-lVC" firstAttribute="centerY" secondItem="LcF-HE-WcG" secondAttribute="centerY" id="qzR-Qv-uTc"/>
                                             <constraint firstItem="YrW-y4-N5l" firstAttribute="centerY" secondItem="LcF-HE-WcG" secondAttribute="centerY" id="wVt-6e-4az"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="defaultAddressChoose:" destination="O0p-4K-uTZ" eventType="touchUpInside" id="p3f-LZ-zPJ"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
@@ -779,6 +782,7 @@
                     </view>
                     <connections>
                         <outlet property="bton_area" destination="VBN-8e-dvu" id="eTr-rL-ZeF"/>
+                        <outlet property="image_default" destination="izB-1v-lVC" id="p1W-Wh-FMl"/>
                         <outlet property="label_addressArea" destination="CTg-3e-Gi8" id="tML-ba-1VD"/>
                         <outlet property="tf_addressDetail" destination="Mac-xc-ljG" id="7MD-il-ldu"/>
                         <outlet property="tf_name" destination="w2J-dc-1ok" id="aZ9-MN-Vtg"/>

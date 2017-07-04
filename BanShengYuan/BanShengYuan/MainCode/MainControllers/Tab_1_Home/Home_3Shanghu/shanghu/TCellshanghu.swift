@@ -20,6 +20,11 @@ class TCellshanghu: UITableViewCell {
         
         setRadiusFor(toview: label_local, radius: 2, lineWidth: 0.8, lineColor: FlatLocalMain)
     }
+    
+    func setData(Model:ModelShopItem){
+        
+        PrintFM(Model.description)
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

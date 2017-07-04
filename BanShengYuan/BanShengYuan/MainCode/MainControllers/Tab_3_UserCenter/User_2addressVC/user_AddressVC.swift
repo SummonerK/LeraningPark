@@ -20,7 +20,7 @@ class user_AddressVC: BaseTabHiden {
     @IBOutlet weak var tableV_main: UITableView!
     
     //data
-    let array_address = NSMutableArray()
+    var array_address = NSMutableArray()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,12 +45,14 @@ class user_AddressVC: BaseTabHiden {
     
     func getData(){
         
-        let address1 = ModelAddress()
-        address1.name = "君莫笑"
-        address1.phone = "15611112222"
-        address1.address_area = "上海 普陀"
-        address1.address_Detail = "祁连山路1888号 耀光国际B座 1803室"
-        address1.isFirst = true
+//        let address1 = ModelAddress()
+//        address1.name = "君莫笑"
+//        address1.phone = "15611112222"
+//        address1.address_area = "上海 普陀"
+//        address1.address_Detail = "祁连山路1888号 耀光国际B座 1803室"
+//        address1.isFirst = true
+//        
+//        array_address.add(address1)
         
         let model_address = ModelAddressListPost()
         model_address.partnerId = PartNerID
@@ -59,6 +61,9 @@ class user_AddressVC: BaseTabHiden {
         VM.addressGetList(amodel: model_address)
             .subscribe(onNext: { (posts: [ModelAddressItem]) in
                 PrintFM("log\(String(describing: posts.count))")
+                
+                self.array_address = posts as! NSMutableArray
+                
             },onError:{error in
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                     HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
@@ -69,7 +74,7 @@ class user_AddressVC: BaseTabHiden {
             })
             .addDisposableTo(disposeBag)
         
-        array_address.add(address1)
+        
         
 //        PrintFM(address1.toDict())
         
@@ -107,27 +112,6 @@ class user_AddressVC: BaseTabHiden {
         super.didReceiveMemoryWarning()
     }
     
-//    func getBack(_ back:ModelAddress,_ page:Int) -> Void{
-//        
-//        PrintFM("\(back.toDict()) --- from page \(page)")
-//        
-//    }
-    
-//    func checkModelsInArray(){
-//        
-//        let array_temp = NSMutableArray(array: array_address as! [ModelAddress], copyItems: true)
-//        
-//        for I in 0...array_temp.count {
-//            if (array_temp[I] as! ModelAddress).isFirst{
-//                array_address.insert(array_temp[I], at: 0)
-//            }else{
-//                array_address.add(array_temp[I])
-//            }
-//
-//        }
-//        
-//    }
-    
 }
 
 extension user_AddressVC:UITableViewDataSource{
@@ -149,7 +133,7 @@ extension user_AddressVC:UITableViewDataSource{
         
         cell.delegate = self
         cell.addressIndex = indexPath
-        cell.setModel(toModel: (array_address[indexPath.section] as? ModelAddress)!)
+        cell.setModel(toModel: (array_address[indexPath.section] as? ModelAddressItem)!)
         
         if (array_address[indexPath.section] as! ModelAddress).isFirst {
             cell.bton_set.isSelected = true
@@ -187,7 +171,7 @@ extension user_AddressVC: UserAddressDelegate{
             //添加地址页面
             let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_addressAddVC") as! user_addressAddVC
             Vc.tag_pagefrom = 2
-            Vc.modelEdit = array_address[indexPath.section] as? ModelAddress
+            Vc.modelEdit = array_address[indexPath.section] as? ModelAddressItem
             Vc.addressBack = {(model)  -> Void in
                 self.array_address[indexPath.section] = model
                 self.tableV_main.reloadData()

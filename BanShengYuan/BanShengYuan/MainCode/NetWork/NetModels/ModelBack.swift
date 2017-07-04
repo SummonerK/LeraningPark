@@ -89,8 +89,9 @@ class ModelAddressItem: Mappable {
 //MARK:收货地址详细 AddressListBack
 
 class ModelAddressDetail: Mappable {
-    var statusCode: Int?
-    var msg: String?
+//    var statusCode: Int?
+//    var msg: String?
+    
     var receiverName: String?
     var phone: String?
     var area: String?
@@ -99,8 +100,8 @@ class ModelAddressDetail: Mappable {
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        statusCode <- map["statusCode"]
-        msg <- map["msg"]
+//        statusCode <- map["statusCode"]
+//        msg <- map["msg"]
         receiverName <- map["receiverName"]
         phone <- map["phone"]
         area <- map["area"]
