@@ -35,6 +35,8 @@ class user_addressAddVC: UIViewController {
     
     var tag_pagefrom:Int? = 1
     
+    var isDefault:Int? = 0
+    
     // tag_pagefrom = 1 新建
     // tag_pagefrom = 2 编辑
     
@@ -63,35 +65,20 @@ class user_addressAddVC: UIViewController {
         
         if tag_pagefrom == 2 {
             tf_name.text = modelEdit?.receiverName
-            tf_phone.text = modelEdit?.phone
+            tf_phone.text = modelEdit?.receiverPhone
             label_addressArea.text = modelEdit?.area
             tf_addressDetail.text = modelEdit?.address
+            
+            if modelEdit?.isDefault == 0 {
+                image_default.image = IBImageWithName("choose_n")
+            }else{
+                image_default.image = IBImageWithName("choose_s")
+            }
         }
         
         _tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized(_:)))
 
         KeyWindow.addGestureRecognizer(_tapGesture)
-        
-        let model_address = ModelAddressAddPost()
-        model_address.partnerId = PartNerID
-        model_address.memberId = "3dbab43e-6383-47d5-b176-ea4cad3daf85"
-        model_address.receiverName = "03"
-        model_address.phone = "18900001111"
-        model_address.address = "大街51号"
-        model_address.area = "上海-上海-普陀区"
-        
-        VM.addressAdd(amodel: model_address)
-            .subscribe(onNext: { (common:ModelCommonBack) in
-                PrintFM("添加\(String(describing: common.description))")
-            },onError:{error in
-                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
-                }else{
-                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
-                }
-                
-            })
-            .addDisposableTo(disposeBag)
 
     }
     
@@ -124,9 +111,68 @@ class user_addressAddVC: UIViewController {
         address1.address_area = label_addressArea.text
         address1.address_Detail = tf_addressDetail.text
         
-        addressBack!(address1)
-        
-        self.navigationController?.popViewController(animated: true)
+//        addressBack!(address1)
+            
+        if let name = tf_name.text,name != "",let phone = tf_phone.text,phone.isFullTelNumber(),let detail = tf_addressDetail.text,detail != "详细地址",let area = label_addressArea.text,area != "城市"{
+            
+            
+            if tag_pagefrom == 2 {
+                
+                self.navigationController?.popViewController(animated: true)
+                let model_address = ModelAddressUpdatePost()
+                model_address.partnerId = PartNerID
+                model_address.receiverName = name
+                model_address.receiverPhone = phone
+                model_address.phone = "18915966899"
+                model_address.area = area
+                model_address.address = detail
+                model_address.id = modelEdit?.id
+                model_address.isDefault = isDefault
+                VM.addressUpdate(amodel: model_address)
+                    .subscribe(onNext: {(common:ModelCommonBack) in
+                        PrintFM("更新设置\(String(describing: common.description))")
+                        
+                    },onError:{error in
+                        if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                            HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                        }else{
+                            HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                        }
+                        
+                    })
+                    .addDisposableTo(disposeBag)
+                
+            }else{
+                
+                let model_address = ModelAddressAddPost()
+                model_address.partnerId = PartNerID
+                model_address.receiverName = name
+                model_address.receiverPhone = phone
+                model_address.phone = "18915966899"
+                model_address.address = detail
+                model_address.area = area
+                model_address.isDefault = isDefault
+                
+                VM.addressAdd(amodel: model_address)
+                    .subscribe(onNext: { (common:ModelCommonBack) in
+                        PrintFM("添加\(String(describing: common.description))")
+                        
+                        self.navigationController?.popViewController(animated: true)
+                        
+                    },onError:{error in
+                        if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                            HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                        }else{
+                            HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                        }
+                        
+                    })
+                    .addDisposableTo(disposeBag)
+            }
+            
+        }else{
+            HUDShowMsgQuick(msg: "请填写完整信息", toView: KeyWindow, time: 0.8)
+        }
         
     }
 
@@ -147,8 +193,13 @@ class user_addressAddVC: UIViewController {
     }
     
     @IBAction func defaultAddressChoose(_ sender: Any) {
-        
-        HUDShowMsgQuick(msg: "选择默认地址", toView: KeyWindow, time: 0.8)
+        if isDefault == 0 {
+            isDefault = 1
+            image_default.image = IBImageWithName("choose_s")
+        }else{
+            isDefault = 0
+            image_default.image = IBImageWithName("choose_n")
+        }
     }
     
     let duration: TimeInterval = 0.5

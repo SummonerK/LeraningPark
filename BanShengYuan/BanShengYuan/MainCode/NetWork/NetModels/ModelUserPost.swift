@@ -18,11 +18,6 @@ class ModelUserUpdateInfoPost: Reflect {
      */
     var partnerId:String!
     /**
-     *  会员编号
-     *  必传:True
-     */
-    var memberId:String!
-    /**
      *  昵称
      *  必传:True
      */

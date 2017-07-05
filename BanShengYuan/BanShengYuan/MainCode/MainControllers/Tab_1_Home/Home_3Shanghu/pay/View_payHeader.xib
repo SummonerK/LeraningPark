@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -122,6 +123,12 @@
                         <constraint firstItem="Cll-IA-p8x" firstAttribute="centerY" secondItem="4se-sQ-DII" secondAttribute="centerY" id="vO1-SZ-Nys"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pay_line" translatesAutoresizingMaskIntoConstraints="NO" id="rCt-CF-tMN">
+                    <rect key="frame" x="0.0" y="127" width="375" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="rCt-CF-tMN" secondAttribute="height" multiplier="25:1" id="dsv-rP-q8F"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -129,7 +136,10 @@
                 <constraint firstItem="4se-sQ-DII" firstAttribute="top" secondItem="C84-0z-Dw2" secondAttribute="bottom" id="FcN-YQ-BKs"/>
                 <constraint firstAttribute="trailing" secondItem="v19-78-WXv" secondAttribute="trailing" id="FzC-B0-xPz"/>
                 <constraint firstItem="v19-78-WXv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="K2h-WY-ab4"/>
+                <constraint firstAttribute="bottom" secondItem="rCt-CF-tMN" secondAttribute="bottom" constant="8" id="NqU-bx-IgS"/>
+                <constraint firstAttribute="trailing" secondItem="rCt-CF-tMN" secondAttribute="trailing" id="h24-CW-HOo"/>
                 <constraint firstAttribute="trailing" secondItem="4se-sQ-DII" secondAttribute="trailing" id="hLU-n7-wH7"/>
+                <constraint firstItem="rCt-CF-tMN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jB4-G5-M9N"/>
                 <constraint firstItem="C84-0z-Dw2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nOF-Fg-NkO"/>
                 <constraint firstItem="v19-78-WXv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qGo-PF-FCc"/>
                 <constraint firstAttribute="trailing" secondItem="C84-0z-Dw2" secondAttribute="trailing" id="smM-2U-xoD"/>
@@ -145,5 +155,6 @@
     <resources>
         <image name="arrow_right" width="8" height="14"/>
         <image name="pay_address" width="14" height="21"/>
+        <image name="pay_line" width="374" height="15"/>
     </resources>
 </document>

@@ -45,14 +45,14 @@ class ModelShopDetailItem: Mappable {
     var categoryName: String?
     var companyId: String?
     var customerCode: String?
-    var finalPrice: String?
+    var finalPrice: Float?
     
     var labelNames: [ModelItemLabel]?
     var name: String?
-    var originalPrice: String?
+    var originalPrice: Float?
     var picture: String?
     var pid: String?
-    var saleCount: String?
+    var saleCount: Int?
     
     var sellTimeName: String?
     var specification: String?

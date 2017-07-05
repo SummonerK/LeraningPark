@@ -30,8 +30,8 @@ class CCell_shhuDetail: UICollectionViewCell {
         imageV_shangpin.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
         
         label_title.text = Model.name
-        label_pirce.text = Model.originalPrice
-        label_sales.text = Model.saleCount
+        label_pirce.text = String(describing: Model.originalPrice!)
+        label_sales.text = String(describing: Model.saleCount!)
     }
 
 }

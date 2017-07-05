@@ -38,7 +38,7 @@ open class GuideView: UIView {
         let w = UIWindow(frame:UIScreen.main.bounds)
         w.windowLevel = UIWindowLevelNormal
         w.rootViewController = UIViewController()
-        w.backgroundColor = UIColor.red
+        w.backgroundColor = UIColor.white
         w.isHidden = false
         return w
     }()

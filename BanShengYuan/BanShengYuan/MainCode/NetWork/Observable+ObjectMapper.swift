@@ -118,7 +118,7 @@ extension Observable {
             
             if json[RESULT_CODE].int == Int(RxSwiftMoyaError.IBSuccess.rawValue){
                 
-                guard let array = json["deliverAddList"].rawValue as? [Any] else {
+                guard let array = json["data"].rawValue as? [Any] else {
                     throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 }
                 

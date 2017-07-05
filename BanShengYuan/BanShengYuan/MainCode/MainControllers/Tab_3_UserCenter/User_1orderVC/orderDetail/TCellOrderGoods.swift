@@ -1,27 +1,18 @@
 //
-//  TCellGoodsinfo.swift
+//  TCellOrderGoods.swift
 //  BanShengYuan
 //
-//  Created by Luofei on 2017/6/19.
+//  Created by Luofei on 2017/7/5.
 //  Copyright © 2017年 Luofei. All rights reserved.
 //
 
 import UIKit
 
-protocol TCellGoodsinfoDelegate{
-    func setAction(actionType:String)
-}
-
-class TCellGoodsinfo: UITableViewCell {
-    
-    var delegate:TCellGoodsinfoDelegate?
+class TCellOrderGoods: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    @IBAction func chooseItems(_ sender: Any) {
-        self.delegate?.setAction(actionType: "00")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

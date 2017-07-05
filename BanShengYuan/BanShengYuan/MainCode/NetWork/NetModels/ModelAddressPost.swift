@@ -18,10 +18,11 @@ class ModelAddressListPost: Reflect {
      */
     var partnerId:String!
     /**
-     *  会员编号
+     *  手机号
      *  必传:True
      */
-    var memberId:String!
+    var phone:String!
+
     
 }
 
@@ -34,11 +35,7 @@ class ModelAddressDetailPost: Reflect {
      *  必传:True
      */
     var partnerId:String!
-    /**
-     *  会员编号
-     *  必传:True
-     */
-    var memberId:String!
+
     /**
      *  收货地址 ID
      *  必传:True
@@ -56,16 +53,17 @@ class ModelAddressAddPost: Reflect {
      *  必传:True
      */
     var partnerId:String!
-    /**
-     *  会员编号
-     *  必传:True
-     */
-    var memberId:String!
+
     /**
      *  收货地址 ID
      *  必传:True
      */
     var receiverName:String!
+    /**
+     *  手机号
+     *  必传:True
+     */
+    var receiverPhone:String!
     /**
      *  手机号
      *  必传:True
@@ -81,6 +79,11 @@ class ModelAddressAddPost: Reflect {
      *  必传:True
      */
     var address:String!
+    /**
+     *  详细地址
+     *  必传:True
+     */
+    var isDefault:Int!
     
 }
 
@@ -93,11 +96,7 @@ class ModelAddressUpdatePost: Reflect {
      *  必传:True
      */
     var partnerId:String!
-    /**
-     *  会员编号
-     *  必传:True
-     */
-    var memberId:String!
+
     /**
      *  收货地址 ID
      *  必传:True
@@ -108,6 +107,11 @@ class ModelAddressUpdatePost: Reflect {
      *  必传:True
      */
     var receiverName:String!
+    /**
+     *  收货联系方式
+     *  必传:True
+     */
+    var receiverPhone:String!
     /**
      *  手机号
      *  必传:True
@@ -123,6 +127,11 @@ class ModelAddressUpdatePost: Reflect {
      *  必传:True
      */
     var address:String!
+    /**
+     *  详细地址
+     *  必传:True
+     */
+    var isDefault:Int!
     
 }
 
@@ -136,15 +145,15 @@ class ModelAddressDeletePost: Reflect {
      */
     var partnerId:String!
     /**
-     *  会员编号
+     *  手机号
      *  必传:True
      */
-    var memberId:String!
+    var phone:String!
     /**
      *  收货地址 ID
      *  必传:True
      */
-    var deliverId:String!
+    var id:Int!
     
 }
 

@@ -104,7 +104,7 @@ extension Home_pShanghu:UITableViewDataSource{
                     "http://wx2.sinaimg.cn/mw690/af0d43ddgy1fdjzefvub1j20dw09q48s.jpg"
                 ]
         
-        let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*156/375))
+        let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*130/375))
         
         viewheader.contentImages = {
             

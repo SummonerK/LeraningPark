@@ -48,8 +48,12 @@ class TCell_userAddress: UITableViewCell {
     
     func setModel(toModel:ModelAddressItem){
         model_address = toModel
-        label_name.text = toModel.receiverName! as String
-        label_phone.text = toModel.phone! as String
+        
+        if let receiverName = toModel.receiverName{
+            label_name.text = receiverName
+        }
+        
+        label_phone.text = toModel.receiverPhone! as String
         label_address.text = "\(toModel.area!) \(toModel.address!)"
     }
 

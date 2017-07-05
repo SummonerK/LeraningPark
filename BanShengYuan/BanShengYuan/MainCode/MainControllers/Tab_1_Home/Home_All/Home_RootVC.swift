@@ -24,13 +24,15 @@ class Home_RootVC: UIViewController{
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        HUDShowMsgQuick(msg: "欢迎来到半生缘", toView: self.view, time: 0.8)
 //        HUDcustomShow(toview: self.view)
 //        HUDGifCustomShow()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        HUDShowMsgQuick(msg: "欢迎来到半生缘", toView: self.view, time: 0.8)
     
         PrintFM("---1\(String(describing: UserDefaults.standard.value(forKey: "IBKey")))")
         
@@ -189,7 +191,7 @@ extension Home_RootVC: UITableViewDelegate {
             
             return 44+(IBScreenWidth*(205+142)/375)
         case 1:
-            return 24
+            return max(24, IBScreenHeight - 44 - 89 - (IBScreenWidth*(205+142+176)/375))
         case 2:
             return IBScreenWidth*176/375
         default:

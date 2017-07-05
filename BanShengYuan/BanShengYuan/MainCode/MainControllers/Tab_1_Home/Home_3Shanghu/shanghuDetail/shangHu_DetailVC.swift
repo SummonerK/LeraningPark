@@ -153,6 +153,8 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
         
 //        headerView.test = "sdflajfds"
         
+        headerView.imageV_icon.image = BundlePngWithName("ppdaiso")
+        
         headerView.layoutIfNeeded()
         
         return headerView
@@ -196,7 +198,7 @@ extension shangHu_DetailVC:UICollectionViewDelegateFlowLayout{
         let ItemW = (Int(IBScreenWidth) - PinPaiCellPadding*(numPreRow + 1))/numPreRow
         
 //        PrintFM("SW:\(IBScreenWidth),ItemW:\(ItemW)")
-        return CGSize.init(width: ItemW, height: Int(Double(ItemW)*1.1)+62)
+        return CGSize.init(width: ItemW, height: Int(Double(ItemW)*1.1)+52)
     }
     
 }

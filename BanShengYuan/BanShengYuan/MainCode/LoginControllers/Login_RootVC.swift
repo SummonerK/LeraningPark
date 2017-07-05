@@ -50,7 +50,7 @@ class Login_RootVC: UIViewController{
         ShowWelecomeV()
         
         tf_phone.text = "15600703631"
-        tf_pwd.text = "qwer1234"
+        tf_pwd.text = "qwer1122"
         model.partnerId = PartNerID
         
         
@@ -78,6 +78,7 @@ class Login_RootVC: UIViewController{
 //        welecomeV.titles = {
 //            return ["文章分类,方便阅读","纯黑设计,极客最爱","代码高亮,尊重技术","一键分享,保留精彩"]
 //        }
+        
         welecomeV.contentSize = {
             return CGSize.init(width: IBScreenWidth, height: IBScreenHeight)
         }
@@ -96,10 +97,10 @@ class Login_RootVC: UIViewController{
     
     @IBAction func loginAction(_ sender: Any) {
         PrintFM("登录")
-//        model.phone = tf_phone.text
-//        model.password = tf_pwd.text
-//
-//        
+        model.phone = tf_phone.text
+        model.password = tf_pwd.text
+
+        
 //        VM.loginLogin(amodel: model)
 //            .subscribe(onNext: { (common:ModelCommonBack) in
 //                PrintFM("登录\(String(describing: common.description))")
@@ -130,6 +131,7 @@ class Login_RootVC: UIViewController{
 //        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
         
     }
+    
     @IBAction func goToRegist(_ sender: Any) {
         
 //        let Vc = self.storyboard?.instantiateViewController(withIdentifier: "RegistVC") as! RegistVC

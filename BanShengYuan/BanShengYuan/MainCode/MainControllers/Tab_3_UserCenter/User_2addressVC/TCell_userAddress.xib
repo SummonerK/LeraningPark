@@ -16,11 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="94.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="君莫笑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cv9-by-cIO">
-                        <rect key="frame" x="14" y="8" width="45" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小半" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cv9-by-cIO">
+                        <rect key="frame" x="14" y="8" width="30" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" priority="200" constant="22" id="CeR-ju-qEl"/>
                             <constraint firstAttribute="height" constant="21" id="Pha-uV-7lj"/>
@@ -30,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="177****7777" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uX-Xi-oaW">
-                        <rect key="frame" x="65" y="8" width="294" height="21"/>
+                        <rect key="frame" x="50" y="8" width="309" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="yCN-ZS-edP"/>
                         </constraints>

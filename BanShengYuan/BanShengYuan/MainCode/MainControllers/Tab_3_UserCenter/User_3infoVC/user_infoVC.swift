@@ -210,13 +210,17 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
         {
             
             //修正图片的位置
-            let image = self.fixOrientation((info[UIImagePickerControllerOriginalImage] as! UIImage))
+            
+//            let image = picker.isEditing ? self.fixOrientation((info[UIImagePickerControllerEditedImage] as! UIImage)) : self.fixOrientation((info[UIImagePickerControllerOriginalImage] as! UIImage))
+            
+            
+            let image = self.fixOrientation((info[UIImagePickerControllerEditedImage] as! UIImage))
+//            let image = self.fixOrientation((info[UIImagePickerControllerOriginalImage] as! UIImage))
             //先把图片转成NSData
             let data = UIImageJPEGRepresentation(image, 0.5)
             
             //图片保存的路径
             //这里将图片放在沙盒的documents文件夹中
-            
             //Home目录
             let homeDirectory = NSHomeDirectory()
             let documentPath = homeDirectory + "/Documents"
@@ -225,8 +229,7 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
             //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
             do {
                 try fileManager.createDirectory(atPath: documentPath, withIntermediateDirectories: true, attributes: nil)
-            }
-            catch let error {
+            }catch let error {
             }
             fileManager.createFile(atPath: documentPath + "/image.png", contents: data, attributes: nil)
             //得到选择后沙盒中图片的完整路径

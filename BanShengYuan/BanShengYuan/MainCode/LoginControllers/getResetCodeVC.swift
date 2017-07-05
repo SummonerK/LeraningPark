@@ -47,6 +47,7 @@ class getResetCodeVC: UIViewController,UITextFieldDelegate{
         IQKeyboardManager.sharedManager().enable = true
         
         tf_phone.text = "15600703631"
+        tf_vCode.text = "7292"
         model.partnerId = PartNerID
         model_verify.partnerId = PartNerID
         

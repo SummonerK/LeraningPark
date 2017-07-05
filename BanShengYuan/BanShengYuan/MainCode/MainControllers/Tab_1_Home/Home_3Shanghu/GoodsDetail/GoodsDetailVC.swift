@@ -109,7 +109,7 @@ extension GoodsDetailVC:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         
-        return (section==0) ? IBScreenWidth*276/375 : 0
+        return (section==0) ? IBScreenWidth*402/375 : 0
         
     }
     
@@ -121,7 +121,7 @@ extension GoodsDetailVC:UITableViewDataSource{
             "http://wx2.sinaimg.cn/mw690/af0d43ddgy1fdjzefvub1j20dw09q48s.jpg"
         ]
         
-        let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*176/375))
+        let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*402/375))
         
         viewheader.contentImages = {
             
@@ -157,6 +157,8 @@ extension GoodsDetailVC:UITableViewDataSource{
             
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             
+            cell.delegate = self
+            
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TCellGoodsImage", for: indexPath) as! TCellGoodsImage
@@ -180,6 +182,14 @@ extension GoodsDetailVC:UITableViewDataSource{
     
 }
 
+extension GoodsDetailVC: TCellGoodsinfoDelegate {
+    
+    func setAction(actionType:String){
+        showCoverView()
+    }
+    
+}
+
 extension GoodsDetailVC: UITableViewDelegate {
     
     
@@ -187,7 +197,7 @@ extension GoodsDetailVC: UITableViewDelegate {
         
         switch indexPath.section {
         case 1:
-            return 90
+            return 160
         case 2:
             
             if let image = UIImage(named: "detail.jpg"){
@@ -210,10 +220,6 @@ extension GoodsDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         PrintFM("\(indexPath.row)")
-        
-        if indexPath.section == 1 {
-            showCoverView()
-        }
         
     }
 }

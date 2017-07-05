@@ -60,7 +60,7 @@ extension MyAPI: TargetType {
         case .loginRegister(_):
             return "/member/register"
         case .loginUpdatePWD(_):
-            return "/member/updatePwd"
+            return "/member/updatepwd"
         case .addressGetList(_):
             return "/member/deliveraddress/list"
         case .addressGetDetail(_):

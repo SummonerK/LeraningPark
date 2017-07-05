@@ -110,6 +110,10 @@ extension user_OrderVC: UITableViewDelegate {
         
         PrintFM("\(indexPath.row)")
         
+        //订单详情
+        let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "OrderDetailVC") as! OrderDetailVC
+        self.navigationController?.pushViewController(Vc, animated: true)
+        
     }
 }
 

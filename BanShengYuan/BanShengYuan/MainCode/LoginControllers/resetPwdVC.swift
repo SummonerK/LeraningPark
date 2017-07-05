@@ -109,21 +109,21 @@ class resetPwdVC: UIViewController {
         
         
         
-        //            VM.loginUpdatePWD(amodel: model_newPwd)
-        //                .subscribe(onNext: { (common:ModelCommonBack) in
-        //                    HUDShowMsgQuick(msg: common.msg!, toView: KeyWindow, time: 0.8)
-        //                    //返回登录页
-        //                    self.navigationController?.popToRootViewController(animated: true)
-        //
-        //                },onError:{error in
-        //                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-        //                        HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
-        //
-        //                    }else{
-        //                        HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
-        //                    }
-        //                })
-        //                .addDisposableTo(disposeBag)
+        VM.loginUpdatePWD(amodel: model_newPwd)
+            .subscribe(onNext: { (common:ModelCommonBack) in
+                HUDShowMsgQuick(msg: common.msg!, toView: KeyWindow, time: 0.8)
+                //返回登录页
+                self.navigationController?.popToRootViewController(animated: true)
+
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
+
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
         
         
     }

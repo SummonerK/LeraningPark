@@ -116,11 +116,6 @@ class ModelUpdatePwdPost: Reflect {
      */
     var partnerId:String!
     /**
-     *  会员ID
-     *  必传:True
-     */
-    var memberId:String!
-    /**
      *  手机号
      *  必传:True
      */
