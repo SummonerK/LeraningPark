@@ -12,6 +12,9 @@ import RxSwift
 import Moya
 import Alamofire
 
+let shipid = "178a14ba-85a8-40c7-9ff4-6418418f5a0c_31310040"
+let nsukey = "Bvc49gQ+pn6PeND1mZWngaBRxMWiqclFWKzklffE8t6KVEOaCV997IFnPHhKJV3Tz+9/j8ZNHjSgSqJbGkVdLXDMLyFcAw4Bt4UqUuDjkOgM1vm58hHhVm0ZpXBR0wNKidHNkhDCUD194P5RndaQ4n5ztVxlwc0GTO3Q6bUls+lSXuCOV+UVjh5Q4uSV+Yox"
+
 enum vipAPI {
     case test(PostModel:ModelTestPost)//测试https
     //MARK:- 商户

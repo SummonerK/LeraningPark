@@ -21,6 +21,8 @@ protocol ChooseCoverVDelegate{
 
 class chooseVC: UIViewController {
     
+    @IBOutlet weak var viewAdd: UIView!
+    
     var delegate:ChooseCoverVDelegate?
     
     var array = NSMutableArray()
@@ -36,6 +38,8 @@ class chooseVC: UIViewController {
         
         imageVsub.image = createImageWithColor(color: UIColor.white)
         setRadiusFor(toview: imageVsub, radius: 3, lineWidth: 0, lineColor: UIColor.white)
+        
+        setRadiusFor(toview: viewAdd, radius: 3, lineWidth: 0.8, lineColor: FlatBlackLight)
         
         setupCollectionView()
    
@@ -78,6 +82,8 @@ class chooseVC: UIViewController {
         
         collection_main.register(UINib.init(nibName: "CCellChooseCover", bundle: nil), forCellWithReuseIdentifier: "CCellChooseCover")
         
+        collection_main.register(UINib.init(nibName: "CCellChooseVCHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CCellChooseVCHeader")
+        
     }
 
 }
@@ -88,13 +94,33 @@ extension chooseVC:UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
-        PrintFM("商户\t\(indexPath.row)")
+        PrintFM("item\t\(indexPath.row)")
         
     }
     
 }
 
 extension chooseVC:UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize.init(width: IBScreenWidth, height: 44)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CCellChooseVCHeader", for: indexPath) as! CCellChooseVCHeader
+        
+        if indexPath.section == 0{
+            headerView.label_title.text = "颜色分类"
+        }else{
+            headerView.label_title.text = "尺码"
+        }
+        
+        headerView.layoutIfNeeded()
+        
+        return headerView
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
         

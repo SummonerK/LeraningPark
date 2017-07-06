@@ -182,9 +182,25 @@ extension String{
     }
     
     func pwdisSafe() -> Bool {
-        let passWordRegex = "^[a-zA-Z0-9]{6,20}+$"
-        let passWordPredicate = NSPredicate(format: "SELF MATCHES%@", passWordRegex)
-        return passWordPredicate.evaluate(with: self)
+        
+        if self.length<6 && self.length>20 {
+            return false
+        }else{
+            
+            let CHA = "^[a-zA-Z]+$"
+            let NUM = "^[0-9]+$"
+            let PWDCHAP = NSPredicate(format: "SELF MATCHES%@", CHA)
+            let PWDNUMP = NSPredicate(format: "SELF MATCHES%@", NUM)
+            
+            if ((PWDCHAP.evaluate(with: self) == true)
+                || (PWDNUMP.evaluate(with: self) == true)) {
+                return true
+            }else{
+                return false
+            }
+            
+        }
+        
     }
     
     var length: Int {
@@ -192,10 +208,6 @@ extension String{
     }
     
 }
-
-//let numb = "^[0-9]{6,20}+$"
-//let numbAndEng = "^[a-zA-Z0-9]{6,20}+$"
-//let numbAndEngAndXN = "^[a-zA-Z0-9]{6,20}+$"
 
 // MARK:MBProgressHUD
 

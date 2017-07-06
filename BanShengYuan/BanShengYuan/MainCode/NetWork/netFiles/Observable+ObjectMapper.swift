@@ -158,15 +158,15 @@ extension Observable {
             if json["errcode"].int == Int(RxSwiftMoyaError.IBVIPSuccess.rawValue){
                 
                 guard let data = json["data"].rawValue as? [String: Any] else {
-                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
+                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
                 }
                 
                 guard let array = data["list"] as? [Any] else {
-                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
+                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
                 }
                 
                 guard let dicts = array as? [[String: Any]] else {
-                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
+                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
                 }
                 
                 return Mapper<T>().mapArray(JSONArray: dicts)
@@ -200,15 +200,15 @@ extension Observable {
             if json["errcode"].int == Int(RxSwiftMoyaError.IBSuccess.rawValue){
                 
                 guard let data = json["data"].rawValue as? [String: Any] else {
-                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
+                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
                 }
                 
-                guard let array = data["result"] as? [Any] else {
-                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
+                guard let array = data["products"] as? [Any] else {
+                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
                 }
                 
                 guard let dicts = array as? [[String: Any]] else {
-                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
+                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
                 }
                 
                 return Mapper<T>().mapArray(JSONArray: dicts)

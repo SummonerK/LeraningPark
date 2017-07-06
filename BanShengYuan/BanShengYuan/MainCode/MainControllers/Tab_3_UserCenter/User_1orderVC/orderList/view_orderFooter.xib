@@ -119,6 +119,10 @@
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bton_extend" destination="yat-aZ-uLz" id="0Vv-TR-zbA"/>
+                <outlet property="bton_received" destination="3qD-dM-ZOx" id="Zc4-1F-5bd"/>
+            </connections>
         </view>
     </objects>
 </document>

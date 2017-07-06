@@ -25,9 +25,6 @@ class user_AddressVC: BaseTabHiden {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        
-        getData()
-        
     }
     
     override func viewDidLoad() {
@@ -39,7 +36,7 @@ class user_AddressVC: BaseTabHiden {
         
         tableV_main.backgroundColor = FlatWhiteLight
         
-//        getData()
+        getData()
         
     }
     
@@ -47,16 +44,6 @@ class user_AddressVC: BaseTabHiden {
     // Data 相关
     
     func getData(){
-        
-//        let address1 = ModelAddress()
-//        address1.name = "君莫笑"
-//        address1.phone = "15611112222"
-//        address1.address_area = "上海 普陀"
-//        address1.address_Detail = "祁连山路1888号 耀光国际B座 1803室"
-//        address1.isFirst = true
-//        
-//        array_address.add(address1)
-
         
         let model_address = ModelAddressListPost()
         model_address.partnerId = PartNerID
@@ -81,12 +68,6 @@ class user_AddressVC: BaseTabHiden {
             })
             .addDisposableTo(disposeBag)
         
-        
-        
-//        PrintFM(address1.toDict())
-        
-//        tableV_main.reloadData()
-        
     }
     
     
@@ -108,8 +89,9 @@ class user_AddressVC: BaseTabHiden {
         let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_addressAddVC") as! user_addressAddVC
         Vc.tag_pagefrom = 1
         Vc.addressBack = {(model)  -> Void in
-//            self.array_address.add(model)
-//            self.tableV_main.reloadData()
+            
+            PrintFM(model)
+            self.getData()
         }
         
         self.navigationController?.pushViewController(Vc, animated: true)

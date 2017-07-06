@@ -10,12 +10,26 @@ import UIKit
 
 class view_orderFooter: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var bton_extend: UIButton!
+    
+    @IBOutlet weak var bton_received: UIButton!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setRadiusFor(toview: bton_extend, radius: 4, lineWidth: 1, lineColor: FlatLocalMain)
+        setRadiusFor(toview: bton_received, radius: 4, lineWidth: 1, lineColor: FlatLocalMain)
+        
     }
-    */
+    
+    override func layoutSubviews() {
+        setupSubviews()
+    }
+    
+    func setupSubviews(){
+        
+        
+    }
 
 }

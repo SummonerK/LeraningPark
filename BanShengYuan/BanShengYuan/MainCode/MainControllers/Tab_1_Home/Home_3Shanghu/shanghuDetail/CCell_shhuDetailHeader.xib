@@ -43,19 +43,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zic-7a-2UY">
-                        <rect key="frame" x="61" y="32" width="249" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销量 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zic-7a-2UY">
+                        <rect key="frame" x="61" y="32" width="28" height="21"/>
                         <constraints>
+                            <constraint firstAttribute="width" priority="200" constant="28" id="64s-Ji-Yo5"/>
                             <constraint firstAttribute="height" constant="21" id="9Gb-BS-m09"/>
                         </constraints>
-                        <attributedString key="attributedText">
-                            <fragment content="销量 1.2万 | 商品数量 50">
-                                <attributes>
-                                    <font key="NSFont" size="12" name="PingFangSC-Light"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uxc-tP-90H">
@@ -183,31 +178,73 @@
                             <constraint firstItem="wfb-lA-z0A" firstAttribute="width" secondItem="Uxc-tP-90H" secondAttribute="width" multiplier="0.33" id="lvQ-hh-zKD"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MoW-6H-ktC">
+                        <rect key="frame" x="91" y="32" width="27.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" priority="200" constant="42" id="ABO-ND-hSt"/>
+                            <constraint firstAttribute="height" constant="21" id="wl2-Kh-LBM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
+                        <color key="textColor" red="0.20784313730000001" green="0.73333333329999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9r-PH-lgV">
+                        <rect key="frame" x="122.5" y="32" width="54.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="EA1-nP-Dz9"/>
+                            <constraint firstAttribute="width" priority="200" constant="28" id="w4z-0I-GjD"/>
+                        </constraints>
+                        <attributedString key="attributedText">
+                            <fragment content="| 商品数量">
+                                <attributes>
+                                    <font key="NSFont" size="12" name="PingFangSC-Light"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <color key="highlightedColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yz-y8-A7u">
+                        <rect key="frame" x="181" y="32" width="14.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" priority="200" constant="42" id="5nY-bT-gWn"/>
+                            <constraint firstAttribute="height" constant="21" id="mD9-be-sVq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
+                        <color key="textColor" red="0.20784313730000001" green="0.73333333329999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="riy-bU-DGV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3FM-s3-ia3"/>
+                <constraint firstItem="Z9r-PH-lgV" firstAttribute="centerY" secondItem="zic-7a-2UY" secondAttribute="centerY" id="70Y-rZ-MIZ"/>
                 <constraint firstItem="zic-7a-2UY" firstAttribute="centerY" secondItem="zf5-sv-F6t" secondAttribute="centerY" constant="12" id="Bg2-8l-WdH"/>
+                <constraint firstItem="0Yz-y8-A7u" firstAttribute="leading" secondItem="Z9r-PH-lgV" secondAttribute="trailing" constant="4" id="Gwj-f5-pFV"/>
+                <constraint firstItem="Z9r-PH-lgV" firstAttribute="leading" secondItem="MoW-6H-ktC" secondAttribute="trailing" constant="4" id="KjW-qb-3Qz"/>
                 <constraint firstAttribute="bottom" secondItem="Uxc-tP-90H" secondAttribute="bottom" id="OIM-Su-vxt"/>
                 <constraint firstAttribute="trailing" secondItem="Uxc-tP-90H" secondAttribute="trailing" id="RGL-8j-Bgy"/>
                 <constraint firstItem="zf5-sv-F6t" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="9" id="RoJ-Ao-Mgb"/>
                 <constraint firstItem="VVY-01-9Nl" firstAttribute="centerY" secondItem="zf5-sv-F6t" secondAttribute="centerY" constant="-8" id="TAP-2M-M1N"/>
                 <constraint firstItem="zic-7a-2UY" firstAttribute="leading" secondItem="zf5-sv-F6t" secondAttribute="trailing" constant="10" id="TxK-J4-GrU"/>
                 <constraint firstItem="Uxc-tP-90H" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bL8-1G-6bb"/>
-                <constraint firstAttribute="trailing" secondItem="zic-7a-2UY" secondAttribute="trailing" constant="10" id="f7h-Rd-hRl"/>
+                <constraint firstItem="MoW-6H-ktC" firstAttribute="leading" secondItem="zic-7a-2UY" secondAttribute="trailing" constant="2" id="jpY-cN-MD6"/>
                 <constraint firstItem="VVY-01-9Nl" firstAttribute="leading" secondItem="zf5-sv-F6t" secondAttribute="trailing" constant="10" id="ko7-4c-XzR"/>
                 <constraint firstAttribute="trailing" secondItem="riy-bU-DGV" secondAttribute="trailing" id="lw4-V9-N0b"/>
                 <constraint firstItem="zf5-sv-F6t" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="9" id="onj-yw-kw2"/>
                 <constraint firstAttribute="trailing" secondItem="VVY-01-9Nl" secondAttribute="trailing" constant="10" id="pmz-YP-lkP"/>
+                <constraint firstItem="Z9r-PH-lgV" firstAttribute="centerY" secondItem="0Yz-y8-A7u" secondAttribute="centerY" id="udM-qJ-G1Z"/>
                 <constraint firstItem="riy-bU-DGV" firstAttribute="top" secondItem="zf5-sv-F6t" secondAttribute="bottom" constant="9" id="w0e-sh-GpM"/>
+                <constraint firstItem="zic-7a-2UY" firstAttribute="centerY" secondItem="MoW-6H-ktC" secondAttribute="centerY" id="ylK-D6-xRC"/>
             </constraints>
             <connections>
                 <outlet property="bton_newProduct" destination="MQF-EN-c4V" id="1Ct-bX-14n"/>
                 <outlet property="bton_price" destination="Jfp-MB-Igx" id="H0D-k0-EA8"/>
                 <outlet property="bton_xiaoliang" destination="ExQ-CX-c3Y" id="AaI-hy-B5L"/>
                 <outlet property="imageV_icon" destination="zf5-sv-F6t" id="WBj-TA-5nN"/>
-                <outlet property="label_info" destination="zic-7a-2UY" id="UJF-JZ-SrY"/>
+                <outlet property="label_productCount" destination="0Yz-y8-A7u" id="mpK-3T-3nK"/>
+                <outlet property="label_saleCount" destination="MoW-6H-ktC" id="3h1-WN-uOk"/>
                 <outlet property="label_shanghuName" destination="VVY-01-9Nl" id="3UB-gD-vZn"/>
                 <outlet property="line_newProduct" destination="Pgg-bi-vEU" id="GVJ-wk-Ubr"/>
                 <outlet property="line_price" destination="X3O-0U-YrX" id="3Mg-bC-b0y"/>

@@ -14,11 +14,11 @@ import ObjectMapper
 //MARK:获商户门店列表 postmodel
 
 class ModelShopDetailPost: Reflect {
-    /**
-     *
-     *  必传:True string
-     */
-    var nsukey:String!
+//    /**
+//     *
+//     *  必传:True string
+//     */
+//    var nsukey:String!
     /**
      *  商户编号
      *  必传:True Y 36 string

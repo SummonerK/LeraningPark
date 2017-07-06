@@ -17,5 +17,19 @@ class view_orderEndHeader: UIView {
         // Drawing code
     }
     */
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    override func layoutSubviews() {
+        setupSubviews()
+    }
+    
+    func setupSubviews(){
+        
+        
+    }
 
 }

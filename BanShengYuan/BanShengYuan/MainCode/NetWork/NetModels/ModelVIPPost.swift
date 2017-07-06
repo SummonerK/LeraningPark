@@ -52,7 +52,7 @@ class ModelShopItem: Mappable {
     var typeFlag: Int?
     var phone: String?
     var storeName: String?
-    var businessImages: NSMutableArray?
+    var businessImages: [NSDictionary]?
     
     var deliveryRadius: Int?
     var storeCode: String?
@@ -61,7 +61,7 @@ class ModelShopItem: Mappable {
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        briefName <- map["briefName"]
+        address <- map["address"]
         briefName <- map["briefName"]
         latitude <- map["latitude"]
         businessHours <- map["businessHours"]
@@ -86,3 +86,24 @@ class ModelShopItem: Mappable {
     }
     
 }
+
+class ModelShopPage: Mappable {
+    var sortIndex: String?
+    var imageUrl: String?
+    var imageTitle: String?
+    
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        sortIndex <- map["sortIndex"]
+        imageUrl <- map["imageUrl"]
+        imageTitle <- map["imageTitle"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+

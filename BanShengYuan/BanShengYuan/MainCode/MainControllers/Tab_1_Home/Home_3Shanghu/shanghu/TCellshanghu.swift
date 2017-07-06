@@ -27,6 +27,25 @@ class TCellshanghu: UITableViewCell {
         
         label_name.text = Model.storeName
         label_info.text = Model.fullName
+        
+//        if  (Model.businessImages?.count)!>0,let pagemodel = Model.businessImages?[0] ,let imageurl = pagemodel["imageUrl"]{
+//            
+//            let url = URL(string: imageurl as! String)
+//            
+//            imageV_shanghuIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+//        }
+        
+        for pagemodel in Model.businessImages!{
+            if  let imageurl = pagemodel["imageUrl"]{
+                
+                let url = URL(string: imageurl as! String)
+                
+                imageV_shanghuIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+                
+                break
+            }
+        }
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

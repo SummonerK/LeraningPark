@@ -14,7 +14,8 @@ class CCell_shhuDetailHeader: UICollectionViewCell {
     
     @IBOutlet weak var label_shanghuName: UILabel!
     
-    @IBOutlet weak var label_info: UILabel!
+    @IBOutlet weak var label_saleCount: UILabel!
+    @IBOutlet weak var label_productCount: UILabel!
     
     @IBOutlet weak var bton_xiaoliang: UIButton!
     @IBOutlet weak var line_xiaoliang: UIView!

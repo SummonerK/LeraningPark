@@ -9,9 +9,24 @@
 import UIKit
 
 class view_orderHeader: UIView {
+    
     @IBOutlet weak var label_dianpuname: UILabel!
 
     @IBOutlet weak var label_wuliu: UILabel!
     
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    override func layoutSubviews() {
+        setupSubviews()
+    }
+    
+    func setupSubviews(){
+        
+        
+    }
 
 }

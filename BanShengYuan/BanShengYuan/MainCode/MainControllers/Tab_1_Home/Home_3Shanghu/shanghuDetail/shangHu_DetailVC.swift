@@ -14,7 +14,7 @@ import SwiftyJSON
 
 import DZNEmptyDataSet
 
-class shangHu_DetailVC: BaseTabHiden {
+class shangHu_DetailVC: UIViewController {
     
     @IBOutlet weak var CV_main: UICollectionView!
     
@@ -36,9 +36,6 @@ class shangHu_DetailVC: BaseTabHiden {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
-
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +53,9 @@ class shangHu_DetailVC: BaseTabHiden {
         
         PrintFM("meun")
         
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
+        self.navigationController?.pushViewController(Vc, animated: true)
+        
     }
     
 /*
@@ -65,15 +65,11 @@ http://118.89.192.122:9998/Query/Shop/GetAllProducts?pagesize=10&pagenumber=1&sh
      
  */
     
-    let shipid = "178a14ba-85a8-40c7-9ff4-6418418f5a0c_31310040"
-    let nsukey = "Bvc49gQ+pn6PeND1mZWngaBRxMWiqclFWKzklffE8t6KVEOaCV997IFnPHhKJV3Tz+9/j8ZNHjSgSqJbGkVdLXDMLyFcAw4Bt4UqUuDjkOgM1vm58hHhVm0ZpXBR0wNKidHNkhDCUD194P5RndaQ4n5ztVxlwc0GTO3Q6bUls+lSXuCOV+UVjh5Q4uSV+Yox"
-    
-    
     func getData() {
         modelshopDetailPost.shopId = shipid
         modelshopDetailPost.pagesize = 10
         modelshopDetailPost.pagenumber = 1
-        modelshopDetailPost.nsukey = nsukey
+//        modelshopDetailPost.nsukey = nsukey
         
         VipM.shopGetAllProducts(amodel: modelshopDetailPost)
             .subscribe(onNext: { (posts: [ModelShopDetailItem]) in
@@ -129,12 +125,6 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
         self.navigationController?.pushViewController(Vc, animated: true)
         
-//        PrintFM("商户\t\(indexPath.row)")
-        
-//        sectionNum = 2
-//        
-//        CV_main.reloadData()
-        
     }
 }
 
@@ -149,10 +139,6 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CCell_shhuDetailHeader", for: indexPath) as! CCell_shhuDetailHeader
         
-//        PrintFM("section Index \(indexPath.section)")
-        
-//        headerView.test = "sdflajfds"
-        
         headerView.imageV_icon.image = BundlePngWithName("ppdaiso")
         
         headerView.layoutIfNeeded()
@@ -162,14 +148,14 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
         
-//        PrintFM("history \(sectionNum!)")
-        
         return sectionNum!
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
         return array_items.count
+        
+//        return 2
 
     }
     
@@ -177,11 +163,9 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCell_shhuDetail", for: indexPath) as! CCell_shhuDetail
         
-        cell.setData(Model: array_items[indexPath.row] as! ModelShopDetailItem)
+//        cell.imageV_shangpin.image = createImageWithColor(color: FlatWhiteLight)
         
-//        let url = URL(string: urlStr)
-//        
-//        cell.imageV_shangpin.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+        cell.setData(Model: array_items[indexPath.row] as! ModelShopDetailItem)
         
         return cell
         
@@ -197,8 +181,49 @@ extension shangHu_DetailVC:UICollectionViewDelegateFlowLayout{
         let numPreRow = 2
         let ItemW = (Int(IBScreenWidth) - PinPaiCellPadding*(numPreRow + 1))/numPreRow
         
-//        PrintFM("SW:\(IBScreenWidth),ItemW:\(ItemW)")
         return CGSize.init(width: ItemW, height: Int(Double(ItemW)*1.1)+52)
+    }
+    
+}
+
+extension shangHu_DetailVC:DZNEmptyDataSetSource{
+    
+        func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat{
+            return 110
+        }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!{
+        
+        let text = "没有数据咯"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: text, attributes: attrs)
+    }
+    
+    //Add description/subtitle on empty dataset
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Get no more Data from servicer, place check again!"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    //Add your image
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "item2_activity")
+    }
+    
+    //Add your button
+    
+    //    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+    //        let str = "Add Grokkleglob"
+    //        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
+    //        return NSAttributedString(string: str, attributes: attrs)
+    //    }
+    
+    //Add action for button
+    func emptyDataSetDidTapButton(_ scrollView: UIScrollView!) {
+        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Hurray", style: .default, handler: nil))
+        present(ac, animated: true, completion: nil)
     }
     
 }

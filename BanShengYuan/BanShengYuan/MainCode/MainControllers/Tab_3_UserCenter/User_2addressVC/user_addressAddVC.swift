@@ -14,7 +14,7 @@ import RxSwift
 import ObjectMapper
 import SwiftyJSON
 
-typealias AddressBack =  (_ back:ModelAddress) -> Void
+typealias AddressBack =  (_ back:String) -> Void
 
 class user_addressAddVC: UIViewController {
     @IBOutlet weak var tf_name: UITextField!
@@ -70,8 +70,11 @@ class user_addressAddVC: UIViewController {
             tf_addressDetail.text = modelEdit?.address
             
             if modelEdit?.isDefault == 0 {
+                
+                isDefault = 0
                 image_default.image = IBImageWithName("choose_n")
             }else{
+                isDefault = 1
                 image_default.image = IBImageWithName("choose_s")
             }
         }
@@ -105,20 +108,23 @@ class user_addressAddVC: UIViewController {
     }
     @IBAction func pushData(_ sender: Any) {
         
-        let address1 = ModelAddress()
-        address1.name = tf_name.text
-        address1.phone = tf_phone.text
-        address1.address_area = label_addressArea.text
-        address1.address_Detail = tf_addressDetail.text
+//        let address1 = ModelAddress()
+//        address1.name = tf_name.text
+//        address1.phone = tf_phone.text
+//        address1.address_area = label_addressArea.text
+//        address1.address_Detail = tf_addressDetail.text
         
-//        addressBack!(address1)
+        
+        PrintFM("\(String(describing: tf_name.text))\n\(String(describing: tf_phone.text))\n\(String(describing: tf_addressDetail.text))\n\(String(describing: label_addressArea.text))")
+        
+        
+        
             
-        if let name = tf_name.text,name != "",let phone = tf_phone.text,phone.isFullTelNumber(),let detail = tf_addressDetail.text,detail != "详细地址",let area = label_addressArea.text,area != "城市"{
+        if let name = tf_name.text,name != "",let phone = tf_phone.text,phone.isFullTelNumber(),let detail = tf_addressDetail.text,detail != "",let area = label_addressArea.text,area != "城市"{
             
             
             if tag_pagefrom == 2 {
                 
-                self.navigationController?.popViewController(animated: true)
                 let model_address = ModelAddressUpdatePost()
                 model_address.partnerId = PartNerID
                 model_address.receiverName = name
@@ -131,6 +137,10 @@ class user_addressAddVC: UIViewController {
                 VM.addressUpdate(amodel: model_address)
                     .subscribe(onNext: {(common:ModelCommonBack) in
                         PrintFM("更新设置\(String(describing: common.description))")
+                        
+                        self.addressBack!(name)
+                        
+                        self.navigationController?.popViewController(animated: true)
                         
                     },onError:{error in
                         if let msg = (error as? MyErrorEnum)?.drawMsgValue{

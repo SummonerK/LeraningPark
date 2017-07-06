@@ -17,5 +17,19 @@ class view_orderEndFooter: UIView {
         // Drawing code
     }
     */
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    override func layoutSubviews() {
+        setupSubviews()
+    }
+    
+    func setupSubviews(){
+        
+        
+    }
 
 }

@@ -182,9 +182,9 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6O-Mn-iQI">
-                                <rect key="frame" x="4" y="20" width="44" height="44"/>
+                                <rect key="frame" x="4" y="20" width="30" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="Yeq-aS-n2F"/>
+                                    <constraint firstAttribute="width" constant="30" id="Yeq-aS-n2F"/>
                                     <constraint firstAttribute="height" constant="44" id="weH-ea-Bjr"/>
                                 </constraints>
                                 <state key="normal" image="arrow_left"/>
@@ -193,9 +193,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAQ-dv-shl">
-                                <rect key="frame" x="327" y="20" width="44" height="44"/>
+                                <rect key="frame" x="341" y="20" width="30" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="aTl-xu-SMc"/>
+                                    <constraint firstAttribute="width" constant="30" id="aTl-xu-SMc"/>
                                     <constraint firstAttribute="height" constant="44" id="wgZ-ZZ-F6a"/>
                                 </constraints>
                                 <state key="normal" image="right"/>
@@ -289,7 +289,7 @@
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-Ik-aXY">
                                         <rect key="frame" x="10" y="127" width="355" height="184"/>
-                                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vtu-yM-iUi">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -406,7 +406,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="moJ-9L-p4g" firstAttribute="leading" secondItem="hSa-Ab-FsN" secondAttribute="trailing" constant="20" id="Ox5-ZS-LAu"/>
                                             <constraint firstAttribute="height" constant="40" id="m6c-o5-crX"/>
@@ -466,6 +466,7 @@
                         <outlet property="collection_main" destination="rh8-Ik-aXY" id="Sh1-q0-gww"/>
                         <outlet property="imageVsub" destination="Mbi-ZB-rQ3" id="Pcf-ti-00x"/>
                         <outlet property="label_count" destination="GM2-CU-ocY" id="MXt-Gg-dSa"/>
+                        <outlet property="viewAdd" destination="moJ-9L-p4g" id="dBo-Ii-hn3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBO-cf-CBz" userLabel="First Responder" sceneMemberID="firstResponder"/>

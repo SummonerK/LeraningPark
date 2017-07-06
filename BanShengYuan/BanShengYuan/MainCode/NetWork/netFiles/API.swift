@@ -56,7 +56,7 @@ extension MyAPI: TargetType {
         case .loginGetVCode(_):
             return "/member/sms"
         case .loginVCodeVerify(_):
-            return "/member/sms"
+            return "/member/sms/verify"
         case .loginRegister(_):
             return "/member/register"
         case .loginUpdatePWD(_):

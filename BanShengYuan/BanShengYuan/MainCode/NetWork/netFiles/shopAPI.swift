@@ -42,7 +42,7 @@ extension shopAPI: TargetType {
         case .test(_):
             return ""
         case .shopGetAllProducts(_):
-            return "/Query/Shop/GetAllProducts"
+            return "/Query/Shop/ListAllProducts"
         case .addressGetList(_):
             return ""
         }

@@ -62,7 +62,7 @@ class Home_pShanghu: BaseTabHiden {
     func getData(){
         
         modellistPost.op = "getShopList"
-        modellistPost.partnerId = "178a14ba-85a8-40c7-9ff4-6418418f5a0c"
+        modellistPost.partnerId = PARTNERID
         modellistPost.pageSize = 10
         modellistPost.pageNo = 1
 
@@ -137,10 +137,6 @@ extension Home_pShanghu:UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "TCellshanghu", for: indexPath) as! TCellshanghu
             
             cell.selectionStyle = UITableViewCellSelectionStyle.none
-            
-            let url = URL(string: urlStr)
-            
-            cell.imageV_shanghuIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
             
             cell.setData(Model: array_items[indexPath.row] as! ModelShopItem)
             

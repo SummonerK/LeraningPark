@@ -55,3 +55,22 @@ func setUnderLineToString(tocolor:UIColor) -> [String:Any] {
 //    attributedString.addAttributes(firstAttributes, range: string.rangeOfString("Testing"))
     return firstAttributes
 }
+
+
+extension String{
+    
+    func fixNumString() -> String {
+        
+        let acount:Float = self.floatValue!
+        
+        if acount == 0 || acount < 0 {
+            return "0"
+        }
+        
+        if acount > 10000 {
+            return "\(String(format: "%.1f 万 ", (acount/10000)))"
+        }
+        
+        return "\(String(format: "%.0f", (acount)))"
+    }
+}

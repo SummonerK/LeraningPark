@@ -10,6 +10,8 @@ import Foundation
 import RxSwift
 import Moya
 
+let PARTNERID = "53c69e54-c788-495c-bed3-2dbfc6fd5c61"
+
 let shopheaderFields: Dictionary<String, String> = [
     "platform": "iOS",
     "sys_ver": String(UIDevice.version())
