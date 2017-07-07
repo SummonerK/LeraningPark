@@ -14,14 +14,9 @@ import ObjectMapper
 //MARK:获商户门店列表 postmodel
 
 class ModelShopDetailPost: Reflect {
-//    /**
-//     *
-//     *  必传:True string
-//     */
-//    var nsukey:String!
     /**
      *  商户编号
-     *  必传:True Y 36 string
+     *  必传:True
      */
     var shopId:String!
     /**
@@ -91,13 +86,10 @@ class ModelShopDetailItem: Mappable {
     
 }
 
-//MARK:通用返回结构
-/*
- *  statusCode:100
- *  msg:String
- */
+// labelItem
+
 class ModelItemLabel: Mappable {
-    var lid: String?
+    var lid: Int?
     var shopId: String?
     var name: String?
     var type: Int?
@@ -116,3 +108,83 @@ class ModelItemLabel: Mappable {
     }
     
 }
+
+
+//MARK:获取商品详情 postmodel
+
+class ModelGoodsDetailPost: Reflect {
+
+    /**
+     *  商户编号
+     *  必传:True Y 36 string
+     */
+    var productId:String!
+
+    
+}
+
+//MARK:获取商品详情 backModel
+
+class ModelGoodsDetailResult: Mappable {
+    var pid: CLongLong?
+    var detailText: String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        pid <- map["pid"]
+        detailText <- map["detailText"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+//MARK:获取商品详情 图片 postmodel
+
+class ModelGoodsDetailPicturePost: Reflect {
+    
+    /**
+     *  商品ID
+     *  必传:True
+     */
+    var productId:String!
+    /**
+     *  图片类型
+     *  必传:True 默认default，轮播banner
+     */
+    var type:String!
+    
+    
+}
+
+//MARK:获取商品详情 backModel
+
+
+class ModelGoodsDetailResultPictures: Mappable {
+    var ppid: CLongLong?
+    var productId: String?
+    var type: CLongLong?
+    var url: String?
+    var sequence: CLongLong?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        ppid <- map["ppid"]
+        productId <- map["productId"]
+        type <- map["type"]
+        url <- map["url"]
+        sequence <- map["sequence"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+
+

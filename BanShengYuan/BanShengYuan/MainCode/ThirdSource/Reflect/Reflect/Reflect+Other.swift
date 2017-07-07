@@ -62,6 +62,7 @@ extension String{
     
     var floatValue: Float? {return NumberFormatter().number(from: self)?.floatValue}
     var doubleValue: Double? {return NumberFormatter().number(from: self)?.doubleValue}
+    var intValue: Int? {return NumberFormatter().number(from: self)?.intValue}
     
     func repeatTimes(times: Int) -> String{
         

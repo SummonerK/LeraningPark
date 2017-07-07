@@ -8,7 +8,21 @@
 
 import UIKit
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 class GoodsDetailVC: BaseTabHiden {
+    
+    //network
+    
+    let VipM = shopModel()
+    let modelGoodsDetailPost = ModelGoodsDetailPost()
+    let modelGoodsDetailPictruePost = ModelGoodsDetailPicturePost()
+    let disposeBag = DisposeBag()
+    
+    var array_banner = NSMutableArray()
+    
 
     @IBOutlet weak var tableV_main: UITableView!
     
@@ -16,6 +30,7 @@ class GoodsDetailVC: BaseTabHiden {
     
     var _tapGesture: UITapGestureRecognizer!
     
+    var model_goods:ModelShopDetailItem?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,6 +48,8 @@ class GoodsDetailVC: BaseTabHiden {
         
         setCoverView()
         
+        getData()
+        
     }
     @IBAction func actionBack(_ sender: Any) {
         
@@ -42,6 +59,49 @@ class GoodsDetailVC: BaseTabHiden {
     @IBAction func actionMenu(_ sender: Any) {
         
         PrintFM("")
+    }
+    
+    func getData(){
+        
+        modelGoodsDetailPost.productId = model_goods?.pid
+        
+        VipM.shopGetDetail(amodel: modelGoodsDetailPost)
+            .subscribe(onNext: { (result: ModelGoodsDetailResult) in
+                
+                PrintFM("ModelGoodsDetailResult\(result)")
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
+        modelGoodsDetailPictruePost.productId = model_goods?.pid
+        modelGoodsDetailPictruePost.type = "banner"
+        
+        VipM.shopGetDetailPictures(amodel: modelGoodsDetailPictruePost)
+            .subscribe(onNext: { (posts: [ModelGoodsDetailResultPictures]) in
+                
+                PrintFM("pictureList\(posts)")
+                
+                self.array_banner.removeAllObjects()
+                
+                self.array_banner.addObjects(from: posts)
+                
+//                self.tableV_main.reloadData()
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
     }
     
     func setCoverView(){
@@ -114,21 +174,39 @@ extension GoodsDetailVC:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        let imageArray = [
-            "http://wx3.sinaimg.cn/mw690/62eeaba5ly1fee5yt59wrj20fa08lafr.jpg",
-            "http://wx4.sinaimg.cn/mw690/6a624f11ly1fed4bwlbb0j20go0h6q5h.jpg",
-            "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
-            "http://wx2.sinaimg.cn/mw690/af0d43ddgy1fdjzefvub1j20dw09q48s.jpg"
-        ]
         
-        let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*402/375))
         
-        viewheader.contentImages = {
+        if section == 0 {
             
-            return imageArray
+//            let imageArray = NSMutableArray()
+//            
+//            for item in array_banner{
+//                imageArray.add((item as! ModelGoodsDetailResultPictures).url!)
+//            }
+            
+            let imageArray = [
+                "http://wx3.sinaimg.cn/mw690/62eeaba5ly1fee5yt59wrj20fa08lafr.jpg",
+                "http://wx4.sinaimg.cn/mw690/6a624f11ly1fed4bwlbb0j20go0h6q5h.jpg",
+                "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
+                "http://wx2.sinaimg.cn/mw690/af0d43ddgy1fdjzefvub1j20dw09q48s.jpg"
+            ]
+            
+            let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*402/375))
+            
+            viewheader.contentImages = {
+                
+                return imageArray
+            }
+            
+            
+            return viewheader
+            
+            
+        }else{
+            return nil
         }
         
-        return viewheader
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

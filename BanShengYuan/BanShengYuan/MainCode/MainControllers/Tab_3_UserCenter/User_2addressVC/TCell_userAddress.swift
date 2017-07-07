@@ -43,6 +43,7 @@ class TCell_userAddress: UITableViewCell {
         super.awakeFromNib()
         
         bton_set.setImage(IBImageWithName("choose_s"), for: UIControlState.selected)
+        bton_set.setTitle("默认地址", for: UIControlState.selected)
         
     }
     

@@ -50,5 +50,15 @@ class shopModel {
             .mapShopDetailProductList(type: ModelShopDetailItem.self)
             //.showError()
     }
+    func shopGetDetail(amodel:ModelGoodsDetailPost) -> Observable<ModelGoodsDetailResult> {
+        return shopprovider.request(.shopGetDetail(PostModel: amodel))
+            .mapResult(type: ModelGoodsDetailResult.self)
+        //.showError()
+    }
+    func shopGetDetailPictures(amodel:ModelGoodsDetailPicturePost) -> Observable<[ModelGoodsDetailResultPictures]> {
+        return shopprovider.request(.shopGetDetailPictures(PostModel: amodel))
+            .mapResultList(type: ModelGoodsDetailResultPictures.self)
+        //.showError()
+    }
     
 }

@@ -8,15 +8,18 @@
 
 import UIKit
 
+//typealias BadBack = (String) -> Void
+
 import IQKeyboardManagerSwift
 
 import RxSwift
 import ObjectMapper
 import SwiftyJSON
 
-typealias AddressBack =  (_ back:String) -> Void
-
 class user_addressAddVC: UIViewController {
+    
+//    var BadBack:BadBack?
+    
     @IBOutlet weak var tf_name: UITextField!
     
     @IBOutlet weak var tf_phone: UITextField!
@@ -28,9 +31,7 @@ class user_addressAddVC: UIViewController {
     @IBOutlet weak var bton_area: UIButton!
     
     @IBOutlet weak var image_default: UIImageView!
-    
-    var addressBack:AddressBack?
-    
+
     var modelEdit:ModelAddressItem?
     
     var tag_pagefrom:Int? = 1
@@ -104,24 +105,18 @@ class user_addressAddVC: UIViewController {
     
     func actionBack(_ sender: Any) {
         
+//        BadBack!("122")
+        
+        //发送通知
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "payNotifation"), object: self,userInfo:["key":"value"])
+        
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func pushData(_ sender: Any) {
         
-//        let address1 = ModelAddress()
-//        address1.name = tf_name.text
-//        address1.phone = tf_phone.text
-//        address1.address_area = label_addressArea.text
-//        address1.address_Detail = tf_addressDetail.text
-        
-        
         PrintFM("\(String(describing: tf_name.text))\n\(String(describing: tf_phone.text))\n\(String(describing: tf_addressDetail.text))\n\(String(describing: label_addressArea.text))")
-        
-        
-        
             
         if let name = tf_name.text,name != "",let phone = tf_phone.text,phone.isFullTelNumber(),let detail = tf_addressDetail.text,detail != "",let area = label_addressArea.text,area != "城市"{
-            
             
             if tag_pagefrom == 2 {
                 
@@ -137,8 +132,6 @@ class user_addressAddVC: UIViewController {
                 VM.addressUpdate(amodel: model_address)
                     .subscribe(onNext: {(common:ModelCommonBack) in
                         PrintFM("更新设置\(String(describing: common.description))")
-                        
-                        self.addressBack!(name)
                         
                         self.navigationController?.popViewController(animated: true)
                         
@@ -196,8 +189,6 @@ class user_addressAddVC: UIViewController {
     }
     
     @IBAction func receiveDateChoose(_ sender: Any) {
-//        PrintFM("choose Location Address")
-//        openAddress()
         
         HUDShowMsgQuick(msg: "此功能暂未开放", toView: KeyWindow, time: 0.8)
     }

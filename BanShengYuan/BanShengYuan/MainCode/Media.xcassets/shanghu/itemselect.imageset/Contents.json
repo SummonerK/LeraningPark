@@ -5,8 +5,22 @@
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 28,
+          "top" : 27,
+          "right" : 34,
+          "left" : 8
+        }
+      },
       "idiom" : "universal",
-      "filename" : "selected-corner@2x.png",
+      "filename" : "边框样式（selected）@2x.png",
       "scale" : "2x"
     },
     {

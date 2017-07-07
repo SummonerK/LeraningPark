@@ -174,10 +174,10 @@ class INOScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
     var currentPageDotImage:Any?
     
     /// 小圆点颜色
-    var pageDotColor: UIColor = UIColor.white
+    var pageDotColor: UIColor = UIColor(white: 1, alpha: 0.5)
     
     /// 当前小圆点颜色
-    var currentDotColor: UIColor = UIColor(white: 1, alpha: 0.5)
+    var currentDotColor: UIColor = UIColor.white
     
     /// 小白点的位置
     var pageControlAliment: INOScrollViewPageAliment?{
@@ -353,6 +353,12 @@ class INOScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
             cell.imageView.image = (item as! UIImage)
         }else {
             
+            
+            cell.imageView.image = BundleImageWithName(item as! String)
+            
+            //URL
+            
+            /*
             var url: URL?
             
             if item is URL {
@@ -366,6 +372,8 @@ class INOScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
             }, completionHandler: { (image, error, cacheType, imageURL) in
                 
             })
+ 
+            */
         }
         
         

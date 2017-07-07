@@ -31,6 +31,13 @@ class Login_RootVC: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let result:[AnyHashable:Any] = [AnyHashable("resultStatus"): 9000, AnyHashable("result"): "11" ,AnyHashable("memo"): ""]
+        PrintFM("result\(result["resultStatus"]!)")
+        
+        let status:Int = result["resultStatus"] as! Int
+        
+        PrintFM("status = \(status)")
+        
         
         setNavi()
         

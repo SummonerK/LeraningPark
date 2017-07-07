@@ -56,6 +56,9 @@ class info_NameVC: UIViewController {
         
         if let editname = tf_nickName.text {
             nickNameBack!(editname)
+            
+            
+//            nickNameBack!("163465465")
             self.navigationController?.popViewController(animated: true)
         }
 

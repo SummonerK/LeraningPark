@@ -64,6 +64,8 @@ class RegistVC: UIViewController,UITextFieldDelegate{
         item.image = UIImage(named: "arrow_left")
         
         self.navigationItem.leftBarButtonItem = item
+        
+        "12".doubleValue
         self.navigationItem.title = "注册"
     }
     

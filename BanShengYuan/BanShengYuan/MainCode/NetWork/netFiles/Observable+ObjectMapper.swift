@@ -13,6 +13,8 @@ import ObjectMapper
 import UIKit
 import SwiftyJSON
 
+import MBProgressHUD
+
 let PartNerID = "a8bee0dd-09d1-4fa9-a9eb-80cb36d3d611"
 
 public protocol Mapable {
@@ -57,6 +59,41 @@ extension Observable {
                 throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string!)
             }
 
+        }
+    }
+    
+    func mapResult<T: Mappable>(type: T.Type) -> Observable<T> {
+        return self.map { response in
+            
+            guard let response = response as? Moya.Response else{
+                throw MyErrorEnum.HttpError(Code: 1002, Msg: "请求出错")
+            }
+            
+            guard ((200...209) ~= response.statusCode) else {
+                throw MyErrorEnum.HttpError(Code: response.statusCode, Msg: "HttpError")
+            }
+            //
+            //json shell
+            let json = JSON.init(data: response.data)
+            PrintFM("\(json)")
+            PrintFM("\(String(describing: json["errmsg"].int))")
+            PrintFM("\(String(describing: json["errcode"].string))")
+            
+            
+            if json["errcode"].int == Int(RxSwiftMoyaError.IBSuccess.rawValue){
+                
+                guard let dict = json["data"].rawValue as? [String: Any] else {
+                    
+                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
+                }
+                
+                return Mapper<T>().map(JSON: dict)!
+                
+            }else{
+                
+                throw MyErrorEnum.IBError(Code: json["errmsg"].int!, Msg: json["errcode"].string!)
+            }
+            
         }
     }
     
@@ -222,6 +259,40 @@ extension Observable {
         }
     }
     
+    //
+    func mapResultList<T: Mappable>(type: T.Type) -> Observable<[T]> {
+        return self.map { response in
+            
+            guard let response = response as? Moya.Response else{
+                throw MyErrorEnum.HttpError(Code: 1002, Msg: "请求出错")
+            }
+            
+            guard ((200...209) ~= response.statusCode) else {
+                throw MyErrorEnum.HttpError(Code: response.statusCode, Msg: "HttpError")
+            }
+            
+            let json = JSON.init(data: response.data)
+            
+            print("\(String(describing: json["errcode"].string))")
+            print("\(String(describing: json["errmsg"].string))")
+            
+            if json["errcode"].int == Int(RxSwiftMoyaError.IBSuccess.rawValue){
+                
+                guard let data = json["data"].rawValue as? [[String: Any]] else {
+                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
+                }
+                
+                return Mapper<T>().mapArray(JSONArray: data)
+                
+            }else{
+                
+                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string!)
+                
+            }
+            
+        }
+    }
+    
     private func resultFromJSON<T: Mapable>(jsonData:JSON, classType: T.Type) -> T? {
         return T(jsonData: jsonData)
     }
@@ -274,12 +345,21 @@ let loadingPlugin = NetworkActivityPlugin { (change) -> () in
     switch(change){
     case .began:
         mAllRequestCount += 1
-//        SVProgressHUD.show()
+        
+        if mAllRequestCount == 1{
+            MBProgressHUD.showAdded(to: KeyWindow, animated: true)
+            
+            
+        }
+        
+        PrintFM("mAllRequestCount ++++++ = \(mAllRequestCount)")
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     case .ended:
         mAllRequestCount -= 1
+        PrintFM("mAllRequestCount ----- = \(mAllRequestCount)")
         if mAllRequestCount == 0 {
-//            SVProgressHUD.dismiss()
+            MBProgressHUD.hide(for: KeyWindow, animated: true)
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
         

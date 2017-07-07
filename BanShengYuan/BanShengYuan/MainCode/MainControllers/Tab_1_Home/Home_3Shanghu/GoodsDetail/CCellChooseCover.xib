@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xvw-fw-Nh9">
-                        <rect key="frame" x="42" y="6" width="66" height="28"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itemselect" translatesAutoresizingMaskIntoConstraints="NO" id="Xvw-fw-Nh9">
+                        <rect key="frame" x="32" y="6" width="86" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="N4d-Lb-3PV"/>
                         </constraints>
@@ -37,7 +37,7 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Xvw-fw-Nh9" firstAttribute="width" secondItem="kq9-Wk-ad7" secondAttribute="width" constant="10" id="02b-HX-9iC"/>
+                <constraint firstItem="Xvw-fw-Nh9" firstAttribute="width" secondItem="kq9-Wk-ad7" secondAttribute="width" constant="30" id="02b-HX-9iC"/>
                 <constraint firstItem="kq9-Wk-ad7" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="3cQ-Gy-dgy"/>
                 <constraint firstItem="Xvw-fw-Nh9" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="GwZ-3b-SSJ"/>
                 <constraint firstItem="kq9-Wk-ad7" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="cOH-08-czv"/>
@@ -49,4 +49,7 @@
             </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="itemselect" width="21" height="28"/>
+    </resources>
 </document>

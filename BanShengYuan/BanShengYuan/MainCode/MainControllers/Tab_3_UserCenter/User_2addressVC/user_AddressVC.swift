@@ -25,10 +25,30 @@ class user_AddressVC: BaseTabHiden {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        getData()
+    }
+    
+    deinit {
+        //注销通知
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "payNotifation"), object: nil)
+    }
+    
+    //通知内容接收
+    func action(notification: NSNotification) {
+        
+        let dict = notification.userInfo
+        
+        PrintFM("通知\(String(describing: dict))")
+        
+        PrintFM("\(String(describing: dict?["key"]))")
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(action(notification:)), name: NSNotification.Name(rawValue: "payNotifation"), object: nil)
         
         setNavi()
 
@@ -36,8 +56,26 @@ class user_AddressVC: BaseTabHiden {
         
         tableV_main.backgroundColor = FlatWhiteLight
         
-        getData()
+//        getData()
         
+    }
+    
+    //默认地址处理
+    func setDefaultAddress(array:NSMutableArray){
+        
+        let arraytemp = NSMutableArray()
+        
+        arraytemp.addObjects(from: array as! [Any])
+        
+        array.removeAllObjects()
+        
+        for item in arraytemp {
+            if (item as! ModelAddressItem).isDefault == 0{
+                array.add(item)
+            }else{
+                array.insert(item, at: 0)
+            }
+        }
     }
     
     
@@ -55,6 +93,8 @@ class user_AddressVC: BaseTabHiden {
                 self.array_address.removeAllObjects()
                 
                 self.array_address.addObjects(from: posts)
+                
+                self.setDefaultAddress(array: self.array_address)
                 
                 self.tableV_main.reloadData()
                 
@@ -87,16 +127,19 @@ class user_AddressVC: BaseTabHiden {
     @IBAction func AddAction(_ sender: Any) {
         //添加地址页面
         let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_addressAddVC") as! user_addressAddVC
-        Vc.tag_pagefrom = 1
-        Vc.addressBack = {(model)  -> Void in
-            
-            PrintFM(model)
-            self.getData()
-        }
         
+//        Vc.BadBack = badBack(name:)
+
+        Vc.tag_pagefrom = 1
         self.navigationController?.pushViewController(Vc, animated: true)
         
     }
+    
+    func badBack(name:String) -> Void {
+        PrintFM("\(name)")
+//        getData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -137,61 +180,33 @@ extension user_AddressVC:UITableViewDataSource{
 
 
 extension user_AddressVC: UserAddressDelegate{
+    
     func setAction(indexPath:IndexPath, actionType:AddressActionType){
         switch actionType {
         case .SET:
             PrintFM("set\(indexPath)")
             
-//            let model_address = ModelAddressUpdatePost()
-//            model_address.partnerId = PartNerID
-//            model_address.receiverName = (array_address[indexPath.section] as? ModelAddressItem)?.receiverName
-//            model_address.phone = (array_address[indexPath.section] as? ModelAddressItem)?.phone
-//            model_address.area = (array_address[indexPath.section] as? ModelAddressItem)?.area
-//            model_address.address = (array_address[indexPath.section] as? ModelAddressItem)?.address
-//            model_address.id = (array_address[indexPath.section] as? ModelAddressItem)?.id
-//            VM.addressUpdate(amodel: model_address)
-//                .subscribe(onNext: {(common:ModelCommonBack) in
-//                    PrintFM("设置默认\(String(describing: common.description))")
-//                    
-//                    self.array_address.removeObject(at: indexPath.section)
-//                    self.tableV_main.reloadData()
-//                    
-//                },onError:{error in
-//                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-//                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
-//                    }else{
-//                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
-//                    }
-//                    
-//                })
-//                .addDisposableTo(disposeBag)
-  
-        case .EDIT:
-            PrintFM("edit\(indexPath)")
-            //添加地址页面
-            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_addressAddVC") as! user_addressAddVC
-            Vc.tag_pagefrom = 2
-            Vc.modelEdit = array_address[indexPath.section] as? ModelAddressItem
-            
-//            Vc.addressBack = {(model)  -> Void in
-//                self.array_address[indexPath.section] = model
-//                self.tableV_main.reloadData()
-//            }
-            
-            self.navigationController?.pushViewController(Vc, animated: true)
-        case .DELETE:
-            
-            let temp = (array_address[indexPath.section] as? ModelAddressItem)
-            
-            let model_address = ModelAddressDeletePost()
+            let model_address = ModelAddressUpdatePost()
             model_address.partnerId = PartNerID
-            model_address.phone = "18915966899"
-            model_address.id = temp?.id
-            VM.addressDelete(amodel: model_address)
+            model_address.receiverName = (array_address[indexPath.section] as? ModelAddressItem)?.receiverName
+            model_address.receiverPhone = (array_address[indexPath.section] as? ModelAddressItem)?.receiverPhone
+            model_address.phone = (array_address[indexPath.section] as? ModelAddressItem)?.phone
+            model_address.area = (array_address[indexPath.section] as? ModelAddressItem)?.area
+            model_address.address = (array_address[indexPath.section] as? ModelAddressItem)?.address
+            model_address.id = (array_address[indexPath.section] as? ModelAddressItem)?.id
+            model_address.isDefault = 1
+            VM.addressUpdate(amodel: model_address)
                 .subscribe(onNext: {(common:ModelCommonBack) in
-                    PrintFM("删除\(String(describing: common.description))")
-
-                    self.array_address.remove(self.array_address[indexPath.section])
+                    PrintFM("设置默认\(String(describing: common.description))")
+                    
+                    for item in self.array_address{
+                        (item as! ModelAddressItem).isDefault = 0
+                    }
+                    
+                    (self.array_address[indexPath.section] as? ModelAddressItem)?.isDefault = 1
+                    
+                    self.setDefaultAddress(array: self.array_address)
+                    
                     self.tableV_main.reloadData()
                     
                 },onError:{error in
@@ -203,6 +218,55 @@ extension user_AddressVC: UserAddressDelegate{
                     
                 })
                 .addDisposableTo(disposeBag)
+  
+        case .EDIT:
+            PrintFM("edit\(indexPath)")
+            //添加地址页面
+            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_addressAddVC") as! user_addressAddVC
+            Vc.tag_pagefrom = 2
+            Vc.modelEdit = array_address[indexPath.section] as? ModelAddressItem
+            
+            self.navigationController?.pushViewController(Vc, animated: true)
+        case .DELETE:
+            
+            let alert = UIAlertController(title: "提示", message: "删除数据将不可恢复", preferredStyle: .alert)
+            
+            let calcelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            let deleteAction = UIAlertAction(title: "删除", style: .default, handler: { (UIAlertAction) in
+                
+                let temp = (self.array_address[indexPath.section] as? ModelAddressItem)
+                
+                let model_address = ModelAddressDeletePost()
+                model_address.partnerId = PartNerID
+                model_address.phone = "18915966899"
+                model_address.id = temp?.id
+                self.VM.addressDelete(amodel: model_address)
+                    .subscribe(onNext: {(common:ModelCommonBack) in
+                        PrintFM("删除\(String(describing: common.description))")
+                        
+                        self.array_address.remove(self.array_address[indexPath.section])
+                        self.tableV_main.reloadData()
+                        
+                    },onError:{error in
+                        if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                            HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                        }else{
+                            HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                        }
+                        
+                    })
+                    .addDisposableTo(self.disposeBag)
+                
+            })
+            
+            // 添加
+            alert.addAction(calcelAction)
+            alert.addAction(deleteAction)
+            
+            // 弹出
+            self.present(alert, animated: true, completion: nil)
+            
+            
         }
     }
 }
