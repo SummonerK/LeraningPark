@@ -191,7 +191,7 @@ extension Home_RootVC: UITableViewDelegate {
             
             return 44+(IBScreenWidth*(205+142)/375)
         case 1:
-            return max(24, IBScreenHeight - 44 - 89 - (IBScreenWidth*(205+142+176)/375))
+            return max(24, IBScreenHeight - 44 - 84 - (IBScreenWidth*(205+142+176)/375))
         case 2:
             return IBScreenWidth*176/375
         default:

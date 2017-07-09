@@ -142,6 +142,8 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
         
         headerView.imageV_icon.image = BundlePngWithName("ppdaiso")
         
+        headerView.imageV_light.image = BundleImageWithName("subactivity2")
+        
         headerView.layoutIfNeeded()
         
         return headerView

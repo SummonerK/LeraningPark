@@ -22,9 +22,18 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riy-bU-DGV">
                         <rect key="frame" x="0.0" y="60" width="320" height="154"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mF0-8g-Ra1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.9212072491645813" green="0.84832113981246948" blue="0.62377804517745972" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mF0-8g-Ra1" secondAttribute="trailing" id="3Pg-IU-TlN"/>
                             <constraint firstAttribute="width" secondItem="riy-bU-DGV" secondAttribute="height" multiplier="25:12" id="7PF-MY-mkp"/>
+                            <constraint firstItem="mF0-8g-Ra1" firstAttribute="top" secondItem="riy-bU-DGV" secondAttribute="top" id="PST-V3-mg2"/>
+                            <constraint firstItem="mF0-8g-Ra1" firstAttribute="leading" secondItem="riy-bU-DGV" secondAttribute="leading" id="g1F-Ef-a03"/>
+                            <constraint firstAttribute="bottom" secondItem="mF0-8g-Ra1" secondAttribute="bottom" id="jz6-VA-gsW"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zf5-sv-F6t">
@@ -243,6 +252,7 @@
                 <outlet property="bton_price" destination="Jfp-MB-Igx" id="H0D-k0-EA8"/>
                 <outlet property="bton_xiaoliang" destination="ExQ-CX-c3Y" id="AaI-hy-B5L"/>
                 <outlet property="imageV_icon" destination="zf5-sv-F6t" id="WBj-TA-5nN"/>
+                <outlet property="imageV_light" destination="mF0-8g-Ra1" id="LhI-Ig-jHV"/>
                 <outlet property="label_productCount" destination="0Yz-y8-A7u" id="mpK-3T-3nK"/>
                 <outlet property="label_saleCount" destination="MoW-6H-ktC" id="3h1-WN-uOk"/>
                 <outlet property="label_shanghuName" destination="VVY-01-9Nl" id="3UB-gD-vZn"/>

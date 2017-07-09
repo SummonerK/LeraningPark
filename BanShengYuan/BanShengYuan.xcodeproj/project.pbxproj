@@ -1318,12 +1318,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BanShengYuan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8dac34c3-c240-4936-9490-7a3979ff96c3";
+				PROVISIONING_PROFILE = "cd488c4e-bfdb-438d-9a95-8957aceba71f";
 				PROVISIONING_PROFILE_SPECIFIER = buy_test;
 				SWIFT_OBJC_BRIDGING_HEADER = "BanShengYuan/MainCode/ThirdSource/MBProgressHUD/BanShengYuan-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1348,7 +1348,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = buy_test;
 				SWIFT_OBJC_BRIDGING_HEADER = "BanShengYuan/MainCode/ThirdSource/MBProgressHUD/BanShengYuan-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

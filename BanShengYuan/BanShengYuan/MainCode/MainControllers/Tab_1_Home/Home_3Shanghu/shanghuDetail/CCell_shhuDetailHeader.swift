@@ -26,6 +26,8 @@ class CCell_shhuDetailHeader: UICollectionViewCell {
     @IBOutlet weak var bton_newProduct: UIButton!
     @IBOutlet weak var line_newProduct: UIView!
     
+    @IBOutlet weak var imageV_light: UIImageView!
+    
     var test:String?
 
     override func awakeFromNib() {
