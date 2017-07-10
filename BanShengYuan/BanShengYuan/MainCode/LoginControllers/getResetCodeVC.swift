@@ -46,8 +46,8 @@ class getResetCodeVC: UIViewController,UITextFieldDelegate{
         //键盘监听开关
         IQKeyboardManager.sharedManager().enable = true
         
-        tf_phone.text = "15600703631"
-        tf_vCode.text = "7292"
+        tf_phone.text = USERM.Phone
+//        tf_vCode.text = "7292"
         model.partnerId = PartNerID
         model_verify.partnerId = PartNerID
         

@@ -16,11 +16,10 @@ enum orderAPI {
     case test(PostModel:ModelTestPost)//测试https
     //MARK:- 订单
     case orderCreate(PostModel:ModelOrderCreatePost)//MARK:订单创建
-    case orderPay(PostModel:ModelGoodsDetailPost)//MARK:订单支付
-    case orderPayAccess(PostModel:ModelGoodsDetailPicturePost)//MARK:订单确认支付
-    case orderAccept(PostModel:ModelGoodsDetailPicturePost)//MARK:订单接单
-    case orderListByUserStatus(PostModel:ModelGoodsDetailPicturePost)//MARK:根据状态查询用户订单明细
-    case orderListByUser(PostModel:ModelGoodsDetailPicturePost)//MARK:分页查询用户全部订单明细
+    case orderPay(PostModel:ModelOrderPayPost)//MARK:订单支付
+    case orderPayAccess(PostModel:ModelOrderPayAccessPost)//MARK:订单确认支付
+    case orderAccept(PostModel:ModelOrderAcceptPost)//MARK:订单接单
+    case orderListByUser(PostModel:ModelListPageByUserPost)//MARK:分页查询用户全部订单明细
     
 }
 
@@ -33,10 +32,10 @@ extension orderAPI: TargetType {
         case .test:
              return URLEncoding.default
             
-        case .orderPay,.orderPayAccess,.orderAccept,.orderListByUserStatus,.orderListByUser:
+        case .orderListByUser:
             return URLEncoding.default
             
-        case .orderCreate:
+        case .orderCreate,.orderPay,.orderPayAccess,.orderAccept:
             return JSONEncoding.default
             
         }
@@ -54,15 +53,13 @@ extension orderAPI: TargetType {
         case .orderCreate(_):
             return "/Order/Create"
         case .orderPay(_):
-            return ""
+            return "/Order/Pay"
         case .orderPayAccess(_):
-            return ""
+            return "/Order/PayAccess"
         case .orderAccept(_):
-            return ""
-        case .orderListByUserStatus(_):
-            return ""
+            return "/Order/Accept"
         case .orderListByUser(_):
-            return ""
+            return "/Query/Order/ListPageByUser"
         
         }
     }
@@ -75,13 +72,11 @@ extension orderAPI: TargetType {
         case .orderCreate(_):
             return .post
         case .orderPay(_):
-            return .get
+            return .post
         case .orderPayAccess(_):
-            return .get
+            return .post
         case .orderAccept(_):
-            return .get
-        case .orderListByUserStatus(_):
-            return .get
+            return .post
         case .orderListByUser(_):
             return .get
          
@@ -105,9 +100,6 @@ extension orderAPI: TargetType {
             PrintFM(model.toDict())
             return model.toDict()
         case .orderAccept(let model):
-            PrintFM(model.toDict())
-            return model.toDict()
-        case .orderListByUserStatus(let model):
             PrintFM(model.toDict())
             return model.toDict()
         case .orderListByUser(let model):

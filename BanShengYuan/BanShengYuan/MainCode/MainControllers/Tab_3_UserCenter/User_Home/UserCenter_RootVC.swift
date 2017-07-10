@@ -8,7 +8,18 @@
 
 import UIKit
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 class UserCenter_RootVC: UIViewController {
+    
+    //network
+    
+    let disposeBag = DisposeBag()
+    let VM = ViewModel()
+    let model = ModelUserGetInfoPost()
+    
     @IBOutlet weak var TableV_main: UITableView!
     
     let array_title:Array? = ["我的订单","我的地址","我的资料"]
@@ -20,6 +31,7 @@ class UserCenter_RootVC: UIViewController {
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.edgesForExtendedLayout = []
@@ -33,7 +45,32 @@ class UserCenter_RootVC: UIViewController {
         TableV_main.backgroundColor = UIColor.white
         
         TableV_main.tableFooterView = UIView()
+        
+        getData()
 
+    }
+    
+    func getData(){
+        
+        PrintFM("\(USERM.Phone),\(USERM.Pwd),\(USERM.UserID)")
+        
+//        model.partnerId = PARTNERID
+//        model.phone = "15600703631"
+//        
+//        VM.userGetInfo(amodel: model)
+//            .subscribe(onNext: { (posts: ModelUserInfoBack) in
+//                
+//                PrintFM("\(posts.description)")
+//                
+//            },onError:{error in
+//                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+//                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+//                }else{
+//                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+//                }
+//            })
+//            .addDisposableTo(disposeBag)
+        
     }
 
     override func didReceiveMemoryWarning() {

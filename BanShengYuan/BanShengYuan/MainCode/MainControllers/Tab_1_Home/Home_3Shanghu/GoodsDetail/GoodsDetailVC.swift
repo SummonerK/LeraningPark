@@ -28,6 +28,8 @@ class GoodsDetailVC: BaseTabHiden {
     
     var coverVC: chooseVC! = nil
     
+    var coverNVC: chooseNoneCoverVC! = nil
+    
     var _tapGesture: UITapGestureRecognizer!
     
     var model_goods:ModelShopDetailItem?
@@ -47,6 +49,8 @@ class GoodsDetailVC: BaseTabHiden {
         tableV_main.register(UINib.init(nibName: "TCellGoodsImage", bundle: nil), forCellReuseIdentifier: "TCellGoodsImage")
         
         setCoverView()
+        
+        setCoverViewNone()
         
         getData()
         
@@ -128,6 +132,30 @@ class GoodsDetailVC: BaseTabHiden {
         self.view.sendSubview(toBack: coverVC.view)
     }
     
+    func setCoverViewNone(){
+        
+        coverNVC = StoryBoard_NextPages.instantiateViewController(withIdentifier: "chooseNoneCoverVC") as? chooseNoneCoverVC
+        
+        coverNVC.view.frame = CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenHeight)
+        
+        coverNVC.delegate = self
+        
+        self.view.addSubview(coverNVC.view)
+        
+        self.view.sendSubview(toBack: coverNVC.view)
+        
+    }
+    
+    func showCoverViewNone() {
+        
+        self.view.bringSubview(toFront: coverNVC.view)
+    }
+    
+    func closeCoverViewNone() {
+        
+        self.view.sendSubview(toBack: coverNVC.view)
+    }
+    
     //支付
     @IBAction func buyNow(_ sender: Any) {
         
@@ -141,6 +169,13 @@ class GoodsDetailVC: BaseTabHiden {
     }
     
     
+}
+
+extension GoodsDetailVC:chooseNoneCoverVDelegate{
+    
+    func chooseNoneClose(){
+        closeCoverViewNone()
+    }
 }
 
 extension GoodsDetailVC:ChooseCoverVDelegate{
@@ -194,6 +229,9 @@ extension GoodsDetailVC:UITableViewDataSource{
             let imageArray = ["banner1","banner2","banner3"]
             
             let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*402/375))
+            
+            viewheader.isscroll = false
+            
             
             viewheader.contentImages = {
                 
@@ -266,6 +304,8 @@ extension GoodsDetailVC: TCellGoodsinfoDelegate {
     
     func setAction(actionType:String){
         showCoverView()
+        
+//        showCoverViewNone()
     }
     
 }

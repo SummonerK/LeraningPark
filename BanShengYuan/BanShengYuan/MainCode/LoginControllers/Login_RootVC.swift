@@ -46,6 +46,7 @@ class Login_RootVC: UIViewController{
         
         setRadiusFor(toview: bton_login, radius: 6, lineWidth: 0, lineColor: UIColor.clear)
         setRadiusFor(toview: bton_register, radius: 6, lineWidth: 0.6, lineColor: UIColor.white)
+        
 //        let attributestr = NSMutableAttributedString(string: "忘记密码", attributes: setUnderLineToString(tocolor: FlatGrayLight))
 //        
 //        bton_forget.setAttributedTitle(attributestr, for: UIControlState.normal)
@@ -56,8 +57,7 @@ class Login_RootVC: UIViewController{
 
         ShowWelecomeV()
         
-        tf_phone.text = "15600703631"
-        tf_pwd.text = "qwer1122"
+        tf_phone.text = USERM.Phone
         model.partnerId = PartNerID
         
         
@@ -111,12 +111,17 @@ class Login_RootVC: UIViewController{
         VM.loginLogin(amodel: model)
             .subscribe(onNext: { (common:ModelCommonBack) in
                 PrintFM("登录\(String(describing: common.description))")
+                
+                USERM.setPhone(phone: self.model.phone)
+                USERM.setPwd(pwd: self.model.password)
+                USERM.setUserID(uid: "userID")
         
                 KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
                 let animation = CATransition.init()
                 animation.duration = self.duration
                 animation.type = kCATransitionFade
                 UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+                
                 
             },onError:{error in
                 
@@ -130,12 +135,12 @@ class Login_RootVC: UIViewController{
             .addDisposableTo(disposeBag)
         
         
-        KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
-        
-        let animation = CATransition.init()
-        animation.duration = duration
-        animation.type = kCATransitionFade
-        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+//        KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
+//        
+//        let animation = CATransition.init()
+//        animation.duration = duration
+//        animation.type = kCATransitionFade
+//        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
         
     }
     

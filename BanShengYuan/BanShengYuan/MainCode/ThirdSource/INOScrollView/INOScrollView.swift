@@ -77,6 +77,7 @@ class INOScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
                 
             }else{
                 invalidTimer()
+    
             }
             
             //根据数量和对齐方式 设置小圆点
@@ -420,7 +421,7 @@ class INOScrollView: UIView, UICollectionViewDelegate, UICollectionViewDataSourc
         if autoScroll && !(timer != nil){
             resetTimer()
         }else{
-            setupTimer()
+//            setupTimer()
         }
     }
     

@@ -9,6 +9,8 @@
 import UIKit
 
 class view_shanghuHeader: UIView {
+    
+    var isscroll:Bool?
 
     /// 返回每一页需显示的内容图
     public typealias ContentImages = (Void) -> Array<String>
@@ -36,7 +38,8 @@ class view_shanghuHeader: UIView {
         header.scrollDirection = .horizontal
         header.autoScrollTimerInterval = 3.0
         header.INOScrollViewContentMode = .scaleAspectFill
-        header.autoScroll = false
+        header.autoScroll = isscroll!
+        
 //        header.showTextLabel = true
 
     }

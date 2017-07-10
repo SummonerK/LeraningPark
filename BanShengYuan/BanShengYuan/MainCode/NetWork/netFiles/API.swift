@@ -37,6 +37,7 @@ enum MyAPI {
     case addressAdd(PostModel:ModelAddressAddPost)//MARK:收货地址新增／修改
     case addressDelete(PostModel:ModelAddressDeletePost)//MARK:收货地址删除
     //MARK:- 用户信息模块
+    case userGetInfo(PostModel:ModelUserGetInfoPost)//MARK:个人信息设置
     case userUpdate(PostModel:ModelUserUpdateInfoPost)//MARK:个人信息设置
 }
 
@@ -71,6 +72,8 @@ extension MyAPI: TargetType {
             return "/member/deliveraddress"
         case .addressDelete(_):
             return "/member/deliveraddress"
+        case .userGetInfo(_):
+            return "/member/info"
         case .userUpdate(_):
             return "/member/info"
         }
@@ -79,7 +82,7 @@ extension MyAPI: TargetType {
     var parameterEncoding: ParameterEncoding {
         PrintFM("parameterEncoding")
         switch self {
-        case .loginLogin,.test,.loginGetVCode,.addressGetList,.addressGetDetail,.loginVCodeVerify:
+        case .loginLogin,.test,.loginGetVCode,.addressGetList,.addressGetDetail,.loginVCodeVerify,.userGetInfo:
             return URLEncoding.default
         case .loginRegister,.loginUpdatePWD,.addressUpdate,.addressDelete,.userUpdate,.addressAdd:
             return JSONEncoding.default
@@ -112,6 +115,8 @@ extension MyAPI: TargetType {
             return .delete
         case .userUpdate(_):
             return .post
+        case .userGetInfo(_):
+            return .get
         }
         
     }
@@ -153,6 +158,9 @@ extension MyAPI: TargetType {
             PrintFM(model.toDict())
             return model.toDict()
         case .userUpdate(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .userGetInfo(let model):
             PrintFM(model.toDict())
             return model.toDict()
         }

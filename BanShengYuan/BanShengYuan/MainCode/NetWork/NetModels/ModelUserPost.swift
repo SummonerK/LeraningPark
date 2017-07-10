@@ -8,6 +8,9 @@
 
 import UIKit
 
+import Foundation
+import ObjectMapper
+
 //MARK:个人信息设置／修改 postmodel
 
 class ModelUserUpdateInfoPost: Reflect {
@@ -32,5 +35,47 @@ class ModelUserUpdateInfoPost: Reflect {
      *  必传:True
      */
     var birthday:String!
+    
+}
+
+//MARK:个人信息设置／修改 postmodel
+
+class ModelUserGetInfoPost: Reflect {
+    
+    /**
+     *  商户编号
+     *  必传:True
+     */
+    var partnerId:String!
+    /**
+     *  昵称
+     *  必传:True
+     */
+    var phone:String!
+
+    
+}
+
+//
+class ModelUserInfoBack: Mappable {
+    var memberId: String?
+    var avatarUrl: String?
+    var nickName: String?
+    var sex: Int?
+    var phone: String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        memberId <- map["memberId"]
+        avatarUrl <- map["avatarUrl"]
+        nickName <- map["nickName"]
+        sex <- map["sex"]
+        phone <- map["phone"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
     
 }

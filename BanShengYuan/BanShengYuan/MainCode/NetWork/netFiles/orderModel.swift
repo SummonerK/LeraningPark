@@ -39,14 +39,30 @@ class orderModel {
         //.showError()
     }
     
-    func vipgetShopList(amodel:ModelTestPost) -> Observable<[ModelShopItem]> {
-        return orderprovider.request(.test(PostModel: amodel))
-            .mapshopList(type: ModelShopItem.self)
+    func orderCreate(amodel:ModelOrderCreatePost) -> Observable<ModelOrderCreateBack> {
+        return orderprovider.request(.orderCreate(PostModel: amodel))
+            .mapResult(type: ModelOrderCreateBack.self)
         //.showError()
     }
-    func addressGetList(amodel:ModelTestPost) -> Observable<ModelAddressDetail> {
-        return orderprovider.request(.test(PostModel: amodel))
-            .mapObject(type: ModelAddressDetail.self)
+    func orderPay(amodel:ModelOrderPayPost) -> Observable<ModelOrderPayBack> {
+        return orderprovider.request(.orderPay(PostModel: amodel))
+            .mapObject(type: ModelOrderPayBack.self)
+        //.showError()
+    }
+    
+    func orderPayAccess(amodel:ModelOrderPayAccessPost) -> Observable<ModelOrderPayAccessBack> {
+        return orderprovider.request(.orderPayAccess(PostModel: amodel))
+            .mapObject(type: ModelOrderPayAccessBack.self)
+        //.showError()
+    }
+    func orderAccept(amodel:ModelOrderAcceptPost) -> Observable<ModelCommonBack> {
+        return orderprovider.request(.orderAccept(PostModel: amodel))
+            .mapObject(type: ModelCommonBack.self)
+        //.showError()
+    }
+    func orderListByUser(amodel:ModelListPageByUserPost) -> Observable<ModelListPageByUserBack> {
+        return orderprovider.request(.orderListByUser(PostModel: amodel))
+            .mapObject(type: ModelListPageByUserBack.self)
         //.showError()
     }
     

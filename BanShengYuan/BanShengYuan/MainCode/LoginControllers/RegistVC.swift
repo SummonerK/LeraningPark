@@ -50,12 +50,12 @@ class RegistVC: UIViewController,UITextFieldDelegate{
         //键盘监听开关
         IQKeyboardManager.sharedManager().enable = true
         
-        tf_phone.text = "15600703631"
+        tf_phone.text = USERM.Phone
         model.partnerId = PartNerID
         modelregest.partnerId = PartNerID
         
-        tf_vCode.text = "1592"
-        tf_fistPwd.text = "qwer1234"
+//        tf_vCode.text = "1592"
+//        tf_fistPwd.text = "qwer1234"
 
     }
     

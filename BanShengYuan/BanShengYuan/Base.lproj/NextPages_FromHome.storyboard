@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -537,6 +538,78 @@
             </objects>
             <point key="canvasLocation" x="2874" y="-2337"/>
         </scene>
+        <!--Choose None CoverVC-->
+        <scene sceneID="dpK-fO-M0x">
+            <objects>
+                <viewController restorationIdentifier="chooseNoneCoverVC" storyboardIdentifier="chooseNoneCoverVC" id="KVn-6h-hUa" customClass="chooseNoneCoverVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qx2-df-97h"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Qb-Cd-sVo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hiV-Mi-dvx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Maq-sO-eRP">
+                                <rect key="frame" x="38" y="233.5" width="300" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatu" translatesAutoresizingMaskIntoConstraints="NO" id="6zz-z6-Fjx">
+                                        <rect key="frame" x="15.5" y="17.5" width="270" height="153.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="6zz-z6-Fjx" secondAttribute="height" multiplier="260:148" id="d5V-ze-xYi"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择规格" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxm-Nz-Pi9">
+                                        <rect key="frame" x="0.5" y="168" width="300" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="x4A-0y-Amc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LK-ef-eaw">
+                                        <rect key="frame" x="260" y="10" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="8Vs-Nx-6aC"/>
+                                            <constraint firstAttribute="width" constant="30" id="wvT-OF-pG5"/>
+                                        </constraints>
+                                        <state key="normal" image="close"/>
+                                        <connections>
+                                            <action selector="closeCover:" destination="KVn-6h-hUa" eventType="touchUpInside" id="q3h-3a-CfU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Vxm-Nz-Pi9" firstAttribute="centerX" secondItem="Maq-sO-eRP" secondAttribute="centerX" id="50b-6p-MgY"/>
+                                    <constraint firstItem="6zz-z6-Fjx" firstAttribute="centerX" secondItem="Maq-sO-eRP" secondAttribute="centerX" id="8rg-oA-Ved"/>
+                                    <constraint firstItem="6zz-z6-Fjx" firstAttribute="width" secondItem="Maq-sO-eRP" secondAttribute="width" multiplier="0.9" id="E9P-Kz-hf0"/>
+                                    <constraint firstItem="6zz-z6-Fjx" firstAttribute="centerY" secondItem="Maq-sO-eRP" secondAttribute="centerY" constant="-6" id="OeL-3d-qb3"/>
+                                    <constraint firstAttribute="width" secondItem="Maq-sO-eRP" secondAttribute="height" multiplier="15:10" id="PbP-b9-bgY"/>
+                                    <constraint firstItem="Vxm-Nz-Pi9" firstAttribute="leading" secondItem="Maq-sO-eRP" secondAttribute="leading" id="SXP-87-fwH"/>
+                                    <constraint firstAttribute="trailing" secondItem="5LK-ef-eaw" secondAttribute="trailing" constant="10" id="ZQS-jM-8A0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vxm-Nz-Pi9" secondAttribute="trailing" id="iY5-GJ-pOF"/>
+                                    <constraint firstItem="5LK-ef-eaw" firstAttribute="top" secondItem="Maq-sO-eRP" secondAttribute="top" constant="10" id="qJH-9c-L5V"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vxm-Nz-Pi9" secondAttribute="bottom" constant="8" id="vJI-A2-tYw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.81176470590000005" green="0.80392156859999997" blue="0.80392156859999997" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Maq-sO-eRP" firstAttribute="centerX" secondItem="hiV-Mi-dvx" secondAttribute="centerX" id="RA4-br-Ha5"/>
+                            <constraint firstItem="Maq-sO-eRP" firstAttribute="width" secondItem="hiV-Mi-dvx" secondAttribute="width" multiplier="0.8" id="g29-wa-m4M"/>
+                            <constraint firstItem="Maq-sO-eRP" firstAttribute="centerY" secondItem="hiV-Mi-dvx" secondAttribute="centerY" id="hgy-aV-etM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="view_center" destination="Maq-sO-eRP" id="1YR-KZ-ACw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xqf-X9-ewP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3634" y="-2337"/>
+        </scene>
         <!--shanghuDetail-->
         <scene sceneID="sWx-OX-6bD">
             <objects>
@@ -856,6 +929,7 @@
     <resources>
         <image name="PIC.png" width="348" height="340"/>
         <image name="arrow_left" width="12" height="21"/>
+        <image name="chatu" width="255" height="148"/>
         <image name="close" width="13" height="13"/>
         <image name="right" width="21" height="14"/>
     </resources>
