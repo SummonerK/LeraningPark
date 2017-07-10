@@ -20,7 +20,7 @@ let StoryBoard_ActivityPages = UIStoryboard.init(name: "NextPageActivity", bundl
 func setshadowFor(aview:UIView, OffSet:CGSize){
     aview.layer.shadowColor = UIColor.init(red: 125.0/255.0, green: 125.0/255.0, blue: 125.0/255.0, alpha: 0.7).cgColor
     aview.layer.shadowOpacity = 0.7
-    aview.layer.shadowRadius = 1.5
+    aview.layer.shadowRadius = 2
     aview.layer.shadowOffset = OffSet
 }
 

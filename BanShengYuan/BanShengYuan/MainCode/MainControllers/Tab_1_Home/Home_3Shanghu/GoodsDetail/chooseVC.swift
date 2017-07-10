@@ -36,8 +36,11 @@ class chooseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageVsub.image = createImageWithColor(color: UIColor.white)
-        setRadiusFor(toview: imageVsub, radius: 3, lineWidth: 0, lineColor: UIColor.white)
+//        imageVsub.image = createImageWithColor(color: UIColor.white)
+        
+        setshadowFor(aview: imageVsub, OffSet: CGSize.init(width: 4, height: 4))
+        
+        setRadiusFor(toview: imageVsub, radius: 4, lineWidth: 0, lineColor: FlatWhiteLight)
         
         setRadiusFor(toview: viewAdd, radius: 3, lineWidth: 0.8, lineColor: FlatBlackLight)
         

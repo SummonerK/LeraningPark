@@ -36,6 +36,7 @@ class view_shanghuHeader: UIView {
         header.scrollDirection = .horizontal
         header.autoScrollTimerInterval = 3.0
         header.INOScrollViewContentMode = .scaleAspectFill
+        header.autoScroll = false
 //        header.showTextLabel = true
 
     }

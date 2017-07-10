@@ -28,9 +28,9 @@ class OrderDetailVC: UIViewController {
         
         tableV_main.backgroundColor = FlatWhiteLight
         
-        let viewheader = Bundle.main.loadNibNamed("view_orderEndHeader", owner: nil, options: nil)?.first as? view_orderEndHeader
-        
-        tableV_main.tableHeaderView = viewheader
+//        let viewheader = Bundle.main.loadNibNamed("view_orderEndHeader", owner: nil, options: nil)?.first as? view_orderEndHeader
+//        
+//        tableV_main.tableHeaderView = viewheader
         
         
     }
@@ -58,20 +58,20 @@ class OrderDetailVC: UIViewController {
 
 extension OrderDetailVC:UITableViewDataSource{
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-//        
-//        if section == 0{
-//            let viewheader = Bundle.main.loadNibNamed("view_orderEndHeader", owner: nil, options: nil)?.first as? view_orderEndHeader
-//            
-//            //        viewheader?.label_dianpuname.text = "一家店铺"
-//            //        viewheader?.label_wuliu.text = "已出库"
-//            
-//            return viewheader
-//        }else{
-//            return nil
-//        }
-//        
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        
+        if section == 0{
+            let viewheader = Bundle.main.loadNibNamed("view_orderEndHeader", owner: nil, options: nil)?.first as? view_orderEndHeader
+            
+//            viewheader?.label_dianpuname.text = "一家店铺"
+//            viewheader?.label_wuliu.text = "已出库"
+            
+            return viewheader
+        }else{
+            return nil
+        }
+        
+    }
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?{
         
@@ -144,17 +144,19 @@ extension OrderDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         
         if section == 0{
-            return 0
+            return 135
         }else{
-            return 0
+            return 0.01
         }
+        
+//        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
         if section == 0{
             return 130
         }else{
-            return 0
+            return 0.01
         }
     }
     
