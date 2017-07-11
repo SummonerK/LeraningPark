@@ -23,8 +23,13 @@ class GoodsDetailVC: BaseTabHiden {
     
     var array_banner = NSMutableArray()
     
-
+    let OrderM = orderModel()
+    let modelOrderC = ModelOrderCreatePost()
+    
     @IBOutlet weak var tableV_main: UITableView!
+    
+    let array_zDetail = ["zdetail1","zdetail2","zdetail3","zdetail4"]
+    
     
     var coverVC: chooseVC! = nil
     
@@ -32,7 +37,8 @@ class GoodsDetailVC: BaseTabHiden {
     
     var _tapGesture: UITapGestureRecognizer!
     
-    var model_goods:ModelShopDetailItem?
+    var model_goods:ModelShopDetailItem? ///上层商品数据
+    var model_shop:ModelShopItem? ///上上层商户数据
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -159,13 +165,75 @@ class GoodsDetailVC: BaseTabHiden {
     //支付
     @IBAction func buyNow(_ sender: Any) {
         
-        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
-        self.navigationController?.pushViewController(Vc, animated: true)
+        sendOrder()
+        
+//        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
+//        self.navigationController?.pushViewController(Vc, animated: true)
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //提交订单
+    
+    func sendOrder() {
+        
+        modelOrderC.companyId = model_goods?.companyId
+        modelOrderC.shopId = shipid
+        modelOrderC.shopName = model_shop?.storeName
+        modelOrderC.userId = USERM.MemberID
+        modelOrderC.userName = USERM.Phone
+        modelOrderC.phone = USERM.Phone
+        modelOrderC.address = "地址"
+        modelOrderC.longitude = "121.377436"
+        modelOrderC.latitude = "31.267283"
+        modelOrderC.type = 1
+        modelOrderC.status = 1
+        modelOrderC.amount = 1490
+        modelOrderC.payType = 1
+        modelOrderC.payChannel = ""
+        modelOrderC.payChannelName = ""
+        modelOrderC.source = "ios app"
+        modelOrderC.partition = ""
+        modelOrderC.customerOrder = "BSY".OrderIDFromtimeSP
+        modelOrderC.remark = ""
+        
+        let modelproduct = OrderProductItemReq()
+        modelproduct.productId = model_goods?.pid
+        modelproduct.productName = model_goods?.name
+        modelproduct.specification = "茶色 XL"
+        modelproduct.number = "1"
+        modelproduct.price = "990"
+        modelproduct.sequence = "0"
+        
+        modelOrderC.products = [modelproduct]
+        
+        let modelaccount = OrderAccountItemReq()
+        modelaccount.accountId = "account-1"
+        modelaccount.name = "运费"
+        modelaccount.type = "1"
+        modelaccount.price = "500"
+        modelaccount.number = "1"
+        modelaccount.sequence = 0
+        
+        modelOrderC.accounts = [modelaccount]
+        
+        OrderM.orderCreate(amodel: modelOrderC)
+            .subscribe(onNext: { (posts: ModelOrderCreateBack) in
+                
+                PrintFM("pictureList\(posts)")
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
     }
     
     
@@ -261,7 +329,7 @@ extension GoodsDetailVC:UITableViewDataSource{
         case 1:
             return 1
         case 2:
-            return 1
+            return array_zDetail.count
         default:
             return 0
         }
@@ -288,7 +356,7 @@ extension GoodsDetailVC:UITableViewDataSource{
 //            
 //            cell.imageV_content.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
             
-            cell.imageV_content.image = UIImage(named: "detail.jpg")
+            cell.imageV_content.image = BundleImageWithName(array_zDetail[indexPath.row])
             
             return cell
         default:
@@ -320,7 +388,7 @@ extension GoodsDetailVC: UITableViewDelegate {
             return 160
         case 2:
             
-            if let image = UIImage(named: "detail.jpg"){
+            if let image = BundleImageWithName(array_zDetail[indexPath.row]){
                 let hight =  image.size.height / image.size.width * IBScreenWidth
             
                 PrintFM("imageHight \(hight)")

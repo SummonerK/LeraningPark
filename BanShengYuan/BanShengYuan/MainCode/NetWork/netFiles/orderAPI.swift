@@ -91,8 +91,9 @@ extension orderAPI: TargetType {
             return model.toDict()
             
         case .orderCreate(let model):
-            PrintFM(model.toDict())
-            return model.toDict()
+            let dic = jsonToDictionary(jsonString: model.toJSONString()!)
+            PrintFM(dic)
+            return dic
         case .orderPay(let model):
             PrintFM(model.toDict())
             return model.toDict()

@@ -65,7 +65,7 @@ class RegistVC: UIViewController,UITextFieldDelegate{
         
         self.navigationItem.leftBarButtonItem = item
         
-        "12".doubleValue
+//        "12".doubleValue
         self.navigationItem.title = "注册"
     }
     
@@ -96,7 +96,7 @@ class RegistVC: UIViewController,UITextFieldDelegate{
             return
         }
         
-        if let strP = tf_fistPwd.text ,strP.pwdisSafe(){
+        if let strP = tf_fistPwd.text ,strP.isPwd{
             
 //            HUDShowMsgQuick(msg: "密码合法", toView: KeyWindow, time: 0.8)
             

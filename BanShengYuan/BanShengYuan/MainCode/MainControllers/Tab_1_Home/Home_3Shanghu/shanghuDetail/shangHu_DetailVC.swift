@@ -16,6 +16,10 @@ import DZNEmptyDataSet
 
 class shangHu_DetailVC: UIViewController {
     
+    var modelShop:ModelShopItem?
+    
+    var shopID:String?
+    
     @IBOutlet weak var CV_main: UICollectionView!
     
     //network
@@ -26,7 +30,6 @@ class shangHu_DetailVC: UIViewController {
     
     //data
     var array_items = NSMutableArray()
-
     
     var sectionNum:Int? = 1
     
@@ -41,6 +44,14 @@ class shangHu_DetailVC: UIViewController {
         super.viewDidLoad()
         
         setupCollection()
+        
+        if let storecode = modelShop?.storeCode{
+//            shopID = "\(PARTNERID_SHOP)_\(storecode)"
+            
+//            PrintFM("\(shopID)")
+            
+            shopID = shipid
+        }
         
         getData()
         
@@ -66,14 +77,12 @@ http://118.89.192.122:9998/Query/Shop/GetAllProducts?pagesize=10&pagenumber=1&sh
  */
     
     func getData() {
-        modelshopDetailPost.shopId = shipid
+        modelshopDetailPost.shopId = shopID
         modelshopDetailPost.pagesize = 10
         modelshopDetailPost.pagenumber = 1
-//        modelshopDetailPost.nsukey = nsukey
         
         VipM.shopGetAllProducts(amodel: modelshopDetailPost)
             .subscribe(onNext: { (posts: [ModelShopDetailItem]) in
-//                PrintFM("shopDetailItem\(posts)")
                 
                 self.array_items = posts as! NSMutableArray
                 
@@ -123,7 +132,8 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
         PrintFM("\((array_items[indexPath.row] as! ModelShopDetailItem).description)")
         
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
-        Vc.model_goods = array_items[indexPath.row] as! ModelShopDetailItem
+        Vc.model_goods = array_items[indexPath.row] as? ModelShopDetailItem
+        Vc.model_shop = self.modelShop
         self.navigationController?.pushViewController(Vc, animated: true)
         
     }

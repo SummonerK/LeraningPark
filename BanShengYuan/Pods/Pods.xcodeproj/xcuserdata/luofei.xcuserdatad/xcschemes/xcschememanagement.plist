@@ -19,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FDFullscreenPopGesture.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,17 +67,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0F71FC248875B67F53494C44B17B40EB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>19864AB8F7B8E9064740E008772C4404</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>28C714E73A52B4D99634784E37406B3A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,7 +82,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>2F8AAC8349A0B322B8828FB97FE0ECC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>41FA54D12162DAD51D02FC58A2CD5034</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E6C69710E49432EE24240845173136B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -128,11 +123,6 @@
 			<true/>
 		</dict>
 		<key>EFDB85DF4827734B35E8A46720ACAEE0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FA12C1B01FF5350871D4DB7AF063B725</key>
 		<dict>
 			<key>primary</key>
 			<true/>

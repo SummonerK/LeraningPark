@@ -94,7 +94,7 @@ class ViewModel {
     }
     func userGetInfo(amodel:ModelUserGetInfoPost) -> Observable<ModelUserInfoBack> {
         return provider.request(.userGetInfo(PostModel: amodel))
-            .mapObject(type: ModelUserInfoBack.self)
+            .mapObjectData(type: ModelUserInfoBack.self)
         //.showError()
     }
     

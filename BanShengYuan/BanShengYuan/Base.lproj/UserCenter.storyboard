@@ -401,6 +401,9 @@
                                         <state key="normal" title="保存">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="saveAction:" destination="Uh0-7r-d0X" eventType="touchUpInside" id="sDi-HU-NGt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
@@ -703,7 +706,7 @@
                                         <rect key="frame" x="0.0" y="258" width="375" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设为默认地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrW-y4-N5l">
-                                                <rect key="frame" x="8" y="14.5" width="90" height="21"/>
+                                                <rect key="frame" x="8" y="15" width="90" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="R3n-bq-eme"/>
                                                     <constraint firstAttribute="width" priority="200" constant="90" id="yU2-j6-lkh"/>
@@ -851,14 +854,14 @@
                                         <rect key="frame" x="0.0" y="10" width="375" height="50"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man" translatesAutoresizingMaskIntoConstraints="NO" id="GiD-5y-Hot">
-                                                <rect key="frame" x="158.5" y="16" width="18" height="18"/>
+                                                <rect key="frame" x="159" y="16" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="IJf-dA-LWz"/>
                                                     <constraint firstAttribute="height" constant="18" id="bES-J3-KSM"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VR8-wZ-ihv">
-                                                <rect key="frame" x="186.5" y="15" width="60" height="20.5"/>
+                                                <rect key="frame" x="187" y="15" width="60" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="Q00-rF-buA"/>
                                                     <constraint firstAttribute="height" constant="20.5" id="ocB-GO-Tic"/>
@@ -884,14 +887,14 @@
                                         <rect key="frame" x="0.0" y="70" width="375" height="50"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="woman" translatesAutoresizingMaskIntoConstraints="NO" id="Y4b-MS-XzO">
-                                                <rect key="frame" x="158.5" y="16" width="18" height="18"/>
+                                                <rect key="frame" x="159" y="16" width="18" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="18" id="Omc-JQ-jpI"/>
                                                     <constraint firstAttribute="height" constant="18" id="wLx-BJ-KUi"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="女" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x31-Ja-wAj">
-                                                <rect key="frame" x="186.5" y="14" width="60" height="20.5"/>
+                                                <rect key="frame" x="187" y="14" width="60" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="Ljk-e2-3eS"/>
                                                     <constraint firstAttribute="height" constant="20.5" id="kR5-WW-jF2"/>

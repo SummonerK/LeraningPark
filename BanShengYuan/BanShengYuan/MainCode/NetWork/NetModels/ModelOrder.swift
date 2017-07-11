@@ -14,140 +14,117 @@ import ObjectMapper
 
 //MARK:创建订单 postmodel
 
-class ModelOrderCreatePost: Reflect {
-    /**
-     *  商户ID
-     *  必传:True 
-     */
-    var companyId:String!
-    /**
-     *  门店ID
-     *  必传:True
-     */
-    var shopId:String!
-    /**
-     *  门店名称
-     *  必传:True
-     */
-    var shopName:String!
-    /**
-     *  用户ID
-     *  必传:True
-     */
-    var userId:String!
+class ModelOrderCreatePost: Mappable {
+    var companyId:String?           //partnerId
+    var shopId:String?              //partnerId_storeid
+    var shopName:String?          //门店名
+    var userId:String?              //用户id
+    var userName:String?          //用户名
+    var phone:String?           //电话
+    var address:String?        //地址
+    var longitude:String?
+    var latitude:String?
+    var type:Int?                   //1外卖 2预订单 3商城 4自提 5堂吃
+    var status:Int?             //1未支付 2已支付 3已退款 4部分退款 5线下支付 6支付中
+    var amount:Int?             //支付金额
+    var payType:Int?                //1线上支付 2货到付款
+    var payChannel:String?          //支付渠道编号
+    var payChannelName:String?      //支付渠道名称
+    var source:String?              //“APP”
+    var partition:String?           //拆单信息
+    var customerOrder:String?       //第三方编号
+    var remark:String?              //订单备注
+    var products:[OrderProductItemReq]?     //订单商品
+    var accounts:[OrderAccountItemReq]?     //积分 优惠 运费 包装等
     
-    /**
-     *  用户名称
-     *  必传:True 
-     */
-    var userName:String!
-    /**
-     *  用户电话
-     *  必传:false
-     */
-    var phone:String!
-    /**
-     *  收货地址
-     *  必传:false
-     */
-    var address:String!
-    /**
-     *  订单类型
-     *  必传:True
-     */
-    var type:Int!
+    init() {
+        
+    }
     
-    /**
-     *  订单状态
-     *  必传:True
-     */
-    var status:Int!
-    /**
-     *  支付状态
-     *  必传:false
-     */
-    var payStatus:Int!
-    /**
-     *  支付类型
-     *  必传:True
-     */
-    var payType:Int!
+    required init?(map: Map) { }
     
-    /**
-     *  商品列表
-     *  必传:True
-     */
-    var products: [ModelOrderProductItem]?
     
-    /**
-     *  其他结算列表
-     *  必传:True
-     */
-    var accounts: [ModelOrderAccountItem]?
+    func mapping(map: Map) {
+        
+        companyId <- map["companyId"]
+        shopId <- map["shopId"]
+        shopName <- map["shopName"]
+        userId <- map["userId"]
+        userName <- map["userName"]
+        phone <- map["phone"]
+        address <- map["address"]
+        longitude <- map["longitude"]
+        latitude <- map["latitude"]
+        type <- map["type"]
+        status <- map["status"]
+        amount <- map["amount"]
+        payType <- map["payType"]
+        payChannel <- map["payChannel"]
+        payChannelName <- map["payChannelName"]
+        source <- map["source"]
+        partition <- map["partition"]
+        customerOrder <- map["customerOrder"]
+        remark <- map["remark"]
+        products <- map["products"]
+        accounts <- map["accounts"]
+        
+    }
     
 }
 
-class ModelOrderProductItem: Reflect {
-    /**
-     *  商品ID
-     *  必传:True
-     */
-    var productId:String!
-    /**
-     *  商品名称
-     *  必传:True
-     */
-    var productName:String!
-    /**
-     *  商品数量
-     *  必传:True
-     */
-    var number:Int!
-    /**
-     *  商品单价分
-     *  必传:True
-     */
-    var price:String!
-    /**
-     *  排序
-     *  必传:True
-     */
-    var sequence:String!
+
+class OrderProductItemReq:Mappable {
+    var productId:String?           //商品id
+    var productName:String?         //商品名字
+    var number:String?              //商品数量
+    var specification:String?       //单位
+    var price:String?               //价格
+    var sequence:String?            //排序
+    
+    
+    init() {
+        
+    }
+    
+    required init?(map: Map) { }
+    
+    
+    func mapping(map: Map) {
+        productId <- map["productId"]
+        productName <- map["productName"]
+        number <- map["number"]
+        specification <- map["specification"]
+        price <- map["price"]
+        sequence <- map["sequence"]
+    }
 }
 
-class ModelOrderAccountItem: Reflect {
-    /**
-     *  结算对象ID
-     *  必传:True
-     */
-    var accountId:String!
-    /**
-     *  结算对象名称
-     *  必传:True
-     */
-    var name:String!
-    /**
-     *  结算对象类型
-     *  必传:True
-     */
-    var type:Int!
-    /**
-     *  结算金额
-     *  必传:True
-     */
-    var price:Int!
-    /**
-     *  结算数量
-     *  必传:True
-     */
-    var number:Int!
-    /**
-     *  排序
-     *  必传:True
-     */
-    var sequence:Int!
+class OrderAccountItemReq:Mappable {
+    
+    var accountId:String?       //结算id 优惠券id 没id的给0
+    var name:String?            //积分 优惠券名
+    var type:String?            // 1 运费 2折扣 3包装费
+    var price:String?           //结算价格 + -
+    var number:String?          //结算数量
+    var sequence:Int?           //排序
+    
+    
+    init() {
+        
+    }
+    
+    required init?(map: Map) { }
+    
+    
+    func mapping(map: Map) {
+        accountId <- map["accountId"]
+        name <- map["name"]
+        type <- map["type"]
+        price <- map["price"]
+        number <- map["number"]
+        sequence <- map["sequence"]
+    }
 }
-
 
 
 //MARK:创建订单返回 backModel

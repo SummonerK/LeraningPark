@@ -62,6 +62,43 @@ extension Observable {
         }
     }
     
+    func mapObjectData<T: Mappable>(type: T.Type) -> Observable<T> {
+        return self.map { response in
+            //if response is a dictionary, then use ObjectMapper to map the dictionary
+            //if not throw an error
+            // check http status
+            guard let response = response as? Moya.Response else{
+                throw MyErrorEnum.HttpError(Code: 1002, Msg: "请求出错")
+            }
+            
+            guard ((200...209) ~= response.statusCode) else {
+                throw MyErrorEnum.HttpError(Code: response.statusCode, Msg: "HttpError")
+            }
+            //
+            //json shell
+            let json = JSON.init(data: response.data)
+            PrintFM("\(json)")
+            PrintFM("\(String(describing: json[RESULT_CODE].int))")
+            PrintFM("\(String(describing: json[RESULT_MSG].string))")
+            
+            
+            if json[RESULT_CODE].int == Int(RxSwiftMoyaError.IBSuccess.rawValue){
+                
+                guard let dict = json["data"].rawValue as? [String: Any] else {
+                    
+                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
+                }
+                
+                return Mapper<T>().map(JSON: dict)!
+                
+            }else{
+                
+                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string!)
+            }
+            
+        }
+    }
+    
     func mapResult<T: Mappable>(type: T.Type) -> Observable<T> {
         return self.map { response in
             
@@ -91,7 +128,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json["errmsg"].int!, Msg: json["errcode"].string!)
+                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string!)
             }
             
         }
@@ -368,7 +405,7 @@ let loadingPlugin = NetworkActivityPlugin { (change) -> () in
 
 let logPlugin = NetworkLoggerPlugin.init(verbose: true, cURL: true, output: {(_ separator: String, _ terminator: String, _ items: Any...) in
     for item in items{
-        PrintFM("---\(item)")
+        PrintFM("---\((item as! String).replacingOccurrences(of: "\\", with: ""))")
     }
     
 }, responseDataFormatter: nil)

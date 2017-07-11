@@ -181,27 +181,15 @@ extension String{
 
     }
     
-    func pwdisSafe() -> Bool {
+    var isPwd:Bool{
         
-        if self.length<6 && self.length>20 {
-            return false
-        }else{
-            
-            let CHA = "^[a-zA-Z]+$"
-            let NUM = "^[0-9]+$"
-            let PWDCHAP = NSPredicate(format: "SELF MATCHES%@", CHA)
-            let PWDNUMP = NSPredicate(format: "SELF MATCHES%@", NUM)
-            
-            if ((PWDCHAP.evaluate(with: self) == true)
-                || (PWDNUMP.evaluate(with: self) == true)) {
-                return true
-            }else{
-                return false
-            }
-            
-        }
+        let CHA = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$"
+        let PWDCHAP = NSPredicate(format: "SELF MATCHES%@", CHA)
+        
+        return (PWDCHAP.evaluate(with: self))
         
     }
+    
     
     var length: Int {
         return self.utf16.count

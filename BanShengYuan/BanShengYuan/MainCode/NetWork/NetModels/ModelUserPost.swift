@@ -35,6 +35,17 @@ class ModelUserUpdateInfoPost: Reflect {
      *  必传:True
      */
     var birthday:String!
+    /**
+     *  性别
+     *  必传:True
+     */
+    var sex:String!
+    
+    /**
+     *  手机号
+     *  必传:True
+     */
+    var phone:String!
     
 }
 
@@ -58,11 +69,13 @@ class ModelUserGetInfoPost: Reflect {
 
 //
 class ModelUserInfoBack: Mappable {
+    
     var memberId: String?
     var avatarUrl: String?
     var nickName: String?
     var sex: Int?
     var phone: String?
+    var birthday: String?
     
     required init?(map: Map) { }
     
@@ -72,6 +85,7 @@ class ModelUserInfoBack: Mappable {
         nickName <- map["nickName"]
         sex <- map["sex"]
         phone <- map["phone"]
+        birthday <- map["birthday"]
     }
     
     public var description: String {

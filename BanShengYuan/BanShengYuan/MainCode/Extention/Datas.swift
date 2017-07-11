@@ -11,6 +11,7 @@ import Foundation
 let BSYPHONE = "BSYPHONE"
 let BSYPWD = "BSYPWD"
 let BSYUSERID = "BSYUSERID"
+let BSYMEMBERID = "BSYMEMBERID"
 
 let USERM = UserManager.shared
 
@@ -51,6 +52,13 @@ class UserManager: NSObject {
             return ""
         }
     }
+    var MemberID:String{
+        if let str = userDefault.value(forKey: BSYMEMBERID){
+            return str as! String
+        }else{
+            return ""
+        }
+    }
     
     func setPhone(phone:String){
         userDefault.set(phone, forKey: BSYPHONE)
@@ -62,6 +70,10 @@ class UserManager: NSObject {
     
     func setUserID(uid:String){
         userDefault.set(uid, forKey: BSYUSERID)
+    }
+    
+    func setMemberID(uid:String){
+        userDefault.set(uid, forKey: BSYMEMBERID)
     }
     
 }

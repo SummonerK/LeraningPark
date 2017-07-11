@@ -18,7 +18,7 @@ class UserCenter_RootVC: UIViewController {
     
     let disposeBag = DisposeBag()
     let VM = ViewModel()
-    let model = ModelUserGetInfoPost()
+    let model_info = ModelUserGetInfoPost()
     
     @IBOutlet weak var TableV_main: UITableView!
     
@@ -54,22 +54,22 @@ class UserCenter_RootVC: UIViewController {
         
         PrintFM("\(USERM.Phone),\(USERM.Pwd),\(USERM.UserID)")
         
-//        model.partnerId = PARTNERID
-//        model.phone = "15600703631"
-//        
-//        VM.userGetInfo(amodel: model)
-//            .subscribe(onNext: { (posts: ModelUserInfoBack) in
-//                
-//                PrintFM("\(posts.description)")
-//                
-//            },onError:{error in
-//                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-//                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
-//                }else{
-//                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
-//                }
-//            })
-//            .addDisposableTo(disposeBag)
+        model_info.partnerId = PARTNERID
+        model_info.phone = "15600703631"
+        
+        VM.userGetInfo(amodel: model_info)
+            .subscribe(onNext: { (posts: ModelUserInfoBack) in
+                
+                PrintFM("\(posts.description)")
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
         
     }
 

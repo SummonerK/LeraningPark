@@ -2,7 +2,6 @@ PODS:
   - Alamofire (4.4.0)
   - DynamicColor (3.3)
   - DZNEmptyDataSet (1.8.1)
-  - FDFullscreenPopGesture (1.1)
   - IQKeyboardManagerSwift (4.0.10)
   - Kingfisher (3.10.1)
   - MBProgressHUD (1.0.0)
@@ -20,7 +19,6 @@ PODS:
 DEPENDENCIES:
   - DynamicColor (~> 3.3)
   - DZNEmptyDataSet
-  - FDFullscreenPopGesture (= 1.1)
   - IQKeyboardManagerSwift
   - Kingfisher
   - MBProgressHUD
@@ -32,7 +30,6 @@ SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   DynamicColor: 3cdaa1e01c16e93ba744e0630f768373e0fc7a7d
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   Kingfisher: 33a1b82140fcb14a9fc13f78dfde2a03ff8de8cb
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -42,6 +39,6 @@ SPEC CHECKSUMS:
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: e86863b3eea789702544aab0f5eecb82ab5dec70
+PODFILE CHECKSUM: dc045b5cdef588e85590519ddb1412d8f2757763
 
 COCOAPODS: 1.2.1

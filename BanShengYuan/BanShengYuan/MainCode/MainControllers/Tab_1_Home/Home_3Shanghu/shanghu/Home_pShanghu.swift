@@ -62,7 +62,7 @@ class Home_pShanghu: BaseTabHiden {
     func getData(){
         
         modellistPost.op = "getShopList"
-        modellistPost.partnerId = PARTNERID
+        modellistPost.partnerId = PARTNERID_SHOP
         modellistPost.pageSize = 10
         modellistPost.pageNo = 1
 
@@ -175,6 +175,8 @@ extension Home_pShanghu: UITableViewDelegate {
         
         //品牌
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "shangHu_DetailVC") as! shangHu_DetailVC
+        Vc.modelShop = (array_items[indexPath.row] as! ModelShopItem)
+        
         self.navigationController?.pushViewController(Vc, animated: true)
         
         PrintFM("\(indexPath.row)")

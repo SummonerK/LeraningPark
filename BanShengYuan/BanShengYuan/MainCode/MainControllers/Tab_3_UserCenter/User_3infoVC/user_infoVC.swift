@@ -8,10 +8,20 @@
 
 import UIKit
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 import AVFoundation
 
 class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-
+    
+    //network
+    let disposeBag = DisposeBag()
+    let VM = ViewModel()
+    var model_user = ModelUserUpdateInfoPost()
+    let model_info = ModelUserGetInfoPost()
+    
     @IBOutlet weak var scrollV: UIScrollView!
     
     @IBOutlet weak var imageV_Header: UIImageView!
@@ -26,8 +36,8 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
     
     @IBOutlet weak var datePicker_birthday: UIDatePicker!
     
-    var model_user = ModelUserInfo()
-    
+    var str_path:String?
+
     var _tapGesture: UITapGestureRecognizer!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +64,8 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
         self.view.backgroundColor = FlatWhiteLight
         setDatePicker()
         
+        getInfoData()
+        
     }
     
     /** Resigning on tap gesture.   (Enhancement ID: #14)*/
@@ -74,6 +86,8 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
         self.navigationItem.leftBarButtonItem = item
         
         self.navigationItem.title = "个人信息"
+        
+        getInfoData()
     }
     
     func actionBack(_ sender: Any) {
@@ -85,12 +99,123 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
         // Dispose of any resources that can be recreated.
     }
     
+    //获取个人信息
+    
+    func getInfoData(){
+        
+        model_info.partnerId = PARTNERID
+        model_info.phone = USERM.Phone
+        
+        VM.userGetInfo(amodel: model_info)
+            .subscribe(onNext: { (posts: ModelUserInfoBack) in
+                
+                PrintFM("\(posts.description)")
+                
+                if let memberid = posts.memberId{
+                    
+                    USERM.setMemberID(uid: memberid)
+                   
+                }
+                
+                if let path = posts.avatarUrl{
+                    
+                    let homeDirectory = NSHomeDirectory()
+                    let documentPath = homeDirectory + "/Documents/"
+                    
+                    let filePath: String = String(format: "%@%@", documentPath, path)
+                    
+                    self.str_path = path
+                    
+                    if let image:UIImage = UIImage(contentsOfFile: filePath){
+                        self.imageV_Header.image = image
+                    }
+                    
+                }
+                
+                if let sex = posts.sex{
+                    if sex == 1{
+                        self.label_sex.text = "男"
+                    }else if sex == 0 {
+                        self.label_sex.text = "女"
+                    }else{
+                        self.label_sex.text = "未设置"
+                    }
+                }
+                
+                if let bir = posts.birthday{
+                    
+                    self.label_bitrhday.text = bir
+                }
+                
+                if let nick = posts.nickName{
+                    
+                    self.label_name.text = nick
+                }
+                
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
+    }
+    
+    
     //MARK: - Action Manager
     ///保存个人资料
     @IBAction func saveAction(_ sender: Any) {
 
         PrintFM("Action")
         closePicker()
+        
+        if label_sex.text == "男"{
+            model_user.sex = "1"
+        }
+        if label_sex.text == "女" {
+            model_user.sex = "0"
+        }
+        
+        if label_sex.text == "未设置" {
+            HUDShowMsgQuick(msg: "请设置性别", toView: self.view, time: 0.8)
+            return
+        }
+        
+        model_user.partnerId = PARTNERID
+        model_user.phone = USERM.Phone
+        
+        if let nick = label_name.text,nick != ""{
+            model_user.nickName = nick
+        }else{
+            HUDShowMsgQuick(msg: "昵称不合法", toView: self.view, time: 0.8)
+            
+            return
+        }
+        
+        if let path = str_path{
+            model_user.avatarUrl = path
+        }
+        
+        model_user.birthday = label_bitrhday.text
+        
+        VM.userUpdate(amodel: model_user)
+            .subscribe(onNext: { (common:ModelCommonBack) in
+                
+                HUDShowMsgQuick(msg: common.msg!, toView: KeyWindow, time: 0.8)
+                
+                self.navigationController?.popViewController(animated: true)
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
 
     }
     ///编辑头像
@@ -223,18 +348,22 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
             //这里将图片放在沙盒的documents文件夹中
             //Home目录
             let homeDirectory = NSHomeDirectory()
-            let documentPath = homeDirectory + "/Documents"
+            let documentPath = homeDirectory + "/Documents/"
             //文件管理器
             let fileManager: FileManager = FileManager.default
             //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
             do {
                 try fileManager.createDirectory(atPath: documentPath, withIntermediateDirectories: true, attributes: nil)
             }catch let error {
+                
             }
-            fileManager.createFile(atPath: documentPath + "/image.png", contents: data, attributes: nil)
+            
+            fileManager.createFile(atPath: documentPath + "image.png", contents: data, attributes: nil)
             //得到选择后沙盒中图片的完整路径
-            let filePath: String = String(format: "%@%@", documentPath, "/image.png")
+            let filePath: String = String(format: "%@%@", documentPath, "image.png")
             print("filePath:" + filePath)
+            
+            self.str_path = "image.png"
             
             imageV_Header.image = UIImage(contentsOfFile: filePath)
             
@@ -336,6 +465,7 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
     func dateChanged(datePicker : UIDatePicker){
         
         label_bitrhday.text = datePicker.date.string_from(formatter: "yyyy-MM-dd")
+        
         
     }
     

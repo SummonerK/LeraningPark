@@ -76,7 +76,7 @@ class resetPwdVC: UIViewController {
         
         var APwd = String()
         
-        if let strP = tf_fistPwd.text ,strP.pwdisSafe(){
+        if let strP = tf_fistPwd.text ,strP.isPwd{
             FPwd = strP
         
         }else{
@@ -85,7 +85,7 @@ class resetPwdVC: UIViewController {
             return
         }
         
-        if let strP = tf_againPwd.text ,strP.pwdisSafe(),strP != ""{
+        if let strP = tf_againPwd.text ,strP.isPwd,strP != ""{
             APwd = strP
             
         }else{

@@ -23,6 +23,7 @@ class Login_RootVC: UIViewController{
     let disposeBag = DisposeBag()
     let VM = ViewModel()
     let model = ModelLoginPost()
+    let model_info = ModelUserGetInfoPost()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,6 +60,7 @@ class Login_RootVC: UIViewController{
         
         tf_phone.text = USERM.Phone
         model.partnerId = PartNerID
+        tf_pwd.text = USERM.Pwd
         
         
     }
@@ -106,6 +108,15 @@ class Login_RootVC: UIViewController{
         PrintFM("登录")
         model.phone = tf_phone.text
         model.password = tf_pwd.text
+        
+//        
+//        if model.password.isPwd {
+//            HUDShowMsgQuick(msg: "safe", toView: self.view, time: 0.8)
+//        }else{
+//            HUDShowMsgQuick(msg: "not safe", toView: self.view, time: 0.8)
+//        }
+        
+        
 
         
         VM.loginLogin(amodel: model)
@@ -115,13 +126,8 @@ class Login_RootVC: UIViewController{
                 USERM.setPhone(phone: self.model.phone)
                 USERM.setPwd(pwd: self.model.password)
                 USERM.setUserID(uid: "userID")
-        
-                KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
-                let animation = CATransition.init()
-                animation.duration = self.duration
-                animation.type = kCATransitionFade
-                UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
                 
+                self.getInfoData()
                 
             },onError:{error in
                 
@@ -145,32 +151,45 @@ class Login_RootVC: UIViewController{
     }
     
     @IBAction func goToRegist(_ sender: Any) {
-        
-//        let Vc = self.storyboard?.instantiateViewController(withIdentifier: "RegistVC") as! RegistVC
-//        
-//        self.present(Vc, animated: false, completion: nil)
-//        
-//        let animation = CATransition.init()
-//        animation.duration = duration
-//        //        animation.type = "rippleEffect" //波纹
-//        animation.type = kCATransitionFade
-//        
-//        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
-        
+ 
     }
     
     @IBAction func goToReSetting(_ sender: Any) {
-//        
-//        let Vc = self.storyboard?.instantiateViewController(withIdentifier: "getResetCodeVC") as! getResetCodeVC
-//        
-//        self.present(Vc, animated: false, completion: nil)
-//        
-//        let animation = CATransition.init()
-//        animation.duration = duration
-//        //        animation.type = "rippleEffect" //波纹
-//        animation.type = kCATransitionFade
-//        
-//        UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+        
+    }
+    
+    //获取个人信息
+    
+    func getInfoData(){
+        
+        model_info.partnerId = PARTNERID
+        model_info.phone = USERM.Phone
+        
+        VM.userGetInfo(amodel: model_info)
+            .subscribe(onNext: { (posts: ModelUserInfoBack) in
+                
+                PrintFM("\(posts.description)")
+
+                if let memberid = posts.memberId{
+                    
+                    USERM.setMemberID(uid: memberid)
+                    
+                    KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
+                    let animation = CATransition.init()
+                    animation.duration = self.duration
+                    animation.type = kCATransitionFade
+                    UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+                    
+                }
+
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
         
     }
 

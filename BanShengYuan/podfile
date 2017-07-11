@@ -22,13 +22,6 @@ target 'BanShengYuan' do
   #list holder
   pod 'DZNEmptyDataSet'
 
-  #全屏回滑手势
-  pod 'FDFullscreenPopGesture', '1.1'
-
-
-
-
-
 end
 
 post_install do |installer|
