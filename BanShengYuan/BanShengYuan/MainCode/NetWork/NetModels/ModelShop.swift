@@ -40,7 +40,7 @@ class ModelShopDetailItem: Mappable {
     var categoryName: String?
     var companyId: String?
     var customerCode: String?
-    var finalPrice: Float?
+    var finalPrice: Int?
     
     var labelNames: [ModelItemLabel]?
     var name: String?

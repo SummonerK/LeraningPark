@@ -30,6 +30,8 @@ class GoodsDetailVC: BaseTabHiden {
     
     let array_zDetail = ["zdetail1","zdetail2","zdetail3","zdetail4"]
     
+    let array_xDetail = NSMutableArray()
+    
     
     var coverVC: chooseVC! = nil
     
@@ -39,6 +41,13 @@ class GoodsDetailVC: BaseTabHiden {
     
     var model_goods:ModelShopDetailItem? ///上层商品数据
     var model_shop:ModelShopItem? ///上上层商户数据
+    
+    var miMgheightdatas:[Int] = []
+    
+    var isOpen:Bool? = false
+    
+    var didHight = NSMutableDictionary()
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,6 +62,10 @@ class GoodsDetailVC: BaseTabHiden {
         
         tableV_main.register(UINib.init(nibName: "TCellGoodsinfo", bundle: nil), forCellReuseIdentifier: "TCellGoodsinfo")
         tableV_main.register(UINib.init(nibName: "TCellGoodsImage", bundle: nil), forCellReuseIdentifier: "TCellGoodsImage")
+        
+        tableV_main.estimatedRowHeight = 200
+        
+//        tableV_main.rowHeight = UITableViewAutomaticDimension
         
         setCoverView()
         
@@ -80,6 +93,15 @@ class GoodsDetailVC: BaseTabHiden {
                 
                 PrintFM("ModelGoodsDetailResult\(result)")
                 
+                if let detailText = result.detailText{
+                    
+                    PrintFM("array_itemPace = \(detailText.array_itemPace)")
+                    
+                    self.array_xDetail.addObjects(from: detailText.array_itemPace)
+                    
+//                    self.tableV_main.reloadData()
+                }
+                
             },onError:{error in
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                     HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
@@ -101,7 +123,7 @@ class GoodsDetailVC: BaseTabHiden {
                 
                 self.array_banner.addObjects(from: posts)
                 
-//                self.tableV_main.reloadData()
+                self.tableV_main.reloadData()
                 
             },onError:{error in
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
@@ -181,59 +203,66 @@ class GoodsDetailVC: BaseTabHiden {
     
     func sendOrder() {
         
-        modelOrderC.companyId = model_goods?.companyId
-        modelOrderC.shopId = shipid
-        modelOrderC.shopName = model_shop?.storeName
-        modelOrderC.userId = USERM.MemberID
-        modelOrderC.userName = USERM.Phone
-        modelOrderC.phone = USERM.Phone
-        modelOrderC.address = "地址"
-        modelOrderC.longitude = "121.377436"
-        modelOrderC.latitude = "31.267283"
-        modelOrderC.type = 1
-        modelOrderC.status = 1
-        modelOrderC.amount = 1490
-        modelOrderC.payType = 1
-        modelOrderC.payChannel = ""
-        modelOrderC.payChannelName = ""
-        modelOrderC.source = "ios app"
-        modelOrderC.partition = ""
-        modelOrderC.customerOrder = "BSY".OrderIDFromtimeSP
-        modelOrderC.remark = ""
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
+        self.navigationController?.pushViewController(Vc, animated: true)
         
-        let modelproduct = OrderProductItemReq()
-        modelproduct.productId = model_goods?.pid
-        modelproduct.productName = model_goods?.name
-        modelproduct.specification = "茶色 XL"
-        modelproduct.number = "1"
-        modelproduct.price = "990"
-        modelproduct.sequence = "0"
+//        modelOrderC.companyId = model_goods?.companyId
+//        modelOrderC.shopId = shipid
+//        modelOrderC.shopName = model_shop?.storeName
+//        modelOrderC.userId = USERM.MemberID
+//        modelOrderC.userName = USERM.Phone
+//        modelOrderC.phone = USERM.Phone
+//        modelOrderC.address = "地址"
+//        modelOrderC.longitude = "121.377436"
+//        modelOrderC.latitude = "31.267283"
+//        modelOrderC.type = 1
+//        modelOrderC.status = 1
+//        modelOrderC.amount = 1490
+//        modelOrderC.payType = 1
+//        modelOrderC.payChannel = ""
+//        modelOrderC.payChannelName = ""
+//        modelOrderC.source = "ios app"
+//        modelOrderC.partition = ""
+//        modelOrderC.customerOrder = "BSY".OrderIDFromtimeSP
+//        modelOrderC.remark = ""
+//        
+//        let modelproduct = OrderProductItemReq()
+//        modelproduct.productId = model_goods?.pid
+//        modelproduct.productName = model_goods?.name
+//        modelproduct.specification = "茶色 XL"
+//        modelproduct.number = "1"
+//        modelproduct.price = "990"
+//        modelproduct.sequence = "0"
+//        
+//        modelOrderC.products = [modelproduct]
+//        
+//        let modelaccount = OrderAccountItemReq()
+//        modelaccount.accountId = "account-1"
+//        modelaccount.name = "运费"
+//        modelaccount.type = "1"
+//        modelaccount.price = "500"
+//        modelaccount.number = "1"
+//        modelaccount.sequence = 0
+//        
+//        modelOrderC.accounts = [modelaccount]
+//        
+//        OrderM.orderCreate(amodel: modelOrderC)
+//            .subscribe(onNext: { (posts: ModelOrderCreateBack) in
+//                
+//                PrintFM("pictureList\(posts)")
+//                
+//                let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
+//                self.navigationController?.pushViewController(Vc, animated: true)
+//                
+//            },onError:{error in
+//                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+//                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+//                }else{
+//                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+//                }
+//            })
+//            .addDisposableTo(disposeBag)
         
-        modelOrderC.products = [modelproduct]
-        
-        let modelaccount = OrderAccountItemReq()
-        modelaccount.accountId = "account-1"
-        modelaccount.name = "运费"
-        modelaccount.type = "1"
-        modelaccount.price = "500"
-        modelaccount.number = "1"
-        modelaccount.sequence = 0
-        
-        modelOrderC.accounts = [modelaccount]
-        
-        OrderM.orderCreate(amodel: modelOrderC)
-            .subscribe(onNext: { (posts: ModelOrderCreateBack) in
-                
-                PrintFM("pictureList\(posts)")
-                
-            },onError:{error in
-                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
-                }else{
-                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
-                }
-            })
-            .addDisposableTo(disposeBag)
     }
     
     
@@ -262,17 +291,36 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
     
     func buyNowAction(items:NSArray){
         closeCoverView()
-        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
-        self.navigationController?.pushViewController(Vc, animated: true)
+    }
+    
+}
+
+extension GoodsDetailVC:view_goodsMoreDelegate{
+    func goodsMoreOpen(){
+        self.isOpen = true
+        self.tableV_main.reloadData()
     }
 }
 
 extension GoodsDetailVC:UITableViewDataSource{
     
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         
-        return (section==0) ? IBScreenWidth*402/375 : 0
+        if section == 2 {
+            
+//            if self.isOpen == false {
+            
+                return 44
+            
+//            }else {
+//                return 0
+//            }
+            
+        }else if section == 0{
+            return IBScreenWidth*402/375
+        }else{
+            return 0
+        }
         
     }
     
@@ -280,19 +328,6 @@ extension GoodsDetailVC:UITableViewDataSource{
         
         
         if section == 0 {
-            
-//            let imageArray = NSMutableArray()
-//            
-//            for item in array_banner{
-//                imageArray.add((item as! ModelGoodsDetailResultPictures).url!)
-//            }
-            
-//            let imageArray = [
-//                "http://wx3.sinaimg.cn/mw690/62eeaba5ly1fee5yt59wrj20fa08lafr.jpg",
-//                "http://wx4.sinaimg.cn/mw690/6a624f11ly1fed4bwlbb0j20go0h6q5h.jpg",
-//                "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
-//                "http://wx2.sinaimg.cn/mw690/af0d43ddgy1fdjzefvub1j20dw09q48s.jpg"
-//            ]
             
             let imageArray = ["banner1","banner2","banner3"]
             
@@ -306,10 +341,16 @@ extension GoodsDetailVC:UITableViewDataSource{
                 return imageArray
             }
             
-            
             return viewheader
             
             
+        }else if section == 2{
+            
+            let viewfooter = Bundle.main.loadNibNamed("view_goodsMore", owner: nil, options: nil)?.first as? view_goodsMore
+            
+            viewfooter?.delegate = self
+            
+            return viewfooter
         }else{
             return nil
         }
@@ -329,7 +370,13 @@ extension GoodsDetailVC:UITableViewDataSource{
         case 1:
             return 1
         case 2:
-            return array_zDetail.count
+            
+//            return self.isOpen! ? array_xDetail.count : 0
+            
+//            return array_zDetail.count
+            
+            return array_xDetail.count
+            
         default:
             return 0
         }
@@ -343,6 +390,15 @@ extension GoodsDetailVC:UITableViewDataSource{
             
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             
+            cell.label_name.text = model_goods?.name
+
+            if let price = model_goods?.finalPrice{
+
+                let str = String(describing: price)
+                
+                cell.label_price.text = String.init("¥ \(String(describing: str.fixPrice()))")
+            }
+            
             cell.delegate = self
             
             return cell
@@ -352,11 +408,22 @@ extension GoodsDetailVC:UITableViewDataSource{
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             
 //            let longurl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497878307246&di=2ba97ccfa0be61143a61baa61eee95ba&imgtype=0&src=http%3A%2F%2Fimg.bbs.cnhubei.com%2Fforum%2Fdvbbs%2F2004-4%2F200441915031894.jpg"
-//            let url = URL(string: longurl)
-//            
-//            cell.imageV_content.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
             
-            cell.imageV_content.image = BundleImageWithName(array_zDetail[indexPath.row])
+            let url = URL(string: array_xDetail[indexPath.row] as! String)
+            
+            cell.imageV_content.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
+
+//                    self.tableV_main.reloadData()
+                
+//                let hight =  CGFloat( (image?.size.height)! / (image?.size.width)! * IBScreenWidth )
+//                
+//                self.didHight.setValue(String(describing: hight), forKey: String.init(format: "index_%d", indexPath.row))
+//                
+//                PrintFM("size_hight = \(String(describing: image?.size.height)),size_width = \(String(describing: image?.size.width))")
+//
+                })
+        
+//            cell.imageV_content.image = BundleImageWithName(array_zDetail[indexPath.row])
             
             return cell
         default:
@@ -367,6 +434,7 @@ extension GoodsDetailVC:UITableViewDataSource{
     }
     
 }
+
 
 extension GoodsDetailVC: TCellGoodsinfoDelegate {
     
@@ -388,16 +456,40 @@ extension GoodsDetailVC: UITableViewDelegate {
             return 160
         case 2:
             
-            if let image = BundleImageWithName(array_zDetail[indexPath.row]){
-                let hight =  image.size.height / image.size.width * IBScreenWidth
+//            if let image = BundleImageWithName(array_zDetail[indexPath.row]){
+//                let hight =  image.size.height / image.size.width * IBScreenWidth
+//            
+////                PrintFM("imageHight \(hight)")
+//                return CGFloat(hight)
+//            }else{
+//                return 0
+//            }
             
-                PrintFM("imageHight \(hight)")
+//            var hight:CGFloat?
+//            
+            //计算
+            
+            let url = URL(string: array_xDetail[indexPath.row] as! String)
+            let imageV = UIImageView.init()
+            imageV.kf.setImage(with: url)
+            
+            if self.isOpen == true {
                 
-                return CGFloat(hight)
-//                return 1488
+                if let image = imageV.image{
+                    
+                    let hight =  image.size.height / image.size.width * IBScreenWidth
+                    
+                    return CGFloat(hight)
+                }else{
+                    return 0
+                }
+                
             }else{
+                
                 return 0
             }
+            
+//            return UITableViewAutomaticDimension
             
         default:
             return 0

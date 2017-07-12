@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 func FontPFMedium(size:CGFloat)->UIFont{
     
@@ -59,6 +60,19 @@ func setUnderLineToString(tocolor:UIColor) -> [String:Any] {
 
 extension String{
     
+    func fixPrice() -> String {
+        let acount:Float = self.floatValue!
+        
+        PrintFM("acount = \(acount)")
+        
+        if acount == 0 || acount < 0 {
+            return "0"
+        }else{
+            return "\(String(format: "%.2f", (acount/100)))"
+        }
+        
+    }
+    
     func fixNumString() -> String {
         
         let acount:Float = self.floatValue!
@@ -73,4 +87,80 @@ extension String{
         
         return "\(String(format: "%.0f", (acount)))"
     }
+    
+    
+    /**
+     根据 正则表达式 截取字符串
+     
+     - parameter regex: 正则表达式
+     
+     - returns: 字符串数组
+     */
+    public func matchesForRegex(regex: String) -> [String]? {
+        
+        do {
+            let regularExpression = try NSRegularExpression(pattern: regex, options: [])
+            let range = NSMakeRange(0, self.characters.count)
+            let results = regularExpression.matches(in: self, options: [], range: range)
+            let string = self as NSString
+            return results.map { string.substring(with: $0.range)}
+        } catch {
+            return nil
+        }
+    }
+    
+    
+    var array_items:[String]{
+        
+//        let regex = "<img\\b(?=\\s)(?=(?:[^>=]|='[^']*'|=\"[^\"]*\"|=[^'\"][^\\s>]*)*?\\ssrc=['\"]([^\"]*)['\"]?)(?:[^>=]|='[^']*'|=\"[^\"]*\"|=[^'\"\\s]*)*\"\\s?\\/?>"
+//       
+//        // 截取img标签
+//        let resultItems = self.matchesForRegex(regex)
+        
+        let regex = "(http[^\\s]+(jpg|jpeg|png|tiff)\\b)"
+        
+        // 截取所有img url
+        let resultItems = self.matchesForRegex(regex: regex)
+        
+        for item in resultItems! {
+            let url = URL(string: item)
+            let imageV = UIImageView.init()
+            imageV.kf.setImage(with: url)
+        }
+        
+        return resultItems!
+        
+    }
+    
+    var array_itemPace:[String]{
+        
+        //        let regex = "<img\\b(?=\\s)(?=(?:[^>=]|='[^']*'|=\"[^\"]*\"|=[^'\"][^\\s>]*)*?\\ssrc=['\"]([^\"]*)['\"]?)(?:[^>=]|='[^']*'|=\"[^\"]*\"|=[^'\"\\s]*)*\"\\s?\\/?>"
+        //
+        //        // 截取img标签
+        //        let resultItems = self.matchesForRegex(regex)
+        
+//        let regex = "(http[^\\s]+(jpg|jpeg|png|tiff)\\b)"
+        
+        // 截取所有img url
+        let resultItems = self.components(separatedBy: "~")
+        
+        let array = NSMutableArray()
+        
+        
+        for item in resultItems {
+//            let url = URL(string: item)
+//            let imageV = UIImageView.init()
+//            imageV.kf.setImage(with: url)
+            
+            let item_temp = item.replacingOccurrences(of: "\r\n", with: "")
+            
+            array.add(item_temp)
+            
+        }
+        
+        return array as! [String]
+        
+    }
+    
+    
 }

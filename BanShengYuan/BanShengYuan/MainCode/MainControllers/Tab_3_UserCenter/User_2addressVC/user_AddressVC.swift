@@ -85,7 +85,7 @@ class user_AddressVC: BaseTabHiden {
         
         let model_address = ModelAddressListPost()
         model_address.partnerId = PartNerID
-        model_address.phone = "18915966899"
+        model_address.phone = USERM.Phone
         VM.addressGetList(amodel: model_address)
             .subscribe(onNext: { (posts: [ModelAddressItem]) in
                 PrintFM("log\(String(describing: posts.count))")
@@ -99,6 +99,12 @@ class user_AddressVC: BaseTabHiden {
                 self.tableV_main.reloadData()
                 
             },onError:{error in
+                
+                if let acode = (error as? MyErrorEnum)?.drawCodeValue,acode == 2001{
+                    HUDShowMsgQuick(msg: "暂无地址信息", toView: self.view, time: 0.8)
+                    return
+                }
+                
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                     HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
                 }else{
@@ -210,6 +216,7 @@ extension user_AddressVC: UserAddressDelegate{
                     self.tableV_main.reloadData()
                     
                 },onError:{error in
+                    
                     if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                         HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
                     }else{
@@ -238,7 +245,7 @@ extension user_AddressVC: UserAddressDelegate{
                 
                 let model_address = ModelAddressDeletePost()
                 model_address.partnerId = PartNerID
-                model_address.phone = "18915966899"
+                model_address.phone = USERM.Phone
                 model_address.id = temp?.id
                 self.VM.addressDelete(amodel: model_address)
                     .subscribe(onNext: {(common:ModelCommonBack) in

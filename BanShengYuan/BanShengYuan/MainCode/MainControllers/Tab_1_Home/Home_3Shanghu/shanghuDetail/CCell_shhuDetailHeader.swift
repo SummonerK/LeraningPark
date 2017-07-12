@@ -39,7 +39,7 @@ class CCell_shhuDetailHeader: UICollectionViewCell {
         
         Selected(bton: bton_xiaoliang)
         
-        setRadiusFor(toview: imageV_icon, radius: 6, lineWidth: 0, lineColor: UIColor.clear)
+        setRadiusFor(toview: imageV_icon, radius: 3, lineWidth: 0, lineColor: UIColor.clear)
         
     }
     

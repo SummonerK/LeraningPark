@@ -28,6 +28,7 @@ class UserCenter_RootVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
     }
 
     override func viewDidLoad() {
@@ -46,7 +47,7 @@ class UserCenter_RootVC: UIViewController {
         
         TableV_main.tableFooterView = UIView()
         
-        getData()
+//        getData()
 
     }
     
@@ -55,12 +56,19 @@ class UserCenter_RootVC: UIViewController {
         PrintFM("\(USERM.Phone),\(USERM.Pwd),\(USERM.UserID)")
         
         model_info.partnerId = PARTNERID
-        model_info.phone = "15600703631"
+        model_info.phone = USERM.Phone
         
         VM.userGetInfo(amodel: model_info)
             .subscribe(onNext: { (posts: ModelUserInfoBack) in
                 
                 PrintFM("\(posts.description)")
+                
+                if let nick = posts.nickName{
+                    
+                    USERM.setUserName(uid: nick)
+                    
+                    self.TableV_main.reloadData()
+                }
                 
             },onError:{error in
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
@@ -91,7 +99,8 @@ extension UserCenter_RootVC:UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         
         if section == 0 {
-            let dic = ["name":"BSH0002","url":urlStr,"phone":"156****3631"]
+            
+            let dic = ["name":USERM.UserName,"url":urlStr,"phone":"156****3631"]
             
             let viewheader = Bundle.main.loadNibNamed("view_userHeader", owner: nil, options: nil)?.first as? view_userHeader
             
@@ -173,6 +182,8 @@ extension UserCenter_RootVC: UITableViewDelegate {
         case 2:
             //我的资料
             let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_infoVC") as! user_infoVC
+            Vc.nickNameBack = backNickName(name:)
+            
             self.navigationController?.pushViewController(Vc, animated: true)
             
         default:
@@ -182,5 +193,10 @@ extension UserCenter_RootVC: UITableViewDelegate {
         
         PrintFM("\(indexPath.row)")
         
+    }
+    
+    func backNickName(name:String) -> Void {
+        PrintFM("\(name)")
+        getData()
     }
 }

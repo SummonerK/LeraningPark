@@ -14,6 +14,8 @@ let PARTNERID = "a8bee0dd-09d1-4fa9-a9eb-80cb36d3d611"
 
 let PARTNERID_SHOP = "53c69e54-c788-495c-bed3-2dbfc6fd5c61"
 
+//let PARTNERID_SHOP = "17ef7396-4c56-4e08-9f3f-5cba520234d6"
+
 let shopheaderFields: Dictionary<String, String> = [
     "platform": "iOS",
     "sys_ver": String(UIDevice.version())

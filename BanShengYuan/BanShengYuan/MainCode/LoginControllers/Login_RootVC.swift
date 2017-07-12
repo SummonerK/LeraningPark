@@ -39,6 +39,9 @@ class Login_RootVC: UIViewController{
         
         PrintFM("status = \(status)")
         
+        let str = "48000"
+        
+        PrintFM("price = \(str.fixPrice())")
         
         setNavi()
         
@@ -126,6 +129,7 @@ class Login_RootVC: UIViewController{
                 USERM.setPhone(phone: self.model.phone)
                 USERM.setPwd(pwd: self.model.password)
                 USERM.setUserID(uid: "userID")
+                
                 
                 self.getInfoData()
                 

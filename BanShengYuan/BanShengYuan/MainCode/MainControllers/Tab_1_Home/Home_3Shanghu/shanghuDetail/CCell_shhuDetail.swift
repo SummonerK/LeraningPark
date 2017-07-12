@@ -19,7 +19,8 @@ class CCell_shhuDetail: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setRadiusFor(toview: self.contentView, radius: 4, lineWidth: 0, lineColor: UIColor.clear)
+        setRadiusFor(toview: self, radius: 4, lineWidth: 0, lineColor: UIColor.clear)
+//        setRadiusFor(toview: imageV_shangpin, radius: 4, lineWidth: 0, lineColor: UIColor.clear)
         
         // Initialization code
     }
@@ -33,10 +34,19 @@ class CCell_shhuDetail: UICollectionViewCell {
         imageV_shangpin.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
         
         label_title.text = Model.name
-        label_pirce.text = "¥\(String(describing: Model.originalPrice!))"
+        
+        if let price = Model.originalPrice {
+            
+            let str = String(describing: price)
+            
+            label_pirce.text = String.init("¥ \(String(describing: str.fixPrice()))")
+            
+        }
+        
         label_sales.text = String(describing: Model.saleCount!).fixNumString()
         
 //        label_sales.text = "12000".fixNumString()
+        
     }
 
 }

@@ -14,6 +14,10 @@ protocol TCellGoodsinfoDelegate{
 
 class TCellGoodsinfo: UITableViewCell {
     
+    @IBOutlet weak var label_name: UILabel!
+    
+    @IBOutlet weak var label_price: UILabel!
+    
     var delegate:TCellGoodsinfoDelegate?
 
     override func awakeFromNib() {

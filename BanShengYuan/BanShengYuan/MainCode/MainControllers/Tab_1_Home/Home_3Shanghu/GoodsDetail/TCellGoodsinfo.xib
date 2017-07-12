@@ -105,6 +105,10 @@
                     <constraint firstItem="IGX-DH-hQj" firstAttribute="top" secondItem="9S0-Gp-X4s" secondAttribute="bottom" constant="2" id="x2F-vj-T1N"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="label_name" destination="IGX-DH-hQj" id="Ltj-p2-hpg"/>
+                <outlet property="label_price" destination="zyb-at-Mbr" id="rtw-5g-ezd"/>
+            </connections>
             <point key="canvasLocation" x="80.5" y="60"/>
         </tableViewCell>
     </objects>

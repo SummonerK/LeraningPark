@@ -38,6 +38,8 @@
 		634AA3151F14DE7200697526 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634AA3141F14DE7200697526 /* CoreTelephony.framework */; };
 		634AA3171F14DE8400697526 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 634AA3161F14DE8400697526 /* libc++.tbd */; };
 		634AA3191F14DE9200697526 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 634AA3181F14DE9200697526 /* libz.tbd */; };
+		634D57461F15CFD900A3EC28 /* view_goodsMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D57451F15CFD900A3EC28 /* view_goodsMore.swift */; };
+		634D57481F15CFEC00A3EC28 /* view_goodsMore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634D57471F15CFEC00A3EC28 /* view_goodsMore.xib */; };
 		634DE72C1EF381D200E44AFA /* TCell_pActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DE72A1EF381D200E44AFA /* TCell_pActivity.swift */; };
 		634DE72D1EF381D200E44AFA /* TCell_pActivity.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634DE72B1EF381D200E44AFA /* TCell_pActivity.xib */; };
 		634F63DA1F0E0A0C00DE4B92 /* CCellChooseVCHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F63D81F0E0A0C00DE4B92 /* CCellChooseVCHeader.swift */; };
@@ -211,6 +213,8 @@
 		634AA3141F14DE7200697526 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		634AA3161F14DE8400697526 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		634AA3181F14DE9200697526 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		634D57451F15CFD900A3EC28 /* view_goodsMore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = view_goodsMore.swift; sourceTree = "<group>"; };
+		634D57471F15CFEC00A3EC28 /* view_goodsMore.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = view_goodsMore.xib; sourceTree = "<group>"; };
 		634DE72A1EF381D200E44AFA /* TCell_pActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCell_pActivity.swift; sourceTree = "<group>"; };
 		634DE72B1EF381D200E44AFA /* TCell_pActivity.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCell_pActivity.xib; sourceTree = "<group>"; };
 		634F63D81F0E0A0C00DE4B92 /* CCellChooseVCHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCellChooseVCHeader.swift; sourceTree = "<group>"; };
@@ -759,6 +763,8 @@
 				636635EF1F05047E0060E7D4 /* TCellGoodsImage.xib */,
 				636635F01F05047E0060E7D4 /* TCellGoodsinfo.swift */,
 				636635F11F05047E0060E7D4 /* TCellGoodsinfo.xib */,
+				634D57451F15CFD900A3EC28 /* view_goodsMore.swift */,
+				634D57471F15CFEC00A3EC28 /* view_goodsMore.xib */,
 			);
 			path = GoodsDetail;
 			sourceTree = "<group>";
@@ -1036,6 +1042,7 @@
 				638F18371EF1116C00A33412 /* TCell_Footer.xib in Resources */,
 				6361C66F1F0CFA0600E0D405 /* TCellPostInfo.xib in Resources */,
 				6362C0281EF9174700B22CE5 /* TCell_info.xib in Resources */,
+				634D57481F15CFEC00A3EC28 /* view_goodsMore.xib in Resources */,
 				63020C261EFCB070003F8199 /* citydatacoding.plist in Resources */,
 				6344639B1F04DE0F000085E7 /* Userbackground.png in Resources */,
 				638DE6051EF7B7390017DA72 /* UserCenter.storyboard in Resources */,
@@ -1216,6 +1223,7 @@
 				634F64071F0E172A00DE4B92 /* ModelBack.swift in Sources */,
 				630BCFF21F13256500E68C34 /* orderAPI.swift in Sources */,
 				634F64041F0E172A00DE4B92 /* vipAPI.swift in Sources */,
+				634D57461F15CFD900A3EC28 /* view_goodsMore.swift in Sources */,
 				638536361EE7A1F800DB7BA1 /* BanShengYuan.xcdatamodeld in Sources */,
 				633D59BB1F0E519D0068B351 /* ModelAddress.swift in Sources */,
 				63D7872B1F03B41400937135 /* IBCollectionViewFlowLayout.swift in Sources */,
@@ -1404,10 +1412,10 @@
 				INFOPLIST_FILE = BanShengYuan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BanShengYuan;
+				PRODUCT_BUNDLE_IDENTIFIER = changjingdev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd488c4e-bfdb-438d-9a95-8957aceba71f";
-				PROVISIONING_PROFILE_SPECIFIER = buy_test;
+				PROVISIONING_PROFILE = "4337965d-e151-4941-8005-e32bddef5cd2";
+				PROVISIONING_PROFILE_SPECIFIER = changjingdev;
 				SWIFT_OBJC_BRIDGING_HEADER = "BanShengYuan/MainCode/ThirdSource/MBProgressHUD/MBProgressHUD-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1434,10 +1442,10 @@
 				INFOPLIST_FILE = BanShengYuan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BanShengYuan;
+				PRODUCT_BUNDLE_IDENTIFIER = changjingdev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8dac34c3-c240-4936-9490-7a3979ff96c3";
-				PROVISIONING_PROFILE_SPECIFIER = buy_test;
+				PROVISIONING_PROFILE = "356cab06-3f42-4c3a-9292-349583824f53";
+				PROVISIONING_PROFILE_SPECIFIER = changjingdev;
 				SWIFT_OBJC_BRIDGING_HEADER = "BanShengYuan/MainCode/ThirdSource/MBProgressHUD/MBProgressHUD-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

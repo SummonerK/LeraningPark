@@ -43,14 +43,16 @@ class shangHu_DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = FlatGrayLight
+        
         setupCollection()
         
         if let storecode = modelShop?.storeCode{
-//            shopID = "\(PARTNERID_SHOP)_\(storecode)"
+            shopID = "\(PARTNERID_SHOP)_\(storecode)"
             
 //            PrintFM("\(shopID)")
+//            shopID = shipid
             
-            shopID = shipid
         }
         
         getData()
@@ -150,7 +152,23 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CCell_shhuDetailHeader", for: indexPath) as! CCell_shhuDetailHeader
         
-        headerView.imageV_icon.image = BundlePngWithName("ppdaiso")
+        for pagemodel in (modelShop?.businessImages!)!{
+            if  let imageurl = pagemodel["imageUrl"]{
+                
+                let url = URL(string: imageurl as! String)
+                
+                headerView.imageV_icon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+                
+                break
+            }
+        }
+        
+//        headerView.imageV_icon.image = BundlePngWithName("ppdaiso")
+        
+        
+        if let name = modelShop?.storeName {
+             headerView.label_shanghuName.text = name
+        }
         
         headerView.imageV_light.image = BundleImageWithName("subactivity2")
         

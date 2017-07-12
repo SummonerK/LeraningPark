@@ -14,7 +14,10 @@ import SwiftyJSON
 
 import AVFoundation
 
+
 class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    
+    var nickNameBack:nickNameBack?
     
     //network
     let disposeBag = DisposeBag()
@@ -150,6 +153,8 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
                 if let nick = posts.nickName{
                     
                     self.label_name.text = nick
+                    
+                    USERM.setUserName(uid: nick)
                 }
                 
                 
@@ -205,6 +210,8 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
             .subscribe(onNext: { (common:ModelCommonBack) in
                 
                 HUDShowMsgQuick(msg: common.msg!, toView: KeyWindow, time: 0.8)
+                
+                self.nickNameBack!("163465465")
                 
                 self.navigationController?.popViewController(animated: true)
                 

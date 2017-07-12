@@ -8,9 +8,19 @@
 
 import UIKit
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 class GoodsPayVC: BaseTabHiden {
-    @IBOutlet weak var tableV_main: UITableView!
     
+    //network
+    
+    let OrderM = orderModel()
+    let modelpayPost = ModelOrderPayPost()
+    let disposeBag = DisposeBag()
+    
+    @IBOutlet weak var tableV_main: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -20,7 +30,7 @@ class GoodsPayVC: BaseTabHiden {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        self.view.backgroundColor = FlatWhiteLight
+//        self.view.backgroundColor = FlatWhiteLight
         
         setNavi()
         
@@ -28,6 +38,27 @@ class GoodsPayVC: BaseTabHiden {
         
         tableV_main.backgroundColor = FlatWhiteLight
         
+    }
+    
+    func payAction() {
+        
+        modelpayPost.orderId = "80776216007672097"
+        modelpayPost.pay_ebcode = "1"
+        modelpayPost.transId = 100000
+        
+        OrderM.orderPay(amodel: modelpayPost)
+            .subscribe(onNext: { (posts: ModelOrderPayBack) in
+
+                PrintFM("pictureList\(posts)")
+
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
     }
     
     func setNavi() {

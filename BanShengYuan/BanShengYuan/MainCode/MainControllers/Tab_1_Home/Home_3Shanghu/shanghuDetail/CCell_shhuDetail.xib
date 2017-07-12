@@ -73,6 +73,7 @@
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="d7e-ph-qhm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="73H-H8-RPd"/>
                 <constraint firstItem="rTj-Uu-42o" firstAttribute="leading" secondItem="VMG-f9-b3G" secondAttribute="trailing" constant="2" id="93g-IB-cE6"/>

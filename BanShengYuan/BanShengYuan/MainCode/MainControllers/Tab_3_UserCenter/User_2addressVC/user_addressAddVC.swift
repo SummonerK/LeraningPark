@@ -124,7 +124,7 @@ class user_addressAddVC: UIViewController {
                 model_address.partnerId = PartNerID
                 model_address.receiverName = name
                 model_address.receiverPhone = phone
-                model_address.phone = "18915966899"
+                model_address.phone = USERM.Phone
                 model_address.area = area
                 model_address.address = detail
                 model_address.id = modelEdit?.id
@@ -151,7 +151,7 @@ class user_addressAddVC: UIViewController {
                 model_address.partnerId = PartNerID
                 model_address.receiverName = name
                 model_address.receiverPhone = phone
-                model_address.phone = "18915966899"
+                model_address.phone = USERM.Phone
                 model_address.address = detail
                 model_address.area = area
                 model_address.isDefault = isDefault

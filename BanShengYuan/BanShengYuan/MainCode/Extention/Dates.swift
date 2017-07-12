@@ -51,8 +51,8 @@ extension String{
     
     var OrderIDFromtimeSP:String{
         let date = NSDate()
-        let timeInterval = date.timeIntervalSince1970 * 1000
-        return "\(self)_\(timeInterval)"
+        let timeInterval = date.timeIntervalSince1970 * 100000
+        return "\(self)_\(Int(timeInterval))"
     }
     
     
