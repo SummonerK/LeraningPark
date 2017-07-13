@@ -18,8 +18,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7y-Eu-b0f">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhw-DY-klW">
-                            <rect key="frame" x="298.5" y="11" width="56.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 78.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhw-DY-klW">
+                            <rect key="frame" x="291" y="11" width="64" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="ZR3-Q3-1rh"/>
                                 <constraint firstAttribute="width" priority="200" constant="42" id="xvC-Ut-Sm8"/>
@@ -29,7 +29,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVq-hE-Y91">
-                            <rect key="frame" x="262.5" y="10.5" width="36" height="21"/>
+                            <rect key="frame" x="255" y="10.5" width="36" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="dcR-fz-fmX"/>
                                 <constraint firstAttribute="width" priority="200" constant="42" id="uD2-fE-LUK"/>
@@ -38,8 +38,8 @@
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共2件商品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TN-uc-pj0">
-                            <rect key="frame" x="197" y="10.5" width="55.5" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共1件商品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TN-uc-pj0">
+                            <rect key="frame" x="192" y="10.5" width="53" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="6eb-4F-DeS"/>
                                 <constraint firstAttribute="width" priority="200" constant="42" id="FKh-Qj-HXf"/>
@@ -122,6 +122,8 @@
             <connections>
                 <outlet property="bton_extend" destination="yat-aZ-uLz" id="0Vv-TR-zbA"/>
                 <outlet property="bton_received" destination="3qD-dM-ZOx" id="Zc4-1F-5bd"/>
+                <outlet property="label_num" destination="0TN-uc-pj0" id="Utz-NV-8D0"/>
+                <outlet property="label_price" destination="hhw-DY-klW" id="UFK-zL-kEJ"/>
             </connections>
         </view>
     </objects>

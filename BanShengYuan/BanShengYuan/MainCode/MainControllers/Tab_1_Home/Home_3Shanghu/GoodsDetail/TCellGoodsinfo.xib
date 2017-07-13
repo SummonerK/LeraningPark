@@ -13,10 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TCellGoodsinfo" id="KGk-i7-Jjw" customClass="TCellGoodsinfo" customModule="BanShengYuan">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="204"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="204"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XKV-ke-t4t">
@@ -83,17 +83,41 @@
                         <color key="textColor" red="0.20784313730000001" green="0.73333333329999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSi-8d-Aos">
+                        <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o47-XM-Uic">
+                                <rect key="frame" x="132" y="8" width="110" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="yLX-qY-mb7"/>
+                                    <constraint firstAttribute="width" constant="110" id="yfd-8B-K2l"/>
+                                </constraints>
+                                <state key="normal" image="zu"/>
+                                <connections>
+                                    <action selector="showDetail:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="G7z-Kb-aq7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="D2C-ST-FG8"/>
+                            <constraint firstItem="o47-XM-Uic" firstAttribute="centerY" secondItem="WSi-8d-Aos" secondAttribute="centerY" id="WWo-3f-M1V"/>
+                            <constraint firstItem="o47-XM-Uic" firstAttribute="centerX" secondItem="WSi-8d-Aos" secondAttribute="centerX" id="iAS-xP-yay"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="9S0-Gp-X4s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="1gm-VT-NtU"/>
-                    <constraint firstAttribute="bottom" secondItem="Ob8-Pa-OrU" secondAttribute="bottom" constant="5" id="6Fq-9j-FFX"/>
+                    <constraint firstAttribute="bottom" secondItem="Ob8-Pa-OrU" secondAttribute="bottom" constant="49" id="6Fq-9j-FFX"/>
                     <constraint firstItem="zyb-at-Mbr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="6qV-zu-R5I"/>
                     <constraint firstItem="9S0-Gp-X4s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="ATn-uB-Nj1"/>
                     <constraint firstItem="zyb-at-Mbr" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="DiI-Ie-fFa"/>
                     <constraint firstItem="zyb-at-Mbr" firstAttribute="top" secondItem="IGX-DH-hQj" secondAttribute="bottom" constant="10" id="GNu-0A-c8v"/>
                     <constraint firstAttribute="trailingMargin" secondItem="zyb-at-Mbr" secondAttribute="trailing" constant="10" id="LUN-g0-4Zy"/>
+                    <constraint firstAttribute="bottom" secondItem="WSi-8d-Aos" secondAttribute="bottom" id="QgL-5E-GxQ"/>
                     <constraint firstAttribute="trailing" secondItem="Ob8-Pa-OrU" secondAttribute="trailing" id="WII-4j-K02"/>
+                    <constraint firstAttribute="trailing" secondItem="WSi-8d-Aos" secondAttribute="trailing" id="YLI-Vy-FUf"/>
                     <constraint firstAttribute="trailing" secondItem="XKV-ke-t4t" secondAttribute="trailing" id="ZwR-6t-s6C"/>
                     <constraint firstItem="IGX-DH-hQj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="jB2-4C-Ihe"/>
                     <constraint firstItem="Ob8-Pa-OrU" firstAttribute="top" secondItem="XKV-ke-t4t" secondAttribute="bottom" constant="5" id="jOT-9A-11X"/>
@@ -103,6 +127,7 @@
                     <constraint firstItem="Ob8-Pa-OrU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="up0-4Q-LW1"/>
                     <constraint firstItem="XKV-ke-t4t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="wIa-tl-nk2"/>
                     <constraint firstItem="IGX-DH-hQj" firstAttribute="top" secondItem="9S0-Gp-X4s" secondAttribute="bottom" constant="2" id="x2F-vj-T1N"/>
+                    <constraint firstItem="WSi-8d-Aos" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="z28-6F-qpc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -114,5 +139,6 @@
     </objects>
     <resources>
         <image name="goods_dian" width="21" height="3"/>
+        <image name="zu" width="108" height="28"/>
     </resources>
 </document>

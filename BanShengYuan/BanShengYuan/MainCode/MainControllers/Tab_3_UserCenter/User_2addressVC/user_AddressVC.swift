@@ -84,7 +84,7 @@ class user_AddressVC: BaseTabHiden {
     func getData(){
         
         let model_address = ModelAddressListPost()
-        model_address.partnerId = PartNerID
+        model_address.partnerId = PARTNERID
         model_address.phone = USERM.Phone
         VM.addressGetList(amodel: model_address)
             .subscribe(onNext: { (posts: [ModelAddressItem]) in
@@ -193,7 +193,7 @@ extension user_AddressVC: UserAddressDelegate{
             PrintFM("set\(indexPath)")
             
             let model_address = ModelAddressUpdatePost()
-            model_address.partnerId = PartNerID
+            model_address.partnerId = PARTNERID
             model_address.receiverName = (array_address[indexPath.section] as? ModelAddressItem)?.receiverName
             model_address.receiverPhone = (array_address[indexPath.section] as? ModelAddressItem)?.receiverPhone
             model_address.phone = (array_address[indexPath.section] as? ModelAddressItem)?.phone
@@ -244,7 +244,7 @@ extension user_AddressVC: UserAddressDelegate{
                 let temp = (self.array_address[indexPath.section] as? ModelAddressItem)
                 
                 let model_address = ModelAddressDeletePost()
-                model_address.partnerId = PartNerID
+                model_address.partnerId = PARTNERID
                 model_address.phone = USERM.Phone
                 model_address.id = temp?.id
                 self.VM.addressDelete(amodel: model_address)

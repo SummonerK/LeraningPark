@@ -66,9 +66,6 @@ class shangHu_DetailVC: UIViewController {
         
         PrintFM("meun")
         
-        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
-        self.navigationController?.pushViewController(Vc, animated: true)
-        
     }
     
 /*
@@ -80,7 +77,7 @@ http://118.89.192.122:9998/Query/Shop/GetAllProducts?pagesize=10&pagenumber=1&sh
     
     func getData() {
         modelshopDetailPost.shopId = shopID
-        modelshopDetailPost.pagesize = 10
+        modelshopDetailPost.pagesize = 20
         modelshopDetailPost.pagenumber = 1
         
         VipM.shopGetAllProducts(amodel: modelshopDetailPost)
@@ -157,7 +154,7 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
                 
                 let url = URL(string: imageurl as! String)
                 
-                headerView.imageV_icon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+                headerView.imageV_icon.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
                 
                 break
             }
@@ -170,7 +167,15 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
              headerView.label_shanghuName.text = name
         }
         
-        headerView.imageV_light.image = BundleImageWithName("subactivity2")
+        if let storeCode = modelShop?.storeCode {
+            if storeCode == "001" {
+                headerView.imageV_light.image = BundleImageWithName("subactivity2")
+            }else{
+                headerView.imageV_light.image = BundleImageWithName("hbright2")
+            }
+        }
+        
+//        headerView.imageV_light.image = BundleImageWithName("subactivity2")
         
         headerView.layoutIfNeeded()
         

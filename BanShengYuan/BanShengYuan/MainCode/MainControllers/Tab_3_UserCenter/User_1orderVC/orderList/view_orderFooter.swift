@@ -14,12 +14,19 @@ class view_orderFooter: UIView {
     
     @IBOutlet weak var bton_received: UIButton!
     
+    @IBOutlet weak var label_num: UILabel!
+    
+    @IBOutlet weak var label_price: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setRadiusFor(toview: bton_extend, radius: 4, lineWidth: 1, lineColor: FlatLocalMain)
         setRadiusFor(toview: bton_received, radius: 4, lineWidth: 1, lineColor: FlatLocalMain)
+        
+        bton_extend.isEnabled = false
+        bton_received.isEnabled = false
         
     }
     

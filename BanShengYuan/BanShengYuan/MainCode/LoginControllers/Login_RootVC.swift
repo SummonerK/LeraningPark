@@ -62,7 +62,7 @@ class Login_RootVC: UIViewController{
         ShowWelecomeV()
         
         tf_phone.text = USERM.Phone
-        model.partnerId = PartNerID
+        model.partnerId = PARTNERID
         tf_pwd.text = USERM.Pwd
         
         
@@ -118,9 +118,6 @@ class Login_RootVC: UIViewController{
 //        }else{
 //            HUDShowMsgQuick(msg: "not safe", toView: self.view, time: 0.8)
 //        }
-        
-        
-
         
         VM.loginLogin(amodel: model)
             .subscribe(onNext: { (common:ModelCommonBack) in

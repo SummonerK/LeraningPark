@@ -54,6 +54,7 @@ class ModelShopDetailItem: Mappable {
     var status: String?
     var type: String?
     var unit: String?
+    var productNumber: Int?
     
     required init?(map: Map) { }
     
@@ -77,6 +78,8 @@ class ModelShopDetailItem: Mappable {
         status <- map["status"]
         type <- map["type"]
         unit <- map["unit"]
+        
+        productNumber <- map["productNumber"]
         
     }
     

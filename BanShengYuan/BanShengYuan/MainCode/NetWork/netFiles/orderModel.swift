@@ -41,12 +41,12 @@ class orderModel {
     
     func orderCreate(amodel:ModelOrderCreatePost) -> Observable<ModelOrderCreateBack> {
         return orderprovider.request(.orderCreate(PostModel: amodel))
-            .mapResult(type: ModelOrderCreateBack.self)
+            .mapNeObject(type: ModelOrderCreateBack.self)
         //.showError()
     }
-    func orderPay(amodel:ModelOrderPayPost) -> Observable<ModelOrderPayBack> {
+    func orderPay(amodel:ModelOrderPayPost) -> Observable<modelPayPlanBack> {
         return orderprovider.request(.orderPay(PostModel: amodel))
-            .mapObject(type: ModelOrderPayBack.self)
+            .mapNeObject(type: modelPayPlanBack.self)
         //.showError()
     }
     
@@ -60,9 +60,9 @@ class orderModel {
             .mapObject(type: ModelCommonBack.self)
         //.showError()
     }
-    func orderListByUser(amodel:ModelListPageByUserPost) -> Observable<ModelListPageByUserBack> {
+    func orderListByUser(amodel:ModelListPageByUserPost) -> Observable<ModelOrderWithCount> {
         return orderprovider.request(.orderListByUser(PostModel: amodel))
-            .mapObject(type: ModelListPageByUserBack.self)
+            .mapResult(type: ModelOrderWithCount.self)
         //.showError()
     }
     

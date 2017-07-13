@@ -31,6 +31,8 @@ class chooseVC: UIViewController {
     
     @IBOutlet weak var label_count: UILabel!
     
+    @IBOutlet weak var label_price: UILabel!
+    
     @IBOutlet weak var collection_main: UICollectionView!
     
     override func viewDidLoad() {

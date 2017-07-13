@@ -10,6 +10,7 @@ import UIKit
 
 protocol TCellGoodsinfoDelegate{
     func setAction(actionType:String)
+    func GoodsinfoShowAction(actionType:String)
 }
 
 class TCellGoodsinfo: UITableViewCell {
@@ -28,6 +29,9 @@ class TCellGoodsinfo: UITableViewCell {
         self.delegate?.setAction(actionType: "00")
     }
 
+    @IBAction func showDetail(_ sender: Any) {
+        self.delegate?.GoodsinfoShowAction(actionType: "00")
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

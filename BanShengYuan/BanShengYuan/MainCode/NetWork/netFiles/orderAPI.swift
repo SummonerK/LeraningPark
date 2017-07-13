@@ -12,6 +12,8 @@ import RxSwift
 import Moya
 import Alamofire
 
+let aliPay_ebcode = "10001"
+
 enum orderAPI {
     case test(PostModel:ModelTestPost)//测试https
     //MARK:- 订单

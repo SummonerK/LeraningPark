@@ -51,8 +51,8 @@ class RegistVC: UIViewController,UITextFieldDelegate{
         IQKeyboardManager.sharedManager().enable = true
         
         tf_phone.text = USERM.Phone
-        model.partnerId = PartNerID
-        modelregest.partnerId = PartNerID
+        model.partnerId = PARTNERID
+        modelregest.partnerId = PARTNERID
         
 //        tf_vCode.text = "1592"
 //        tf_fistPwd.text = "qwer1234"

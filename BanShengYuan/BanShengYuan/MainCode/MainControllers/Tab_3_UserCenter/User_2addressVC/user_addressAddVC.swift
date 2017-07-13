@@ -121,7 +121,7 @@ class user_addressAddVC: UIViewController {
             if tag_pagefrom == 2 {
                 
                 let model_address = ModelAddressUpdatePost()
-                model_address.partnerId = PartNerID
+                model_address.partnerId = PARTNERID
                 model_address.receiverName = name
                 model_address.receiverPhone = phone
                 model_address.phone = USERM.Phone
@@ -148,7 +148,7 @@ class user_addressAddVC: UIViewController {
             }else{
                 
                 let model_address = ModelAddressAddPost()
-                model_address.partnerId = PartNerID
+                model_address.partnerId = PARTNERID
                 model_address.receiverName = name
                 model_address.receiverPhone = phone
                 model_address.phone = USERM.Phone

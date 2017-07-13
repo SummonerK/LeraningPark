@@ -467,6 +467,7 @@
                         <outlet property="collection_main" destination="rh8-Ik-aXY" id="Sh1-q0-gww"/>
                         <outlet property="imageVsub" destination="Mbi-ZB-rQ3" id="Pcf-ti-00x"/>
                         <outlet property="label_count" destination="GM2-CU-ocY" id="MXt-Gg-dSa"/>
+                        <outlet property="label_price" destination="odT-kE-een" id="wj0-43-dIg"/>
                         <outlet property="viewAdd" destination="moJ-9L-p4g" id="dBo-Ii-hn3"/>
                     </connections>
                 </viewController>
@@ -507,6 +508,9 @@
                                         <state key="normal" title="立即支付">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="payNow:" destination="9pu-Oh-HfS" eventType="touchUpInside" id="94h-QO-hBl"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

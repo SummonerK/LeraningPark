@@ -95,6 +95,7 @@ class XHAdLoopView: UIView {
                 
                 imageView.image = BundleImageWithName(self.currentImages![index] as! String)
             }
+            
             imageScrollView?.addSubview(imageView)
         }
         

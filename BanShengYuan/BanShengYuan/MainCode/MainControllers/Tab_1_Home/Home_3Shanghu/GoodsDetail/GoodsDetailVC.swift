@@ -31,6 +31,7 @@ class GoodsDetailVC: BaseTabHiden {
     let array_zDetail = ["zdetail1","zdetail2","zdetail3","zdetail4"]
     
     let array_xDetail = NSMutableArray()
+    let dic_HDetail = NSMutableDictionary()
     
     
     var coverVC: chooseVC! = nil
@@ -84,6 +85,42 @@ class GoodsDetailVC: BaseTabHiden {
         PrintFM("")
     }
     
+    func loadImagesHight(){
+        
+        
+        if array_xDetail.count == 0 {
+            return
+        }
+        
+        for i in 0...array_xDetail.count-1{
+            
+            let key = "item"+"\(i)"
+            
+            dic_HDetail.setValue("0.01", forKey: key)
+ 
+        }
+        
+        for i in 0...array_xDetail.count-1{
+            
+            let key = "item"+"\(i)"
+            
+            
+            let url = URL(string: array_xDetail[i] as! String)
+            let imageV = UIImageView.init()
+            
+            imageV.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
+                
+                let hight =  CGFloat( (image?.size.height)! / (image?.size.width)! * IBScreenWidth )
+                
+                self.dic_HDetail.setValue("\(hight)", forKey: key)
+                
+                self.tableV_main.reloadData()
+
+            })
+            
+        }
+    }
+    
     func getData(){
         
         modelGoodsDetailPost.productId = model_goods?.pid
@@ -95,11 +132,12 @@ class GoodsDetailVC: BaseTabHiden {
                 
                 if let detailText = result.detailText{
                     
-                    PrintFM("array_itemPace = \(detailText.array_itemPace)")
+                    PrintFM("array_itemPace = \(detailText.array_items)")
                     
-                    self.array_xDetail.addObjects(from: detailText.array_itemPace)
+                    self.array_xDetail.addObjects(from: detailText.array_items)
                     
-//                    self.tableV_main.reloadData()
+                    self.loadImagesHight()
+                    
                 }
                 
             },onError:{error in
@@ -143,6 +181,22 @@ class GoodsDetailVC: BaseTabHiden {
         coverVC.view.frame = CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenHeight)
         
         coverVC.delegate = self
+        
+        if let picture = model_goods?.picture {
+            let url = URL(string: picture)
+            
+            coverVC.imageVsub.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
+                
+            })
+            
+        }
+        
+        if let price = model_goods?.finalPrice{
+            
+            let str = String(describing: price)
+            
+            coverVC.label_price.text = String.init("¥ \(String(describing: str.fixPrice()))")
+        }
         
         self.view.addSubview(coverVC.view)
         
@@ -189,9 +243,6 @@ class GoodsDetailVC: BaseTabHiden {
         
         sendOrder()
         
-//        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
-//        self.navigationController?.pushViewController(Vc, animated: true)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -203,65 +254,72 @@ class GoodsDetailVC: BaseTabHiden {
     
     func sendOrder() {
         
-        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
-        self.navigationController?.pushViewController(Vc, animated: true)
+//        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
+//        self.navigationController?.pushViewController(Vc, animated: true)
         
-//        modelOrderC.companyId = model_goods?.companyId
-//        modelOrderC.shopId = shipid
-//        modelOrderC.shopName = model_shop?.storeName
-//        modelOrderC.userId = USERM.MemberID
-//        modelOrderC.userName = USERM.Phone
-//        modelOrderC.phone = USERM.Phone
-//        modelOrderC.address = "地址"
-//        modelOrderC.longitude = "121.377436"
-//        modelOrderC.latitude = "31.267283"
-//        modelOrderC.type = 1
-//        modelOrderC.status = 1
-//        modelOrderC.amount = 1490
-//        modelOrderC.payType = 1
-//        modelOrderC.payChannel = ""
-//        modelOrderC.payChannelName = ""
-//        modelOrderC.source = "ios app"
-//        modelOrderC.partition = ""
-//        modelOrderC.customerOrder = "BSY".OrderIDFromtimeSP
-//        modelOrderC.remark = ""
-//        
-//        let modelproduct = OrderProductItemReq()
-//        modelproduct.productId = model_goods?.pid
-//        modelproduct.productName = model_goods?.name
-//        modelproduct.specification = "茶色 XL"
-//        modelproduct.number = "1"
-//        modelproduct.price = "990"
-//        modelproduct.sequence = "0"
-//        
-//        modelOrderC.products = [modelproduct]
-//        
-//        let modelaccount = OrderAccountItemReq()
-//        modelaccount.accountId = "account-1"
-//        modelaccount.name = "运费"
-//        modelaccount.type = "1"
-//        modelaccount.price = "500"
-//        modelaccount.number = "1"
-//        modelaccount.sequence = 0
-//        
-//        modelOrderC.accounts = [modelaccount]
-//        
-//        OrderM.orderCreate(amodel: modelOrderC)
-//            .subscribe(onNext: { (posts: ModelOrderCreateBack) in
-//                
-//                PrintFM("pictureList\(posts)")
-//                
-//                let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
-//                self.navigationController?.pushViewController(Vc, animated: true)
-//                
-//            },onError:{error in
-//                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-//                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
-//                }else{
-//                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
-//                }
-//            })
-//            .addDisposableTo(disposeBag)
+        modelOrderC.companyId = model_goods?.companyId
+        modelOrderC.shopId = PARTNERID_SHOP+"_"+(model_shop?.storeCode)!
+        modelOrderC.shopName = model_shop?.storeName
+        modelOrderC.userId = USERM.MemberID
+        modelOrderC.userName = USERM.UserName
+        modelOrderC.phone = USERM.Phone
+        modelOrderC.address = "地址"
+        modelOrderC.longitude = "121.377436"
+        modelOrderC.latitude = "31.267283"
+        modelOrderC.type = 1
+        modelOrderC.status = 1
+        modelOrderC.amount = 1490
+        modelOrderC.payType = 1
+        modelOrderC.payChannel = ""
+        modelOrderC.payChannelName = ""
+        modelOrderC.source = "ios app"
+        modelOrderC.partition = ""
+        modelOrderC.customerOrder = "BSY".OrderIDFromtimeSP
+        modelOrderC.remark = ""
+        
+        let modelproduct = OrderProductItemReq()
+        modelproduct.productId = model_goods?.pid
+        modelproduct.productName = model_goods?.name
+        modelproduct.specification = "茶色 XL"
+        modelproduct.number = "1"
+        modelproduct.price = model_goods?.finalPrice
+        modelproduct.sequence = "0"
+        
+        modelOrderC.products = [modelproduct]
+        
+        let modelaccount = OrderAccountItemReq()
+        modelaccount.accountId = "account-1"
+        modelaccount.name = "运费"
+        modelaccount.type = "1"
+        modelaccount.price = "500"
+        modelaccount.number = "1"
+        modelaccount.sequence = 0
+        
+        modelOrderC.accounts = [modelaccount]
+        
+        OrderM.orderCreate(amodel: modelOrderC)
+            .subscribe(onNext: { (posts: ModelOrderCreateBack) in
+                
+                PrintFM("pictureList\(posts)")
+                
+                let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
+                
+                Vc.modelOrderC = self.modelOrderC
+                
+                Vc.modelOrderBack = posts.data!
+                
+                Vc.model_goods = self.model_goods
+                
+                self.navigationController?.pushViewController(Vc, animated: true)
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
         
     }
     
@@ -306,18 +364,20 @@ extension GoodsDetailVC:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         
-        if section == 2 {
-            
-//            if self.isOpen == false {
-            
-                return 44
-            
-//            }else {
-//                return 0
-//            }
-            
-        }else if section == 0{
-            return IBScreenWidth*402/375
+//        if section == 2 {
+//            
+////            if self.isOpen == false {
+//            
+//                return 44
+//            
+////            }else {
+////                return 0
+////            }
+//            
+//        }else
+        
+        if section == 0{
+            return IBScreenWidth
         }else{
             return 0
         }
@@ -329,28 +389,33 @@ extension GoodsDetailVC:UITableViewDataSource{
         
         if section == 0 {
             
-            let imageArray = ["banner1","banner2","banner3"]
+//            let imageArray = ["banner1","banner2","banner3"]
+//            
+//            let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*402/375))
+//            
+//            viewheader.isscroll = false
+//            
+//            viewheader.contentImages = {
+//                
+//                return imageArray
+//            }
+//            
+//            return viewheader
             
-            let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*402/375))
+            let viewHeader = Bundle.main.loadNibNamed("GoodsHeader", owner: nil, options: nil)?.first as? GoodsHeader
             
-            viewheader.isscroll = false
-            
-            
-            viewheader.contentImages = {
+            if let picture = model_goods?.picture {
+                let url = URL(string: picture)
                 
-                return imageArray
+                viewHeader?.imageV_header.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
+                    
+                })
+                
             }
             
-            return viewheader
+
+            return viewHeader
             
-            
-        }else if section == 2{
-            
-            let viewfooter = Bundle.main.loadNibNamed("view_goodsMore", owner: nil, options: nil)?.first as? view_goodsMore
-            
-            viewfooter?.delegate = self
-            
-            return viewfooter
         }else{
             return nil
         }
@@ -370,10 +435,6 @@ extension GoodsDetailVC:UITableViewDataSource{
         case 1:
             return 1
         case 2:
-            
-//            return self.isOpen! ? array_xDetail.count : 0
-            
-//            return array_zDetail.count
             
             return array_xDetail.count
             
@@ -407,23 +468,12 @@ extension GoodsDetailVC:UITableViewDataSource{
             
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             
-//            let longurl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1497878307246&di=2ba97ccfa0be61143a61baa61eee95ba&imgtype=0&src=http%3A%2F%2Fimg.bbs.cnhubei.com%2Fforum%2Fdvbbs%2F2004-4%2F200441915031894.jpg"
-            
             let url = URL(string: array_xDetail[indexPath.row] as! String)
             
-            cell.imageV_content.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
+            cell.imageV_content.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
 
-//                    self.tableV_main.reloadData()
-                
-//                let hight =  CGFloat( (image?.size.height)! / (image?.size.width)! * IBScreenWidth )
-//                
-//                self.didHight.setValue(String(describing: hight), forKey: String.init(format: "index_%d", indexPath.row))
-//                
-//                PrintFM("size_hight = \(String(describing: image?.size.height)),size_width = \(String(describing: image?.size.width))")
-//
                 })
         
-//            cell.imageV_content.image = BundleImageWithName(array_zDetail[indexPath.row])
             
             return cell
         default:
@@ -444,6 +494,11 @@ extension GoodsDetailVC: TCellGoodsinfoDelegate {
 //        showCoverViewNone()
     }
     
+    func GoodsinfoShowAction(actionType:String){
+        self.isOpen = true
+        self.tableV_main.reloadData()
+    }
+    
 }
 
 extension GoodsDetailVC: UITableViewDelegate {
@@ -453,46 +508,29 @@ extension GoodsDetailVC: UITableViewDelegate {
         
         switch indexPath.section {
         case 1:
-            return 160
+            return 160 + 44
         case 2:
-            
-//            if let image = BundleImageWithName(array_zDetail[indexPath.row]){
-//                let hight =  image.size.height / image.size.width * IBScreenWidth
-//            
-////                PrintFM("imageHight \(hight)")
-//                return CGFloat(hight)
-//            }else{
-//                return 0
-//            }
-            
-//            var hight:CGFloat?
-//            
-            //计算
-            
-            let url = URL(string: array_xDetail[indexPath.row] as! String)
-            let imageV = UIImageView.init()
-            imageV.kf.setImage(with: url)
             
             if self.isOpen == true {
                 
-                if let image = imageV.image{
-                    
-                    let hight =  image.size.height / image.size.width * IBScreenWidth
-                    
-                    return CGFloat(hight)
-                }else{
-                    return 0
-                }
+                let key = "item"+"\(indexPath.row)"
+                
+                let hight = dic_HDetail.value(forKey: key) as! String
+                
+                return  CGFloat(hight.floatValue!)
                 
             }else{
                 
-                return 0
+                return 0.01
+                
             }
+            
+
             
 //            return UITableViewAutomaticDimension
             
         default:
-            return 0
+            return 0.01
         }
         
     }

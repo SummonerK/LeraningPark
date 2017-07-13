@@ -17,6 +17,12 @@ class View_payHeader: UIView {
         // Drawing code
     }
     */
+    @IBOutlet weak var label_orderid: UILabel!
+    
+    @IBOutlet weak var label_name_phone: UILabel!
+    
+    @IBOutlet weak var label_address: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

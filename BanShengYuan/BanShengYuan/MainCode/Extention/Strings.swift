@@ -63,7 +63,7 @@ extension String{
     func fixPrice() -> String {
         let acount:Float = self.floatValue!
         
-        PrintFM("acount = \(acount)")
+//        PrintFM("acount = \(acount)")
         
         if acount == 0 || acount < 0 {
             return "0"
@@ -122,11 +122,11 @@ extension String{
         // 截取所有img url
         let resultItems = self.matchesForRegex(regex: regex)
         
-        for item in resultItems! {
-            let url = URL(string: item)
-            let imageV = UIImageView.init()
-            imageV.kf.setImage(with: url)
-        }
+//        for item in resultItems! {
+//            let url = URL(string: item)
+//            let imageV = UIImageView.init()
+//            imageV.kf.setImage(with: url)
+//        }
         
         return resultItems!
         

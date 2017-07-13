@@ -104,7 +104,7 @@ extension Home_RootVC:UITableViewDataSource{
             
             let url = URL(string: urlStr)
             
-            cell.imgv_HomeHeader.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+            cell.imgv_HomeHeader.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
             
             return cell
         case 1:

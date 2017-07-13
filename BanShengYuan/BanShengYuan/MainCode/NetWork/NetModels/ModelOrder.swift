@@ -78,7 +78,7 @@ class OrderProductItemReq:Mappable {
     var productName:String?         //商品名字
     var number:String?              //商品数量
     var specification:String?       //单位
-    var price:String?               //价格
+    var price:Int?               //价格
     var sequence:String?            //排序
     
     
@@ -130,17 +130,114 @@ class OrderAccountItemReq:Mappable {
 //MARK:创建订单返回 backModel
 
 class ModelOrderCreateBack: Mappable {
-    var order_id: String?//订单编号
-    var payNo: String?//支付编号
-    var callBackUrl: String?//支付回调地址
+    
+    var data: ModelOrderCreateBackItem?
+    var errcode: String?
+    var errmsg: String?
     
     
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        order_id <- map["order_id"]
-        payNo <- map["payNo"]
-        callBackUrl <- map["callBackUrl"]
+        data <- map["data"]
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+class ModelOrderCreateBackItem: Mappable {
+    var address: String?
+    var amount: String?
+    var barCounter: String?
+    var cancelReason: String?
+    var companyId: String?
+    
+    var createUser: String?
+    var customerOrder: String?
+    var evaluateStatus: String?
+    var gmtAccept: String?
+    var gmtCreate: String?
+    
+    var gmtModified: String?
+    var gmtPay: String?
+    var latitude: String?
+    var longitude: String?
+    var oid: Int?                ///订单号
+    
+    var partition: String?
+    var payChannel: String?
+    var payChannelName: String?
+    var payStatus: String?
+    var payType: String?
+    
+    var payVoucher: String?
+    var phone: String?
+    var posId: String?
+    var remark: String?
+    var shopId: String?
+    
+    var shopName: String?
+    var source: String?
+    var sourceName: String?
+    var status: String?
+    var type: String?
+    
+    var userId: String?
+    var userName: String?
+    var userType: String?
+    
+    init() {
+        
+    }
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        address <- map["address"]
+        amount <- map["amount"]
+        barCounter <- map["barCounter"]
+        cancelReason <- map["cancelReason"]
+        companyId <- map["companyId"]
+        
+        createUser <- map["createUser"]
+        customerOrder <- map["customerOrder"]
+        evaluateStatus <- map["evaluateStatus"]
+        gmtAccept <- map["gmtAccept"]
+        gmtCreate <- map["gmtCreate"]
+        
+        gmtModified <- map["gmtModified"]
+        gmtPay <- map["gmtPay"]
+        latitude <- map["latitude"]
+        longitude <- map["longitude"]
+        oid <- map["oid"]
+        
+        partition <- map["partition"]
+        payChannel <- map["payChannel"]
+        payChannelName <- map["payChannelName"]
+        payStatus <- map["payStatus"]
+        payType <- map["payType"]
+        
+        payVoucher <- map["payVoucher"]
+        phone <- map["phone"]
+        posId <- map["posId"]
+        remark <- map["remark"]
+        shopId <- map["shopId"]
+        
+        shopName <- map["shopName"]
+        source <- map["source"]
+        sourceName <- map["sourceName"]
+        status <- map["status"]
+        type <- map["type"]
+        
+        userId <- map["userId"]
+        userName <- map["userName"]
+        userType <- map["userType"]
         
     }
     
@@ -164,15 +261,34 @@ class ModelOrderPayPost: Reflect {
      *  必传:True 
      */
     var pay_ebcode:String!
-    /**
-     *  交易编号，用订单号
-     *  必传:True int默认10
-     */
-    var transId:Int!
+//    /**
+//     *  交易编号，用订单号
+//     *  必传:True int默认10
+//     */
+//    var transId:Int!
     
 }
 
 //MARK:订单支付 backModel
+
+class modelPayPlanBack:Mappable {
+    var msg:String?
+    var payAccount:String?
+    var payId:String?
+    var statusCode:Int?
+    var biz_content:String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        msg <- map["msg"]
+        payAccount <- map["payAccount"]
+        payId <- map["payId"]
+        statusCode <- map["statusCode"]
+        biz_content <- map["biz_content"]
+    }
+    
+}
 
 class ModelOrderPayBack: Mappable {
     var StatusCode: String?//支付状态码
@@ -259,21 +375,38 @@ class ModelOrderAcceptPost: Reflect {
 
 class ModelListPageByUserPost: Reflect {
     /**
-     *  订单ID
+     *  用户ID
      *  必传:True
      */
-    var orderId:String!
+    var userId:String!
     /**
      *  分页大小
      *  必传:True
      */
-    var pageSize:Int!
+    var pagesize:Int!
     /**
      *  分页数
      *  必传:True
      */
-    var pageNumber:Int!
+    var pagenumber:Int!
     
+}
+
+class ModelOrderWithCount:Mappable {
+    var count:Int?
+    var orders:[ModelListPageByUserBack]?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        count <- map["count"]
+        orders <- map["orders"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+
 }
 
 //MARK:订单支付确认 backModel
@@ -292,7 +425,7 @@ class ModelListPageByUserBack: Mappable {
     var longitude: String?//收货地址经度
     var latitude: String?//收货地址纬度
     var type: String?//订单类型
-    var status: String?//订单状态
+    var status: Int?//订单状态
     
     var amount: String?//订单金额(分)
     var payType: String?//支付金额
@@ -304,7 +437,7 @@ class ModelListPageByUserBack: Mappable {
     var customerOrder: String?//第三方订单编号
     var remark: String?//订单备注
     
-    var products: [ModelListPageByUserProductItem]?//商品列表
+    var products: [ModelShopDetailItem]?//商品列表
     var accounts: [ModelListPageByUserAccountItem]?//其他结算列表
     
     required init?(map: Map) { }
@@ -379,11 +512,11 @@ class ModelListPageByUserProductItem: Mappable {
 class ModelListPageByUserAccountItem: Mappable {
     var accountId: String?//结算对象ID
     var name: String?//结算对象名称
-    var type: String?//结算对象类型
-    var price: String?//结算金额
+    var type: Int?//结算对象类型
+    var price: Int?//结算金额
     
-    var number: String?//结算数量
-    var sequence: String?//排序
+    var number: Int?//结算数量
+    var sequence: Int?//排序
     
     required init?(map: Map) { }
     

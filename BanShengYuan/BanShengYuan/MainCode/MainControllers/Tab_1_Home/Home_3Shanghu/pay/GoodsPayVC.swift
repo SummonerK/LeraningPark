@@ -14,6 +14,13 @@ import SwiftyJSON
 
 class GoodsPayVC: BaseTabHiden {
     
+    //msg
+    var model_goods:ModelShopDetailItem?              ///上上层商品数据
+    var modelOrderC = ModelOrderCreatePost()           //上层订单model
+    var modelOrderBack = ModelOrderCreateBackItem()   //oid上层订单返回model
+    
+    var totalPrice = Int()
+    
     //network
     
     let OrderM = orderModel()
@@ -32,6 +39,8 @@ class GoodsPayVC: BaseTabHiden {
         
 //        self.view.backgroundColor = FlatWhiteLight
         
+        getTotalPrice()
+        
         setNavi()
         
         tableV_main.register(UINib.init(nibName: "TCell_UserOrder", bundle: nil), forCellReuseIdentifier: "TCell_UserOrder")
@@ -40,17 +49,34 @@ class GoodsPayVC: BaseTabHiden {
         
     }
     
+    @IBAction func payNow(_ sender: Any) {
+        
+        payAction()
+        
+    }
+    
     func payAction() {
         
-        modelpayPost.orderId = "80776216007672097"
-        modelpayPost.pay_ebcode = "1"
-        modelpayPost.transId = 100000
+        if let oid = modelOrderBack.oid {
+            let str = String(describing: oid)
+            modelpayPost.orderId = str
+        }
+        
+        modelpayPost.pay_ebcode = aliPay_ebcode
         
         OrderM.orderPay(amodel: modelpayPost)
-            .subscribe(onNext: { (posts: ModelOrderPayBack) in
+            .subscribe(onNext: { (posts: modelPayPlanBack) in
 
                 PrintFM("pictureList\(posts)")
-
+                
+                if let content = posts.biz_content{
+                    
+                    AlipaySDK.defaultService().payOrder(content, fromScheme: "bsy", callback: {(result) in
+                        print("---\(String(describing: result?.description))")
+                    })
+                    
+                }
+                
             },onError:{error in
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                     HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
@@ -73,6 +99,28 @@ class GoodsPayVC: BaseTabHiden {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func getTotalPrice() {
+        totalPrice = 0
+        
+        if let product = modelOrderC.products {
+            let proitem = product[0]
+            
+            if let price = proitem.price {
+                totalPrice += price
+            }
+            
+        }
+        
+        if let product = modelOrderC.accounts {
+            let proitem = product[0]
+            
+            if let price = proitem.price{
+                totalPrice += price.intValue!
+            }
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -85,12 +133,33 @@ extension GoodsPayVC:UITableViewDataSource{
         
         let viewheader = Bundle.main.loadNibNamed("View_payHeader", owner: nil, options: nil)?.first as? View_payHeader
         
+        if let oid = modelOrderBack.oid {
+            let str = String(describing: oid)
+            viewheader?.label_orderid.text = str
+        }
+        
+        viewheader?.label_name_phone.text = modelOrderBack.userName! + " " + modelOrderBack.phone!
+        
         return viewheader
         
     }
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?{
         let viewfooter = Bundle.main.loadNibNamed("View_payFooter", owner: nil, options: nil)?.first as? View_payFooter
+        
+        if let product = modelOrderC.accounts {
+            let proitem = product[0]
+            
+            if let price = proitem.price{
+                let str = String(describing: price)
+                viewfooter?.label_yun.text = String.init("¥ \(String(describing: str.fixPrice()))")
+            }
+            
+            let str_total = String(describing: totalPrice)
+            viewfooter?.label_total.text = String.init("¥ \(String(describing: str_total.fixPrice()))")
+        }
+        
+        
         
         return viewfooter
     }
@@ -101,7 +170,7 @@ extension GoodsPayVC:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,7 +179,31 @@ extension GoodsPayVC:UITableViewDataSource{
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        //            cell.label_title.text = array_title?[indexPath.row]
+        if let product = modelOrderC.products {
+            let proitem = product[0] 
+            cell.label_name.text = proitem.productName
+            cell.lable_labels.text = proitem.specification
+            
+            if let price = proitem.price {
+                let str = String(describing: price)
+                cell.label_price.text = String.init("¥ \(String(describing: str.fixPrice()))")
+            }
+            
+            if let price = proitem.number {
+                let str = String(describing: price)
+                cell.lable_num.text = String.init("X \(str)")
+            }
+            
+            if let picture = model_goods?.picture {
+                let url = URL(string: picture)
+                
+                cell.imagev_sub.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
+                    
+                })
+
+            }
+            
+        }
         
         return cell
         

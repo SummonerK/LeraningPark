@@ -199,9 +199,9 @@ extension GuideView{
     
     public func showGuideView(){
         //检查版本号 和 是否首次启动
-//        if checkVersionAndFirstLaunch() {
-//            return
-//        }
+        if checkVersionAndFirstLaunch() {
+            return
+        }
         //显示
         self.setUp()
         w.addSubview(self)

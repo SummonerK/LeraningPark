@@ -14,6 +14,7 @@ class TCellshanghu: UITableViewCell {
     @IBOutlet weak var label_info: UILabel!
 
     @IBOutlet weak var label_local: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -40,7 +41,7 @@ class TCellshanghu: UITableViewCell {
                 
                 let url = URL(string: imageurl as! String)
                 
-                imageV_shanghuIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
+                imageV_shanghuIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
                 
                 break
             }

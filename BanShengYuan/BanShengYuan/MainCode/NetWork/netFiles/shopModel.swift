@@ -10,7 +10,9 @@ import Foundation
 import RxSwift
 import Moya
 
-let PARTNERID = "a8bee0dd-09d1-4fa9-a9eb-80cb36d3d611"
+//let PARTNERID = "a8bee0dd-09d1-4fa9-a9eb-80cb36d3d611"
+
+let PARTNERID = "53c69e54-c788-495c-bed3-2dbfc6fd5c61"
 
 let PARTNERID_SHOP = "53c69e54-c788-495c-bed3-2dbfc6fd5c61"
 

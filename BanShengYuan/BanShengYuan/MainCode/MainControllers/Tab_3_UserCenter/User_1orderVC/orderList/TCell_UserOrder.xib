@@ -35,7 +35,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品属性吧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDx-Vx-baf">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDx-Vx-baf">
                         <rect key="frame" x="99" y="29" width="145" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="uGN-aC-LXy"/>
@@ -66,7 +66,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YI-rh-aEv">
                         <rect key="frame" x="254" y="30" width="48" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="48" id="5aZ-pi-92W"/>
+                            <constraint firstAttribute="width" priority="200" constant="48" id="5aZ-pi-92W"/>
                             <constraint firstAttribute="height" constant="21" id="r3U-UI-kLd"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="13"/>
@@ -92,10 +92,18 @@
                     <constraint firstItem="xHw-98-Rxx" firstAttribute="leading" secondItem="KfC-cs-0D3" secondAttribute="trailing" constant="21" id="lx7-u9-srK"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-219" y="50"/>
+            <connections>
+                <outlet property="imagev_sub" destination="KfC-cs-0D3" id="Egc-HN-wxS"/>
+                <outlet property="label_des" destination="kDx-Vx-baf" id="6JD-8M-5eI"/>
+                <outlet property="label_name" destination="xHw-98-Rxx" id="ux5-x1-6bE"/>
+                <outlet property="label_price" destination="3YI-rh-aEv" id="NKn-sp-swH"/>
+                <outlet property="lable_labels" destination="qYm-Mt-Vna" id="77P-iq-Gwb"/>
+                <outlet property="lable_num" destination="eOF-e2-7Ao" id="jQq-JF-7Hj"/>
+            </connections>
+            <point key="canvasLocation" x="-143" y="-179"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="PIC.png" width="349" height="189"/>
+        <image name="PIC.png" width="348" height="340"/>
     </resources>
 </document>

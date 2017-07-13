@@ -18,6 +18,10 @@ class View_payFooter: UIView {
     }
     */
     
+    @IBOutlet weak var label_yun: UILabel!
+    
+    @IBOutlet weak var label_total: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
