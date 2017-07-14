@@ -269,6 +269,12 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
         
         cell.setData(Model: array_items[indexPath.row] as! ModelShopDetailItem)
         
+//        if let shipid = modelShop?.storeCode,shipid == "107"{
+//            cell.label_sales.text = "0"
+//        }else{
+//            cell.label_sales.text = "1"
+//        }
+        
         return cell
         
     }

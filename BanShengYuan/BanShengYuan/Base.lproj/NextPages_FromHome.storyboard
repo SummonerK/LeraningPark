@@ -467,6 +467,7 @@
                         <outlet property="collection_main" destination="rh8-Ik-aXY" id="Sh1-q0-gww"/>
                         <outlet property="imageVsub" destination="Mbi-ZB-rQ3" id="Pcf-ti-00x"/>
                         <outlet property="label_count" destination="GM2-CU-ocY" id="MXt-Gg-dSa"/>
+                        <outlet property="label_kc" destination="570-SU-uyE" id="vyL-NG-vcZ"/>
                         <outlet property="label_price" destination="odT-kE-een" id="wj0-43-dIg"/>
                         <outlet property="viewAdd" destination="moJ-9L-p4g" id="dBo-Ii-hn3"/>
                     </connections>

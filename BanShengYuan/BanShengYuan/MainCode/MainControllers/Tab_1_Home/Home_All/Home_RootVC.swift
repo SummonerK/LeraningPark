@@ -89,6 +89,15 @@ extension Home_RootVC:homeFootDelegate{
             let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "Home_pMusic") as! Home_pMusic
             self.navigationController?.pushViewController(Vc, animated: true)
         }
+        
+        if indexPath == 1 {
+            //品牌
+            let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "shangHu_DetailVC") as! shangHu_DetailVC
+            
+            Vc.shopStoreCode = "107"
+            
+            self.navigationController?.pushViewController(Vc, animated: true)
+        }
     }
 }
 
@@ -164,9 +173,7 @@ extension Home_RootVC:HomeHeaderDelegate{
         if indexPath == 0 {
             let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "Home_pMusic") as! Home_pMusic
             self.navigationController?.pushViewController(Vc, animated: true)
-        }
-        
-        if indexPath == 1{
+        }else{
             //品牌
             let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "shangHu_DetailVC") as! shangHu_DetailVC
             
@@ -174,6 +181,7 @@ extension Home_RootVC:HomeHeaderDelegate{
             
             self.navigationController?.pushViewController(Vc, animated: true)
         }
+
     }
     
     func activitiesAction(path : String){

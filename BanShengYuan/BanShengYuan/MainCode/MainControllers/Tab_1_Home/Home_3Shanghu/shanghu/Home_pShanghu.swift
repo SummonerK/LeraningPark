@@ -48,8 +48,8 @@ class Home_pShanghu: BaseTabHiden {
         tableV_main.register(UINib.init(nibName: "TCellshanghu", bundle: nil), forCellReuseIdentifier: "TCellshanghu")
         
         // 上拉刷新
-        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
-        tableV_main.mj_footer = footer
+//        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
+//        tableV_main.mj_footer = footer
         
         getData()
 

@@ -46,6 +46,8 @@ class chooseVC: UIViewController {
     
     @IBOutlet weak var label_price: UILabel!
     
+    @IBOutlet weak var label_kc: UILabel!
+    
     @IBOutlet weak var collection_main: UICollectionView!
     
     override func viewDidLoad() {
@@ -57,7 +59,7 @@ class chooseVC: UIViewController {
         
         setRadiusFor(toview: imageVsub, radius: 4, lineWidth: 0, lineColor: FlatWhiteLight)
         
-        setRadiusFor(toview: viewAdd, radius: 3, lineWidth: 0.8, lineColor: FlatBlackLight)
+        setRadiusFor(toview: viewAdd, radius: 3, lineWidth: 0.6, lineColor: FlatGrayDark)
         
         setupCollectionView()
    

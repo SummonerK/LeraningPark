@@ -25,7 +25,7 @@ class TCellshanghu: UITableViewCell {
     func setData(Model:ModelShopItem){
  
         label_name.text = Model.storeName
-        label_info.text = Model.fullName
+//        label_info.text = Model.fullName
         
         for pagemodel in Model.businessImages!{
             if  let imageurl = pagemodel.imageUrl {

@@ -46,7 +46,8 @@ class GoodsDetailVC: BaseTabHiden {
     
     var miMgheightdatas:[Int] = []
     
-    var isOpen:Bool? = false
+//    var isOpen:Bool? = false
+    var isOpen:Bool? = true
     
     var didHight = NSMutableDictionary()
     
@@ -196,6 +197,16 @@ class GoodsDetailVC: BaseTabHiden {
             coverVC.imageVsub.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
                 
             })
+            
+        }
+        
+        if let storeCode = model_shop?.storeCode{
+            
+            if storeCode == "107" {
+                coverVC.label_kc.text = "库存1件"
+            }else{
+                coverVC.label_kc.text = "库存2件"
+            }
             
         }
         
@@ -367,8 +378,8 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
 
 extension GoodsDetailVC:view_goodsMoreDelegate{
     func goodsMoreOpen(){
-        self.isOpen = true
-        self.tableV_main.reloadData()
+//        self.isOpen = true
+//        self.tableV_main.reloadData()
     }
 }
 

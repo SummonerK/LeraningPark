@@ -78,6 +78,12 @@ class user_OrderVC: BaseTabHiden {
                 }
 
             },onError:{error in
+                
+                if let acode = (error as? MyErrorEnum)?.drawCodeValue,acode == 2001{
+                    HUDShowMsgQuick(msg: "暂无订单信息", toView: self.view, time: 0.8)
+                    return
+                }
+                
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                     HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
                 }else{
