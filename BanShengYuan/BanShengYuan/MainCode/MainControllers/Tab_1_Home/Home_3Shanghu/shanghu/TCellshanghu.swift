@@ -12,6 +12,7 @@ class TCellshanghu: UITableViewCell {
     @IBOutlet weak var imageV_shanghuIcon: UIImageView!
     @IBOutlet weak var label_name: UILabel!
     @IBOutlet weak var label_info: UILabel!
+    @IBOutlet weak var view_info: UIView!
 
     @IBOutlet weak var label_local: UILabel!
     
@@ -19,7 +20,7 @@ class TCellshanghu: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        setRadiusFor(toview: label_local, radius: 2, lineWidth: 0.8, lineColor: FlatLocalMain)
+        setRadiusFor(toview: view_info, radius: 2, lineWidth: 0.6, lineColor: FlatLocalMain)
     }
     
     func setData(Model:ModelShopItem){
@@ -41,8 +42,11 @@ class TCellshanghu: UITableViewCell {
         
         if let shipid = Model.storeCode,shipid == "107"{
             label_local.text = "LMS1-107"
+            label_info.text = "LMS集合线下实体、O2O、品牌商业运营团队、潮流造势团队，将独立设计师品牌等潮流元素打造出潮流品牌。"
+            
         }else{
             label_local.text = "大创A-101"
+            label_info.text = "合肥大创生活馆是日本大创在安徽的首家门店，大创为您提供从厨房用品、洗漱用品等一系列生活用品。"
         }
         
         
