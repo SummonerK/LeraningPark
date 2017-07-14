@@ -133,6 +133,7 @@
             <connections>
                 <outlet property="label_name" destination="IGX-DH-hQj" id="Ltj-p2-hpg"/>
                 <outlet property="label_price" destination="zyb-at-Mbr" id="rtw-5g-ezd"/>
+                <outlet property="labelsp" destination="4Jm-JN-s64" id="2nt-TH-YfM"/>
             </connections>
             <point key="canvasLocation" x="80.5" y="60"/>
         </tableViewCell>

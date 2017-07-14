@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "已选“图片色”"; ObjectID = "3ZL-un-Xxl"; */
+"3ZL-un-Xxl.text" = "已选“图片色”";
+
+/* Class = "UILabel"; text = "库存307件"; ObjectID = "570-SU-uyE"; */
+"570-SU-uyE.text" = "库存307件";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "GM2-CU-ocY"; */
+"GM2-CU-ocY.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "立即购买"; ObjectID = "S72-yo-JfK"; */
+"S72-yo-JfK.normalTitle" = "立即购买";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "Tvg-5L-HIR"; */
+"Tvg-5L-HIR.normalTitle" = "+";
+
+/* Class = "UILabel"; text = "请选择规格"; ObjectID = "Vxm-Nz-Pi9"; */
+"Vxm-Nz-Pi9.text" = "请选择规格";
+
+/* Class = "UISearchBar"; placeholder = "搜索商品"; ObjectID = "Xgl-Jw-0HW"; */
+"Xgl-Jw-0HW.placeholder" = "搜索商品";
+
+/* Class = "UIViewController"; title = "商户DetailVC"; ObjectID = "f1N-07-Cap"; */
+"f1N-07-Cap.title" = "商户DetailVC";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "fx4-3g-eZY"; */
+"fx4-3g-eZY.normalTitle" = "-";
+
+/* Class = "UILabel"; text = "购买数量"; ObjectID = "hSa-Ab-FsN"; */
+"hSa-Ab-FsN.text" = "购买数量";
+
+/* Class = "UIViewController"; title = "商品详情"; ObjectID = "iyZ-4V-Tsx"; */
+"iyZ-4V-Tsx.title" = "商品详情";
+
+/* Class = "UIButton"; normalTitle = "立即支付"; ObjectID = "kPr-UC-a94"; */
+"kPr-UC-a94.normalTitle" = "立即支付";
+
+/* Class = "UILabel"; text = "¥ 0.0"; ObjectID = "odT-kE-een"; */
+"odT-kE-een.text" = "¥ 0.0";
+
+/* Class = "UIButton"; normalTitle = " "; ObjectID = "tw5-UN-Kgw"; */
+"tw5-UN-Kgw.normalTitle" = " ";
+
+/* Class = "UIButton"; normalTitle = "立即购买"; ObjectID = "xPz-g4-fUi"; */
+"xPz-g4-fUi.normalTitle" = "立即购买";
+
+/* Class = "UIButton"; normalTitle = " "; ObjectID = "yqL-Su-8Dq"; */
+"yqL-Su-8Dq.normalTitle" = " ";

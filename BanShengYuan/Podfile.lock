@@ -5,6 +5,7 @@ PODS:
   - IQKeyboardManagerSwift (4.0.10)
   - Kingfisher (3.10.1)
   - MBProgressHUD (1.0.0)
+  - MJRefresh (3.1.12)
   - Moya/Core (8.0.5):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -22,6 +23,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Kingfisher
   - MBProgressHUD
+  - MJRefresh
   - Moya/RxSwift
   - ObjectMapper
   - SwiftyJSON
@@ -33,12 +35,13 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   Kingfisher: 33a1b82140fcb14a9fc13f78dfde2a03ff8de8cb
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
   ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: dc045b5cdef588e85590519ddb1412d8f2757763
+PODFILE CHECKSUM: 7bc3555ceaeac7bf06ebfcd06915e6d217d18e1b
 
 COCOAPODS: 1.2.1

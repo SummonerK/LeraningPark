@@ -61,6 +61,13 @@ class shopModel {
             .mapResult(type: ModelGoodsDetailResult.self)
         //.showError()
     }
+    
+    func shopGetDetailMenus(amodel:ModelShopDetailMenuPost) -> Observable<ModelShopDetailDetaiMenuItem> {
+        return shopprovider.request(.shopGetDetailMenus(PostModel: amodel))
+            .mapNeObject(type: ModelShopDetailDetaiMenuItem.self)
+        //.showError()
+    }
+    
     func shopGetDetailPictures(amodel:ModelGoodsDetailPicturePost) -> Observable<[ModelGoodsDetailResultPictures]> {
         return shopprovider.request(.shopGetDetailPictures(PostModel: amodel))
             .mapResultList(type: ModelGoodsDetailResultPictures.self)

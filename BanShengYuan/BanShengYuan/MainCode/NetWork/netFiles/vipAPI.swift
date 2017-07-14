@@ -12,22 +12,24 @@ import RxSwift
 import Moya
 import Alamofire
 
-let shipid = "178a14ba-85a8-40c7-9ff4-6418418f5a0c_31310040"
+//let shipid = "178a14ba-85a8-40c7-9ff4-6418418f5a0c_31310040"
 
 enum vipAPI {
     case test(PostModel:ModelTestPost)//测试https
     //MARK:- 商户
     case vipgetShopList(PostModel:ModelShopListPost)//MARK:获取获取门店列表
+    case vipgetSignalShop(PostModel:ModelShopPost)//MARK:获取门店
+    
     case addressGetList(PostModel:ModelAddressListPost)//MARK:
 }
 
 let basevippath = "http://console.freemudvip.com/service/restful/base"
 
 extension vipAPI: TargetType {
-    /// The method used for parameter encoding.
+    
     var parameterEncoding: ParameterEncoding {
         switch self {
-        case .test,.addressGetList:
+        case .test,.addressGetList,.vipgetSignalShop:
             return URLEncoding.default
         case .vipgetShopList:
             return JSONEncoding.default
@@ -44,6 +46,9 @@ extension vipAPI: TargetType {
             return ""
         case .vipgetShopList(_):
             return ""
+        case .vipgetSignalShop(_):
+            return ""
+            
         case .addressGetList(_):
             return ""
         }
@@ -55,6 +60,9 @@ extension vipAPI: TargetType {
             return .get
         case .vipgetShopList(_):
             return .post
+        case .vipgetSignalShop(_):
+            return .get
+            
         case .addressGetList(_):
             return .get
         }
@@ -66,6 +74,9 @@ extension vipAPI: TargetType {
         case .test(let model):
             return model.toDict()
         case .vipgetShopList(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .vipgetSignalShop(let model):
             PrintFM(model.toDict())
             return model.toDict()
         case .addressGetList(let model):

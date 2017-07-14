@@ -52,12 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        PrintFM("\(String(describing: url.host))")
+//        PrintFM("\(String(describing: url.host))")
+//        
+        if url.host == "bsy" {
         
-        if url.host == "BanShengYuan" {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (dic) in
-                PrintFM(dic)
+                PrintFM("Paypaypay\(String(describing: dic))")
             })
+        
+        
         }
         
         return true

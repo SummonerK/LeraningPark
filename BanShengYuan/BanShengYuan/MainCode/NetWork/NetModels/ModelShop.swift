@@ -56,6 +56,9 @@ class ModelShopDetailItem: Mappable {
     var unit: String?
     var productNumber: Int?
     
+    var productSpecification: [NSDictionary]?
+    var specificationList: [ModelMenuSpecItem]?
+    
     required init?(map: Map) { }
     
     func mapping(map: Map) {
@@ -81,6 +84,9 @@ class ModelShopDetailItem: Mappable {
         
         productNumber <- map["productNumber"]
         
+        productSpecification <- map["productSpecification"]
+        specificationList <- map["specificationList"]
+        
     }
     
     public var description: String {
@@ -88,6 +94,25 @@ class ModelShopDetailItem: Mappable {
     }
     
 }
+
+class ModelMenuSpecItem: Mappable {
+    var partName: String?
+    var value: [String]?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        partName <- map["partName"]
+        value <- map["value"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
 
 // labelItem
 
@@ -188,6 +213,58 @@ class ModelGoodsDetailResultPictures: Mappable {
     }
     
 }
+
+//MARK:商品规格post model
+
+class ModelShopDetailMenuPost: Reflect {
+    /**
+     *  商品ID
+     *  必传:True
+     */
+    var productId:String!
+    
+}
+
+//MARK:获商商品规格
+
+class ModelShopDetailDetaiMenuItem: Mappable {
+    var errcode: String?
+    var errmsg: String?
+    var data: ModelMenuPicture?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        data <- map["data"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+class ModelMenuPicture: Mappable {
+    var count: Int?
+    var products: [ModelShopDetailItem]?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        count <- map["count"]
+        products <- map["products"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
 
 
 

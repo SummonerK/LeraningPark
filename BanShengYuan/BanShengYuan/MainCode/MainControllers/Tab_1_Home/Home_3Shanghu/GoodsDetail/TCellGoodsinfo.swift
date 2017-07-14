@@ -19,6 +19,8 @@ class TCellGoodsinfo: UITableViewCell {
     
     @IBOutlet weak var label_price: UILabel!
     
+    @IBOutlet weak var labelsp: UILabel!
+    
     var delegate:TCellGoodsinfoDelegate?
 
     override func awakeFromNib() {

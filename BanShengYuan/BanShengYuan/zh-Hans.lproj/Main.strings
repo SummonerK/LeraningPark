@@ -1,0 +1,15 @@
+
+/* Class = "UISearchBar"; placeholder = "搜索商户"; ObjectID = "YJd-st-nBa"; */
+"YJd-st-nBa.placeholder" = "搜索商户";
+
+/* Class = "UITabBarItem"; title = "精彩活动"; ObjectID = "c1d-N2-jTe"; */
+"c1d-N2-jTe.title" = "精彩活动";
+
+/* Class = "UITabBarItem"; title = "首页"; ObjectID = "nAW-zQ-fQ2"; */
+"nAW-zQ-fQ2.title" = "首页";
+
+/* Class = "UITabBarItem"; title = "我的"; ObjectID = "rzq-ss-UkH"; */
+"rzq-ss-UkH.title" = "我的";
+
+/* Class = "UINavigationItem"; title = "首页"; ObjectID = "xnV-Um-49C"; */
+"xnV-Um-49C.title" = "首页";

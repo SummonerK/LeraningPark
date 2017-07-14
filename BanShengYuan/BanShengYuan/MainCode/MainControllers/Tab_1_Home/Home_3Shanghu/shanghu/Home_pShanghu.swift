@@ -12,6 +12,10 @@ import RxSwift
 import ObjectMapper
 import SwiftyJSON
 
+import MJRefresh
+
+let Pagesize:Int = 10
+
 class Home_pShanghu: BaseTabHiden {
     
     //network
@@ -26,20 +30,66 @@ class Home_pShanghu: BaseTabHiden {
     //layoutView
     @IBOutlet weak var tableV_main: UITableView!
     
+    // 底部刷新
+    let footer = MJRefreshAutoNormalFooter()
+    var Num:Int = 1
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         setNavi()
         
         tableV_main.register(UINib.init(nibName: "TCellshanghu", bundle: nil), forCellReuseIdentifier: "TCellshanghu")
         
+        // 上拉刷新
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
+        tableV_main.mj_footer = footer
+        
         getData()
 
+    }
+    
+    func footerRefresh(){
+        print("上拉加载更多")
+        
+        self.tableV_main.mj_footer.resetNoMoreData()
+        
+        Num += 1
+        
+        modellistPost.pageSize = Pagesize
+        modellistPost.pageNo = Num
+        
+        VipM.vipgetShopList(amodel: modellistPost)
+            .subscribe(onNext: { (posts: [ModelShopItem]) in
+                
+                if posts.count < Pagesize{
+                    self.Num -= 1
+                    self.tableV_main.mj_footer.endRefreshingWithNoMoreData()
+                }else{
+                    self.tableV_main.mj_footer.endRefreshing()
+                }
+                
+                self.array_items.addObjects(from: posts)
+                
+                self.tableV_main.reloadData()
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    if (error as? MyErrorEnum)?.drawCodeValue != 999{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    }
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
     }
     
     func setNavi() {
@@ -63,14 +113,15 @@ class Home_pShanghu: BaseTabHiden {
         
         modellistPost.op = "getShopList"
         modellistPost.partnerId = PARTNERID_SHOP
-        modellistPost.pageSize = 10
-        modellistPost.pageNo = 1
+        modellistPost.pageSize = Pagesize
+        modellistPost.pageNo = Num
 
         VipM.vipgetShopList(amodel: modellistPost)
             .subscribe(onNext: { (posts: [ModelShopItem]) in
-//                PrintFM("shopList\(posts)")
                 
-                self.array_items = posts as! NSMutableArray
+                self.array_items.removeAllObjects()
+                
+                self.array_items.addObjects(from: posts)
                 
                 self.tableV_main.reloadData()
                 
@@ -97,14 +148,7 @@ extension Home_pShanghu:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        
-//        let imageArray = [
-//                    "http://wx3.sinaimg.cn/mw690/62eeaba5ly1fee5yt59wrj20fa08lafr.jpg",
-//                    "http://wx4.sinaimg.cn/mw690/6a624f11ly1fed4bwlbb0j20go0h6q5h.jpg",
-//                    "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
-//                    "http://wx2.sinaimg.cn/mw690/af0d43ddgy1fdjzefvub1j20dw09q48s.jpg"
-//                ]
-        
+    
         let imageArray = ["banner1","banner2","banner3"]
         
         let viewheader = view_shanghuHeader.init(frame: CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenWidth*130/375))
@@ -171,11 +215,12 @@ extension Home_pShanghu: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        PrintFM("\((array_items[indexPath.row] as! ModelShopItem).description)")
+//        PrintFM("\((array_items[indexPath.row] as! ModelShopItem).description)")
         
         //品牌
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "shangHu_DetailVC") as! shangHu_DetailVC
-        Vc.modelShop = (array_items[indexPath.row] as! ModelShopItem)
+        
+        Vc.shopStoreCode = (array_items[indexPath.row] as! ModelShopItem).storeCode!
         
         self.navigationController?.pushViewController(Vc, animated: true)
         

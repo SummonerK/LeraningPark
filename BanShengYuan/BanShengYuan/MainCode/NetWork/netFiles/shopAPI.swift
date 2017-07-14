@@ -18,19 +18,21 @@ enum shopAPI {
     case shopGetAllProducts(PostModel:ModelShopDetailPost)//MARK:获取门店商品
     case shopGetDetail(PostModel:ModelGoodsDetailPost)//MARK:获取商品详细信息 - 长图
     case shopGetDetailPictures(PostModel:ModelGoodsDetailPicturePost)//MARK:获取商品详细信息 - banner
+    case shopGetDetailMenus(PostModel:ModelShopDetailMenuPost)//MARK:获取商品规格 - menu
     
     
     case addressGetList(PostModel:ModelAddressListPost)//MARK:
     
 }
 
-let baseshoppath = "http://118.89.192.122:9998"
+//9998
+let baseshoppath = "http://mallservice.sandload.cn"
 
 extension shopAPI: TargetType {
-    /// The method used for parameter encoding.
+
     var parameterEncoding: ParameterEncoding {
         switch self {
-        case .test,.addressGetList,.shopGetDetail,.shopGetDetailPictures:
+        case .test,.addressGetList,.shopGetDetail,.shopGetDetailPictures,.shopGetDetailMenus:
             return URLEncoding.default
         case .shopGetAllProducts:
             return URLEncoding.default
@@ -52,6 +54,8 @@ extension shopAPI: TargetType {
             return "/Query/Product/GetDetail"
         case .shopGetDetailPictures(_):
             return "/Query/Product/ListPicture"
+        case .shopGetDetailMenus(_):
+            return "Query/Product/ListBaseInfo"
             
             
         case .addressGetList(_):
@@ -69,7 +73,8 @@ extension shopAPI: TargetType {
             return .get
         case .shopGetDetailPictures(_):
             return .get
-            
+        case .shopGetDetailMenus(_):
+            return .get
             
         case .addressGetList(_):
             return .get
@@ -89,6 +94,9 @@ extension shopAPI: TargetType {
             PrintFM(model.toDict())
             return model.toDict()
         case .shopGetDetailPictures(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .shopGetDetailMenus(let model):
             PrintFM(model.toDict())
             return model.toDict()
             

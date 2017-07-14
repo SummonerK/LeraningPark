@@ -43,6 +43,13 @@ class vipModel {
             .mapshopList(type: ModelShopItem.self)
             //.showError()
     }
+    
+    func vipgetSignalShop(amodel:ModelShopPost) -> Observable<ModelShopBack> {
+        return vipprovider.request(.vipgetSignalShop(PostModel: amodel))
+            .mapSSopObject(type: ModelShopBack.self)
+        //.showError()
+    }
+    
     func addressGetList(amodel:ModelAddressListPost) -> Observable<ModelAddressDetail> {
         return vipprovider.request(.addressGetList(PostModel: amodel))
             .mapObject(type: ModelAddressDetail.self)

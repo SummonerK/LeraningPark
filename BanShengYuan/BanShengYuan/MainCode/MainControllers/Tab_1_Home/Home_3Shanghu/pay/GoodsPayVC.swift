@@ -27,6 +27,10 @@ class GoodsPayVC: BaseTabHiden {
     let modelpayPost = ModelOrderPayPost()
     let disposeBag = DisposeBag()
     
+    let VM = ViewModel()
+    //data
+    var array_address = NSMutableArray()
+    
     @IBOutlet weak var tableV_main: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +59,8 @@ class GoodsPayVC: BaseTabHiden {
         
     }
     
+    //支付
+    
     func payAction() {
         
         if let oid = modelOrderBack.oid {
@@ -69,9 +75,14 @@ class GoodsPayVC: BaseTabHiden {
 
                 PrintFM("pictureList\(posts)")
                 
-                if let content = posts.biz_content{
+                if let content = posts.data{
                     
-                    AlipaySDK.defaultService().payOrder(content, fromScheme: "bsy", callback: {(result) in
+                    PrintFM("content = \(content)")
+                    
+                    AlipaySDK.defaultService().payOrder(content.biz_content, fromScheme: "bsy", callback: {(result) in
+                        
+                        HUDShowMsgQuick(msg: String(describing: result?.description), toView: self.view, time: 0.8)
+                        
                         print("---\(String(describing: result?.description))")
                     })
                     

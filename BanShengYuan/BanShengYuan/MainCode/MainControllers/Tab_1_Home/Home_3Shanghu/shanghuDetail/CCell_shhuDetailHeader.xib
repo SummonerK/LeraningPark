@@ -213,8 +213,8 @@
                         </attributedString>
                         <color key="highlightedColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yz-y8-A7u">
-                        <rect key="frame" x="181" y="32" width="14.5" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2万" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yz-y8-A7u">
+                        <rect key="frame" x="181" y="32" width="27.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" priority="200" constant="42" id="5nY-bT-gWn"/>
                             <constraint firstAttribute="height" constant="21" id="mD9-be-sVq"/>

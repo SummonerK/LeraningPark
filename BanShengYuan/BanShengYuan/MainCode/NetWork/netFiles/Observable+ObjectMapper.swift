@@ -54,7 +54,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string!)
+                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
             }
 
         }
@@ -91,7 +91,44 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string!)
+                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+            }
+            
+        }
+    }
+    
+    func mapSSopObject<T: Mappable>(type: T.Type) -> Observable<T> {
+        return self.map { response in
+            //if response is a dictionary, then use ObjectMapper to map the dictionary
+            //if not throw an error
+            // check http status
+            guard let response = response as? Moya.Response else{
+                throw MyErrorEnum.HttpError(Code: 1002, Msg: "请求出错")
+            }
+            
+            guard ((200...209) ~= response.statusCode) else {
+                throw MyErrorEnum.HttpError(Code: response.statusCode, Msg: "HttpError")
+            }
+            //
+            //json shell
+            let json = JSON.init(data: response.data)
+            //            PrintFM("\(json)")
+            PrintFM("\(String(describing: json["errcode"].int))")
+            PrintFM("\(String(describing: json["errmsg"].string))")
+            
+            
+            if json["errcode"].int == 0{
+                
+                guard let dict = json.rawValue as? [String: Any] else {
+                    
+                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
+                }
+                
+                return Mapper<T>().map(JSON: dict)!
+                
+            }else{
+                
+                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
             }
             
         }
@@ -128,7 +165,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string!)
+                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
             }
             
         }
@@ -163,7 +200,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string!)
+                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
             }
             
         }
@@ -202,7 +239,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string!)
+                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
                 
             }
             
@@ -239,7 +276,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string!)
+                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
                 
             }
             
@@ -282,7 +319,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string!)
+                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
                 
             }
             
@@ -324,7 +361,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string!)
+                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
                 
             }
             
@@ -358,7 +395,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string!)
+                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
                 
             }
             

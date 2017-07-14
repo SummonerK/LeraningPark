@@ -11,6 +11,7 @@ import UIKit
 protocol HomeHeaderDelegate{
     func activitiesAction(path : String)
     func itemActionWithIndexPath(indexPath : IndexPath)
+    func itemScrollIndex(indexPath : Int)
 }
 
 class HomeHeaderV: UITableViewCell {
@@ -35,7 +36,7 @@ class HomeHeaderV: UITableViewCell {
     override func layoutSubviews() {
         let frame = CGRect(x: 0, y: 44, width: IBScreenWidth, height: IBScreenWidth*205/375)
         let imageView = ["banner1","banner2","banner3"]
-        let loopView = XHAdLoopView(frame: frame, images: imageView as NSArray, autoPlay: true, delay: 3, isFromNet: false)
+        let loopView = XHAdLoopView(frame: frame, images: imageView as NSArray, autoPlay: true, delay: 6, isFromNet: false)
         loopView.delegate = self
         
         self.contentView.addSubview(loopView)
@@ -64,8 +65,8 @@ class HomeHeaderV: UITableViewCell {
 //遵循协议代理，调用代理方法
 extension HomeHeaderV : XHAdLoopViewDelegate {
     func adLoopView(_ adLoopView: XHAdLoopView, IconClick index: NSInteger) {
-//        print(index)
-        PrintFM(index)
+        self.delegate?.itemScrollIndex(indexPath: index)
+        
         self.endEditing(true)
     }
 }

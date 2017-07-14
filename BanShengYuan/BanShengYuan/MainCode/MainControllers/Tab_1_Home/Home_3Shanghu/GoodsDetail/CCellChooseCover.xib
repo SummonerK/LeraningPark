@@ -18,26 +18,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itemselect" translatesAutoresizingMaskIntoConstraints="NO" id="Xvw-fw-Nh9">
-                        <rect key="frame" x="32" y="6" width="86" height="28"/>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itemselect" translatesAutoresizingMaskIntoConstraints="NO" id="Xvw-fw-Nh9">
+                        <rect key="frame" x="44.5" y="6" width="62" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="N4d-Lb-3PV"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自由色彩" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kq9-Wk-ad7">
-                        <rect key="frame" x="47" y="10" width="56" height="21"/>
+                        <rect key="frame" x="51.5" y="10" width="48" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="By9-UG-BQT"/>
                             <constraint firstAttribute="width" priority="500" constant="30" id="Oi8-ar-hel"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Xvw-fw-Nh9" firstAttribute="width" secondItem="kq9-Wk-ad7" secondAttribute="width" constant="30" id="02b-HX-9iC"/>
+                <constraint firstItem="Xvw-fw-Nh9" firstAttribute="width" secondItem="kq9-Wk-ad7" secondAttribute="width" constant="14" id="02b-HX-9iC"/>
                 <constraint firstItem="kq9-Wk-ad7" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="3cQ-Gy-dgy"/>
                 <constraint firstItem="Xvw-fw-Nh9" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="GwZ-3b-SSJ"/>
                 <constraint firstItem="kq9-Wk-ad7" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="cOH-08-czv"/>

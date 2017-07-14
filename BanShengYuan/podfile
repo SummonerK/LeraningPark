@@ -21,7 +21,11 @@ target 'BanShengYuan' do
 
   #list holder
   pod 'DZNEmptyDataSet'
-
+  
+  #refresh
+  pod 'MJRefresh'
+  
+  
 end
 
 post_install do |installer|

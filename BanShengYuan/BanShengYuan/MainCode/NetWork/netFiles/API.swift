@@ -41,7 +41,9 @@ enum MyAPI {
     case userUpdate(PostModel:ModelUserUpdateInfoPost)//MARK:个人信息设置
 }
 
-let basepath = "https://member-api-tst.sandload.cn:8735"
+//let basepath = "https://member-api-tst.sandload.cn:8735"
+
+let basepath = "https://member-api.sandload.cn/bsy-api"
 
 extension MyAPI: TargetType {
     var baseURL: URL {

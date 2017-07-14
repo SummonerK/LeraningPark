@@ -272,20 +272,54 @@ class ModelOrderPayPost: Reflect {
 //MARK:订单支付 backModel
 
 class modelPayPlanBack:Mappable {
-    var msg:String?
-    var payAccount:String?
-    var payId:String?
-    var statusCode:Int?
-    var biz_content:String?
+    var errcode:String?
+    var errmsg:String?
+    var data:ModelorderPay?
     
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        msg <- map["msg"]
-        payAccount <- map["payAccount"]
-        payId <- map["payId"]
-        statusCode <- map["statusCode"]
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        data <- map["data"]
+    }
+    
+}
+
+class ModelorderPay: Mappable {
+    var actInfo: String?//支付状态码
+    var biz_content: String?//支付账户
+    var fmId: String?//支付方式描述
+    var msg: String?//返回支付信息
+    
+    var pay_acount: String?//支付账户
+    var pay_ebcode: String?//支付方式描述
+    var pay_id: String?//返回支付信息
+    var pay_order: String?//返回支付信息
+    
+    var pay_transId: String?//支付账户
+    var statusCode: String?//支付方式描述
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        actInfo <- map["actInfo"]
         biz_content <- map["biz_content"]
+        fmId <- map["fmId"]
+        msg <- map["msg"]
+        
+        pay_acount <- map["pay_acount"]
+        pay_ebcode <- map["pay_ebcode"]
+        pay_id <- map["pay_id"]
+        pay_order <- map["pay_order"]
+        
+        pay_transId <- map["pay_transId"]
+        statusCode <- map["statusCode"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
     }
     
 }

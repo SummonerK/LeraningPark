@@ -1,0 +1,87 @@
+
+/* Class = "UILabel"; text = "收货时间"; ObjectID = "2pR-9R-Qo7"; */
+"2pR-9R-Qo7.text" = "收货时间";
+
+/* Class = "UILabel"; text = "收货人"; ObjectID = "3UR-eG-2dG"; */
+"3UR-eG-2dG.text" = "收货人";
+
+/* Class = "UIViewController"; title = "修改姓名"; ObjectID = "5V9-ZE-tPt"; */
+"5V9-ZE-tPt.title" = "修改姓名";
+
+/* Class = "UILabel"; text = "城市"; ObjectID = "CTg-3e-Gi8"; */
+"CTg-3e-Gi8.text" = "城市";
+
+/* Class = "UILabel"; text = "联系方式"; ObjectID = "ErW-Ue-WHG"; */
+"ErW-Ue-WHG.text" = "联系方式";
+
+/* Class = "UILabel"; text = "出生日期"; ObjectID = "Kx2-DO-eAP"; */
+"Kx2-DO-eAP.text" = "出生日期";
+
+/* Class = "UIViewController"; title = "我的地址"; ObjectID = "LTm-II-LIe"; */
+"LTm-II-LIe.title" = "我的地址";
+
+/* Class = "UITextField"; placeholder = "详细地址"; ObjectID = "Mac-xc-ljG"; */
+"Mac-xc-ljG.placeholder" = "详细地址";
+
+/* Class = "UILabel"; text = "头像："; ObjectID = "NQX-uh-5hC"; */
+"NQX-uh-5hC.text" = "头像：";
+
+/* Class = "UIViewController"; title = "地址管理"; ObjectID = "O0p-4K-uTZ"; */
+"O0p-4K-uTZ.title" = "地址管理";
+
+/* Class = "UIButton"; normalTitle = "保存"; ObjectID = "UFT-5r-EHT"; */
+"UFT-5r-EHT.normalTitle" = "保存";
+
+/* Class = "UIViewController"; title = "我的资料"; ObjectID = "Uh0-7r-d0X"; */
+"Uh0-7r-d0X.title" = "我的资料";
+
+/* Class = "UILabel"; text = "男"; ObjectID = "VR8-wZ-ihv"; */
+"VR8-wZ-ihv.text" = "男";
+
+/* Class = "UITextField"; placeholder = "昵称"; ObjectID = "WNb-Et-a1R"; */
+"WNb-Et-a1R.placeholder" = "昵称";
+
+/* Class = "UILabel"; text = "保密"; ObjectID = "Ym4-PJ-E6w"; */
+"Ym4-PJ-E6w.text" = "保密";
+
+/* Class = "UILabel"; text = "设为默认地址"; ObjectID = "YrW-y4-N5l"; */
+"YrW-y4-N5l.text" = "设为默认地址";
+
+/* Class = "UILabel"; text = "昵称"; ObjectID = "cbh-h4-8ZL"; */
+"cbh-h4-8ZL.text" = "昵称";
+
+/* Class = "UILabel"; text = "周一至周五收货"; ObjectID = "dWn-lx-wsx"; */
+"dWn-lx-wsx.text" = "周一至周五收货";
+
+/* Class = "UILabel"; text = "性别"; ObjectID = "dxi-XH-BEu"; */
+"dxi-XH-BEu.text" = "性别";
+
+/* Class = "UIButton"; normalTitle = "再次购买"; ObjectID = "gac-ML-2DH"; */
+"gac-ML-2DH.normalTitle" = "再次购买";
+
+/* Class = "UILabel"; text = "保密"; ObjectID = "h7V-Kb-Ot0"; */
+"h7V-Kb-Ot0.text" = "保密";
+
+/* Class = "UIViewController"; title = "我的订单"; ObjectID = "iw7-2o-f0y"; */
+"iw7-2o-f0y.title" = "我的订单";
+
+/* Class = "UIViewController"; title = "编辑性别"; ObjectID = "jge-ea-Gvr"; */
+"jge-ea-Gvr.title" = "编辑性别";
+
+/* Class = "UILabel"; text = "半生缘"; ObjectID = "qpB-nf-Ohm"; */
+"qpB-nf-Ohm.text" = "半生缘";
+
+/* Class = "UILabel"; text = "详细地址"; ObjectID = "rtJ-Ul-9cg"; */
+"rtJ-Ul-9cg.text" = "详细地址";
+
+/* Class = "UILabel"; text = "所在地区"; ObjectID = "srf-zC-1Fq"; */
+"srf-zC-1Fq.text" = "所在地区";
+
+/* Class = "UIButton"; normalTitle = "保存"; ObjectID = "vpz-mk-8JA"; */
+"vpz-mk-8JA.normalTitle" = "保存";
+
+/* Class = "UILabel"; text = "女"; ObjectID = "x31-Ja-wAj"; */
+"x31-Ja-wAj.text" = "女";
+
+/* Class = "UIButton"; normalTitle = "+  新建地址"; ObjectID = "z42-AR-Niq"; */
+"z42-AR-Niq.normalTitle" = "+  新建地址";

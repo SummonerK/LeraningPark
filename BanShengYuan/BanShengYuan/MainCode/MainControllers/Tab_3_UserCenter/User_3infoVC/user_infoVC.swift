@@ -138,7 +138,7 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
                 if let sex = posts.sex{
                     if sex == 1{
                         self.label_sex.text = "男"
-                    }else if sex == 0 {
+                    }else if sex == 2 {
                         self.label_sex.text = "女"
                     }else{
                         self.label_sex.text = "未设置"
@@ -181,7 +181,7 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
             model_user.sex = "1"
         }
         if label_sex.text == "女" {
-            model_user.sex = "0"
+            model_user.sex = "2"
         }
         
         if label_sex.text == "未设置" {

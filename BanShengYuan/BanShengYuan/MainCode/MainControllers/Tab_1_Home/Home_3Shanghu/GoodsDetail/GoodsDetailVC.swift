@@ -19,6 +19,7 @@ class GoodsDetailVC: BaseTabHiden {
     let VipM = shopModel()
     let modelGoodsDetailPost = ModelGoodsDetailPost()
     let modelGoodsDetailPictruePost = ModelGoodsDetailPicturePost()
+    
     let disposeBag = DisposeBag()
     
     var array_banner = NSMutableArray()
@@ -29,7 +30,7 @@ class GoodsDetailVC: BaseTabHiden {
     @IBOutlet weak var tableV_main: UITableView!
     
     let array_zDetail = ["zdetail1","zdetail2","zdetail3","zdetail4"]
-    
+    //长图
     let array_xDetail = NSMutableArray()
     let dic_HDetail = NSMutableDictionary()
     
@@ -121,6 +122,8 @@ class GoodsDetailVC: BaseTabHiden {
         }
     }
     
+//    获取商品基本信息
+    
     func getData(){
         
         modelGoodsDetailPost.productId = model_goods?.pid
@@ -173,6 +176,7 @@ class GoodsDetailVC: BaseTabHiden {
             .addDisposableTo(disposeBag)
         
     }
+
     
     func setCoverView(){
         
@@ -181,6 +185,10 @@ class GoodsDetailVC: BaseTabHiden {
         coverVC.view.frame = CGRect.init(x: 0, y: 0, width: IBScreenWidth, height: IBScreenHeight)
         
         coverVC.delegate = self
+        
+        if let productid = model_goods?.pid {
+            coverVC.getMeun(productid: productid)
+        }
         
         if let picture = model_goods?.picture {
             let url = URL(string: picture)
@@ -206,10 +214,14 @@ class GoodsDetailVC: BaseTabHiden {
     
     func showCoverView() {
         
+//        HUDShowMsgQuick(msg: "敬请期待", toView: self.view, time: 0.8)
+        
         self.view.bringSubview(toFront: coverVC.view)
     }
     
     func closeCoverView() {
+        
+//        HUDShowMsgQuick(msg: "敬请期待", toView: self.view, time: 0.8)
         
         self.view.sendSubview(toBack: coverVC.view)
     }
@@ -253,9 +265,6 @@ class GoodsDetailVC: BaseTabHiden {
     //提交订单
     
     func sendOrder() {
-        
-//        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
-//        self.navigationController?.pushViewController(Vc, animated: true)
         
         modelOrderC.companyId = model_goods?.companyId
         modelOrderC.shopId = PARTNERID_SHOP+"_"+(model_shop?.storeCode)!
@@ -347,7 +356,10 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
         }
     }
     
-    func buyNowAction(items:NSArray){
+    func buyNowAction(items:NSMutableDictionary){
+        
+        PrintFM("myChoose \(items)")
+        
         closeCoverView()
     }
     
@@ -363,18 +375,6 @@ extension GoodsDetailVC:view_goodsMoreDelegate{
 extension GoodsDetailVC:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        
-//        if section == 2 {
-//            
-////            if self.isOpen == false {
-//            
-//                return 44
-//            
-////            }else {
-////                return 0
-////            }
-//            
-//        }else
         
         if section == 0{
             return IBScreenWidth
@@ -459,6 +459,10 @@ extension GoodsDetailVC:UITableViewDataSource{
                 
                 cell.label_price.text = String.init("¥ \(String(describing: str.fixPrice()))")
             }
+            
+//            if let sp = model_goods?.specification {
+//                cell.labelsp.text = String.init("\(sp) 1 \(model_goods!.unit!)")
+//            }
             
             cell.delegate = self
             

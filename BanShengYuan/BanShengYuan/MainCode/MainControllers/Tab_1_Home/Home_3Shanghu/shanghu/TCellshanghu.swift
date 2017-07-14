@@ -23,29 +23,28 @@ class TCellshanghu: UITableViewCell {
     }
     
     func setData(Model:ModelShopItem){
-        
-//        PrintFM(Model.description)
-        
+ 
         label_name.text = Model.storeName
         label_info.text = Model.fullName
         
-//        if  (Model.businessImages?.count)!>0,let pagemodel = Model.businessImages?[0] ,let imageurl = pagemodel["imageUrl"]{
-//            
-//            let url = URL(string: imageurl as! String)
-//            
-//            imageV_shanghuIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: UIColor.blue), options: nil, progressBlock: nil, completionHandler: nil)
-//        }
-        
         for pagemodel in Model.businessImages!{
-            if  let imageurl = pagemodel["imageUrl"]{
+            if  let imageurl = pagemodel.imageUrl {
                 
-                let url = URL(string: imageurl as! String)
+                let url = URL(string: imageurl)
                 
                 imageV_shanghuIcon.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
                 
                 break
             }
         }
+        
+        
+        if let shipid = Model.storeCode,shipid == "107"{
+            label_local.text = "LMS1-107"
+        }else{
+            label_local.text = "大创A-101"
+        }
+        
         
     }
 

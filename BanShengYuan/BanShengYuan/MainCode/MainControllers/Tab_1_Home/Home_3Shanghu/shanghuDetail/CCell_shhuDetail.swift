@@ -33,7 +33,9 @@ class CCell_shhuDetail: UICollectionViewCell {
         
         imageV_shangpin.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
         
-        label_title.text = Model.name
+        label_title.text = "\(String(describing: Model.name!))"
+        
+//         \(String(describing: Model.specification!))
         
         if let price = Model.originalPrice {
             

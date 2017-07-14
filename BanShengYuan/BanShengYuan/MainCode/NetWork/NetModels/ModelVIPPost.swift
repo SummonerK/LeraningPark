@@ -52,7 +52,7 @@ class ModelShopItem: Mappable {
     var typeFlag: Int?
     var phone: String?
     var storeName: String?
-    var businessImages: [NSDictionary]?
+    var businessImages: [shanghuPicture]?
     
     var deliveryRadius: Int?
     var storeCode: String?
@@ -79,6 +79,70 @@ class ModelShopItem: Mappable {
         storeCode <- map["storeCode"]
         longitude <- map["longitude"]
         
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+class shanghuPicture: Mappable {
+    var sortIndex: Int?
+    var imageUrl: String?
+    var imageTitle: ModelShopItem?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        sortIndex <- map["sortIndex"]
+        imageUrl <- map["imageUrl"]
+        imageTitle <- map["imageTitle"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+//MARK:获商户门店列表 postmodel
+
+class ModelShopPost: Reflect {
+    /**
+     *  商户编号
+     *  必传:True Y 36 string
+     */
+    var op:String!
+    /**
+     *  商户编号
+     *  必传:True Y 36 string
+     */
+    var partnerId:String!
+    /**
+     *  页数
+     *  必传:True int默认10
+     */
+    var storeCode:String!
+    /**
+     *  页号 int默认 1
+     *  必传:True
+     */
+    var typeFlag:String!
+    
+}
+
+class ModelShopBack: Mappable {
+    var errcode: Int?
+    var errmsg: String?
+    var data: ModelShopItem?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        data <- map["data"]
     }
     
     public var description: String {

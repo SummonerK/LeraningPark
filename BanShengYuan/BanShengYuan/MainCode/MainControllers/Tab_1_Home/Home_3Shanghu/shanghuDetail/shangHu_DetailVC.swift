@@ -14,17 +14,28 @@ import SwiftyJSON
 
 import DZNEmptyDataSet
 
+import MJRefresh
+
+let SPPagesize:Int = 10
+
 class shangHu_DetailVC: UIViewController {
+    
+    var shopStoreCode:String = ""
     
     var modelShop:ModelShopItem?
     
     var shopID:String?
     
     @IBOutlet weak var CV_main: UICollectionView!
+    // 底部刷新
+    let footer = MJRefreshAutoNormalFooter()
+    var Num:Int = 1
     
     //network
     
     let VipM = shopModel()
+    let VShopM = vipModel()
+    let modelshopPost = ModelShopPost()
     let modelshopDetailPost = ModelShopDetailPost()
     let disposeBag = DisposeBag()
     
@@ -47,15 +58,35 @@ class shangHu_DetailVC: UIViewController {
         
         setupCollection()
         
-        if let storecode = modelShop?.storeCode{
-            shopID = "\(PARTNERID_SHOP)_\(storecode)"
+        // 上拉刷新
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
+        CV_main.mj_footer = footer
+        
+        
+        if shopStoreCode != ""{
             
-//            PrintFM("\(shopID)")
-//            shopID = shipid
+            modelshopPost.op = "getShop"
+            modelshopPost.partnerId = PARTNERID_SHOP
+            modelshopPost.storeCode = shopStoreCode
+            modelshopPost.typeFlag = "3"
             
+            VShopM.vipgetSignalShop(amodel: modelshopPost)
+                .subscribe(onNext: { (posts: ModelShopBack) in
+                    
+                    self.modelShop = posts.data!
+                    
+                    self.getData()
+                    
+                },onError:{error in
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    }
+                })
+                .addDisposableTo(disposeBag)
         }
         
-        getData()
         
     }
     @IBAction func NaviBack(_ sender: Any) {
@@ -68,22 +99,61 @@ class shangHu_DetailVC: UIViewController {
         
     }
     
-/*
-
-     
-http://118.89.192.122:9998/Query/Shop/GetAllProducts?pagesize=10&pagenumber=1&shopId=178a14ba-85a8-40c7-9ff4-6418418f5a0c_31310040&nsukey=Bvc49gQ+pn6PeND1mZWngaBRxMWiqclFWKzklffE8t6KVEOaCV997IFnPHhKJV3Tz+9/j8ZNHjSgSqJbGkVdLXDMLyFcAw4Bt4UqUuDjkOgM1vm58hHhVm0ZpXBR0wNKidHNkhDCUD194P5RndaQ4n5ztVxlwc0GTO3Q6bUls+lSXuCOV+UVjh5Q4uSV+Yox
-     
- */
-    
-    func getData() {
-        modelshopDetailPost.shopId = shopID
-        modelshopDetailPost.pagesize = 20
-        modelshopDetailPost.pagenumber = 1
+    func footerRefresh(){
+        print("上拉加载更多")
+        
+        self.CV_main.mj_footer.resetNoMoreData()
+        
+        Num += 1
+        
+        modelshopDetailPost.pagesize = SPPagesize
+        modelshopDetailPost.pagenumber = Num
         
         VipM.shopGetAllProducts(amodel: modelshopDetailPost)
             .subscribe(onNext: { (posts: [ModelShopDetailItem]) in
                 
-                self.array_items = posts as! NSMutableArray
+                if posts.count < Pagesize{
+                    self.Num -= 1
+                    self.CV_main.mj_footer.endRefreshingWithNoMoreData()
+                }else{
+                    self.CV_main.mj_footer.endRefreshing()
+                }
+                
+                self.array_items.addObjects(from: posts)
+                
+                self.CV_main.reloadData()
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    
+                    if (error as? MyErrorEnum)?.drawCodeValue != 999{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    }
+                    
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
+    }
+    
+    func getData() {
+        
+        if let storecode = modelShop?.storeCode{
+            
+            shopID = "\(PARTNERID_SHOP)_\(storecode)"
+            
+        }
+        
+        modelshopDetailPost.shopId = shopID
+        modelshopDetailPost.pagesize = SPPagesize
+        modelshopDetailPost.pagenumber = Num
+        
+        VipM.shopGetAllProducts(amodel: modelshopDetailPost)
+            .subscribe(onNext: { (posts: [ModelShopDetailItem]) in
+                
+                self.array_items.addObjects(from: posts)
                 
                 self.CV_main.reloadData()
                 
@@ -149,19 +219,20 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CCell_shhuDetailHeader", for: indexPath) as! CCell_shhuDetailHeader
         
-        for pagemodel in (modelShop?.businessImages!)!{
-            if  let imageurl = pagemodel["imageUrl"]{
+        if let businessImage = modelShop?.businessImages {
+            
+            for pagemodel in businessImage{
                 
-                let url = URL(string: imageurl as! String)
-                
-                headerView.imageV_icon.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
-                
-                break
+                if  let imageurl = pagemodel.imageUrl {
+                    
+                    let url = URL(string: imageurl)
+                    
+                    headerView.imageV_icon.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
+                    
+                    break
+                }
             }
         }
-        
-//        headerView.imageV_icon.image = BundlePngWithName("ppdaiso")
-        
         
         if let name = modelShop?.storeName {
              headerView.label_shanghuName.text = name
@@ -174,8 +245,7 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
                 headerView.imageV_light.image = BundleImageWithName("hbright2")
             }
         }
-        
-//        headerView.imageV_light.image = BundleImageWithName("subactivity2")
+
         
         headerView.layoutIfNeeded()
         
@@ -190,16 +260,12 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
         return array_items.count
-        
-//        return 2
 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCell_shhuDetail", for: indexPath) as! CCell_shhuDetail
-        
-//        cell.imageV_shangpin.image = createImageWithColor(color: FlatWhiteLight)
         
         cell.setData(Model: array_items[indexPath.row] as! ModelShopDetailItem)
         

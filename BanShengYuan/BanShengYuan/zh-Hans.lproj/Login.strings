@@ -1,0 +1,63 @@
+
+/* Class = "UIViewController"; title = "设置新密码"; ObjectID = "1IR-J8-7oA"; */
+"1IR-J8-7oA.title" = "设置新密码";
+
+/* Class = "UITextField"; placeholder = "请输入密码"; ObjectID = "1Oy-aU-xJw"; */
+"1Oy-aU-xJw.placeholder" = "请输入密码";
+
+/* Class = "UITextField"; placeholder = "再次输入密码"; ObjectID = "2YW-ll-vIJ"; */
+"2YW-ll-vIJ.placeholder" = "再次输入密码";
+
+/* Class = "UITextField"; placeholder = "请输入手机号"; ObjectID = "8r7-lu-aPQ"; */
+"8r7-lu-aPQ.placeholder" = "请输入手机号";
+
+/* Class = "UITextField"; placeholder = "请输入密码"; ObjectID = "AnZ-x4-aYq"; */
+"AnZ-x4-aYq.placeholder" = "请输入密码";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "Ivy-q5-FsL"; */
+"Ivy-q5-FsL.normalTitle" = "注册";
+
+/* Class = "UITextField"; placeholder = "请输入手机号"; ObjectID = "Nqa-1t-Jh4"; */
+"Nqa-1t-Jh4.placeholder" = "请输入手机号";
+
+/* Class = "UIButton"; normalTitle = "下一步"; ObjectID = "QMo-rK-Wny"; */
+"QMo-rK-Wny.normalTitle" = "下一步";
+
+/* Class = "UITextField"; placeholder = "请输入密码"; ObjectID = "RA1-Qe-nIP"; */
+"RA1-Qe-nIP.placeholder" = "请输入密码";
+
+/* Class = "UITextField"; placeholder = "请输入手机号"; ObjectID = "RKW-ID-Uqo"; */
+"RKW-ID-Uqo.placeholder" = "请输入手机号";
+
+/* Class = "UITextField"; placeholder = "请输入验证码"; ObjectID = "SDR-tv-gXw"; */
+"SDR-tv-gXw.placeholder" = "请输入验证码";
+
+/* Class = "UIButton"; normalTitle = "获取验证码"; ObjectID = "UZn-sP-iL0"; */
+"UZn-sP-iL0.normalTitle" = "获取验证码";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "YCk-c7-Etd"; */
+"YCk-c7-Etd.normalTitle" = "注册";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "YnV-lN-jPB"; */
+"YnV-lN-jPB.normalTitle" = "确定";
+
+/* Class = "UIViewController"; title = "注册页面"; ObjectID = "aQD-hY-nOa"; */
+"aQD-hY-nOa.title" = "注册页面";
+
+/* Class = "UITextField"; placeholder = "再次输入密码"; ObjectID = "cD8-f5-OXp"; */
+"cD8-f5-OXp.placeholder" = "再次输入密码";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "fG2-Ly-faf"; */
+"fG2-Ly-faf.normalTitle" = "登录";
+
+/* Class = "UIViewController"; title = "忘记密码"; ObjectID = "mJO-2B-2aI"; */
+"mJO-2B-2aI.title" = "忘记密码";
+
+/* Class = "UIButton"; normalTitle = "忘记密码?"; ObjectID = "txu-Mt-qke"; */
+"txu-Mt-qke.normalTitle" = "忘记密码?";
+
+/* Class = "UITextField"; placeholder = "请输入验证码"; ObjectID = "xbj-OE-X4S"; */
+"xbj-OE-X4S.placeholder" = "请输入验证码";
+
+/* Class = "UIButton"; normalTitle = "获取验证码"; ObjectID = "xrN-ag-cbq"; */
+"xrN-ag-cbq.normalTitle" = "获取验证码";
