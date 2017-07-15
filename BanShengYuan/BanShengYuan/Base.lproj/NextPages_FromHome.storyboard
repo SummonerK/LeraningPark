@@ -48,7 +48,6 @@
                                     <outlet property="delegate" destination="Kci-dd-qTX" id="Skk-H7-mar"/>
                                     <outlet property="emptyDataSetDelegate" destination="Kci-dd-qTX" id="8Ok-Z7-oek"/>
                                     <outlet property="emptyDataSetSource" destination="Kci-dd-qTX" id="Ssd-PG-VYe"/>
-                                    <outlet property="prefetchDataSource" destination="Kci-dd-qTX" id="7lR-qE-Cb2"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -556,16 +555,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Maq-sO-eRP">
-                                <rect key="frame" x="38" y="233.5" width="300" height="200"/>
+                                <rect key="frame" x="38" y="234" width="300" height="200"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatu" translatesAutoresizingMaskIntoConstraints="NO" id="6zz-z6-Fjx">
-                                        <rect key="frame" x="15.5" y="17.5" width="270" height="153.5"/>
+                                        <rect key="frame" x="16" y="18" width="270" height="154"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6zz-z6-Fjx" secondAttribute="height" multiplier="260:148" id="d5V-ze-xYi"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择规格" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxm-Nz-Pi9">
-                                        <rect key="frame" x="0.5" y="168" width="300" height="24"/>
+                                        <rect key="frame" x="1" y="169" width="300" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="x4A-0y-Amc"/>
                                         </constraints>
@@ -574,7 +573,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LK-ef-eaw">
-                                        <rect key="frame" x="260" y="10" width="30" height="30"/>
+                                        <rect key="frame" x="260" y="11" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="8Vs-Nx-6aC"/>
                                             <constraint firstAttribute="width" constant="30" id="wvT-OF-pG5"/>
@@ -727,7 +726,6 @@
                                     <outlet property="delegate" destination="f1N-07-Cap" id="Vf2-bn-yfb"/>
                                     <outlet property="emptyDataSetDelegate" destination="f1N-07-Cap" id="anJ-fm-mfm"/>
                                     <outlet property="emptyDataSetSource" destination="f1N-07-Cap" id="IcR-sb-OsU"/>
-                                    <outlet property="prefetchDataSource" destination="f1N-07-Cap" id="AzN-oW-4Lb"/>
                                 </connections>
                             </collectionView>
                         </subviews>

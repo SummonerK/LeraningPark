@@ -276,7 +276,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 
             }
             

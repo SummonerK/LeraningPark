@@ -48,7 +48,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="er6-Lg-G6a" id="WcP-su-0iO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -147,7 +147,6 @@
                                                     <connections>
                                                         <outlet property="dataSource" destination="20O-j4-InU" id="MUg-Po-OhD"/>
                                                         <outlet property="delegate" destination="20O-j4-InU" id="r9R-DD-JoE"/>
-                                                        <outlet property="prefetchDataSource" destination="20O-j4-InU" id="EyX-vz-260"/>
                                                     </connections>
                                                 </collectionView>
                                             </subviews>
@@ -254,7 +253,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h6M-sT-tJD" id="l0M-iE-ybw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
