@@ -63,7 +63,7 @@ class Login_RootVC: UIViewController{
         
         tf_phone.text = USERM.Phone
         model.partnerId = PARTNERID
-        tf_pwd.text = USERM.Pwd
+//        tf_pwd.text = USERM.Pwd
         
         
     }
@@ -112,6 +112,20 @@ class Login_RootVC: UIViewController{
         model.phone = tf_phone.text
         model.password = tf_pwd.text
         
+        if let phone = tf_phone.text,phone != ""{
+            
+        }else{
+            HUDShowMsgQuick(msg: "手机号不能为空", toView: self.view, time: 0.8)
+            return
+        }
+        
+        if let pwd = tf_pwd.text,pwd != ""{
+            
+        }else{
+            HUDShowMsgQuick(msg: "密码不能为空", toView: self.view, time: 0.8)
+            return
+        }
+        
 //        
 //        if model.password.isPwd {
 //            HUDShowMsgQuick(msg: "safe", toView: self.view, time: 0.8)
@@ -126,8 +140,7 @@ class Login_RootVC: UIViewController{
                 USERM.setPhone(phone: self.model.phone)
                 USERM.setPwd(pwd: self.model.password)
                 USERM.setUserID(uid: "userID")
-                
-                
+               
                 self.getInfoData()
                 
             },onError:{error in

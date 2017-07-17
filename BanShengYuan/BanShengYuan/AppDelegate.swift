@@ -23,13 +23,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         
-        if USERM.MemberID != ""{
-            window?.rootViewController = StoryBoard_Main.instantiateInitialViewController()
-            window?.makeKeyAndVisible()
-        }else{
-            window?.rootViewController = StoryBoard_Login.instantiateInitialViewController()
-            window?.makeKeyAndVisible()
-        }
+        window?.rootViewController = StoryBoard_Login.instantiateInitialViewController()
+        window?.makeKeyAndVisible()
+        
+        
+//        if USERM.MemberID != ""{
+//            window?.rootViewController = StoryBoard_Main.instantiateInitialViewController()
+//            window?.makeKeyAndVisible()
+//        }else{
+//            window?.rootViewController = StoryBoard_Login.instantiateInitialViewController()
+//            window?.makeKeyAndVisible()
+//        }
         
         //MARK: 设置键盘
         //键盘监听开关

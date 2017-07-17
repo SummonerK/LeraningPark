@@ -54,7 +54,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string ?? "no message")
             }
 
         }
@@ -91,7 +91,8 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string ?? "no message")
+  
             }
             
         }
@@ -128,7 +129,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string ?? "no message")
             }
             
         }
@@ -158,14 +159,15 @@ extension Observable {
                 
                 guard let dict = json["data"].rawValue as? [String: Any] else {
                     
-                    throw MyErrorEnum.HttpError(Code: json["errcode"].int!, Msg: "JSONError")
+                    throw MyErrorEnum.HttpError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
                 }
                 
                 return Mapper<T>().map(JSON: dict)!
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string ?? "no message")
+                
             }
             
         }
@@ -200,7 +202,8 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string ?? "no message")
+                
             }
             
         }
@@ -239,7 +242,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string ?? "no message")
                 
             }
             
@@ -276,7 +279,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json[RESULT_CODE].int!, Msg: json[RESULT_MSG].string ?? "no message")
                 
             }
             
@@ -319,7 +322,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string ?? "no message")
                 
             }
             
@@ -361,7 +364,7 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string ?? "no message")
                 
             }
             
@@ -395,13 +398,13 @@ extension Observable {
                 
             }else{
                 
-                throw MyErrorEnum.IBError(Code: 999, Msg: "JSONError")
+                throw MyErrorEnum.IBError(Code: json["errcode"].int!, Msg: json["errmsg"].string ?? "no message")
                 
             }
             
         }
+        
     }
-    
     
     
     private func resultFromJSON<T: Mapable>(jsonData:JSON, classType: T.Type) -> T? {
