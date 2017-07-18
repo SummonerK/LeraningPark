@@ -38,6 +38,13 @@ func FontPFLight(size:CGFloat)->UIFont{
     
 }
 
+func FontLabelPFLight(size:CGFloat)->UIFont{
+    
+    return UIFont(name: "PingFangSC-Light", size: size)!
+    
+}
+
+
 //MARK:-设置底部画线的attributeString
 func setCenterLineToString(tocolor:UIColor) -> [String:Any] {
     let firstAttributes = [NSForegroundColorAttributeName:tocolor,NSStrikethroughColorAttributeName: tocolor, NSStrikethroughStyleAttributeName:1,NSStrokeColorAttributeName:tocolor] as [String : Any]
@@ -148,6 +155,7 @@ extension String{
         
         
         for item in resultItems {
+            
 //            let url = URL(string: item)
 //            let imageV = UIImageView.init()
 //            imageV.kf.setImage(with: url)
@@ -161,6 +169,20 @@ extension String{
         return array as! [String]
         
     }
+    //计算字串宽高
+    func getLabSize(font:UIFont) -> CGSize {
+        
+        let statusLabelText: NSString = self as NSString
+        
+        let size = CGSize.init(width: 900, height: 22)
+        
+        let dic = NSDictionary(object: font, forKey: NSFontAttributeName as NSCopying)
+        
+        let strSize = statusLabelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic as? [String : AnyObject], context: nil).size
+        
+        return strSize
+    }
+    
     
     
 }

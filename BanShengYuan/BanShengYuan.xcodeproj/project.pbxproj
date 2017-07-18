@@ -457,10 +457,10 @@
 			isa = PBXGroup;
 			children = (
 				633D59B51F0E519D0068B351 /* Models */,
+				633D59BA1F0E519D0068B351 /* user_AddressVC.swift */,
+				633D59B91F0E519D0068B351 /* user_addressAddVC.swift */,
 				633D59B71F0E519D0068B351 /* TCell_userAddress.swift */,
 				633D59B81F0E519D0068B351 /* TCell_userAddress.xib */,
-				633D59B91F0E519D0068B351 /* user_addressAddVC.swift */,
-				633D59BA1F0E519D0068B351 /* user_AddressVC.swift */,
 			);
 			path = User_2addressVC;
 			sourceTree = "<group>";

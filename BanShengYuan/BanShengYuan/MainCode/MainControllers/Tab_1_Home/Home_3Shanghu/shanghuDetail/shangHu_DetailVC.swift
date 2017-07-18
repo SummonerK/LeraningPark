@@ -246,10 +246,10 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
             }
         }
 
-        
         headerView.layoutIfNeeded()
         
         return headerView
+        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{

@@ -17,6 +17,9 @@ class View_payHeader: UIView {
         // Drawing code
     }
     */
+    
+    @IBOutlet weak var bton_adsEdit: UIButton!
+    
     @IBOutlet weak var label_orderid: UILabel!
     
     @IBOutlet weak var label_name_phone: UILabel!

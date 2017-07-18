@@ -10,6 +10,12 @@ import UIKit
 
 class TCellPayAddress: UITableViewCell {
 
+    @IBOutlet weak var label_name: UILabel!
+    
+    @IBOutlet weak var label_phone: UILabel!
+    
+    @IBOutlet weak var label_address: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

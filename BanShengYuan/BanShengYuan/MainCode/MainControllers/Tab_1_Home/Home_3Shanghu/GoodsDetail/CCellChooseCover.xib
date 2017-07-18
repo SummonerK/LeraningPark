@@ -28,7 +28,7 @@
                         <rect key="frame" x="51.5" y="10" width="48" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="By9-UG-BQT"/>
-                            <constraint firstAttribute="width" priority="500" constant="30" id="Oi8-ar-hel"/>
+                            <constraint firstAttribute="width" priority="500" constant="10" id="Oi8-ar-hel"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,6 +36,7 @@
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Xvw-fw-Nh9" firstAttribute="width" secondItem="kq9-Wk-ad7" secondAttribute="width" constant="14" id="02b-HX-9iC"/>
                 <constraint firstItem="kq9-Wk-ad7" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="3cQ-Gy-dgy"/>

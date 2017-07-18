@@ -34,6 +34,11 @@ class chooseVC: UIViewController {
     //规格
     let array_meun = NSMutableArray()
     var dic_menuchoose = NSMutableDictionary()
+//    var array_keys = NSMutableArray()
+    let array_prospec = NSMutableArray()
+    
+    //数量
+    var proCount:Int = 1
     
     @IBOutlet weak var viewAdd: UIView!
     
@@ -55,6 +60,8 @@ class chooseVC: UIViewController {
         
 //        imageVsub.image = createImageWithColor(color: UIColor.white)
         
+        label_count.text = proCount.description
+        
         setshadowFor(aview: imageVsub, OffSet: CGSize.init(width: 4, height: 4))
         
         setRadiusFor(toview: imageVsub, radius: 4, lineWidth: 0, lineColor: FlatWhiteLight)
@@ -65,8 +72,7 @@ class chooseVC: UIViewController {
    
     }
     
-    
-    //    获取商户meun 规格
+//    获取商户meun 规格
     
     func getMeun(productid:String) {
         
@@ -94,6 +100,7 @@ class chooseVC: UIViewController {
                                     
                                 }
                                 
+//                                self.array_keys.addObjects(from: self.dic_menuchoose.allKeys)
                                 
                             }
                             
@@ -102,7 +109,13 @@ class chooseVC: UIViewController {
                         
                         
                         if let prospec = item.productSpecification{
-                            PrintFM("prospec = \(prospec)")
+                            
+                            self.array_prospec.removeAllObjects()
+                            
+                            self.array_prospec.addObjects(from: prospec)
+                            
+                            PrintFM("prospec = \(self.array_prospec)")
+                            
                         }
                         
                         
@@ -127,23 +140,45 @@ class chooseVC: UIViewController {
     }
     
     
-
     @IBAction func closeCover(_ sender: Any) {
         self.delegate?.setAction(actionType: .CLOSE)
     }
+    
+//    MARK:支付
     
     //支付
     @IBAction func buyNow(_ sender: Any) {
         self.delegate?.buyNowAction(items: self.dic_menuchoose)
     }
     
+//    MARK:编辑商品数量
+    
     //添加数量
     @IBAction func countAdd(_ sender: Any) {
         self.delegate?.setAction(actionType: .ADD)
+        
+        if proCount < 1 {
+            proCount += 1
+        }else{
+            HUDShowMsgQuick(msg: "库存不足", toView: KeyWindow, time: 0.8)
+        }
+        
+        label_count.text = proCount.description
+        
     }
+    
     //减少商品数量
     @IBAction func countFls(_ sender: Any) {
         self.delegate?.setAction(actionType: .Fls)
+        
+        if proCount > 1 {
+            proCount -= 1
+        }else{
+            HUDShowMsgQuick(msg: "至少添加一个商品", toView: KeyWindow, time: 0.8)
+        }
+        
+        
+        label_count.text = proCount.description
     }
     
     func setupCollectionView() {
@@ -164,9 +199,72 @@ class chooseVC: UIViewController {
         
         collection_main.collectionViewLayout = flowLayout
         
+        
         collection_main.register(UINib.init(nibName: "CCellChooseCover", bundle: nil), forCellWithReuseIdentifier: "CCellChooseCover")
         
         collection_main.register(UINib.init(nibName: "CCellChooseVCHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CCellChooseVCHeader")
+        
+    }
+    
+    //筛选符合规格商品
+    
+    func checkValue(toKeyPart:String){
+        
+//        array_meun.removeAllObjects()
+//        选中属性值
+        let toValue = self.dic_menuchoose.value(forKey: toKeyPart) as! String
+
+        for i in 0...array_meun.count-1{
+            
+            let item = array_meun[i] as! ModelMenuSpecItem
+            
+            if let partName = item.partName{
+                
+                //非选中的part 都要遍历筛选
+                if toKeyPart == partName {
+                    return
+                }else{
+                    
+                    let array_temp = NSMutableArray()
+                    
+                    for m in 0...array_prospec.count-1{
+                        
+                        let dic_temp = array_prospec[m] as! NSDictionary
+//                        prospec 中 item属性与选中属性相同的 则: partName下属性->整理集合
+                        if toValue == dic_temp[toKeyPart] as! String{
+                            
+                            let partValue = dic_temp[partName] as! String
+                            
+                            array_temp.add(partValue)
+                            
+                        }
+                    }
+                    
+//                    已经筛选的属性集合，赋值给当前的 MENU item
+                    item.value = array_temp as? [String]
+                    
+                    let selectedPartValue = self.dic_menuchoose.value(forKey: partName) as! String
+                    
+                    PrintFM("another value = \(selectedPartValue)\n array = \(array_temp)")
+                    
+                    if selectedPartValue != "" && array_temp.count > 0{
+                        for j in 0...array_temp.count-1{
+                            if (array_temp[j] as! String) == selectedPartValue{
+                                self.dic_menuchoose.setValue(selectedPartValue, forKey: partName)
+                                break
+                            }else{
+                                self.dic_menuchoose.setValue("", forKey: partName)
+                            }
+                        }
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+        
         
     }
 
@@ -189,6 +287,8 @@ extension chooseVC:UICollectionViewDelegate{
                 self.dic_menuchoose.setValue(value, forKey: key)
                 
                 PrintFM("dic_menuchoose\(dic_menuchoose)")
+                
+                self.checkValue(toKeyPart: key)
                 
                 self.collection_main.reloadData()
                 
@@ -264,6 +364,8 @@ extension chooseVC:UICollectionViewDataSource{
             
         }
         
+        cell.layoutIfNeeded()
+        
         return cell
         
     }
@@ -277,10 +379,22 @@ extension chooseVC:UICollectionViewDelegateFlowLayout{
     //返回cell 上下左右的间距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         
-        let numPreRow = 4
-        let ItemW = (Int(IBScreenWidth - 20) - ChooseCoverCellPadding*(numPreRow + 1))/numPreRow
+//        let numPreRow = 4
+//        let ItemW = (Int(IBScreenWidth - 20) - ChooseCoverCellPadding*(numPreRow + 1))/numPreRow
+//        
+//        return CGSize.init(width: ItemW, height: 36)
         
-        return CGSize.init(width: ItemW, height: 36)
+//        return CGSize.init(width: (indexPath.item * 10) + 20, height: 36)
+        
+        let letspecItem = (array_meun[indexPath.section] as! ModelMenuSpecItem)
+        
+        if let arrayitem = letspecItem.value{
+            let str:String = arrayitem[indexPath.row]
+            return CGSize.init(width: str.getLabSize(font: FontLabelPFLight(size: 12)).width + 28, height: 36)
+        }else{
+            return CGSize.zero
+        }
+        
     }
     
 }

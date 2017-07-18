@@ -110,7 +110,7 @@ class GoodsDetailVC: BaseTabHiden {
             let url = URL(string: array_xDetail[i] as! String)
             let imageV = UIImageView.init()
             
-            imageV.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
+            imageV.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
                 
                 let hight =  CGFloat( (image?.size.height)! / (image?.size.width)! * IBScreenWidth )
                 
@@ -264,7 +264,10 @@ class GoodsDetailVC: BaseTabHiden {
     //支付
     @IBAction func buyNow(_ sender: Any) {
         
-        sendOrder()
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
+        self.navigationController?.pushViewController(Vc, animated: true)
+        
+//        sendOrder()
         
     }
     
@@ -273,7 +276,7 @@ class GoodsDetailVC: BaseTabHiden {
         // Dispose of any resources that can be recreated.
     }
     
-    //提交订单
+    //MARK:提交订单
     
     func sendOrder() {
         
@@ -358,6 +361,7 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
     func setAction(actionType:ChooseCoverActionType){
         switch actionType {
         case .ADD:
+            
             PrintFM("")
         case .Fls:
             PrintFM("")
@@ -539,8 +543,6 @@ extension GoodsDetailVC: UITableViewDelegate {
                 return 0.01
                 
             }
-            
-
             
 //            return UITableViewAutomaticDimension
             

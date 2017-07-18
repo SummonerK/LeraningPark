@@ -12,6 +12,8 @@ import RxSwift
 import ObjectMapper
 import SwiftyJSON
 
+typealias AddChooseBack =  (_ back:ModelAddressItem) -> Void
+
 class AddressChooseVC: UIViewController {
     
     //network
@@ -21,8 +23,17 @@ class AddressChooseVC: UIViewController {
     //layoutView
     @IBOutlet weak var tableV_main: UITableView!
     
+    //backValue
+    var backValue:AddChooseBack?
+    
     //data
     var array_address = NSMutableArray()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +43,8 @@ class AddressChooseVC: UIViewController {
         tableV_main.register(UINib.init(nibName: "TCellPayAddress", bundle: nil), forCellReuseIdentifier: "TCellPayAddress")
         
         tableV_main.backgroundColor = FlatWhiteLight
+        
+        getData()
 
     }
     
@@ -95,12 +108,22 @@ class AddressChooseVC: UIViewController {
         let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
         item.image = UIImage(named: "arrow_left")
         
+        let item_right = UIBarButtonItem(title: "管理地址", style: .plain, target: self, action: #selector(actionAddressManageVC(_:)))
+        
+        
         self.navigationItem.leftBarButtonItem = item
-        self.navigationItem.title = "选择地址"
+        self.navigationItem.rightBarButtonItem = item_right
+        self.navigationItem.title = "选择收货地址"
     }
     
     func actionBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func actionAddressManageVC(_ sender: Any) {
+        //我的地址
+        let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_AddressVC") as! user_AddressVC
+        self.navigationController?.pushViewController(Vc, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,6 +151,12 @@ extension AddressChooseVC:UITableViewDataSource{
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
+        let modelItem = (array_address[indexPath.section] as! ModelAddressItem)
+        
+        cell.label_name.text = modelItem.receiverName ?? "错误"
+        cell.label_phone.text = modelItem.receiverPhone ?? "错误"
+        cell.label_address.text = (modelItem.area ?? "地区错误") + "" + (modelItem.address ?? "错误")
+        
         return cell
     }
     
@@ -146,11 +175,17 @@ extension AddressChooseVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         
-        return 95
+        return 78
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let modelItem = (array_address[indexPath.section] as! ModelAddressItem)
+        
+        backValue!(modelItem)
+        
+        self.navigationController?.popViewController(animated: true)
         
         PrintFM("\(indexPath.row)")
         

@@ -83,6 +83,8 @@ class ModelAddressItem: Mappable {
     var address: String?
     var isDefault: Int?
     
+    init() {}
+    
     required init?(map: Map) { }
     
     func mapping(map: Map) {

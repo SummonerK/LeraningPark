@@ -31,6 +31,10 @@ class GoodsPayVC: BaseTabHiden {
     //data
     var array_address = NSMutableArray()
     
+    //addressModel
+    var model_address = ModelAddressItem()
+    
+    
     @IBOutlet weak var tableV_main: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,6 +144,24 @@ class GoodsPayVC: BaseTabHiden {
 
 extension GoodsPayVC:UITableViewDataSource{
     
+    func BackAddress(item:ModelAddressItem) -> Void {
+        PrintFM("\(String(describing: item.toJSONString()))")
+        
+        self.model_address = item
+        
+        self.tableV_main.reloadData()
+    }
+    
+    func goAddressEditVC() {
+        PrintFM("")
+        
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "AddressChooseVC") as! AddressChooseVC
+        
+        Vc.backValue = BackAddress(item:)
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         
         let viewheader = Bundle.main.loadNibNamed("View_payHeader", owner: nil, options: nil)?.first as? View_payHeader
@@ -149,7 +171,12 @@ extension GoodsPayVC:UITableViewDataSource{
             viewheader?.label_orderid.text = str
         }
         
-        viewheader?.label_name_phone.text = modelOrderBack.userName! + " " + modelOrderBack.phone!
+        viewheader?.label_name_phone.text = (model_address.receiverName ?? "请皇上，选择收货人") + " " + (model_address.receiverPhone ?? " ")
+        
+        viewheader?.label_address.text = (model_address.area ?? "请皇上，选择收货地址") + "" + (model_address.address ?? " ")
+        
+        
+        viewheader?.bton_adsEdit.addTarget(self, action: #selector(goAddressEditVC), for:UIControlEvents.touchUpInside)
         
         return viewheader
         
@@ -169,7 +196,6 @@ extension GoodsPayVC:UITableViewDataSource{
             let str_total = String(describing: totalPrice)
             viewfooter?.label_total.text = String.init("¥ \(String(describing: str_total.fixPrice()))")
         }
-        
         
         
         return viewfooter

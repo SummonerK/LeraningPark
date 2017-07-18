@@ -82,7 +82,7 @@
                         <constraint firstItem="Nfd-5Q-iX5" firstAttribute="centerY" secondItem="C84-0z-Dw2" secondAttribute="centerY" id="fex-gh-NNY"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4se-sQ-DII">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4se-sQ-DII" customClass="UIButton">
                     <rect key="frame" x="0.0" y="70" width="375" height="44"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pay_address" translatesAutoresizingMaskIntoConstraints="NO" id="Pyc-Qc-EVB">
@@ -117,7 +117,6 @@
                         <constraint firstAttribute="trailing" secondItem="5dS-Gf-VoD" secondAttribute="trailing" constant="10" id="G3h-IP-hi4"/>
                         <constraint firstAttribute="height" constant="44" id="hXQ-Ek-J0f"/>
                         <constraint firstItem="Cll-IA-p8x" firstAttribute="leading" secondItem="Pyc-Qc-EVB" secondAttribute="trailing" constant="10" id="k2i-Cd-LpG"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="lqf-cf-A8Y"/>
                         <constraint firstItem="5dS-Gf-VoD" firstAttribute="centerY" secondItem="4se-sQ-DII" secondAttribute="centerY" id="mBJ-tY-Lsu"/>
                         <constraint firstItem="Cll-IA-p8x" firstAttribute="centerY" secondItem="4se-sQ-DII" secondAttribute="centerY" id="vO1-SZ-Nys"/>
                     </constraints>
@@ -149,6 +148,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bton_adsEdit" destination="4se-sQ-DII" id="duh-qd-r95"/>
                 <outlet property="label_address" destination="Cll-IA-p8x" id="fIu-5t-shI"/>
                 <outlet property="label_name_phone" destination="Nfd-5Q-iX5" id="sd9-PC-Bly"/>
                 <outlet property="label_orderid" destination="9cF-49-7wb" id="qPR-TH-q8b"/>
