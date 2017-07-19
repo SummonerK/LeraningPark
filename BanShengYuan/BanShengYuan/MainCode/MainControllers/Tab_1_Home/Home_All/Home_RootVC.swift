@@ -25,7 +25,7 @@ class Home_RootVC: UIViewController{
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
 //        HUDcustomShow(toview: self.view)
-//        HUDGifCustomShow()
+        HUDGifCustomShow()
         
     }
     

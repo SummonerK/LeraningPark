@@ -44,6 +44,11 @@ class orderModel {
             .mapNeObject(type: ModelOrderCreateBack.self)
         //.showError()
     }
+    func orderAddressSet(amodel:ModelorderAddressSetPost) -> Observable<ModelorderAddressSetBack> {
+        return orderprovider.request(.orderAddressSet(PostModel: amodel))
+            .mapNeObject(type: ModelorderAddressSetBack.self)
+        //.showError()
+    }
     func orderPay(amodel:ModelOrderPayPost) -> Observable<modelPayPlanBack> {
         return orderprovider.request(.orderPay(PostModel: amodel))
             .mapNeObject(type: modelPayPlanBack.self)

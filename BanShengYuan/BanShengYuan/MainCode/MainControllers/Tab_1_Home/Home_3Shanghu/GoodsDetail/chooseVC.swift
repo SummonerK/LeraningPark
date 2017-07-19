@@ -218,11 +218,13 @@ class chooseVC: UIViewController {
             
             let item = array_meun[i] as! ModelMenuSpecItem
             
+            PrintFM("item\(String(describing: item.toJSONString()))")
+            
             if let partName = item.partName{
                 
                 //非选中的part 都要遍历筛选
                 if toKeyPart == partName {
-                    return
+                    
                 }else{
                     
                     let array_temp = NSMutableArray()

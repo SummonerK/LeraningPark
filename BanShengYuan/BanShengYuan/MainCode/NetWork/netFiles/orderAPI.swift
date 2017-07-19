@@ -18,6 +18,7 @@ enum orderAPI {
     case test(PostModel:ModelTestPost)//测试https
     //MARK:- 订单
     case orderCreate(PostModel:ModelOrderCreatePost)//MARK:订单创建
+    case orderAddressSet(PostModel:ModelorderAddressSetPost)//MARK:订单设置地址
     case orderPay(PostModel:ModelOrderPayPost)//MARK:订单支付
     case orderPayAccess(PostModel:ModelOrderPayAccessPost)//MARK:订单确认支付
     case orderAccept(PostModel:ModelOrderAcceptPost)//MARK:订单接单
@@ -37,7 +38,7 @@ extension orderAPI: TargetType {
         case .orderListByUser:
             return URLEncoding.default
             
-        case .orderCreate,.orderPay,.orderPayAccess,.orderAccept:
+        case .orderCreate,.orderPay,.orderPayAccess,.orderAccept,.orderAddressSet:
             return JSONEncoding.default
             
         }
@@ -53,6 +54,8 @@ extension orderAPI: TargetType {
             return ""
             
         case .orderCreate(_):
+            return "/Order/Create"
+        case .orderAddressSet(_):
             return "/Order/Create"
         case .orderPay(_):
             return "/Order/Pay"
@@ -72,6 +75,8 @@ extension orderAPI: TargetType {
             return .get
             
         case .orderCreate(_):
+            return .post
+        case .orderAddressSet(_):
             return .post
         case .orderPay(_):
             return .post
@@ -96,6 +101,9 @@ extension orderAPI: TargetType {
             let dic = jsonToDictionary(jsonString: model.toJSONString()!)
             PrintFM(dic)
             return dic
+        case .orderAddressSet(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
         case .orderPay(let model):
             PrintFM(model.toDict())
             return model.toDict()

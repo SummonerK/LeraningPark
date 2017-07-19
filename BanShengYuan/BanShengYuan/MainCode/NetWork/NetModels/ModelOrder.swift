@@ -570,3 +570,46 @@ class ModelListPageByUserAccountItem: Mappable {
     }
     
 }
+
+//MARK:订单设置地址 postmodel
+
+class ModelorderAddressSetPost: Reflect {
+    var orderId:String!  ///<订单ID
+    var address:Int!   ///<配送地址
+    var longitude:Int! ///<经度
+    var latitude:Int! ///<纬度
+}
+
+class ModelorderAddressSetBack:Mappable {
+    var status_code:Int?
+    var msg:String?
+    var result:[ModelListPageByUserBack]?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        status_code <- map["status_code"]
+        msg <- map["msg"]
+        result <- map["result"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+class ModelorderAddressResult:Mappable {
+    var msg:String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        msg <- map["msg"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}

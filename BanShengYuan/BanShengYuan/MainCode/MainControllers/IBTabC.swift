@@ -21,7 +21,7 @@ class IBTabC: UITabBarController {
         NotificationCenter.default.addObserver(self, selector: #selector(BadgeCHange(_:_:)), name: NSNotification.Name(rawValue: "TiltleNotification"), object: nil)
         
         
-        //注册了一个名字叫做TiltleNotification的通知，同时<span style="font-family: Arial, Helvetica, sans-serif;">TiltleNotification负责处理传递的通知（）</span>
+        //注册了一个名字叫做TiltleNotification的通知，同时TiltleNotification负责处理传递的通知
         
         // Do any additional setup after loading the view.
     }
