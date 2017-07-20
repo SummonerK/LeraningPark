@@ -450,7 +450,6 @@ extension GoodsDetailVC: TCellGoodsinfoDelegate {
 
 extension GoodsDetailVC: UITableViewDelegate {
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         
         switch indexPath.section {

@@ -27,12 +27,13 @@ class shangHu_DetailVC: UIViewController {
     var shopID:String?
     
     @IBOutlet weak var CV_main: UICollectionView!
+    
+    @IBOutlet weak var searchbar: UISearchBar!
     // 底部刷新
     let footer = MJRefreshAutoNormalFooter()
     var Num:Int = 1
     
     //network
-    
     let VipM = shopModel()
     let VShopM = vipModel()
     let modelshopPost = ModelShopPost()
@@ -41,10 +42,8 @@ class shangHu_DetailVC: UIViewController {
     
     //data
     var array_items = NSMutableArray()
-    
     var sectionNum:Int? = 1
     
-    @IBOutlet weak var searchbar: UISearchBar!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -194,6 +193,48 @@ class shangHu_DetailVC: UIViewController {
 
 }
 
+extension shangHu_DetailVC:UISearchBarDelegate{
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool{
+        
+        PrintFM("begin search")
+        
+        return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        
+    }
+    
+    // 搜索触发事件，点击虚拟键盘上的search按钮时触发此方法
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.resignFirstResponder()
+    }
+    
+    // 取消按钮触发事件
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // 搜索内容置空
+        PrintFM("\(String(describing: searchBar.text))")
+        
+        //搜索
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "shanghu_searchVC") as! shanghu_searchVC
+        Vc.modelShop = self.modelShop
+        Vc.shopID = shopID
+        Vc.searchContent = searchBar.text
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
+        
+        searchBar.text = ""
+        
+        searchBar.resignFirstResponder()
+    }
+    
+    
+    
+}
+
 extension shangHu_DetailVC:UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
@@ -268,12 +309,6 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCell_shhuDetail", for: indexPath) as! CCell_shhuDetail
         
         cell.setData(Model: array_items[indexPath.row] as! ModelShopDetailItem)
-        
-//        if let shipid = modelShop?.storeCode,shipid == "107"{
-//            cell.label_sales.text = "0"
-//        }else{
-//            cell.label_sales.text = "1"
-//        }
         
         return cell
         

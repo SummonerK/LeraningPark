@@ -44,6 +44,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6UR-8j-uRX" secondAttribute="trailing" constant="20" id="mXd-sD-rTd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bton_show" destination="6UR-8j-uRX" id="JXM-CV-dcm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

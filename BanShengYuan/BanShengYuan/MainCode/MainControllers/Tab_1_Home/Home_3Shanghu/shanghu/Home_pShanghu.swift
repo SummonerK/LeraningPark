@@ -140,6 +140,15 @@ class Home_pShanghu: BaseTabHiden {
 
 extension Home_pShanghu:UITableViewDataSource{
     
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
+//        
+//        PrintFM("")
+//        
+//    }
+//    
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
+//        return true
+//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
 
@@ -201,6 +210,9 @@ extension Home_pShanghu:UITableViewDataSource{
 
 extension Home_pShanghu: UITableViewDelegate {
     
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle{
+//        return UITableViewCellEditingStyle.delete
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         

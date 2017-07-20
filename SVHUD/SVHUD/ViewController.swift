@@ -10,12 +10,29 @@ import UIKit
 import SVProgressHUD
 import ImageIO
 
+#if DEBUG && PRO
+let HUDMSG = "DEBug-Test"
+#elseif DEBUG && DEV
+let HUDMSG = "DEBug-Path"
+#else
+let HUDMSG = "DEBug-default"
+#endif
+
+//let HUDMSG = "DEBug-default"
+
 let HUDGIFData = try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "demo", ofType: "gif")!))
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var bton_show: UIButton!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        
+        bton_show.setTitle(HUDMSG, for: UIControlState.normal)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -25,31 +42,31 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showHudAction(_ sender: Any) {
-        showhud()
+//        showhud()
     }
 
 }
 
 func showhud() {
     
-    let gifimage = UIImageView()
-    gifimage.image = UIImage.gifImage(data: HUDGIFData as NSData)
-    
-    let image = UIImage.gifImage(data: HUDGIFData as NSData)
+//    let gifimage = UIImageView()
+//    gifimage.image = UIImage.gifImage(data: HUDGIFData as NSData)
+//
+//    let image = UIImage.gifImage(data: HUDGIFData as NSData)
     
 //    SVProgressHUD.setContainerView(gifimage)
     
-//    SVProgressHUD.show()
+    SVProgressHUD.show()
     
 //    SVProgressHUD.show(image, status: "")
     
 //    SVProgressHUD.show(image, status: nil)
     
-    SVProgressHUD.setViewForExtension(gifimage)
+//    SVProgressHUD.setViewForExtension(gifimage)
+//    
+//    SVProgressHUD.setMinimumSize(CGSize.init(width: 100, height: 100))
     
-    SVProgressHUD.setMinimumSize(CGSize.init(width: 100, height: 100))
-    
-    SVProgressHUD.dismiss(withDelay: 1)
+    SVProgressHUD.dismiss(withDelay: 0.8)
     
 }
 

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "635325E61F1F60170043C0F0"
-               BuildableName = "SVHUD.app"
-               BlueprintName = "SVHUD"
+               BlueprintIdentifier = "635529A01F20BB3F00F86846"
+               BuildableName = "SVHUD copy.app"
+               BlueprintName = "SVHUD copy"
                ReferencedContainer = "container:SVHUD.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "635325E61F1F60170043C0F0"
-            BuildableName = "SVHUD.app"
-            BlueprintName = "SVHUD"
+            BlueprintIdentifier = "635529A01F20BB3F00F86846"
+            BuildableName = "SVHUD copy.app"
+            BlueprintName = "SVHUD copy"
             ReferencedContainer = "container:SVHUD.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -42,7 +42,7 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Debug-test"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "635325E61F1F60170043C0F0"
-            BuildableName = "SVHUD.app"
-            BlueprintName = "SVHUD"
+            BlueprintIdentifier = "635529A01F20BB3F00F86846"
+            BuildableName = "SVHUD copy.app"
+            BlueprintName = "SVHUD copy"
             ReferencedContainer = "container:SVHUD.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,15 +74,15 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "635325E61F1F60170043C0F0"
-            BuildableName = "SVHUD.app"
-            BlueprintName = "SVHUD"
+            BlueprintIdentifier = "635529A01F20BB3F00F86846"
+            BuildableName = "SVHUD copy.app"
+            BlueprintName = "SVHUD copy"
             ReferencedContainer = "container:SVHUD.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "Release_test">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"

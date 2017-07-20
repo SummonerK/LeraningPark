@@ -16,6 +16,7 @@ enum shopAPI {
     case test(PostModel:ModelTestPost)//测试https
     //MARK:- 商户-商品
     case shopGetAllProducts(PostModel:ModelShopDetailPost)//MARK:获取门店商品
+    case shopSearchProducts(PostModel:ModelSearchProductPost)//MARK:搜索门店商品
     case shopGetDetail(PostModel:ModelGoodsDetailPost)//MARK:获取商品详细信息 - 长图
     case shopGetDetailPictures(PostModel:ModelGoodsDetailPicturePost)//MARK:获取商品详细信息 - banner
     case shopGetDetailMenus(PostModel:ModelShopDetailMenuPost)//MARK:获取商品规格 - menu
@@ -32,7 +33,7 @@ extension shopAPI: TargetType {
 
     var parameterEncoding: ParameterEncoding {
         switch self {
-        case .test,.addressGetList,.shopGetDetail,.shopGetDetailPictures,.shopGetDetailMenus:
+        case .test,.addressGetList,.shopGetDetail,.shopGetDetailPictures,.shopGetDetailMenus,.shopSearchProducts:
             return URLEncoding.default
         case .shopGetAllProducts:
             return URLEncoding.default
@@ -50,12 +51,14 @@ extension shopAPI: TargetType {
             return ""
         case .shopGetAllProducts(_):
             return "/Query/Shop/ListAllProducts"
+        case .shopSearchProducts(_):
+            return "/Query/Shop/ListProductByName"
         case .shopGetDetail(_):
             return "/Query/Product/GetDetail"
         case .shopGetDetailPictures(_):
             return "/Query/Product/ListPicture"
         case .shopGetDetailMenus(_):
-            return "Query/Product/ListBaseInfo"
+            return "/Query/Product/ListBaseInfo"
             
             
         case .addressGetList(_):
@@ -68,6 +71,8 @@ extension shopAPI: TargetType {
         case .test(_):
             return .get
         case .shopGetAllProducts(_):
+            return .get
+        case .shopSearchProducts(_):
             return .get
         case .shopGetDetail(_):
             return .get
@@ -88,6 +93,9 @@ extension shopAPI: TargetType {
             PrintFM(model.toDict())
             return model.toDict()
         case .shopGetAllProducts(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .shopSearchProducts(let model):
             PrintFM(model.toDict())
             return model.toDict()
         case .shopGetDetail(let model):

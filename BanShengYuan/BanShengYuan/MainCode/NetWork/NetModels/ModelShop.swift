@@ -270,6 +270,57 @@ class ModelMenuPicture: Mappable {
     
 }
 
+//MARK:搜索门店商品 post model
+
+class ModelSearchProductPost: Reflect {
+    /**
+     *  商品ID
+     *  必传:True
+     */
+    var productId:String!
+    
+}
+
+//MARK:获商商品规格
+
+class ModelSearchProductResult: Mappable {
+    var errcode: String?
+    var errmsg: String?
+    var data: ModelSearchProductContent?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        data <- map["data"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+class ModelSearchProductContent: Mappable {
+    var count: Int?
+    var products: [ModelShopDetailItem]?   ///<搜索返回-商品列表
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        count <- map["count"]
+        products <- map["products"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
 
 
 

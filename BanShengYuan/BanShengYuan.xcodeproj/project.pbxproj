@@ -68,6 +68,9 @@
 		635381111EE93EC8006C0375 /* resetPwdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635381101EE93EC8006C0375 /* resetPwdVC.swift */; };
 		635524E01F01EFB90038AA1C /* info_NameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635524DF1F01EFB90038AA1C /* info_NameVC.swift */; };
 		635524E21F01EFCD0038AA1C /* info_SexVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635524E11F01EFCD0038AA1C /* info_SexVC.swift */; };
+		6355292D1F2052D800F86846 /* shanghu_searchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355292C1F2052D800F86846 /* shanghu_searchVC.swift */; };
+		635529301F205A5100F86846 /* CCell_shhuDetailLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355292E1F205A5100F86846 /* CCell_shhuDetailLine.swift */; };
+		635529311F205A5100F86846 /* CCell_shhuDetailLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355292F1F205A5100F86846 /* CCell_shhuDetailLine.xib */; };
 		63559AA91EFA0EC2003FC6E5 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AA81EFA0EC2003FC6E5 /* Views.swift */; };
 		63559AAB1EFA0ECB003FC6E5 /* Datas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AAA1EFA0ECB003FC6E5 /* Datas.swift */; };
 		63559AAD1EFA0ED8003FC6E5 /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63559AAC1EFA0ED8003FC6E5 /* Dates.swift */; };
@@ -246,6 +249,9 @@
 		635381101EE93EC8006C0375 /* resetPwdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resetPwdVC.swift; sourceTree = "<group>"; };
 		635524DF1F01EFB90038AA1C /* info_NameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = info_NameVC.swift; sourceTree = "<group>"; };
 		635524E11F01EFCD0038AA1C /* info_SexVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = info_SexVC.swift; sourceTree = "<group>"; };
+		6355292C1F2052D800F86846 /* shanghu_searchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shanghu_searchVC.swift; sourceTree = "<group>"; };
+		6355292E1F205A5100F86846 /* CCell_shhuDetailLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCell_shhuDetailLine.swift; sourceTree = "<group>"; };
+		6355292F1F205A5100F86846 /* CCell_shhuDetailLine.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCell_shhuDetailLine.xib; sourceTree = "<group>"; };
 		63559AA81EFA0EC2003FC6E5 /* Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		63559AAA1EFA0ECB003FC6E5 /* Datas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datas.swift; sourceTree = "<group>"; };
 		63559AAC1EFA0ED8003FC6E5 /* Dates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
@@ -815,6 +821,9 @@
 				636635FB1F05047E0060E7D4 /* CCell_shhuDetail.xib */,
 				636635FC1F05047E0060E7D4 /* CCell_shhuDetailHeader.swift */,
 				636635FD1F05047E0060E7D4 /* CCell_shhuDetailHeader.xib */,
+				6355292C1F2052D800F86846 /* shanghu_searchVC.swift */,
+				6355292E1F205A5100F86846 /* CCell_shhuDetailLine.swift */,
+				6355292F1F205A5100F86846 /* CCell_shhuDetailLine.xib */,
 			);
 			path = shanghuDetail;
 			sourceTree = "<group>";
@@ -1076,6 +1085,7 @@
 				638DE6131EF7B8080017DA72 /* view_userHeader.xib in Resources */,
 				6361C6441F0CDE0600E0D405 /* view_orderFooter.xib in Resources */,
 				638DE6101EF7B8080017DA72 /* TCell_User.xib in Resources */,
+				635529311F205A5100F86846 /* CCell_shhuDetailLine.xib in Resources */,
 				6361C6701F0CFA0600E0D405 /* view_orderEndHeader.xib in Resources */,
 				636636061F05047E0060E7D4 /* TCellGoodsinfo.xib in Resources */,
 				6361C6461F0CDE0600E0D405 /* view_orderHeader.xib in Resources */,
@@ -1159,6 +1169,7 @@
 				63559AAB1EFA0ECB003FC6E5 /* Datas.swift in Sources */,
 				6353810D1EE93266006C0375 /* RegistVC.swift in Sources */,
 				6361C6711F0CFA0600E0D405 /* view_orderEndFooter.swift in Sources */,
+				6355292D1F2052D800F86846 /* shanghu_searchVC.swift in Sources */,
 				639F6ADD1F1863C600BE860A /* AddressChooseVC.swift in Sources */,
 				638F18571EF113CA00A33412 /* Home_pHuashi.swift in Sources */,
 				6361C6421F0CDE0600E0D405 /* user_OrderVC.swift in Sources */,
@@ -1209,6 +1220,7 @@
 				636636101F05047E0060E7D4 /* shangHu_DetailVC.swift in Sources */,
 				636636161F05059D0060E7D4 /* View_payFooter.swift in Sources */,
 				6366360B1F05047E0060E7D4 /* view_shanghuHeader.swift in Sources */,
+				635529301F205A5100F86846 /* CCell_shhuDetailLine.swift in Sources */,
 				638DE6121EF7B8080017DA72 /* view_userHeader.swift in Sources */,
 				635D83E61EF22B72007A2C05 /* INOScrollView.swift in Sources */,
 				63AF0E5F1EF3DC9100642DB7 /* IBHUD.swift in Sources */,
@@ -1367,7 +1379,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1412,7 +1424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

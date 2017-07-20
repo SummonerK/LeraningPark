@@ -56,6 +56,11 @@ class shopModel {
             .mapShopDetailProductList(type: ModelShopDetailItem.self)
             //.showError()
     }
+    func shopSearchProducts(amodel:ModelSearchProductPost) -> Observable<ModelSearchProductResult> {
+        return shopprovider.request(.shopSearchProducts(PostModel: amodel))
+            .mapNeObject(type: ModelSearchProductResult.self)
+        //.showError()
+    }
     func shopGetDetail(amodel:ModelGoodsDetailPost) -> Observable<ModelGoodsDetailResult> {
         return shopprovider.request(.shopGetDetail(PostModel: amodel))
             .mapResult(type: ModelGoodsDetailResult.self)

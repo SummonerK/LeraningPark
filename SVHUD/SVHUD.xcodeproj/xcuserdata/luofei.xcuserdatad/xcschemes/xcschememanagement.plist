@@ -4,7 +4,19 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SVHUD.xcscheme</key>
+		<key>SVHUD-Test.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>SVHUD-test.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>SVHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -13,6 +25,26 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>635325E61F1F60170043C0F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6355294E1F20A94800F86846</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>635529691F20AA3500F86846</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>635529851F20AA5F00F86846</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>635529A01F20BB3F00F86846</key>
 		<dict>
 			<key>primary</key>
 			<true/>
