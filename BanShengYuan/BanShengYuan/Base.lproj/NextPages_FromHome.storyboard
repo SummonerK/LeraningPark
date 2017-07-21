@@ -159,7 +159,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S72-yo-JfK">
                                         <rect key="frame" x="10" y="5" width="355" height="43"/>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.20784313730000001" green="0.73333333329999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="B6J-nZ-cwC"/>
                                         </constraints>
@@ -314,7 +314,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJ9-0L-bRu">
                                         <rect key="frame" x="0.0" y="313" width="375" height="54"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPz-g4-fUi">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPz-g4-fUi">
                                                 <rect key="frame" x="10" y="5" width="355" height="43"/>
                                                 <color key="backgroundColor" red="0.20784313730000001" green="0.73333333329999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>

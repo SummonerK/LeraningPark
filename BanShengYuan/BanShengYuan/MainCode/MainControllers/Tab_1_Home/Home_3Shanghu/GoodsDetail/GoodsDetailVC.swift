@@ -325,18 +325,20 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
         
         PrintFM("myChoose \(items)")
         
-        let array = items.allValues
+        let array = items.allValues as! [String]
 
         for item in array{
             
-            if item as! String == ""{
+            if item == ""{
                 HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
                 return
             }
             
         }
         
-        model_goods?.specification = String(describing:items)
+        let str = array.joined(separator: " ")
+        
+        model_goods?.specification = String(describing:str)
         model_goods?.productNumber = count
         
         closeCoverView()

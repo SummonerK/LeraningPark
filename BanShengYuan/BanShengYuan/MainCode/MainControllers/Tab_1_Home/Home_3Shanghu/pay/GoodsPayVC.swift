@@ -122,23 +122,19 @@ class GoodsPayVC: BaseTabHiden {
     
     func sendOrder() {
         
-//        if addressValue {
-//        }else{
-//            HUDShowMsgQuick(msg: "请选择收货地址", toView: KeyWindow, time: 0.8)
-//        }
-//        
+        if addressValue {
+
 //        OrderM.orderCreate(amodel: modelOrderC)
 //            .subscribe(onNext: { (posts: ModelOrderCreateBack) in
-//                
+//
 //                PrintFM("pictureList\(posts)")
-//                
+//
 //                if let modeldata = posts.data{
 //                    if let oid = modeldata.oid{
 //                        self.payAction(orderID: oid)
 //                    }
 //                }
-////
-//                
+//
 //            },onError:{error in
 //                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
 //                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
@@ -147,8 +143,13 @@ class GoodsPayVC: BaseTabHiden {
 //                }
 //            })
 //            .addDisposableTo(disposeBag)
+            
+            self.payAction(orderID: 81610978848932101)
+        }else{
+            HUDShowMsgQuick(msg: "请选择收货地址", toView: KeyWindow, time: 0.8)
+        }
+
         
-        self.payAction(orderID: 81610978848932101)
         
     }
     
