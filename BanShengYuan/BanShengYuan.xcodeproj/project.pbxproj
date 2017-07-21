@@ -138,6 +138,7 @@
 		636636141F05058C0060E7D4 /* View_payHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636636131F05058C0060E7D4 /* View_payHeader.xib */; };
 		636636161F05059D0060E7D4 /* View_payFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636636151F05059D0060E7D4 /* View_payFooter.swift */; };
 		636636181F0505A90060E7D4 /* View_payFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636636171F0505A90060E7D4 /* View_payFooter.xib */; };
+		6370FB8E1F219780003CC6FC /* pay_channelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6370FB8D1F219780003CC6FC /* pay_channelVC.swift */; };
 		6385362E1EE7A1F800DB7BA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385362D1EE7A1F800DB7BA1 /* AppDelegate.swift */; };
 		638536301EE7A1F800DB7BA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6385362F1EE7A1F800DB7BA1 /* ViewController.swift */; };
 		638536331EE7A1F800DB7BA1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 638536311EE7A1F800DB7BA1 /* Main.storyboard */; };
@@ -320,6 +321,7 @@
 		636636131F05058C0060E7D4 /* View_payHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View_payHeader.xib; sourceTree = "<group>"; };
 		636636151F05059D0060E7D4 /* View_payFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View_payFooter.swift; sourceTree = "<group>"; };
 		636636171F0505A90060E7D4 /* View_payFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View_payFooter.xib; sourceTree = "<group>"; };
+		6370FB8D1F219780003CC6FC /* pay_channelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pay_channelVC.swift; sourceTree = "<group>"; };
 		6385362A1EE7A1F800DB7BA1 /* BanShengYuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanShengYuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6385362D1EE7A1F800DB7BA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6385362F1EE7A1F800DB7BA1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -484,8 +486,7 @@
 			children = (
 				634AA3031F14D05900697526 /* aliPay */,
 			);
-			name = Pay;
-			path = ../Pay;
+			path = Pay;
 			sourceTree = "<group>";
 		};
 		634AA3031F14D05900697526 /* aliPay */ = {
@@ -551,6 +552,7 @@
 		635380D41EE8FD59006C0375 /* ThirdSource */ = {
 			isa = PBXGroup;
 			children = (
+				634AA3021F14D05900697526 /* Pay */,
 				631595101F138F7D0039FBED /* FullPopGesture */,
 				63020C211EFCB070003F8199 /* CitySource */,
 				63AF0E521EF3D1B400642DB7 /* MBProgressHUD */,
@@ -798,6 +800,7 @@
 				639F6ADC1F1863C600BE860A /* AddressChooseVC.swift */,
 				639F6ADE1F18680E00BE860A /* TCellPayAddress.swift */,
 				639F6ADF1F18680E00BE860A /* TCellPayAddress.xib */,
+				6370FB8D1F219780003CC6FC /* pay_channelVC.swift */,
 			);
 			path = pay;
 			sourceTree = "<group>";
@@ -974,7 +977,6 @@
 			isa = PBXGroup;
 			children = (
 				631595151F1391080039FBED /* MBProgressHUD-Bridging-Header.h */,
-				634AA3021F14D05900697526 /* Pay */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -1224,6 +1226,7 @@
 				638DE6121EF7B8080017DA72 /* view_userHeader.swift in Sources */,
 				635D83E61EF22B72007A2C05 /* INOScrollView.swift in Sources */,
 				63AF0E5F1EF3DC9100642DB7 /* IBHUD.swift in Sources */,
+				6370FB8E1F219780003CC6FC /* pay_channelVC.swift in Sources */,
 				635D84161EF286AE007A2C05 /* Reflect.swift in Sources */,
 				638646721EEAAC420077C6A0 /* TCellActivity.swift in Sources */,
 				635D84121EF286AE007A2C05 /* Reflect+Class.swift in Sources */,

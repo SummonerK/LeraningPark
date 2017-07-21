@@ -20,7 +20,7 @@ enum ChooseCoverActionType {
 
 protocol ChooseCoverVDelegate{
     func setAction(actionType:ChooseCoverActionType)
-    func buyNowAction(items:NSMutableDictionary)
+    func buyNowAction(items:NSMutableDictionary,count:Int)
 }
 
 class chooseVC: UIViewController {
@@ -148,7 +148,7 @@ class chooseVC: UIViewController {
     
     //支付
     @IBAction func buyNow(_ sender: Any) {
-        self.delegate?.buyNowAction(items: self.dic_menuchoose)
+        self.delegate?.buyNowAction(items: self.dic_menuchoose,count: proCount)
     }
     
 //    MARK:编辑商品数量

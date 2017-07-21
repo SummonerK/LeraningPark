@@ -53,33 +53,37 @@ class GoodsPayVC: BaseTabHiden {
         
 //        self.view.backgroundColor = FlatWhiteLight
         
-        getTotalPrice()
-        
         setNavi()
         
         tableV_main.register(UINib.init(nibName: "TCell_UserOrder", bundle: nil), forCellReuseIdentifier: "TCell_UserOrder")
         
         tableV_main.backgroundColor = FlatWhiteLight
         
+        setOrderModel()
+        
+        getTotalPrice()
     }
-    
+    //MARK:整合订单数据
     @IBAction func payNow(_ sender: Any) {
         
-        payAction()
+        sendOrder()
         
     }
     
-    //MARK:提交订单
-    
-    func sendOrder() {
+    func setOrderModel() {
         
         modelOrderC.companyId = model_goods?.companyId
         modelOrderC.shopId = PARTNERID_SHOP+"_"+(model_shop?.storeCode)!
         modelOrderC.shopName = model_shop?.storeName
         modelOrderC.userId = USERM.MemberID
-        modelOrderC.userName = USERM.UserName
-        modelOrderC.phone = USERM.Phone
-        modelOrderC.address = "地址"
+        if addressValue {
+            modelOrderC.userName = model_address.receiverName!
+            modelOrderC.phone = model_address.receiverPhone!
+            modelOrderC.address = (model_address.area ?? "请皇上，选择收货地址") + "" + (model_address.address ?? " ")
+        }
+//        modelOrderC.userName = USERM.UserName
+//        modelOrderC.phone = USERM.Phone
+//        modelOrderC.address = "地址"
         modelOrderC.longitude = "121.377436"
         modelOrderC.latitude = "31.267283"
         modelOrderC.type = 1
@@ -96,8 +100,8 @@ class GoodsPayVC: BaseTabHiden {
         let modelproduct = OrderProductItemReq()
         modelproduct.productId = model_goods?.pid
         modelproduct.productName = model_goods?.name
-        modelproduct.specification = "茶色 XL"
-        modelproduct.number = "1"
+        modelproduct.specification = model_goods?.specification
+        modelproduct.number = model_goods?.productNumber
         modelproduct.price = model_goods?.finalPrice
         modelproduct.sequence = "0"
         
@@ -112,60 +116,28 @@ class GoodsPayVC: BaseTabHiden {
         modelaccount.sequence = 0
         
         modelOrderC.accounts = [modelaccount]
-        
-        OrderM.orderCreate(amodel: modelOrderC)
-            .subscribe(onNext: { (posts: ModelOrderCreateBack) in
-                
-                PrintFM("pictureList\(posts)")
-                
-            },onError:{error in
-                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
-                }else{
-                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
-                }
-            })
-            .addDisposableTo(disposeBag)
-        
     }
     
-    //支付
+    //MARK:提交订单
     
-    func payAction() {
+    func sendOrder() {
         
-        let biz_content = "app_id=2017071207729556&biz_content=%7b%22out_trade_no%22%3a%22SHT1A1553O1336740803%22%2c%22seller_id%22%3a%22%22%2c%22total_amount%22%3a%220.01%22%2c%22subject%22%3a%22%e5%8d%8a%e7%94%9f%e7%bc%98%22%2c%22goods_detail%22%3a%5b%7b%22goods_id%22%3a%221323%22%2c%22goods_name%22%3a%22%e6%9c%aa%e7%9f%a5%e5%95%86%e5%93%81%22%2c%22quantity%22%3a%221%22%2c%22price%22%3a%2299%22%7d%5d%2c%22store_id%22%3a%22107%22%7d&charset=utf-8&method=alipay.trade.app.pay&notify_url=http%3a%2f%2f115.159.142.32%2fapi%2falipaynotify%2f1553&prod_code=QUICK_MSECURITY_PAY&sign_type=RSA&timestamp=2017-07-14+09%3a39%3a12&version=1.0&sign=NUAMMvKtQdZj8Qrdl3wRqjoFgHk5gq8UlxH4o92Qn3FuO2cyunkve3wY5EbrAvuzvc1X4p5APlRKCnmat1rmzpxREsnTKxawL8HlQs4KESk4CIaRUJkyHnATuLCGbwagcHXuJnL8Pun4sY9hx4SAjmM6O7U%2faFi1Z9nrHJC6Rlc%3d"
-        
-        AlipaySDK.defaultService().payOrder(biz_content, fromScheme: "bsy", callback: {(result) in
-            
-            //            HUDShowMsgQuick(msg: String(describing: result?.description), toView: self.view, time: 0.8)
-            
-            print("---\(String(describing: result?.description))")
-        })
-        
-//        if let oid = modelOrderBack.oid {
-//            let str = String(describing: oid)
-//            modelpayPost.orderId = str
+//        if addressValue {
+//        }else{
+//            HUDShowMsgQuick(msg: "请选择收货地址", toView: KeyWindow, time: 0.8)
 //        }
 //        
-//        modelpayPost.pay_ebcode = aliPay_ebcode
-//        
-//        OrderM.orderPay(amodel: modelpayPost)
-//            .subscribe(onNext: { (posts: modelPayPlanBack) in
-//
+//        OrderM.orderCreate(amodel: modelOrderC)
+//            .subscribe(onNext: { (posts: ModelOrderCreateBack) in
+//                
 //                PrintFM("pictureList\(posts)")
 //                
-//                if let content = posts.data{
-//                    
-//                    PrintFM("content = \(content)")
-//                    
-//                    AlipaySDK.defaultService().payOrder(content.biz_content, fromScheme: "bsy", callback: {(result) in
-//                        
-//                        HUDShowMsgQuick(msg: String(describing: result?.description), toView: self.view, time: 0.8)
-//                        
-//                        print("---\(String(describing: result?.description))")
-//                    })
-//                    
+//                if let modeldata = posts.data{
+//                    if let oid = modeldata.oid{
+//                        self.payAction(orderID: oid)
+//                    }
 //                }
+////
 //                
 //            },onError:{error in
 //                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
@@ -175,6 +147,22 @@ class GoodsPayVC: BaseTabHiden {
 //                }
 //            })
 //            .addDisposableTo(disposeBag)
+        
+        self.payAction(orderID: 81610978848932101)
+        
+    }
+    
+    //支付
+    
+    func payAction(orderID:Int) {
+        
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "pay_channelVC") as! pay_channelVC
+        
+        Vc.finalPrice = self.totalPrice
+        
+        Vc.orderID = orderID
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
         
     }
     
@@ -196,8 +184,9 @@ class GoodsPayVC: BaseTabHiden {
         if let product = modelOrderC.products {
             let proitem = product[0]
             
-            if let price = proitem.price {
-                totalPrice += price
+            if let price = proitem.price,let num = proitem.number{
+                
+                totalPrice += price * num
             }
             
         }
@@ -260,6 +249,10 @@ extension GoodsPayVC:UITableViewDataSource{
         
         self.model_address = item
         
+        self.addressValue = true
+        
+        setOrderModel()
+        
         self.tableV_main.reloadData()
     }
     
@@ -300,14 +293,13 @@ extension GoodsPayVC:UITableViewDataSource{
             let proitem = product[0]
             
             if let price = proitem.price{
-                let str = String(describing: price)
+                let str = String(describing: Int(price)!*Int(proitem.number!)!)
                 viewfooter?.label_yun.text = String.init("¥ \(String(describing: str.fixPrice()))")
             }
             
             let str_total = String(describing: totalPrice)
             viewfooter?.label_total.text = String.init("¥ \(String(describing: str_total.fixPrice()))")
         }
-        
         
         return viewfooter
     }

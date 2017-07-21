@@ -26,9 +26,6 @@ enum shopAPI {
     
 }
 
-//9998
-let baseshoppath = "http://mallservice.sandload.cn"
-
 extension shopAPI: TargetType {
 
     var parameterEncoding: ParameterEncoding {

@@ -261,13 +261,35 @@ class GoodsDetailVC: BaseTabHiden {
         self.view.sendSubview(toBack: coverNVC.view)
     }
     
-    //支付
+    //提交订单
     @IBAction func buyNow(_ sender: Any) {
         
+        let array = coverVC.dic_menuchoose.allValues as! [String]
+        
+        for item in array{
+            
+            if item == ""{
+                HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
+                return
+            }
+            
+        }
+        
+        let str = array.joined(separator: " ")
+
+        model_goods?.specification = String(describing:str)
+        model_goods?.productNumber = coverVC.proCount
+        
+        goNextOrderV()
+        
+    }
+    
+//MARK:- 前往订单页
+    func goNextOrderV() {
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
         Vc.model_shop = self.model_shop
+        Vc.model_goods = self.model_goods
         self.navigationController?.pushViewController(Vc, animated: true)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -299,11 +321,27 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
         }
     }
     
-    func buyNowAction(items:NSMutableDictionary){
+    func buyNowAction(items:NSMutableDictionary,count:Int){
         
         PrintFM("myChoose \(items)")
         
+        let array = items.allValues
+
+        for item in array{
+            
+            if item as! String == ""{
+                HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
+                return
+            }
+            
+        }
+        
+        model_goods?.specification = String(describing:items)
+        model_goods?.productNumber = count
+        
         closeCoverView()
+        
+        goNextOrderV()
     }
     
 }

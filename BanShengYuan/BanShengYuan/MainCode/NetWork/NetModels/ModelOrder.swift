@@ -76,7 +76,7 @@ class ModelOrderCreatePost: Mappable {
 class OrderProductItemReq:Mappable {
     var productId:String?           //商品id
     var productName:String?         //商品名字
-    var number:String?              //商品数量
+    var number:Int?              //商品数量
     var specification:String?       //单位
     var price:Int?               //价格
     var sequence:String?            //排序

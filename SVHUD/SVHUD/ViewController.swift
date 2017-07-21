@@ -11,9 +11,9 @@ import SVProgressHUD
 import ImageIO
 
 #if DEBUG && PRO
-let HUDMSG = "DEBug-Test"
-#elseif DEBUG && DEV
 let HUDMSG = "DEBug-Path"
+#elseif DEBUG && DEV
+let HUDMSG = "DEBug-Test"
 #else
 let HUDMSG = "DEBug-default"
 #endif
@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         
         bton_show.setTitle(HUDMSG, for: UIControlState.normal)
         

@@ -13,6 +13,7 @@ import Moya
 import Alamofire
 
 let aliPay_ebcode = "10001"
+let wxPay_ebcode = "20001"
 
 enum orderAPI {
     case test(PostModel:ModelTestPost)//测试https
@@ -25,8 +26,6 @@ enum orderAPI {
     case orderListByUser(PostModel:ModelListPageByUserPost)//MARK:分页查询用户全部订单明细
     
 }
-//9997
-let baseorderpath = "http://mallapi.sandload.cn"
 
 extension orderAPI: TargetType {
     /// The method used for parameter encoding.

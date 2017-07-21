@@ -23,7 +23,6 @@ enum vipAPI {
     case addressGetList(PostModel:ModelAddressListPost)//MARK:
 }
 
-let basevippath = "http://console.freemudvip.com/service/restful/base"
 
 extension vipAPI: TargetType {
     

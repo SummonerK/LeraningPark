@@ -12,6 +12,20 @@ import RxSwift
 import Moya
 import Alamofire
 
+//let basepath = "https://member-api-tst.sandload.cn:8735"
+let basepath = "https://member-api.sandload.cn/bsy-api"  //api
+
+//9998 shop
+//let baseshoppath = "http://mallservice.sandload.cn"
+let baseshoppath = "http://118.89.192.122:9998/"//
+
+//9997
+//let baseorderpath = "http://mallapi.sandload.cn"
+let baseorderpath = "http://118.89.192.122:9997/"
+
+//vip
+let basevippath = "http://console.freemudvip.com/service/restful/base"
+
 func jsonToDictionary(jsonString:String) -> [String:Any] {
     
     let jsonData:Data  = jsonString.data(using: .utf8)!
@@ -40,10 +54,6 @@ enum MyAPI {
     case userGetInfo(PostModel:ModelUserGetInfoPost)//MARK:个人信息设置
     case userUpdate(PostModel:ModelUserUpdateInfoPost)//MARK:个人信息设置
 }
-
-//let basepath = "https://member-api-tst.sandload.cn:8735"
-
-let basepath = "https://member-api.sandload.cn/bsy-api"
 
 extension MyAPI: TargetType {
     var baseURL: URL {

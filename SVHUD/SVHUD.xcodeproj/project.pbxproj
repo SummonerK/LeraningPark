@@ -488,7 +488,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=PRO",
 					"$(inherited)",
-					PRO,
+					"PRO=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -498,6 +498,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DPRO -DDEV";
 				SDKROOT = iphoneos;
@@ -552,6 +553,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DPRO -DDEV";
 				SDKROOT = iphoneos;
 				SVHUD_AppBundleid = SVHUD.Release;
@@ -575,6 +577,7 @@
 				INFOPLIST_FILE = SVHUD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = FreeMud.CN.SVHUD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -639,7 +642,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=DEV",
 					"$(inherited)",
-					DEV,
+					"DEV=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -649,6 +652,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DPRO -DDEV";
 				SDKROOT = iphoneos;
@@ -724,6 +728,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DPRO -DDEV";
 				SDKROOT = iphoneos;
 				SVHUD_AppBundleid = SVHUD.Release.test;
@@ -757,7 +762,7 @@
 		};
 		635529B61F20BB3F00F86846 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3DAFE024DF43B17118F21274 /* Pods-SVHUD.debug.xcconfig */;
+			baseConfigurationReference = 5BBAADD976884672B81BE06E /* Pods-SVHUD.debug-test.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_test;
 				DEVELOPMENT_TEAM = "";
@@ -768,10 +773,11 @@
 				INFOPLIST_FILE = "SVHUD copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "FreeMud.CN.SVHUD-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SWIFT_MODULE_NAME)/BridHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = SVHUD/BridHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -792,7 +798,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "FreeMud.CN.SVHUD-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SWIFT_MODULE_NAME)/BridHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = SVHUD/BridHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = "Debug-test";
@@ -813,7 +819,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "FreeMud.CN.SVHUD-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SWIFT_MODULE_NAME)/BridHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = SVHUD/BridHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -834,7 +840,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "FreeMud.CN.SVHUD-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SWIFT_MODULE_NAME)/BridHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = SVHUD/BridHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release_test;
@@ -851,7 +857,7 @@
 				635529361F209AC900F86846 /* Release_test */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		635325FC1F1F60170043C0F0 /* Build configuration list for PBXNativeTarget "SVHUD" */ = {
 			isa = XCConfigurationList;
@@ -862,7 +868,7 @@
 				635529371F209AC900F86846 /* Release_test */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		635529B51F20BB3F00F86846 /* Build configuration list for PBXNativeTarget "SVHUD copy" */ = {
 			isa = XCConfigurationList;
@@ -873,7 +879,7 @@
 				635529B91F20BB3F00F86846 /* Release_test */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
