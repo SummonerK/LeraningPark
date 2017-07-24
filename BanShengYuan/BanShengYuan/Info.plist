@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>半生缘</string>
+	<string>场景</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -27,7 +27,15 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>bsy</string>
+				<string>bsy_al</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>bsy_wx</string>
 			</array>
 		</dict>
 	</array>

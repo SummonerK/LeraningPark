@@ -5,3 +5,7 @@
 #import <UIKit/UIKit.h>
 #import <AlipaySDK/AlipaySDK.h>
 #import "MJRefresh/MJRefresh.h"	
+
+//wechat
+#import "WXApi.h"
+#import "WXApiObject.h"

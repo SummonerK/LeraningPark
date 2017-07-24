@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0071301C2BA22961CE9B1957 /* Pods_SVHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F824AFC265EF2413E0612 /* Pods_SVHUD.framework */; };
 		053EC890EE61308CAE9CFCDB /* Pods_SVHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F824AFC265EF2413E0612 /* Pods_SVHUD.framework */; };
 		250C27FDF1DA8E71E7D8138E /* Pods_SVHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F824AFC265EF2413E0612 /* Pods_SVHUD.framework */; };
 		635325EB1F1F60170043C0F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635325EA1F1F60170043C0F0 /* AppDelegate.swift */; };
@@ -23,8 +24,6 @@
 		635529A31F20BB3F00F86846 /* SVHUD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 635325F11F1F60170043C0F0 /* SVHUD.xcdatamodeld */; };
 		635529A41F20BB3F00F86846 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635325EC1F1F60170043C0F0 /* ViewController.swift */; };
 		635529A51F20BB3F00F86846 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635325EA1F1F60170043C0F0 /* AppDelegate.swift */; };
-		635529A71F20BB3F00F86846 /* Pods_SVHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F824AFC265EF2413E0612 /* Pods_SVHUD.framework */; };
-		635529A81F20BB3F00F86846 /* Pods_SVHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F824AFC265EF2413E0612 /* Pods_SVHUD.framework */; };
 		635529AA1F20BB3F00F86846 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 635325F61F1F60170043C0F0 /* LaunchScreen.storyboard */; };
 		635529AB1F20BB3F00F86846 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 635529421F20A5BA00F86846 /* Configuration.plist */; };
 		635529AC1F20BB3F00F86846 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 635529461F20A5BA00F86846 /* Configuration.plist */; };
@@ -57,9 +56,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0F8BA1CE5FB26C004AD2E2CC /* Pods-SVHUD.release_test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVHUD.release_test.xcconfig"; path = "Pods/Target Support Files/Pods-SVHUD/Pods-SVHUD.release_test.xcconfig"; sourceTree = "<group>"; };
 		3DAFE024DF43B17118F21274 /* Pods-SVHUD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVHUD.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SVHUD/Pods-SVHUD.debug.xcconfig"; sourceTree = "<group>"; };
-		5BBAADD976884672B81BE06E /* Pods-SVHUD.debug-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVHUD.debug-test.xcconfig"; path = "Pods/Target Support Files/Pods-SVHUD/Pods-SVHUD.debug-test.xcconfig"; sourceTree = "<group>"; };
+		3ED6F2B459C14D6954C4A091 /* Pods-SVHUD.debug-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVHUD.debug-test.xcconfig"; path = "Pods/Target Support Files/Pods-SVHUD/Pods-SVHUD.debug-test.xcconfig"; sourceTree = "<group>"; };
+		4A66F71A24152A793CF26A28 /* Pods-SVHUD.release_test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVHUD.release_test.xcconfig"; path = "Pods/Target Support Files/Pods-SVHUD/Pods-SVHUD.release_test.xcconfig"; sourceTree = "<group>"; };
 		635325E71F1F60170043C0F0 /* SVHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		635325EA1F1F60170043C0F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		635325EC1F1F60170043C0F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,8 +75,8 @@
 		635529481F20A5BA00F86846 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		635529BA1F20BB3F00F86846 /* SVHUD copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SVHUD copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		635529BB1F20BB4000F86846 /* SVHUD copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SVHUD copy-Info.plist"; path = "/Users/luofei/Repository/LeraningPark/SVHUD/SVHUD copy-Info.plist"; sourceTree = "<absolute>"; };
+		76A278AD903574422E040D88 /* Pods-SVHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVHUD.release.xcconfig"; path = "Pods/Target Support Files/Pods-SVHUD/Pods-SVHUD.release.xcconfig"; sourceTree = "<group>"; };
 		813F824AFC265EF2413E0612 /* Pods_SVHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SVHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E331EDF79FA8367BFBFBB4CD /* Pods-SVHUD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVHUD.release.xcconfig"; path = "Pods/Target Support Files/Pods-SVHUD/Pods-SVHUD.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +86,7 @@
 			files = (
 				053EC890EE61308CAE9CFCDB /* Pods_SVHUD.framework in Frameworks */,
 				250C27FDF1DA8E71E7D8138E /* Pods_SVHUD.framework in Frameworks */,
+				0071301C2BA22961CE9B1957 /* Pods_SVHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				635529A71F20BB3F00F86846 /* Pods_SVHUD.framework in Frameworks */,
-				635529A81F20BB3F00F86846 /* Pods_SVHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,9 +192,9 @@
 			isa = PBXGroup;
 			children = (
 				3DAFE024DF43B17118F21274 /* Pods-SVHUD.debug.xcconfig */,
-				5BBAADD976884672B81BE06E /* Pods-SVHUD.debug-test.xcconfig */,
-				E331EDF79FA8367BFBFBB4CD /* Pods-SVHUD.release.xcconfig */,
-				0F8BA1CE5FB26C004AD2E2CC /* Pods-SVHUD.release_test.xcconfig */,
+				3ED6F2B459C14D6954C4A091 /* Pods-SVHUD.debug-test.xcconfig */,
+				76A278AD903574422E040D88 /* Pods-SVHUD.release.xcconfig */,
+				4A66F71A24152A793CF26A28 /* Pods-SVHUD.release_test.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -229,12 +227,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 635529B51F20BB3F00F86846 /* Build configuration list for PBXNativeTarget "SVHUD copy" */;
 			buildPhases = (
-				635529A11F20BB3F00F86846 /* [CP] Check Pods Manifest.lock */,
 				635529A21F20BB3F00F86846 /* Sources */,
 				635529A61F20BB3F00F86846 /* Frameworks */,
 				635529A91F20BB3F00F86846 /* Resources */,
-				635529B21F20BB3F00F86846 /* [CP] Embed Pods Frameworks */,
-				635529B31F20BB3F00F86846 /* [CP] Copy Pods Resources */,
 				635529B41F20BB3F00F86846 /* CopyFiles */,
 			);
 			buildRules = (
@@ -319,51 +314,6 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		391F0EA830BA40A04C17D433 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SVHUD/Pods-SVHUD-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		635529A11F20BB3F00F86846 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		635529B21F20BB3F00F86846 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SVHUD/Pods-SVHUD-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		635529B31F20BB3F00F86846 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -588,7 +538,7 @@
 		};
 		635325FE1F1F60170043C0F0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E331EDF79FA8367BFBFBB4CD /* Pods-SVHUD.release.xcconfig */;
+			baseConfigurationReference = 76A278AD903574422E040D88 /* Pods-SVHUD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
@@ -666,7 +616,7 @@
 		};
 		635529351F209AB900F86846 /* Debug-test */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BBAADD976884672B81BE06E /* Pods-SVHUD.debug-test.xcconfig */;
+			baseConfigurationReference = 3ED6F2B459C14D6954C4A091 /* Pods-SVHUD.debug-test.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_test;
 				DEVELOPMENT_TEAM = "";
@@ -741,7 +691,7 @@
 		};
 		635529371F209AC900F86846 /* Release_test */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F8BA1CE5FB26C004AD2E2CC /* Pods-SVHUD.release_test.xcconfig */;
+			baseConfigurationReference = 4A66F71A24152A793CF26A28 /* Pods-SVHUD.release_test.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_test;
 				DEVELOPMENT_TEAM = "";
@@ -762,7 +712,6 @@
 		};
 		635529B61F20BB3F00F86846 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BBAADD976884672B81BE06E /* Pods-SVHUD.debug-test.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_test;
 				DEVELOPMENT_TEAM = "";
@@ -784,7 +733,6 @@
 		};
 		635529B71F20BB3F00F86846 /* Debug-test */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BBAADD976884672B81BE06E /* Pods-SVHUD.debug-test.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_test;
 				DEVELOPMENT_TEAM = "";
@@ -805,7 +753,6 @@
 		};
 		635529B81F20BB3F00F86846 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E331EDF79FA8367BFBFBB4CD /* Pods-SVHUD.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_test;
 				DEVELOPMENT_TEAM = "";
@@ -826,7 +773,6 @@
 		};
 		635529B91F20BB3F00F86846 /* Release_test */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F8BA1CE5FB26C004AD2E2CC /* Pods-SVHUD.release_test.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_test;
 				DEVELOPMENT_TEAM = "";

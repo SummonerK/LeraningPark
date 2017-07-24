@@ -276,9 +276,12 @@ class GoodsDetailVC: BaseTabHiden {
         }
         
         let str = array.joined(separator: " ")
-
         model_goods?.specification = String(describing:str)
         model_goods?.productNumber = coverVC.proCount
+        
+        PrintFM("productID = \(coverVC.getChoosedGoodsID())")
+        
+        model_goods?.pid = "\(coverVC.getChoosedGoodsID())"
         
         goNextOrderV()
         
@@ -286,6 +289,7 @@ class GoodsDetailVC: BaseTabHiden {
     
 //MARK:- 前往订单页
     func goNextOrderV() {
+        
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
         Vc.model_shop = self.model_shop
         Vc.model_goods = self.model_goods
@@ -342,6 +346,10 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
         model_goods?.productNumber = count
         
         closeCoverView()
+        
+        PrintFM("productID = \(coverVC.getChoosedGoodsID())")
+        
+        model_goods?.pid = "\(coverVC.getChoosedGoodsID())"
         
         goNextOrderV()
     }

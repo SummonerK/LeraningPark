@@ -13,7 +13,7 @@ import Moya
 import Alamofire
 
 let aliPay_ebcode = "10001"
-let wxPay_ebcode = "20001"
+let wxPay_ebcode = "10004"
 
 enum orderAPI {
     case test(PostModel:ModelTestPost)//测试https

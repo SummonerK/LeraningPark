@@ -13,7 +13,7 @@ import IQKeyboardManagerSwift
 
 @available(iOS 10.0, *)
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
 
     var window: UIWindow?
 
@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        PrintFM("\(String(describing: url.host))")
 //        
-        if url.host == "bsy" {
+        if url.host == "bsy_al" {
         
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (dic) in
                 PrintFM("Paypaypay\(String(describing: dic))")
@@ -67,8 +67,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         }
         
+        if url.scheme == "bsy_wx" {
+            return WXApi.handleOpen(url, delegate: self)
+        }
+        
+        
         return true
     }
+    
+    //MARK:-微信支付结果
+    func onResp(_ resp: BaseResp!) {
+        if resp.isKind(of: PayResp.self) {
+            switch resp.errCode {
+            case 0 :
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "WXorderNotifation"), object: nil)
+            case -1 :
+//                HUDShowMsgQuick(msg: "支付失败", toView: KeyWindow, time: 0.8)
+                
+                HUDtextShow(toview: KeyWindow, msg: "支付失败", subMsg: resp.errStr)
+            case -2 :
+                HUDShowMsgQuick(msg: "取消支付", toView: KeyWindow, time: 0.8)
+            default:
+//                HUDShowMsgQuick(msg: "支付失败", toView: KeyWindow, time: 0.8)
+                
+                HUDtextShow(toview: KeyWindow, msg: "支付失败", subMsg: resp.errStr)
+            }
+        }
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

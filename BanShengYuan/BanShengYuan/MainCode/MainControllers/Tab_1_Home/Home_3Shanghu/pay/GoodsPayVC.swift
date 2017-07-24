@@ -108,7 +108,7 @@ class GoodsPayVC: BaseTabHiden {
         modelOrderC.products = [modelproduct]
         
         let modelaccount = OrderAccountItemReq()
-        modelaccount.accountId = "account-1"
+        modelaccount.accountId = "20001"
         modelaccount.name = "运费"
         modelaccount.type = "1"
         modelaccount.price = "500"
@@ -124,27 +124,28 @@ class GoodsPayVC: BaseTabHiden {
         
         if addressValue {
 
-//        OrderM.orderCreate(amodel: modelOrderC)
-//            .subscribe(onNext: { (posts: ModelOrderCreateBack) in
-//
-//                PrintFM("pictureList\(posts)")
-//
-//                if let modeldata = posts.data{
-//                    if let oid = modeldata.oid{
-//                        self.payAction(orderID: oid)
-//                    }
-//                }
-//
-//            },onError:{error in
-//                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-//                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
-//                }else{
-//                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
-//                }
-//            })
-//            .addDisposableTo(disposeBag)
+            OrderM.orderCreate(amodel: modelOrderC)
+                .subscribe(onNext: { (posts: ModelOrderCreateBack) in
+
+                    PrintFM("pictureList\(posts)")
+
+                    if let modeldata = posts.data{
+                        if let oid = modeldata.oid{
+                            self.payAction(orderID: oid)
+                        }
+                    }
+
+                },onError:{error in
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    }
+                })
+                .addDisposableTo(disposeBag)
             
-            self.payAction(orderID: 81610978848932101)
+//            self.payAction(orderID: 81610978848932101)
+            
         }else{
             HUDShowMsgQuick(msg: "请选择收货地址", toView: KeyWindow, time: 0.8)
         }

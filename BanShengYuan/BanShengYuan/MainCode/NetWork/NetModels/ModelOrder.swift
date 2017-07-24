@@ -295,7 +295,7 @@ class ModelorderPay: Mappable {
     var pay_acount: String?//支付账户
     var pay_ebcode: String?//支付方式描述
     var pay_id: String?//返回支付信息
-    var pay_order: String?//返回支付信息
+    var pay_order: ModelorderWXItem?//微信支付model信息
     
     var pay_transId: String?//支付账户
     var statusCode: String?//支付方式描述
@@ -315,6 +315,43 @@ class ModelorderPay: Mappable {
         
         pay_transId <- map["pay_transId"]
         statusCode <- map["statusCode"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+class ModelorderWXItem: Mappable {
+    var appid: String?
+    var mch_id: String?
+    var nonce_str: String?
+    var package: String?
+    
+    var prepay_id: String?
+    var sign: String?
+    var pay_id: String?
+    var timestamp: String?
+    
+    var trade_type: String?
+
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        appid <- map["appid"]
+        mch_id <- map["mch_id"]
+        nonce_str <- map["nonce_str"]
+        package <- map["package"]
+        
+        prepay_id <- map["prepay_id"]
+        sign <- map["sign"]
+        pay_id <- map["pay_id"]
+        timestamp <- map["timestamp"]
+        
+        trade_type <- map["trade_type"]
         
     }
     

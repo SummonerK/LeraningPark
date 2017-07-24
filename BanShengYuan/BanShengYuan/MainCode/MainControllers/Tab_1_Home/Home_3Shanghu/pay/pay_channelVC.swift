@@ -36,8 +36,23 @@ class pay_channelVC: UIViewController {
         setNavi()
 
         setPageValue()
+        
+        //注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(action(notification:)), name: NSNotification.Name(rawValue: "WXorderNotifation"), object: nil)
     
         // Do any additional setup after loading the view.
+    }
+    
+    deinit {
+        //注销通知
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "WXorderNotifation"), object: nil)
+    }
+    
+    //通知内容接收
+    func action(notification: NSNotification) {
+        
+        PrintFM("微信支付成功")
+        
     }
     
     func setPageValue() {
@@ -69,7 +84,6 @@ class pay_channelVC: UIViewController {
     @IBAction func actionWXPay(_ sender: Any) {
         
         HUDShowMsgQuick(msg: "微信支付尚未开放", toView: KeyWindow, time: 0.8)
-        
         return
         
         payChanel = 2
@@ -108,6 +122,7 @@ class pay_channelVC: UIViewController {
         if let oid = self.orderID{
             
             modelpayPost.orderId = "\(oid)"
+            
         }
     
         
@@ -120,30 +135,54 @@ class pay_channelVC: UIViewController {
                 if let content = posts.data{
 
                     PrintFM("content = \(content)")
-
-                    AlipaySDK.defaultService().payOrder(content.biz_content, fromScheme: "bsy", callback: {(result) in
+                    
+                    //支付宝支付
+                    if self.payChanel == 1{
                         
-                        if let resulttemp = result{
-                            if let status = resulttemp["resultStatus"]{
-                                PrintFM(status)
-                                
-                                var str = String()
-                                
-                                if (status as! String) == "9000"{
-                                    str = "支付成功"
-                                }else if (status as! String) == "8000"{
-                                    str = "支付确认中"
-                                }else{
-                                    str = "支付失败"
+                        AlipaySDK.defaultService().payOrder(content.biz_content, fromScheme: "bsy", callback: {(result) in
+                            
+                            if let resulttemp = result{
+                                if let status = resulttemp["resultStatus"]{
+                                    PrintFM(status)
+                                    
+                                    var str = String()
+                                    
+                                    if (status as! String) == "9000"{
+                                        str = "支付成功"
+                                    }else if (status as! String) == "8000"{
+                                        str = "支付确认中"
+                                    }else{
+                                        str = "支付失败"
+                                    }
+                                    
+                                    HUDShowMsgQuick(msg: str, toView: self.view, time: 0.8)
+                                    
                                 }
-                                
-                                HUDShowMsgQuick(msg: str, toView: self.view, time: 0.8)
-                                
                             }
-                        }
+                            
+                            print("---\(String(describing: result?.description))")
+                        })
+                    }
 
-                        print("---\(String(describing: result?.description))")
-                    })
+                    //支付宝支付
+                    if self.payChanel == 2{
+                        
+                        if let wxorder = content.pay_order{
+                            
+                            let paypost:PayReq = PayReq.init()
+                            paypost.openID = wxorder.appid!
+                            paypost.partnerId = "\(wxorder.mch_id!)"
+                            paypost.prepayId = wxorder.prepay_id!
+                            paypost.package = "\(wxorder.package!)"
+                            paypost.nonceStr = wxorder.nonce_str!
+                            paypost.timeStamp = UInt32(wxorder.timestamp!)!
+                            paypost.sign = wxorder.sign!
+                            WXApi.send(paypost)
+                            
+                        }
+                        
+                    }
+                    
 
                 }
 

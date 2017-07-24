@@ -17,11 +17,11 @@ let basepath = "https://member-api.sandload.cn/bsy-api"  //api
 
 //9998 shop
 //let baseshoppath = "http://mallservice.sandload.cn"
-let baseshoppath = "http://118.89.192.122:9998/"//
+let baseshoppath = "http://118.89.192.122:9998"
 
 //9997
 //let baseorderpath = "http://mallapi.sandload.cn"
-let baseorderpath = "http://118.89.192.122:9997/"
+let baseorderpath = "http://118.89.192.122:9997"
 
 //vip
 let basevippath = "http://console.freemudvip.com/service/restful/base"

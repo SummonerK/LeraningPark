@@ -136,7 +136,6 @@ class chooseVC: UIViewController {
             })
             .addDisposableTo(disposeBag)
         
-        
     }
     
     
@@ -267,6 +266,37 @@ class chooseVC: UIViewController {
         }
         
         
+        
+    }
+    
+    //筛选符合规格商品goodsID
+    
+    func getChoosedGoodsID() -> Int {
+        
+        let array = self.dic_menuchoose.allKeys as! [String]
+        
+        for i in 0...array_prospec.count-1{
+            
+            let dic = array_prospec[i] as! NSDictionary
+            
+            for item in 0...array.count-1{
+                
+                let key = array[item]
+                
+                if (self.dic_menuchoose[key] as! String) == (dic[key] as! String){
+                    if item == array.count-1 {
+                        
+                        return (dic["productId"] as! Int)
+                    }else{
+                        continue
+                    }
+                }
+                
+            }
+ 
+        }
+        
+        return 0
         
     }
 

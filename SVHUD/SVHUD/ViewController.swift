@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 import ImageIO
 
-#if DEBUG && PRO
+#if DEBUG && PRO 
 let HUDMSG = "DEBug-Path"
 #elseif DEBUG && DEV
 let HUDMSG = "DEBug-Test"

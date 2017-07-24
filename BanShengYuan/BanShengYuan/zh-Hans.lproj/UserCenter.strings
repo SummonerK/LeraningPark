@@ -68,8 +68,8 @@
 /* Class = "UIViewController"; title = "编辑性别"; ObjectID = "jge-ea-Gvr"; */
 "jge-ea-Gvr.title" = "编辑性别";
 
-/* Class = "UILabel"; text = "半生缘"; ObjectID = "qpB-nf-Ohm"; */
-"qpB-nf-Ohm.text" = "半生缘";
+/* Class = "UILabel"; text = "场景"; ObjectID = "qpB-nf-Ohm"; */
+"qpB-nf-Ohm.text" = "场景";
 
 /* Class = "UILabel"; text = "详细地址"; ObjectID = "rtJ-Ul-9cg"; */
 "rtJ-Ul-9cg.text" = "详细地址";

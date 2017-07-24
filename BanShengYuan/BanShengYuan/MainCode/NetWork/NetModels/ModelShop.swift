@@ -98,7 +98,6 @@ class ModelShopDetailItem: Mappable {
 class ModelMenuSpecItem: Mappable {
     var partName: String?
     var value: [String]?
-    var productId: [String]?
     
     init() {
         
