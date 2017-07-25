@@ -39,6 +39,7 @@ class chooseVC: UIViewController {
     
     //数量
     var proCount:Int = 1
+    var productid:Int = 0
     
     @IBOutlet weak var viewAdd: UIView!
     
@@ -77,6 +78,8 @@ class chooseVC: UIViewController {
     func getMeun(productid:String) {
         
         modelMenupost.productId = productid
+        
+        self.productid = productid.intValue!
         
         VipM.shopGetDetailMenus(amodel: modelMenupost)
             .subscribe(onNext: { (posts: ModelShopDetailDetaiMenuItem) in
@@ -274,6 +277,12 @@ class chooseVC: UIViewController {
     func getChoosedGoodsID() -> Int {
         
         let array = self.dic_menuchoose.allKeys as! [String]
+        
+        if array_prospec.count > 0 {
+            
+        }else{
+            return self.productid
+        }
         
         for i in 0...array_prospec.count-1{
             

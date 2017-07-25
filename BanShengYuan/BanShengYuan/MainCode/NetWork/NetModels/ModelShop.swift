@@ -56,6 +56,7 @@ class ModelShopDetailItem: Mappable {
     var unit: String?
     var productNumber: Int?
     
+    var remark: String?
     var productSpecification: [NSDictionary]?
     var specificationList: [ModelMenuSpecItem]?
     
@@ -83,7 +84,7 @@ class ModelShopDetailItem: Mappable {
         unit <- map["unit"]
         
         productNumber <- map["productNumber"]
-        
+        remark <- map["remark"]
         productSpecification <- map["productSpecification"]
         specificationList <- map["specificationList"]
         

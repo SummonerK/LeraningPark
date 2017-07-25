@@ -95,7 +95,7 @@ class GoodsPayVC: BaseTabHiden {
         modelOrderC.source = "ios app"
         modelOrderC.partition = ""
         modelOrderC.customerOrder = "BSY".OrderIDFromtimeSP
-        modelOrderC.remark = ""
+        modelOrderC.remark = model_goods?.remark
         
         let modelproduct = OrderProductItemReq()
         modelproduct.productId = model_goods?.pid
@@ -277,7 +277,9 @@ extension GoodsPayVC:UITableViewDataSource{
 //            viewheader?.label_orderid.text = str
 //        }
         
-        viewheader?.label_name_phone.text = (model_address.receiverName ?? "请皇上，选择收货人") + " " + (model_address.receiverPhone ?? " ")
+        if let sectoryPhone = model_address.receiverPhone{
+            viewheader?.label_name_phone.text = (model_address.receiverName ?? "请皇上，选择收货人") + " " + (sectoryPhone.sectoryPhone)
+        }
         
         viewheader?.label_address.text = (model_address.area ?? "请皇上，选择收货地址") + "" + (model_address.address ?? " ")
         
@@ -324,7 +326,19 @@ extension GoodsPayVC:UITableViewDataSource{
         if let product = modelOrderC.products {
             let proitem = product[0] 
             cell.label_name.text = proitem.productName
-            cell.lable_labels.text = proitem.specification
+//            cell.lable_labels.text = proitem.specification
+            
+            let str = NSMutableString()
+            
+            if let sp = model_goods?.productNumber {
+                
+                str.append((model_goods?.remark ?? ""))
+                str.append((model_goods?.specification ?? ""))
+                str.append(" \(sp)")
+                str.append((model_goods?.unit ?? ""))
+                
+                cell.lable_labels.text = str as String
+            }
             
             if let price = proitem.price {
                 let str = String(describing: price)

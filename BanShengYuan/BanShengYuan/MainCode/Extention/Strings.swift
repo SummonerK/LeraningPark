@@ -183,6 +183,15 @@ extension String{
         return strSize
     }
     
+    var sectoryPhone:String{
+        
+        let a = NSString(string:self)
+        let myNSRange = NSRange(location: 3, length: 4)
+        let str = a.replacingCharacters(in: myNSRange, with: "****")
+        
+        return str
+    }
+    
     
     
 }
