@@ -182,6 +182,9 @@
 		63AF0E5F1EF3DC9100642DB7 /* IBHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF0E5E1EF3DC9100642DB7 /* IBHUD.swift */; };
 		63D7872B1F03B41400937135 /* IBCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7872A1F03B41400937135 /* IBCollectionViewFlowLayout.swift */; };
 		63EC60391EF10DAB001F56D8 /* NextPages_FromHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EC60371EF10DAB001F56D8 /* NextPages_FromHome.storyboard */; };
+		63F883471F28773D00F556CC /* CCellTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F883451F28773D00F556CC /* CCellTop.swift */; };
+		63F883481F28773D00F556CC /* CCellTop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F883461F28773D00F556CC /* CCellTop.xib */; };
+		63F8834B1F289EE200F556CC /* aboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F8834A1F289EE200F556CC /* aboutUsVC.swift */; };
 		88F9197225FFA7C0201230C0 /* Pods_BanShengYuan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AAF75A0826C20B886A2998A /* Pods_BanShengYuan.framework */; };
 /* End PBXBuildFile section */
 
@@ -374,6 +377,9 @@
 		63AF0E5E1EF3DC9100642DB7 /* IBHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBHUD.swift; sourceTree = "<group>"; };
 		63D7872A1F03B41400937135 /* IBCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		63EC60381EF10DAB001F56D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NextPages_FromHome.storyboard; sourceTree = "<group>"; };
+		63F883451F28773D00F556CC /* CCellTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCellTop.swift; sourceTree = "<group>"; };
+		63F883461F28773D00F556CC /* CCellTop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellTop.xib; sourceTree = "<group>"; };
+		63F8834A1F289EE200F556CC /* aboutUsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = aboutUsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -647,6 +653,8 @@
 		6361C6381F0CDE0600E0D405 /* orderList */ = {
 			isa = PBXGroup;
 			children = (
+				63F883451F28773D00F556CC /* CCellTop.swift */,
+				63F883461F28773D00F556CC /* CCellTop.xib */,
 				6355CEA51F27272A004707B7 /* user_orderRootVC.swift */,
 				6361C63B1F0CDE0600E0D405 /* user_OrderVC.swift */,
 				6361C6391F0CDE0600E0D405 /* TCell_UserOrder.swift */,
@@ -755,6 +763,7 @@
 				63020C321EFD0236003F8199 /* User_1orderVC */,
 				633D59B41F0E519D0068B351 /* User_2addressVC */,
 				638DE6081EF7B8080017DA72 /* User_3infoVC */,
+				63F883491F289EB300F556CC /* User_4aboutus */,
 			);
 			path = Tab_3_UserCenter;
 			sourceTree = "<group>";
@@ -996,6 +1005,14 @@
 			name = StoryBoards;
 			sourceTree = "<group>";
 		};
+		63F883491F289EB300F556CC /* User_4aboutus */ = {
+			isa = PBXGroup;
+			children = (
+				63F8834A1F289EE200F556CC /* aboutUsVC.swift */,
+			);
+			path = User_4aboutus;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1079,6 +1096,7 @@
 				638DE6051EF7B7390017DA72 /* UserCenter.storyboard in Resources */,
 				6385363B1EE7A1F800DB7BA1 /* LaunchScreen.storyboard in Resources */,
 				638646731EEAAC420077C6A0 /* TCellActivity.xib in Resources */,
+				63F883481F28773D00F556CC /* CCellTop.xib in Resources */,
 				6321237E1F0B403A00DA9B5C /* NextPageActivity.storyboard in Resources */,
 				638DE5FA1EF76BEF0017DA72 /* demo.gif in Resources */,
 				6361C66D1F0CFA0600E0D405 /* TCellOrderInfo.xib in Resources */,
@@ -1205,8 +1223,10 @@
 				639F6AE01F18680E00BE860A /* TCellPayAddress.swift in Sources */,
 				635D83E21EF226BA007A2C05 /* XHAdLoopView.swift in Sources */,
 				638F18531EF1137D00A33412 /* Home_pVip.swift in Sources */,
+				63F8834B1F289EE200F556CC /* aboutUsVC.swift in Sources */,
 				638F184F1EF1135500A33412 /* Home_pParking.swift in Sources */,
 				6362C0271EF9174700B22CE5 /* TCell_info.swift in Sources */,
+				63F883471F28773D00F556CC /* CCellTop.swift in Sources */,
 				634F63FF1F0E172A00DE4B92 /* API.swift in Sources */,
 				636636121F05057C0060E7D4 /* View_payHeader.swift in Sources */,
 				6361C66C1F0CFA0600E0D405 /* TCellOrderInfo.swift in Sources */,
@@ -1492,7 +1512,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = changjingdev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "356cab06-3f42-4c3a-9292-349583824f53";
+				PROVISIONING_PROFILE = "4337965d-e151-4941-8005-e32bddef5cd2";
 				PROVISIONING_PROFILE_SPECIFIER = changjingdev;
 				SWIFT_OBJC_BRIDGING_HEADER = "BanShengYuan/MainCode/ThirdSource/MBProgressHUD/MBProgressHUD-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

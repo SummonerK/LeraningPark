@@ -29,20 +29,39 @@ let msg = ""
 
 let space = 8
 
+/// 屏幕高度
+let IBScreenHeight = UIScreen.main.bounds.size.height;
+/// 屏幕宽度
+let IBScreenWidth = UIScreen.main.bounds.size.width;
+
 func FontLabelPFLight(size:CGFloat)->UIFont{
     
     return UIFont(name: "PingFangSC-Light", size: size)!
     
 }
 
+func AnyColor(alpha:CGFloat)->UIColor{
+    let anycolor = UIColor.init(hue: (CGFloat(Float(arc4random()%256) / 256.0)), saturation: (CGFloat(Float(arc4random()%256) / 256.0)), brightness: (CGFloat(Float(arc4random()%256) / 256.0)), alpha: alpha)
+    return anycolor
+}
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController{
 
     @IBOutlet weak var label_msg: UILabel!
     @IBOutlet weak var collectionView_top: UICollectionView!
-    @IBOutlet weak var view_content: UIView!
+    @IBOutlet weak var scrollV_content: UIScrollView!
     
     var view_undleLine: UIView!
+    
+    var Page:Int = 0{
+        willSet{
+            print("Page willSet \(Page)")
+        }
+        didSet{
+            print("Page didSet \(Page)")
+        }
+    }
     
     
     let array:[String] = ["科学","今日头条","海外趣闻","生化工程科学篇","诗","今日头条","海外趣闻","生化工程科学篇","诗"]
@@ -54,6 +73,8 @@ class ViewController: UIViewController {
         
         setupCollectionView()
         
+        setScrollViewMain()
+        
     }
                 
     @IBAction func printSomething(_ sender: Any) {
@@ -62,6 +83,8 @@ class ViewController: UIViewController {
         
     }
     
+    
+//    设置标题silider
     func setupCollectionView() {
         
         // 1.自定义 Item 的FlowLayout
@@ -92,6 +115,18 @@ class ViewController: UIViewController {
         collectionView_top.addSubview(view_undleLine)
         
     }
+    
+//    设置内容页面
+    func setScrollViewMain(){
+        scrollV_content.contentSize = CGSize.init(width: IBScreenWidth*CGFloat(array.count), height: 210)
+        
+        for num in 1...array.count{
+            let view = UIView.init(frame: CGRect.init(x: IBScreenWidth*CGFloat(num-1), y: 0, width: IBScreenWidth, height: 210))
+            view.backgroundColor = AnyColor(alpha: 0.9)
+            scrollV_content.addSubview(view)
+            
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,41 +136,70 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController:UIScrollViewDelegate{
+    
+    func scrollviewScroll(toPage:Int){
+        scrollV_content.scrollRectToVisible(CGRect.init(x: CGFloat(toPage) * IBScreenWidth, y: 0, width: IBScreenWidth, height: 210), animated: false)
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    {
+        
+        if scrollView == scrollV_content{
+            
+            let offsetX = scrollView.contentOffset.x
+            
+            print("offsetX = \(offsetX) ")
+            
+            let page = Int(offsetX)/375
+            
+            if page == Page {
+                return
+            }else{
+                Page = page
+                
+                topScroll(toItem: Page)
+            }
+            
+            
+        }
+        
+    }
+}
+
 extension ViewController:UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        
-//        collectionView_top.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
-        
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
-        print("\(indexPath.row)")
-        
-        topScroll(toItem: indexPath.row)
-        
+        scrollviewScroll(toPage: indexPath.row)
     }
     
     func topScroll(toItem:Int){
         
         let indexPath = IndexPath.init(row: toItem, section: 0)
         
+        self.collectionView_top.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
         let cell = collectionView_top.cellForItem(at: indexPath)
         
-        let rect = collectionView_top.convert((cell?.frame)!, from: collectionView_top)
-        
-        let size = array[toItem].getLabSize(font: FontLabelPFLight(size: 14))
-        
-        let width:Int = Int(size.width) + 20
-        
-        UIView.animate(withDuration: 0.4) {
+        if let frame = cell?.frame{
             
-            self.view_undleLine.frame.size.width = CGFloat(width-space*2)
+            let rect = collectionView_top.convert(frame, from: collectionView_top)
             
-            self.view_undleLine.frame.origin.x = rect.origin.x + CGFloat(space)
+            let size = array[toItem].getLabSize(font: FontLabelPFLight(size: 14))
             
-            self.view.layoutIfNeeded()
+            let width:Int = Int(size.width) + 20
+            
+            UIView.animate(withDuration: 0.4) {
+                
+                self.view_undleLine.frame.size.width = CGFloat(width-space*2)
+                
+                self.view_undleLine.frame.origin.x = rect.origin.x + CGFloat(space)
+                
+                self.view.layoutIfNeeded()
+            }
         }
-        
+
     }
     
 }

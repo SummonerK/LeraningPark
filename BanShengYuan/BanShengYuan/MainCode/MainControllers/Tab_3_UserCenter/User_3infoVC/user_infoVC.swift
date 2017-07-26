@@ -80,6 +80,7 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
             
             closePicker()
         }
+        
     }
     func setNavi() {
         
@@ -90,7 +91,7 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
         
         self.navigationItem.title = "个人信息"
         
-        getInfoData()
+//        getInfoData()
     }
     
     func actionBack(_ sender: Any) {

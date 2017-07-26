@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
         
 //        PrintFM("\(String(describing: url.host))")
 //        
-        if url.host == "bsy_al" {
+        if url.host == "bsyal" {
         
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (dic) in
                 PrintFM("Paypaypay\(String(describing: dic))")
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
         
         }
         
-        if url.scheme == "bsy_wx" {
+        if url.scheme == "bsywx" {
             return WXApi.handleOpen(url, delegate: self)
         }
         

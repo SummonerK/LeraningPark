@@ -22,3 +22,9 @@ let FlatLocalBlack = UIColor(hexString: "#999999")
 let FlatLocalLight = UIColor(hexString: "#EDEDED")
 let FlatLocalGray = UIColor(hexString: "#CFCDCD")
 
+
+func AnyColor(alpha:CGFloat)->UIColor{
+    let anycolor = UIColor.init(hue: (CGFloat(Float(arc4random()%256) / 256.0)), saturation: (CGFloat(Float(arc4random()%256) / 256.0)), brightness: (CGFloat(Float(arc4random()%256) / 256.0)), alpha: alpha)
+    return anycolor
+}
+

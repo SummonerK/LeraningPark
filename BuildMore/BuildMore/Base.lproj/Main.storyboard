@@ -73,8 +73,8 @@
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LMl-dJ-KY7">
-                                <rect key="frame" x="0.0" y="114" width="375" height="140"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="495" width="375" height="140"/>
+                                <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="VF2-Gf-LWZ"/>
                                 </constraints>
@@ -95,16 +95,28 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLF-rA-BCG">
+                                <rect key="frame" x="0.0" y="96" width="375" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="bPW-fl-Iv8"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7gM-Hn-KSN"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="eLF-rA-BCG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="06C-2L-VyM"/>
+                            <constraint firstItem="eLF-rA-BCG" firstAttribute="top" secondItem="O7e-mh-GFb" secondAttribute="bottom" id="3GS-8n-HBX"/>
                             <constraint firstItem="Vfm-YE-9u0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8cj-Zk-ex9"/>
                             <constraint firstItem="LMl-dJ-KY7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Eiu-2d-GaY"/>
                             <constraint firstItem="Vfm-YE-9u0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="40" id="Ent-pb-jpN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vfm-YE-9u0" secondAttribute="trailing" constant="40" id="JDw-9L-u83"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LMl-dJ-KY7" secondAttribute="bottom" constant="32" id="Qb8-sN-Kgb"/>
+                            <constraint firstAttribute="trailing" secondItem="eLF-rA-BCG" secondAttribute="trailing" id="Qzz-ha-swc"/>
                             <constraint firstAttribute="trailing" secondItem="O7e-mh-GFb" secondAttribute="trailing" id="RSM-cP-hOR"/>
                             <constraint firstItem="DRG-O5-mzq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="50" id="TgW-BX-WrW"/>
-                            <constraint firstItem="LMl-dJ-KY7" firstAttribute="top" secondItem="O7e-mh-GFb" secondAttribute="bottom" constant="18" id="Vza-Ce-0Iv"/>
                             <constraint firstItem="DRG-O5-mzq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="kNF-Eg-Xlj"/>
                             <constraint firstItem="Vfm-YE-9u0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oIU-Fu-UXh"/>
                             <constraint firstItem="DRG-O5-mzq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="opL-OU-Bkd"/>
@@ -117,11 +129,12 @@
                     <connections>
                         <outlet property="collectionView_top" destination="O7e-mh-GFb" id="SPj-d4-rzU"/>
                         <outlet property="label_msg" destination="Vfm-YE-9u0" id="FxT-UJ-xII"/>
+                        <outlet property="scrollV_content" destination="eLF-rA-BCG" id="jD5-ek-gyF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="122.78860569715144"/>
+            <point key="canvasLocation" x="-158" y="32"/>
         </scene>
     </scenes>
 </document>

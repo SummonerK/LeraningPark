@@ -22,8 +22,8 @@ class UserCenter_RootVC: UIViewController {
     
     @IBOutlet weak var TableV_main: UITableView!
     
-    let array_title:Array? = ["我的订单","我的地址","我的资料"]
-    let array_image:Array? = ["homeList_icon","user_address","user_info"]
+    let array_title:Array? = ["我的订单","我的地址","我的资料","关于我们"]
+    let array_image:Array? = ["homeList_icon","user_address","user_info","user_info"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -126,7 +126,7 @@ extension UserCenter_RootVC:UITableViewDataSource{
         case 0:
             return 0
         case 1:
-            return 3
+            return (array_title?.count)!
         default:
             return 0
         }
@@ -173,7 +173,7 @@ extension UserCenter_RootVC: UITableViewDelegate {
         switch indexPath.row {
         case 0:
             //我的订单
-            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_OrderVC") as! user_OrderVC
+            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_orderRootVC") as! user_orderRootVC
             self.navigationController?.pushViewController(Vc, animated: true)
         case 1:
             //我的地址
@@ -184,6 +184,10 @@ extension UserCenter_RootVC: UITableViewDelegate {
             let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_infoVC") as! user_infoVC
             Vc.nickNameBack = backNickName(name:)
             
+            self.navigationController?.pushViewController(Vc, animated: true)
+        case 3:
+            //关于我们
+            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "aboutUsVC") as! aboutUsVC
             self.navigationController?.pushViewController(Vc, animated: true)
             
         default:

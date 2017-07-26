@@ -85,7 +85,7 @@
       buildConfiguration = "ReleaseDev">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "ReleaseDev"
+      buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
