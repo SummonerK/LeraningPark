@@ -1,34 +1,30 @@
 //
-//  user_orderRootVC.swift
+//  user_orderMenu.swift
 //  BanShengYuan
 //
-//  Created by Luofei on 2017/7/25.
+//  Created by Luofei on 2017/7/27.
 //  Copyright © 2017年 Luofei. All rights reserved.
 //
 
 import UIKit
 
-let space = 8
+let space = 4
 
-let ContentHight = IBScreenHeight - 102
+let ContentHight = CGFloat(667.0 - 102)
 
-class user_orderRootVC: UIViewController {
+class user_orderMenu: UIViewController{
     
     @IBOutlet weak var collectionView_top: UICollectionView!
-    @IBOutlet weak var scrollV_content: UIScrollView!
+    
+    @IBOutlet weak var collectionView_content: UICollectionView!
+    
+    var ItemW:Int = 0
     
     var view_undleLine: UIView!
     
-    var Page:Int = 0{
-        willSet{
-            print("Page willSet \(Page)")
-        }
-        didSet{
-            print("Page didSet \(Page)")
-        }
-    }
+    var Page:Int = 0
     
-    let array:[String] = ["全部","待付款","待发货","待收货","已完成","略略略略略略略"]
+    let array:[String] = ["全部","待付款","待发货","待收货","已完成"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,12 +34,18 @@ class user_orderRootVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         setNavi()
         
+        PrintFM("IBScreen = \(self.view.frame)")
+        
+        let numPreRow = array.count
+        ItemW = (Int(IBScreenWidth) - 2*(numPreRow + 1))/numPreRow
+        
         setupCollectionView()
-        
-        setScrollViewMain()
-        
+
+        // Do any additional setup after loading the view.
     }
     
     func setNavi() {
@@ -79,87 +81,87 @@ class user_orderRootVC: UIViewController {
         collectionView_top.register(UINib.init(nibName: "CCellTop", bundle: nil), forCellWithReuseIdentifier: "CCellTop")
         
         let size = array[0].getLabSize(font: FontLabelPFLight(size: 14))
+        let width:Int = Int(size.width) + space*2
+        let normalSpace = (ItemW - width)/2
         
-        let width:Int = Int(size.width) + 20
-        
-        view_undleLine = UIView.init(frame: CGRect.init(x: space, y: 34, width: width-(2*space), height: Int(1.5)))
+        view_undleLine = UIView.init(frame: CGRect.init(x: normalSpace, y: 34, width: width, height: Int(1.8)))
         
         view_undleLine.backgroundColor = UIColor.blue
         
         collectionView_top.addSubview(view_undleLine)
         
-    }
-    
-    //    设置内容页面
-    func setScrollViewMain(){
         
-        scrollV_content.contentSize = CGSize.init(width: IBScreenWidth*CGFloat(array.count), height: ContentHight)
+        // 1.自定义 Item 的FlowLayout
+        let flowLayout1 = UICollectionViewFlowLayout()
         
-        for num in 1...array.count{
-            
-            switch num {
-            case 1:
-                //我的订单
-                let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_OrderVC") as! user_OrderVC
-                self.addChildViewController(Vc)
-                Vc.view.frame = CGRect.init(x: IBScreenWidth*CGFloat(num-1), y: 0, width: IBScreenWidth, height: ContentHight)
-                scrollV_content.addSubview(Vc.view)
-            default:
-                let view = UIView.init(frame: CGRect.init(x: IBScreenWidth*CGFloat(num-1), y: 0, width: IBScreenWidth, height: ContentHight))
-                view.backgroundColor = AnyColor(alpha: 0.9)
-                scrollV_content.addSubview(view)
-            }
-            
-        }
+        flowLayout1.scrollDirection = UICollectionViewScrollDirection.horizontal
+        
+        // 4.设置 Item 的四周边距
+        flowLayout1.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        
+        // 5.设置同一竖中上下相邻的两个 Item 之间的间距
+        flowLayout1.minimumLineSpacing = 0
+        // 6.设置同一行中相邻的两个 Item 之间的间距
+        flowLayout1.minimumInteritemSpacing = 0
+        
+        collectionView_content.collectionViewLayout = flowLayout1
+        
+        collectionView_content.register(UINib.init(nibName: "CCellMenuContent", bundle: nil), forCellWithReuseIdentifier: "CCellMenuContent")
+        
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }
 
-
-extension user_orderRootVC:UIScrollViewDelegate{
+extension user_orderMenu:UIScrollViewDelegate{
     
     func scrollviewScroll(toPage:Int){
-        scrollV_content.scrollRectToVisible(CGRect.init(x: CGFloat(toPage) * IBScreenWidth, y: 0, width: IBScreenWidth, height: ContentHight), animated: false)
+        collectionView_content.scrollRectToVisible(CGRect.init(x: CGFloat(toPage) * IBScreenWidth, y: 0, width: IBScreenWidth, height: ContentHight), animated: false)
         
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         
-        if scrollView == scrollV_content{
+        if scrollView == collectionView_content{
             
             let offsetX = scrollView.contentOffset.x
             
-            print("offsetX = \(offsetX) ")
+//            print("offsetX = \(offsetX) ")
             
-            let page = Int(offsetX)/375
+            let page = Int(offsetX)/Int(IBScreenWidth)
             
             if page == Page {
                 return
             }else{
                 Page = page
-                
+                PrintFM("Page = \(page)")
                 topScroll(toItem: Page)
+                
             }
-            
             
         }
         
     }
 }
 
-extension user_orderRootVC:UICollectionViewDelegate{
+extension user_orderMenu:UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        scrollviewScroll(toPage: indexPath.row)
+        PrintFM("did selected \(indexPath.row)")
+        if collectionView == collectionView_top {
+            scrollviewScroll(toPage: indexPath.row)
+        }
+
     }
     
     func topScroll(toItem:Int){
+        
+        PrintFM("Page = \(toItem)")
         
         let indexPath = IndexPath.init(row: toItem, section: 0)
         
@@ -173,13 +175,15 @@ extension user_orderRootVC:UICollectionViewDelegate{
             
             let size = array[toItem].getLabSize(font: FontLabelPFLight(size: 14))
             
-            let width:Int = Int(size.width) + 20
+            let width:Int = Int(size.width) + space*2
+            
+            let normalSpace = (ItemW - width)/2
             
             UIView.animate(withDuration: 0.4) {
                 
-                self.view_undleLine.frame.size.width = CGFloat(width-space*2)
+                self.view_undleLine.frame.size.width = CGFloat(width)
                 
-                self.view_undleLine.frame.origin.x = rect.origin.x + CGFloat(space)
+                self.view_undleLine.frame.origin.x = rect.origin.x + CGFloat(normalSpace)
                 
                 self.view.layoutIfNeeded()
             }
@@ -189,7 +193,7 @@ extension user_orderRootVC:UICollectionViewDelegate{
     
 }
 
-extension user_orderRootVC:UICollectionViewDataSource{
+extension user_orderMenu:UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
         return 1
@@ -197,35 +201,43 @@ extension user_orderRootVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return array.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCellTop", for: indexPath) as! CCellTop
-        
-        cell.label_txt.text = array[indexPath.row]
-        
-//        cell.layoutIfNeeded()
-        
-        return cell
-        
+        if collectionView == collectionView_top{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCellTop", for: indexPath) as! CCellTop
+            
+            cell.label_txt.text = array[indexPath.row]
+            
+            return cell
+            
+        }else{
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCellMenuContent", for: indexPath) as! CCellMenuContent
+            
+            cell.getOrderList()
+            
+            return cell
+        }
+
     }
     
 }
 
 
-extension user_orderRootVC:UICollectionViewDelegateFlowLayout{
+extension user_orderMenu:UICollectionViewDelegateFlowLayout{
     
     //返回cell 上下左右的间距
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         
-        let size = array[indexPath.row].getLabSize(font: FontLabelPFLight(size: 14))
+        if collectionView == collectionView_top{
+            return CGSize.init(width: ItemW, height: 36)
+        }else{
+            return CGSize.init(width: IBScreenWidth, height: IBScreenHeight - 104)
+        }
         
-        let width:Int = Int(size.width) + 20
-        
-        return CGSize.init(width: width, height: 36)
-
     }
     
 }
+

@@ -1,8 +1,8 @@
 //
-//  user_OrderVC.swift
+//  CCellMenuContent.swift
 //  BanShengYuan
 //
-//  Created by Luofei on 2017/6/19.
+//  Created by Luofei on 2017/7/27.
 //  Copyright © 2017年 Luofei. All rights reserved.
 //
 
@@ -12,7 +12,13 @@ import RxSwift
 import ObjectMapper
 import SwiftyJSON
 
-class user_OrderVC: BaseTabHiden {
+import DZNEmptyDataSet
+
+import MJRefresh
+
+let MenuPagesize:Int = 20
+
+class CCellMenuContent: UICollectionViewCell {
     
     //network
     let orderM = orderModel()
@@ -21,111 +27,143 @@ class user_OrderVC: BaseTabHiden {
     
     var arrayOrderList = NSMutableArray()
     
-    let modelPay = ModelOrderPayPost()
-    
     @IBOutlet weak var tableV_main: UITableView!
+    
+    // 底部刷新
+    let footer = MJRefreshAutoNormalFooter()
+    var Num:Int = 1
+    
+    //    下拉刷新
+    let header = MJRefreshNormalHeader()
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(false, animated: true)
-//    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-//        self.view.backgroundColor = FlatWhiteLight
+        self.backgroundColor = AnyColor(alpha: 0.7)
         
-        setNavi()
+        setContentView()
         
+        // Initialization code
+    }
+    
+    func setContentView(){
         tableV_main.register(UINib.init(nibName: "TCell_UserOrder", bundle: nil), forCellReuseIdentifier: "TCell_UserOrder")
         
-        tableV_main.backgroundColor = FlatWhiteLight
+        // 上拉刷新
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
+        tableV_main.mj_footer = footer
         
-        getOrderList()
-        
-//        getOrderPay()
-    }
-    
-    func setNavi() {
-        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
-        item.image = UIImage(named: "arrow_left")
-        
-        self.navigationItem.leftBarButtonItem = item
-        self.navigationItem.title = "我的订单"
-    }
-    
-    func actionBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        //下拉刷新
+        header.setRefreshingTarget(self, refreshingAction: #selector(getOrderList))
+        tableV_main.mj_header = header
+
     }
     
     func getOrderList(){
+        
         modelorderlistpost.userId = USERM.MemberID
-        modelorderlistpost.pagesize = 30
-        modelorderlistpost.pagenumber = 1
+        modelorderlistpost.pagesize = MenuPagesize
+        modelorderlistpost.pagenumber = Num
         
         orderM.orderListByUser(amodel: modelorderlistpost)
             .subscribe(onNext: { (posts: ModelOrderWithCount) in
-
+                
                 PrintFM("pictureList\(String(describing: posts.orders?.toJSONString()))")
                 
                 self.arrayOrderList.removeAllObjects()
                 
                 if let orders = posts.orders{
                     
+                    self.tableV_main.mj_header.endRefreshing()
+                    
                     self.arrayOrderList.addObjects(from: orders)
                     
                     self.tableV_main.reloadData()
+                    
+                    if self.arrayOrderList.count > 0{
+                        self.tableV_main.scrollsToTop = true
+                    }
+                    
                 }
-
+                
             },onError:{error in
                 
+                self.tableV_main.mj_header.endRefreshing()
+                
                 if let acode = (error as? MyErrorEnum)?.drawCodeValue,acode == 2001{
-                    HUDShowMsgQuick(msg: "暂无订单信息", toView: self.view, time: 0.8)
+                    HUDShowMsgQuick(msg: "暂无订单信息", toView: KeyWindow, time: 0.8)
                     return
                 }
                 
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
                 }else{
-                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
                 }
             })
             .addDisposableTo(disposeBag)
     }
     
-    func getOrderPay(){
-        modelPay.orderId = "80776216007672097"
-        modelPay.pay_ebcode = aliPay_ebcode
+    func footerRefresh(){
         
-        orderM.orderPay(amodel: modelPay)
-            .subscribe(onNext: { (posts: modelPayPlanBack) in
+        self.tableV_main.mj_footer.resetNoMoreData()
+        
+        Num += 1
+        
+        modelorderlistpost.userId = USERM.MemberID
+        modelorderlistpost.pagesize = MenuPagesize
+        modelorderlistpost.pagenumber = Num
+        
+        orderM.orderListByUser(amodel: modelorderlistpost)
+            .subscribe(onNext: { (posts: ModelOrderWithCount) in
                 
-                PrintFM("pictureList\(String(describing: posts.toJSONString()))")
+                PrintFM("pictureList\(String(describing: posts.orders?.toJSONString()))")
                 
-                
+                if let orders = posts.orders{
+                    
+                    if orders.count < Pagesize{
+                        self.Num -= 1
+                        self.tableV_main.mj_footer.endRefreshingWithNoMoreData()
+                    }else{
+                        self.tableV_main.mj_footer.endRefreshing()
+                    }
+                    
+                    self.arrayOrderList.addObjects(from: orders)
+                    
+                    self.tableV_main.reloadData()
+                    
+                    if self.arrayOrderList.count > 0{
+                        self.tableV_main.scrollsToTop = true
+                    }
+                    
+                }
                 
             },onError:{error in
-                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
-                }else{
-                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                
+                self.tableV_main.mj_footer.endRefreshing()
+                
+                if let acode = (error as? MyErrorEnum)?.drawCodeValue,acode == 2001{
+                    HUDShowMsgQuick(msg: "暂无订单信息", toView: KeyWindow, time: 0.8)
+                    return
                 }
+                
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
+                }
+                
             })
             .addDisposableTo(disposeBag)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+
 }
 
-extension user_OrderVC:UITableViewDataSource{
+extension CCellMenuContent:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         
         let viewheader = Bundle.main.loadNibNamed("view_orderHeader", owner: nil, options: nil)?.first as? view_orderHeader
-        
         
         let order = arrayOrderList[section] as! ModelListPageByUserBack
         
@@ -149,8 +187,8 @@ extension user_OrderVC:UITableViewDataSource{
             
         }
         
-//        viewheader?.label_dianpuname.text = "一家店铺"
-//        viewheader?.label_wuliu.text = "已出库"
+        //        viewheader?.label_dianpuname.text = "一家店铺"
+        //        viewheader?.label_wuliu.text = "已出库"
         
         return viewheader
         
@@ -178,12 +216,12 @@ extension user_OrderVC:UITableViewDataSource{
                 }
                 
             }
- 
+            
         }
         
 //        if let product = order.accounts {
 //            let proitem = product[0]
-//            
+//
 //            if let price = proitem.price{
 //                totalPrice += price
 //            }
@@ -191,7 +229,7 @@ extension user_OrderVC:UITableViewDataSource{
         
         let str_total = String(describing: totalPrice)
         
-        PrintFM("str_total = \(str_total)")
+//        PrintFM("str_total = \(str_total)")
         
         viewfooter?.label_price.text = String.init("¥ \(String(describing: str_total.fixPrice()))")
         
@@ -255,7 +293,7 @@ extension user_OrderVC:UITableViewDataSource{
     
 }
 
-extension user_OrderVC: UITableViewDelegate {
+extension CCellMenuContent: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         return 85
@@ -264,7 +302,7 @@ extension user_OrderVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
         return 90
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         
         return 80
@@ -277,10 +315,52 @@ extension user_OrderVC: UITableViewDelegate {
         
         //订单详情
         
-//        let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "OrderDetailVC") as! OrderDetailVC
-//        self.navigationController?.pushViewController(Vc, animated: true)
+        //        let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "OrderDetailVC") as! OrderDetailVC
+        //        self.navigationController?.pushViewController(Vc, animated: true)
         
     }
 }
 
+
+extension user_orderMenu:DZNEmptyDataSetSource{
+    
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat{
+        return 110
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!{
+        
+        let text = "没有数据咯"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: text, attributes: attrs)
+    }
+    
+    //Add description/subtitle on empty dataset
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Get no more Data from servicer, place check again!"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    //Add your image
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "item2_activity")
+    }
+    
+    //Add your button
+    
+    //    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+    //        let str = "Add Grokkleglob"
+    //        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
+    //        return NSAttributedString(string: str, attributes: attrs)
+    //    }
+    
+    //Add action for button
+    func emptyDataSetDidTapButton(_ scrollView: UIScrollView!) {
+        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Hurray", style: .default, handler: nil))
+        present(ac, animated: true, completion: nil)
+    }
+    
+}
 

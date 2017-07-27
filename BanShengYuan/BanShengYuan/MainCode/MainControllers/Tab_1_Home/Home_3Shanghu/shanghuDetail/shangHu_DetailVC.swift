@@ -33,6 +33,10 @@ class shangHu_DetailVC: UIViewController {
     let footer = MJRefreshAutoNormalFooter()
     var Num:Int = 1
     
+//    下拉刷新
+    let header = MJRefreshNormalHeader()
+    
+    
     //network
     let VipM = shopModel()
     let VShopM = vipModel()
@@ -61,6 +65,10 @@ class shangHu_DetailVC: UIViewController {
         footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
         CV_main.mj_footer = footer
         
+        //下拉刷新
+        header.setRefreshingTarget(self, refreshingAction: #selector(getData))
+        CV_main.mj_header = header
+        
         
         if shopStoreCode != ""{
             
@@ -76,7 +84,10 @@ class shangHu_DetailVC: UIViewController {
                     
                     self.getData()
                     
+                    self.CV_main.mj_header.endRefreshing()
+                    
                 },onError:{error in
+                    self.CV_main.mj_header.endRefreshing()
                     if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                         HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
                     }else{
@@ -123,6 +134,9 @@ class shangHu_DetailVC: UIViewController {
                 self.CV_main.reloadData()
                 
             },onError:{error in
+                
+                self.CV_main.mj_footer.endRefreshing()
+                
                 if let msg = (error as? MyErrorEnum)?.drawMsgValue{
                     
                     if (error as? MyErrorEnum)?.drawCodeValue != 999{
@@ -132,6 +146,7 @@ class shangHu_DetailVC: UIViewController {
                 }else{
                     HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
                 }
+                
             })
             .addDisposableTo(disposeBag)
         

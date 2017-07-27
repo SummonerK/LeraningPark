@@ -55,11 +55,11 @@ let IBIsIOS9OrLater = (UIDevice.current.systemVersion as NSString).doubleValue >
 // MARK: - 常用宽高
 
 /// 屏幕Bounds
-let IBScreenBounds = UIScreen.main.bounds;
+let IBScreenBounds = UIScreen.main.bounds
 /// 屏幕高度
-let IBScreenHeight = UIScreen.main.bounds.size.height;
+let IBScreenHeight = UIScreen.main.bounds.size.height
 /// 屏幕宽度
-let IBScreenWidth = UIScreen.main.bounds.size.width;
+let IBScreenWidth = UIScreen.main.bounds.size.width
 /// 导航栏高度
 let IBNavBarHeight = 44.0;
 /// 状态栏高度
