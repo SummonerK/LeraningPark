@@ -10,6 +10,10 @@ import UIKit
 import Kingfisher
 import MBProgressHUD
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 let urlStr = "http://pic35.photophoto.cn/20150601/0030014594765207_b.jpg"
 
 class Home_RootVC: UIViewController{
@@ -19,6 +23,13 @@ class Home_RootVC: UIViewController{
     var shadowImage:UIView?
     
     var viewheader:UIView?
+    
+    //network
+    
+    let OrderM = orderModel()
+    let disposeBag = DisposeBag()
+    
+    let modelAccess = ModelOrderPayAccessPost()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,6 +46,29 @@ class Home_RootVC: UIViewController{
         let str = "15600703631"
         
         PrintFM(str.sectoryPhone)
+        
+//        modelAccess.orderId = "82240992678248710"
+//        
+//        OrderM.orderPayAccess(amodel: modelAccess)
+//            
+//            .subscribe(onNext: { (posts: ModelOrderPayAccessBack) in
+//                
+//                PrintFM("pictureList\(posts)")
+//                
+//                if let content = posts.data{
+//                    
+//                    PrintFM("content = \(content)")
+//                }
+//                
+//            },onError:{error in
+//                
+//                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+//                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+//                }else{
+//                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+//                }
+//            })
+//            .addDisposableTo(disposeBag)
         
         
 //        let biz_content = "app_id=2017071207729556&biz_content=%7b%22out_trade_no%22%3a%22SHT1A1553O1336740803%22%2c%22seller_id%22%3a%22%22%2c%22total_amount%22%3a%220.01%22%2c%22subject%22%3a%22%e5%8d%8a%e7%94%9f%e7%bc%98%22%2c%22goods_detail%22%3a%5b%7b%22goods_id%22%3a%221323%22%2c%22goods_name%22%3a%22%e6%9c%aa%e7%9f%a5%e5%95%86%e5%93%81%22%2c%22quantity%22%3a%221%22%2c%22price%22%3a%2299%22%7d%5d%2c%22store_id%22%3a%22107%22%7d&charset=utf-8&method=alipay.trade.app.pay&notify_url=http%3a%2f%2f115.159.142.32%2fapi%2falipaynotify%2f1553&prod_code=QUICK_MSECURITY_PAY&sign_type=RSA&timestamp=2017-07-14+09%3a39%3a12&version=1.0&sign=NUAMMvKtQdZj8Qrdl3wRqjoFgHk5gq8UlxH4o92Qn3FuO2cyunkve3wY5EbrAvuzvc1X4p5APlRKCnmat1rmzpxREsnTKxawL8HlQs4KESk4CIaRUJkyHnATuLCGbwagcHXuJnL8Pun4sY9hx4SAjmM6O7U%2faFi1Z9nrHJC6Rlc%3d"

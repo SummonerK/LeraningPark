@@ -103,6 +103,7 @@ class GoodsPayVC: BaseTabHiden {
         modelproduct.specification = model_goods?.specification
         modelproduct.number = model_goods?.productNumber
         modelproduct.price = model_goods?.finalPrice
+//        modelproduct.price = 1
         modelproduct.sequence = "0"
         
         modelOrderC.products = [modelproduct]
@@ -112,6 +113,7 @@ class GoodsPayVC: BaseTabHiden {
         modelaccount.name = "运费"
         modelaccount.type = "1"
         modelaccount.price = "500"
+//        modelaccount.price = "0"
         modelaccount.number = "1"
         modelaccount.sequence = 0
         
@@ -150,8 +152,6 @@ class GoodsPayVC: BaseTabHiden {
             HUDShowMsgQuick(msg: "请选择收货地址", toView: KeyWindow, time: 0.8)
         }
 
-        
-        
     }
     
     //支付

@@ -104,9 +104,11 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         
         tableV_cantent.transform = CGAffineTransform.init(rotationAngle: CGFloat(-Double.pi/2))
         tableV_cantent.isPagingEnabled = true
-        tableV_cantent.separatorStyle = uis
+        tableV_cantent.separatorStyle = UITableViewCellSeparatorStyle.none
         tableV_cantent.delegate = self
         tableV_cantent.dataSource = self
+        tableV_cantent.showsVerticalScrollIndicator = false
+        tableV_cantent.showsHorizontalScrollIndicator = false
         
         tableV_cantent.register(UINib.init(nibName: "TCellOrderContent", bundle: nil), forCellReuseIdentifier: "TCellOrderContent")
         

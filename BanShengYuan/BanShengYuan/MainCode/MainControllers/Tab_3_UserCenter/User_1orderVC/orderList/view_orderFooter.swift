@@ -25,9 +25,6 @@ class view_orderFooter: UIView {
         setRadiusFor(toview: bton_extend, radius: 4, lineWidth: 1, lineColor: FlatLocalMain)
         setRadiusFor(toview: bton_received, radius: 4, lineWidth: 1, lineColor: FlatLocalMain)
         
-        bton_extend.isEnabled = false
-        bton_received.isEnabled = false
-        
     }
     
     override func layoutSubviews() {
@@ -39,4 +36,16 @@ class view_orderFooter: UIView {
         
     }
 
+    @IBAction func actionExtend(_ sender: Any) {
+        
+        PrintFM("")
+        
+    }
+    
+    @IBAction func actionReceived(_ sender: Any) {
+
+        PrintFM("")
+
+    }
+    
 }

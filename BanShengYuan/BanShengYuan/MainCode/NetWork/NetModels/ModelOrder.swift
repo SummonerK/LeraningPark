@@ -392,27 +392,36 @@ class ModelOrderPayAccessPost: Reflect {
      *  必传:True 
      */
     var orderId:String!
-    /**
-     *  客户要求数，传0
-     *  必传:True 
-     */
-    var clientReqCount:String!
-    /**
-     *  交易编号，用订单号
-     *  必传:True int默认10
-     */
-    var transId:Int!
-    
 }
 
 //MARK:订单支付确认 backModel
 
 class ModelOrderPayAccessBack: Mappable {
-    var StatusCode: String?//支付状态码
-    var payAcount: String?//支付账户
-    var payId: String?//支付方式描述
-    var msg: String?//返回支付信息
+    var errmsg: String?//支付状态码
+    var errcode: String?//返回支付信息
+    var data: ModelOrderPayAccesItem?//返回支付信息
     
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        data <- map["data"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+//MARK:订单支付确认 backModel
+
+class ModelOrderPayAccesItem: Mappable {
+    var StatusCode: String?//支付状态码
+    var payAcount: String?//返回支付信息
+    var payId: String?//返回支付信息
     
     required init?(map: Map) { }
     
@@ -420,7 +429,6 @@ class ModelOrderPayAccessBack: Mappable {
         StatusCode <- map["StatusCode"]
         payAcount <- map["payAcount"]
         payId <- map["payId"]
-        msg <- map["msg"]
         
     }
     

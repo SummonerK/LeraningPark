@@ -57,7 +57,7 @@ class orderModel {
     
     func orderPayAccess(amodel:ModelOrderPayAccessPost) -> Observable<ModelOrderPayAccessBack> {
         return orderprovider.request(.orderPayAccess(PostModel: amodel))
-            .mapObject(type: ModelOrderPayAccessBack.self)
+            .mapNeObject(type: ModelOrderPayAccessBack.self)
         //.showError()
     }
     func orderAccept(amodel:ModelOrderAcceptPost) -> Observable<ModelCommonBack> {

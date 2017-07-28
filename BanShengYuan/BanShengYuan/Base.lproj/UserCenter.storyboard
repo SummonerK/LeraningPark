@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EiD-KO-K9y">
-                                <rect key="frame" x="0.0" y="64" width="375" height="36"/>
+                                <rect key="frame" x="0.0" y="68" width="375" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="GPT-9x-KfC"/>
@@ -54,7 +54,7 @@
                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="EiD-KO-K9y" secondAttribute="trailing" id="5Wc-gp-qK3"/>
-                            <constraint firstItem="EiD-KO-K9y" firstAttribute="top" secondItem="kUc-Da-Dyx" secondAttribute="top" constant="64" id="gUR-ew-5Na"/>
+                            <constraint firstItem="EiD-KO-K9y" firstAttribute="top" secondItem="kUc-Da-Dyx" secondAttribute="top" constant="68" id="gUR-ew-5Na"/>
                             <constraint firstItem="EiD-KO-K9y" firstAttribute="leading" secondItem="kUc-Da-Dyx" secondAttribute="leading" id="rM8-bL-ofR"/>
                         </constraints>
                     </view>

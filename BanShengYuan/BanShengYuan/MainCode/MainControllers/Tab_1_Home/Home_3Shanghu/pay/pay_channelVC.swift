@@ -29,6 +29,8 @@ class pay_channelVC: UIViewController {
     let OrderM = orderModel()
     let disposeBag = DisposeBag()
     let modelpayPost = ModelOrderPayPost()
+    
+    let modelAccess = ModelOrderPayAccessPost()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +124,7 @@ class pay_channelVC: UIViewController {
         if let oid = self.orderID{
             
             modelpayPost.orderId = "\(oid)"
-            
+            modelAccess.orderId = "\(oid)"
         }
     
         
@@ -148,6 +150,9 @@ class pay_channelVC: UIViewController {
                                     var str = String()
                                     
                                     if (status as! String) == "9000"{
+                                        
+                                        self.payAccess()
+                                        
                                         str = "支付成功"
                                     }else if (status as! String) == "8000"{
                                         str = "支付确认中"
@@ -162,6 +167,7 @@ class pay_channelVC: UIViewController {
                             
                             print("---\(String(describing: result?.description))")
                         })
+                        
                     }
 
                     //支付宝支付
@@ -196,6 +202,35 @@ class pay_channelVC: UIViewController {
             })
             .addDisposableTo(disposeBag)
         
+        
+    }
+    
+    func payAccess(){
+        
+        self.navigationController?.popToRootViewController(animated: true)
+        
+//        OrderM.orderPayAccess(amodel: modelAccess)
+//            
+//            .subscribe(onNext: { (posts: ModelOrderPayAccessBack) in
+//                
+//                PrintFM("pictureList\(posts)")
+//                
+//                if let content = posts.data{
+//                    
+//                    self.navigationController?.popToRootViewController(animated: true)
+//                    
+//                    PrintFM("content = \(content)")
+//                }
+//                
+//            },onError:{error in
+//                
+//                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+//                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+//                }else{
+//                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+//                }
+//            })
+//            .addDisposableTo(disposeBag)
         
     }
 

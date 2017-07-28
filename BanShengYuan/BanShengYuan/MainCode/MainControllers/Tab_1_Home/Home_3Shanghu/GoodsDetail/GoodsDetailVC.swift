@@ -271,7 +271,9 @@ class GoodsDetailVC: BaseTabHiden {
         for item in array{
             
             if item == ""{
-                HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
+                
+                showCoverViewNone()
+//                HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
                 return
             }
             
@@ -360,7 +362,10 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
         for item in array{
             
             if item == ""{
-                HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
+//                HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
+                
+                showCoverViewNone()
+                
                 return
             }
             
