@@ -16,7 +16,7 @@ import DZNEmptyDataSet
 
 import MJRefresh
 
-let MenuPagesize:Int = 20
+//let MenuPagesize:Int = 20
 
 class CCellMenuContent: UICollectionViewCell {
     
@@ -39,7 +39,7 @@ class CCellMenuContent: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = AnyColor(alpha: 0.7)
+//        self.backgroundColor = AnyColor(alpha: 0.7)
         
         setContentView()
         
@@ -56,6 +56,8 @@ class CCellMenuContent: UICollectionViewCell {
         //下拉刷新
         header.setRefreshingTarget(self, refreshingAction: #selector(getOrderList))
         tableV_main.mj_header = header
+        
+//        tableV_main.mj_footer.isAutomaticallyHidden = true
 
     }
     

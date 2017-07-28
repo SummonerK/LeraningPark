@@ -79,7 +79,7 @@ class GoodsPayVC: BaseTabHiden {
         if addressValue {
             modelOrderC.userName = model_address.receiverName!
             modelOrderC.phone = model_address.receiverPhone!
-            modelOrderC.address = (model_address.area ?? "请皇上，选择收货地址") + "" + (model_address.address ?? " ")
+            modelOrderC.address = (model_address.area ?? "请前往选择收货地址") + "" + (model_address.address ?? " ")
         }
 //        modelOrderC.userName = USERM.UserName
 //        modelOrderC.phone = USERM.Phone
@@ -277,11 +277,13 @@ extension GoodsPayVC:UITableViewDataSource{
 //            viewheader?.label_orderid.text = str
 //        }
         
+        viewheader?.label_name_phone.text = "请前往选择收货人"
+        
         if let sectoryPhone = model_address.receiverPhone{
-            viewheader?.label_name_phone.text = (model_address.receiverName ?? "请皇上，选择收货人") + " " + (sectoryPhone.sectoryPhone)
+            viewheader?.label_name_phone.text = (model_address.receiverName ?? "请前往选择收货人") + " " + (sectoryPhone.sectoryPhone)
         }
         
-        viewheader?.label_address.text = (model_address.area ?? "请皇上，选择收货地址") + "" + (model_address.address ?? " ")
+        viewheader?.label_address.text = (model_address.area ?? "请前往选择收货地址") + "" + (model_address.address ?? " ")
         
         
         viewheader?.bton_adsEdit.addTarget(self, action: #selector(goAddressEditVC), for:UIControlEvents.touchUpInside)

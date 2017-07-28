@@ -21,6 +21,7 @@ target 'BanShengYuan' do
 
   #list holder
   pod 'DZNEmptyDataSet'
+  pod 'SnapKit', '~> 3.2.0'
   
   #refresh
   pod 'MJRefresh'

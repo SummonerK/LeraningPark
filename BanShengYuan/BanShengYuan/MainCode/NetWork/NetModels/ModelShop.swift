@@ -273,11 +273,8 @@ class ModelMenuPicture: Mappable {
 //MARK:搜索门店商品 post model
 
 class ModelSearchProductPost: Reflect {
-    /**
-     *  商品ID
-     *  必传:True
-     */
-    var productId:String!
+    var shopId:String!
+    var productName:String!
     
 }
 

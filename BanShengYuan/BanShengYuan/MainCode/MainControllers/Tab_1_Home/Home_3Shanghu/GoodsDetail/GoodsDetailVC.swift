@@ -227,6 +227,8 @@ class GoodsDetailVC: BaseTabHiden {
         
 //        HUDShowMsgQuick(msg: "敬请期待", toView: self.view, time: 0.8)
         
+        coverVC.collection_main.reloadData()
+        
         self.view.bringSubview(toFront: coverVC.view)
     }
     

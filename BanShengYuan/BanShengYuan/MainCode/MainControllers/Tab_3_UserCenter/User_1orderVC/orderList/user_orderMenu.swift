@@ -24,7 +24,7 @@ class user_orderMenu: UIViewController{
     
     var Page:Int = 0
     
-    let array:[String] = ["全部","待付款","待发货","待收货","已完成"]
+    let array:[String] = ["全部","待付款","进行中","已完成"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

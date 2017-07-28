@@ -30,6 +30,10 @@ class shanghu_searchVC: UIViewController {
     @IBOutlet weak var searchbar: UISearchBar!
     
     //network
+    let VipM = shopModel()
+    let modelsearchPost = ModelSearchProductPost()
+    let disposeBag = DisposeBag()
+    
     var array_items = NSMutableArray()
 
     override func viewDidLoad() {
@@ -38,8 +42,12 @@ class shanghu_searchVC: UIViewController {
         self.view.backgroundColor = FlatGrayLight
         
         searchbar.text = searchContent
+        
+        if searchContent != "" {
+            search(content: searchContent!)
+        }
 
-        searchbar.becomeFirstResponder()
+//        searchbar.becomeFirstResponder()
         
         setupCollection()
 
@@ -57,6 +65,34 @@ class shanghu_searchVC: UIViewController {
         numPreRow = numPreRow == 1 ? 2 : 1
         self.CV_main.reloadData()
 
+    }
+    
+    func search(content:String){
+        modelsearchPost.shopId = shopID
+        modelsearchPost.productName = content
+        
+        VipM.shopSearchProducts(amodel: modelsearchPost)
+            .subscribe(onNext: { (posts: ModelSearchProductResult) in
+                
+                if let data = posts.data,let products = data.products{
+                    self.array_items.addObjects(from: products)
+                    self.CV_main.reloadData()
+                }
+                
+            },onError:{error in
+                
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    
+                    if (error as? MyErrorEnum)?.drawCodeValue != 999{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    }
+                    
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+                
+            })
+            .addDisposableTo(disposeBag)
     }
     
     func setupCollection() {
@@ -113,13 +149,13 @@ extension shanghu_searchVC:UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // 搜索内容置空
         PrintFM("\(String(describing: searchBar.text))")
-        searchBar.text = ""
+//        searchBar.text = ""
         
-        //品牌
-        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "shanghu_searchVC") as! shanghu_searchVC
         
-        self.navigationController?.pushViewController(Vc, animated: true)
-        
+        if searchBar.text != "" {
+            search(content: searchBar.text!)
+        }
+ 
     }
     
     
@@ -130,12 +166,12 @@ extension shanghu_searchVC:UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
-//        PrintFM("\((array_items[indexPath.row] as! ModelShopDetailItem).description)")
-//        
-//        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
-//        Vc.model_goods = array_items[indexPath.row] as? ModelShopDetailItem
-//        Vc.model_shop = self.modelShop
-//        self.navigationController?.pushViewController(Vc, animated: true)
+        PrintFM("\((array_items[indexPath.row] as! ModelShopDetailItem).description)")
+        
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
+        Vc.model_goods = array_items[indexPath.row] as? ModelShopDetailItem
+        Vc.model_shop = self.modelShop
+        self.navigationController?.pushViewController(Vc, animated: true)
         
     }
 }
@@ -149,9 +185,9 @@ extension shanghu_searchVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-//        return array_items.count
+        return array_items.count
         
-        return 6
+//        return 2
         
     }
     
@@ -161,7 +197,11 @@ extension shanghu_searchVC:UICollectionViewDataSource{
         
         let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "CCell_shhuDetailLine", for: indexPath) as! CCell_shhuDetailLine
         
-//        cell.setData(Model: array_items[indexPath.row] as! ModelShopDetailItem)
+        if numPreRow == 2 {
+            cell.setData(Model: array_items[indexPath.row] as! ModelShopDetailItem)
+        }else{
+            cell1.setData(Model: array_items[indexPath.row] as! ModelShopDetailItem)
+        }
         
 //        return cell
         

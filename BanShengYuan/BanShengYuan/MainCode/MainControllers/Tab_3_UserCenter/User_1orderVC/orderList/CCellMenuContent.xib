@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pZX-3s-bA7">
+                    <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pZX-3s-bA7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <connections>
@@ -30,6 +30,7 @@
                     </tableView>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="pZX-3s-bA7" secondAttribute="trailing" id="Fc8-xc-XGN"/>
                 <constraint firstItem="pZX-3s-bA7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="PPM-Ci-72D"/>
