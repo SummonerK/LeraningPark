@@ -39,12 +39,6 @@ class pay_channelVC: UIViewController {
 
         setPageValue()
         
-        if WXApi.isWXAppInstalled(){
-            HUDShowMsgQuick(msg: "检测到微信", toView: KeyWindow, time: 0.8)
-        }else{
-            HUDShowMsgQuick(msg: "未检测到微信", toView: KeyWindow, time: 0.8)
-        }
-        
         //注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(action(notification:)), name: NSNotification.Name(rawValue: "WXorderNotifation"), object: nil)
     
@@ -86,7 +80,30 @@ class pay_channelVC: UIViewController {
     }
     
     func actionBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        
+        let alert = UIAlertController(title: "提示", message: "确认离开收银台？", preferredStyle: .alert)
+        
+        let calcelAction = UIAlertAction(title: "继续支付", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "确认离开", style: .default, handler: { (UIAlertAction) in
+            
+            //跳转到订单页
+            
+            //我的订单
+            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "orderListRootVC") as! orderListRootVC
+            //            let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "user_orderRootVC") as! user_orderRootVC
+            self.navigationController?.pushViewController(Vc, animated: true)
+            
+//            self.navigationController?.popToRootViewController(animated: true)
+            
+        })
+        
+        // 添加
+        alert.addAction(calcelAction)
+        alert.addAction(deleteAction)
+        
+        // 弹出
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     @IBAction func actionWXPay(_ sender: Any) {

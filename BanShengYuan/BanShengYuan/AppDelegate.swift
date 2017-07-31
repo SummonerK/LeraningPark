@@ -45,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
         //点击背景 关闭键盘
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
+        WXApi.registerApp("wx000000000")
+        
         return true
     }
     

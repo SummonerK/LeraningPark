@@ -64,6 +64,9 @@ class TCellOrderContent: UITableViewCell {
     
     func getOrderList(){
         
+        Num = 1
+        self.tableV_main.mj_footer.resetNoMoreData()
+        
         modelorderlistpost.userId = USERM.MemberID
         modelorderlistpost.pagesize = MenuPagesize
         modelorderlistpost.pagenumber = Num
@@ -280,7 +283,7 @@ extension TCellOrderContent:UITableViewDataSource{
             }
             
             if let text = model.productNumber {
-                cell.lable_num.text = "\(text)"
+                cell.lable_num.text = "X \(text)"
             }
             
         }

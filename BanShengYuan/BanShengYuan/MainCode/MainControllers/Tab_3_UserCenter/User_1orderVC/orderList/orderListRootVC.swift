@@ -55,7 +55,7 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     }
     
     func actionBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     //    设置标题silider

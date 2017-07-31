@@ -38,6 +38,12 @@ class Home_RootVC: UIViewController{
 //        HUDcustomShow(toview: self.view)
 //        HUDGifCustomShow()
         
+        if WXApi.isWXAppInstalled(){
+            HUDShowMsgQuick(msg: "检测到微信", toView: KeyWindow, time: 0.8)
+        }else{
+            HUDShowMsgQuick(msg: "未检测到微信", toView: KeyWindow, time: 0.8)
+        }
+        
     }
     
     override func viewDidLoad() {
