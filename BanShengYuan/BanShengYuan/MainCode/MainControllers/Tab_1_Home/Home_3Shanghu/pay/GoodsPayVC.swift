@@ -201,6 +201,8 @@ class GoodsPayVC: BaseTabHiden {
             }
         }
         
+//        totalPrice = 1
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -271,11 +273,6 @@ extension GoodsPayVC:UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         
         let viewheader = Bundle.main.loadNibNamed("View_payHeader", owner: nil, options: nil)?.first as? View_payHeader
-        
-//        if let oid = modelOrderBack.oid {
-//            let str = String(describing: oid)
-//            viewheader?.label_orderid.text = str
-//        }
         
         viewheader?.label_name_phone.text = "请前往选择收货人"
         

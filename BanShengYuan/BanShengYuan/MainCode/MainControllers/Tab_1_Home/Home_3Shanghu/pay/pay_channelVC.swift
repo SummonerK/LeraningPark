@@ -39,6 +39,12 @@ class pay_channelVC: UIViewController {
 
         setPageValue()
         
+        if WXApi.isWXAppInstalled(){
+            HUDShowMsgQuick(msg: "检测到微信", toView: KeyWindow, time: 0.8)
+        }else{
+            HUDShowMsgQuick(msg: "未检测到微信", toView: KeyWindow, time: 0.8)
+        }
+        
         //注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(action(notification:)), name: NSNotification.Name(rawValue: "WXorderNotifation"), object: nil)
     
