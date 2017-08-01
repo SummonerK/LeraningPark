@@ -192,6 +192,20 @@ extension String{
         return str
     }
     
-    
+    var trueItemValue:String{
+        
+        if self == "color"{
+            return "颜色"
+        }
+        if self == "size"{
+            return "尺寸"
+        }
+        if self == "zipper"{
+            return "拉链"
+        }
+        
+        return ""
+        
+    }
     
 }

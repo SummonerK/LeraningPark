@@ -82,7 +82,7 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         let width:Int = Int(size.width) + space*2
         let normalSpace = (ItemW - width)/2
         
-        view_undleLine = UIView.init(frame: CGRect.init(x: normalSpace, y: 34, width: width, height: Int(1.8)))
+        view_undleLine = UIView.init(frame: CGRect.init(x: normalSpace + 1, y: 34, width: width, height: Int(1.8)))
         
         view_undleLine.backgroundColor = UIColor.blue
         
@@ -192,7 +192,7 @@ extension orderListRootVC:UICollectionViewDelegate{
                 
                 self.view_undleLine.frame.size.width = CGFloat(width)
                 
-                self.view_undleLine.frame.origin.x = rect.origin.x + CGFloat(normalSpace)
+                self.view_undleLine.frame.origin.x = rect.origin.x + CGFloat(normalSpace) + 1
                 
                 self.view.layoutIfNeeded()
             }

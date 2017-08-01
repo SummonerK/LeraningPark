@@ -268,7 +268,7 @@ class chooseVC: UIViewController {
             
         }
         
-        
+        getGoodsChoosed()
         
     }
     
@@ -306,6 +306,48 @@ class chooseVC: UIViewController {
         }
         
         return 0
+        
+    }
+    
+    func getGoodsChoosed() {
+    
+        if getChoosedGoodsID() != 0{
+            modelMenupost.productId = "\(getChoosedGoodsID())"
+            
+            VipM.shopGetDetailMenus(amodel: modelMenupost)
+                .subscribe(onNext: { (posts: ModelShopDetailDetaiMenuItem) in
+                    
+                    if let data = posts.data,let products = data.products{
+                        for item in products{
+                            
+                            if let picture = item.picture{
+                                
+                                let url = URL(string: picture)
+                                
+                                self.imageVsub.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
+                                    
+                                })
+                                
+                            }
+                            
+                            if let price = item.finalPrice{
+                                
+                                let str = String(describing: price)
+                                
+                                self.label_price.text = String.init("¥ \(String(describing: str.fixPrice()))")
+                            }
+                            
+                            
+                        }
+                        
+                    }
+                    
+                },onError:{error in
+                    
+                })
+                .addDisposableTo(disposeBag)
+            
+        }
         
     }
 
@@ -354,17 +396,19 @@ extension chooseVC:UICollectionViewDataSource{
         
         let letspecItem = (array_meun[indexPath.section] as! ModelMenuSpecItem)
         
-        if letspecItem.partName == "color" {
-            headerView.label_title.text = "颜色"
-        }
+        headerView.label_title.text = letspecItem.partName?.trueItemValue
         
-        if letspecItem.partName == "zipper" {
-            headerView.label_title.text = "拉链"
-        }
-        
-        if letspecItem.partName == "size" {
-            headerView.label_title.text = "尺寸"
-        }
+//        if letspecItem.partName == "color" {
+//            headerView.label_title.text = "颜色"
+//        }
+//        
+//        if letspecItem.partName == "zipper" {
+//            headerView.label_title.text = "拉链"
+//        }
+//        
+//        if letspecItem.partName == "size" {
+//            headerView.label_title.text = "尺寸"
+//        }
         
         headerView.layoutIfNeeded()
         

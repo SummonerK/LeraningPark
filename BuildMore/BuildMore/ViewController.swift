@@ -79,6 +79,10 @@ class ViewController: UIViewController{
                 
     @IBAction func printSomething(_ sender: Any) {
         
+        label_msg.shake(direction: .horizontal, times: 5, interval: 0.2, delta: 8) {
+            print("shake")
+        }
+        
         print(msg)
         
     }

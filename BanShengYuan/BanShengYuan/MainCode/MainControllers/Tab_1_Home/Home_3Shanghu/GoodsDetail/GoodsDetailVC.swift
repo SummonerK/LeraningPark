@@ -328,11 +328,14 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
             
             closeCoverView()
             
+            let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
+            
             let array = coverVC.dic_menuchoose.allValues as! [String]
             
             for item in array{
                 
                 if item == ""{
+                    
 //                    HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
                     
                     return
@@ -340,8 +343,19 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
                 
             }
             
-            let str = array.joined(separator: " ")
-            model_goods?.remark = String(describing:str)
+            var strDis = String()
+            
+            for key in arraykeys{
+                strDis.append(key.trueItemValue)
+                strDis.append(":")
+                strDis.append(coverVC.dic_menuchoose[key] as! String)
+                strDis.append(" ")
+            }
+            
+//            let str = array.joined(separator: " ")
+//            model_goods?.remark = String(describing:str)
+            
+            model_goods?.remark = strDis
             model_goods?.productNumber = coverVC.proCount
             
             PrintFM("productID = \(coverVC.getChoosedGoodsID())")
@@ -357,6 +371,8 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
         
         PrintFM("myChoose \(items)")
         
+        let arraykeys = items.allKeys as! [String]
+        
         let array = items.allValues as! [String]
 
         for item in array{
@@ -371,9 +387,19 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
             
         }
         
-        let str = array.joined(separator: " ")
+        var strDis = String()
         
-        model_goods?.remark = String(describing:str)
+        for key in arraykeys{
+            strDis.append(key.trueItemValue)
+            strDis.append(":")
+            strDis.append(coverVC.dic_menuchoose[key] as! String)
+            strDis.append(" ")
+        }
+        
+//            let str = array.joined(separator: " ")
+//            model_goods?.remark = String(describing:str)
+        
+        model_goods?.remark = strDis
         model_goods?.productNumber = count
         
         closeCoverView()
@@ -381,6 +407,8 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
         PrintFM("productID = \(coverVC.getChoosedGoodsID())")
         
         model_goods?.pid = "\(coverVC.getChoosedGoodsID())"
+
+        self.tableV_main.reloadData()
         
         goNextOrderV()
     }
@@ -487,8 +515,8 @@ extension GoodsDetailVC:UITableViewDataSource{
             if let sp = model_goods?.productNumber {
                 
                 str.append((model_goods?.remark ?? ""))
-                str.append((model_goods?.specification ?? ""))
-                str.append(" \(sp)")
+//                str.append((model_goods?.specification ?? ""))
+                str.append("\(sp)")
                 str.append((model_goods?.unit ?? ""))
                 
                 cell.labelsp.text = str as String

@@ -13,6 +13,7 @@
 		6355CEB11F2740BB004707B7 /* CCellContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355CEAF1F2740BB004707B7 /* CCellContent.swift */; };
 		6355CEB21F2740BB004707B7 /* CCellContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355CEB01F2740BB004707B7 /* CCellContent.xib */; };
 		6355CEB41F2740D9004707B7 /* ContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6355CEB31F2740D9004707B7 /* ContentVC.swift */; };
+		636E1E4C1F30571B0025D881 /* ViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E1E4B1F30571B0025D881 /* ViewExtention.swift */; };
 		6370FB9C1F21FBA6003CC6FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6370FB9B1F21FBA6003CC6FC /* AppDelegate.swift */; };
 		6370FB9E1F21FBA6003CC6FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6370FB9D1F21FBA6003CC6FC /* ViewController.swift */; };
 		6370FBA11F21FBA6003CC6FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6370FB9F1F21FBA6003CC6FC /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 		6355CEAF1F2740BB004707B7 /* CCellContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCellContent.swift; sourceTree = "<group>"; };
 		6355CEB01F2740BB004707B7 /* CCellContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellContent.xib; sourceTree = "<group>"; };
 		6355CEB31F2740D9004707B7 /* ContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentVC.swift; sourceTree = "<group>"; };
+		636E1E4B1F30571B0025D881 /* ViewExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtention.swift; sourceTree = "<group>"; };
 		6370FB981F21FBA6003CC6FC /* BuildMore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuildMore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6370FB9B1F21FBA6003CC6FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6370FB9D1F21FBA6003CC6FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				6370FBAA1F21FBA6003CC6FC /* Info.plist */,
 				6370FBA21F21FBA6003CC6FC /* BuildMore.xcdatamodeld */,
 				6370FBB41F22093F003CC6FC /* Bridging-Header.h */,
+				636E1E4B1F30571B0025D881 /* ViewExtention.swift */,
 			);
 			path = BuildMore;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				6370FBA41F21FBA6003CC6FC /* BuildMore.xcdatamodeld in Sources */,
 				6370FB9E1F21FBA6003CC6FC /* ViewController.swift in Sources */,
 				6355CEB41F2740D9004707B7 /* ContentVC.swift in Sources */,
+				636E1E4C1F30571B0025D881 /* ViewExtention.swift in Sources */,
 				6370FB9C1F21FBA6003CC6FC /* AppDelegate.swift in Sources */,
 				6355CEAB1F272A26004707B7 /* CCellTop.swift in Sources */,
 				6355CEB11F2740BB004707B7 /* CCellContent.swift in Sources */,

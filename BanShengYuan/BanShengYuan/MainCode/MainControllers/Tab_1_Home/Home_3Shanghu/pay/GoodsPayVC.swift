@@ -332,8 +332,8 @@ extension GoodsPayVC:UITableViewDataSource{
             if let sp = model_goods?.productNumber {
                 
                 str.append((model_goods?.remark ?? ""))
-                str.append((model_goods?.specification ?? ""))
-                str.append(" \(sp)")
+//                str.append((model_goods?.specification ?? ""))
+                str.append("\(sp)")
                 str.append((model_goods?.unit ?? ""))
                 
                 cell.lable_labels.text = str as String

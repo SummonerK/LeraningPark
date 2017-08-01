@@ -8,7 +8,7 @@
 
 import UIKit
 
-let space = 4
+let space = 0
 
 let ContentHight = CGFloat(667.0 - 102)
 
