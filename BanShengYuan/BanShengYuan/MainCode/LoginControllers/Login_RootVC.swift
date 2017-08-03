@@ -59,7 +59,7 @@ class Login_RootVC: UIViewController{
         //键盘监听开关
         IQKeyboardManager.sharedManager().enable = true
 
-        ShowWelecomeV()
+//        ShowWelecomeV()
         
         tf_phone.text = USERM.Phone
         model.partnerId = PARTNERID
@@ -77,7 +77,7 @@ class Login_RootVC: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
-    func ShowWelecomeV (){
+    func ShowWelecomeV(){
         
         let welecomeV = GuideView.init(frame: UIScreen.main.bounds)
         
@@ -164,6 +164,10 @@ class Login_RootVC: UIViewController{
         
     }
     
+    @IBAction func Back(_ sender: Any) {
+        
+        self.dismiss(animated: false, completion: nil)
+    }
     @IBAction func goToRegist(_ sender: Any) {
  
     }
@@ -188,11 +192,13 @@ class Login_RootVC: UIViewController{
                     
                     USERM.setMemberID(uid: memberid)
                     
-                    KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
-                    let animation = CATransition.init()
-                    animation.duration = self.duration
-                    animation.type = kCATransitionFade
-                    UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    
+//                    KeyWindow.rootViewController = StoryBoard_Main.instantiateInitialViewController()
+//                    let animation = CATransition.init()
+//                    animation.duration = self.duration
+//                    animation.type = kCATransitionFade
+//                    UIApplication.shared.keyWindow?.layer.add(animation, forKey: nil)
                     
                 }
 

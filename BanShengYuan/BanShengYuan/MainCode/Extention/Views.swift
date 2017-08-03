@@ -80,3 +80,15 @@ extension UIView {
         }
     }
 }
+
+func LoginAdjust(){
+    
+    if USERM.MemberID != ""{
+        
+    }else{
+        
+        let Vc = StoryBoard_Login.instantiateViewController(withIdentifier: "LoginNaviC") as! LoginNaviC
+        UIApplication.shared.delegate?.window??.rootViewController?.present(Vc, animated: true, completion: nil)
+        
+    }
+}

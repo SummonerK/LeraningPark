@@ -9,7 +9,7 @@
 import UIKit
 import DynamicColor
 
-class IBTabC: UITabBarController {
+class IBTabC: UITabBarController,UITabBarControllerDelegate{
     static var mytab:IBTabC?
 
     override func viewDidLoad() {
@@ -20,6 +20,8 @@ class IBTabC: UITabBarController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(BadgeCHange(_:_:)), name: NSNotification.Name(rawValue: "TiltleNotification"), object: nil)
         
+        self.delegate = self
+        
         //注册了一个名字叫做TiltleNotification的通知，同时TiltleNotification负责处理传递的通知
         
     }
@@ -29,8 +31,49 @@ class IBTabC: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
+//        
+//        PrintFM("\(String(describing: item.title))")
+//        
+//        if (item.title == "首页") {
+////            LoginAdjust()
+//        }
+//        
+//        if (item.title == "我的") {
+//            LoginAdjust()
+//        }
+//        
+//    }
+    
+    public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool{
+        
+//        let shouldIndex =  tabBarController.viewControllers?.index(of: viewController)
+//        
+//        PrintFM("selectedIndex = \(selectedIndex),shouldIndex=\(String(describing: shouldIndex))")
+        
+        if self.viewControllers?[2] == viewController{
+            PrintFM("第三页面，要加控制咯")
+            if USERM.MemberID != ""{
+                
+                return true
+                
+            }else{
+                
+                LoginAdjust()
+                
+                return false
+            }
+            
+        }else{
+            return true
+        }
+        
+    }
+    
 
 }
+
 
 
 extension UITabBarController{

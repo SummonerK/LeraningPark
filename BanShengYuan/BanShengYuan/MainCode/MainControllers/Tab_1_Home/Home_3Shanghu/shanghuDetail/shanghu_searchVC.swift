@@ -74,6 +74,8 @@ class shanghu_searchVC: UIViewController {
         VipM.shopSearchProducts(amodel: modelsearchPost)
             .subscribe(onNext: { (posts: ModelSearchProductResult) in
                 
+                self.array_items.removeAllObjects()
+                
                 if let data = posts.data,let products = data.products{
                     self.array_items.addObjects(from: products)
                     self.CV_main.reloadData()

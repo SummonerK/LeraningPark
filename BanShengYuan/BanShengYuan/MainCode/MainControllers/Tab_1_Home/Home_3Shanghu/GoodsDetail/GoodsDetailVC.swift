@@ -43,8 +43,7 @@ class GoodsDetailVC: BaseTabHiden {
     
     var model_goods:ModelShopDetailItem? ///上层商品数据
     var model_shop:ModelShopItem? ///上上层商户数据
-    
-    var miMgheightdatas:[Int] = []
+    var shopID:String?  ///<上层拼接
     
 //    var isOpen:Bool? = false
     var isOpen:Bool? = true
@@ -188,7 +187,7 @@ class GoodsDetailVC: BaseTabHiden {
         coverVC.delegate = self
         
         if let productid = model_goods?.pid {
-            coverVC.getMeun(productid: productid)
+            coverVC.getMeun(productid: productid,shopid: shopID!)
         }
         
         if let picture = model_goods?.picture {
@@ -266,26 +265,7 @@ class GoodsDetailVC: BaseTabHiden {
     //提交订单
     @IBAction func buyNow(_ sender: Any) {
         
-        let array = coverVC.dic_menuchoose.allValues as! [String]
-        
-        for item in array{
-            
-            if item == ""{
-                
-                showCoverViewNone()
-//                HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
-                return
-            }
-            
-        }
-        
-        let str = array.joined(separator: " ")
-        model_goods?.remark = String(describing:str)
-        model_goods?.productNumber = coverVC.proCount
-        
-        PrintFM("productID = \(coverVC.getChoosedGoodsID())")
-        
-        model_goods?.pid = "\(coverVC.getChoosedGoodsID())"
+        self.model_goods = coverVC.model_goodChosed
         
         goNextOrderV()
         
@@ -294,10 +274,48 @@ class GoodsDetailVC: BaseTabHiden {
 //MARK:- 前往订单页
     func goNextOrderV() {
         
-        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
-        Vc.model_shop = self.model_shop
-        Vc.model_goods = self.model_goods
-        self.navigationController?.pushViewController(Vc, animated: true)
+        let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
+        
+        let array = coverVC.dic_menuchoose.allValues as! [String]
+        
+        for item in array{
+            
+            if item == ""{
+                
+//                    HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
+                
+                return
+            }
+            
+        }
+        
+        var strDis = String()
+        
+        for key in arraykeys{
+            strDis.append(key.trueItemValue)
+            strDis.append(":")
+            strDis.append(coverVC.dic_menuchoose[key] as! String)
+            strDis.append(" ")
+        }
+        
+        model_goods?.remark = strDis
+        model_goods?.productNumber = coverVC.proCount
+        
+        PrintFM("productID = \(coverVC.getChoosedGoodsID())")
+        
+        model_goods?.pid = "\(coverVC.getChoosedGoodsID())"
+        
+        self.tableV_main.reloadData()
+        
+        if USERM.MemberID != ""{
+            let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsPayVC") as! GoodsPayVC
+            Vc.model_shop = self.model_shop
+            Vc.model_goods = self.model_goods
+            self.navigationController?.pushViewController(Vc, animated: true)
+        }else{
+            LoginAdjust()
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -313,6 +331,7 @@ extension GoodsDetailVC:chooseNoneCoverVDelegate{
     func chooseNoneClose(){
         closeCoverViewNone()
     }
+    
 }
 
 extension GoodsDetailVC:ChooseCoverVDelegate{
@@ -327,6 +346,8 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
             PrintFM("")
             
             closeCoverView()
+            
+            self.model_goods = coverVC.model_goodChosed
             
             let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
             
@@ -371,44 +392,7 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
         
         PrintFM("myChoose \(items)")
         
-        let arraykeys = items.allKeys as! [String]
-        
-        let array = items.allValues as! [String]
-
-        for item in array{
-            
-            if item == ""{
-//                HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
-                
-                showCoverViewNone()
-                
-                return
-            }
-            
-        }
-        
-        var strDis = String()
-        
-        for key in arraykeys{
-            strDis.append(key.trueItemValue)
-            strDis.append(":")
-            strDis.append(coverVC.dic_menuchoose[key] as! String)
-            strDis.append(" ")
-        }
-        
-//            let str = array.joined(separator: " ")
-//            model_goods?.remark = String(describing:str)
-        
-        model_goods?.remark = strDis
-        model_goods?.productNumber = count
-        
-        closeCoverView()
-        
-        PrintFM("productID = \(coverVC.getChoosedGoodsID())")
-        
-        model_goods?.pid = "\(coverVC.getChoosedGoodsID())"
-
-        self.tableV_main.reloadData()
+        self.model_goods = coverVC.model_goodChosed
         
         goNextOrderV()
     }

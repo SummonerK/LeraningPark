@@ -36,9 +36,11 @@ class chooseVC: UIViewController {
     var dic_menuchoose = NSMutableDictionary()
 //    var array_keys = NSMutableArray()
     let array_prospec = NSMutableArray()
+    var model_goodChosed:ModelShopDetailItem? ///规格选择的商品数据
     
     //数量
     var proCount:Int = 1
+    var proStock:Int = 0 //库存数量
     var productid:Int = 0
     
     @IBOutlet weak var viewAdd: UIView!
@@ -75,9 +77,10 @@ class chooseVC: UIViewController {
     
 //    获取商户meun 规格
     
-    func getMeun(productid:String) {
+    func getMeun(productid:String,shopid:String) {
         
         modelMenupost.productId = productid
+        modelMenupost.shopId = shopid
         
         self.productid = productid.intValue!
         
@@ -158,8 +161,8 @@ class chooseVC: UIViewController {
     //添加数量
     @IBAction func countAdd(_ sender: Any) {
         self.delegate?.setAction(actionType: .ADD)
-        
-        if proCount < 1 {
+    
+        if proCount < proStock {
             proCount += 1
         }else{
             HUDShowMsgQuick(msg: "库存不足", toView: KeyWindow, time: 0.8)
@@ -320,6 +323,8 @@ class chooseVC: UIViewController {
                     if let data = posts.data,let products = data.products{
                         for item in products{
                             
+                            self.model_goodChosed = item
+                            
                             if let picture = item.picture{
                                 
                                 let url = URL(string: picture)
@@ -328,6 +333,11 @@ class chooseVC: UIViewController {
                                     
                                 })
                                 
+                            }
+                            
+                            if let count = item.stock{
+                                self.proStock = count
+                                self.label_kc.text = "库存" + "\(count)"
                             }
                             
                             if let price = item.finalPrice{

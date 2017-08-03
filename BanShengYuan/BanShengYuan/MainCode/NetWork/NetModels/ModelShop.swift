@@ -56,6 +56,7 @@ class ModelShopDetailItem: Mappable {
     var unit: String?
     var productNumber: Int?
     
+    var stock: Int?
     var remark: String?
     var productSpecification: [NSDictionary]?
     var specificationList: [ModelMenuSpecItem]?
@@ -85,6 +86,7 @@ class ModelShopDetailItem: Mappable {
         
         productNumber <- map["productNumber"]
         remark <- map["remark"]
+        stock <- map["stock"]
         productSpecification <- map["productSpecification"]
         specificationList <- map["specificationList"]
         
@@ -227,6 +229,7 @@ class ModelShopDetailMenuPost: Reflect {
      *  必传:True
      */
     var productId:String!
+    var shopId:String!
     
 }
 

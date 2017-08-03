@@ -37,12 +37,12 @@ class Home_RootVC: UIViewController{
         
 //        HUDcustomShow(toview: self.view)
 //        HUDGifCustomShow()
-        
-        if WXApi.isWXAppInstalled(){
-            HUDShowMsgQuick(msg: "检测到微信", toView: KeyWindow, time: 0.8)
-        }else{
-            HUDShowMsgQuick(msg: "未检测到微信", toView: KeyWindow, time: 0.8)
-        }
+//        if WXApi.isWXAppInstalled(){
+//            HUDShowMsgQuick(msg: "检测到微信", toView: KeyWindow, time: 0.8)
+//        }else{
+//            HUDShowMsgQuick(msg: "未检测到微信", toView: KeyWindow, time: 0.8)
+//        }
+//        LoginAdjust()
         
     }
     
@@ -108,11 +108,38 @@ class Home_RootVC: UIViewController{
         tableV_main.register(UINib.init(nibName: "TCellActivity", bundle: nil), forCellReuseIdentifier: "TCellActivity")
         tableV_main.register(UINib.init(nibName: "TCellHomeActivities", bundle: nil), forCellReuseIdentifier: "TCellHomeActivities")
         tableV_main.register(UINib.init(nibName: "TCell_Footer", bundle: nil), forCellReuseIdentifier: "TCell_Footer")
+        
+        ShowWelecomeV()
 
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func ShowWelecomeV(){
+        
+        let welecomeV = GuideView.init(frame: UIScreen.main.bounds)
+        
+        welecomeV.contentImages = {
+            
+            let array : Array<UIImage> = [BundleImageWithName("guide1")!,BundleImageWithName("guide2")!,BundleImageWithName("guide3")!]
+            
+            return array
+        }
+        
+        welecomeV.contentSize = {
+            return CGSize.init(width: IBScreenWidth, height: IBScreenHeight)
+        }
+        
+        welecomeV.doneButton = {
+            let button : UIButton = UIButton(frame:CGRect.init(x: welecomeV.frame.size.width * 0.1, y: welecomeV.frame.size.height - 50, width: welecomeV.frame.size.width * 0.8, height: 33))
+            button.setImage(BundlePngWithName("button_start")!, for:UIControlState.normal)
+            return button
+        }
+        
+        welecomeV.showGuideView()
+        
     }
 
 }

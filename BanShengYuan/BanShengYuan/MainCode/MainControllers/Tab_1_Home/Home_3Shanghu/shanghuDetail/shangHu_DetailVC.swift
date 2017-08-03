@@ -259,6 +259,8 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
         Vc.model_goods = array_items[indexPath.row] as? ModelShopDetailItem
         Vc.model_shop = self.modelShop
+        Vc.shopID = shopID
+        
         self.navigationController?.pushViewController(Vc, animated: true)
         
     }

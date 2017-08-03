@@ -55,7 +55,7 @@ extension shopAPI: TargetType {
         case .shopGetDetailPictures(_):
             return "/Query/Product/ListPicture"
         case .shopGetDetailMenus(_):
-            return "/Query/Product/ListBaseInfo"
+            return "/Query/Product/ListBaseInfos"
             
             
         case .addressGetList(_):

@@ -11,6 +11,8 @@ import CoreData
 import IQKeyboardManagerSwift
 
 
+let WXAPID = "wxbb3b00c8bc6afb6f"
+
 @available(iOS 10.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
@@ -27,13 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
 //        window?.makeKeyAndVisible()
         
         
-        if USERM.MemberID != ""{
+//        if USERM.MemberID != ""{
+        
+//          USERM.setMemberID(uid: "")
+        
             window?.rootViewController = StoryBoard_Main.instantiateInitialViewController()
             window?.makeKeyAndVisible()
-        }else{
-            window?.rootViewController = StoryBoard_Login.instantiateInitialViewController()
-            window?.makeKeyAndVisible()
-        }
+            
+//        }else{
+//            window?.rootViewController = StoryBoard_Login.instantiateInitialViewController()
+//            window?.makeKeyAndVisible()
+//        }
         
         //MARK: 设置键盘
         //键盘监听开关
@@ -45,31 +51,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
         //点击背景 关闭键盘
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
-        WXApi.registerApp("wx000000000")
+        WXApi.registerApp(WXAPID)
         
         return true
     }
     
-    func testATS(){
-    //先导入证书，找到证书的路径
-//        let Path Bundle.main.
-    
-    }
-    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-//        PrintFM("\(String(describing: url.host))")
-//        
-        if url.host == "bsyal" {
+        if url.host == "safepay" {
         
-            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (dic) in
-                PrintFM("Paypaypay\(String(describing: dic))")
+            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
+                
+                if let resulttemp = result{
+                    if let status = resulttemp["resultStatus"]{
+                        if (status as! String) == "9000"{
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: "ALorderNotifation"), object: nil)
+                            HUDShowMsgQuick(msg: "支付成功", toView: KeyWindow, time: 0.8)
+                        }else{
+                            HUDShowMsgQuick(msg: "支付失败", toView: KeyWindow, time: 0.8)
+                        }
+                        
+                    }
+                }
+                
             })
-        
         
         }
         
-        if url.scheme == "bsywx" {
+        if url.host == "pay" {
             return WXApi.handleOpen(url, delegate: self)
         }
         

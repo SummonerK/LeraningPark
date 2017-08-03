@@ -462,8 +462,6 @@ let loadingPlugin = NetworkActivityPlugin { (change) -> () in
         
         if mAllRequestCount == 1{
             MBProgressHUD.showAdded(to: KeyWindow, animated: true)
-            
-            
         }
         
         PrintFM("mAllRequestCount ++++++ = \(mAllRequestCount)")

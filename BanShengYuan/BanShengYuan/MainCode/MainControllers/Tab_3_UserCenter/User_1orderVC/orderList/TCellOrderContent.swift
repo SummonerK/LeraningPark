@@ -62,6 +62,13 @@ class TCellOrderContent: UITableViewCell {
         
     }
     
+    func setDefaultNoneData() {
+        Num = 1
+        self.arrayOrderList.removeAllObjects()
+        self.tableV_main.mj_footer.resetNoMoreData()
+        self.tableV_main.reloadData()
+    }
+    
     func getOrderList(){
         
         Num = 1
@@ -326,7 +333,7 @@ extension TCellOrderContent: UITableViewDelegate {
 extension TCellOrderContent:DZNEmptyDataSetSource{
     
     func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat{
-        return 110
+        return 10
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!{

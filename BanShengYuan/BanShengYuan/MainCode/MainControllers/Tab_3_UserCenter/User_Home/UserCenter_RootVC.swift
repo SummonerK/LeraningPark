@@ -29,6 +29,8 @@ class UserCenter_RootVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
+        getData()
+        
     }
 
     override func viewDidLoad() {
@@ -202,6 +204,6 @@ extension UserCenter_RootVC: UITableViewDelegate {
     
     func backNickName(name:String) -> Void {
         PrintFM("\(name)")
-        getData()
+//        getData()
     }
 }

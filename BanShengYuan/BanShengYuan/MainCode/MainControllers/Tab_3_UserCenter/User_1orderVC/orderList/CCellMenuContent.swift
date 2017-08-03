@@ -70,7 +70,7 @@ class CCellMenuContent: UICollectionViewCell {
         orderM.orderListByUser(amodel: modelorderlistpost)
             .subscribe(onNext: { (posts: ModelOrderWithCount) in
                 
-                PrintFM("pictureList\(String(describing: posts.orders?.toJSONString()))")
+                PrintFM("ProductList\(String(describing: posts.orders?.toJSONString()))")
                 
                 self.arrayOrderList.removeAllObjects()
                 

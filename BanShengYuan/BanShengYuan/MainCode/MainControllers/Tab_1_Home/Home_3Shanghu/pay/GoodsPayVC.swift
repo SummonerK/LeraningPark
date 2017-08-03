@@ -61,7 +61,6 @@ class GoodsPayVC: BaseTabHiden {
         
         setOrderModel()
         
-        getTotalPrice()
     }
     //MARK:整合订单数据
     @IBAction func payNow(_ sender: Any) {
@@ -118,6 +117,8 @@ class GoodsPayVC: BaseTabHiden {
         modelaccount.sequence = 0
         
         modelOrderC.accounts = [modelaccount]
+        
+        getTotalPrice()
     }
     
     //MARK:提交订单
