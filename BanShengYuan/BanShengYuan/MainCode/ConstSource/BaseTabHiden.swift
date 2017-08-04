@@ -56,7 +56,7 @@ extension BaseTabHiden:DZNEmptyDataSetSource{
     
     //Add description/subtitle on empty dataset
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "Get no more Data from servicer, place check again!"
+        let str = "Get no more Data from Server, place check again!"
         let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }

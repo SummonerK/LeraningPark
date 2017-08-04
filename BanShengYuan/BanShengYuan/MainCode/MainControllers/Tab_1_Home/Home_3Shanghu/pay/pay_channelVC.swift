@@ -124,15 +124,19 @@ class pay_channelVC: UIViewController {
 //        HUDShowMsgQuick(msg: "微信支付尚未开放", toView: KeyWindow, time: 0.8)
 //        return
         
-        payChanel = 2
-        imageV_wx.image = UIImage.init(named: "choose_s")
-        imageV_al.image = UIImage.init(named: "choose_n")
-        
-        PrintFM("")
+        if WXApi.isWXAppInstalled(){
+            payChanel = 102
+            imageV_wx.image = UIImage.init(named: "choose_s")
+            imageV_al.image = UIImage.init(named: "choose_n")
+        }else{
+//            HUDShowMsgQuick(msg: "未检测到微信", toView: KeyWindow, time: 0.8)
+            HUDtextShow(toview: KeyWindow, msg: "未检测到微信", subMsg: "请选择其他支付方式，完成支付。")
+        }
+
     }
     
     @IBAction func actionAliPay(_ sender: Any) {
-        payChanel = 1
+        payChanel = 101
         imageV_wx.image = UIImage.init(named: "choose_n")
         imageV_al.image = UIImage.init(named: "choose_s")
         
@@ -141,10 +145,18 @@ class pay_channelVC: UIViewController {
     
     @IBAction func actionPay(_ sender: Any) {
         
-        if payChanel == 1{
+        switch payChanel {
+        case 1:
+            HUDShowMsgQuick(msg: "请选择一种支付方式", toView: KeyWindow, time: 0.8)
+            return
+        case 101:
             modelpayPost.pay_ebcode = aliPay_ebcode
-        }else{
+            break
+        case 102:
             modelpayPost.pay_ebcode = wxPay_ebcode
+            break
+        default:
+            return
         }
         
         if let oid = self.orderID{
@@ -152,7 +164,6 @@ class pay_channelVC: UIViewController {
             modelpayPost.orderId = "\(oid)"
             modelAccess.orderId = "\(oid)"
         }
-    
         
         OrderM.orderPay(amodel: modelpayPost)
             
@@ -165,7 +176,7 @@ class pay_channelVC: UIViewController {
                     PrintFM("content = \(content)")
                     
                     //支付宝支付
-                    if self.payChanel == 1{
+                    if self.payChanel == 101{
                         
                         AlipaySDK.defaultService().payOrder(content.biz_content, fromScheme: "bsyal", callback: {(result) in
                             
@@ -189,7 +200,7 @@ class pay_channelVC: UIViewController {
                     }
 
                     //微信支付
-                    if self.payChanel == 2{
+                    if self.payChanel == 102{
                         
                         if let wxorder = content.pay_order{
                             
@@ -207,7 +218,6 @@ class pay_channelVC: UIViewController {
                         
                     }
                     
-
                 }
 
             },onError:{error in
@@ -225,20 +235,12 @@ class pay_channelVC: UIViewController {
     
     func payAccess(){
         
-//        HUDShowMsgQuick(msg: "ShowPayAccess", toView: self.view, time: 0.8)
-        
-//        //我的订单
-//        let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "orderListRootVC") as! orderListRootVC
-//        self.navigationController?.pushViewController(Vc, animated: true)
-        
-//        self.navigationController?.popToRootViewController(animated: true)
-        
-        
         OrderM.orderPayAccess(amodel: modelAccess)
             
             .subscribe(onNext: { (posts: ModelOrderPayAccessBack) in
                 
-                PrintFM("pictureList\(posts)")
+                PrintFM("orderPayAccess = \(posts)")
+                
                 
                 if let content = posts.data{
                     
@@ -247,7 +249,7 @@ class pay_channelVC: UIViewController {
                     let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "orderListRootVC") as! orderListRootVC
                     self.navigationController?.pushViewController(Vc, animated: true)
                     
-                    PrintFM("content = \(content)")
+                    PrintFM("content = \(String(describing: content.toJSONString()))")
                 }
                 
             },onError:{error in
@@ -260,8 +262,6 @@ class pay_channelVC: UIViewController {
     
             })
             .addDisposableTo(disposeBag)
-        
-        
         
     }
 

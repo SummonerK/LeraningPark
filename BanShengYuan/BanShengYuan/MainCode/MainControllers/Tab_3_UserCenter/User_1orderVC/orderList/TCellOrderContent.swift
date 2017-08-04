@@ -186,18 +186,28 @@ extension TCellOrderContent:UITableViewDataSource{
         
         if let text = order.status {
             PrintFM("status = \(text)")
+            
+            var str_orderStep = String()
+            
             switch text {
+            case 1:
+                str_orderStep = "已支付"//下单
             case 2:
-                viewheader?.label_wuliu.text = "待支付"
+                str_orderStep = "待支付"
             case 3:
-                viewheader?.label_wuliu.text = "待发货"
+                str_orderStep = "待发货"//接单
             case 4:
-                viewheader?.label_wuliu.text = "配送中"
+                str_orderStep = "待收货"//配送中
+            case 5:
+                str_orderStep = "完成"//完成
+            case 6:
+                str_orderStep = "取消"//取消
             default:
-                viewheader?.label_wuliu.text = "系统处理中"
+                str_orderStep = ""
                 break
             }
             
+            viewheader?.label_wuliu.text = str_orderStep
         }
         return viewheader
     }
@@ -345,7 +355,7 @@ extension TCellOrderContent:DZNEmptyDataSetSource{
     
     //Add description/subtitle on empty dataset
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "Get no more Data from servicer, place check again!"
+        let str = "Get no more Data from Server, place check again!"
         let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }

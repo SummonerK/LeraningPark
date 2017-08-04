@@ -37,6 +37,18 @@ class HomeNaviC: UINavigationController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+     
+     
+     self.performSegue(withIdentifier: "ShowDetailView", sender: itemString)
+          
+    //在这个方法中给新页面传递参数
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailView"{
+            let controller = segue.destination as! DetailViewController
+            controller.itemString = sender as? String
+        }
+    }
+     
     */
 
 }

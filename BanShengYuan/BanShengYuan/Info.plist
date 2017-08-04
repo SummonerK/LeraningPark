@@ -33,14 +33,16 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>wexin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>bsywx</string>
+				<string>wxbb3b00c8bc6afb6f</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>9</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>weixin</string>

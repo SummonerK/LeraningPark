@@ -419,16 +419,46 @@ class ModelOrderPayAccessBack: Mappable {
 //MARK:订单支付确认 backModel
 
 class ModelOrderPayAccesItem: Mappable {
-    var StatusCode: String?//支付状态码
-    var payAcount: String?//返回支付信息
-    var payId: String?//返回支付信息
+    var alipayAmount: String?//
+    var fmId: String?//
+    var mcouponAmount: Int?//
+    
+    var operatorId: String?//
+    var payDate: String?//
+    var payEbcode: String?//
+    
+    var payId: String?
+    var payTransId: String?
+    var refundAmount: Int?
+    
+    var stationId: String?
+    var statusCode: Int?
+    var storeId: String?
+    
+    var totalAmount: Int?
+    var ver: Int?
     
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        StatusCode <- map["StatusCode"]
-        payAcount <- map["payAcount"]
+        alipayAmount <- map["alipayAmount"]
+        fmId <- map["fmId"]
+        mcouponAmount <- map["mcouponAmount"]
+        
+        operatorId <- map["operatorId"]
+        payDate <- map["payDate"]
+        payEbcode <- map["payEbcode"]
+        
         payId <- map["payId"]
+        payTransId <- map["payTransId"]
+        refundAmount <- map["refundAmount"]
+        
+        stationId <- map["stationId"]
+        statusCode <- map["statusCode"]
+        storeId <- map["storeId"]
+        
+        totalAmount <- map["totalAmount"]
+        ver <- map["ver"]
         
     }
     
@@ -491,64 +521,75 @@ class ModelOrderWithCount:Mappable {
 //MARK:订单支付确认 backModel
 
 class ModelListPageByUserBack: Mappable {
-    var oid: String?//订单ID
-    var companyId: String?//商户ID
-    var shopId: String?//门店ID
-    var shopName: String?//门店名称
     
-    var userId: String?//用户ID
-    var userName: String?//用户名称
-    var phone: String?//用户电话
+    var accounts: [ModelListPageByUserAccountItem]?//其他结算列表
     var address: String?//收货地址
+    var amount: Int?//订单金额(分)
+    var cancelReason: String?//adding
+    var companyId: String?//商户ID
     
+    var customerOrder: String?//第三方订单编号
+    var evaluateStatus: Int?//adding
+    var gmtCreate: Int?//adding
     var longitude: String?//收货地址经度
     var latitude: String?//收货地址纬度
-    var type: String?//订单类型
-    var status: Int?//订单状态
     
-    var amount: String?//订单金额(分)
-    var payType: String?//支付金额
+    var oid: Int?//订单ID
+    var partition: String?//拆单信息
     var payChannel: String?//支付渠道
     var payChannelName: String?//支付渠道名称
+    var payStatus: Int?//adding
     
-    var source: String?//订单来源
-    var partition: String?//拆单信息
-    var customerOrder: String?//第三方订单编号
-    var remark: String?//订单备注
-    
+    var payType: Int?//支付金额
+    var phone: String?//用户电话
     var products: [ModelShopDetailItem]?//商品列表
-    var accounts: [ModelListPageByUserAccountItem]?//其他结算列表
+    var remark: String?//订单备注
+    var shopId: String?//门店ID
+    
+    var shopName: String?//门店名称
+    var source: String?//订单来源
+    var status: Int?//订单状态
+    var type: Int?//订单类型
+    var userId: String?//用户ID
+    
+    var userName: String?//用户名称
     
     required init?(map: Map) { }
     
     func mapping(map: Map) {
-        oid <- map["oid"]
-        companyId <- map["companyId"]
-        shopId <- map["shopId"]
-        shopName <- map["shopName"]
-        
-        userId <- map["userId"]
-        userName <- map["userName"]
-        phone <- map["phone"]
+        accounts <- map["accounts"]
         address <- map["address"]
+        amount <- map["amount"]
+        cancelReason <- map["cancelReason"]
+        companyId <- map["companyId"]
         
+        customerOrder <- map["customerOrder"]
+        evaluateStatus <- map["evaluateStatus"]
+        gmtCreate <- map["gmtCreate"]
         longitude <- map["longitude"]
         latitude <- map["latitude"]
-        type <- map["type"]
-        status <- map["status"]
         
-        amount <- map["amount"]
-        payType <- map["payType"]
+        oid <- map["oid"]
+        partition <- map["partition"]
         payChannel <- map["payChannel"]
         payChannelName <- map["payChannelName"]
+        payStatus <- map["payStatus"]
         
-        source <- map["source"]
-        partition <- map["partition"]
-        customerOrder <- map["customerOrder"]
-        remark <- map["remark"]
-        
+        payType <- map["payType"]
+        phone <- map["phone"]
         products <- map["products"]
-        accounts <- map["accounts"]
+        remark <- map["remark"]
+        shopId <- map["shopId"]
+        
+        shopName <- map["shopName"]
+        source <- map["source"]
+        status <- map["status"]
+        type <- map["type"]
+        userId <- map["userId"]
+        
+        userName <- map["userName"]
+
+        
         
     }
     

@@ -140,6 +140,7 @@
 		636636141F05058C0060E7D4 /* View_payHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636636131F05058C0060E7D4 /* View_payHeader.xib */; };
 		636636161F05059D0060E7D4 /* View_payFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636636151F05059D0060E7D4 /* View_payFooter.swift */; };
 		636636181F0505A90060E7D4 /* View_payFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636636171F0505A90060E7D4 /* View_payFooter.xib */; };
+		636C68FB1F3460CF00428F45 /* order_continuePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636C68FA1F3460CF00428F45 /* order_continuePay.swift */; };
 		6370FB8E1F219780003CC6FC /* pay_channelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6370FB8D1F219780003CC6FC /* pay_channelVC.swift */; };
 		6372DCA41F2ACC3A0060F223 /* orderListRootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372DCA31F2ACC3A0060F223 /* orderListRootVC.swift */; };
 		6372DCA71F2B0EF40060F223 /* TCellOrderContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372DCA51F2B0EF40060F223 /* TCellOrderContent.swift */; };
@@ -331,6 +332,7 @@
 		636636131F05058C0060E7D4 /* View_payHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View_payHeader.xib; sourceTree = "<group>"; };
 		636636151F05059D0060E7D4 /* View_payFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View_payFooter.swift; sourceTree = "<group>"; };
 		636636171F0505A90060E7D4 /* View_payFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View_payFooter.xib; sourceTree = "<group>"; };
+		636C68FA1F3460CF00428F45 /* order_continuePay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = order_continuePay.swift; sourceTree = "<group>"; };
 		6370FB8D1F219780003CC6FC /* pay_channelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pay_channelVC.swift; sourceTree = "<group>"; };
 		6372DCA31F2ACC3A0060F223 /* orderListRootVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = orderListRootVC.swift; sourceTree = "<group>"; };
 		6372DCA51F2B0EF40060F223 /* TCellOrderContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellOrderContent.swift; sourceTree = "<group>"; };
@@ -665,6 +667,7 @@
 				6372DCA31F2ACC3A0060F223 /* orderListRootVC.swift */,
 				6372DCA51F2B0EF40060F223 /* TCellOrderContent.swift */,
 				6372DCA61F2B0EF40060F223 /* TCellOrderContent.xib */,
+				636C68FA1F3460CF00428F45 /* order_continuePay.swift */,
 				63F883451F28773D00F556CC /* CCellTop.swift */,
 				63F883461F28773D00F556CC /* CCellTop.xib */,
 				634D71E51F29D4EC00C7855A /* CCellMenuContent.swift */,
@@ -1274,6 +1277,7 @@
 				634F64061F0E172A00DE4B92 /* ModelAddressPost.swift in Sources */,
 				634F64021F0E172A00DE4B92 /* shopModel.swift in Sources */,
 				638DE6191EF7B87C0017DA72 /* user_infoVC.swift in Sources */,
+				636C68FB1F3460CF00428F45 /* order_continuePay.swift in Sources */,
 				634DE72C1EF381D200E44AFA /* TCell_pActivity.swift in Sources */,
 				63559AB71EFA6D6E003FC6E5 /* ActivityNaviC.swift in Sources */,
 				6366360E1F05047E0060E7D4 /* CCell_shhuDetailHeader.swift in Sources */,

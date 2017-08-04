@@ -53,6 +53,8 @@ class Home_RootVC: UIViewController{
         
         PrintFM(str.sectoryPhone)
         
+//        HUDtextShow(toview: KeyWindow, msg: "支付失败", subMsg: "15600703631")
+        
 //        modelAccess.orderId = "82240992678248710"
 //        
 //        OrderM.orderPayAccess(amodel: modelAccess)

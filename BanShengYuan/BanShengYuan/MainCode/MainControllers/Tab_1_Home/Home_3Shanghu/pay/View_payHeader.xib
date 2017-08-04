@@ -52,10 +52,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C84-0z-Dw2">
                     <rect key="frame" x="0.0" y="10" width="375" height="28"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收货人：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-Ux-KyE">
-                            <rect key="frame" x="34" y="4" width="70" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收货人 :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-Ux-KyE">
+                            <rect key="frame" x="34" y="4" width="50.5" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="width" priority="500" constant="70" id="1tt-V5-Qdy"/>
+                                <constraint firstAttribute="width" priority="200" constant="20" id="1tt-V5-Qdy"/>
                                 <constraint firstAttribute="height" constant="21" id="58S-AP-IzC"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
@@ -63,7 +63,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小方 15921466612" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfd-5Q-iX5">
-                            <rect key="frame" x="114" y="4" width="251" height="21"/>
+                            <rect key="frame" x="94.5" y="4" width="270.5" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="XDy-xL-zg4"/>
                             </constraints>

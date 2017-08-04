@@ -217,7 +217,7 @@ func HUDtextShow(toview:UIView ,msg:String ,subMsg:String){
     hud.label.text = msg
     hud.detailsLabel.text = subMsg
     //延迟隐藏
-    hud.hide(animated: true, afterDelay: 0.8)
+    hud.hide(animated: true, afterDelay: 1.5)
 }
 
 ///-自定义视图提示

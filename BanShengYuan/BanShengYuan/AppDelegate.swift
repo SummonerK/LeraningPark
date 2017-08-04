@@ -61,12 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
         if url.host == "safepay" {
         
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
-                
                 if let resulttemp = result{
                     if let status = resulttemp["resultStatus"]{
                         if (status as! String) == "9000"{
                             NotificationCenter.default.post(name: Notification.Name(rawValue: "ALorderNotifation"), object: nil)
-                            HUDShowMsgQuick(msg: "支付成功", toView: KeyWindow, time: 0.8)
                         }else{
                             HUDShowMsgQuick(msg: "支付失败", toView: KeyWindow, time: 0.8)
                         }
@@ -82,7 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
             return WXApi.handleOpen(url, delegate: self)
         }
         
-        
         return true
     }
     
@@ -93,14 +90,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
             case 0 :
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "WXorderNotifation"), object: nil)
             case -1 :
-//                HUDShowMsgQuick(msg: "支付失败", toView: KeyWindow, time: 0.8)
-                
                 HUDtextShow(toview: KeyWindow, msg: "支付失败", subMsg: resp.errStr)
             case -2 :
                 HUDShowMsgQuick(msg: "取消支付", toView: KeyWindow, time: 0.8)
             default:
-//                HUDShowMsgQuick(msg: "支付失败", toView: KeyWindow, time: 0.8)
-                
                 HUDtextShow(toview: KeyWindow, msg: "支付失败", subMsg: resp.errStr)
             }
         }
