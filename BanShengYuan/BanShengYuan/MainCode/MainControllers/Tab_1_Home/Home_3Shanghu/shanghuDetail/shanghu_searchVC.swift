@@ -29,6 +29,8 @@ class shanghu_searchVC: UIViewController {
     
     @IBOutlet weak var searchbar: UISearchBar!
     
+    var searchCoverVC: searchSHHolderVC! = nil
+    
     //network
     let VipM = shopModel()
     let modelsearchPost = ModelSearchProductPost()
@@ -50,14 +52,31 @@ class shanghu_searchVC: UIViewController {
 //        searchbar.becomeFirstResponder()
         
         setupCollection()
+        
+        SetSearchCoverHolderV()
 
         // Do any additional setup after loading the view.
     }
+    
+    func SetSearchCoverHolderV(){
+        
+        searchCoverVC = StoryBoard_NextPages.instantiateViewController(withIdentifier: "searchSHHolderVC") as? searchSHHolderVC
+        
+        searchCoverVC.view.frame = CGRect.init(x: 0, y: 64, width: IBScreenWidth, height: IBScreenHeight-64)
+        
+        self.view.addSubview(searchCoverVC.view)
+        
+//        self.view.sendSubview(toBack: coverVC.view)
+        
+        self.view.bringSubview(toFront: searchCoverVC.view)
+    }
+    
     
     @IBAction func NaviBack(_ sender: Any) {
         
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func NaviMenu(_ sender: Any) {
         
         PrintFM("meun")
@@ -113,6 +132,8 @@ class shanghu_searchVC: UIViewController {
         
         CV_main.register(UINib.init(nibName: "CCell_shhuDetail", bundle: nil), forCellWithReuseIdentifier: "CCell_shhuDetail")
         CV_main.register(UINib.init(nibName: "CCell_shhuDetailLine", bundle: nil), forCellWithReuseIdentifier: "CCell_shhuDetailLine")
+        
+        CV_main.register(UINib.init(nibName: "CCellSearchHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CCellSearchHeader")
         
     }
 
@@ -179,6 +200,19 @@ extension shanghu_searchVC:UICollectionViewDelegate{
 }
 
 extension shanghu_searchVC:UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize.init(width: IBScreenWidth, height: 44)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CCellSearchHeader", for: indexPath) as! CCellSearchHeader
+        
+        return headerView
+        
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
         

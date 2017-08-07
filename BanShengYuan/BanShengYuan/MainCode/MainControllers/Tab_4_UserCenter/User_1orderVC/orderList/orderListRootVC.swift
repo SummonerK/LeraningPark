@@ -21,7 +21,7 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     
     var Page:Int = 0
     
-    let array:[String] = ["全部","待付款","进行中","已完成"]
+    let array:[String] = ["全部","待发货(2)","配送中(1)","已完成"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -84,9 +84,9 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         
 //        view_undleLine = UIView.init(frame: CGRect.init(x: CGFloat(normalSpace) + 1.5, y: 34.0, width: width, height: CGFloat(1.8)))
         
-        view_undleLine = UIView.init(frame: CGRect.init(x: CGFloat(normalSpace) + 1.5, y: CGFloat(34.0), width: CGFloat(width), height: CGFloat(1.8)))
+        view_undleLine = UIView.init(frame: CGRect.init(x: CGFloat(normalSpace) + 1, y: CGFloat(34.0), width: CGFloat(width), height: CGFloat(1.8)))
         
-        view_undleLine.backgroundColor = UIColor.blue
+        view_undleLine.backgroundColor = FlatLocalMain
         
         collectionView_top.addSubview(view_undleLine)
         
@@ -198,7 +198,7 @@ extension orderListRootVC:UICollectionViewDelegate{
                 
                 self.view_undleLine.frame.size.width = CGFloat(width)
                 
-                self.view_undleLine.frame.origin.x = rect.origin.x + CGFloat(normalSpace) + 1.5
+                self.view_undleLine.frame.origin.x = rect.origin.x + CGFloat(normalSpace) + 1
                 
                 self.view.layoutIfNeeded()
             }

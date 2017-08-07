@@ -27,7 +27,6 @@ extension MYCollectionViewDelegateFlowLayout {
 }
 
 class IBCollectionViewFlowLayout: UICollectionViewFlowLayout {
-
     //对齐方向
     var direction: AlignedDirection = .left
     //所有cell的布局属性

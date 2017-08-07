@@ -792,7 +792,7 @@
                                                 <rect key="frame" x="10" y="15" width="60" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="NZF-nm-zKS"/>
-                                                    <constraint firstAttribute="width" priority="200" constant="42" id="agM-UN-SP7"/>
+                                                    <constraint firstAttribute="width" priority="200" constant="70" id="agM-UN-SP7"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="15"/>
                                                 <nil key="textColor"/>

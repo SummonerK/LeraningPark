@@ -172,6 +172,7 @@ extension Home_RootVC:homeFootDelegate{
             self.navigationController?.pushViewController(Vc, animated: true)
         }
     }
+    
 }
 
 extension Home_RootVC:UITableViewDataSource{

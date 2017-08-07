@@ -40,7 +40,6 @@ public enum ShakeDirection: Int {
 }
 
 extension UIView {
-    
     /**
      扩展UIView增加抖动方法
      

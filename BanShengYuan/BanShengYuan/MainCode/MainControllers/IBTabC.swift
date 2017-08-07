@@ -32,27 +32,13 @@ class IBTabC: UITabBarController,UITabBarControllerDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
-//        
-//        PrintFM("\(String(describing: item.title))")
-//        
-//        if (item.title == "首页") {
-////            LoginAdjust()
-//        }
-//        
-//        if (item.title == "我的") {
-//            LoginAdjust()
-//        }
-//        
-//    }
-    
     public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool{
         
 //        let shouldIndex =  tabBarController.viewControllers?.index(of: viewController)
 //        
 //        PrintFM("selectedIndex = \(selectedIndex),shouldIndex=\(String(describing: shouldIndex))")
         
-        if self.viewControllers?[2] == viewController{
+        if self.viewControllers?[3] == viewController{
             PrintFM("第三页面，要加控制咯")
             if USERM.MemberID != ""{
                 

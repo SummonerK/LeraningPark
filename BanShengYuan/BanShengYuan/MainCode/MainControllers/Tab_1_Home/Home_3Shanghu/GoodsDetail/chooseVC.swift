@@ -408,18 +408,6 @@ extension chooseVC:UICollectionViewDataSource{
         
         headerView.label_title.text = letspecItem.partName?.trueItemValue
         
-//        if letspecItem.partName == "color" {
-//            headerView.label_title.text = "颜色"
-//        }
-//        
-//        if letspecItem.partName == "zipper" {
-//            headerView.label_title.text = "拉链"
-//        }
-//        
-//        if letspecItem.partName == "size" {
-//            headerView.label_title.text = "尺寸"
-//        }
-        
         headerView.layoutIfNeeded()
         
         return headerView
