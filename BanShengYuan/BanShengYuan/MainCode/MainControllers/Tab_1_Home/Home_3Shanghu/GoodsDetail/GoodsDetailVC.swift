@@ -272,6 +272,7 @@ class GoodsDetailVC: BaseTabHiden {
     }
     
 //MARK:- 前往订单页
+    
     func goNextOrderV() {
         
         let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
@@ -283,6 +284,8 @@ class GoodsDetailVC: BaseTabHiden {
             if item == ""{
                 
 //                    HUDShowMsgQuick(msg: "请选择规格", toView: KeyWindow, time: 0.8)
+                
+                showCoverViewNone()
                 
                 return
             }

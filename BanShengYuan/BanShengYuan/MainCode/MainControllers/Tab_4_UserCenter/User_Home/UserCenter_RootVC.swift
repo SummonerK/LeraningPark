@@ -14,6 +14,19 @@ import SwiftyJSON
 
 class UserCenter_RootVC: UIViewController {
     
+    /*
+     {
+     "phone" : "15600703631",
+     "partnerId" : "53c69e54-c788-495c-bed3-2dbfc6fd5c61",
+     "memberName" : "",
+     "avatarUrl" : "image.png",
+     "birthday" : "1994-01-01",
+     "memberId" : "59da5545-b728-4bc0-a18d-b9cf9fb316fb",
+     "sex" : 1,
+     "nickName" : "落落L"
+     }
+     */
+    
     //network
     
     let disposeBag = DisposeBag()

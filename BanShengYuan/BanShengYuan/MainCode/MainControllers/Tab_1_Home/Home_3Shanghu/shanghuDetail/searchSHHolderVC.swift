@@ -8,16 +8,22 @@
 
 import UIKit
 
+protocol SearchSHHolderDelegate {
+    func SearchContent(content:String)
+}
+
 class searchSHHolderVC: UIViewController {
 
     @IBOutlet weak var CV_main: UICollectionView!
+    
+    var delegate:SearchSHHolderDelegate?
     
     let array_meun = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        array_meun.addObjects(from: [["橙色橘子","橘色赫眼","一个大苹果","龙","阿姆斯特朗式阿姆斯特朗回旋加速炮","蝇王"],["橙色橘子","橘色赫眼","一个大苹果","龙","阿姆斯特朗式阿姆斯特朗回旋炮","蝇王"]])
+        array_meun.addObjects(from: [["小梅子店铺","指甲油 幻彩店铺","木棉若若店","黑白界","老张哥店铺"],["夏天的牛仔","杨柳飘飘森女","数码世界"]])
         
         setupCollectionView()
         
@@ -36,9 +42,7 @@ class searchSHHolderVC: UIViewController {
         
 //        flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical
         
-        let flowLayout = IBCollectionViewFlowLayout.init()
-        //设置方向
-        flowLayout.direction = .left
+        let flowLayout = UICollectionViewLeftAlignedLayout.init()
         
         // 4.设置 Item 的四周边距
         flowLayout.sectionInset = UIEdgeInsetsMake(2, 10, 2, 10)
@@ -77,6 +81,14 @@ extension searchSHHolderVC: MYCollectionViewDelegateFlowLayout {
 
 
 extension searchSHHolderVC:UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        
+        let letspecItem = (array_meun[indexPath.section] as! NSArray)
+        let str:String = letspecItem[indexPath.row] as! String
+        
+        self.delegate?.SearchContent(content: str)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
@@ -125,7 +137,7 @@ extension searchSHHolderVC:UICollectionViewDataSource{
     
 }
 
-let SearchSHHolderCellPadding = 10
+let SearchSHHolderCellPadding = 13
 //extension searchSHHolderVC:UICollectionViewDelegateFlowLayout{
 //    
 //    //返回cell 上下左右的间距

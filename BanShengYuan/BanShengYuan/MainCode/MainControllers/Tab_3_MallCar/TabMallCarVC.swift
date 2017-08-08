@@ -8,6 +8,8 @@
 
 import UIKit
 
+import DZNEmptyDataSet
+
 class TabMallCarVC: UIViewController {
 
     @IBOutlet weak var table_main: UITableView!
@@ -15,6 +17,23 @@ class TabMallCarVC: UIViewController {
     @IBOutlet weak var label_totalprice: UILabel!
     
     @IBOutlet weak var bton_allchoose: UIButton!
+    
+    var viewhader:UIView! = nil
+    
+    var tableEmpty:Bool = false{
+        
+        
+        willSet{
+            
+        }
+        didSet{
+            if tableEmpty == true {
+                self.view.bringSubview(toFront: viewhader)
+            }else{
+                self.view.sendSubview(toBack: viewhader)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +63,18 @@ class TabMallCarVC: UIViewController {
 //        self.navigationItem.leftBarButtonItem = item
         
         self.navigationItem.title = "我的购物车"
+        
+        viewhader = Bundle.main.loadNibNamed("viewMallHolder", owner: nil, options: nil)?.first as? viewMallHolder
+        
+        self.view.addSubview(viewhader!)
+        
+        viewhader?.snp.makeConstraints({ (make) in
+            make.center.equalTo(self.view)
+            make.width.equalTo(self.view.frame.width)
+            make.height.equalTo(self.view.frame.width)
+        })
+        
+        self.view.sendSubview(toBack: viewhader!)
         
     }
     
@@ -79,7 +110,12 @@ extension TabMallCarVC:UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 3
+        
+        let count = 1
+        
+        tableEmpty = (count == 0)
+        
+        return count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -124,3 +160,9 @@ extension TabMallCarVC: UITableViewDelegate {
     }
 }
 
+
+extension TabMallCarVC:DZNEmptyDataSetSource{
+    
+
+    
+}

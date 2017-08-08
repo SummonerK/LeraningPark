@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="86" y="1059"/>
         </scene>
-        <!--Tab Mall CarVC-->
+        <!--Empty Data Set Source-->
         <scene sceneID="tmk-8v-WRA">
             <objects>
                 <viewController restorationIdentifier="TabMallCarVC" storyboardIdentifier="TabMallCarVC" automaticallyAdjustsScrollViewInsets="NO" id="Glc-Jt-hhq" customClass="TabMallCarVC" customModule="BanShengYuan" sceneMemberID="viewController">
@@ -63,6 +63,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="Glc-Jt-hhq" id="3hK-Pi-MCr"/>
                                     <outlet property="delegate" destination="Glc-Jt-hhq" id="3OB-4Z-p2Q"/>
+                                    <outlet property="emptyDataSetSource" destination="Glc-Jt-hhq" id="w31-MC-nBJ"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6my-KC-Z3u">

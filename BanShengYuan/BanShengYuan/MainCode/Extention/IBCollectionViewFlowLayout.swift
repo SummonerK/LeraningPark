@@ -196,7 +196,7 @@ class IBCollectionViewFlowLayout: UICollectionViewFlowLayout {
                 }
             }
         }
-        layoutLine.removeAll()
+//        layoutLine.removeAll()
     }
     
     override func layoutAttributesForElements(in rect:CGRect) -> [UICollectionViewLayoutAttributes]{

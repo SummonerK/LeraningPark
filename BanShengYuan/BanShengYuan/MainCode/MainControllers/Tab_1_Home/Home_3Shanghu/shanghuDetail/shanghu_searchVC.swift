@@ -14,7 +14,7 @@ import SwiftyJSON
 
 import MJRefresh
 
-class shanghu_searchVC: UIViewController {
+class shanghu_searchVC: UIViewController,SearchSHHolderDelegate{
     
     var modelShop:ModelShopItem?
     
@@ -64,11 +64,27 @@ class shanghu_searchVC: UIViewController {
         
         searchCoverVC.view.frame = CGRect.init(x: 0, y: 64, width: IBScreenWidth, height: IBScreenHeight-64)
         
+        searchCoverVC.delegate = self
+        
         self.view.addSubview(searchCoverVC.view)
         
-//        self.view.sendSubview(toBack: coverVC.view)
+        openSearchHolder(isOpen: true)
+    }
+    
+    func SearchContent(content:String){
+        search(content: content)
+        searchbar.text = content
+        searchbar.resignFirstResponder()
+    }
+    
+    func openSearchHolder(isOpen:Bool) {
         
-        self.view.bringSubview(toFront: searchCoverVC.view)
+        if isOpen {
+            self.view.bringSubview(toFront: searchCoverVC.view)
+        }else{
+            self.view.sendSubview(toBack: searchCoverVC.view)
+        }
+        
     }
     
     
@@ -98,6 +114,13 @@ class shanghu_searchVC: UIViewController {
                 if let data = posts.data,let products = data.products{
                     self.array_items.addObjects(from: products)
                     self.CV_main.reloadData()
+                    
+                    if self.array_items.count == 0{
+                        self.openSearchHolder(isOpen: true)
+                    }else{
+                        self.openSearchHolder(isOpen: false)
+                    }
+                    
                 }
                 
             },onError:{error in
@@ -197,6 +220,7 @@ extension shanghu_searchVC:UICollectionViewDelegate{
         self.navigationController?.pushViewController(Vc, animated: true)
         
     }
+    
 }
 
 extension shanghu_searchVC:UICollectionViewDataSource{

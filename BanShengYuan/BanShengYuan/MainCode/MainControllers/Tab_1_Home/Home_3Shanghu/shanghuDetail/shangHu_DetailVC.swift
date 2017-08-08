@@ -107,6 +107,10 @@ class shangHu_DetailVC: UIViewController {
         
         PrintFM("meun")
         
+        let Vc = StoryBoard_ActivityPages.instantiateViewController(withIdentifier: "sortManagerVC") as! sortManagerVC
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
+        
     }
     
     func footerRefresh(){

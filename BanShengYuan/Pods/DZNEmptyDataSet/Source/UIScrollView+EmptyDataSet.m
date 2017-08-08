@@ -99,6 +99,7 @@ static char const * const kEmptyDataSetView =       "emptyDataSetView";
         
         [self setEmptyDataSetView:view];
     }
+    
     return view;
 }
 

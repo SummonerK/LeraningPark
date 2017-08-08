@@ -189,7 +189,7 @@ class chooseVC: UIViewController {
     func setupCollectionView() {
         
         // 1.自定义 Item 的FlowLayout
-        let flowLayout = UICollectionViewFlowLayout()
+        let flowLayout = UICollectionViewLeftAlignedLayout.init()
 
         
         flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical
