@@ -153,6 +153,7 @@
 		63657DA21EE7CE5900DA24F4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63657D9F1EE7CE5900DA24F4 /* Media.xcassets */; };
 		63657DA51EE7D03200DA24F4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657DA41EE7D03200DA24F4 /* Const.swift */; };
 		63657DA71EE7F51800DA24F4 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63657DA61EE7F51800DA24F4 /* GuideView.swift */; };
+		63658ECE1F3B198200EFA614 /* NormalShoppingCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63658ECD1F3B198200EFA614 /* NormalShoppingCarVC.swift */; };
 		636635FF1F05047E0060E7D4 /* chooseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636635EA1F05047E0060E7D4 /* chooseVC.swift */; };
 		636636011F05047E0060E7D4 /* GoodsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636635EC1F05047E0060E7D4 /* GoodsDetailVC.swift */; };
 		636636031F05047E0060E7D4 /* TCellGoodsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636635EE1F05047E0060E7D4 /* TCellGoodsImage.swift */; };
@@ -365,6 +366,7 @@
 		63657D9F1EE7CE5900DA24F4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		63657DA41EE7D03200DA24F4 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		63657DA61EE7F51800DA24F4 /* GuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		63658ECD1F3B198200EFA614 /* NormalShoppingCarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalShoppingCarVC.swift; sourceTree = "<group>"; };
 		636635EA1F05047E0060E7D4 /* chooseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chooseVC.swift; sourceTree = "<group>"; };
 		636635EC1F05047E0060E7D4 /* GoodsDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsDetailVC.swift; sourceTree = "<group>"; };
 		636635EE1F05047E0060E7D4 /* TCellGoodsImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellGoodsImage.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 			isa = PBXGroup;
 			children = (
 				635897041F380D7F00C945EC /* TabMallCarVC.swift */,
+				63658ECD1F3B198200EFA614 /* NormalShoppingCarVC.swift */,
 				635897061F383C9C00C945EC /* TCellMallCar.swift */,
 				635897071F383C9C00C945EC /* TCellMallCar.xib */,
 				6358970A1F38452100C945EC /* ViewMallCarHeader.swift */,
@@ -1283,6 +1286,7 @@
 				63559AAB1EFA0ECB003FC6E5 /* Datas.swift in Sources */,
 				6353810D1EE93266006C0375 /* RegistVC.swift in Sources */,
 				6355292D1F2052D800F86846 /* shanghu_searchVC.swift in Sources */,
+				63658ECE1F3B198200EFA614 /* NormalShoppingCarVC.swift in Sources */,
 				635896F71F380D6500C945EC /* TCell_info.swift in Sources */,
 				635896E51F380D6500C945EC /* orderListRootVC.swift in Sources */,
 				635896D51F380D6500C945EC /* OrderDetailVC.swift in Sources */,

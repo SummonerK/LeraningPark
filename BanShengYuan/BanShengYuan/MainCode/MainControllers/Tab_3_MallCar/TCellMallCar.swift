@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TCellMallCarDelegate {
+    func setChooseValue(indexpath:IndexPath,cellFlag:Bool)
+}
+
 class TCellMallCar: UITableViewCell {
 
     @IBOutlet weak var label_name: UILabel!
@@ -23,6 +27,10 @@ class TCellMallCar: UITableViewCell {
     @IBOutlet weak var label_count: UILabel!
     
     @IBOutlet weak var label_price: UILabel!
+    
+    var indexpath : IndexPath!
+    
+    var delegate:TCellMallCarDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,12 +49,38 @@ class TCellMallCar: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setContent(product:ModelShopDetailItem) {
+        label_name.text = product.name
+        label_spa.text = product.specification
+        label_count.text = product.productNumber?.description
+        
+        if let price = product.finalPrice {
+            
+            let str = String(describing: price)
+            
+            label_price.text = String.init("¥ \(String(describing: str.fixPrice()))")
+            
+        }
+        
+        let url = URL(string: product.picture!)
+        
+        imageV_picture.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
+        
+        if let flagchoose = product.chooseFlag {
+            bton_goodsChoose.isSelected = flagchoose
+        }
+        
+    }
+    
     @IBAction func actionChoose(_ sender: Any) {
         if bton_goodsChoose.isSelected{
             bton_goodsChoose.isSelected = false
         }else{
             bton_goodsChoose.isSelected = true
         }
+        
+        self.delegate.setChooseValue(indexpath: indexpath, cellFlag: bton_goodsChoose.isSelected)
     }
     
     @IBAction func actionPlus(_ sender: Any) {

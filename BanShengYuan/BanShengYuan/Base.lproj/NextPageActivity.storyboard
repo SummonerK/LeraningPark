@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -90,5 +91,116 @@
             </objects>
             <point key="canvasLocation" x="9" y="801"/>
         </scene>
+        <!--Normal Shopping CarVC-->
+        <scene sceneID="5R9-dY-C35">
+            <objects>
+                <viewController restorationIdentifier="NormalShoppingCarVC" storyboardIdentifier="NormalShoppingCarVC" hidesBottomBarWhenPushed="YES" id="JGP-Yl-3Mt" customClass="NormalShoppingCarVC" customModule="BanShengYuan" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3mC-d9-ND4"/>
+                        <viewControllerLayoutGuide type="bottom" id="mal-ln-j7G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5eP-Rg-9yI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Zio-5e-2zP">
+                                <rect key="frame" x="0.0" y="64" width="375" height="555"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JGP-Yl-3Mt" id="Gfr-D3-8Ax"/>
+                                    <outlet property="delegate" destination="JGP-Yl-3Mt" id="MNE-5c-02H"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLK-mK-IN8">
+                                <rect key="frame" x="0.0" y="619" width="375" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWI-fJ-rrw">
+                                        <rect key="frame" x="10" y="7.5" width="66" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="CMF-OH-AOF"/>
+                                            <constraint firstAttribute="width" constant="66" id="e4G-HU-wO8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="全选" image="choose_n">
+                                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionAllChoose:" destination="JGP-Yl-3Mt" eventType="touchUpInside" id="07d-bs-33g"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmR-zQ-cAg">
+                                        <rect key="frame" x="185.5" y="7" width="42" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" id="mzs-TS-5hS"/>
+                                            <constraint firstAttribute="width" constant="42" id="uZa-gZ-nhr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥88" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uG4-kc-nnv">
+                                        <rect key="frame" x="229.5" y="7.5" width="42" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="42" id="4QB-JD-Hot"/>
+                                            <constraint firstAttribute="height" constant="33" id="Tb6-VV-Wim"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
+                                        <color key="textColor" red="0.20784313730000001" green="0.73333333329999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAT-Go-fuX">
+                                        <rect key="frame" x="281.5" y="0.0" width="93.5" height="48"/>
+                                        <color key="backgroundColor" red="0.20784313730000001" green="0.73333333329999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="去结算">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="action_PayNow:" destination="JGP-Yl-3Mt" eventType="touchDragInside" id="bNj-56-IJ1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="XWI-fJ-rrw" firstAttribute="centerY" secondItem="VLK-mK-IN8" secondAttribute="centerY" id="1Sk-lM-hsF"/>
+                                    <constraint firstAttribute="trailing" secondItem="IAT-Go-fuX" secondAttribute="trailing" id="4UM-NC-HjR"/>
+                                    <constraint firstItem="IAT-Go-fuX" firstAttribute="width" secondItem="VLK-mK-IN8" secondAttribute="width" multiplier="0.25" id="8Jy-WT-bSL"/>
+                                    <constraint firstItem="HmR-zQ-cAg" firstAttribute="centerY" secondItem="XWI-fJ-rrw" secondAttribute="centerY" id="EpJ-EV-AcF"/>
+                                    <constraint firstItem="uG4-kc-nnv" firstAttribute="centerY" secondItem="IAT-Go-fuX" secondAttribute="centerY" id="GBM-R3-jCM"/>
+                                    <constraint firstAttribute="height" constant="48" id="Ne0-Db-ndD"/>
+                                    <constraint firstItem="IAT-Go-fuX" firstAttribute="leading" secondItem="uG4-kc-nnv" secondAttribute="trailing" constant="10" id="No0-SQ-bcn"/>
+                                    <constraint firstItem="XWI-fJ-rrw" firstAttribute="leading" secondItem="VLK-mK-IN8" secondAttribute="leading" constant="10" id="SjR-i5-3My"/>
+                                    <constraint firstItem="uG4-kc-nnv" firstAttribute="leading" secondItem="HmR-zQ-cAg" secondAttribute="trailing" constant="2" id="VrQ-ux-HiG"/>
+                                    <constraint firstItem="IAT-Go-fuX" firstAttribute="top" secondItem="VLK-mK-IN8" secondAttribute="top" id="Z3j-YJ-jWq"/>
+                                    <constraint firstAttribute="bottom" secondItem="IAT-Go-fuX" secondAttribute="bottom" id="b1N-NA-xob"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Zio-5e-2zP" secondAttribute="trailing" id="1Uz-YL-xb8"/>
+                            <constraint firstItem="VLK-mK-IN8" firstAttribute="leading" secondItem="5eP-Rg-9yI" secondAttribute="leading" id="2f2-Oy-3ac"/>
+                            <constraint firstAttribute="trailing" secondItem="VLK-mK-IN8" secondAttribute="trailing" id="VtA-1f-gFR"/>
+                            <constraint firstItem="Zio-5e-2zP" firstAttribute="leading" secondItem="5eP-Rg-9yI" secondAttribute="leading" id="gWx-Oh-y8S"/>
+                            <constraint firstItem="mal-ln-j7G" firstAttribute="top" secondItem="VLK-mK-IN8" secondAttribute="bottom" id="jrJ-Hs-cuk"/>
+                            <constraint firstItem="Zio-5e-2zP" firstAttribute="top" secondItem="5eP-Rg-9yI" secondAttribute="top" constant="64" id="n7E-kN-xZq"/>
+                            <constraint firstItem="VLK-mK-IN8" firstAttribute="top" secondItem="Zio-5e-2zP" secondAttribute="bottom" id="qWQ-KR-3R9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nBM-HH-23b"/>
+                    <connections>
+                        <outlet property="bton_allchoose" destination="XWI-fJ-rrw" id="cmf-1d-9k0"/>
+                        <outlet property="label_totalprice" destination="uG4-kc-nnv" id="e2v-nF-2Kh"/>
+                        <outlet property="table_main" destination="Zio-5e-2zP" id="Rub-af-uKq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xb3-hF-K8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="849" y="101"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="choose_n" width="16" height="16"/>
+    </resources>
 </document>

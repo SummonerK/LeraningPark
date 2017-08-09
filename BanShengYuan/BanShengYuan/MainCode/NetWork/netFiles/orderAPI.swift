@@ -25,6 +25,10 @@ enum orderAPI {
     case orderAccept(PostModel:ModelOrderAcceptPost)//MARK:订单接单
     case orderListByUser(PostModel:ModelListPageByUserPost)//MARK:分页查询用户全部订单明细
     
+    //购物车
+    case shopShoppingCarAddProduct(PostModel:ModelShoppingCarAddProductPost)//MARK:购物车添加商品
+    case shopShoppingCarProducts(PostModel:ModelShoppingCarProductsPost)//MARK:获取购物车
+    
 }
 
 extension orderAPI: TargetType {
@@ -34,10 +38,10 @@ extension orderAPI: TargetType {
         case .test:
              return URLEncoding.default
             
-        case .orderListByUser:
+        case .orderListByUser,.shopShoppingCarProducts:
             return URLEncoding.default
             
-        case .orderCreate,.orderPay,.orderPayAccess,.orderAccept,.orderAddressSet:
+        case .orderCreate,.orderPay,.orderPayAccess,.orderAccept,.orderAddressSet,.shopShoppingCarAddProduct:
             return JSONEncoding.default
             
         }
@@ -64,6 +68,10 @@ extension orderAPI: TargetType {
             return "/Order/Accept"
         case .orderListByUser(_):
             return "/Query/Order/ListPageByUser"
+        case .shopShoppingCarAddProduct(_):
+            return "/ShoppingCart/AddProduct"
+        case .shopShoppingCarProducts(_):
+            return "/Query/ShoppingCart/ListUserAllShoppingCarts"
         
         }
     }
@@ -84,6 +92,10 @@ extension orderAPI: TargetType {
         case .orderAccept(_):
             return .post
         case .orderListByUser(_):
+            return .get
+        case .shopShoppingCarAddProduct(_):
+            return .post
+        case .shopShoppingCarProducts(_):
             return .get
          
         }
@@ -113,6 +125,12 @@ extension orderAPI: TargetType {
             PrintFM(model.toDict())
             return model.toDict()
         case .orderListByUser(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .shopShoppingCarAddProduct(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .shopShoppingCarProducts(let model):
             PrintFM(model.toDict())
             return model.toDict()
             

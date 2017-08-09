@@ -70,5 +70,13 @@ class orderModel {
             .mapResult(type: ModelOrderWithCount.self)
         //.showError()
     }
-    
+    func shopShoppingCarAddProduct(amodel:ModelShoppingCarAddProductPost) -> Observable<ModelShoppingCarAddResult> {
+        return orderprovider.request(.shopShoppingCarAddProduct(PostModel: amodel))
+            .mapNeObject(type: ModelShoppingCarAddResult.self)
+    }
+    func shopShoppingCarProducts(amodel:ModelShoppingCarProductsPost) -> Observable<ModelShoppingCarProductsResult> {
+        return orderprovider.request(.shopShoppingCarProducts(PostModel: amodel))
+            .mapNeObject(type: ModelShoppingCarProductsResult.self)
+    }
+
 }

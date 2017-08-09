@@ -16,9 +16,10 @@ class GoodsDetailVC: BaseTabHiden {
     
     //network
     
-    let VipM = shopModel()
+    let VipShopM = shopModel()
     let modelGoodsDetailPost = ModelGoodsDetailPost()
     let modelGoodsDetailPictruePost = ModelGoodsDetailPicturePost()
+    
     
     let disposeBag = DisposeBag()
     
@@ -26,6 +27,7 @@ class GoodsDetailVC: BaseTabHiden {
     
     let OrderM = orderModel()
     let modelOrderC = ModelOrderCreatePost()
+    let modelshoppingCarAddProPost = ModelShoppingCarAddProductPost()
     
     @IBOutlet weak var tableV_main: UITableView!
     
@@ -128,7 +130,7 @@ class GoodsDetailVC: BaseTabHiden {
         
         modelGoodsDetailPost.productId = model_goods?.pid
         
-        VipM.shopGetDetail(amodel: modelGoodsDetailPost)
+        VipShopM.shopGetDetail(amodel: modelGoodsDetailPost)
             .subscribe(onNext: { (result: ModelGoodsDetailResult) in
                 
                 PrintFM("ModelGoodsDetailResult\(result)")
@@ -155,7 +157,7 @@ class GoodsDetailVC: BaseTabHiden {
         modelGoodsDetailPictruePost.productId = model_goods?.pid
         modelGoodsDetailPictruePost.type = "banner"
         
-        VipM.shopGetDetailPictures(amodel: modelGoodsDetailPictruePost)
+        VipShopM.shopGetDetailPictures(amodel: modelGoodsDetailPictruePost)
             .subscribe(onNext: { (posts: [ModelGoodsDetailResultPictures]) in
                 
                 PrintFM("pictureList\(posts)")
@@ -261,7 +263,7 @@ class GoodsDetailVC: BaseTabHiden {
         
         self.view.sendSubview(toBack: coverNVC.view)
     }
-    
+//MARK:- 前往订单页
     //提交订单
     @IBAction func buyNow(_ sender: Any) {
         
@@ -270,6 +272,79 @@ class GoodsDetailVC: BaseTabHiden {
         goNextOrderV()
         
     }
+    
+    @IBAction func shoppingCarAddProduct(_ sender: Any) {
+        
+        let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
+        
+        let array = coverVC.dic_menuchoose.allValues as! [String]
+        
+        for item in array{
+            
+            if item == ""{
+                
+                showCoverViewNone()
+                
+                return
+            }
+            
+        }
+        
+        var strDis = String()
+        
+        for key in arraykeys{
+            strDis.append(key.trueItemValue)
+            strDis.append(":")
+            strDis.append(coverVC.dic_menuchoose[key] as! String)
+            strDis.append(" ")
+        }
+        
+        model_goods?.remark = strDis
+        model_goods?.productNumber = coverVC.proCount
+        
+        PrintFM("productID = \(coverVC.getChoosedGoodsID())")
+        
+        model_goods?.pid = "\(coverVC.getChoosedGoodsID())"
+        
+        self.tableV_main.reloadData()
+        
+        
+        modelshoppingCarAddProPost.userId = USERM.MemberID
+        modelshoppingCarAddProPost.linkId = shopID
+        modelshoppingCarAddProPost.type = "1"
+        modelshoppingCarAddProPost.productId = model_goods?.pid
+        modelshoppingCarAddProPost.name = coverVC.model_goodChosed?.name
+        modelshoppingCarAddProPost.number = model_goods?.productNumber?.description
+        
+        OrderM.shopShoppingCarAddProduct(amodel: modelshoppingCarAddProPost)
+            .subscribe(onNext: { (result: ModelShoppingCarAddResult) in
+                
+                HUDShowMsgQuick(msg: "添加购物车成功", toView: self.view, time: 0.8)
+                
+                PrintFM("ModelShoppingCarAddResult = \(result)")
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
+        PrintFM("")
+        
+    }
+    
+    
+    @IBAction func gotoShoppingCarVC(_ sender: Any) {
+        
+        let Vc = StoryBoard_ActivityPages.instantiateViewController(withIdentifier: "NormalShoppingCarVC") as! NormalShoppingCarVC
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
+        
+    }
+    
     
 //MARK:- 前往订单页
     

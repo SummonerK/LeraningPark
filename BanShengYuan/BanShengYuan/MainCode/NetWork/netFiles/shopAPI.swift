@@ -19,7 +19,7 @@ enum shopAPI {
     case shopSearchProducts(PostModel:ModelSearchProductPost)//MARK:搜索门店商品
     case shopGetDetail(PostModel:ModelGoodsDetailPost)//MARK:获取商品详细信息 - 长图
     case shopGetDetailPictures(PostModel:ModelGoodsDetailPicturePost)//MARK:获取商品详细信息 - banner
-    case shopGetDetailMenus(PostModel:ModelShopDetailMenuPost)//MARK:获取商品规格 - menu
+    case shopGetDetailMenus(PostModel:ModelShopDetailMenuPost)//MARK:获取商品规格
     
     
     case addressGetList(PostModel:ModelAddressListPost)//MARK:
@@ -30,10 +30,10 @@ extension shopAPI: TargetType {
 
     var parameterEncoding: ParameterEncoding {
         switch self {
-        case .test,.addressGetList,.shopGetDetail,.shopGetDetailPictures,.shopGetDetailMenus,.shopSearchProducts:
+        case .shopGetAllProducts,.addressGetList,.shopGetDetail,.shopGetDetailPictures,.shopGetDetailMenus,.shopSearchProducts:
             return URLEncoding.default
-        case .shopGetAllProducts:
-            return URLEncoding.default
+        case .test:
+            return JSONEncoding.default
             
         }
     }
@@ -77,6 +77,7 @@ extension shopAPI: TargetType {
             return .get
         case .shopGetDetailMenus(_):
             return .get
+       
             
         case .addressGetList(_):
             return .get
@@ -104,7 +105,7 @@ extension shopAPI: TargetType {
         case .shopGetDetailMenus(let model):
             PrintFM(model.toDict())
             return model.toDict()
-            
+        
             
         case .addressGetList(let model):
             PrintFM(model.toDict())

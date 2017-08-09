@@ -158,11 +158,8 @@
                                 <rect key="frame" x="0.0" y="613" width="375" height="54"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S72-yo-JfK">
-                                        <rect key="frame" x="10" y="5" width="355" height="43"/>
+                                        <rect key="frame" x="247.5" y="0.0" width="127.5" height="54"/>
                                         <color key="backgroundColor" red="0.20784313730000001" green="0.73333333329999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="43" id="B6J-nZ-cwC"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
                                         <state key="normal" title="立即购买">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -171,14 +168,44 @@
                                             <action selector="buyNow:" destination="iyZ-4V-Tsx" eventType="touchUpInside" id="Vc2-Fp-RJq"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOK-tw-IU4">
+                                        <rect key="frame" x="120" y="0.0" width="127.5" height="54"/>
+                                        <color key="backgroundColor" red="0.85490196080000003" green="0.69803921570000005" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
+                                        <state key="normal" title="加入购物车">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shoppingCarAddProduct:" destination="iyZ-4V-Tsx" eventType="touchUpInside" id="iB3-Tw-Mvg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsY-WF-Ope">
+                                        <rect key="frame" x="30" y="12" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Nnb-Xl-ziR"/>
+                                        </constraints>
+                                        <state key="normal" title="购物车"/>
+                                        <connections>
+                                            <action selector="gotoShoppingCarVC:" destination="iyZ-4V-Tsx" eventType="touchUpInside" id="mLh-6l-ZMJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="S72-yo-JfK" firstAttribute="centerX" secondItem="NRn-OK-T9g" secondAttribute="centerX" id="6RD-oy-ppW"/>
+                                    <constraint firstItem="OsY-WF-Ope" firstAttribute="centerY" secondItem="NRn-OK-T9g" secondAttribute="centerY" id="5JK-6k-0gK"/>
+                                    <constraint firstAttribute="trailing" secondItem="S72-yo-JfK" secondAttribute="trailing" id="9Xv-Gc-69o"/>
                                     <constraint firstAttribute="height" constant="54" id="CUH-WJ-F0F"/>
-                                    <constraint firstItem="S72-yo-JfK" firstAttribute="leading" secondItem="NRn-OK-T9g" secondAttribute="leading" constant="10" id="MOO-BQ-YeW"/>
-                                    <constraint firstAttribute="trailing" secondItem="S72-yo-JfK" secondAttribute="trailing" constant="10" id="aCG-Fy-JvJ"/>
+                                    <constraint firstItem="S72-yo-JfK" firstAttribute="top" secondItem="NRn-OK-T9g" secondAttribute="top" id="LFf-1D-tFo"/>
+                                    <constraint firstItem="SOK-tw-IU4" firstAttribute="top" secondItem="NRn-OK-T9g" secondAttribute="top" id="Nv5-BN-Mks"/>
+                                    <constraint firstAttribute="bottom" secondItem="SOK-tw-IU4" secondAttribute="bottom" id="W3w-0C-9ZW"/>
+                                    <constraint firstItem="S72-yo-JfK" firstAttribute="width" secondItem="NRn-OK-T9g" secondAttribute="width" multiplier="0.34" id="ZlN-hA-dCB"/>
+                                    <constraint firstItem="S72-yo-JfK" firstAttribute="leading" secondItem="SOK-tw-IU4" secondAttribute="trailing" id="bKd-m4-gwe"/>
                                     <constraint firstItem="S72-yo-JfK" firstAttribute="centerY" secondItem="NRn-OK-T9g" secondAttribute="centerY" id="hYs-x2-DyW"/>
+                                    <constraint firstItem="SOK-tw-IU4" firstAttribute="centerY" secondItem="NRn-OK-T9g" secondAttribute="centerY" id="ik8-Av-1TE"/>
+                                    <constraint firstItem="SOK-tw-IU4" firstAttribute="leading" secondItem="OsY-WF-Ope" secondAttribute="trailing" constant="30" id="iux-l8-Fia"/>
+                                    <constraint firstAttribute="bottom" secondItem="S72-yo-JfK" secondAttribute="bottom" id="ojq-gi-Q0Y"/>
+                                    <constraint firstItem="OsY-WF-Ope" firstAttribute="leading" secondItem="NRn-OK-T9g" secondAttribute="leading" constant="30" id="t7J-C5-7Hv"/>
+                                    <constraint firstItem="SOK-tw-IU4" firstAttribute="width" secondItem="S72-yo-JfK" secondAttribute="width" id="wpt-F4-wQI"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6O-Mn-iQI">

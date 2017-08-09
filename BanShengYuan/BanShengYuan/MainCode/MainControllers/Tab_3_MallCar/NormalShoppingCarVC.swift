@@ -1,8 +1,8 @@
 //
-//  TabMallCarVC.swift
+//  NormalShoppingCarVC.swift
 //  BanShengYuan
 //
-//  Created by Luofei on 2017/8/7.
+//  Created by Luofei on 2017/8/9.
 //  Copyright © 2017年 Luofei. All rights reserved.
 //
 
@@ -13,8 +13,8 @@ import RxSwift
 import ObjectMapper
 import SwiftyJSON
 
-class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDelegate {
-
+class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDelegate {
+    
     @IBOutlet weak var table_main: UITableView!
     
     @IBOutlet weak var label_totalprice: UILabel!
@@ -34,7 +34,7 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
     var flagAllChoose = false    ///记录所有店全选情况
     
     var tableEmpty:Bool = false{
-    
+        
         willSet{
             
         }
@@ -47,11 +47,16 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bton_allchoose.setImage(UIImage.init(named: "choose_s"), for: .selected)
-
+        
         setNavi()
         
         table_main.register(UINib.init(nibName: "TCellMallCar", bundle: nil), forCellReuseIdentifier: "TCellMallCar")
@@ -93,21 +98,21 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
             })
             .addDisposableTo(disposeBag)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func setNavi() {
-//        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
-//        item.image = UIImage(named: "arrow_left")
-//        
-//        self.navigationItem.leftBarButtonItem = item
+        
+        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
+        item.image = UIImage(named: "arrow_left")
+
+        self.navigationItem.leftBarButtonItem = item
         
         self.navigationItem.title = "我的购物车"
         
-//        empty holderView
         viewhader = Bundle.main.loadNibNamed("viewMallHolder", owner: nil, options: nil)?.first as? viewMallHolder
         
         self.view.addSubview(viewhader!)
@@ -156,7 +161,7 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
     }
     
     func restBottomAllChoose(){
-
+        
         let array = DicSectionChoose.allValues as! [Bool]
         
         PrintFM("\(array)")
@@ -176,13 +181,13 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
     @IBAction func action_PayNow(_ sender: Any) {
         
     }
-
+    
 }
 
-extension TabMallCarVC:UITableViewDataSource{
+extension NormalShoppingCarVC:UITableViewDataSource{
     
     
-//    店铺选择处理
+    //    店铺选择处理
     func setChooseValue(section:Int,sectionFlag:Bool){
         
         DicSectionChoose.setValue(sectionFlag, forKey: "section\(section)")
@@ -200,7 +205,7 @@ extension TabMallCarVC:UITableViewDataSource{
         
     }
     
-//    商品选择处理
+    //    商品选择处理
     func setChooseValue(indexpath:IndexPath,cellFlag:Bool){
         
         let products = arrayMain[indexpath.section] as! ModelShoppingCarProducts
@@ -279,7 +284,7 @@ extension TabMallCarVC:UITableViewDataSource{
 }
 
 
-extension TabMallCarVC: UITableViewDelegate {
+extension NormalShoppingCarVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         
@@ -303,5 +308,3 @@ extension TabMallCarVC: UITableViewDelegate {
         
     }
 }
-
-

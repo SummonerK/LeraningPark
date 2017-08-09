@@ -72,7 +72,7 @@ class shopModel {
             .mapNeObject(type: ModelShopDetailDetaiMenuItem.self)
         //.showError()
     }
-    
+        
     func shopGetDetailPictures(amodel:ModelGoodsDetailPicturePost) -> Observable<[ModelGoodsDetailResultPictures]> {
         return shopprovider.request(.shopGetDetailPictures(PostModel: amodel))
             .mapResultList(type: ModelGoodsDetailResultPictures.self)

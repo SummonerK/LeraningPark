@@ -60,6 +60,8 @@ class ModelShopDetailItem: Mappable {
     var remark: String?
     var productSpecification: [NSDictionary]?
     var specificationList: [ModelMenuSpecItem]?
+
+    var chooseFlag: Bool?
     
     required init?(map: Map) { }
     
@@ -76,16 +78,17 @@ class ModelShopDetailItem: Mappable {
         originalPrice <- map["originalPrice"]
         picture <- map["picture"]
         pid <- map["pid"]
-        saleCount <- map["saleCount"]
+        productNumber <- map["productNumber"]
         
+        remark <- map["remark"]
+        saleCount <- map["saleCount"]
         sellTimeName <- map["sellTimeName"]
         specification <- map["specification"]
         status <- map["status"]
         type <- map["type"]
         unit <- map["unit"]
         
-        productNumber <- map["productNumber"]
-        remark <- map["remark"]
+        
         stock <- map["stock"]
         productSpecification <- map["productSpecification"]
         specificationList <- map["specificationList"]
@@ -197,7 +200,6 @@ class ModelGoodsDetailPicturePost: Reflect {
 
 //MARK:获取商品详情 backModel
 
-
 class ModelGoodsDetailResultPictures: Mappable {
     var ppid: CLongLong?
     var productId: String?
@@ -281,7 +283,7 @@ class ModelSearchProductPost: Reflect {
     
 }
 
-//MARK:获商商品规格
+//MARK:搜索门店返回
 
 class ModelSearchProductResult: Mappable {
     var errcode: String?
@@ -312,6 +314,97 @@ class ModelSearchProductContent: Mappable {
     func mapping(map: Map) {
         count <- map["count"]
         products <- map["products"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+
+//MARK:添加购物车 post model
+
+class ModelShoppingCarAddProductPost: Reflect {
+    var userId:String!///用户ID
+    var linkId:String!///关联ID：门店ID/商户ID
+    var type:String!///关联ID类型: 1=门店，2=商户
+    var productId:String!///商品ID
+    var name:String!///商品名称
+    var number:String!///商品数量
+    
+}
+
+//MARK:添加购物车返回
+
+class ModelShoppingCarAddResult: Mappable {
+    var errcode: String?
+    var errmsg: String?
+    var data: String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        data <- map["data"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+//MARK:购物车 post model
+
+class ModelShoppingCarProductsPost: Reflect {
+    var userId:String!///用户ID
+    var companyId:String!///商户ID
+    
+}
+
+//MARK:购物车返回
+
+class ModelShoppingCarProductsResult: Mappable {
+    var errcode: String?
+    var errmsg: String?
+    var data: [ModelShoppingCarProducts]?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        data <- map["data"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+class ModelShoppingCarProducts: Mappable {
+    var count: Int?
+    var linkId: String?
+    var products: [ModelShopDetailItem]?
+    var scid: Int?
+    var type: Int?
+    var userId: String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        count <- map["count"]
+        linkId <- map["linkId"]
+        products <- map["products"]
+        scid <- map["scid"]
+        type <- map["type"]
+        userId <- map["userId"]
         
     }
     
