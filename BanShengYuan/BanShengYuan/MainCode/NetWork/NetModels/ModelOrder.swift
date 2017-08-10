@@ -104,7 +104,7 @@ class OrderAccountItemReq:Mappable {
     var accountId:String?       //结算id 优惠券id 没id的给0
     var name:String?            //积分 优惠券名
     var type:String?            // 1 运费 2折扣 3包装费
-    var price:String?           //结算价格 + -
+    var price:Int?           //结算价格 + -
     var number:String?          //结算数量
     var sequence:Int?           //排序
     
@@ -480,24 +480,41 @@ class ModelOrderAcceptPost: Reflect {
     
 }
 
-//MARK:订单支付确认 postmodel
+//MARK:查询全部订单 postmodel
 
 class ModelListPageByUserPost: Reflect {
-    /**
-     *  用户ID
-     *  必传:True
-     */
-    var userId:String!
-    /**
-     *  分页大小
-     *  必传:True
-     */
-    var pagesize:Int!
-    /**
-     *  分页数
-     *  必传:True
-     */
-    var pagenumber:Int!
+    var userId:String!///用户ID
+    var pagesize:Int!///分页大小
+    var pagenumber:Int!///分页数
+    
+}
+
+//MARK:查询全部订单 postmodel
+
+class ModelListPageByStatusPost: Reflect {
+    var userId:String!///用户ID
+    var pagesize:Int!///分页大小
+    var pagenumber:Int!///分页数
+    var status:Int!///订单状态，参见订单状态表
+    
+}
+
+class ModelOrderListResult:Mappable {
+    var data: ModelOrderWithCount?
+    var errcode: String?
+    var errmsg: String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        data <- map["data"]
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
     
 }
 
@@ -517,8 +534,6 @@ class ModelOrderWithCount:Mappable {
     }
 
 }
-
-//MARK:订单支付确认 backModel
 
 class ModelListPageByUserBack: Mappable {
     

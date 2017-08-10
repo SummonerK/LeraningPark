@@ -33,6 +33,17 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
     let DicSectionChoose = NSMutableDictionary()///记录各个店铺全选情况
     var flagAllChoose = false    ///记录所有店全选情况
     
+    var TotalPrice:Int = 0{
+        willSet{
+            
+        }
+        didSet{
+            let str = String(describing: TotalPrice)
+            label_totalprice.text = String.init("¥ \(String(describing: str.fixPrice()))")
+        }
+    }
+    
+//    table判空
     var tableEmpty:Bool = false{
     
         willSet{
@@ -47,6 +58,12 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getDate()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,9 +76,6 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         table_main.backgroundColor = FlatWhiteLight
         
         table_main.separatorStyle = .none
-        
-        
-        getDate()
         
         // Do any additional setup after loading the view.
     }
@@ -100,14 +114,11 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
     }
     
     func setNavi() {
-//        let item = UIBarButtonItem(title: " ", style: .plain, target: self, action: #selector(actionBack(_:)))
-//        item.image = UIImage(named: "arrow_left")
-//        
-//        self.navigationItem.leftBarButtonItem = item
-        
+
         self.navigationItem.title = "我的购物车"
         
 //        empty holderView
+        
         viewhader = Bundle.main.loadNibNamed("viewMallHolder", owner: nil, options: nil)?.first as? viewMallHolder
         
         self.view.addSubview(viewhader!)
@@ -153,6 +164,9 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         }
         
         self.table_main.reloadData()
+        
+        fixTotalPrice()
+        
     }
     
     func restBottomAllChoose(){
@@ -171,22 +185,85 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
             bton_allchoose.isSelected = false
         }
         
+        fixTotalPrice()
     }
     
+//MARK:前往支付
     @IBAction func action_PayNow(_ sender: Any) {
         
+        let array = fixChoosedProducts()
+        
+        if array.count == 0 {
+            HUDShowMsgQuick(msg: "请至少选择一个商品进行结算", toView: self.view, time: 0.8)
+            return
+        }
+        
+        let Vc = StoryBoard_ActivityPages.instantiateViewController(withIdentifier: "ShoppingCarPayVC") as! ShoppingCarPayVC
+        
+        Vc.arrayMain = array
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
+        
+    }
+    
+    func fixTotalPrice(){
+        
+        var totalPrice:Int = 0
+        
+        for i in 0...arrayMain.count-1 {
+            let products = arrayMain[i] as! ModelShoppingCarProducts
+            for item in products.products! {
+                if item.chooseFlag == true{
+                    totalPrice = totalPrice + (item.finalPrice! * item.productNumber!)
+                }else{
+                    continue
+                }
+            }
+        }
+        
+        TotalPrice = totalPrice
+        
+    }
+    
+    func fixChoosedProducts()->NSMutableArray {
+        
+        let array_Choosed = NSMutableArray()
+        
+        for i in 0...arrayMain.count-1 {
+            
+            let array_products = NSMutableArray()
+            
+            let products = arrayMain[i] as! ModelShoppingCarProducts
+            for item in products.products! {
+                if item.chooseFlag == true{
+                    array_products.add(item)
+                }else{
+                    continue
+                }
+            }
+            
+            if array_products.count != 0 {
+                let shopModel = (arrayMain[i] as! ModelShoppingCarProducts).copy()
+                
+                shopModel.products = array_products as? [ModelShopDetailItem]
+                
+                array_Choosed.add(shopModel)
+                
+            }
+            
+        }
+        
+        return array_Choosed
     }
 
 }
 
 extension TabMallCarVC:UITableViewDataSource{
     
-    
 //    店铺选择处理
     func setChooseValue(section:Int,sectionFlag:Bool){
         
         DicSectionChoose.setValue(sectionFlag, forKey: "section\(section)")
-        
         
         //所有店铺内商品  优先级低于 店铺选择
         let products = arrayMain[section] as! ModelShoppingCarProducts

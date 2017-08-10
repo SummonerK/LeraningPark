@@ -24,6 +24,7 @@ enum orderAPI {
     case orderPayAccess(PostModel:ModelOrderPayAccessPost)//MARK:订单确认支付
     case orderAccept(PostModel:ModelOrderAcceptPost)//MARK:订单接单
     case orderListByUser(PostModel:ModelListPageByUserPost)//MARK:分页查询用户全部订单明细
+    case orderListByStatus(PostModel:ModelListPageByStatusPost)//MARK:根据状态查询用户订单明细（status为2是待支付，status为3是待发货，status为4是配送中）
     
     //购物车
     case shopShoppingCarAddProduct(PostModel:ModelShoppingCarAddProductPost)//MARK:购物车添加商品
@@ -38,7 +39,7 @@ extension orderAPI: TargetType {
         case .test:
              return URLEncoding.default
             
-        case .orderListByUser,.shopShoppingCarProducts:
+        case .orderListByUser,.shopShoppingCarProducts,.orderListByStatus:
             return URLEncoding.default
             
         case .orderCreate,.orderPay,.orderPayAccess,.orderAccept,.orderAddressSet,.shopShoppingCarAddProduct:
@@ -68,6 +69,8 @@ extension orderAPI: TargetType {
             return "/Order/Accept"
         case .orderListByUser(_):
             return "/Query/Order/ListPageByUser"
+        case .orderListByStatus(_):
+            return "/Query/Order/ListByUserStatus"
         case .shopShoppingCarAddProduct(_):
             return "/ShoppingCart/AddProduct"
         case .shopShoppingCarProducts(_):
@@ -92,6 +95,8 @@ extension orderAPI: TargetType {
         case .orderAccept(_):
             return .post
         case .orderListByUser(_):
+            return .get
+        case .orderListByStatus(_):
             return .get
         case .shopShoppingCarAddProduct(_):
             return .post
@@ -125,6 +130,9 @@ extension orderAPI: TargetType {
             PrintFM(model.toDict())
             return model.toDict()
         case .orderListByUser(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .orderListByStatus(let model):
             PrintFM(model.toDict())
             return model.toDict()
         case .shopShoppingCarAddProduct(let model):

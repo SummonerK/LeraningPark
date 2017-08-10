@@ -23,6 +23,7 @@ class TCellOrderContent: UITableViewCell {
     //network
     let orderM = orderModel()
     let modelorderlistpost = ModelListPageByUserPost()
+    let modelorderliststatuspost = ModelListPageByStatusPost()
     let disposeBag = DisposeBag()
     
     var arrayOrderList = NSMutableArray()
@@ -32,6 +33,8 @@ class TCellOrderContent: UITableViewCell {
     // 底部刷新
     let footer = MJRefreshAutoNormalFooter()
     var Num:Int = 1
+    
+    var status:Int = 0
     
     //    下拉刷新
     let header = MJRefreshNormalHeader()
@@ -74,47 +77,92 @@ class TCellOrderContent: UITableViewCell {
         Num = 1
         self.tableV_main.mj_footer.resetNoMoreData()
         
-        modelorderlistpost.userId = USERM.MemberID
-        modelorderlistpost.pagesize = MenuPagesize
-        modelorderlistpost.pagenumber = Num
+        self.tableV_main.setContentOffset(CGPoint.zero, animated: false)
         
-        orderM.orderListByUser(amodel: modelorderlistpost)
-            .subscribe(onNext: { (posts: ModelOrderWithCount) in
-                
-                PrintFM("pictureList\(String(describing: posts.orders?.toJSONString()))")
-                
-                self.arrayOrderList.removeAllObjects()
-                
-                if let orders = posts.orders{
+        switch status {
+        case 0:
+            modelorderlistpost.userId = USERM.MemberID
+            modelorderlistpost.pagesize = MenuPagesize
+            modelorderlistpost.pagenumber = Num
+            
+            orderM.orderListByUser(amodel: modelorderlistpost)
+                .subscribe(onNext: { (posts: ModelOrderListResult) in
+                    
+                    self.arrayOrderList.removeAllObjects()
+                    
+                    if let data = posts.data,let orders = data.orders{
+                        
+                        self.tableV_main.mj_header.endRefreshing()
+                        
+                        self.arrayOrderList.addObjects(from: orders)
+                        
+                        self.tableV_main.reloadData()
+                        
+                    }
+                    
+                },onError:{error in
                     
                     self.tableV_main.mj_header.endRefreshing()
                     
-                    self.arrayOrderList.addObjects(from: orders)
-                    
-                    self.tableV_main.reloadData()
-                    
-                    if self.arrayOrderList.count > 0{
-                        self.tableV_main.scrollsToTop = true
+                    if let acode = (error as? MyErrorEnum)?.drawCodeValue,acode == 2001{
+                        HUDShowMsgQuick(msg: "暂无订单信息", toView: KeyWindow, time: 0.8)
+                        return
                     }
                     
-                }
-                
-            },onError:{error in
-                
-                self.tableV_main.mj_header.endRefreshing()
-                
-                if let acode = (error as? MyErrorEnum)?.drawCodeValue,acode == 2001{
-                    HUDShowMsgQuick(msg: "暂无订单信息", toView: KeyWindow, time: 0.8)
-                    return
-                }
-                
-                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-                    HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
-                }else{
-                    HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
-                }
-            })
-            .addDisposableTo(disposeBag)
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
+                    }
+                })
+                .addDisposableTo(disposeBag)
+            break
+        case 3,4,5:
+            modelorderliststatuspost.userId = USERM.MemberID
+            modelorderliststatuspost.pagesize = MenuPagesize
+            modelorderliststatuspost.pagenumber = Num
+            modelorderliststatuspost.status = status
+            
+            orderM.orderListByStatus(amodel: modelorderliststatuspost)
+                .subscribe(onNext: { (posts: ModelOrderListResult) in
+                    
+                    self.arrayOrderList.removeAllObjects()
+                    
+                    if let data = posts.data,let orders = data.orders{
+                        
+                        self.tableV_main.mj_header.endRefreshing()
+                        
+                        self.arrayOrderList.addObjects(from: orders)
+                        
+                        self.tableV_main.reloadData()
+                        
+                        if self.arrayOrderList.count > 0{
+                            self.tableV_main.scrollsToTop = true
+                        }
+                        
+                    }
+                    
+                },onError:{error in
+                    
+                    self.tableV_main.mj_header.endRefreshing()
+                    
+                    if let acode = (error as? MyErrorEnum)?.drawCodeValue,acode == 2001{
+                        HUDShowMsgQuick(msg: "暂无订单信息", toView: KeyWindow, time: 0.8)
+                        return
+                    }
+                    
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
+                    }
+                })
+                .addDisposableTo(disposeBag)
+            break
+        default:
+            return
+        }
+        
     }
     
     func footerRefresh(){
@@ -123,51 +171,105 @@ class TCellOrderContent: UITableViewCell {
         
         Num += 1
         
-        modelorderlistpost.userId = USERM.MemberID
-        modelorderlistpost.pagesize = MenuPagesize
-        modelorderlistpost.pagenumber = Num
-        
-        orderM.orderListByUser(amodel: modelorderlistpost)
-            .subscribe(onNext: { (posts: ModelOrderWithCount) in
-                
-                PrintFM("pictureList\(String(describing: posts.orders?.toJSONString()))")
-                
-                if let orders = posts.orders{
+        switch status {
+        case 0:
+            modelorderlistpost.userId = USERM.MemberID
+            modelorderlistpost.pagesize = MenuPagesize
+            modelorderlistpost.pagenumber = Num
+            
+            orderM.orderListByUser(amodel: modelorderlistpost)
+                .subscribe(onNext: { (posts: ModelOrderListResult) in
                     
-                    if orders.count < Pagesize{
-                        self.Num -= 1
-                        self.tableV_main.mj_footer.endRefreshingWithNoMoreData()
+                    if let data = posts.data,let orders = data.orders{
+                        
+                        if orders.count < Pagesize{
+                            self.Num -= 1
+                            self.tableV_main.mj_footer.endRefreshingWithNoMoreData()
+                        }else{
+                            self.tableV_main.mj_footer.endRefreshing()
+                        }
+                        
+                        self.arrayOrderList.addObjects(from: orders)
+                        
+                        self.tableV_main.reloadData()
+                        
+                        if self.arrayOrderList.count > 0{
+                            self.tableV_main.scrollsToTop = true
+                        }
+                        
+                    }
+                    
+                },onError:{error in
+                    
+                    self.tableV_main.mj_footer.endRefreshing()
+                    
+                    if let acode = (error as? MyErrorEnum)?.drawCodeValue,acode == 2001{
+                        HUDShowMsgQuick(msg: "暂无订单信息", toView: KeyWindow, time: 0.8)
+                        return
+                    }
+                    
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
                     }else{
-                        self.tableV_main.mj_footer.endRefreshing()
+                        HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
                     }
                     
-                    self.arrayOrderList.addObjects(from: orders)
+                })
+                .addDisposableTo(disposeBag)
+            break
+        case 2,3,4:
+            
+            modelorderliststatuspost.userId = USERM.MemberID
+            modelorderliststatuspost.pagesize = MenuPagesize
+            modelorderliststatuspost.pagenumber = Num
+            modelorderliststatuspost.status = status
+            
+            orderM.orderListByStatus(amodel: modelorderliststatuspost)
+                .subscribe(onNext: { (posts: ModelOrderListResult) in
                     
-                    self.tableV_main.reloadData()
-                    
-                    if self.arrayOrderList.count > 0{
-                        self.tableV_main.scrollsToTop = true
+                    if let data = posts.data,let orders = data.orders{
+                        
+                        if orders.count < Pagesize{
+                            self.Num -= 1
+                            self.tableV_main.mj_footer.endRefreshingWithNoMoreData()
+                        }else{
+                            self.tableV_main.mj_footer.endRefreshing()
+                        }
+                        
+                        self.arrayOrderList.addObjects(from: orders)
+                        
+                        self.tableV_main.reloadData()
+                        
+                        if self.arrayOrderList.count > 0{
+                            self.tableV_main.scrollsToTop = true
+                        }
+                        
                     }
                     
-                }
-                
-            },onError:{error in
-                
-                self.tableV_main.mj_footer.endRefreshing()
-                
-                if let acode = (error as? MyErrorEnum)?.drawCodeValue,acode == 2001{
-                    HUDShowMsgQuick(msg: "暂无订单信息", toView: KeyWindow, time: 0.8)
-                    return
-                }
-                
-                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
-                    HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
-                }else{
-                    HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
-                }
-                
-            })
-            .addDisposableTo(disposeBag)
+                },onError:{error in
+                    
+                    self.tableV_main.mj_footer.endRefreshing()
+                    
+                    if let acode = (error as? MyErrorEnum)?.drawCodeValue,acode == 2001{
+                        HUDShowMsgQuick(msg: "暂无订单信息", toView: KeyWindow, time: 0.8)
+                        return
+                    }
+                    
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
+                    }
+                    
+                })
+                .addDisposableTo(disposeBag)
+            
+            break
+        default:
+            return
+        }
+        
+        
     }
     
 }
@@ -191,17 +293,17 @@ extension TCellOrderContent:UITableViewDataSource{
             
             switch text {
             case 1:
-                str_orderStep = "已支付"//下单
+                str_orderStep = "买家已付款"//下单
             case 2:
-                str_orderStep = "待支付"
+                str_orderStep = "订单待支付"
             case 3:
-                str_orderStep = "待发货"//接单
+                str_orderStep = "商家待发货"//接单
             case 4:
                 str_orderStep = "待收货"//配送中
             case 5:
-                str_orderStep = "完成"//完成
+                str_orderStep = "订单已完成"//完成
             case 6:
-                str_orderStep = "取消"//取消
+                str_orderStep = "订单取消"//取消
             default:
                 str_orderStep = ""
                 break
@@ -236,14 +338,6 @@ extension TCellOrderContent:UITableViewDataSource{
             }
             
         }
-        
-//        if let product = order.accounts {
-//            let proitem = product[0]
-//
-//            if let price = proitem.price{
-//                totalPrice += price
-//            }
-//        }
         
         let str_total = String(describing: totalPrice)
         

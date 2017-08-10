@@ -10,13 +10,25 @@ import UIKit
 
 class View_payFooter: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    var TotalPrice:Int = 0{
+        willSet{
+            
+        }
+        didSet{
+            let str = String(describing: TotalPrice)
+            label_total.text = String.init("¥ \(String(describing: str.fixPrice()))")
+        }
     }
-    */
+    
+    var transPrice:Int = 0{
+        willSet{
+            
+        }
+        didSet{
+            let str = String(describing: transPrice)
+            label_yun.text = String.init("¥ \(String(describing: str.fixPrice()))")
+        }
+    }
     
     @IBOutlet weak var label_yun: UILabel!
     
@@ -26,7 +38,7 @@ class View_payFooter: UIView {
         super.awakeFromNib()
         
     }
-    
+
     override func layoutSubviews() {
         setupSubviews()
     }

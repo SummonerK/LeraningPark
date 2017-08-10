@@ -65,9 +65,14 @@ class orderModel {
             .mapObject(type: ModelCommonBack.self)
         //.showError()
     }
-    func orderListByUser(amodel:ModelListPageByUserPost) -> Observable<ModelOrderWithCount> {
+    func orderListByUser(amodel:ModelListPageByUserPost) -> Observable<ModelOrderListResult> {
         return orderprovider.request(.orderListByUser(PostModel: amodel))
-            .mapResult(type: ModelOrderWithCount.self)
+            .mapNeObject(type: ModelOrderListResult.self)
+        //.showError()
+    }
+    func orderListByStatus(amodel:ModelListPageByStatusPost) -> Observable<ModelOrderListResult> {
+        return orderprovider.request(.orderListByStatus(PostModel: amodel))
+            .mapNeObject(type: ModelOrderListResult.self)
         //.showError()
     }
     func shopShoppingCarAddProduct(amodel:ModelShoppingCarAddProductPost) -> Observable<ModelShoppingCarAddResult> {

@@ -70,7 +70,7 @@
                                 <rect key="frame" x="0.0" y="570" width="375" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUG-Q9-ia7">
-                                        <rect key="frame" x="10" y="7.5" width="66" height="33"/>
+                                        <rect key="frame" x="10" y="8" width="66" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="66" id="dbi-Cf-99l"/>
                                             <constraint firstAttribute="height" constant="33" id="i2m-t7-a1E"/>
@@ -86,7 +86,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTL-Rh-AE1">
-                                        <rect key="frame" x="185.5" y="7" width="42" height="33"/>
+                                        <rect key="frame" x="155.5" y="8" width="42" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="42" id="hwl-dL-uHS"/>
                                             <constraint firstAttribute="height" constant="33" id="rYQ-ll-PSb"/>
@@ -95,10 +95,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥88" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVF-Fu-mIl">
-                                        <rect key="frame" x="229.5" y="7.5" width="42" height="33"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVF-Fu-mIl">
+                                        <rect key="frame" x="199.5" y="8" width="42" height="33"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="42" id="6Bp-aP-bgQ"/>
+                                            <constraint firstAttribute="width" priority="500" constant="42" id="6Bp-aP-bgQ"/>
                                             <constraint firstAttribute="height" constant="33" id="DMi-bW-qap"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="15"/>
@@ -106,13 +106,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPa-4N-eBu">
-                                        <rect key="frame" x="281.5" y="0.0" width="93.5" height="48"/>
+                                        <rect key="frame" x="251.5" y="0.0" width="123.5" height="48"/>
                                         <color key="backgroundColor" red="0.20784313730000001" green="0.73333333329999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="去结算">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="action_PayNow:" destination="Glc-Jt-hhq" eventType="touchDragInside" id="a2C-8g-cTH"/>
+                                            <action selector="action_PayNow:" destination="Glc-Jt-hhq" eventType="touchUpInside" id="tpo-i3-YaR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -120,7 +120,7 @@
                                 <constraints>
                                     <constraint firstItem="CVF-Fu-mIl" firstAttribute="centerY" secondItem="TPa-4N-eBu" secondAttribute="centerY" id="4fB-7J-a7p"/>
                                     <constraint firstItem="TPa-4N-eBu" firstAttribute="leading" secondItem="CVF-Fu-mIl" secondAttribute="trailing" constant="10" id="6PI-1k-kpd"/>
-                                    <constraint firstItem="TPa-4N-eBu" firstAttribute="width" secondItem="6my-KC-Z3u" secondAttribute="width" multiplier="0.25" id="Eeg-ec-lSc"/>
+                                    <constraint firstItem="TPa-4N-eBu" firstAttribute="width" secondItem="6my-KC-Z3u" secondAttribute="width" multiplier="0.33" id="Eeg-ec-lSc"/>
                                     <constraint firstItem="CVF-Fu-mIl" firstAttribute="leading" secondItem="FTL-Rh-AE1" secondAttribute="trailing" constant="2" id="Phf-lL-bsn"/>
                                     <constraint firstAttribute="height" constant="48" id="bRt-EV-5wK"/>
                                     <constraint firstAttribute="trailing" secondItem="TPa-4N-eBu" secondAttribute="trailing" id="boF-K4-9g5"/>
@@ -174,7 +174,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="er6-Lg-G6a" id="WcP-su-0iO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

@@ -111,7 +111,7 @@ class GoodsPayVC: BaseTabHiden {
         modelaccount.accountId = "20001"
         modelaccount.name = "运费"
         modelaccount.type = "1"
-        modelaccount.price = "500"
+        modelaccount.price = 500
 //        modelaccount.price = "0"
         modelaccount.number = "1"
         modelaccount.sequence = 0
@@ -198,7 +198,7 @@ class GoodsPayVC: BaseTabHiden {
             let proitem = product[0]
             
             if let price = proitem.price{
-                totalPrice += price.intValue!
+                totalPrice += price
             }
         }
         
@@ -273,48 +273,68 @@ extension GoodsPayVC:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         
-        let viewheader = Bundle.main.loadNibNamed("View_payHeader", owner: nil, options: nil)?.first as? View_payHeader
-        
-        viewheader?.label_name_phone.text = "请前往选择收货人"
-        
-        if let sectoryPhone = model_address.receiverPhone{
-            viewheader?.label_name_phone.text = (model_address.receiverName ?? "请前往选择收货人") + " " + (sectoryPhone.sectoryPhone)
+        if section == 0 {
+            let viewheader = Bundle.main.loadNibNamed("View_payHeader", owner: nil, options: nil)?.first as? View_payHeader
+            
+            viewheader?.label_name_phone.text = "请前往选择收货人"
+            
+            if let sectoryPhone = model_address.receiverPhone{
+                viewheader?.label_name_phone.text = (model_address.receiverName ?? "请前往选择收货人") + " " + (sectoryPhone.sectoryPhone)
+            }
+            
+            viewheader?.label_address.text = (model_address.area ?? "请前往选择收货地址") + "" + (model_address.address ?? " ")
+            
+            
+            viewheader?.bton_adsEdit.addTarget(self, action: #selector(goAddressEditVC), for:UIControlEvents.touchUpInside)
+            
+            return viewheader
+        }else{
+            
+            let viewheader = Bundle.main.loadNibNamed("ViewShoppingPayHeader", owner: nil, options: nil)?.first as? ViewShoppingPayHeader
+            
+            viewheader?.label_name.text = model_shop?.storeName
+            
+            return viewheader
+            
         }
-        
-        viewheader?.label_address.text = (model_address.area ?? "请前往选择收货地址") + "" + (model_address.address ?? " ")
-        
-        
-        viewheader?.bton_adsEdit.addTarget(self, action: #selector(goAddressEditVC), for:UIControlEvents.touchUpInside)
-        
-        return viewheader
         
     }
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?{
-        let viewfooter = Bundle.main.loadNibNamed("View_payFooter", owner: nil, options: nil)?.first as? View_payFooter
         
-        if let product = modelOrderC.accounts {
-            let proitem = product[0]
+        if section != 0 {
+            let viewfooter = Bundle.main.loadNibNamed("View_payFooter", owner: nil, options: nil)?.first as? View_payFooter
             
-            if let price = proitem.price{
-                let str = String(describing: Int(price)!*Int(proitem.number!)!)
-                viewfooter?.label_yun.text = String.init("¥ \(String(describing: str.fixPrice()))")
+            if let product = modelOrderC.accounts {
+                let proitem = product[0]
+                
+                if let price = proitem.price{
+                    viewfooter?.transPrice = price
+                }
+                
+                viewfooter?.TotalPrice = totalPrice
+                
             }
             
-            let str_total = String(describing: totalPrice)
-            viewfooter?.label_total.text = String.init("¥ \(String(describing: str_total.fixPrice()))")
+            return viewfooter
+            
+        }else{
+            return nil
         }
         
-        return viewfooter
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        if section == 0 {
+            return 0
+        }else{
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -370,11 +390,23 @@ extension GoodsPayVC:UITableViewDataSource{
 extension GoodsPayVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        return 110
+        
+        if section == 0 {
+            return 110
+        }else{
+            return 44
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
-        return 80
+        
+        if section != 0 {
+            return 80
+        }else{
+            return 0.1
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{

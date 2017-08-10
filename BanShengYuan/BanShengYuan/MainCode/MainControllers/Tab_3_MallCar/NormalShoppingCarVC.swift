@@ -33,6 +33,16 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
     let DicSectionChoose = NSMutableDictionary()///记录各个店铺全选情况
     var flagAllChoose = false    ///记录所有店全选情况
     
+    var TotalPrice:Int = 0{
+        willSet{
+            
+        }
+        didSet{
+            let str = String(describing: TotalPrice)
+            label_totalprice.text = String.init("¥ \(String(describing: str.fixPrice()))")
+        }
+    }
+    
     var tableEmpty:Bool = false{
         
         willSet{
@@ -50,6 +60,7 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        getDate()
     }
     
     override func viewDidLoad() {
@@ -64,9 +75,6 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
         table_main.backgroundColor = FlatWhiteLight
         
         table_main.separatorStyle = .none
-        
-        
-        getDate()
         
         // Do any additional setup after loading the view.
     }
@@ -131,7 +139,6 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
         self.navigationController?.popViewController(animated: true)
     }
     
-    
     @IBAction func actionAllChoose(_ sender: Any) {
         
         if bton_allchoose.isSelected {
@@ -158,6 +165,8 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
         }
         
         self.table_main.reloadData()
+        
+        fixTotalPrice()
     }
     
     func restBottomAllChoose(){
@@ -176,9 +185,73 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
             bton_allchoose.isSelected = false
         }
         
+        fixTotalPrice()
+        
     }
     
+    func fixTotalPrice(){
+        
+        var totalPrice:Int = 0
+        
+        for i in 0...arrayMain.count-1 {
+            let products = arrayMain[i] as! ModelShoppingCarProducts
+            for item in products.products! {
+                if item.chooseFlag == true{
+                    totalPrice = totalPrice + (item.finalPrice! * item.productNumber!)
+                }else{
+                    continue
+                }
+            }
+        }
+        
+        TotalPrice = totalPrice
+        
+    }
+    func fixChoosedProducts()->NSMutableArray {
+        
+        let array_Choosed = NSMutableArray()
+        
+        for i in 0...arrayMain.count-1 {
+            
+            let array_products = NSMutableArray()
+            
+            let products = arrayMain[i] as! ModelShoppingCarProducts
+            for item in products.products! {
+                if item.chooseFlag == true{
+                    array_products.add(item)
+                }else{
+                    continue
+                }
+            }
+            
+            if array_products.count != 0 {
+                let shopModel = arrayMain[i] as! ModelShoppingCarProducts
+                shopModel.products = array_products as? [ModelShopDetailItem]
+                
+                array_Choosed.add(shopModel)
+                
+            }
+            
+        }
+        
+        return array_Choosed
+    }
+    
+    //MARK:前往支付
     @IBAction func action_PayNow(_ sender: Any) {
+        
+        let array = fixChoosedProducts()
+        
+        if array.count == 0 {
+            HUDShowMsgQuick(msg: "请至少选择一个商品进行结算", toView: self.view, time: 0.8)
+            return
+        }
+        
+        let Vc = StoryBoard_ActivityPages.instantiateViewController(withIdentifier: "ShoppingCarPayVC") as! ShoppingCarPayVC
+        
+        Vc.arrayMain = array
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
         
     }
     

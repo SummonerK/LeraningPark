@@ -21,6 +21,9 @@
 		631BF39D1F132CA000589FB0 /* ModelOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BF39C1F132CA000589FB0 /* ModelOrder.swift */; };
 		6321237B1F0B3D6000DA9B5C /* activityDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6321237A1F0B3D6000DA9B5C /* activityDetailVC.swift */; };
 		6321237E1F0B403A00DA9B5C /* NextPageActivity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6321237C1F0B403A00DA9B5C /* NextPageActivity.storyboard */; };
+		632440F41F3C37710032B0EB /* ShoppingCarPayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632440F31F3C37710032B0EB /* ShoppingCarPayVC.swift */; };
+		632440F61F3C47230032B0EB /* ViewShoppingPayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632440F51F3C47230032B0EB /* ViewShoppingPayHeader.swift */; };
+		632440F81F3C47370032B0EB /* ViewShoppingPayHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632440F71F3C47370032B0EB /* ViewShoppingPayHeader.xib */; };
 		634463991F04A62E000085E7 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 634463981F04A62D000085E7 /* login.png */; };
 		634AA3061F14D05900697526 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 634AA3041F14D05900697526 /* AlipaySDK.bundle */; };
 		634AA3071F14D05900697526 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634AA3051F14D05900697526 /* AlipaySDK.framework */; };
@@ -89,8 +92,6 @@
 		635896DD1F380D6500C945EC /* view_orderEndFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635896A71F380D6400C945EC /* view_orderEndFooter.xib */; };
 		635896DE1F380D6500C945EC /* view_orderEndHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635896A81F380D6400C945EC /* view_orderEndHeader.swift */; };
 		635896DF1F380D6500C945EC /* view_orderEndHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635896A91F380D6400C945EC /* view_orderEndHeader.xib */; };
-		635896E01F380D6500C945EC /* CCellMenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635896AB1F380D6400C945EC /* CCellMenuContent.swift */; };
-		635896E11F380D6500C945EC /* CCellMenuContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635896AC1F380D6400C945EC /* CCellMenuContent.xib */; };
 		635896E21F380D6500C945EC /* CCellTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635896AD1F380D6400C945EC /* CCellTop.swift */; };
 		635896E31F380D6500C945EC /* CCellTop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635896AE1F380D6400C945EC /* CCellTop.xib */; };
 		635896E41F380D6500C945EC /* order_continuePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635896AF1F380D6400C945EC /* order_continuePay.swift */; };
@@ -99,7 +100,6 @@
 		635896E71F380D6500C945EC /* TCell_UserOrder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635896B21F380D6400C945EC /* TCell_UserOrder.xib */; };
 		635896E81F380D6500C945EC /* TCellOrderContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635896B31F380D6400C945EC /* TCellOrderContent.swift */; };
 		635896E91F380D6500C945EC /* TCellOrderContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635896B41F380D6400C945EC /* TCellOrderContent.xib */; };
-		635896EA1F380D6500C945EC /* user_orderMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635896B51F380D6400C945EC /* user_orderMenu.swift */; };
 		635896EB1F380D6500C945EC /* view_orderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635896B61F380D6500C945EC /* view_orderFooter.swift */; };
 		635896EC1F380D6500C945EC /* view_orderFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635896B71F380D6500C945EC /* view_orderFooter.xib */; };
 		635896ED1F380D6500C945EC /* view_orderHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635896B81F380D6500C945EC /* view_orderHeader.swift */; };
@@ -233,6 +233,9 @@
 		631BF39C1F132CA000589FB0 /* ModelOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelOrder.swift; sourceTree = "<group>"; };
 		6321237A1F0B3D6000DA9B5C /* activityDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = activityDetailVC.swift; sourceTree = "<group>"; };
 		6321237D1F0B403A00DA9B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NextPageActivity.storyboard; sourceTree = "<group>"; };
+		632440F31F3C37710032B0EB /* ShoppingCarPayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCarPayVC.swift; sourceTree = "<group>"; };
+		632440F51F3C47230032B0EB /* ViewShoppingPayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewShoppingPayHeader.swift; sourceTree = "<group>"; };
+		632440F71F3C47370032B0EB /* ViewShoppingPayHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewShoppingPayHeader.xib; sourceTree = "<group>"; };
 		634463981F04A62D000085E7 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		634AA3041F14D05900697526 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		634AA3051F14D05900697526 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
@@ -301,8 +304,6 @@
 		635896A71F380D6400C945EC /* view_orderEndFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = view_orderEndFooter.xib; sourceTree = "<group>"; };
 		635896A81F380D6400C945EC /* view_orderEndHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = view_orderEndHeader.swift; sourceTree = "<group>"; };
 		635896A91F380D6400C945EC /* view_orderEndHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = view_orderEndHeader.xib; sourceTree = "<group>"; };
-		635896AB1F380D6400C945EC /* CCellMenuContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCellMenuContent.swift; sourceTree = "<group>"; };
-		635896AC1F380D6400C945EC /* CCellMenuContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellMenuContent.xib; sourceTree = "<group>"; };
 		635896AD1F380D6400C945EC /* CCellTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCellTop.swift; sourceTree = "<group>"; };
 		635896AE1F380D6400C945EC /* CCellTop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellTop.xib; sourceTree = "<group>"; };
 		635896AF1F380D6400C945EC /* order_continuePay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = order_continuePay.swift; sourceTree = "<group>"; };
@@ -311,7 +312,6 @@
 		635896B21F380D6400C945EC /* TCell_UserOrder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCell_UserOrder.xib; sourceTree = "<group>"; };
 		635896B31F380D6400C945EC /* TCellOrderContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellOrderContent.swift; sourceTree = "<group>"; };
 		635896B41F380D6400C945EC /* TCellOrderContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCellOrderContent.xib; sourceTree = "<group>"; };
-		635896B51F380D6400C945EC /* user_orderMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user_orderMenu.swift; sourceTree = "<group>"; };
 		635896B61F380D6500C945EC /* view_orderFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = view_orderFooter.swift; sourceTree = "<group>"; };
 		635896B71F380D6500C945EC /* view_orderFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = view_orderFooter.xib; sourceTree = "<group>"; };
 		635896B81F380D6500C945EC /* view_orderHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = view_orderHeader.swift; sourceTree = "<group>"; };
@@ -606,6 +606,9 @@
 			children = (
 				635897041F380D7F00C945EC /* TabMallCarVC.swift */,
 				63658ECD1F3B198200EFA614 /* NormalShoppingCarVC.swift */,
+				632440F31F3C37710032B0EB /* ShoppingCarPayVC.swift */,
+				632440F51F3C47230032B0EB /* ViewShoppingPayHeader.swift */,
+				632440F71F3C47370032B0EB /* ViewShoppingPayHeader.xib */,
 				635897061F383C9C00C945EC /* TCellMallCar.swift */,
 				635897071F383C9C00C945EC /* TCellMallCar.xib */,
 				6358970A1F38452100C945EC /* ViewMallCarHeader.swift */,
@@ -659,17 +662,14 @@
 		635896AA1F380D6400C945EC /* orderList */ = {
 			isa = PBXGroup;
 			children = (
-				635896AB1F380D6400C945EC /* CCellMenuContent.swift */,
-				635896AC1F380D6400C945EC /* CCellMenuContent.xib */,
+				635896B01F380D6400C945EC /* orderListRootVC.swift */,
+				635896B31F380D6400C945EC /* TCellOrderContent.swift */,
+				635896B41F380D6400C945EC /* TCellOrderContent.xib */,
 				635896AD1F380D6400C945EC /* CCellTop.swift */,
 				635896AE1F380D6400C945EC /* CCellTop.xib */,
 				635896AF1F380D6400C945EC /* order_continuePay.swift */,
-				635896B01F380D6400C945EC /* orderListRootVC.swift */,
 				635896B11F380D6400C945EC /* TCell_UserOrder.swift */,
 				635896B21F380D6400C945EC /* TCell_UserOrder.xib */,
-				635896B31F380D6400C945EC /* TCellOrderContent.swift */,
-				635896B41F380D6400C945EC /* TCellOrderContent.xib */,
-				635896B51F380D6400C945EC /* user_orderMenu.swift */,
 				635896B61F380D6500C945EC /* view_orderFooter.swift */,
 				635896B71F380D6500C945EC /* view_orderFooter.xib */,
 				635896B81F380D6500C945EC /* view_orderHeader.swift */,
@@ -1164,6 +1164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				632440F81F3C47370032B0EB /* ViewShoppingPayHeader.xib in Resources */,
 				634AA3061F14D05900697526 /* AlipaySDK.bundle in Resources */,
 				635896FE1F380D6500C945EC /* TCell_User.xib in Resources */,
 				63657DA21EE7CE5900DA24F4 /* Media.xcassets in Resources */,
@@ -1206,7 +1207,6 @@
 				635897021F380D6500C945EC /* view_userHeader.xib in Resources */,
 				635896F81F380D6500C945EC /* TCell_info.xib in Resources */,
 				638F18391EF1116C00A33412 /* TCellHomeActivities.xib in Resources */,
-				635896E11F380D6500C945EC /* CCellMenuContent.xib in Resources */,
 				635896FF1F380D6500C945EC /* Userbackground.png in Resources */,
 				635896DF1F380D6500C945EC /* view_orderEndHeader.xib in Resources */,
 				6352BD1F1F39A1FC0039C5A0 /* sortManagerHeader.xib in Resources */,
@@ -1313,6 +1313,7 @@
 				635896FD1F380D6500C945EC /* TCell_User.swift in Sources */,
 				636636031F05047E0060E7D4 /* TCellGoodsImage.swift in Sources */,
 				635896E21F380D6500C945EC /* CCellTop.swift in Sources */,
+				632440F41F3C37710032B0EB /* ShoppingCarPayVC.swift in Sources */,
 				63559AAD1EFA0ED8003FC6E5 /* Dates.swift in Sources */,
 				638F18511EF1136700A33412 /* Home_pMusic.swift in Sources */,
 				634F64031F0E172A00DE4B92 /* ViewModel.swift in Sources */,
@@ -1332,14 +1333,12 @@
 				634F640A1F0E172A00DE4B92 /* ModelUserPost.swift in Sources */,
 				6386466B1EEA398F0077C6A0 /* Activity_RootVC.swift in Sources */,
 				63559AB51EFA6D4F003FC6E5 /* HomeNaviC.swift in Sources */,
-				635896E01F380D6500C945EC /* CCellMenuContent.swift in Sources */,
 				63559AB31EFA5639003FC6E5 /* Colors.swift in Sources */,
 				6385362E1EE7A1F800DB7BA1 /* AppDelegate.swift in Sources */,
 				6352BD171F399CCA0039C5A0 /* sortManagerVC.swift in Sources */,
 				634F64091F0E172A00DE4B92 /* ModelShop.swift in Sources */,
 				638F184B1EF1133400A33412 /* Home_pActivity.swift in Sources */,
 				636636081F05047E0060E7D4 /* Home_pShanghu.swift in Sources */,
-				635896EA1F380D6500C945EC /* user_orderMenu.swift in Sources */,
 				636636101F05047E0060E7D4 /* shangHu_DetailVC.swift in Sources */,
 				636636161F05059D0060E7D4 /* View_payFooter.swift in Sources */,
 				635896D61F380D6500C945EC /* TCellOrderGoods.swift in Sources */,
@@ -1365,6 +1364,7 @@
 				634F64021F0E172A00DE4B92 /* shopModel.swift in Sources */,
 				634DE72C1EF381D200E44AFA /* TCell_pActivity.swift in Sources */,
 				63559AB71EFA6D6E003FC6E5 /* ActivityNaviC.swift in Sources */,
+				632440F61F3C47230032B0EB /* ViewShoppingPayHeader.swift in Sources */,
 				6366360E1F05047E0060E7D4 /* CCell_shhuDetailHeader.swift in Sources */,
 				634F64081F0E172A00DE4B92 /* ModelLoginPost.swift in Sources */,
 				6321237B1F0B3D6000DA9B5C /* activityDetailVC.swift in Sources */,

@@ -412,6 +412,24 @@ class ModelShoppingCarProducts: Mappable {
         return self.toJSONString()!
     }
     
+    init() {
+        
+    }
+    
+    func copy() -> ModelShoppingCarProducts {
+        
+        let newValue = ModelShoppingCarProducts()
+        newValue.count = self.count
+        newValue.linkId = self.linkId
+        newValue.products = self.products
+        newValue.scid = self.scid
+        newValue.type = self.type
+        newValue.userId = self.userId
+        
+        return newValue
+        
+    }
+    
 }
 
 

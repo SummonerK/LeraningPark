@@ -9,6 +9,12 @@
 import UIKit
 import SnapKit
 
+
+let space = 0
+
+
+let ContentHight = CGFloat(667.0 - 102)
+
 class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     @IBOutlet weak var collectionView_top: UICollectionView!
@@ -21,7 +27,7 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     
     var Page:Int = 0
     
-    let array:[String] = ["全部","待发货(2)","配送中(1)","已完成"]
+    let array:[(String,Int)] = [("全部",0),("待发货(2)",3),("配送中(1)",4),("已完成",5)]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -78,7 +84,7 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         
         collectionView_top.register(UINib.init(nibName: "CCellTop", bundle: nil), forCellWithReuseIdentifier: "CCellTop")
         
-        let size = array[0].getLabSize(font: FontLabelPFLight(size: 14))
+        let size = array[0].0.getLabSize(font: FontLabelPFLight(size: 14))
         let width:Int = Int(size.width) + space*2
         let normalSpace = (ItemW - width)/2
         
@@ -137,11 +143,15 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-        if indexPath.row == 0{
-            cell.getOrderList()
-        }else{
-            cell.setDefaultNoneData()
-        }
+        cell.status = array[indexPath.row].1
+        
+        cell.getOrderList()
+        
+//        if indexPath.row == 0{
+//            cell.getOrderList()
+//        }else{
+//            cell.setDefaultNoneData()
+//        }
         
         return cell
         
@@ -188,7 +198,7 @@ extension orderListRootVC:UICollectionViewDelegate{
             
             let rect = collectionView_top.convert(frame, from: collectionView_top)
             
-            let size = array[toItem].getLabSize(font: FontLabelPFLight(size: 14))
+            let size = array[toItem].0.getLabSize(font: FontLabelPFLight(size: 14))
             
             let width:Int = Int(size.width) + space*2
             
@@ -222,7 +232,7 @@ extension orderListRootVC:UICollectionViewDataSource{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCellTop", for: indexPath) as! CCellTop
         
-        cell.label_txt.text = array[indexPath.row]
+        cell.label_txt.text = array[indexPath.row].0
         
         return cell
         

@@ -24,7 +24,28 @@ class TCell_UserOrder: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        setRadiusFor(toview: imagev_sub, radius: 3, lineWidth: 0, lineColor: UIColor.clear)
+        
+    }
+    
+    func setContent(product:ModelShopDetailItem) {
+        label_name.text = product.name
+        lable_labels.text = product.specification
+        lable_num.text = "x" + (product.productNumber?.description)!
+        
+        if let price = product.finalPrice {
+            
+            let str = String(describing: price)
+            
+            label_price.text = String.init("¥ \(String(describing: str.fixPrice()))")
+            
+        }
+        
+        let url = URL(string: product.picture!)
+        
+        imagev_sub.kf.setImage(with: url, placeholder: createImageWithColor(color: FlatWhiteLight), options: nil, progressBlock: nil, completionHandler: nil)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
