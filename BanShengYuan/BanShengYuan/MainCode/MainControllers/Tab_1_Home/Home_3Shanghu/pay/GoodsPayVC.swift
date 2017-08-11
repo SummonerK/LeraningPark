@@ -313,6 +313,7 @@ extension GoodsPayVC:UITableViewDataSource{
                 }
                 
                 viewfooter?.TotalPrice = totalPrice
+                viewfooter?.transPrice = 500
                 
             }
             
@@ -360,6 +361,8 @@ extension GoodsPayVC:UITableViewDataSource{
                 cell.lable_labels.text = str as String
             }
             
+//            cell.lable_labels.text = model_goods?.specification ?? ""
+            
             if let price = proitem.price {
                 let str = String(describing: price)
                 cell.label_price.text = String.init("¥ \(String(describing: str.fixPrice()))")
@@ -367,7 +370,7 @@ extension GoodsPayVC:UITableViewDataSource{
             
             if let price = proitem.number {
                 let str = String(describing: price)
-                cell.lable_num.text = String.init("X \(str)")
+                cell.lable_num.text = String.init("x \(str)")
             }
             
             if let picture = model_goods?.picture {
@@ -402,7 +405,7 @@ extension GoodsPayVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
         
         if section != 0 {
-            return 80
+            return 72
         }else{
             return 0.1
         }

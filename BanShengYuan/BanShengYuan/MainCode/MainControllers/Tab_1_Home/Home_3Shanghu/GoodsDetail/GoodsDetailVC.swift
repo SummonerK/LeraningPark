@@ -308,6 +308,11 @@ class GoodsDetailVC: BaseTabHiden {
         
         self.tableV_main.reloadData()
         
+        if USERM.MemberID == ""{
+            LoginAdjust()
+            return
+        }
+        
         
         modelshoppingCarAddProPost.userId = USERM.MemberID
         modelshoppingCarAddProPost.linkId = shopID
@@ -338,6 +343,11 @@ class GoodsDetailVC: BaseTabHiden {
     
     
     @IBAction func gotoShoppingCarVC(_ sender: Any) {
+        
+        if USERM.MemberID == ""{
+            LoginAdjust()
+            return
+        }
         
         let Vc = StoryBoard_ActivityPages.instantiateViewController(withIdentifier: "NormalShoppingCarVC") as! NormalShoppingCarVC
         

@@ -49,9 +49,11 @@ class Home_RootVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let str = "15600703631"
+        let str = "15600703630"
         
         PrintFM(str.sectoryPhone)
+        
+        PrintFM(str.fixPrice())
         
 //        HUDtextShow(toview: KeyWindow, msg: "支付失败", subMsg: "15600703631")
         

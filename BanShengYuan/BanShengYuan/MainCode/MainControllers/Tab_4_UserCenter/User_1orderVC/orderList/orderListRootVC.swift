@@ -27,7 +27,7 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     
     var Page:Int = 0
     
-    let array:[(String,Int)] = [("全部",0),("待发货(2)",3),("配送中(1)",4),("已完成",5)]
+    let array:[(String,Int)] = [("全部",0),("待发货",3),("配送中",4),("已完成",5)]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

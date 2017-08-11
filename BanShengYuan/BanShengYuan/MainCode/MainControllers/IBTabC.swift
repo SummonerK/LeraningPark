@@ -38,7 +38,7 @@ class IBTabC: UITabBarController,UITabBarControllerDelegate{
 //        
 //        PrintFM("selectedIndex = \(selectedIndex),shouldIndex=\(String(describing: shouldIndex))")
         
-        if self.viewControllers?[3] == viewController{
+        if self.viewControllers?[3] == viewController || self.viewControllers?[2] == viewController{
             PrintFM("第三页面，要加控制咯")
             if USERM.MemberID != ""{
                 

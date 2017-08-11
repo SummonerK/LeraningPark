@@ -28,6 +28,7 @@ enum orderAPI {
     
     //购物车
     case shopShoppingCarAddProduct(PostModel:ModelShoppingCarAddProductPost)//MARK:购物车添加商品
+    case shopShoppingCarDeleteProduct(PostModel:ModelShoppingCarAddProductPost)//MARK:购物车添加商品
     case shopShoppingCarProducts(PostModel:ModelShoppingCarProductsPost)//MARK:获取购物车
     
 }
@@ -42,7 +43,7 @@ extension orderAPI: TargetType {
         case .orderListByUser,.shopShoppingCarProducts,.orderListByStatus:
             return URLEncoding.default
             
-        case .orderCreate,.orderPay,.orderPayAccess,.orderAccept,.orderAddressSet,.shopShoppingCarAddProduct:
+        case .orderCreate,.orderPay,.orderPayAccess,.orderAccept,.orderAddressSet,.shopShoppingCarAddProduct,.shopShoppingCarDeleteProduct:
             return JSONEncoding.default
             
         }
@@ -73,6 +74,8 @@ extension orderAPI: TargetType {
             return "/Query/Order/ListByUserStatus"
         case .shopShoppingCarAddProduct(_):
             return "/ShoppingCart/AddProduct"
+        case .shopShoppingCarDeleteProduct(_):
+            return "/ShoppingCart/DelProduct"
         case .shopShoppingCarProducts(_):
             return "/Query/ShoppingCart/ListUserAllShoppingCarts"
         
@@ -99,6 +102,8 @@ extension orderAPI: TargetType {
         case .orderListByStatus(_):
             return .get
         case .shopShoppingCarAddProduct(_):
+            return .post
+        case .shopShoppingCarDeleteProduct(_):
             return .post
         case .shopShoppingCarProducts(_):
             return .get
@@ -136,6 +141,9 @@ extension orderAPI: TargetType {
             PrintFM(model.toDict())
             return model.toDict()
         case .shopShoppingCarAddProduct(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .shopShoppingCarDeleteProduct(let model):
             PrintFM(model.toDict())
             return model.toDict()
         case .shopShoppingCarProducts(let model):

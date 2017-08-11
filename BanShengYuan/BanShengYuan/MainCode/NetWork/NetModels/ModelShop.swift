@@ -433,5 +433,38 @@ class ModelShoppingCarProducts: Mappable {
 }
 
 
+//MARK:添加购物车 post model
+
+class ModelShoppingCarDeleteSingalProductPost: Reflect {
+    var userId:String!///用户ID
+    var linkId:String!///关联ID：门店ID/商户ID
+    var type:String!///关联ID类型: 1=门店，2=商户
+    var productId:String!///商品ID
+    var name:String!///商品名称
+    var number:String!///商品数量
+    
+}
+
+//MARK:添加购物车返回
+
+class ModelShoppingCarDeleteSingalResult: Mappable {
+    var errcode: String?
+    var errmsg: String?
+    var data: String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        data <- map["data"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
 
 

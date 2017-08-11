@@ -32,7 +32,7 @@ class TCell_UserOrder: UITableViewCell {
     func setContent(product:ModelShopDetailItem) {
         label_name.text = product.name
         lable_labels.text = product.specification
-        lable_num.text = "x" + (product.productNumber?.description)!
+        lable_num.text = "x " + (product.productNumber?.description)!
         
         if let price = product.finalPrice {
             

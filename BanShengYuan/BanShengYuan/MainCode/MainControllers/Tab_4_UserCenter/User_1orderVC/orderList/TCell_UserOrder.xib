@@ -69,7 +69,7 @@
                             <constraint firstAttribute="width" priority="200" constant="48" id="5aZ-pi-92W"/>
                             <constraint firstAttribute="height" constant="21" id="r3U-UI-kLd"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="13"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -92,6 +92,7 @@
                     <constraint firstItem="xHw-98-Rxx" firstAttribute="leading" secondItem="KfC-cs-0D3" secondAttribute="trailing" constant="21" id="lx7-u9-srK"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="imagev_sub" destination="KfC-cs-0D3" id="Egc-HN-wxS"/>
                 <outlet property="label_des" destination="kDx-Vx-baf" id="6JD-8M-5eI"/>

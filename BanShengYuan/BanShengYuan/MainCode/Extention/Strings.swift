@@ -64,19 +64,80 @@ func setUnderLineToString(tocolor:UIColor) -> [String:Any] {
     return firstAttributes
 }
 
+//numberStyle:
+public enum Style : UInt {
+    
+    case none //1234567.89
+    
+    case decimal //1,234,567.89
+    
+    case currency //￥1,234,567.89
+    
+    case percent //123,456,789%
+    
+    case scientific //1.23456789E6
+    
+    case spellOut //一百二十三万四千五百六十七点八九
+    
+//    @available(iOS 9.0, *)
+//    case ordinal //第123,4568
+//    
+//    @available(iOS 9.0, *)
+//    case currencyISOCode //CNY1,234,567.89
+//    
+//    @available(iOS 9.0, *)
+//    case currencyPlural//1,234,567.89人民币
+//    
+//    @available(iOS 9.0, *)
+//    case currencyAccounting//￥1,234,567.89
+    
+}
 
 extension String{
     
     func fixPrice() -> String {
-        let acount:Float = self.floatValue!
         
-//        PrintFM("acount = \(acount)")
-        
-        if acount == 0 || acount < 0 {
-            return "0"
-        }else{
-            return "\(String(format: "%.2f", (acount/100)))"
+        let formatter = NumberFormatter()
+        let value = self.doubleValue
+        let format = NSMutableString(string: "###,##0.")
+        let precision = 2
+        if(precision == 0)
+        {
+            formatter.positiveFormat = format as String
+            return formatter.string(from: NSNumber(value: value!/100))!
+            
         }
+        else
+        {
+            for _ in 1...precision
+            {
+                format.appendFormat("0")
+            }
+            formatter.positiveFormat = format as String
+            return formatter.string(from: NSNumber(value: value!/100))!
+        }
+        
+//        let acount = self.intValue!
+//        
+//        let tailacount = (self.intValue)!%100
+//        
+//        let headacount = (self.intValue)!/100
+//        
+//        let tailstr = "\(String(format: "%02d", tailacount))"
+//        
+//        if acount == 0 || acount < 0 {
+//            return "0"
+//        }else{
+//            //初始化NumberFormatter
+//            let format = NumberFormatter()
+//            //设置numberStyle（有多种格式）
+//            format.numberStyle = .decimal
+//            //转换后的string
+//            let string = format.string(from: NSNumber(value: headacount))
+//            
+//            return string! + "." + tailstr
+//            
+//        }
         
     }
     

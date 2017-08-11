@@ -75,8 +75,6 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         
         table_main.backgroundColor = FlatWhiteLight
         
-        table_main.separatorStyle = .none
-        
         // Do any additional setup after loading the view.
     }
     
@@ -154,19 +152,20 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
     
     func resetAllChooseData(){
         
-        for i in 0...arrayMain.count-1 {
-            let products = arrayMain[i] as! ModelShoppingCarProducts
-            DicSectionChoose.setValue(flagAllChoose, forKey: "section\(i)")
-            
-            for item in products.products! {
-                item.chooseFlag = flagAllChoose
+        if arrayMain.count>0{
+            for i in 0...arrayMain.count-1 {
+                let products = arrayMain[i] as! ModelShoppingCarProducts
+                DicSectionChoose.setValue(flagAllChoose, forKey: "section\(i)")
+                
+                for item in products.products! {
+                    item.chooseFlag = flagAllChoose
+                }
             }
+            
+            self.table_main.reloadData()
+            
+            fixTotalPrice()
         }
-        
-        self.table_main.reloadData()
-        
-        fixTotalPrice()
-        
     }
     
     func restBottomAllChoose(){
@@ -210,18 +209,21 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         
         var totalPrice:Int = 0
         
-        for i in 0...arrayMain.count-1 {
-            let products = arrayMain[i] as! ModelShoppingCarProducts
-            for item in products.products! {
-                if item.chooseFlag == true{
-                    totalPrice = totalPrice + (item.finalPrice! * item.productNumber!)
-                }else{
-                    continue
+        
+        if arrayMain.count>0{
+            for i in 0...arrayMain.count-1 {
+                let products = arrayMain[i] as! ModelShoppingCarProducts
+                for item in products.products! {
+                    if item.chooseFlag == true{
+                        totalPrice = totalPrice + (item.finalPrice! * item.productNumber!)
+                    }else{
+                        continue
+                    }
                 }
             }
+            
+            TotalPrice = totalPrice
         }
-        
-        TotalPrice = totalPrice
         
     }
     
@@ -229,31 +231,36 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         
         let array_Choosed = NSMutableArray()
         
-        for i in 0...arrayMain.count-1 {
+        if arrayMain.count > 0{
             
-            let array_products = NSMutableArray()
-            
-            let products = arrayMain[i] as! ModelShoppingCarProducts
-            for item in products.products! {
-                if item.chooseFlag == true{
-                    array_products.add(item)
-                }else{
-                    continue
+            for i in 0...arrayMain.count-1 {
+                
+                let array_products = NSMutableArray()
+                
+                let products = arrayMain[i] as! ModelShoppingCarProducts
+                for item in products.products! {
+                    if item.chooseFlag == true{
+                        array_products.add(item)
+                    }else{
+                        continue
+                    }
                 }
-            }
-            
-            if array_products.count != 0 {
-                let shopModel = (arrayMain[i] as! ModelShoppingCarProducts).copy()
                 
-                shopModel.products = array_products as? [ModelShopDetailItem]
-                
-                array_Choosed.add(shopModel)
+                if array_products.count != 0 {
+                    let shopModel = (arrayMain[i] as! ModelShoppingCarProducts).copy()
+                    
+                    shopModel.products = array_products as? [ModelShopDetailItem]
+                    
+                    array_Choosed.add(shopModel)
+                    
+                }
                 
             }
             
         }
         
         return array_Choosed
+        
     }
 
 }
@@ -312,7 +319,7 @@ extension TabMallCarVC:UITableViewDataSource{
         
         viewheader?.bton_choose.isSelected = DicSectionChoose.value(forKey: "section\(section)") as! Bool
         
-        PrintFM("\(DicSectionChoose)")
+//        PrintFM("\(DicSectionChoose)")
         
         return viewheader
         
@@ -337,8 +344,6 @@ extension TabMallCarVC:UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TCellMallCar", for: indexPath) as! TCellMallCar
-        
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         cell.delegate = self
         

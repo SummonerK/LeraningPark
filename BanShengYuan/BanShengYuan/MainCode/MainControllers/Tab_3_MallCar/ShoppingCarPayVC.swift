@@ -49,6 +49,12 @@ class ShoppingCarPayVC: UIViewController {
         
         tableV_main.backgroundColor = FlatWhiteLight
         
+        // 底部分割线左对齐
+        
+//        tableV_main.separatorInset = UIEdgeInsets.zero
+//        
+//        tableV_main.layoutMargins = UIEdgeInsets.zero
+        
         fixTotalPrice()
 
     }
@@ -167,6 +173,7 @@ extension ShoppingCarPayVC:UITableViewDataSource{
             totalPrice = totalPrice + 500
             
             viewfooter?.TotalPrice = totalPrice
+            viewfooter?.transPrice = 500
             
             return viewfooter
         }else{
@@ -225,7 +232,7 @@ extension ShoppingCarPayVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
         
         if section != 0 {
-            return 80
+            return 72
         }else{
             return 0.1
         }
