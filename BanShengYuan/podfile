@@ -25,6 +25,7 @@ target 'BanShengYuan' do
   
   #refresh
   pod 'MJRefresh'
+  pod 'Qiniu'
   
   #wxpay
   pod 'WechatOpenSDK'

@@ -9,3 +9,5 @@
 //wechat
 #import "WXApi.h"
 #import "WXApiObject.h"
+
+#import <Qiniu/QiniuSDK.h>

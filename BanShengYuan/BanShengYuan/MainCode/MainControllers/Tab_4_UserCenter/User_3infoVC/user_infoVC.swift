@@ -25,6 +25,8 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
     var model_user = ModelUserUpdateInfoPost()
     let model_info = ModelUserGetInfoPost()
     
+    let qnm = QNModel()
+    
     @IBOutlet weak var scrollV: UIScrollView!
     
     @IBOutlet weak var imageV_Header: UIImageView!
@@ -131,6 +133,7 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
                     self.str_path = path
                     
                     if let image:UIImage = UIImage(contentsOfFile: filePath){
+                        PrintFM(filePath)
                         self.imageV_Header.image = image
                     }
                     
@@ -206,6 +209,16 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
         }
         
         model_user.birthday = label_bitrhday.text
+        
+//        if let path = str_path{
+//            
+//            let homeDirectory = NSHomeDirectory()
+//            let documentPath = homeDirectory + "/Documents/"
+//            let filePath: String = String(format: "%@%@", documentPath, path)
+//            
+//            qnm.uploadImageToQN(filePath: filePath)
+//        }
+
         
         VM.userUpdate(amodel: model_user)
             .subscribe(onNext: { (common:ModelCommonBack) in
@@ -359,19 +372,19 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
             let documentPath = homeDirectory + "/Documents/"
             //文件管理器
             let fileManager: FileManager = FileManager.default
-            //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.png
+            //把刚刚图片转换的data对象拷贝至沙盒中 并保存为image.jpg
             do {
                 try fileManager.createDirectory(atPath: documentPath, withIntermediateDirectories: true, attributes: nil)
             }catch let error {
                 
             }
             
-            fileManager.createFile(atPath: documentPath + "image.png", contents: data, attributes: nil)
+            fileManager.createFile(atPath: documentPath + "image.jpg", contents: data, attributes: nil)
             //得到选择后沙盒中图片的完整路径
-            let filePath: String = String(format: "%@%@", documentPath, "image.png")
+            let filePath: String = String(format: "%@%@", documentPath, "image.jpg")
             print("filePath:" + filePath)
             
-            self.str_path = "image.png"
+            self.str_path = "image.jpg"
             
             imageV_Header.image = UIImage(contentsOfFile: filePath)
             
@@ -390,13 +403,13 @@ class user_infoVC: BaseTabHiden,UIImagePickerControllerDelegate,UINavigationCont
         switch aImage.imageOrientation {
         case .down, .downMirrored:
             transform = transform.translatedBy(x: aImage.size.width, y: aImage.size.height)
-            transform = transform.rotated(by: CGFloat(M_PI))
+            transform = transform.rotated(by: CGFloat(Double.pi))
         case .left, .leftMirrored:
             transform = transform.translatedBy(x: aImage.size.width, y: 0)
-            transform = transform.rotated(by: CGFloat(M_PI_2))
+            transform = transform.rotated(by: CGFloat(Double.pi/2))
         case .right, .rightMirrored:
             transform = transform.translatedBy(x: 0, y: aImage.size.height)
-            transform = transform.rotated(by: CGFloat(-M_PI_2))
+            transform = transform.rotated(by: CGFloat(-Double.pi/2))
         default:
             break
         }

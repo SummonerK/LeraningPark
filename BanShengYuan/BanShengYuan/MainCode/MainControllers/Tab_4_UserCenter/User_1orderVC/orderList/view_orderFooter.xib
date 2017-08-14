@@ -19,17 +19,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 78.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhw-DY-klW">
-                            <rect key="frame" x="297.5" y="11" width="57.5" height="21"/>
+                            <rect key="frame" x="298" y="11" width="57" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="ZR3-Q3-1rh"/>
                                 <constraint firstAttribute="width" priority="200" constant="42" id="xvC-Ut-Sm8"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
                             <color key="textColor" red="0.20784313730000001" green="0.73333333329999995" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVq-hE-Y91">
-                            <rect key="frame" x="261.5" y="10.5" width="36" height="21"/>
+                            <rect key="frame" x="262" y="10.5" width="36" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="dcR-fz-fmX"/>
                                 <constraint firstAttribute="width" priority="200" constant="42" id="uD2-fE-LUK"/>
@@ -39,7 +39,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共1件商品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TN-uc-pj0">
-                            <rect key="frame" x="198.5" y="10.5" width="53" height="21"/>
+                            <rect key="frame" x="199" y="10.5" width="53" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="6eb-4F-DeS"/>
                                 <constraint firstAttribute="width" priority="200" constant="42" id="FKh-Qj-HXf"/>

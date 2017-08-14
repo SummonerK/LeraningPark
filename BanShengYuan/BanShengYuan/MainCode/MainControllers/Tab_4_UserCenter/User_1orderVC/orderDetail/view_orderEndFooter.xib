@@ -34,7 +34,7 @@
                                 <constraint firstAttribute="height" constant="21" id="SkB-Zx-KWc"/>
                                 <constraint firstAttribute="width" constant="42" id="oMK-U1-AiR"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -54,7 +54,7 @@
                                 <constraint firstAttribute="width" constant="42" id="mqi-HX-JnP"/>
                                 <constraint firstAttribute="height" constant="21" id="rbk-GA-7zv"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -91,12 +91,12 @@
                                 <constraint firstAttribute="height" constant="21" id="64A-3U-bLu"/>
                                 <constraint firstAttribute="width" constant="42" id="VFN-SB-7ut"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gm0-OQ-2Z5">
-                            <rect key="frame" x="285" y="14.5" width="32" height="21"/>
+                            <rect key="frame" x="281" y="14.5" width="32" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="B5u-Ey-zJl"/>
                                 <constraint firstAttribute="width" priority="200" constant="60" id="jwD-R4-55l"/>
@@ -106,12 +106,12 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 105" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfL-2a-5TD">
-                            <rect key="frame" x="323" y="14.5" width="37" height="21"/>
+                            <rect key="frame" x="319" y="14.5" width="41" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="200" constant="42" id="3Ix-Wa-Iw5"/>
                                 <constraint firstAttribute="height" constant="21" id="fWB-Ob-dlF"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>

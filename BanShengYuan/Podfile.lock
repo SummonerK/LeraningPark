@@ -1,7 +1,23 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - Alamofire (4.4.0)
   - DynamicColor (3.3)
   - DZNEmptyDataSet (1.8.1)
+  - HappyDNS (0.3.10)
   - IQKeyboardManagerSwift (4.0.10)
   - Kingfisher (3.10.1)
   - MBProgressHUD (1.0.0)
@@ -13,6 +29,9 @@ PODS:
     - Moya/Core
     - RxSwift (~> 3.0)
   - ObjectMapper (2.2.7)
+  - Qiniu (7.1.5):
+    - AFNetworking (~> 3)
+    - HappyDNS (~> 0.3)
   - Result (3.2.3)
   - RxSwift (3.5.0)
   - SnapKit (3.2.0)
@@ -28,26 +47,30 @@ DEPENDENCIES:
   - MJRefresh
   - Moya/RxSwift
   - ObjectMapper
+  - Qiniu
   - SnapKit (~> 3.2.0)
   - SwiftyJSON
   - WechatOpenSDK
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   DynamicColor: 3cdaa1e01c16e93ba744e0630f768373e0fc7a7d
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   Kingfisher: 33a1b82140fcb14a9fc13f78dfde2a03ff8de8cb
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
   ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
+  Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WechatOpenSDK: cbd332148eb792d444ed4eec94f421d98f2046ee
 
-PODFILE CHECKSUM: 12c6363ceda01eb49f9ece471712e5874f14ca96
+PODFILE CHECKSUM: 825830e6f3b0b023590bbc82392f588dccb68daf
 
 COCOAPODS: 1.2.1
