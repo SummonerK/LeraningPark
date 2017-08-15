@@ -157,12 +157,18 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
                 let products = arrayMain[i] as! ModelShoppingCarProducts
                 DicSectionChoose.setValue(flagAllChoose, forKey: "section\(i)")
                 
-                for item in products.products! {
-                    item.chooseFlag = flagAllChoose
+                if let plist = products.products{
+                    
+                    for item in plist {
+                        item.chooseFlag = flagAllChoose
+                    }
                 }
+                
             }
             
             self.table_main.reloadData()
+            
+            restBottomAllChoose()
             
             fixTotalPrice()
         }
@@ -213,7 +219,7 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         if arrayMain.count>0{
             for i in 0...arrayMain.count-1 {
                 let products = arrayMain[i] as! ModelShoppingCarProducts
-                for item in products.products! {
+                for item in products.products ?? [] {
                     if item.chooseFlag == true{
                         totalPrice = totalPrice + (item.finalPrice! * item.productNumber!)
                     }else{
@@ -238,7 +244,7 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
                 let array_products = NSMutableArray()
                 
                 let products = arrayMain[i] as! ModelShoppingCarProducts
-                for item in products.products! {
+                for item in products.products ?? [] {
                     if item.chooseFlag == true{
                         array_products.add(item)
                     }else{
@@ -274,7 +280,7 @@ extension TabMallCarVC:UITableViewDataSource{
         
         //所有店铺内商品  优先级低于 店铺选择
         let products = arrayMain[section] as! ModelShoppingCarProducts
-        for item in products.products! {
+        for item in products.products ?? [] {
             item.chooseFlag = sectionFlag
         }
         
@@ -338,7 +344,7 @@ extension TabMallCarVC:UITableViewDataSource{
         
         let products = arrayMain[section] as! ModelShoppingCarProducts
         
-        return (products.products?.count)!
+        return (products.products?.count) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

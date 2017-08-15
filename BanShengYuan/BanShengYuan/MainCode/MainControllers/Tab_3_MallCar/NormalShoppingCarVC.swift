@@ -150,7 +150,6 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
         }
         
         resetAllChooseData()
-        
     }
     
     func resetAllChooseData(){
@@ -165,6 +164,8 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
         }
         
         self.table_main.reloadData()
+        
+        restBottomAllChoose()
         
         fixTotalPrice()
     }
