@@ -53,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
         
         WXApi.registerApp(WXAPID)
         
+//        PgyManager.shared().start(withAppId: "ba5d8ec53a4cba8e019ddf51af331a34")
+        
         return true
     }
     

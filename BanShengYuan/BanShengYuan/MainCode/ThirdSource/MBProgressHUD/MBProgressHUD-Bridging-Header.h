@@ -11,3 +11,5 @@
 #import "WXApiObject.h"
 
 #import <Qiniu/QiniuSDK.h>
+
+#import <PgySDK/PgyManager.h>

@@ -29,6 +29,7 @@ PODS:
     - Moya/Core
     - RxSwift (~> 3.0)
   - ObjectMapper (2.2.7)
+  - Pgyer (2.8.5)
   - Qiniu (7.1.5):
     - AFNetworking (~> 3)
     - HappyDNS (~> 0.3)
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - MJRefresh
   - Moya/RxSwift
   - ObjectMapper
+  - Pgyer
   - Qiniu
   - SnapKit (~> 3.2.0)
   - SwiftyJSON
@@ -64,6 +66,7 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
   ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
+  Pgyer: 69f8fba661dc99f0f5c2bba705441cc2f3cc827d
   Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
@@ -71,6 +74,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   WechatOpenSDK: cbd332148eb792d444ed4eec94f421d98f2046ee
 
-PODFILE CHECKSUM: 825830e6f3b0b023590bbc82392f588dccb68daf
+PODFILE CHECKSUM: f410d98d65f344032db1beac898437c6e921afdd
 
 COCOAPODS: 1.2.1
