@@ -480,6 +480,59 @@ class ModelOrderAcceptPost: Reflect {
     
 }
 
+//MARK:查询各状态订单数量 postmodel
+
+class ModelOrderNumUserPost: Reflect {
+    var userId:String!///用户ID
+}
+
+class ModelOrderNumResult:Mappable {
+    var data: ModelOrderCount?
+    var errcode: Int?
+    var errmsg: String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        data <- map["data"]
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+class ModelOrderCount:Mappable {
+    var alReadySend:Int?
+    var allOrders:Int?
+    var readyComment:Int?
+    var readyPay:Int?
+    var readySend:Int?
+    var readyTake:Int?
+    var refundAfter:Int?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        alReadySend <- map["alReadySend"]
+        allOrders <- map["allOrders"]
+        readyComment <- map["readyComment"]
+        readyPay <- map["readyPay"]
+        readySend <- map["readySend"]
+        readyTake <- map["readyTake"]
+        refundAfter <- map["refundAfter"]
+
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
 //MARK:查询全部订单 postmodel
 
 class ModelListPageByUserPost: Reflect {

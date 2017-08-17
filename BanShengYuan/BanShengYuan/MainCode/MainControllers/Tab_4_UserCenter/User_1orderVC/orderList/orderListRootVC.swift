@@ -9,13 +9,20 @@
 import UIKit
 import SnapKit
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
 
 let space = 0
-
 
 let ContentHight = CGFloat(667.0 - 102)
 
 class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
+    
+    //network
+    let orderM = orderModel()
+    let modelorderNumpost = ModelOrderNumUserPost()
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var collectionView_top: UICollectionView!
     
@@ -27,7 +34,7 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     
     var Page:Int = 0
     
-    let array:[(String,Int)] = [("全部",0),("待发货",3),("配送中",4),("已完成",5)]
+    var array:[(String,Int)] = [("全部",0),("待发货",3),("配送中",4),("已完成",5)]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -49,6 +56,8 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         setupCollectionView()
         
         setupTableViewContent()
+        
+        GetOrderNub()
 
     }
     
@@ -62,6 +71,41 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     
     func actionBack(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func GetOrderNub() {
+        
+        modelorderNumpost.userId = USERM.MemberID
+        
+        orderM.orderNumbListByUser(amodel: modelorderNumpost)
+            .subscribe(onNext: { (Result: ModelOrderNumResult) in
+                
+                if let content = Result.data{
+                    if let alReadySend = content.alReadySend,alReadySend > 0{
+                        self.array[2].0 = "配送中" + "(\(alReadySend))"
+                    }else{
+                        self.array[2].0 = "配送中"
+                    }
+                    
+                    if let readySend = content.readySend,readySend > 0{
+                        self.array[1].0 = "待发货" + "(\(readySend))"
+                    }else{
+                        self.array[1].0 = "待发货"
+                    }
+                }
+                
+                self.collectionView_top.reloadData()
+                
+            },onError:{error in
+                
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: KeyWindow, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: KeyWindow, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
     }
     
     //    设置标题silider
@@ -87,8 +131,6 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         let size = array[0].0.getLabSize(font: FontLabelPFLight(size: 14))
         let width:Int = Int(size.width) + space*2
         let normalSpace = (ItemW - width)/2
-        
-//        view_undleLine = UIView.init(frame: CGRect.init(x: CGFloat(normalSpace) + 1.5, y: 34.0, width: width, height: CGFloat(1.8)))
         
         view_undleLine = UIView.init(frame: CGRect.init(x: CGFloat(normalSpace) + 1, y: CGFloat(34.0), width: CGFloat(width), height: CGFloat(1.8)))
         
@@ -146,12 +188,6 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         cell.status = array[indexPath.row].1
         
         cell.getOrderList()
-        
-//        if indexPath.row == 0{
-//            cell.getOrderList()
-//        }else{
-//            cell.setDefaultNoneData()
-//        }
         
         return cell
         

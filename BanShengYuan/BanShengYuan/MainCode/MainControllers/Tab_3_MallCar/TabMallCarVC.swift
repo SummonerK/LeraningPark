@@ -24,6 +24,7 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
     //network
     let OrderM = orderModel()
     let modelshoppingCarProductsPost = ModelShoppingCarProductsPost()
+    let modelEditProductsPost = ModelShoppingCarProductEditPost()
     let disposeBag = DisposeBag()
     
     var viewhader:UIView! = nil
@@ -290,6 +291,51 @@ extension TabMallCarVC:UITableViewDataSource{
         
     }
     
+    func setAction(indexpath:IndexPath,actionType:ChooseCoverActionType){
+        
+        PrintFM("")
+        
+        let products = arrayMain[indexpath.section] as! ModelShoppingCarProducts
+        
+        var setNum = Int()
+        
+        if let product = products.products?[indexpath.row] {
+            
+            switch actionType {
+            case .ADD:
+                setNum = product.productNumber! + 1
+            case .Fls:
+                setNum = product.productNumber! - 1
+            default:
+                PrintFM("")
+            }
+            
+            self.modelEditProductsPost.shoppingcartId = products.scid
+            self.modelEditProductsPost.productid = product.pid
+            self.modelEditProductsPost.number = setNum
+                
+            self.OrderM.shopShoppingCarSetProductNum(amodel: self.modelEditProductsPost)
+                .subscribe(onNext: { (result: ModelShoppingCarAddResult) in
+                    
+                    product.productNumber = setNum
+                    
+                },onError:{error in
+                    
+                    self.table_main.reloadRows(at: [indexpath], with: .fade)
+                    
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    }
+                })
+                .addDisposableTo(self.disposeBag)
+
+        }
+    
+    
+    }
+
 //    商品选择处理
     func setChooseValue(indexpath:IndexPath,cellFlag:Bool){
         
@@ -351,6 +397,8 @@ extension TabMallCarVC:UITableViewDataSource{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TCellMallCar", for: indexPath) as! TCellMallCar
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
         cell.delegate = self
         
         cell.indexpath = indexPath
@@ -368,6 +416,79 @@ extension TabMallCarVC:UITableViewDataSource{
 
 
 extension TabMallCarVC: UITableViewDelegate {
+    
+    func productDelete(indexPath:IndexPath) {
+        
+        let products = arrayMain[indexPath.section] as! ModelShoppingCarProducts
+        
+        let PList = NSMutableArray.init(array: products.products!)
+        
+        PList.remove(PList[indexPath.row])
+        
+        if PList.count == 0{
+            self.arrayMain.removeObject(at: indexPath.section)
+            self.table_main.deleteSections(IndexSet.init(integer: indexPath.section), with: .fade)
+        }else{
+            products.products = PList as? [ModelShopDetailItem]
+            self.table_main.deleteRows(at: [indexPath], with: .fade)
+        }
+        
+        HUDShowMsgQuick(msg: "删除成功", toView: self.view, time: 0.8)
+    }
+    
+    // Override to support conditional editing of the table view.
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    // Override to support editing the table view.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            let alert = UIAlertController(title: "提示", message: "删除数据将不可恢复", preferredStyle: .alert)
+            
+            let calcelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            let deleteAction = UIAlertAction(title: "删除", style: .default, handler: { (UIAlertAction) in
+                
+                let products = self.arrayMain[indexPath.section] as! ModelShoppingCarProducts
+                
+                if let product = products.products?[indexPath.row] {
+                    self.modelEditProductsPost.shoppingcartId = products.scid
+                    self.modelEditProductsPost.productid = product.pid
+                    self.modelEditProductsPost.number = product.productNumber
+                }else{
+                    return
+                }
+                
+                self.OrderM.shopShoppingCarDeleteProduct(amodel: self.modelEditProductsPost)
+                    .subscribe(onNext: { (result: ModelShoppingCarAddResult) in
+                    
+                        self.productDelete(indexPath: indexPath)
+                        
+                    },onError:{error in
+                        if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                            HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                        }else{
+                            HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                        }
+                    })
+                    .addDisposableTo(self.disposeBag)
+            })
+            
+            // 添加
+            alert.addAction(calcelAction)
+            alert.addAction(deleteAction)
+            
+            // 弹出
+            self.present(alert, animated: true, completion: nil)
+            
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+        
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         

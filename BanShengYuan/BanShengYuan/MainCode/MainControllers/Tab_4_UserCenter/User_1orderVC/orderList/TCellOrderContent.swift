@@ -77,8 +77,6 @@ class TCellOrderContent: UITableViewCell {
         Num = 1
         self.tableV_main.mj_footer.resetNoMoreData()
         
-        self.tableV_main.setContentOffset(CGPoint.zero, animated: false)
-        
         switch status {
         case 0:
             modelorderlistpost.userId = USERM.MemberID
@@ -97,6 +95,8 @@ class TCellOrderContent: UITableViewCell {
                         self.arrayOrderList.addObjects(from: orders)
                         
                         self.tableV_main.reloadData()
+                        
+                        self.tableV_main.setContentOffset(CGPoint.zero, animated: false)
                         
                     }
                     

@@ -65,6 +65,11 @@ class orderModel {
             .mapObject(type: ModelCommonBack.self)
         //.showError()
     }
+    func orderNumbListByUser(amodel:ModelOrderNumUserPost) -> Observable<ModelOrderNumResult> {
+        return orderprovider.request(.orderNumbListByUser(PostModel: amodel))
+            .mapNeObject(type: ModelOrderNumResult.self)
+        //.showError()
+    }
     func orderListByUser(amodel:ModelListPageByUserPost) -> Observable<ModelOrderListResult> {
         return orderprovider.request(.orderListByUser(PostModel: amodel))
             .mapNeObject(type: ModelOrderListResult.self)
@@ -84,4 +89,12 @@ class orderModel {
             .mapNeObject(type: ModelShoppingCarProductsResult.self)
     }
 
+    func shopShoppingCarDeleteProduct(amodel:ModelShoppingCarProductEditPost) -> Observable<ModelShoppingCarAddResult> {
+        return orderprovider.request(.shopShoppingCarDeleteProduct(PostModel: amodel))
+            .mapNeObject(type: ModelShoppingCarAddResult.self)
+    }
+    func shopShoppingCarSetProductNum(amodel:ModelShoppingCarProductEditPost) -> Observable<ModelShoppingCarAddResult> {
+        return orderprovider.request(.shopShoppingCarSetProductNum(PostModel: amodel))
+            .mapNeObject(type: ModelShoppingCarAddResult.self)
+    }
 }

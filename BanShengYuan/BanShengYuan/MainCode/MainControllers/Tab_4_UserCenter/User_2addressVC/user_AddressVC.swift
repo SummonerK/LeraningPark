@@ -252,7 +252,9 @@ extension user_AddressVC: UserAddressDelegate{
                         PrintFM("删除\(String(describing: common.description))")
                         
                         self.array_address.remove(self.array_address[indexPath.section])
-                        self.tableV_main.reloadData()
+//                        self.tableV_main.reloadData()
+                        
+                        self.tableV_main.deleteRows(at: [indexPath], with:.fade)
                         
                     },onError:{error in
                         if let msg = (error as? MyErrorEnum)?.drawMsgValue{
@@ -272,7 +274,6 @@ extension user_AddressVC: UserAddressDelegate{
             
             // 弹出
             self.present(alert, animated: true, completion: nil)
-            
             
         }
     }

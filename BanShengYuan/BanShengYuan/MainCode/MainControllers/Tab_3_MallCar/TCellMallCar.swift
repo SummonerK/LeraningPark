@@ -9,6 +9,7 @@
 import UIKit
 
 protocol TCellMallCarDelegate {
+    func setAction(indexpath:IndexPath,actionType:ChooseCoverActionType)
     func setChooseValue(indexpath:IndexPath,cellFlag:Bool)
 }
 
@@ -32,6 +33,9 @@ class TCellMallCar: UITableViewCell {
     
     var delegate:TCellMallCarDelegate!
     
+    //商品数量
+    var proCount:Int = 1
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -54,6 +58,7 @@ class TCellMallCar: UITableViewCell {
         label_name.text = product.name
         label_spa.text = product.specification
         label_count.text = product.productNumber?.description
+        proCount = product.productNumber!
         
         if let price = product.finalPrice {
             
@@ -83,11 +88,39 @@ class TCellMallCar: UITableViewCell {
         self.delegate.setChooseValue(indexpath: indexpath, cellFlag: bton_goodsChoose.isSelected)
     }
     
+//    MARK:编辑商品数量
+
+//添加数量
     @IBAction func actionPlus(_ sender: Any) {
-        PrintFM("")
+        
+        self.delegate?.setAction(indexpath: indexpath, actionType: .ADD)
+        
+        proCount += 1
+        
+//        if proCount < proStock {
+//            proCount += 1
+//        }else{
+//            HUDShowMsgQuick(msg: "库存不足", toView: KeyWindow, time: 0.8)
+//        }
+        
+        label_count.text = proCount.description
     }
     
+//减少商品数量
     @IBAction func actionFls(_ sender: Any) {
-        PrintFM("")
+        
+        if proCount > 1 {
+            
+            proCount -= 1
+            
+            self.delegate?.setAction(indexpath: indexpath, actionType: .Fls)
+        }else{
+            HUDShowMsgQuick(msg: "至少添加一个商品", toView: KeyWindow, time: 0.8)
+        }
+        
+        label_count.text = proCount.description
+        
     }
+    
+    
 }

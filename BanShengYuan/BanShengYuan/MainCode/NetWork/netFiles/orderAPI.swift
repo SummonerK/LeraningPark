@@ -23,13 +23,17 @@ enum orderAPI {
     case orderPay(PostModel:ModelOrderPayPost)//MARK:订单支付
     case orderPayAccess(PostModel:ModelOrderPayAccessPost)//MARK:订单确认支付
     case orderAccept(PostModel:ModelOrderAcceptPost)//MARK:订单接单
+    
+    //订单查询
+    case orderNumbListByUser(PostModel:ModelOrderNumUserPost)//MARK:查询各状态订单数量
     case orderListByUser(PostModel:ModelListPageByUserPost)//MARK:分页查询用户全部订单明细
     case orderListByStatus(PostModel:ModelListPageByStatusPost)//MARK:根据状态查询用户订单明细（status为2是待支付，status为3是待发货，status为4是配送中）
     
     //购物车
     case shopShoppingCarAddProduct(PostModel:ModelShoppingCarAddProductPost)//MARK:购物车添加商品
-    case shopShoppingCarDeleteProduct(PostModel:ModelShoppingCarAddProductPost)//MARK:购物车添加商品
     case shopShoppingCarProducts(PostModel:ModelShoppingCarProductsPost)//MARK:获取购物车
+    case shopShoppingCarDeleteProduct(PostModel:ModelShoppingCarProductEditPost)//MARK:购物车删除商品
+    case shopShoppingCarSetProductNum(PostModel:ModelShoppingCarProductEditPost)//MARK:购物车商品设置数量
     
 }
 
@@ -40,10 +44,10 @@ extension orderAPI: TargetType {
         case .test:
              return URLEncoding.default
             
-        case .orderListByUser,.shopShoppingCarProducts,.orderListByStatus:
+        case .orderListByUser,.shopShoppingCarProducts,.orderListByStatus,.orderNumbListByUser:
             return URLEncoding.default
             
-        case .orderCreate,.orderPay,.orderPayAccess,.orderAccept,.orderAddressSet,.shopShoppingCarAddProduct,.shopShoppingCarDeleteProduct:
+        case .orderCreate,.orderPay,.orderPayAccess,.orderAccept,.orderAddressSet,.shopShoppingCarAddProduct,.shopShoppingCarDeleteProduct,.shopShoppingCarSetProductNum:
             return JSONEncoding.default
             
         }
@@ -68,16 +72,20 @@ extension orderAPI: TargetType {
             return "/Order/PayAccess"
         case .orderAccept(_):
             return "/Order/Accept"
+        case .orderNumbListByUser(_):
+            return "/Query/Order/GetAllStatusCount"
         case .orderListByUser(_):
             return "/Query/Order/ListPageByUser"
         case .orderListByStatus(_):
             return "/Query/Order/ListByUserStatus"
         case .shopShoppingCarAddProduct(_):
             return "/ShoppingCart/AddProduct"
-        case .shopShoppingCarDeleteProduct(_):
-            return "/ShoppingCart/DelProduct"
         case .shopShoppingCarProducts(_):
             return "/Query/ShoppingCart/ListUserAllShoppingCarts"
+        case .shopShoppingCarDeleteProduct(_):
+            return "/ShoppingCart/DelProduct"
+        case .shopShoppingCarSetProductNum(_):
+            return "/ShoppingCart/SetNumber"
         
         }
     }
@@ -97,16 +105,20 @@ extension orderAPI: TargetType {
             return .post
         case .orderAccept(_):
             return .post
+        case .orderNumbListByUser(_):
+            return .get
         case .orderListByUser(_):
             return .get
         case .orderListByStatus(_):
             return .get
         case .shopShoppingCarAddProduct(_):
             return .post
-        case .shopShoppingCarDeleteProduct(_):
-            return .post
         case .shopShoppingCarProducts(_):
             return .get
+        case .shopShoppingCarDeleteProduct(_):
+            return .post
+        case .shopShoppingCarSetProductNum(_):
+            return .post
          
         }
         
@@ -134,6 +146,9 @@ extension orderAPI: TargetType {
         case .orderAccept(let model):
             PrintFM(model.toDict())
             return model.toDict()
+        case .orderNumbListByUser(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
         case .orderListByUser(let model):
             PrintFM(model.toDict())
             return model.toDict()
@@ -143,10 +158,13 @@ extension orderAPI: TargetType {
         case .shopShoppingCarAddProduct(let model):
             PrintFM(model.toDict())
             return model.toDict()
+        case .shopShoppingCarProducts(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
         case .shopShoppingCarDeleteProduct(let model):
             PrintFM(model.toDict())
             return model.toDict()
-        case .shopShoppingCarProducts(let model):
+        case .shopShoppingCarSetProductNum(let model):
             PrintFM(model.toDict())
             return model.toDict()
             

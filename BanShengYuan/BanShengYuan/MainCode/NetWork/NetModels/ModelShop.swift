@@ -468,3 +468,12 @@ class ModelShoppingCarDeleteSingalResult: Mappable {
 }
 
 
+//MARK:购物车商品操作 post model
+
+class ModelShoppingCarProductEditPost: Reflect {
+    var shoppingcartId:Int!///购物车ID
+    var productid:String!///编辑商品的ID
+    var number:Int!///商品数量：delete-删除的商品数量
+}
+
+
