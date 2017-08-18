@@ -63,6 +63,9 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         super.viewWillAppear(animated)
         
         getDate()
+        
+        bton_allchoose.isSelected = false
+        flagAllChoose = false
     }
     
     override func viewDidLoad() {
@@ -187,8 +190,10 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         
         if filterArrays.count == 1 {
             bton_allchoose.isSelected = filterArrays[0]
+            flagAllChoose = filterArrays[0]
         }else{
             bton_allchoose.isSelected = false
+            flagAllChoose = false
         }
         
         fixTotalPrice()

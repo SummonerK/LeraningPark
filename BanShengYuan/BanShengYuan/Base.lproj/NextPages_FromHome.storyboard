@@ -179,12 +179,12 @@
                                             <action selector="shoppingCarAddProduct:" destination="iyZ-4V-Tsx" eventType="touchUpInside" id="iB3-Tw-Mvg"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsY-WF-Ope">
-                                        <rect key="frame" x="30" y="12" width="60" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsY-WF-Ope">
+                                        <rect key="frame" x="30" y="12.5" width="60" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Nnb-Xl-ziR"/>
                                         </constraints>
-                                        <state key="normal" title="购物车"/>
+                                        <state key="normal" image="mallCar"/>
                                         <connections>
                                             <action selector="gotoShoppingCarVC:" destination="iyZ-4V-Tsx" eventType="touchUpInside" id="mLh-6l-ZMJ"/>
                                         </connections>
@@ -1349,6 +1349,7 @@
         <image name="chatu" width="255" height="148"/>
         <image name="choose_n" width="16" height="16"/>
         <image name="close" width="13" height="13"/>
+        <image name="mallCar" width="25" height="23"/>
         <image name="pay_ali" width="24" height="24"/>
         <image name="pay_wx" width="24" height="24"/>
         <image name="right" width="21" height="14"/>

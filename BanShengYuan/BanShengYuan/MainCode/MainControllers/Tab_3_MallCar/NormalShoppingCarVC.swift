@@ -62,6 +62,8 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         getDate()
+        bton_allchoose.isSelected = false
+        flagAllChoose = false
     }
     
     override func viewDidLoad() {
@@ -183,8 +185,10 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
         
         if filterArrays.count == 1 {
             bton_allchoose.isSelected = filterArrays[0]
+            flagAllChoose = filterArrays[0]
         }else{
             bton_allchoose.isSelected = false
+            flagAllChoose = false
         }
         
         fixTotalPrice()

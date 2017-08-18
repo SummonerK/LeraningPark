@@ -30,6 +30,9 @@ class ModelShopDetailPost: Reflect {
      */
     var pagenumber:Int!
     
+    var sortName:String! //排序1、finalPrice，价格排序；2、pid，新品排序；3、saleCount，销量排序
+    var sortOrder:Int! //1倒序，2正序
+    
 }
 
 //MARK:获商户门店列表 backModel
@@ -280,6 +283,19 @@ class ModelMenuPicture: Mappable {
 class ModelSearchProductPost: Reflect {
     var shopId:String!
     var productName:String!
+    /**
+     *  页数
+     *  必传:True int默认10
+     */
+    var pagesize:Int!
+    /**
+     *  页号 int默认 1
+     *  必传:True
+     */
+    var pagenumber:Int!
+    
+    var sortName:String! //排序1、finalPrice，价格排序；2、pid，新品排序；3、saleCount，销量排序
+    var sortOrder:Int! //1倒序，2正序
     
 }
 

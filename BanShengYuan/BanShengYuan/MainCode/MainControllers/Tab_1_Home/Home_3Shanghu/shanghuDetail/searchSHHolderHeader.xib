@@ -33,7 +33,7 @@
                             <constraint firstAttribute="height" constant="30" id="EDV-0k-VXN"/>
                             <constraint firstAttribute="width" constant="30" id="jHY-Wy-PM2"/>
                         </constraints>
-                        <state key="normal" image="close"/>
+                        <state key="normal" image="delete"/>
                         <connections>
                             <action selector="search_delete:" destination="gTV-IL-0wX" eventType="touchUpInside" id="azP-Z6-EsA"/>
                         </connections>
@@ -54,6 +54,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="close" width="13" height="13"/>
+        <image name="delete" width="17" height="17"/>
     </resources>
 </document>

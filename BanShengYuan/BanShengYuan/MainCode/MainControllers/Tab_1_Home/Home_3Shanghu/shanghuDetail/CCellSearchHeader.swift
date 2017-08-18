@@ -18,6 +18,8 @@ class CCellSearchHeader: UICollectionViewCell {
     
     @IBOutlet weak var bton_newProduct: UIButton!
     @IBOutlet weak var line_newProduct: UIView!
+    
+    var delegate:shhuDetailHeaderDelegate!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,15 +35,17 @@ class CCellSearchHeader: UICollectionViewCell {
     
     @IBAction func action_xiaoliang(_ sender: Any) {
         Selected(bton: bton_xiaoliang)
-        
+        self.delegate.SelectedHeadIndex(Index: 0)
     }
     
     @IBAction func action_price(_ sender: Any) {
         Selected(bton: bton_price)
+        self.delegate.SelectedHeadIndex(Index: 1)
     }
     
     @IBAction func action_newProduct(_ sender: Any) {
         Selected(bton: bton_newProduct)
+        self.delegate.SelectedHeadIndex(Index: 2)
         
     }
     

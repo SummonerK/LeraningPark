@@ -47,9 +47,9 @@ extension shopAPI: TargetType {
         case .test(_):
             return ""
         case .shopGetAllProducts(_):
-            return "/Query/Shop/ListAllProducts"
+            return "/Query/Shop/ListAllProductsSort"
         case .shopSearchProducts(_):
-            return "/Query/Shop/ListProductByName"
+            return "/Query/Shop/ListProductByNameSort"
         case .shopGetDetail(_):
             return "/Query/Product/GetDetail"
         case .shopGetDetailPictures(_):

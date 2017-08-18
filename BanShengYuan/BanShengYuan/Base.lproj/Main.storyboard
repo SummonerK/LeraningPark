@@ -32,7 +32,7 @@
         <scene sceneID="g0M-FM-7Eh">
             <objects>
                 <navigationController id="syS-LW-L9H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="购物车" id="OCN-Wf-fxh"/>
+                    <tabBarItem key="tabBarItem" title="购物车" image="mallCar" id="OCN-Wf-fxh"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OD3-Fe-byv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -451,6 +451,7 @@
         <image name="choose_n" width="16" height="16"/>
         <image name="home" width="25" height="23"/>
         <image name="logo_home" width="66" height="31"/>
+        <image name="mallCar" width="25" height="23"/>
         <image name="user" width="20" height="22"/>
     </resources>
 </document>

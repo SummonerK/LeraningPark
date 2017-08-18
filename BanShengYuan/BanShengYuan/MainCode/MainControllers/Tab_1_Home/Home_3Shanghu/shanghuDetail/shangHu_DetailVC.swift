@@ -18,7 +18,7 @@ import MJRefresh
 
 let SPPagesize:Int = 10
 
-class shangHu_DetailVC: UIViewController {
+class shangHu_DetailVC: UIViewController,shhuDetailHeaderDelegate {
     
     var shopStoreCode:String = ""
     
@@ -48,6 +48,22 @@ class shangHu_DetailVC: UIViewController {
     var array_items = NSMutableArray()
     var sectionNum:Int? = 1
     
+    var array_sort = [("saleCount",1),("finalPrice",1),("pid",1)]
+    var sortIndex = 0{
+        willSet{
+            
+        }
+        didSet{
+            
+            if oldValue == sortIndex {
+                PrintFM("sortIndex = \(sortIndex)")
+                getIndexData()
+            }else{
+                getData()
+            }
+            
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -98,6 +114,7 @@ class shangHu_DetailVC: UIViewController {
         }
         
         
+        
     }
     @IBAction func NaviBack(_ sender: Any) {
         
@@ -122,6 +139,8 @@ class shangHu_DetailVC: UIViewController {
         
         modelshopDetailPost.pagesize = SPPagesize
         modelshopDetailPost.pagenumber = Num
+        modelshopDetailPost.sortName = array_sort[sortIndex].0
+        modelshopDetailPost.sortOrder = array_sort[sortIndex].1
         
         VipM.shopGetAllProducts(amodel: modelshopDetailPost)
             .subscribe(onNext: { (posts: [ModelShopDetailItem]) in
@@ -158,20 +177,75 @@ class shangHu_DetailVC: UIViewController {
     
     func getData() {
         
+        self.CV_main.mj_footer.resetNoMoreData()
+        
         if let storecode = modelShop?.storeCode{
             
             shopID = "\(PARTNERID_SHOP)_\(storecode)"
             
         }
         
+        Num = 1
+        
         modelshopDetailPost.shopId = shopID
         modelshopDetailPost.pagesize = SPPagesize
         modelshopDetailPost.pagenumber = Num
+        modelshopDetailPost.sortName = array_sort[sortIndex].0
+        modelshopDetailPost.sortOrder = array_sort[sortIndex].1
         
         VipM.shopGetAllProducts(amodel: modelshopDetailPost)
             .subscribe(onNext: { (posts: [ModelShopDetailItem]) in
                 
                 self.CV_main.mj_header.endRefreshing()
+                
+                self.array_items.removeAllObjects()
+                
+                self.array_items.addObjects(from: posts)
+                
+                self.CV_main.reloadData()
+                
+            },onError:{error in
+                self.CV_main.mj_header.endRefreshing()
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
+    }
+    
+    func getIndexData() {
+        
+        self.CV_main.mj_footer.resetNoMoreData()
+        
+        if let storecode = modelShop?.storeCode{
+            
+            shopID = "\(PARTNERID_SHOP)_\(storecode)"
+            
+        }
+        
+        Num = 1
+        
+        modelshopDetailPost.shopId = shopID
+        modelshopDetailPost.pagesize = SPPagesize
+        modelshopDetailPost.pagenumber = Num
+        modelshopDetailPost.sortName = array_sort[sortIndex].0
+        
+        if array_sort[sortIndex].1 == 1{
+            array_sort[sortIndex].1 = 2
+        }else{
+            array_sort[sortIndex].1 = 1
+        }
+        
+        modelshopDetailPost.sortOrder = array_sort[sortIndex].1
+        
+        VipM.shopGetAllProducts(amodel: modelshopDetailPost)
+            .subscribe(onNext: { (posts: [ModelShopDetailItem]) in
+                
+                self.CV_main.mj_header.endRefreshing()
+                
+                self.array_items.removeAllObjects()
                 
                 self.array_items.addObjects(from: posts)
                 
@@ -275,6 +349,10 @@ extension shangHu_DetailVC:UICollectionViewDelegate{
 
 extension shangHu_DetailVC:UICollectionViewDataSource{
     
+    func SelectedHeadIndex(Index:Int){
+        self.sortIndex = Index
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         return CGSize.init(width: IBScreenWidth, height: 110 + IBScreenWidth*180/375)
@@ -283,6 +361,8 @@ extension shangHu_DetailVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CCell_shhuDetailHeader", for: indexPath) as! CCell_shhuDetailHeader
+        
+        headerView.delegate = self
         
         if let businessImage = modelShop?.businessImages {
             

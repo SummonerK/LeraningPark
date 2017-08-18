@@ -14,7 +14,7 @@ import SwiftyJSON
 
 import MJRefresh
 
-class shanghu_searchVC: UIViewController,SearchSHHolderDelegate{
+class shanghu_searchVC: UIViewController,SearchSHHolderDelegate,shhuDetailHeaderDelegate{
     
     var modelShop:ModelShopItem?
     
@@ -31,12 +31,35 @@ class shanghu_searchVC: UIViewController,SearchSHHolderDelegate{
     
     var searchCoverVC: searchSHHolderVC! = nil
     
+    // 底部刷新
+    let footer = MJRefreshAutoNormalFooter()
+    var Num:Int = 1
+    //    下拉刷新
+    let header = MJRefreshNormalHeader()
+    
     //network
     let VipM = shopModel()
     let modelsearchPost = ModelSearchProductPost()
     let disposeBag = DisposeBag()
     
     var array_items = NSMutableArray()
+    
+    var array_sort = [("saleCount",1),("finalPrice",1),("pid",1)]
+    var sortIndex = 0{
+        willSet{
+            
+        }
+        didSet{
+            
+            if oldValue == sortIndex {
+                PrintFM("sortIndex = \(sortIndex)")
+                getIndexData()
+            }else{
+                getData()
+            }
+            
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,16 +68,21 @@ class shanghu_searchVC: UIViewController,SearchSHHolderDelegate{
         
         searchbar.text = searchContent
         
-        if searchContent != "" {
-            search(content: searchContent!)
-        }
-
-//        searchbar.becomeFirstResponder()
-        
         setupCollection()
         
         SetSearchCoverHolderV()
-
+        
+        // 上拉刷新
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
+        CV_main.mj_footer = footer
+        
+        //下拉刷新
+        
+        header.setRefreshingTarget(self, refreshingAction: #selector(getData))
+        CV_main.mj_header = header
+        
+        getData()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -70,10 +98,11 @@ class shanghu_searchVC: UIViewController,SearchSHHolderDelegate{
         
         openSearchHolder(isOpen: true)
     }
-    
+    //预留，标签搜索。。。。
     func SearchContent(content:String){
-        search(content: content)
+        searchContent = content
         searchbar.text = content
+        getData()
         searchbar.resignFirstResponder()
     }
     
@@ -102,41 +131,169 @@ class shanghu_searchVC: UIViewController,SearchSHHolderDelegate{
 
     }
     
-    func search(content:String){
-        modelsearchPost.shopId = shopID
-        modelsearchPost.productName = content
+    func getData() {
         
-        VipM.shopSearchProducts(amodel: modelsearchPost)
-            .subscribe(onNext: { (posts: ModelSearchProductResult) in
-                
-                self.array_items.removeAllObjects()
-                
-                if let data = posts.data,let products = data.products{
-                    self.array_items.addObjects(from: products)
-                    self.CV_main.reloadData()
+        self.CV_main.mj_footer.resetNoMoreData()
+        
+        Num = 1
+        
+        modelsearchPost.productName = searchContent
+        modelsearchPost.shopId = shopID
+        modelsearchPost.pagesize = SPPagesize
+        modelsearchPost.pagenumber = Num
+        modelsearchPost.sortName = array_sort[sortIndex].0
+        modelsearchPost.sortOrder = array_sort[sortIndex].1
+        
+        if searchContent != "" {
+            VipM.shopSearchProducts(amodel: modelsearchPost)
+                .subscribe(onNext: { (posts: ModelSearchProductResult) in
                     
-                    if self.array_items.count == 0{
-                        self.openSearchHolder(isOpen: true)
+                    self.CV_main.mj_header.endRefreshing()
+                    
+                    self.array_items.removeAllObjects()
+                    
+                    if let data = posts.data,let products = data.products{
+                        self.array_items.addObjects(from: products)
+                        self.CV_main.reloadData()
+                        
+                        if self.array_items.count == 0{
+                            self.openSearchHolder(isOpen: true)
+                        }else{
+                            self.openSearchHolder(isOpen: false)
+                        }
+                        
+                    }
+                    
+                },onError:{error in
+                    
+                    self.CV_main.mj_header.endRefreshing()
+                    
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        
+                        if (error as? MyErrorEnum)?.drawCodeValue != 999{
+                            HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                        }
+                        
                     }else{
-                        self.openSearchHolder(isOpen: false)
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
                     }
                     
-                }
-                
-            },onError:{error in
-                
-                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                })
+                .addDisposableTo(disposeBag)
+        }
+    }
+    
+    func getIndexData() {
+        
+        self.CV_main.mj_footer.resetNoMoreData()
+        
+        Num = 1
+        
+        modelsearchPost.productName = searchContent
+        modelsearchPost.shopId = shopID
+        modelsearchPost.pagesize = SPPagesize
+        modelsearchPost.pagenumber = Num
+        modelsearchPost.sortName = array_sort[sortIndex].0
+        
+        if array_sort[sortIndex].1 == 1{
+            array_sort[sortIndex].1 = 2
+        }else{
+            array_sort[sortIndex].1 = 1
+        }
+        
+        modelsearchPost.sortOrder = array_sort[sortIndex].1
+        
+        if searchContent != "" {
+            VipM.shopSearchProducts(amodel: modelsearchPost)
+                .subscribe(onNext: { (posts: ModelSearchProductResult) in
                     
-                    if (error as? MyErrorEnum)?.drawCodeValue != 999{
-                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    self.CV_main.mj_header.endRefreshing()
+                    
+                    self.array_items.removeAllObjects()
+                    
+                    if let data = posts.data,let products = data.products{
+                        self.array_items.addObjects(from: products)
+                        self.CV_main.reloadData()
+                        
+                        if self.array_items.count == 0{
+                            self.openSearchHolder(isOpen: true)
+                        }else{
+                            self.openSearchHolder(isOpen: false)
+                        }
+                        
                     }
                     
-                }else{
-                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
-                }
-                
-            })
-            .addDisposableTo(disposeBag)
+                },onError:{error in
+                    
+                    self.CV_main.mj_header.endRefreshing()
+                    
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        
+                        if (error as? MyErrorEnum)?.drawCodeValue != 999{
+                            HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                        }
+                        
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    }
+                    
+                })
+                .addDisposableTo(disposeBag)
+        }
+    }
+    
+    func footerRefresh() {
+        self.CV_main.mj_footer.resetNoMoreData()
+        
+        Num += 1
+        
+        modelsearchPost.productName = searchContent
+        modelsearchPost.pagesize = SPPagesize
+        modelsearchPost.pagenumber = Num
+        modelsearchPost.sortName = array_sort[sortIndex].0
+        modelsearchPost.sortOrder = array_sort[sortIndex].1
+        
+        if searchContent != "" {
+            VipM.shopSearchProducts(amodel: modelsearchPost)
+                .subscribe(onNext: { (posts: ModelSearchProductResult) in
+                    
+                    if let data = posts.data,let products = data.products{
+                        
+                        if products.count < Pagesize{
+                            self.Num -= 1
+                            self.CV_main.mj_footer.endRefreshingWithNoMoreData()
+                        }else{
+                            self.CV_main.mj_footer.endRefreshing()
+                        }
+                        
+                        self.array_items.addObjects(from: products)
+                        self.CV_main.reloadData()
+                        
+                        if self.array_items.count == 0{
+                            self.openSearchHolder(isOpen: true)
+                        }else{
+                            self.openSearchHolder(isOpen: false)
+                        }
+                        
+                    }
+                    
+                },onError:{error in
+                    
+                    self.CV_main.mj_footer.endRefreshing()
+                    
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        
+                        if (error as? MyErrorEnum)?.drawCodeValue != 999{
+                            HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                        }
+                        
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    }
+                    
+                })
+                .addDisposableTo(disposeBag)
+        }
     }
     
     func setupCollection() {
@@ -196,11 +353,8 @@ extension shanghu_searchVC:UISearchBarDelegate{
         // 搜索内容置空
         PrintFM("\(String(describing: searchBar.text))")
 //        searchBar.text = ""
-        
-        
-        if searchBar.text != "" {
-            search(content: searchBar.text!)
-        }
+        searchContent = searchBar.text
+        getData()
  
     }
     
@@ -225,6 +379,10 @@ extension shanghu_searchVC:UICollectionViewDelegate{
 
 extension shanghu_searchVC:UICollectionViewDataSource{
     
+    func SelectedHeadIndex(Index:Int){
+        self.sortIndex = Index
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         return CGSize.init(width: IBScreenWidth, height: 44)
@@ -233,6 +391,7 @@ extension shanghu_searchVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CCellSearchHeader", for: indexPath) as! CCellSearchHeader
+        headerView.delegate = self
         
         return headerView
         
