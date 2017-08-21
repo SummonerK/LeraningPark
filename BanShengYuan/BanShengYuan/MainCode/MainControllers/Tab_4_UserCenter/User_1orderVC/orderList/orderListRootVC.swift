@@ -189,6 +189,8 @@ class orderListRootVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         
         cell.getOrderList()
         
+        cell.Navi = self.navigationController
+        
         return cell
         
     }

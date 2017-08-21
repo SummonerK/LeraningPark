@@ -21,7 +21,7 @@ let MenuPagesize:Int = 20
 class TCellOrderContent: UITableViewCell {
     
 //    controller
-    let Navi:UINavigationController? = nil
+    var Navi:UINavigationController? = nil
 
     //network
     let orderM = orderModel()
