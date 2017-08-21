@@ -9,6 +9,8 @@
 import UIKit
 
 class OrderDetailVC: UIViewController {
+    
+    var Oid:Int? = 0
 
     @IBOutlet weak var tableV_main: UITableView!
     

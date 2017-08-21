@@ -130,6 +130,7 @@
                 <outlet property="bton_received" destination="3qD-dM-ZOx" id="Zc4-1F-5bd"/>
                 <outlet property="label_num" destination="0TN-uc-pj0" id="Utz-NV-8D0"/>
                 <outlet property="label_price" destination="hhw-DY-klW" id="UFK-zL-kEJ"/>
+                <outlet property="viewbtons" destination="dqq-b8-QCH" id="RMc-mu-V45"/>
             </connections>
         </view>
     </objects>

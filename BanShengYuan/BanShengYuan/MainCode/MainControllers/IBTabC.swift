@@ -35,7 +35,6 @@ class IBTabC: UITabBarController,UITabBarControllerDelegate{
     public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool{
         
 //        let shouldIndex =  tabBarController.viewControllers?.index(of: viewController)
-//        
 //        PrintFM("selectedIndex = \(selectedIndex),shouldIndex=\(String(describing: shouldIndex))")
         
         if self.viewControllers?[3] == viewController || self.viewControllers?[2] == viewController{

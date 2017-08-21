@@ -95,7 +95,7 @@ class GoodsDetailVC: BaseTabHiden {
             return
         }
         
-        for i in 0...array_xDetail.count-1{
+        for i in 0..<array_xDetail.count{
             
             let key = "item"+"\(i)"
             
@@ -103,7 +103,7 @@ class GoodsDetailVC: BaseTabHiden {
  
         }
         
-        for i in 0...array_xDetail.count-1{
+        for i in 0..<array_xDetail.count{
             
             let key = "item"+"\(i)"
             

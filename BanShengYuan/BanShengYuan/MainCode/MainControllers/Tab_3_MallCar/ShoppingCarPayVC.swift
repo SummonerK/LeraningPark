@@ -75,7 +75,7 @@ class ShoppingCarPayVC: UIViewController {
         
         var totalPrice:Int = 0
         
-        for i in 0...arrayMain.count-1 {
+        for i in 0..<arrayMain.count {
             let products = arrayMain[i] as! ModelShoppingCarProducts
             for item in products.products! {
                 if item.chooseFlag == true{

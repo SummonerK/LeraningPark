@@ -18,6 +18,7 @@ class view_orderFooter: UIView {
     
     @IBOutlet weak var label_price: UILabel!
     
+    @IBOutlet weak var viewbtons: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

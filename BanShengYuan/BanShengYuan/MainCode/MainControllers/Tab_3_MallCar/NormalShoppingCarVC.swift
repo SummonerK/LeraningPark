@@ -157,7 +157,7 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
     
     func resetAllChooseData(){
         
-        for i in 0...arrayMain.count-1 {
+        for i in 0..<arrayMain.count {
             let products = arrayMain[i] as! ModelShoppingCarProducts
             DicSectionChoose.setValue(flagAllChoose, forKey: "section\(i)")
             
@@ -199,7 +199,7 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
         
         var totalPrice:Int = 0
         
-        for i in 0...arrayMain.count-1 {
+        for i in 0..<arrayMain.count {
             let products = arrayMain[i] as! ModelShoppingCarProducts
             for item in products.products! {
                 if item.chooseFlag == true{
@@ -217,7 +217,7 @@ class NormalShoppingCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallC
         
         let array_Choosed = NSMutableArray()
         
-        for i in 0...arrayMain.count-1 {
+        for i in 0..<arrayMain.count {
             
             let array_products = NSMutableArray()
             

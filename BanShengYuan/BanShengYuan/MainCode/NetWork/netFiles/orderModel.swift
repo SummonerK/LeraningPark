@@ -70,6 +70,11 @@ class orderModel {
             .mapNeObject(type: ModelOrderNumResult.self)
         //.showError()
     }
+    func orderDetailByOid(amodel:ModelOrderDetailPost) -> Observable<ModelOrderDetailResult> {
+        return orderprovider.request(.orderDetailByOid(PostModel: amodel))
+            .mapNeObject(type: ModelOrderDetailResult.self)
+        //.showError()
+    }
     func orderListByUser(amodel:ModelListPageByUserPost) -> Observable<ModelOrderListResult> {
         return orderprovider.request(.orderListByUser(PostModel: amodel))
             .mapNeObject(type: ModelOrderListResult.self)

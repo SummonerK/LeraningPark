@@ -219,7 +219,7 @@ class chooseVC: UIViewController {
 //        选中属性值
         let toValue = self.dic_menuchoose.value(forKey: toKeyPart) as! String
 
-        for i in 0...array_meun.count-1{
+        for i in 0..<array_meun.count{
             
             let item = array_meun[i] as! ModelMenuSpecItem
             
@@ -234,7 +234,7 @@ class chooseVC: UIViewController {
                     
                     let array_temp = NSMutableArray()
                     
-                    for m in 0...array_prospec.count-1{
+                    for m in 0..<array_prospec.count{
                         
                         let dic_temp = array_prospec[m] as! NSDictionary
 //                        prospec 中 item属性与选中属性相同的 则: partName下属性->整理集合
@@ -255,7 +255,7 @@ class chooseVC: UIViewController {
                     PrintFM("another value = \(selectedPartValue)\n array = \(array_temp)")
                     
                     if selectedPartValue != "" && array_temp.count > 0{
-                        for j in 0...array_temp.count-1{
+                        for j in 0..<array_temp.count{
                             if (array_temp[j] as! String) == selectedPartValue{
                                 self.dic_menuchoose.setValue(selectedPartValue, forKey: partName)
                                 break
@@ -287,11 +287,11 @@ class chooseVC: UIViewController {
             return self.productid
         }
         
-        for i in 0...array_prospec.count-1{
+        for i in 0..<array_prospec.count{
             
             let dic = array_prospec[i] as! NSDictionary
             
-            for item in 0...array.count-1{
+            for item in 0..<array.count{
                 
                 let key = array[item]
                 

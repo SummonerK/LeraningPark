@@ -667,24 +667,150 @@ class ModelListPageByUserBack: Mappable {
     
 }
 
+//MARK:查询订单详细 postmodel
+
+class ModelOrderDetailPost: Reflect {
+    var orderId:String!///订单ID
+}
+//MARK:查询订单详细 back
+
+class ModelOrderDetailResult:Mappable {
+    var data: ModelOrderDetailInfo?
+    var errcode: String?
+    var errmsg: String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        data <- map["data"]
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+class ModelOrderDetailInfo: Mappable {
+    
+    var accountList: [ModelListPageByUserAccountItem]?//其他结算列表
+    var address: String?//收货地址
+    var amount: Int?//订单金额(分)
+    var barCounter: String?//???
+    var cancelReason: String?//adding
+    var companyId: String?//商户ID
+    
+    var createUser: String?//???
+    var customerOrder: String?//第三方订单编号
+    var evaluateStatus: Int?//adding
+    var gmtAccept: Int?//???
+    var gmtCreate: Int?//adding
+    var gmtModified: Int?//???
+    var gmtPay: Int?//???
+    var longitude: String?//收货地址经度
+    var latitude: String?//收货地址纬度
+    
+    var oid: Int?//订单ID
+    var partition: String?//拆单信息
+    var payChannel: String?//支付渠道
+    var payChannelName: String?//支付渠道名称
+    var payStatus: Int?//adding
+    
+    var payType: Int?//支付金额
+    var payVoucher: String?//???
+    var phone: String?//用户电话
+    var posId: String?//???
+    var productList: [ModelListPageByUserProductItem]?//商品列表
+    var remark: String?//订单备注
+    var shopId: String?//门店ID
+    
+    var shopName: String?//门店名称
+    var source: String?//订单来源
+    var sourceName: String?//???
+    var status: Int?//订单状态
+    var type: Int?//订单类型
+    var userId: String?//用户ID
+    
+    var userName: String?//用户名称
+    var userType: String?//???
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        accountList <- map["accountList"]
+        address <- map["address"]
+        amount <- map["amount"]
+        barCounter <- map["barCounter"]
+        cancelReason <- map["cancelReason"]
+        companyId <- map["companyId"]
+        
+        createUser <- map["createUser"]
+        customerOrder <- map["customerOrder"]
+        evaluateStatus <- map["evaluateStatus"]
+        gmtAccept <- map["gmtAccept"]
+        gmtCreate <- map["gmtCreate"]
+        gmtModified <- map["gmtModified"]
+        gmtPay <- map["gmtPay"]
+        longitude <- map["longitude"]
+        latitude <- map["latitude"]
+        
+        oid <- map["oid"]
+        partition <- map["partition"]
+        payChannel <- map["payChannel"]
+        payChannelName <- map["payChannelName"]
+        payStatus <- map["payStatus"]
+        
+        payType <- map["payType"]
+        payVoucher <- map["payVoucher"]
+        phone <- map["phone"]
+        posId <- map["posId"]
+        productList <- map["productList"]
+        remark <- map["remark"]
+        shopId <- map["shopId"]
+        
+        shopName <- map["shopName"]
+        source <- map["source"]
+        sourceName <- map["sourceName"]
+        status <- map["status"]
+        type <- map["type"]
+        userId <- map["userId"]
+        
+        userName <- map["userName"]
+        userType <- map["userType"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
 class ModelListPageByUserProductItem: Mappable {
+    
+    var number: Int?//商品数量
+    var orderId: Int?//商品数量
+    var parentProduct: Int?//???
+    var price: String?//商品单价分
     var productId: String?//商品ID
     var productName: String?//商品名称
-    var number: String?//商品数量
-    var specification: String?//商品规格
     
-    var price: String?//商品单价分
+    var specification: String?//商品规格
     var sequence: String?//排序
     
     required init?(map: Map) { }
     
     func mapping(map: Map) {
+        number <- map["number"]
+        orderId <- map["orderId"]
+        parentProduct <- map["parentProduct"]
+        price <- map["price"]
         productId <- map["productId"]
         productName <- map["productName"]
-        number <- map["number"]
-        specification <- map["specification"]
         
-        price <- map["price"]
+        specification <- map["specification"]
         sequence <- map["sequence"]
         
     }
@@ -700,10 +826,11 @@ class ModelListPageByUserProductItem: Mappable {
 class ModelListPageByUserAccountItem: Mappable {
     var accountId: String?//结算对象ID
     var name: String?//结算对象名称
-    var type: Int?//结算对象类型
+    var number: Int?//结算数量
+    var orderId: Int?//
     var price: Int?//结算金额
     
-    var number: Int?//结算数量
+    var type: Int?//结算对象类型
     var sequence: Int?//排序
     
     required init?(map: Map) { }
@@ -711,10 +838,11 @@ class ModelListPageByUserAccountItem: Mappable {
     func mapping(map: Map) {
         accountId <- map["accountId"]
         name <- map["name"]
-        type <- map["type"]
-        price <- map["price"]
-        
         number <- map["number"]
+        orderId <- map["orderId"]
+        type <- map["type"]
+        
+        price <- map["price"]
         sequence <- map["sequence"]
         
     }

@@ -369,6 +369,7 @@ extension shanghu_searchVC:UICollectionViewDelegate{
         PrintFM("\((array_items[indexPath.row] as! ModelShopDetailItem).description)")
         
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "GoodsDetailVC") as! GoodsDetailVC
+        Vc.shopID = shopID
         Vc.model_goods = array_items[indexPath.row] as? ModelShopDetailItem
         Vc.model_shop = self.modelShop
         self.navigationController?.pushViewController(Vc, animated: true)

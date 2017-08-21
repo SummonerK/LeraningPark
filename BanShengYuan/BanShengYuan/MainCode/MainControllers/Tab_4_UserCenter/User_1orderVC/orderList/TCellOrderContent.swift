@@ -19,6 +19,9 @@ import MJRefresh
 let MenuPagesize:Int = 20
 
 class TCellOrderContent: UITableViewCell {
+    
+//    controller
+    let Navi:UINavigationController? = nil
 
     //network
     let orderM = orderModel()
@@ -345,6 +348,26 @@ extension TCellOrderContent:UITableViewDataSource{
         
         viewfooter?.label_price.text = String.init("¥ \(String(describing: str_total.fixPrice()))")
         
+        if let text = order.status {
+            PrintFM("status = \(text)")
+            
+            var bo_orderBottom = Bool()
+            
+            switch text {
+            case 1,2,3,5,6:
+                bo_orderBottom = true
+            case 4:
+                bo_orderBottom = false
+            default:
+                bo_orderBottom = true
+                break
+            }
+            viewfooter?.viewbtons.isHidden = bo_orderBottom
+        }else{
+            viewfooter?.viewbtons.isHidden = true
+            
+        }
+        
         return viewfooter
     }
     
@@ -354,7 +377,13 @@ extension TCellOrderContent:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        let order = arrayOrderList[section] as! ModelListPageByUserBack
+        
+        if let products = order.products{
+            return products.count
+        }else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -365,7 +394,7 @@ extension TCellOrderContent:UITableViewDataSource{
         
         let order = arrayOrderList[indexPath.section] as! ModelListPageByUserBack
         
-        if let products = order.products ,let model:ModelShopDetailItem = products[0]{
+        if let products = order.products ,let model:ModelShopDetailItem = products[indexPath.row]{
             
             if let suburl = model.picture {
                 let url = URL(string: suburl)
@@ -412,7 +441,29 @@ extension TCellOrderContent: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
-        return 90
+        
+        let order = arrayOrderList[section] as! ModelListPageByUserBack
+        
+        if let text = order.status {
+            PrintFM("status = \(text)")
+            
+            var hi_orderBottom = 90
+            
+            switch text {
+            case 1,2,3,5,6:
+                hi_orderBottom = 48
+            case 4:
+                hi_orderBottom = 90
+            default:
+                hi_orderBottom = 48
+                break
+            }
+            return CGFloat(hi_orderBottom)
+        }else{
+            return 48
+        }
+        
+//        return 90
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
@@ -425,11 +476,14 @@ extension TCellOrderContent: UITableViewDelegate {
         
         PrintFM("\(indexPath.row)")
         
+        let order = arrayOrderList[indexPath.section] as! ModelListPageByUserBack
         //订单详情
         
-//        let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "OrderDetailVC") as! OrderDetailVC
-//        self.navigationController?.pushViewController(Vc, animated: true)
+        let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "OrderDetailVC") as! OrderDetailVC
         
+        Vc.Oid = order.oid
+        
+        self.Navi?.pushViewController(Vc, animated: true)
     }
 }
 

@@ -156,26 +156,24 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
     
     func resetAllChooseData(){
         
-        if arrayMain.count>0{
-            for i in 0...arrayMain.count-1 {
-                let products = arrayMain[i] as! ModelShoppingCarProducts
-                DicSectionChoose.setValue(flagAllChoose, forKey: "section\(i)")
+        for i in 0..<arrayMain.count {
+            let products = arrayMain[i] as! ModelShoppingCarProducts
+            DicSectionChoose.setValue(flagAllChoose, forKey: "section\(i)")
+            
+            if let plist = products.products{
                 
-                if let plist = products.products{
-                    
-                    for item in plist {
-                        item.chooseFlag = flagAllChoose
-                    }
+                for item in plist {
+                    item.chooseFlag = flagAllChoose
                 }
-                
             }
             
-            self.table_main.reloadData()
-            
-            restBottomAllChoose()
-            
-            fixTotalPrice()
         }
+        
+        self.table_main.reloadData()
+        
+        restBottomAllChoose()
+        
+        fixTotalPrice()
     }
     
     func restBottomAllChoose(){
@@ -221,21 +219,18 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         
         var totalPrice:Int = 0
         
-        
-        if arrayMain.count>0{
-            for i in 0...arrayMain.count-1 {
-                let products = arrayMain[i] as! ModelShoppingCarProducts
-                for item in products.products ?? [] {
-                    if item.chooseFlag == true{
-                        totalPrice = totalPrice + (item.finalPrice! * item.productNumber!)
-                    }else{
-                        continue
-                    }
+        for i in 0..<arrayMain.count {
+            let products = arrayMain[i] as! ModelShoppingCarProducts
+            for item in products.products ?? [] {
+                if item.chooseFlag == true{
+                    totalPrice = totalPrice + (item.finalPrice! * item.productNumber!)
+                }else{
+                    continue
                 }
             }
-            
-            TotalPrice = totalPrice
         }
+        
+        TotalPrice = totalPrice
         
     }
     
@@ -243,29 +238,25 @@ class TabMallCarVC: UIViewController,ShoppingCarHeaderDelegate,TCellMallCarDeleg
         
         let array_Choosed = NSMutableArray()
         
-        if arrayMain.count > 0{
+        for i in 0..<arrayMain.count {
             
-            for i in 0...arrayMain.count-1 {
-                
-                let array_products = NSMutableArray()
-                
-                let products = arrayMain[i] as! ModelShoppingCarProducts
-                for item in products.products ?? [] {
-                    if item.chooseFlag == true{
-                        array_products.add(item)
-                    }else{
-                        continue
-                    }
+            let array_products = NSMutableArray()
+            
+            let products = arrayMain[i] as! ModelShoppingCarProducts
+            for item in products.products ?? [] {
+                if item.chooseFlag == true{
+                    array_products.add(item)
+                }else{
+                    continue
                 }
+            }
+            
+            if array_products.count != 0 {
+                let shopModel = (arrayMain[i] as! ModelShoppingCarProducts).copy()
                 
-                if array_products.count != 0 {
-                    let shopModel = (arrayMain[i] as! ModelShoppingCarProducts).copy()
-                    
-                    shopModel.products = array_products as? [ModelShopDetailItem]
-                    
-                    array_Choosed.add(shopModel)
-                    
-                }
+                shopModel.products = array_products as? [ModelShopDetailItem]
+                
+                array_Choosed.add(shopModel)
                 
             }
             

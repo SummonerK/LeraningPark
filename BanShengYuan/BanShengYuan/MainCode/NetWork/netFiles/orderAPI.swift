@@ -27,6 +27,7 @@ enum orderAPI {
     //订单查询
     case orderNumbListByUser(PostModel:ModelOrderNumUserPost)//MARK:查询各状态订单数量
     case orderListByUser(PostModel:ModelListPageByUserPost)//MARK:分页查询用户全部订单明细
+    case orderDetailByOid(PostModel:ModelOrderDetailPost)//MARK:根据订单ID查询订单详细信息
     case orderListByStatus(PostModel:ModelListPageByStatusPost)//MARK:根据状态查询用户订单明细（status为2是待支付，status为3是待发货，status为4是配送中）
     
     //购物车
@@ -44,7 +45,7 @@ extension orderAPI: TargetType {
         case .test:
              return URLEncoding.default
             
-        case .orderListByUser,.shopShoppingCarProducts,.orderListByStatus,.orderNumbListByUser:
+        case .orderListByUser,.shopShoppingCarProducts,.orderListByStatus,.orderNumbListByUser,.orderDetailByOid:
             return URLEncoding.default
             
         case .orderCreate,.orderPay,.orderPayAccess,.orderAccept,.orderAddressSet,.shopShoppingCarAddProduct,.shopShoppingCarDeleteProduct,.shopShoppingCarSetProductNum:
@@ -76,6 +77,8 @@ extension orderAPI: TargetType {
             return "/Query/Order/GetAllStatusCount"
         case .orderListByUser(_):
             return "/Query/Order/ListPageByUser"
+        case .orderDetailByOid(_):
+            return "/Query/Order/GetById"
         case .orderListByStatus(_):
             return "/Query/Order/ListByUserStatus"
         case .shopShoppingCarAddProduct(_):
@@ -108,6 +111,8 @@ extension orderAPI: TargetType {
         case .orderNumbListByUser(_):
             return .get
         case .orderListByUser(_):
+            return .get
+        case .orderDetailByOid(_):
             return .get
         case .orderListByStatus(_):
             return .get
@@ -150,6 +155,9 @@ extension orderAPI: TargetType {
             PrintFM(model.toDict())
             return model.toDict()
         case .orderListByUser(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .orderDetailByOid(let model):
             PrintFM(model.toDict())
             return model.toDict()
         case .orderListByStatus(let model):

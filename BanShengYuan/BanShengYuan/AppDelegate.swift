@@ -27,15 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,WXApiDelegate{
         
 //        window?.rootViewController = StoryBoard_Login.instantiateInitialViewController()
 //        window?.makeKeyAndVisible()
-        
-        
 //        if USERM.MemberID != ""{
-        
 //          USERM.setMemberID(uid: "")
-        
             window?.rootViewController = StoryBoard_Main.instantiateInitialViewController()
             window?.makeKeyAndVisible()
-            
 //        }else{
 //            window?.rootViewController = StoryBoard_Login.instantiateInitialViewController()
 //            window?.makeKeyAndVisible()
