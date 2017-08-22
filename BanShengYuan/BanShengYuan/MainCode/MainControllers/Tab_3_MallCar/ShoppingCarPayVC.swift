@@ -15,12 +15,13 @@ import SwiftyJSON
 class ShoppingCarPayVC: UIViewController {
     
     var arrayMain = NSMutableArray()
+    var arrayOrders = [ModelOrderCreatePost]()
     
     //network
     
     let OrderM = orderModel()
     let disposeBag = DisposeBag()
-    let modelpayPost = ModelOrderPayPost()
+    let modelOrderListPost = ModelOrdersCreatePost()
     
     //addressModel
     var model_address = ModelAddressItem()
@@ -50,10 +51,6 @@ class ShoppingCarPayVC: UIViewController {
         tableV_main.backgroundColor = FlatWhiteLight
         
         // 底部分割线左对齐
-        
-//        tableV_main.separatorInset = UIEdgeInsets.zero
-//        
-//        tableV_main.layoutMargins = UIEdgeInsets.zero
         
         fixTotalPrice()
 
@@ -94,12 +91,143 @@ class ShoppingCarPayVC: UIViewController {
         
     }
 
+    //MARK: 组装订单信息
+    //店铺信息，商品信息，运费信息，收货地址信息（滞后）
+    
+    func combinOrderInfo() {
+        
+        arrayOrders.removeAll()
+        
+        for i in 0..<arrayMain.count {
+            
+            let CarSectionContent = arrayMain[i] as! ModelShoppingCarProducts
+            
+            let modelOrderC = ModelOrderCreatePost()
+            
+            //组合订单   基本信息
+            modelOrderC.companyId = PARTNERID_SHOP
+            modelOrderC.shopId = CarSectionContent.linkId
+            modelOrderC.shopName = ""
+            modelOrderC.userId = USERM.MemberID
+            modelOrderC.longitude = "121.377436"
+            modelOrderC.latitude = "31.267283"
+            modelOrderC.type = 1
+            modelOrderC.status = 1
+            modelOrderC.amount = 1490
+            modelOrderC.payType = 1
+            modelOrderC.payChannel = ""
+            modelOrderC.payChannelName = ""
+            modelOrderC.source = "ios app"
+            modelOrderC.partition = ""
+            modelOrderC.customerOrder = "BSY".OrderIDFromtimeSP
+            
+            //组合订单   地址信息
+            if addressValue {
+                modelOrderC.userName = model_address.receiverName!
+                modelOrderC.phone = model_address.receiverPhone!
+                modelOrderC.address = (model_address.area ?? "请前往选择收货地址") + "" + (model_address.address ?? " ")
+            }
+            
+            //组合订单   商品信息
+            var products = [OrderProductItemReq]()
+            for item in CarSectionContent.products! {
+                let modelproduct = OrderProductItemReq()
+                modelproduct.productId = item.pid
+                modelproduct.productName = item.name
+                modelproduct.specification = item.specification
+                modelproduct.number = item.productNumber
+                modelproduct.price = item.finalPrice
+                modelproduct.sequence = "0"
+                products.append(modelproduct)
+            }
+            modelOrderC.products = products
+            
+            //组合订单   运费信息
+            let modelaccount = OrderAccountItemReq()
+            modelaccount.accountId = "20001"
+            modelaccount.name = "运费"
+            modelaccount.type = "1"
+            modelaccount.price = 500
+            modelaccount.number = "1"
+            modelaccount.sequence = 0
+            
+            modelOrderC.accounts = [modelaccount]
+            
+            
+            /*{}添加组合订单信息{}*/
+            arrayOrders.append(modelOrderC)
+            
+        }
+        
+        modelOrderListPost.orders = arrayOrders
+        
+    }
+    
+    //MARK:提交订单
+    
+    func sendOrders() {
+        
+        
+        if addressValue {
+            
+            OrderM.orderListCreate(amodel: modelOrderListPost)
+                .subscribe(onNext: { (Result: ModelOrdersCreateBack) in
+                    
+                    PrintFM("Result\(String(describing: Result.data))")
+                    
+                    self.payAction(orderIDList: Result.data!)
+                    
+                },onError:{error in
+                    if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                        HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                    }else{
+                        HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                    }
+                })
+                .addDisposableTo(disposeBag)
+            
+//            self.payAction(orderIDList: ["84532482023620875","84532482076049676"])
+            
+        }else{
+            HUDShowMsgQuick(msg: "请选择收货地址", toView: KeyWindow, time: 0.8)
+        }
+        
+    }
+    
+    //支付
+    
+    /*
+     
+     "84532482023620875",
+     "84532482076049676"
+     
+     */
+    
+    func payAction(orderIDList:[String]) {
+        
+        PrintFM("\(orderIDList)")
+        
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "pay_channelVC") as! pay_channelVC
+        
+        Vc.finalPrice = self.TotalPrice
+        
+        Vc.oidList = orderIDList
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
+        
+    }
+    
+    
+    @IBAction func actionPayNow(_ sender: Any) {
+        
+        sendOrders()
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
 }
 
 extension ShoppingCarPayVC:UITableViewDataSource{
@@ -111,6 +239,8 @@ extension ShoppingCarPayVC:UITableViewDataSource{
         self.model_address = item
         
         self.addressValue = true
+        
+        combinOrderInfo()
         
         self.tableV_main.reloadData()
     }

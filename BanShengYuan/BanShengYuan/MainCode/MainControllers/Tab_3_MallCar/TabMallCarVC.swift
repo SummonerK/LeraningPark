@@ -315,6 +315,8 @@ extension TabMallCarVC:UITableViewDataSource{
                     
                     product.productNumber = setNum
                     
+                    self.fixTotalPrice()
+                    
                 },onError:{error in
                     
                     self.table_main.reloadRows(at: [indexpath], with: .fade)
@@ -428,6 +430,8 @@ extension TabMallCarVC: UITableViewDelegate {
             products.products = PList as? [ModelShopDetailItem]
             self.table_main.deleteRows(at: [indexPath], with: .fade)
         }
+        
+        self.fixTotalPrice()
         
         HUDShowMsgQuick(msg: "删除成功", toView: self.view, time: 0.8)
     }

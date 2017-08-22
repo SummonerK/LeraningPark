@@ -19,9 +19,12 @@ enum orderAPI {
     case test(PostModel:ModelTestPost)//测试https
     //MARK:- 订单
     case orderCreate(PostModel:ModelOrderCreatePost)//MARK:订单创建
+    case orderListCreate(PostModel:ModelOrdersCreatePost)//MARK:批量创建订单
     case orderAddressSet(PostModel:ModelorderAddressSetPost)//MARK:订单设置地址
     case orderPay(PostModel:ModelOrderPayPost)//MARK:订单支付
+    case orderListPay(PostModel:ModelOrdersPayPost)//MARK:订单批量支付
     case orderPayAccess(PostModel:ModelOrderPayAccessPost)//MARK:订单确认支付
+    case orderListPayAccess(PostModel:ModelOrderPayAccessListPost)//MARK:订单批量确认支付
     case orderAccept(PostModel:ModelOrderAcceptPost)//MARK:订单接单
     
     //订单查询
@@ -48,14 +51,21 @@ extension orderAPI: TargetType {
         case .orderListByUser,.shopShoppingCarProducts,.orderListByStatus,.orderNumbListByUser,.orderDetailByOid:
             return URLEncoding.default
             
-        case .orderCreate,.orderPay,.orderPayAccess,.orderAccept,.orderAddressSet,.shopShoppingCarAddProduct,.shopShoppingCarDeleteProduct,.shopShoppingCarSetProductNum:
+        case .orderCreate,.orderListCreate,.orderPay,.orderListPay,.orderPayAccess,.orderListPayAccess,.orderAccept,.orderAddressSet,.shopShoppingCarAddProduct,.shopShoppingCarDeleteProduct,.shopShoppingCarSetProductNum:
             return JSONEncoding.default
             
         }
     }
     
     var baseURL: URL {
-        return URL(string: baseorderpath)!
+        switch self {
+        case .orderListCreate,.orderListPay,.orderListPayAccess:
+            return URL(string: "http://118.89.190.166:9997")!
+        default:
+            return URL(string: baseorderpath)!
+        }
+        
+//        return URL(string: baseorderpath)!
     }
     
     var path: String {
@@ -65,12 +75,18 @@ extension orderAPI: TargetType {
             
         case .orderCreate(_):
             return "/Order/Create"
+        case .orderListCreate(_):
+            return "/Order/CreateOrders"
         case .orderAddressSet(_):
             return "/Order/Create"
         case .orderPay(_):
             return "/Order/Pay"
         case .orderPayAccess(_):
             return "/Order/PayAccess"
+        case .orderListPay(_):
+            return "/Order/PayOrders"
+        case .orderListPayAccess(_):
+            return "/Order/PayAccessOrders"
         case .orderAccept(_):
             return "/Order/Accept"
         case .orderNumbListByUser(_):
@@ -100,11 +116,17 @@ extension orderAPI: TargetType {
             
         case .orderCreate(_):
             return .post
+        case .orderListCreate(_):
+            return .post
         case .orderAddressSet(_):
             return .post
         case .orderPay(_):
             return .post
         case .orderPayAccess(_):
+            return .post
+        case .orderListPay(_):
+            return .post
+        case .orderListPayAccess(_):
             return .post
         case .orderAccept(_):
             return .post
@@ -139,6 +161,10 @@ extension orderAPI: TargetType {
             let dic = jsonToDictionary(jsonString: model.toJSONString()!)
             PrintFM(dic)
             return dic
+        case .orderListCreate(let model):
+            let dic = jsonToDictionary(jsonString: model.toJSONString()!)
+            PrintFM(dic)
+            return dic
         case .orderAddressSet(let model):
             PrintFM(model.toDict())
             return model.toDict()
@@ -148,6 +174,14 @@ extension orderAPI: TargetType {
         case .orderPayAccess(let model):
             PrintFM(model.toDict())
             return model.toDict()
+        case .orderListPay(let model):
+            let dic = jsonToDictionary(jsonString: model.toJSONString()!)
+            PrintFM(dic)
+            return dic
+        case .orderListPayAccess(let model):
+            let dic = jsonToDictionary(jsonString: model.toJSONString()!)
+            PrintFM(dic)
+            return dic
         case .orderAccept(let model):
             PrintFM(model.toDict())
             return model.toDict()

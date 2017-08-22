@@ -22,6 +22,13 @@ class HomeNaviC: UINavigationController {
         UINavigationBar.appearance().titleTextAttributes = textAttr
         
         UINavigationBar.appearance().tintColor = FlatBlackDark
+        
+//        let preson = (name:"sdk",age:20,cla:"323")
+//        
+//        let str = String(format: "%@ ,%d,%@", arguments: [preson.name,preson.age,preson.cla])
+//        
+//        print("str = \(str)")
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -310,6 +310,8 @@ extension NormalShoppingCarVC:UITableViewDataSource{
                     
                     product.productNumber = setNum
                     
+                    self.fixTotalPrice()
+                    
                 },onError:{error in
                     
                     self.table_main.reloadRows(at: [indexpath], with: .fade)
@@ -383,6 +385,7 @@ extension NormalShoppingCarVC:UITableViewDataSource{
         let products = arrayMain[section] as! ModelShoppingCarProducts
         
         return (products.products?.count) ?? 0
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -425,6 +428,7 @@ extension NormalShoppingCarVC: UITableViewDelegate {
             self.table_main.deleteRows(at: [indexPath], with: .fade)
         }
         
+        self.fixTotalPrice()
         HUDShowMsgQuick(msg: "删除成功", toView: self.view, time: 0.8)
     }
     

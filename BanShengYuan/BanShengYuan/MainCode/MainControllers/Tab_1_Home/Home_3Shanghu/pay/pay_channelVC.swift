@@ -21,6 +21,8 @@ class pay_channelVC: UIViewController {
     var finalPrice:Int?
     var orderID:Int!
     
+    var oidList = [String]()
+    
     @IBOutlet weak var label_finalPrice: UILabel!
     @IBOutlet weak var imageV_wx: UIImageView!
     @IBOutlet weak var imageV_al: UIImageView!
@@ -32,7 +34,12 @@ class pay_channelVC: UIViewController {
     let disposeBag = DisposeBag()
     let modelpayPost = ModelOrderPayPost()
     
-    let modelAccess = ModelOrderPayAccessPost()
+    let modelpayListPost = ModelOrdersPayPost()
+    
+    var arrayPayItems = [ModelOrderlistPayPost]()
+    
+    
+    let modelAccess = ModelOrderPayAccessListPost()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +47,10 @@ class pay_channelVC: UIViewController {
         setNavi()
 
         setPageValue()
+        
+        modelAccess.orders = oidList
+        
+//        payAccessOrders()
         
         //注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(wxaction(notification:)), name: NSNotification.Name(rawValue: "WXorderNotifation"), object: nil)
@@ -58,7 +69,7 @@ class pay_channelVC: UIViewController {
     func wxaction(notification: NSNotification) {
         
         PrintFM("微信支付成功")
-        self.payAccess()
+        self.payAccessOrders()
         
     }
     
@@ -67,7 +78,7 @@ class pay_channelVC: UIViewController {
         
         PrintFM("支付宝支付成功")
         
-        self.payAccess()
+        self.payAccessOrders()
         
     }
     
@@ -82,7 +93,7 @@ class pay_channelVC: UIViewController {
             label_finalPrice.text = String.init("¥ \(String(describing: strPrice.fixPrice()))")
         }
         
-        PrintFM("orderID = \(orderID)")
+        PrintFM("oidList = \(oidList)")
     }
     
     func setNavi() {
@@ -143,6 +154,103 @@ class pay_channelVC: UIViewController {
         PrintFM("")
     }
     
+    @IBAction func actionPay(_ sender: Any) {
+        
+        switch payChanel {
+        case 1:
+            HUDShowMsgQuick(msg: "请选择一种支付方式", toView: KeyWindow, time: 0.8)
+            return
+        case 101:
+            modelpayPost.pay_ebcode = aliPay_ebcode
+            break
+        case 102:
+            modelpayPost.pay_ebcode = wxPay_ebcode
+            break
+        default:
+            return
+        }
+        
+        arrayPayItems.removeAll()
+        
+        for oid in oidList {
+            let modelpayItem = ModelOrderlistPayPost()
+            modelpayItem.orderId = oid
+            modelpayItem.pay_ebcode = modelpayPost.pay_ebcode
+            
+            arrayPayItems.append(modelpayItem)
+        }
+        
+        modelpayListPost.orders = arrayPayItems
+        
+        OrderM.orderListPay(amodel: modelpayListPost)
+            
+            .subscribe(onNext: { (result: modelPayPlanBack) in
+                
+                PrintFM("result\(result)")
+                
+                if let content = result.data{
+                    
+                    PrintFM("content = \(content)")
+                    
+                    //支付宝支付
+                    if self.payChanel == 101{
+                        
+                        AlipaySDK.defaultService().payOrder(content.biz_content, fromScheme: "bsyal", callback: {(result) in
+                            
+                            if let resulttemp = result{
+                                if let status = resulttemp["resultStatus"]{
+                                    if (status as! String) == "9000"{
+                                        
+                                        //                                        HUDShowMsgQuick(msg: "支付成功", toView: KeyWindow, time: 0.8)
+                                        
+                                        NotificationCenter.default.post(name: Notification.Name(rawValue: "ALorderNotifation"), object: nil)
+                                        
+                                    }else{
+                                        HUDShowMsgQuick(msg: "支付失败", toView: KeyWindow, time: 0.8)
+                                    }
+                                    
+                                }
+                            }
+                            
+                        })
+                        
+                    }
+                    
+                    //微信支付
+                    if self.payChanel == 102{
+                        
+                        if let wxorder = content.pay_order{
+                            
+                            let paypost:PayReq = PayReq.init()
+                            paypost.openID = wxorder.appid!
+                            paypost.partnerId = "\(wxorder.mch_id!)"
+                            paypost.prepayId = wxorder.prepay_id!
+                            paypost.package = "\(wxorder.package!)"
+                            paypost.nonceStr = wxorder.nonce_str!
+                            paypost.timeStamp = UInt32(wxorder.timestamp!)!
+                            paypost.sign = wxorder.sign!
+                            WXApi.send(paypost)
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            },onError:{error in
+                
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
+        
+        
+    }
+    //old pay
+    /*
     @IBAction func actionPay(_ sender: Any) {
         
         switch payChanel {
@@ -232,19 +340,19 @@ class pay_channelVC: UIViewController {
         
         
     }
+ 
+ */
     
-    func payAccess(){
+    func payAccessOrders(){
         
-        OrderM.orderPayAccess(amodel: modelAccess)
+        OrderM.orderListPayAccess(amodel: modelAccess)
             
-            .subscribe(onNext: { (posts: ModelOrderPayAccessBack) in
+            .subscribe(onNext: { (result: ModelOrderPayAccessListBack) in
                 
-                PrintFM("orderPayAccess = \(posts)")
+                PrintFM("orderPayAccess = \(result)")
                 
+                if let content = result.data{
                 
-                if let content = posts.data{
-                    
-//                    self.navigationController?.popToRootViewController(animated: true)
                     //我的订单
                     let Vc = StoryBoard_UserCenter.instantiateViewController(withIdentifier: "orderListRootVC") as! orderListRootVC
                     self.navigationController?.pushViewController(Vc, animated: true)
@@ -259,7 +367,7 @@ class pay_channelVC: UIViewController {
                 }else{
                     HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
                 }
-    
+                
             })
             .addDisposableTo(disposeBag)
         

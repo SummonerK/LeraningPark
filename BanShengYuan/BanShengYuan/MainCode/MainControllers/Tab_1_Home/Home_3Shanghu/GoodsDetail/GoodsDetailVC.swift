@@ -435,7 +435,9 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
             
             closeCoverView()
             
-            self.model_goods = coverVC.model_goodChosed
+            if (coverVC.model_goodChosed != nil){
+                self.model_goods = coverVC.model_goodChosed
+            }
             
             let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
             

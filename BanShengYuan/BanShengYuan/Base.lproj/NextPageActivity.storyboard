@@ -249,7 +249,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="action_PayNow:" destination="JGP-Yl-3Mt" eventType="touchDragInside" id="Kts-Iq-HLR"/>
+                                            <action selector="actionPayNow:" destination="HOy-eN-UMC" eventType="touchUpInside" id="HFo-1m-aBM"/>
                                         </connections>
                                     </button>
                                 </subviews>

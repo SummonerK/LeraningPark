@@ -8,9 +8,39 @@
 
 import Foundation
 
-
-import Foundation
 import ObjectMapper
+
+//MARK:批量创建订单 postmodel
+
+class ModelOrdersCreatePost:Mappable {
+    var orders:[ModelOrderCreatePost]?           //商品集合
+    init() {
+        
+    }
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        orders <- map["orders"]
+    }
+}
+
+//MARK:批量创建订单 返回model
+
+class ModelOrdersCreateBack:Mappable {
+    var data:[String]?
+    var errcode:String?
+    var errmsg:String?
+    init() {
+        
+    }
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        data <- map["data"]
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+    }
+}
 
 //MARK:创建订单 postmodel
 
@@ -248,6 +278,35 @@ class ModelOrderCreateBackItem: Mappable {
 }
 
 
+//MARK:批量支付订单 postmodel
+
+class ModelOrdersPayPost:Mappable {
+    var orders:[ModelOrderlistPayPost]?     //商品订单集合
+    init() {
+        
+    }
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        orders <- map["orders"]
+    }
+}
+
+//MARK:订单支付 postmodel
+class ModelOrderlistPayPost:Mappable {
+    var orderId:String!
+    var pay_ebcode:String!
+    init() {
+        
+    }
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        orderId <- map["orderId"]
+        pay_ebcode <- map["pay_ebcode"]
+    }
+}
+
 //MARK:订单支付 postmodel
 
 class ModelOrderPayPost: Reflect {
@@ -261,11 +320,6 @@ class ModelOrderPayPost: Reflect {
      *  必传:True 
      */
     var pay_ebcode:String!
-//    /**
-//     *  交易编号，用订单号
-//     *  必传:True int默认10
-//     */
-//    var transId:Int!
     
 }
 
@@ -382,6 +436,82 @@ class ModelOrderPayBack: Mappable {
         return self.toJSONString()!
     }
     
+}
+
+
+//MARK:批量订单支付确认 postmodel
+
+class ModelOrderPayAccessListPost:Mappable {
+    var orders:[String]?           //oidlist
+    init() {
+        
+    }
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        orders <- map["orders"]
+    }
+}
+
+//MARK:批量订单支付确认 返回model
+
+class ModelOrderPayAccessListBack:Mappable {
+    var data:ModelPayAccessOrders?
+    var errcode:String?
+    var errmsg:String?
+    init() {
+        
+    }
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        data <- map["data"]
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+    }
+}
+
+class ModelPayAccessOrders:Mappable {
+    var alipayAmount:String?
+    var fmId:String?
+    var mcouponAmount:String?
+    var operatorId:String?
+    var payDate:String?
+    
+    var payEbcode:String?
+    var payId:String?
+    var payTransId:String?
+    var refundAmount:String?
+    var stationId:String?
+    
+    var statusCode:String?
+    var storeId:String?
+    var totalAmount:String?
+    var ver:String?
+    
+    init() {
+        
+    }
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        alipayAmount <- map["alipayAmount"]
+        fmId <- map["fmId"]
+        mcouponAmount <- map["mcouponAmount"]
+        operatorId <- map["operatorId"]
+        payDate <- map["payDate"]
+        
+        payEbcode <- map["payEbcode"]
+        payId <- map["payId"]
+        payTransId <- map["payTransId"]
+        refundAmount <- map["refundAmount"]
+        stationId <- map["stationId"]
+        
+        statusCode <- map["statusCode"]
+        storeId <- map["storeId"]
+        totalAmount <- map["totalAmount"]
+        ver <- map["ver"]
+    }
 }
 
 //MARK:订单支付确认 postmodel

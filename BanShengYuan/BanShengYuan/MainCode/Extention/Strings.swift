@@ -117,28 +117,6 @@ extension String{
             return formatter.string(from: NSNumber(value: value!/100))!
         }
         
-//        let acount = self.intValue!
-//        
-//        let tailacount = (self.intValue)!%100
-//        
-//        let headacount = (self.intValue)!/100
-//        
-//        let tailstr = "\(String(format: "%02d", tailacount))"
-//        
-//        if acount == 0 || acount < 0 {
-//            return "0"
-//        }else{
-//            //初始化NumberFormatter
-//            let format = NumberFormatter()
-//            //设置numberStyle（有多种格式）
-//            format.numberStyle = .decimal
-//            //转换后的string
-//            let string = format.string(from: NSNumber(value: headacount))
-//            
-//            return string! + "." + tailstr
-//            
-//        }
-        
     }
     
     func fixNumString() -> String {

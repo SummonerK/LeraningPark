@@ -112,7 +112,6 @@ class GoodsPayVC: BaseTabHiden {
         modelaccount.name = "运费"
         modelaccount.type = "1"
         modelaccount.price = 500
-//        modelaccount.price = "0"
         modelaccount.number = "1"
         modelaccount.sequence = 0
         
@@ -134,7 +133,7 @@ class GoodsPayVC: BaseTabHiden {
 
                     if let modeldata = posts.data{
                         if let oid = modeldata.oid{
-                            self.payAction(orderID: oid)
+                            self.payAction(orderID: oid.description)
                         }
                     }
 
@@ -157,13 +156,13 @@ class GoodsPayVC: BaseTabHiden {
     
     //支付
     
-    func payAction(orderID:Int) {
+    func payAction(orderID:String) {
         
         let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "pay_channelVC") as! pay_channelVC
         
         Vc.finalPrice = self.totalPrice
         
-        Vc.orderID = orderID
+        Vc.oidList = [orderID]
         
         self.navigationController?.pushViewController(Vc, animated: true)
         

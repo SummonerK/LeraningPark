@@ -44,6 +44,11 @@ class orderModel {
             .mapNeObject(type: ModelOrderCreateBack.self)
         //.showError()
     }
+    func orderListCreate(amodel:ModelOrdersCreatePost) -> Observable<ModelOrdersCreateBack> {
+        return orderprovider.request(.orderListCreate(PostModel: amodel))
+            .mapNeObject(type: ModelOrdersCreateBack.self)
+        //.showError()
+    }
     func orderAddressSet(amodel:ModelorderAddressSetPost) -> Observable<ModelorderAddressSetBack> {
         return orderprovider.request(.orderAddressSet(PostModel: amodel))
             .mapNeObject(type: ModelorderAddressSetBack.self)
@@ -58,6 +63,18 @@ class orderModel {
     func orderPayAccess(amodel:ModelOrderPayAccessPost) -> Observable<ModelOrderPayAccessBack> {
         return orderprovider.request(.orderPayAccess(PostModel: amodel))
             .mapNeObject(type: ModelOrderPayAccessBack.self)
+        //.showError()
+    }
+    
+    func orderListPay(amodel:ModelOrdersPayPost) -> Observable<modelPayPlanBack> {
+        return orderprovider.request(.orderListPay(PostModel: amodel))
+            .mapNeObject(type: modelPayPlanBack.self)
+        //.showError()
+    }
+    
+    func orderListPayAccess(amodel:ModelOrderPayAccessListPost) -> Observable<ModelOrderPayAccessListBack> {
+        return orderprovider.request(.orderListPayAccess(PostModel: amodel))
+            .mapNeObject(type: ModelOrderPayAccessListBack.self)
         //.showError()
     }
     func orderAccept(amodel:ModelOrderAcceptPost) -> Observable<ModelCommonBack> {
