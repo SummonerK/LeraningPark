@@ -371,6 +371,10 @@ extension TabMallCarVC:UITableViewDataSource{
         
 //        PrintFM("\(DicSectionChoose)")
         
+        let products = arrayMain[section] as! ModelShoppingCarProducts
+        
+        viewheader?.label_name.text = products.linkName ?? " "
+        
         return viewheader
         
     }

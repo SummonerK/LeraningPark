@@ -442,7 +442,7 @@ class ModelOrderPayBack: Mappable {
 //MARK:批量订单支付确认 postmodel
 
 class ModelOrderPayAccessListPost:Mappable {
-    var orders:[String]?           //oidlist
+    var orders:[ModelOrderPayAccessOrdersItem]?           //oidlist
     init() {
         
     }
@@ -450,6 +450,17 @@ class ModelOrderPayAccessListPost:Mappable {
     
     func mapping(map: Map) {
         orders <- map["orders"]
+    }
+}
+
+class ModelOrderPayAccessOrdersItem:Mappable {
+    var orderId:String?           //orderId
+    init() {
+    }
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        orderId <- map["orderId"]
     }
 }
 

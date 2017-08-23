@@ -345,6 +345,7 @@ class ModelSearchProductContent: Mappable {
 class ModelShoppingCarAddProductPost: Reflect {
     var userId:String!///用户ID
     var linkId:String!///关联ID：门店ID/商户ID
+    var linkName:String!///关联ID：门店名字
     var type:String!///关联ID类型: 1=门店，2=商户
     var productId:String!///商品ID
     var name:String!///商品名称
@@ -407,6 +408,7 @@ class ModelShoppingCarProductsResult: Mappable {
 class ModelShoppingCarProducts: Mappable {
     var count: Int?
     var linkId: String?
+    var linkName: String?
     var products: [ModelShopDetailItem]?
     var scid: Int?
     var type: Int?
@@ -417,6 +419,7 @@ class ModelShoppingCarProducts: Mappable {
     func mapping(map: Map) {
         count <- map["count"]
         linkId <- map["linkId"]
+        linkName <- map["linkName"]
         products <- map["products"]
         scid <- map["scid"]
         type <- map["type"]

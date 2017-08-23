@@ -48,9 +48,16 @@ class pay_channelVC: UIViewController {
 
         setPageValue()
         
-        modelAccess.orders = oidList
+        var arrayAccess = [ModelOrderPayAccessOrdersItem]()
         
-//        payAccessOrders()
+        for oid in oidList {
+            let payAccessItem = ModelOrderPayAccessOrdersItem()
+            payAccessItem.orderId = oid
+            
+            arrayAccess.append(payAccessItem)
+        }
+        
+        modelAccess.orders = arrayAccess
         
         //注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(wxaction(notification:)), name: NSNotification.Name(rawValue: "WXorderNotifation"), object: nil)

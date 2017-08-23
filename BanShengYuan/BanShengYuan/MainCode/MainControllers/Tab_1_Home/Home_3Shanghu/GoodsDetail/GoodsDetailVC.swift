@@ -113,11 +113,14 @@ class GoodsDetailVC: BaseTabHiden {
             
             imageV.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: {image, error, cacheType, imageURL in
                 
-                let hight =  CGFloat( (image?.size.height)! / (image?.size.width)! * IBScreenWidth )
-                
-                self.dic_HDetail.setValue("\(hight)", forKey: key)
-                
-                self.tableV_main.reloadData()
+                if image != nil{
+                    
+                    let hight =  CGFloat( (image?.size.height)! / (image?.size.width)! * IBScreenWidth )
+                    
+                    self.dic_HDetail.setValue("\(hight)", forKey: key)
+                    
+                    self.tableV_main.reloadData()
+                }
 
             })
             
@@ -125,7 +128,6 @@ class GoodsDetailVC: BaseTabHiden {
     }
     
 //    获取商品基本信息
-    
     func getData(){
         
         modelGoodsDetailPost.productId = model_goods?.pid
@@ -267,6 +269,12 @@ class GoodsDetailVC: BaseTabHiden {
     //提交订单
     @IBAction func buyNow(_ sender: Any) {
         
+        let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
+        
+        if arraykeys.count == 0 {
+            coverVC.model_goodChosed = model_goods
+        }
+        
         self.model_goods = coverVC.model_goodChosed
         
         goNextOrderV()
@@ -276,6 +284,10 @@ class GoodsDetailVC: BaseTabHiden {
     @IBAction func shoppingCarAddProduct(_ sender: Any) {
         
         let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
+        
+        if arraykeys.count == 0 {
+            coverVC.model_goodChosed = model_goods
+        }
         
         let array = coverVC.dic_menuchoose.allValues as! [String]
         
@@ -316,6 +328,7 @@ class GoodsDetailVC: BaseTabHiden {
         
         modelshoppingCarAddProPost.userId = USERM.MemberID
         modelshoppingCarAddProPost.linkId = shopID
+        modelshoppingCarAddProPost.linkName = model_shop?.storeName
         modelshoppingCarAddProPost.type = "1"
         modelshoppingCarAddProPost.productId = model_goods?.pid
         modelshoppingCarAddProPost.name = coverVC.model_goodChosed?.name
@@ -435,11 +448,13 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
             
             closeCoverView()
             
-            if (coverVC.model_goodChosed != nil){
-                self.model_goods = coverVC.model_goodChosed
+            let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
+            
+            if arraykeys.count == 0 {
+                coverVC.model_goodChosed = model_goods
             }
             
-            let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
+            self.model_goods = coverVC.model_goodChosed
             
             let array = coverVC.dic_menuchoose.allValues as! [String]
             
@@ -481,6 +496,12 @@ extension GoodsDetailVC:ChooseCoverVDelegate{
     func buyNowAction(items:NSMutableDictionary,count:Int){
         
         PrintFM("myChoose \(items)")
+        
+        let arraykeys = coverVC.dic_menuchoose.allKeys as! [String]
+        
+        if arraykeys.count == 0 {
+            coverVC.model_goodChosed = model_goods
+        }
         
         self.model_goods = coverVC.model_goodChosed
         

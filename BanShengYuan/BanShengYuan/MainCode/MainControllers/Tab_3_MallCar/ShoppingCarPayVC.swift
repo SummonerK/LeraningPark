@@ -107,7 +107,7 @@ class ShoppingCarPayVC: UIViewController {
             //组合订单   基本信息
             modelOrderC.companyId = PARTNERID_SHOP
             modelOrderC.shopId = CarSectionContent.linkId
-            modelOrderC.shopName = ""
+            modelOrderC.shopName = CarSectionContent.linkName
             modelOrderC.userId = USERM.MemberID
             modelOrderC.longitude = "121.377436"
             modelOrderC.latitude = "31.267283"
