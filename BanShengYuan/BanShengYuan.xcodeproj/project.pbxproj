@@ -443,6 +443,7 @@
 			files = (
 				634AA3191F14DE9200697526 /* libz.tbd in Frameworks */,
 				634AA3171F14DE8400697526 /* libc++.tbd in Frameworks */,
+				634AA3091F14DE2200697526 /* SystemConfiguration.framework in Frameworks */,
 				634AA3151F14DE7200697526 /* CoreTelephony.framework in Frameworks */,
 				635381081EE8FDFD006C0375 /* QuartzCore.framework in Frameworks */,
 				634AA3131F14DE5C00697526 /* CoreText.framework in Frameworks */,
@@ -451,7 +452,6 @@
 				634AA30F1F14DE4200697526 /* Foundation.framework in Frameworks */,
 				634AA30D1F14DE3A00697526 /* CFNetwork.framework in Frameworks */,
 				634AA30B1F14DE2D00697526 /* CoreMotion.framework in Frameworks */,
-				634AA3091F14DE2200697526 /* SystemConfiguration.framework in Frameworks */,
 				634AA3071F14D05900697526 /* AlipaySDK.framework in Frameworks */,
 				88F9197225FFA7C0201230C0 /* Pods_BanShengYuan.framework in Frameworks */,
 			);

@@ -31,7 +31,6 @@ target 'BanShengYuan' do
   #wxpay
   pod 'WechatOpenSDK'
   
-  
 end
 
 post_install do |installer|
