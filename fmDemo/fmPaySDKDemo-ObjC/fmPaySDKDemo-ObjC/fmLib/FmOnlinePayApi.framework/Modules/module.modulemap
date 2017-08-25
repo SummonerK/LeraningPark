@@ -1,0 +1,10 @@
+framework module FmOnlinePayApi {
+  umbrella header "FmOnlinePayApi.h"
+
+  export *
+  module * { export * }
+}
+
+module FmOnlinePayApi.Swift {
+    header "FmOnlinePayApi-Swift.h"
+}
