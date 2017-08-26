@@ -23,6 +23,10 @@
     
     trueAmount = 0;
     
+    FmPrepayModel * model = [FmPrepayModel new];
+    
+    NSLog(@"model = %@",model);
+    
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)]];
 }
 
@@ -60,18 +64,12 @@
 - (IBAction)action_setAmount:(id)sender {
     [tf_amount resignFirstResponder];
 }
-    
-
-
-
 
 
 #pragma mark-支付操作演示
 #pragma mark 支付宝支付
 - (IBAction)action_aliPay:(id)sender {
-    [FMManager.shareManager createPayWithPrams:nil complated:^(NSString * back) {
-        printf("%s", back);
-    }];
+    
     
 }
 

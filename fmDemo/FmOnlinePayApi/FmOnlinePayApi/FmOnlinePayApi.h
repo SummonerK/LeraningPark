@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import <FmOnlinePayApi/NetHelper.h>
+#import <FmOnlinePayApi/FmPrepayModel.h>
+#import <FmOnlinePayApi/FmPayProductModel.h>
+#import <FmOnlinePayApi/FmWxPrepayRes.h>
+
 //! Project version number for FmOnlinePayApi.
 FOUNDATION_EXPORT double FmOnlinePayApiVersionNumber;
 
@@ -15,6 +20,4 @@ FOUNDATION_EXPORT double FmOnlinePayApiVersionNumber;
 FOUNDATION_EXPORT const unsigned char FmOnlinePayApiVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <FmOnlinePayApi/PublicHeader.h>
-
-#import <FmOnlinePayApi/Testing.h>
 

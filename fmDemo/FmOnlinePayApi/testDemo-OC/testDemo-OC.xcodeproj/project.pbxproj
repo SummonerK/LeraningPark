@@ -1,0 +1,349 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6310EDE51F51594000E357DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6310EDE41F51594000E357DC /* main.m */; };
+		6310EDE81F51594100E357DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6310EDE71F51594100E357DC /* AppDelegate.m */; };
+		6310EDEB1F51594100E357DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6310EDEA1F51594100E357DC /* ViewController.m */; };
+		6310EDEE1F51594100E357DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6310EDEC1F51594100E357DC /* Main.storyboard */; };
+		6310EDF11F51594100E357DC /* testDemo_OC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6310EDEF1F51594100E357DC /* testDemo_OC.xcdatamodeld */; };
+		6310EDF31F51594100E357DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6310EDF21F51594100E357DC /* Assets.xcassets */; };
+		6310EDF61F51594100E357DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6310EDF41F51594100E357DC /* LaunchScreen.storyboard */; };
+		6310EDFF1F51594E00E357DC /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310EDFE1F51594E00E357DC /* FmOnlinePayApi.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6310EDE01F51594000E357DC /* testDemo-OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "testDemo-OC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6310EDE41F51594000E357DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6310EDE61F51594000E357DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6310EDE71F51594100E357DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6310EDE91F51594100E357DC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6310EDEA1F51594100E357DC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6310EDED1F51594100E357DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6310EDF01F51594100E357DC /* testDemo_OC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = testDemo_OC.xcdatamodel; sourceTree = "<group>"; };
+		6310EDF21F51594100E357DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6310EDF51F51594100E357DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6310EDF71F51594100E357DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6310EDFE1F51594E00E357DC /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FmOnlinePayApi.framework; path = "../../../../Library/Developer/Xcode/DerivedData/FMsdk-aespgiinuegxvpbgititqvucgfae/Build/Products/Debug-iphonesimulator/FmOnlinePayApi.framework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6310EDDD1F51594000E357DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6310EDFF1F51594E00E357DC /* FmOnlinePayApi.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6310EDD71F51594000E357DC = {
+			isa = PBXGroup;
+			children = (
+				6310EDE21F51594000E357DC /* testDemo-OC */,
+				6310EDE11F51594000E357DC /* Products */,
+				6310EDFD1F51594E00E357DC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6310EDE11F51594000E357DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6310EDE01F51594000E357DC /* testDemo-OC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6310EDE21F51594000E357DC /* testDemo-OC */ = {
+			isa = PBXGroup;
+			children = (
+				6310EDE61F51594000E357DC /* AppDelegate.h */,
+				6310EDE71F51594100E357DC /* AppDelegate.m */,
+				6310EDE91F51594100E357DC /* ViewController.h */,
+				6310EDEA1F51594100E357DC /* ViewController.m */,
+				6310EDEC1F51594100E357DC /* Main.storyboard */,
+				6310EDF21F51594100E357DC /* Assets.xcassets */,
+				6310EDF41F51594100E357DC /* LaunchScreen.storyboard */,
+				6310EDF71F51594100E357DC /* Info.plist */,
+				6310EDEF1F51594100E357DC /* testDemo_OC.xcdatamodeld */,
+				6310EDE31F51594000E357DC /* Supporting Files */,
+			);
+			path = "testDemo-OC";
+			sourceTree = "<group>";
+		};
+		6310EDE31F51594000E357DC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6310EDE41F51594000E357DC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6310EDFD1F51594E00E357DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6310EDFE1F51594E00E357DC /* FmOnlinePayApi.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6310EDDF1F51594000E357DC /* testDemo-OC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6310EDFA1F51594100E357DC /* Build configuration list for PBXNativeTarget "testDemo-OC" */;
+			buildPhases = (
+				6310EDDC1F51594000E357DC /* Sources */,
+				6310EDDD1F51594000E357DC /* Frameworks */,
+				6310EDDE1F51594000E357DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "testDemo-OC";
+			productName = "testDemo-OC";
+			productReference = 6310EDE01F51594000E357DC /* testDemo-OC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6310EDD81F51594000E357DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = fmPay;
+				TargetAttributes = {
+					6310EDDF1F51594000E357DC = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 6310EDDB1F51594000E357DC /* Build configuration list for PBXProject "testDemo-OC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6310EDD71F51594000E357DC;
+			productRefGroup = 6310EDE11F51594000E357DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6310EDDF1F51594000E357DC /* testDemo-OC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6310EDDE1F51594000E357DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6310EDF61F51594100E357DC /* LaunchScreen.storyboard in Resources */,
+				6310EDF31F51594100E357DC /* Assets.xcassets in Resources */,
+				6310EDEE1F51594100E357DC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6310EDDC1F51594000E357DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6310EDEB1F51594100E357DC /* ViewController.m in Sources */,
+				6310EDE81F51594100E357DC /* AppDelegate.m in Sources */,
+				6310EDF11F51594100E357DC /* testDemo_OC.xcdatamodeld in Sources */,
+				6310EDE51F51594000E357DC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6310EDEC1F51594100E357DC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6310EDED1F51594100E357DC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6310EDF41F51594100E357DC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6310EDF51F51594100E357DC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6310EDF81F51594100E357DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6310EDF91F51594100E357DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6310EDFB1F51594100E357DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "testDemo-OC/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "FreeMud.CN.testDemo-OC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		6310EDFC1F51594100E357DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "testDemo-OC/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "FreeMud.CN.testDemo-OC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6310EDDB1F51594000E357DC /* Build configuration list for PBXProject "testDemo-OC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6310EDF81F51594100E357DC /* Debug */,
+				6310EDF91F51594100E357DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6310EDFA1F51594100E357DC /* Build configuration list for PBXNativeTarget "testDemo-OC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6310EDFB1F51594100E357DC /* Debug */,
+				6310EDFC1F51594100E357DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6310EDEF1F51594100E357DC /* testDemo_OC.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6310EDF01F51594100E357DC /* testDemo_OC.xcdatamodel */,
+			);
+			currentVersion = 6310EDF01F51594100E357DC /* testDemo_OC.xcdatamodel */;
+			path = testDemo_OC.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6310EDD81F51594000E357DC /* Project object */;
+}

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		196125795A68CDDCFE902720 /* Pods_fmPaySDKDemo_ObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886E757200035636BC6F6246 /* Pods_fmPaySDKDemo_ObjC.framework */; };
+		6310EE061F5169A000E357DC /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310EE051F5169A000E357DC /* FmOnlinePayApi.framework */; };
+		6310EE071F5169B000E357DC /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310EE051F5169A000E357DC /* FmOnlinePayApi.framework */; };
+		6310EE081F5169B000E357DC /* FmOnlinePayApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6310EE051F5169A000E357DC /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		636803361F5018BF00170A5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 636803351F5018BF00170A5F /* main.m */; };
 		636803391F5018BF00170A5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 636803381F5018BF00170A5F /* AppDelegate.m */; };
 		6368033C1F5018BF00170A5F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6368033B1F5018BF00170A5F /* ViewController.m */; };
@@ -15,10 +18,6 @@
 		636803421F5018BF00170A5F /* fmPaySDKDemo_ObjC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 636803401F5018BF00170A5F /* fmPaySDKDemo_ObjC.xcdatamodeld */; };
 		636803441F5018BF00170A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636803431F5018BF00170A5F /* Assets.xcassets */; };
 		636803471F5018BF00170A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636803451F5018BF00170A5F /* LaunchScreen.storyboard */; };
-		6368035A1F50267200170A5F /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 636803511F50267200170A5F /* AlipaySDK.bundle */; };
-		6368035B1F50267200170A5F /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803521F50267200170A5F /* AlipaySDK.framework */; };
-		6368035C1F50267200170A5F /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803541F50267200170A5F /* libWeChatSDK.a */; };
-		6368035D1F50267200170A5F /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 636803551F50267200170A5F /* README.txt */; };
 		6368037F1F50338F00170A5F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6368037E1F50338F00170A5F /* CoreMotion.framework */; };
 		636803811F50339700170A5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803801F50339700170A5F /* CFNetwork.framework */; };
 		636803831F5033A000170A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803821F5033A000170A5F /* Foundation.framework */; };
@@ -30,8 +29,6 @@
 		6368038F1F5033D000170A5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6368038E1F5033D000170A5F /* SystemConfiguration.framework */; };
 		636803911F5033D800170A5F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803901F5033D800170A5F /* libz.tbd */; };
 		636803931F5033E200170A5F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803921F5033E200170A5F /* libc++.tbd */; };
-		636803941F50340700170A5F /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803591F50267200170A5F /* FmOnlinePayApi.framework */; };
-		636803951F50340700170A5F /* FmOnlinePayApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 636803591F50267200170A5F /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,7 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				636803951F50340700170A5F /* FmOnlinePayApi.framework in Embed Frameworks */,
+				6310EE081F5169B000E357DC /* FmOnlinePayApi.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		5654CCE252B7175759F51081 /* Pods-fmPaySDKDemo-ObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fmPaySDKDemo-ObjC.release.xcconfig"; path = "Pods/Target Support Files/Pods-fmPaySDKDemo-ObjC/Pods-fmPaySDKDemo-ObjC.release.xcconfig"; sourceTree = "<group>"; };
+		6310EE051F5169A000E357DC /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FmOnlinePayApi.framework; sourceTree = "<group>"; };
 		636803311F5018BF00170A5F /* fmPaySDKDemo-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fmPaySDKDemo-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636803351F5018BF00170A5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		636803371F5018BF00170A5F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,14 +59,6 @@
 		636803431F5018BF00170A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		636803461F5018BF00170A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		636803481F5018BF00170A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		636803511F50267200170A5F /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
-		636803521F50267200170A5F /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
-		636803541F50267200170A5F /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		636803551F50267200170A5F /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		636803561F50267200170A5F /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		636803571F50267200170A5F /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		636803581F50267200170A5F /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		636803591F50267200170A5F /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FmOnlinePayApi.framework; sourceTree = "<group>"; };
 		6368037E1F50338F00170A5F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		636803801F50339700170A5F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		636803821F5033A000170A5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -89,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6310EE071F5169B000E357DC /* FmOnlinePayApi.framework in Frameworks */,
 				636803931F5033E200170A5F /* libc++.tbd in Frameworks */,
 				636803911F5033D800170A5F /* libz.tbd in Frameworks */,
 				6368038F1F5033D000170A5F /* SystemConfiguration.framework in Frameworks */,
@@ -101,9 +92,7 @@
 				636803811F50339700170A5F /* CFNetwork.framework in Frameworks */,
 				6368037F1F50338F00170A5F /* CoreMotion.framework in Frameworks */,
 				196125795A68CDDCFE902720 /* Pods_fmPaySDKDemo_ObjC.framework in Frameworks */,
-				6368035B1F50267200170A5F /* AlipaySDK.framework in Frameworks */,
-				6368035C1F50267200170A5F /* libWeChatSDK.a in Frameworks */,
-				636803941F50340700170A5F /* FmOnlinePayApi.framework in Frameworks */,
+				6310EE061F5169A000E357DC /* FmOnlinePayApi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,40 +146,9 @@
 		6368034E1F50267200170A5F /* fmLib */ = {
 			isa = PBXGroup;
 			children = (
-				6368034F1F50267200170A5F /* ApiSource */,
-				636803591F50267200170A5F /* FmOnlinePayApi.framework */,
+				6310EE051F5169A000E357DC /* FmOnlinePayApi.framework */,
 			);
 			path = fmLib;
-			sourceTree = "<group>";
-		};
-		6368034F1F50267200170A5F /* ApiSource */ = {
-			isa = PBXGroup;
-			children = (
-				636803501F50267200170A5F /* aliPay */,
-				636803531F50267200170A5F /* OpenSDK1.8.0 */,
-			);
-			path = ApiSource;
-			sourceTree = "<group>";
-		};
-		636803501F50267200170A5F /* aliPay */ = {
-			isa = PBXGroup;
-			children = (
-				636803511F50267200170A5F /* AlipaySDK.bundle */,
-				636803521F50267200170A5F /* AlipaySDK.framework */,
-			);
-			path = aliPay;
-			sourceTree = "<group>";
-		};
-		636803531F50267200170A5F /* OpenSDK1.8.0 */ = {
-			isa = PBXGroup;
-			children = (
-				636803541F50267200170A5F /* libWeChatSDK.a */,
-				636803551F50267200170A5F /* README.txt */,
-				636803561F50267200170A5F /* WechatAuthSDK.h */,
-				636803571F50267200170A5F /* WXApi.h */,
-				636803581F50267200170A5F /* WXApiObject.h */,
-			);
-			path = OpenSDK1.8.0;
 			sourceTree = "<group>";
 		};
 		7A15E4A27D14FDE3BB38214D /* Pods */ = {
@@ -285,9 +243,7 @@
 			files = (
 				636803471F5018BF00170A5F /* LaunchScreen.storyboard in Resources */,
 				636803441F5018BF00170A5F /* Assets.xcassets in Resources */,
-				6368035A1F50267200170A5F /* AlipaySDK.bundle in Resources */,
 				6368033F1F5018BF00170A5F /* Main.storyboard in Resources */,
-				6368035D1F50267200170A5F /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

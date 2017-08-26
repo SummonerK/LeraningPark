@@ -4,7 +4,3 @@ framework module FmOnlinePayApi {
   export *
   module * { export * }
 }
-
-module FmOnlinePayApi.Swift {
-    header "FmOnlinePayApi-Swift.h"
-}
