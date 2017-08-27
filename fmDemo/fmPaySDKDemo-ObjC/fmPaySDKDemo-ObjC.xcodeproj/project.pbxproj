@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		196125795A68CDDCFE902720 /* Pods_fmPaySDKDemo_ObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886E757200035636BC6F6246 /* Pods_fmPaySDKDemo_ObjC.framework */; };
-		6310EE061F5169A000E357DC /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310EE051F5169A000E357DC /* FmOnlinePayApi.framework */; };
-		6310EE071F5169B000E357DC /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310EE051F5169A000E357DC /* FmOnlinePayApi.framework */; };
-		6310EE081F5169B000E357DC /* FmOnlinePayApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6310EE051F5169A000E357DC /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6353D2411F52C5D500563806 /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6353D23F1F52C5BE00563806 /* FmOnlinePayApi.framework */; };
+		6353D2421F52C5D500563806 /* FmOnlinePayApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6353D23F1F52C5BE00563806 /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		636803361F5018BF00170A5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 636803351F5018BF00170A5F /* main.m */; };
 		636803391F5018BF00170A5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 636803381F5018BF00170A5F /* AppDelegate.m */; };
 		6368033C1F5018BF00170A5F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6368033B1F5018BF00170A5F /* ViewController.m */; };
@@ -18,17 +17,6 @@
 		636803421F5018BF00170A5F /* fmPaySDKDemo_ObjC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 636803401F5018BF00170A5F /* fmPaySDKDemo_ObjC.xcdatamodeld */; };
 		636803441F5018BF00170A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636803431F5018BF00170A5F /* Assets.xcassets */; };
 		636803471F5018BF00170A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636803451F5018BF00170A5F /* LaunchScreen.storyboard */; };
-		6368037F1F50338F00170A5F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6368037E1F50338F00170A5F /* CoreMotion.framework */; };
-		636803811F50339700170A5F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803801F50339700170A5F /* CFNetwork.framework */; };
-		636803831F5033A000170A5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803821F5033A000170A5F /* Foundation.framework */; };
-		636803851F5033A600170A5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803841F5033A600170A5F /* UIKit.framework */; };
-		636803871F5033AD00170A5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803861F5033AD00170A5F /* CoreGraphics.framework */; };
-		636803891F5033B600170A5F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803881F5033B600170A5F /* CoreText.framework */; };
-		6368038B1F5033BF00170A5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6368038A1F5033BF00170A5F /* QuartzCore.framework */; };
-		6368038D1F5033C800170A5F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6368038C1F5033C800170A5F /* CoreTelephony.framework */; };
-		6368038F1F5033D000170A5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6368038E1F5033D000170A5F /* SystemConfiguration.framework */; };
-		636803911F5033D800170A5F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803901F5033D800170A5F /* libz.tbd */; };
-		636803931F5033E200170A5F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803921F5033E200170A5F /* libc++.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,7 +26,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6310EE081F5169B000E357DC /* FmOnlinePayApi.framework in Embed Frameworks */,
+				6353D2421F52C5D500563806 /* FmOnlinePayApi.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		5654CCE252B7175759F51081 /* Pods-fmPaySDKDemo-ObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fmPaySDKDemo-ObjC.release.xcconfig"; path = "Pods/Target Support Files/Pods-fmPaySDKDemo-ObjC/Pods-fmPaySDKDemo-ObjC.release.xcconfig"; sourceTree = "<group>"; };
-		6310EE051F5169A000E357DC /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FmOnlinePayApi.framework; sourceTree = "<group>"; };
+		6353D23F1F52C5BE00563806 /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FmOnlinePayApi.framework; sourceTree = "<group>"; };
 		636803311F5018BF00170A5F /* fmPaySDKDemo-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fmPaySDKDemo-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636803351F5018BF00170A5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		636803371F5018BF00170A5F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -79,20 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6310EE071F5169B000E357DC /* FmOnlinePayApi.framework in Frameworks */,
-				636803931F5033E200170A5F /* libc++.tbd in Frameworks */,
-				636803911F5033D800170A5F /* libz.tbd in Frameworks */,
-				6368038F1F5033D000170A5F /* SystemConfiguration.framework in Frameworks */,
-				6368038D1F5033C800170A5F /* CoreTelephony.framework in Frameworks */,
-				6368038B1F5033BF00170A5F /* QuartzCore.framework in Frameworks */,
-				636803891F5033B600170A5F /* CoreText.framework in Frameworks */,
-				636803871F5033AD00170A5F /* CoreGraphics.framework in Frameworks */,
-				636803851F5033A600170A5F /* UIKit.framework in Frameworks */,
-				636803831F5033A000170A5F /* Foundation.framework in Frameworks */,
-				636803811F50339700170A5F /* CFNetwork.framework in Frameworks */,
-				6368037F1F50338F00170A5F /* CoreMotion.framework in Frameworks */,
 				196125795A68CDDCFE902720 /* Pods_fmPaySDKDemo_ObjC.framework in Frameworks */,
-				6310EE061F5169A000E357DC /* FmOnlinePayApi.framework in Frameworks */,
+				6353D2411F52C5D500563806 /* FmOnlinePayApi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +96,7 @@
 		636803331F5018BF00170A5F /* fmPaySDKDemo-ObjC */ = {
 			isa = PBXGroup;
 			children = (
-				6368034E1F50267200170A5F /* fmLib */,
+				6353D23F1F52C5BE00563806 /* FmOnlinePayApi.framework */,
 				636803371F5018BF00170A5F /* AppDelegate.h */,
 				636803381F5018BF00170A5F /* AppDelegate.m */,
 				6368033A1F5018BF00170A5F /* ViewController.h */,
@@ -141,14 +117,6 @@
 				636803351F5018BF00170A5F /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6368034E1F50267200170A5F /* fmLib */ = {
-			isa = PBXGroup;
-			children = (
-				6310EE051F5169A000E357DC /* FmOnlinePayApi.framework */,
-			);
-			path = fmLib;
 			sourceTree = "<group>";
 		};
 		7A15E4A27D14FDE3BB38214D /* Pods */ = {
@@ -214,6 +182,7 @@
 				TargetAttributes = {
 					636803301F5018BF00170A5F = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = BLJ7K274RB;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -426,11 +395,15 @@
 			baseConfigurationReference = BA4AF6A1384977695ECA3BC3 /* Pods-fmPaySDKDemo-ObjC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qiyuan wang (36536N9J6G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qiyuan wang (36536N9J6G)";
+				DEVELOPMENT_TEAM = BLJ7K274RB;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fmPaySDKDemo-ObjC/fmLib/ApiSource/aliPay",
 					"$(PROJECT_DIR)/fmPaySDKDemo-ObjC/fmLib",
+					"$(PROJECT_DIR)/fmPaySDKDemo-ObjC",
 				);
 				INFOPLIST_FILE = "fmPaySDKDemo-ObjC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -438,9 +411,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/fmPaySDKDemo-ObjC/fmLib/ApiSource/OpenSDK1.8.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "FreeMud.CN.fmPaySDKDemo-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = changjingdev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "4337965d-e151-4941-8005-e32bddef5cd2";
+				PROVISIONING_PROFILE_SPECIFIER = changjingdev;
 			};
 			name = Debug;
 		};
@@ -449,11 +423,15 @@
 			baseConfigurationReference = 5654CCE252B7175759F51081 /* Pods-fmPaySDKDemo-ObjC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: qiyuan wang (36536N9J6G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: qiyuan wang (36536N9J6G)";
+				DEVELOPMENT_TEAM = BLJ7K274RB;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fmPaySDKDemo-ObjC/fmLib/ApiSource/aliPay",
 					"$(PROJECT_DIR)/fmPaySDKDemo-ObjC/fmLib",
+					"$(PROJECT_DIR)/fmPaySDKDemo-ObjC",
 				);
 				INFOPLIST_FILE = "fmPaySDKDemo-ObjC/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -461,9 +439,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/fmPaySDKDemo-ObjC/fmLib/ApiSource/OpenSDK1.8.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "FreeMud.CN.fmPaySDKDemo-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = changjingdev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "4337965d-e151-4941-8005-e32bddef5cd2";
+				PROVISIONING_PROFILE_SPECIFIER = changjingdev;
 			};
 			name = Release;
 		};

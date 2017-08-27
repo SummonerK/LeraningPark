@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <FmOnlinePayApi/FmOnlinePayApi.h>
 
 @interface AppDelegate ()
 
@@ -17,7 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [FMNet initApi:@"wxbb3b00c8bc6afb6f"];
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    return [FMNet handlePayOpen:url];
 }
 
 

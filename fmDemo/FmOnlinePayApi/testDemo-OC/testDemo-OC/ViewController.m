@@ -23,13 +23,6 @@
     model = [FmPrepayModel new];
 
     
-    
-//    [FMNet getGetVerifyCodeWithParameter:@{@"key":@"value"} successBlock:^(id responseBody) {
-//        ;
-//    } failureBlock:^(NSString *error) {
-//        ;
-//    }];
-    
 }
 - (IBAction)Pay:(id)sender {
     

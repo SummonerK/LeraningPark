@@ -12,6 +12,8 @@
 @interface ViewController ()<UITextFieldDelegate>{
     __weak IBOutlet UITextField *tf_amount;
     int trueAmount;
+    
+    FmPrepayModel * model;
 }
 
 @end
@@ -23,9 +25,8 @@
     
     trueAmount = 0;
     
-    FmPrepayModel * model = [FmPrepayModel new];
+    model = [FmPrepayModel new];
     
-    NSLog(@"model = %@",model);
     
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)]];
 }
@@ -70,18 +71,43 @@
 #pragma mark 支付宝支付
 - (IBAction)action_aliPay:(id)sender {
     
+    [self setModelWithType:1];
     
 }
-
 
 #pragma mark 微信支付
 - (IBAction)action_wxPay:(id)sender {
-    
+    [self setModelWithType:2];
 }
 
 
-
-
+- (void)setModelWithType:(int)type{
+    
+    model.partnerId = 1447;
+    model.transAmount = 1;
+    model.paymentMethodCode = type == 1 ? @"20002" : @"20001";
+    model.partnerOrderId = [NSString stringWithFormat:@"%.0f",[NSDate date].timeIntervalSince1970];
+    NSMutableArray * products = [NSMutableArray new];
+    
+    for (int i = 1; i<2; i++) {
+        FmPayProductModel * product = [FmPayProductModel new];
+        product.pid = [NSString stringWithFormat:@"%d",i];
+        product.price = 1;
+        product.name = [NSString stringWithFormat:@"商品%d",i];
+        product.consumeNum = 1;
+        [products addObject:product];
+    }
+    model.products = products;
+    
+    
+    [FMNet fmCreatPay:model AndScheme:@"fmsdk" successBlock:^(id responseBody) {
+        NSLog(@"result = %@",responseBody);
+    } failureBlock:^(NSString *error) {
+        NSLog(@"error = %@",error);
+    }];
+    
+    
+}
 
 
 
