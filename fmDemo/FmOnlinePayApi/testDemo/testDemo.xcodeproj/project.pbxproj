@@ -14,10 +14,6 @@
 		6310ED431F51552C00E357DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6310ED421F51552C00E357DC /* Assets.xcassets */; };
 		6310ED461F51552C00E357DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6310ED441F51552C00E357DC /* LaunchScreen.storyboard */; };
 		6310ED4F1F51553F00E357DC /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310ED4E1F51553F00E357DC /* FmOnlinePayApi.framework */; };
-		6310ED5B1F51556A00E357DC /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6310ED531F51556A00E357DC /* AlipaySDK.bundle */; };
-		6310ED5C1F51556A00E357DC /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310ED541F51556A00E357DC /* AlipaySDK.framework */; };
-		6310ED5D1F51556A00E357DC /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310ED561F51556A00E357DC /* libWeChatSDK.a */; };
-		6310ED5E1F51556A00E357DC /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6310ED571F51556A00E357DC /* README.txt */; };
 		6310ED601F5155A100E357DC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310ED5F1F5155A100E357DC /* CoreMotion.framework */; };
 		6310ED621F5155A700E357DC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310ED611F5155A700E357DC /* CFNetwork.framework */; };
 		6310ED641F5155AD00E357DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310ED631F5155AD00E357DC /* Foundation.framework */; };
@@ -57,13 +53,6 @@
 		6310ED451F51552C00E357DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6310ED471F51552C00E357DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6310ED4E1F51553F00E357DC /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FmOnlinePayApi.framework; path = "../build/Debug-iphoneos/FmOnlinePayApi.framework"; sourceTree = "<group>"; };
-		6310ED531F51556A00E357DC /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
-		6310ED541F51556A00E357DC /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
-		6310ED561F51556A00E357DC /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		6310ED571F51556A00E357DC /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		6310ED581F51556A00E357DC /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		6310ED591F51556A00E357DC /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		6310ED5A1F51556A00E357DC /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		6310ED5F1F5155A100E357DC /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		6310ED611F5155A700E357DC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6310ED631F5155AD00E357DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -96,8 +85,6 @@
 				6310ED621F5155A700E357DC /* CFNetwork.framework in Frameworks */,
 				6310ED601F5155A100E357DC /* CoreMotion.framework in Frameworks */,
 				6310ED4F1F51553F00E357DC /* FmOnlinePayApi.framework in Frameworks */,
-				6310ED5C1F51556A00E357DC /* AlipaySDK.framework in Frameworks */,
-				6310ED5D1F51556A00E357DC /* libWeChatSDK.a in Frameworks */,
 				6310EE021F51674500E357DC /* FmOnlinePayApi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				6310ED761F51564400E357DC /* Bridging-Header.h */,
-				6310ED501F51556A00E357DC /* fmLib */,
 				6310ED381F51552C00E357DC /* AppDelegate.swift */,
 				6310ED3A1F51552C00E357DC /* ViewController.swift */,
 				6310ED3C1F51552C00E357DC /* Main.storyboard */,
@@ -156,44 +142,6 @@
 				6310ED4E1F51553F00E357DC /* FmOnlinePayApi.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6310ED501F51556A00E357DC /* fmLib */ = {
-			isa = PBXGroup;
-			children = (
-				6310ED511F51556A00E357DC /* ApiSource */,
-			);
-			path = fmLib;
-			sourceTree = "<group>";
-		};
-		6310ED511F51556A00E357DC /* ApiSource */ = {
-			isa = PBXGroup;
-			children = (
-				6310ED521F51556A00E357DC /* aliPay */,
-				6310ED551F51556A00E357DC /* OpenSDK1.8.0 */,
-			);
-			path = ApiSource;
-			sourceTree = "<group>";
-		};
-		6310ED521F51556A00E357DC /* aliPay */ = {
-			isa = PBXGroup;
-			children = (
-				6310ED531F51556A00E357DC /* AlipaySDK.bundle */,
-				6310ED541F51556A00E357DC /* AlipaySDK.framework */,
-			);
-			path = aliPay;
-			sourceTree = "<group>";
-		};
-		6310ED551F51556A00E357DC /* OpenSDK1.8.0 */ = {
-			isa = PBXGroup;
-			children = (
-				6310ED561F51556A00E357DC /* libWeChatSDK.a */,
-				6310ED571F51556A00E357DC /* README.txt */,
-				6310ED581F51556A00E357DC /* WechatAuthSDK.h */,
-				6310ED591F51556A00E357DC /* WXApi.h */,
-				6310ED5A1F51556A00E357DC /* WXApiObject.h */,
-			);
-			path = OpenSDK1.8.0;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +177,7 @@
 				TargetAttributes = {
 					6310ED341F51552C00E357DC = {
 						CreatedOnToolsVersion = 8.3.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -258,9 +206,7 @@
 			files = (
 				6310ED461F51552C00E357DC /* LaunchScreen.storyboard in Resources */,
 				6310ED431F51552C00E357DC /* Assets.xcassets in Resources */,
-				6310ED5B1F51556A00E357DC /* AlipaySDK.bundle in Resources */,
 				6310ED3E1F51552C00E357DC /* Main.storyboard in Resources */,
-				6310ED5E1F51556A00E357DC /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,11 +342,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/testDemo/fmLib/ApiSource/aliPay",
 				);
 				INFOPLIST_FILE = testDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -408,6 +356,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = FreeMud.CN.testDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/testDemo/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -417,11 +366,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/testDemo/fmLib/ApiSource/aliPay",
 				);
 				INFOPLIST_FILE = testDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -429,6 +380,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = FreeMud.CN.testDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/testDemo/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

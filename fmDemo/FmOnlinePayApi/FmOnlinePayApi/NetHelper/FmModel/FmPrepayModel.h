@@ -16,14 +16,14 @@
 
 @property(nonatomic,assign)int ver;
 @property(nonatomic,assign)int partnerId;
-@property(nonatomic,copy)NSString<Optional>*storeId;
-@property(nonatomic,copy)NSString<Optional>*stationId;
-@property(nonatomic,copy)NSString<Optional>*partnerOrderId;
-@property(nonatomic,copy)NSString<Optional>*paymentMethodCode;
+@property(nonatomic,copy)NSString*storeId;
+@property(nonatomic,copy)NSString*stationId;
+@property(nonatomic,copy)NSString*partnerOrderId;
+@property(nonatomic,copy)NSString*paymentMethodCode;
 //@property(nonatomic,copy)NSString<Optional>*transDate;
 @property(nonatomic,assign)int transAmount;
 @property(nonatomic,assign)int undiscountAmount;
-@property(nonatomic,strong)NSArray<Optional,FmPayProductModel>*products;
+@property(nonatomic,strong)NSArray<FmPayProductModel>*products;
 
 
 @end

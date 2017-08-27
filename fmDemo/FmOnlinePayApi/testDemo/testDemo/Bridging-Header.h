@@ -9,9 +9,9 @@
 //#ifndef Bridging_Header_h
 //#define Bridging_Header_h
 
-#import <UIKit/UIKit.h>
-#import <AlipaySDK/AlipaySDK.h>
+//#import <UIKit/UIKit.h>
+//#import <AlipaySDK/AlipaySDK.h>
 #import <FmOnlinePayApi/FmOnlinePayApi.h>
-#import "WXApi.h"
+//#import "WXApi.h"
 
 //#endif /* Bridging_Header_h */

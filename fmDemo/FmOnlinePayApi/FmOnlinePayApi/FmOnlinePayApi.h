@@ -12,6 +12,7 @@
 #import <FmOnlinePayApi/FmPrepayModel.h>
 #import <FmOnlinePayApi/FmPayProductModel.h>
 #import <FmOnlinePayApi/FmWxPrepayRes.h>
+#import <FmOnlinePayApi/FmWxPrepayDataRes.h>
 
 //! Project version number for FmOnlinePayApi.
 FOUNDATION_EXPORT double FmOnlinePayApiVersionNumber;
