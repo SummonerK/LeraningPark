@@ -25,8 +25,8 @@
 		6310ED701F5155DB00E357DC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310ED6F1F5155DB00E357DC /* SystemConfiguration.framework */; };
 		6310ED721F5155E500E357DC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310ED711F5155E500E357DC /* libz.tbd */; };
 		6310ED741F5155F300E357DC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310ED731F5155F300E357DC /* libc++.tbd */; };
-		6310EE021F51674500E357DC /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6310EE011F51674500E357DC /* FmOnlinePayApi.framework */; };
-		6310EE031F51674500E357DC /* FmOnlinePayApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6310EE011F51674500E357DC /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		637889691F53FAA00042CEB6 /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637889681F53FAA00042CEB6 /* FmOnlinePayApi.framework */; };
+		6378896A1F53FAA00042CEB6 /* FmOnlinePayApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 637889681F53FAA00042CEB6 /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,7 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6310EE031F51674500E357DC /* FmOnlinePayApi.framework in Embed Frameworks */,
+				6378896A1F53FAA00042CEB6 /* FmOnlinePayApi.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,7 +65,7 @@
 		6310ED711F5155E500E357DC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6310ED731F5155F300E357DC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		6310ED761F51564400E357DC /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		6310EE011F51674500E357DC /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FmOnlinePayApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		637889681F53FAA00042CEB6 /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FmOnlinePayApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6310ED741F5155F300E357DC /* libc++.tbd in Frameworks */,
+				637889691F53FAA00042CEB6 /* FmOnlinePayApi.framework in Frameworks */,
 				6310ED721F5155E500E357DC /* libz.tbd in Frameworks */,
 				6310ED701F5155DB00E357DC /* SystemConfiguration.framework in Frameworks */,
 				6310ED6E1F5155D500E357DC /* CoreTelephony.framework in Frameworks */,
@@ -85,7 +86,6 @@
 				6310ED621F5155A700E357DC /* CFNetwork.framework in Frameworks */,
 				6310ED601F5155A100E357DC /* CoreMotion.framework in Frameworks */,
 				6310ED4F1F51553F00E357DC /* FmOnlinePayApi.framework in Frameworks */,
-				6310EE021F51674500E357DC /* FmOnlinePayApi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +95,7 @@
 		6310ED2C1F51552C00E357DC = {
 			isa = PBXGroup;
 			children = (
-				6310EE011F51674500E357DC /* FmOnlinePayApi.framework */,
+				637889681F53FAA00042CEB6 /* FmOnlinePayApi.framework */,
 				6310ED371F51552C00E357DC /* testDemo */,
 				6310ED361F51552C00E357DC /* Products */,
 				6310ED4D1F51553F00E357DC /* Frameworks */,

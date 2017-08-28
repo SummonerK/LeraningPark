@@ -17,5 +17,6 @@
 @property(nonatomic,copy)NSString<Optional>*noncestr;
 @property(nonatomic,copy)NSString<Optional>*timestamp;
 @property(nonatomic,copy)NSString<Optional>*biz_content;
+@property(nonatomic,copy)NSString<Optional>*tn;
 
 @end

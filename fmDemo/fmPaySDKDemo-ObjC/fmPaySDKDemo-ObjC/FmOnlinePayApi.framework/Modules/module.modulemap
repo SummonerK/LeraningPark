@@ -1,6 +1,0 @@
-framework module FmOnlinePayApi {
-  umbrella header "FmOnlinePayApi.h"
-
-  export *
-  module * { export * }
-}

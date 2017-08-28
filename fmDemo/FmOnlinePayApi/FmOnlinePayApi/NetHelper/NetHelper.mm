@@ -9,12 +9,21 @@
 #import "NetHelper.h"
 #import "FmWxPrepayRes.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "UPPaymentControl.h"
 
 static NSString * const HOSTPath   = @"http://115.159.117.231:9000/";
 static NSInteger const TIMEOUT  = 30;
 
-typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
+typedef void (^NetSuccess)(id responseBody);
+typedef void (^NetFail)(NSString *error);
 
+@interface NetHelper() <WXApiDelegate>{
+    SuccessBlock mSuccess;
+    FailureBlock mFail;
+    FmResultRes * ResultMdel;
+}
+
+@end
 
 @implementation NetHelper 
 
@@ -31,9 +40,8 @@ typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
     return _sharedInstance;
 }
 
-
 ///////////////////////////////////////////////////////////////////////
-- (void)getPath:(NSString *)path WithParameter:(NSDictionary *)parameter successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock
+- (void)getPath:(NSString *)path WithParameter:(NSDictionary *)parameter successBlock:(NetSuccess )successBlock failureBlock:(NetFail)failureBlock
 {
     [self GET:path parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@",responseObject);
@@ -52,7 +60,7 @@ typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
 /**
  *post
  */
-- (void)postPath:(NSString *)path WithParameter:(NSDictionary *)parameter successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock
+- (void)postPath:(NSString *)path WithParameter:(NSDictionary *)parameter successBlock:(NetSuccess )successBlock failureBlock:(NetFail)failureBlock
 {
     
     self.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -87,10 +95,27 @@ typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
             int aliStatus = [resultDic[@"resultStatus"] intValue];
             NSLog(@"返回app------调起支付结果\n----阿里---");
             if (aliStatus == 9000) {
-                NSLog(@"成功");
+                ResultMdel.resultCode = FMCODE_AL_PAY;
+                mSuccess(ResultMdel);
                 return;
             }else{
-                NSLog(@"失败");
+                ResultMdel.resultCode = FMCODE_AL_PAY_ERROR;
+                mFail(ResultMdel);
+            }
+        }];
+    }else if([[url host] isEqualToString:@"uppayresult"]){
+        [UPPaymentControl.defaultControl handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
+            
+            NSLog(@"返回app------调起支付结果\n----银联---");
+            if ([code isEqualToString:@"fail"]) {
+                ResultMdel.resultCode = FMCODE_UN_PAY_ERROR;
+                mFail(ResultMdel);
+            }else if ([code isEqualToString:@"cancel"]){
+                ResultMdel.resultCode = FMCODE_UN_PAY_CANCEL;
+                mFail(ResultMdel);
+            }else if ([code isEqualToString:@"success"]){
+                ResultMdel.resultCode = FMCODE_UN_PAY;
+                mSuccess(ResultMdel);
             }
         }];
     }
@@ -102,7 +127,7 @@ typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
 /**
  *.	getVerifyCode	【获取支付签名】
  */
-- (void)fmPayGetPaySignWithParameter:(NSDictionary *)parameter successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock{
+- (void)fmPayGetPaySignWithParameter:(NSDictionary *)parameter successBlock:(NetSuccess )successBlock failureBlock:(NetFail)failureBlock{
     
     [self postPath:@"account/pay/getSign" WithParameter:parameter successBlock:^(id responseBody) {
         successBlock(responseBody);
@@ -111,7 +136,13 @@ typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
     }];
 }
 
-- (void)fmCreatPay:(FmPrepayModel*)payModel AndScheme:(NSString*)shchme successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock{
+- (void)fmCreatPay:(FmPrepayModel*)payModel AndScheme:(NSString*)shchme AndViewController:(UIViewController*)ViewC successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock{
+
+    mSuccess = successBlock;
+    mFail = failureBlock;
+    ResultMdel = [FmResultRes new];
+    FmResponseData * responsedata = [FmResponseData new];
+    ResultMdel.responseData = responsedata;
     
     NSLog(@"%@",payModel.toJSONString);
     
@@ -120,31 +151,45 @@ typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
         FmWxPrepayRes * SentResult = [[FmWxPrepayRes alloc] initWithDictionary:responseBody error:nil];
         
         FmWxPrepayDataRes * wContent = [[FmWxPrepayDataRes alloc] initWithDictionary:responseBody[@"responseData"] error:nil];
+        responsedata.fmId = SentResult.fmId;
         
         SentResult.responseData = wContent;
         
         NSLog(@"SentResult = %@",SentResult);
         
+        
         if ([SentResult.paymentMethodCode  isEqual: @"20002"]) {
             //支付宝支付
             
-            [FMNet doAliPay:wContent.biz_content AndScheme:shchme successBlock:^(id responseBody) {
-                successBlock(responseBody);
-            } failureBlock:^(NSString *error) {
+            [FMNet doAliPay:wContent.biz_content AndScheme:shchme successBlock:^(FmResultRes *result) {
+                successBlock(result);
+            } failureBlock:^(FmResultRes *error) {
                 failureBlock(error);
             }];
             
         }else if([SentResult.paymentMethodCode  isEqual: @"20001"]) {
             //微信支付
-            [FMNet doWxPay:SentResult successBlock:^(id responseBody) {
-                successBlock(responseBody);
-            } failureBlock:^(NSString *error) {
+            [FMNet doWxPay:SentResult successBlock:^(FmResultRes *result) {
+                successBlock(result);
+            } failureBlock:^(FmResultRes *error) {
                 failureBlock(error);
             }];
+        }else if ([SentResult.paymentMethodCode  isEqual: @"20003"]){
+            
+            [FMNet doPayUnion:wContent.tn scheme:shchme withVC:ViewC successBlock:^(FmResultRes *result) {
+                successBlock(result);
+            } failureBlock:^(FmResultRes *error) {
+                failureBlock(error);
+            }];
+        }else{
+            ResultMdel.resultCode = FMCODE_DEFAULT;
+            failureBlock(ResultMdel);
         }
         
     } failureBlock:^(NSString *error) {
-        failureBlock(error);
+        ResultMdel.resultCode = FMCODE_NET_DEFAULT;
+        ResultMdel.resultMsg = error;
+        failureBlock(ResultMdel);
     }];
     
 }
@@ -154,9 +199,11 @@ typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
     [[AlipaySDK defaultService] payOrder:bizContent fromScheme:shchme callback:^(NSDictionary *resultDic) {
         int aliStatus = [resultDic[@"resultStatus"] intValue];
         if (aliStatus == 9000) {
-            successBlock(resultDic);
+            ResultMdel.resultCode = FMCODE_AL_PAY;
+            successBlock(ResultMdel);
         }else{
-            failureBlock(resultDic[@"memo"]);
+            ResultMdel.resultCode = FMCODE_AL_PAY_ERROR;
+            failureBlock(ResultMdel);
         }
     }];
 }
@@ -164,7 +211,9 @@ typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
 - (void)doWxPay:(FmWxPrepayRes*)wxPreRes successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock{
     
     if (![WXApi isWXAppInstalled]) {
-        failureBlock(@"未检测到微信");
+        ResultMdel.resultCode = FMCODE_WX_INSTALL;
+        failureBlock(ResultMdel);
+        return;
     }
     
     PayReq * payModel = [PayReq new];
@@ -179,11 +228,30 @@ typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
     BOOL isOpenWx = [WXApi sendReq:payModel];
     
     if (!isOpenWx) {
-        failureBlock(@"打开微信失败");
+        ResultMdel.resultCode = FMCODE_WX_OPEN_ERROR;
+        failureBlock(ResultMdel);
     }else{
-        successBlock(@{@"msg":@"打开微信，支付中"});
+        ResultMdel.resultCode = FMCODE_WX_OPEN;
+        successBlock(ResultMdel);
     }
     
+}
+
+- (void)doPayUnion:(NSString*)tn scheme:(NSString*)scheme withVC:(UIViewController*)viewvc successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock{
+    
+    if ([tn isEqualToString:@""]) {
+        ResultMdel.resultCode = FMCODE_UN_TNCODE;
+        failureBlock(ResultMdel);
+        return;
+    }
+    
+    if ([UPPaymentControl.defaultControl startPay:tn fromScheme:scheme mode:@"01" viewController:viewvc]){
+        ResultMdel.resultCode = FMCODE_UN_OPEN;
+        successBlock(ResultMdel);
+    }else{
+        ResultMdel.resultCode = FMCODE_UN_OPEN_ERROR;
+        failureBlock(ResultMdel);
+    }
 }
 
 - (void)onResp:(BaseResp *)resp{
@@ -193,10 +261,21 @@ typedef void (^FmPayCompletionBlock)(NSDictionary* FmPayCallBackRes);
         NSLog(@"返回app------调起支付结果\n----微信---");
         
         switch (response.errCode) {
-            case 0:
-                NSLog(@"成功");
+            case 0:{
+                ResultMdel.resultCode = FMCODE_WX_PAY;
+                mSuccess(ResultMdel);
+            }
                 break;
-                
+            case -1:{
+                ResultMdel.resultCode = FMCODE_WX_PAY_CANCEL;
+                mFail(ResultMdel);
+            }
+                break;
+            case -2:{
+                ResultMdel.resultCode = FMCODE_WX_PAY_ERROR;
+                mFail(ResultMdel);
+            }
+                break;
             default:
                 NSLog(@"失败");
                 break;

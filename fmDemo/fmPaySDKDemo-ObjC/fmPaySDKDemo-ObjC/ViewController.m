@@ -2,7 +2,7 @@
 //  ViewController.m
 //  fmPaySDKDemo-ObjC
 //
-//  Created by Luofei on 2017/8/25.
+//  Created by FMSDK on 2017/8/25.
 //  Copyright © 2017年 fmPay. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 
 @interface ViewController ()<UITextFieldDelegate>{
     __weak IBOutlet UITextField *tf_amount;
+    __weak IBOutlet UILabel *label_msg;
     int trueAmount;
     
     FmPrepayModel * model;
@@ -83,8 +84,13 @@
 
 - (void)setModelWithType:(int)type{
     
-    model.partnerId = 1447;
-    model.transAmount = 1;
+    if (trueAmount == 0) {
+        label_msg.text = @"请设置支付金额";
+        return;
+    }
+    
+    model.partnerId = 1713;
+    model.transAmount = trueAmount;
     model.paymentMethodCode = type == 1 ? @"20002" : @"20001";
     model.partnerOrderId = [NSString stringWithFormat:@"%.0f",[NSDate date].timeIntervalSince1970];
     NSMutableArray * products = [NSMutableArray new];
@@ -102,8 +108,10 @@
     
     [FMNet fmCreatPay:model AndScheme:@"fmsdk" successBlock:^(id responseBody) {
         NSLog(@"result = %@",responseBody);
+        label_msg.text = responseBody[@"msg"];
     } failureBlock:^(NSString *error) {
         NSLog(@"error = %@",error);
+        label_msg.text = error;
     }];
     
     

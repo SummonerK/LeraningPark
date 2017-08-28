@@ -95,6 +95,14 @@
 		636803D61F5039BE00170A5F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803D51F5039BE00170A5F /* SystemConfiguration.framework */; };
 		636803D81F5039C400170A5F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803D71F5039C400170A5F /* libz.tbd */; };
 		636803DA1F5039CD00170A5F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 636803D91F5039CD00170A5F /* libc++.tbd */; };
+		637889661F53F3E40042CEB6 /* libPaymentControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637889641F53F3E40042CEB6 /* libPaymentControl.a */; };
+		637889671F53F3E40042CEB6 /* UPPaymentControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 637889651F53F3E40042CEB6 /* UPPaymentControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6378896D1F53FCD40042CEB6 /* FmResultRes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6378896B1F53FCD40042CEB6 /* FmResultRes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6378896E1F53FCD40042CEB6 /* FmResultRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 6378896C1F53FCD40042CEB6 /* FmResultRes.m */; };
+		637889711F53FD620042CEB6 /* FmResponseData.h in Headers */ = {isa = PBXBuildFile; fileRef = 6378896F1F53FD620042CEB6 /* FmResponseData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		637889721F53FD620042CEB6 /* FmResponseData.m in Sources */ = {isa = PBXBuildFile; fileRef = 637889701F53FD620042CEB6 /* FmResponseData.m */; };
+		637889751F5403280042CEB6 /* FMCodeManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 637889731F5403280042CEB6 /* FMCodeManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		637889761F5403280042CEB6 /* FMCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 637889741F5403280042CEB6 /* FMCodeManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -188,6 +196,14 @@
 		636803D51F5039BE00170A5F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		636803D71F5039C400170A5F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		636803D91F5039CD00170A5F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		637889641F53F3E40042CEB6 /* libPaymentControl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPaymentControl.a; sourceTree = "<group>"; };
+		637889651F53F3E40042CEB6 /* UPPaymentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPaymentControl.h; sourceTree = "<group>"; };
+		6378896B1F53FCD40042CEB6 /* FmResultRes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FmResultRes.h; sourceTree = "<group>"; };
+		6378896C1F53FCD40042CEB6 /* FmResultRes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FmResultRes.m; sourceTree = "<group>"; };
+		6378896F1F53FD620042CEB6 /* FmResponseData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FmResponseData.h; sourceTree = "<group>"; };
+		637889701F53FD620042CEB6 /* FmResponseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FmResponseData.m; sourceTree = "<group>"; };
+		637889731F5403280042CEB6 /* FMCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMCodeManager.h; path = FmOnlinePayApi/NetHelper/FMCodeManager.h; sourceTree = SOURCE_ROOT; };
+		637889741F5403280042CEB6 /* FMCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMCodeManager.m; path = FmOnlinePayApi/NetHelper/FMCodeManager.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +222,7 @@
 				636803CC1F50399300170A5F /* UIKit.framework in Frameworks */,
 				636803CA1F50398C00170A5F /* Foundation.framework in Frameworks */,
 				636803C81F50398500170A5F /* CFNetwork.framework in Frameworks */,
+				637889661F53F3E40042CEB6 /* libPaymentControl.a in Frameworks */,
 				636803C61F50398000170A5F /* CoreMotion.framework in Frameworks */,
 				636803BA1F50385700170A5F /* libWeChatSDK.a in Frameworks */,
 				636803B91F50385700170A5F /* AlipaySDK.framework in Frameworks */,
@@ -223,6 +240,8 @@
 				6310ECC01F514C9800E357DC /* JSONModel */,
 				6310ED171F514CBF00E357DC /* NetHelper.h */,
 				6310ED181F514CBF00E357DC /* NetHelper.mm */,
+				637889731F5403280042CEB6 /* FMCodeManager.h */,
+				637889741F5403280042CEB6 /* FMCodeManager.m */,
 			);
 			path = NetHelper;
 			sourceTree = "<group>";
@@ -366,6 +385,10 @@
 				6310ED251F5152A800E357DC /* FmWxPrepayRes.m */,
 				6353D20F1F52AF0B00563806 /* FmWxPrepayDataRes.h */,
 				6353D2101F52AF0B00563806 /* FmWxPrepayDataRes.m */,
+				6378896B1F53FCD40042CEB6 /* FmResultRes.h */,
+				6378896C1F53FCD40042CEB6 /* FmResultRes.m */,
+				6378896F1F53FD620042CEB6 /* FmResponseData.h */,
+				637889701F53FD620042CEB6 /* FmResponseData.m */,
 			);
 			path = FmModel;
 			sourceTree = "<group>";
@@ -409,6 +432,7 @@
 		636803AD1F50385700170A5F /* ApiSource */ = {
 			isa = PBXGroup;
 			children = (
+				637889631F53F3E40042CEB6 /* Uppay */,
 				636803AE1F50385700170A5F /* aliPay */,
 				636803B11F50385700170A5F /* OpenSDK1.8.0 */,
 			);
@@ -455,6 +479,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		637889631F53F3E40042CEB6 /* Uppay */ = {
+			isa = PBXGroup;
+			children = (
+				637889641F53F3E40042CEB6 /* libPaymentControl.a */,
+				637889651F53F3E40042CEB6 /* UPPaymentControl.h */,
+			);
+			path = Uppay;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -496,6 +529,10 @@
 				6310ED0F1F514C9800E357DC /* JSONModel+networking.h in Headers */,
 				6310ECF21F514C9800E357DC /* UIActivityIndicatorView+AFNetworking.h in Headers */,
 				6310ED081F514C9800E357DC /* NSArray+JSONModel.h in Headers */,
+				637889751F5403280042CEB6 /* FMCodeManager.h in Headers */,
+				6378896D1F53FCD40042CEB6 /* FmResultRes.h in Headers */,
+				637889711F53FD620042CEB6 /* FmResponseData.h in Headers */,
+				637889671F53F3E40042CEB6 /* UPPaymentControl.h in Headers */,
 				6310ECFE1F514C9800E357DC /* UIWebView+AFNetworking.h in Headers */,
 				6353D2111F52AF0B00563806 /* FmWxPrepayDataRes.h in Headers */,
 				6310ECFA1F514C9800E357DC /* UIProgressView+AFNetworking.h in Headers */,
@@ -535,7 +572,7 @@
 				TargetAttributes = {
 					636803A01F50376C00170A5F = {
 						CreatedOnToolsVersion = 8.3.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -596,17 +633,20 @@
 				6310ECF11F514C9800E357DC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				6310ED1A1F514CBF00E357DC /* NetHelper.mm in Sources */,
 				6310ED0E1F514C9800E357DC /* JSONHTTPClient.m in Sources */,
+				6378896E1F53FCD40042CEB6 /* FmResultRes.m in Sources */,
 				6310ED1F1F514E5A00E357DC /* FmPrepayModel.m in Sources */,
 				6310ED141F514C9800E357DC /* JSONValueTransformer.m in Sources */,
 				6310ED231F51504900E357DC /* FmPayProductModel.m in Sources */,
 				6310ECEB1F514C9800E357DC /* README.md in Sources */,
 				6310ECE91F514C9800E357DC /* AFURLSessionManager.m in Sources */,
 				6310ED121F514C9800E357DC /* JSONKeyMapper.m in Sources */,
+				637889761F5403280042CEB6 /* FMCodeManager.m in Sources */,
 				6310ECE51F514C9800E357DC /* AFURLRequestSerialization.m in Sources */,
 				6310ECE71F514C9800E357DC /* AFURLResponseSerialization.m in Sources */,
 				6310ECED1F514C9800E357DC /* AFAutoPurgingImageCache.m in Sources */,
 				6310ED0C1F514C9800E357DC /* JSONAPI.m in Sources */,
 				6310ED011F514C9800E357DC /* JSONModel.m in Sources */,
+				637889721F53FD620042CEB6 /* FmResponseData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,6 +756,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -731,10 +772,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FmOnlinePayApi/fmLib/ApiSource/OpenSDK1.8.0",
+					"$(PROJECT_DIR)/FmOnlinePayApi/fmLib/ApiSource/Uppay",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = FreeMud.CN.FmOnlinePayApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -744,6 +787,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -759,10 +803,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FmOnlinePayApi/fmLib/ApiSource/OpenSDK1.8.0",
+					"$(PROJECT_DIR)/FmOnlinePayApi/fmLib/ApiSource/Uppay",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = FreeMud.CN.FmOnlinePayApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

@@ -9,24 +9,29 @@
 #import "AFHTTPSessionManager.h"
 #import "FmPrepayModel.h"
 #import "WXApi.h"
+#import "FmResultRes.h"
 
 #define FMNet (NetHelper *)[NetHelper sharedInstance]
 
-typedef void (^SuccessBlock)(id responseBody);
-typedef void (^FailureBlock)(NSString *error);
+typedef void (^SuccessBlock)(FmResultRes * result);
+typedef void (^FailureBlock)(FmResultRes * error);
 
-@interface NetHelper : AFHTTPSessionManager <WXApiDelegate>
+@interface NetHelper : AFHTTPSessionManager
 
 + (instancetype)sharedInstance;
 
 /**
- *3.	getVerifyCode	【发送验证码】
+ * 调起fmPay
  */
+- (void)fmCreatPay:(FmPrepayModel*)payModel AndScheme:(NSString*)shchme AndViewController:(UIViewController*)ViewC successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock;
 
-- (void)fmCreatPay:(FmPrepayModel*)payModel AndScheme:(NSString*)shchme successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock;
-
+/**
+ * 微信支付需要注册appID
+ */
 - (void)initApi:(NSString*)wxAppID;
-
+/**
+ * fmPay回调设置
+ */
 - (BOOL)handlePayOpen:(NSURL*)url;
 
 @end

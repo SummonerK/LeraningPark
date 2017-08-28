@@ -72,12 +72,22 @@
                                     <action selector="action_wxPay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aqB-WA-Oyk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zj-5E-SoQ">
+                                <rect key="frame" x="19" y="115" width="337.5" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.28728589415550232" green="0.1402067244052887" blue="0.30659055709838867" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Zj-5E-SoQ" firstAttribute="height" secondItem="6Wg-La-vUn" secondAttribute="height" id="8W6-2B-0sK"/>
+                            <constraint firstItem="6Zj-5E-SoQ" firstAttribute="width" secondItem="6Wg-La-vUn" secondAttribute="width" id="Con-Yg-Ddm"/>
                             <constraint firstItem="CDm-9G-Rwf" firstAttribute="top" secondItem="6Wg-La-vUn" secondAttribute="bottom" constant="16" id="HTj-uA-SzE"/>
                             <constraint firstItem="CDm-9G-Rwf" firstAttribute="width" secondItem="6Wg-La-vUn" secondAttribute="width" id="HeF-fc-cE5"/>
                             <constraint firstItem="6Wg-La-vUn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LlV-8D-CeH"/>
+                            <constraint firstItem="5nu-mw-ZRB" firstAttribute="top" secondItem="6Zj-5E-SoQ" secondAttribute="bottom" constant="66" id="MTt-DS-aKc"/>
+                            <constraint firstItem="6Zj-5E-SoQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QyZ-Tm-BuQ"/>
                             <constraint firstItem="6Wg-La-vUn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="UXL-EN-SMg"/>
                             <constraint firstItem="VXS-OS-kHB" firstAttribute="leading" secondItem="6Wg-La-vUn" secondAttribute="leading" id="VeZ-b1-aLA"/>
                             <constraint firstItem="CDm-9G-Rwf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VuC-FY-9mn"/>
@@ -89,6 +99,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="label_msg" destination="6Zj-5E-SoQ" id="PZb-bf-Ztx"/>
                         <outlet property="tf_amount" destination="VXS-OS-kHB" id="kbj-sA-lfr"/>
                     </connections>
                 </viewController>
