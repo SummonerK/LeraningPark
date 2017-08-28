@@ -72,16 +72,32 @@
                                     <action selector="action_wxPay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zAM-F2-dB4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Nq-zo-yEj">
+                                <rect key="frame" x="19" y="401" width="337.5" height="44"/>
+                                <color key="backgroundColor" red="0.1899853349" green="0.35768887399999999" blue="0.43821841480000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="yGq-2R-YvT"/>
+                                </constraints>
+                                <state key="normal" title="银联">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="action_unPay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ixH-X9-7Nv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6r0-Wh-jnb" firstAttribute="leading" secondItem="yz8-P7-IdA" secondAttribute="leading" id="0lT-u2-ChR"/>
                             <constraint firstItem="Slr-c3-CVh" firstAttribute="leading" secondItem="6r0-Wh-jnb" secondAttribute="trailing" constant="6" id="4Sp-Xk-gPR"/>
+                            <constraint firstItem="6Nq-zo-yEj" firstAttribute="width" secondItem="LzN-QF-Ecd" secondAttribute="width" id="5E7-7K-7Es"/>
                             <constraint firstItem="LzN-QF-Ecd" firstAttribute="top" secondItem="yz8-P7-IdA" secondAttribute="bottom" constant="16" id="9hE-Kh-BII"/>
                             <constraint firstItem="yz8-P7-IdA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="CN8-K5-LNn"/>
                             <constraint firstItem="yz8-P7-IdA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E4W-rg-HQp"/>
+                            <constraint firstItem="6Nq-zo-yEj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EjH-3T-dfV"/>
                             <constraint firstItem="yz8-P7-IdA" firstAttribute="top" secondItem="6r0-Wh-jnb" secondAttribute="bottom" constant="16" id="K6F-Gk-Mpb"/>
+                            <constraint firstItem="6Nq-zo-yEj" firstAttribute="top" secondItem="LzN-QF-Ecd" secondAttribute="bottom" constant="16" id="NmW-oA-VOK"/>
                             <constraint firstItem="LzN-QF-Ecd" firstAttribute="width" secondItem="yz8-P7-IdA" secondAttribute="width" id="SNB-37-c1p"/>
                             <constraint firstItem="Slr-c3-CVh" firstAttribute="centerY" secondItem="6r0-Wh-jnb" secondAttribute="centerY" id="TsS-0R-oX0"/>
                             <constraint firstItem="LzN-QF-Ecd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bR8-PN-VaD"/>

@@ -66,7 +66,7 @@
 		6310ED151F514C9800E357DC /* LICENSE_jsonmodel.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6310ECDB1F514C9800E357DC /* LICENSE_jsonmodel.txt */; };
 		6310ED161F514C9800E357DC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6310ECDC1F514C9800E357DC /* README.md */; };
 		6310ED191F514CBF00E357DC /* NetHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 6310ED171F514CBF00E357DC /* NetHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6310ED1A1F514CBF00E357DC /* NetHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6310ED181F514CBF00E357DC /* NetHelper.mm */; };
+		6310ED1A1F514CBF00E357DC /* NetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6310ED181F514CBF00E357DC /* NetHelper.m */; };
 		6310ED1E1F514E5A00E357DC /* FmPrepayModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6310ED1C1F514E5A00E357DC /* FmPrepayModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6310ED1F1F514E5A00E357DC /* FmPrepayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6310ED1D1F514E5A00E357DC /* FmPrepayModel.m */; };
 		6310ED221F51504900E357DC /* FmPayProductModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6310ED201F51504900E357DC /* FmPayProductModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -165,7 +165,7 @@
 		6310ECDB1F514C9800E357DC /* LICENSE_jsonmodel.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_jsonmodel.txt; sourceTree = "<group>"; };
 		6310ECDC1F514C9800E357DC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6310ED171F514CBF00E357DC /* NetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetHelper.h; sourceTree = "<group>"; };
-		6310ED181F514CBF00E357DC /* NetHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NetHelper.mm; sourceTree = "<group>"; };
+		6310ED181F514CBF00E357DC /* NetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetHelper.m; sourceTree = "<group>"; };
 		6310ED1C1F514E5A00E357DC /* FmPrepayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FmPrepayModel.h; sourceTree = "<group>"; };
 		6310ED1D1F514E5A00E357DC /* FmPrepayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FmPrepayModel.m; sourceTree = "<group>"; };
 		6310ED201F51504900E357DC /* FmPayProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FmPayProductModel.h; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				6310EC9A1F514C9800E357DC /* AFNetworking */,
 				6310ECC01F514C9800E357DC /* JSONModel */,
 				6310ED171F514CBF00E357DC /* NetHelper.h */,
-				6310ED181F514CBF00E357DC /* NetHelper.mm */,
+				6310ED181F514CBF00E357DC /* NetHelper.m */,
 				637889731F5403280042CEB6 /* FMCodeManager.h */,
 				637889741F5403280042CEB6 /* FMCodeManager.m */,
 			);
@@ -631,7 +631,7 @@
 				6310ECDE1F514C9800E357DC /* AFHTTPSessionManager.m in Sources */,
 				6310ED161F514C9800E357DC /* README.md in Sources */,
 				6310ECF11F514C9800E357DC /* AFNetworkActivityIndicatorManager.m in Sources */,
-				6310ED1A1F514CBF00E357DC /* NetHelper.mm in Sources */,
+				6310ED1A1F514CBF00E357DC /* NetHelper.m in Sources */,
 				6310ED0E1F514C9800E357DC /* JSONHTTPClient.m in Sources */,
 				6378896E1F53FCD40042CEB6 /* FmResultRes.m in Sources */,
 				6310ED1F1F514E5A00E357DC /* FmPrepayModel.m in Sources */,

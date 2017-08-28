@@ -32,9 +32,22 @@
 
 - (void)setModelWithType:(int)type{
     
-    model.partnerId = 1447;
+    NSString * payTpye;
+    NSString * schemeStr;
+    
+    if (type == 1) {
+        payTpye = @"20002";
+        schemeStr = @"fmsdk";
+    }else if (type == 1) {
+        payTpye = @"20001";
+        schemeStr = @"fmsdk";
+    }else if (type == 1) {
+        payTpye = @"20003";
+        schemeStr = @"FmUPPaySdk";
+    }
+    
+    model.partnerId = 1443;
     model.transAmount = 1;
-    model.paymentMethodCode = type == 1 ? @"20002" : @"20001";
     model.partnerOrderId = [NSString stringWithFormat:@"%.0f",[NSDate date].timeIntervalSince1970];
     NSMutableArray * products = [NSMutableArray new];
     
@@ -48,12 +61,11 @@
     }
     model.products = products;
     
-    [FMNet fmCreatPay:model successBlock:^(id responseBody) {
-        NSLog(@"result = %@",responseBody);
-    } failureBlock:^(NSString *error) {
-        NSLog(@"error = %@",error);
+    [FMNet fmCreatPay:model AndScheme:schemeStr AndViewController:self successBlock:^(FmResultRes *result) {
+        NSLog(@"%@",result.toDictionary);
+    } failureBlock:^(FmResultRes *error) {
+        NSLog(@"%@",error.toDictionary);
     }];
-    
     
 }
 

@@ -81,11 +81,26 @@ class ViewController: UIViewController,UITextFieldDelegate {
         setModelWith(type: 2)
     }
     
+    @IBAction func action_unPay(_ sender: Any) {
+        setModelWith(type: 3)
+    }
     
     func setModelWith(type:Int) {
-        model.partnerId = 1447
+        var payType = ""
+        var schemeStr = ""
+        if type == 1 {
+            payType = "20002"
+            schemeStr = "fmsdk"
+        }else if type == 2 {
+            payType = "20001"
+        }else if type == 3 {
+            payType = "20003"
+            schemeStr = "FmUPPaySdk"
+        }
+        
+        model.partnerId = 1443
         model.transAmount = 1
-        model.paymentMethodCode = type == 1 ? "20002":"20001"
+        model.paymentMethodCode = payType
         model.partnerOrderId = "\(Int(Date().timeIntervalSince1970))"
         var products = [FmPayProductModel]()
         for i in 1...1 {
@@ -100,11 +115,11 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
         print("\(model.toDictionary())")
         
-        manager?.fmCreatPay(model, andScheme: "fmsdk", successBlock: { (result) in
-            print("%@",result ?? NSDictionary())
-        }) { (error) in
-            print("\(String(describing: error))")
-        }
+        manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
+            print("Result \(String(describing: Result?.toJSONString()))");
+        }, failureBlock: { (EResult) in
+            print("error \(String(describing: EResult?.toJSONString()))");
+        })
     }
 }
 

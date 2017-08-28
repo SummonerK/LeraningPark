@@ -15,8 +15,8 @@
 		636803421F5018BF00170A5F /* fmPaySDKDemo_ObjC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 636803401F5018BF00170A5F /* fmPaySDKDemo_ObjC.xcdatamodeld */; };
 		636803441F5018BF00170A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636803431F5018BF00170A5F /* Assets.xcassets */; };
 		636803471F5018BF00170A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636803451F5018BF00170A5F /* LaunchScreen.storyboard */; };
-		637889611F53C0C10042CEB6 /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6378895F1F53C0B30042CEB6 /* FmOnlinePayApi.framework */; };
-		637889621F53C0C10042CEB6 /* FmOnlinePayApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6378895F1F53C0B30042CEB6 /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		637889911F5426F60042CEB6 /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6378898F1F5426E90042CEB6 /* FmOnlinePayApi.framework */; };
+		637889921F5426F60042CEB6 /* FmOnlinePayApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6378898F1F5426E90042CEB6 /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +26,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				637889621F53C0C10042CEB6 /* FmOnlinePayApi.framework in Embed Frameworks */,
+				637889921F5426F60042CEB6 /* FmOnlinePayApi.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,7 +57,7 @@
 		6368038E1F5033D000170A5F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		636803901F5033D800170A5F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		636803921F5033E200170A5F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		6378895F1F53C0B30042CEB6 /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FmOnlinePayApi.framework; sourceTree = "<group>"; };
+		6378898F1F5426E90042CEB6 /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FmOnlinePayApi.framework; sourceTree = "<group>"; };
 		886E757200035636BC6F6246 /* Pods_fmPaySDKDemo_ObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fmPaySDKDemo_ObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA4AF6A1384977695ECA3BC3 /* Pods-fmPaySDKDemo-ObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fmPaySDKDemo-ObjC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fmPaySDKDemo-ObjC/Pods-fmPaySDKDemo-ObjC.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637889611F53C0C10042CEB6 /* FmOnlinePayApi.framework in Frameworks */,
+				637889911F5426F60042CEB6 /* FmOnlinePayApi.framework in Frameworks */,
 				196125795A68CDDCFE902720 /* Pods_fmPaySDKDemo_ObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +96,7 @@
 		636803331F5018BF00170A5F /* fmPaySDKDemo-ObjC */ = {
 			isa = PBXGroup;
 			children = (
+				6378898F1F5426E90042CEB6 /* FmOnlinePayApi.framework */,
 				6378895E1F53C0B30042CEB6 /* fmLib */,
 				636803371F5018BF00170A5F /* AppDelegate.h */,
 				636803381F5018BF00170A5F /* AppDelegate.m */,
@@ -122,7 +123,6 @@
 		6378895E1F53C0B30042CEB6 /* fmLib */ = {
 			isa = PBXGroup;
 			children = (
-				6378895F1F53C0B30042CEB6 /* FmOnlinePayApi.framework */,
 			);
 			path = fmLib;
 			sourceTree = "<group>";
@@ -419,6 +419,24 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/fmPaySDKDemo-ObjC/fmLib/ApiSource/OpenSDK1.8.0",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"Moya\"",
+					"-framework",
+					"\"ObjectMapper\"",
+					"-framework",
+					"\"Result\"",
+					"-framework",
+					"\"RxSwift\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"FmOnlinePayApi\"",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = changjingdev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4337965d-e151-4941-8005-e32bddef5cd2";
@@ -446,6 +464,24 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/fmPaySDKDemo-ObjC/fmLib/ApiSource/OpenSDK1.8.0",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"Moya\"",
+					"-framework",
+					"\"ObjectMapper\"",
+					"-framework",
+					"\"Result\"",
+					"-framework",
+					"\"RxSwift\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"FmOnlinePayApi\"",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = changjingdev;
 				PRODUCT_NAME = "$(TARGET_NAME)";

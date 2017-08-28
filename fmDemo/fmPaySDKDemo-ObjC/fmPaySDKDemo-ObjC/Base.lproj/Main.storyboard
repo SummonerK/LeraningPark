@@ -78,6 +78,19 @@
                                 <color key="textColor" red="0.28728589415550232" green="0.1402067244052887" blue="0.30659055709838867" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXy-R3-Rbt">
+                                <rect key="frame" x="19" y="401" width="337.5" height="44"/>
+                                <color key="backgroundColor" red="0.1899853349" green="0.35768887399999999" blue="0.43821841480000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hXL-Md-yVV"/>
+                                </constraints>
+                                <state key="normal" title="银联">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="action_unPay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0sd-is-wkH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -85,9 +98,12 @@
                             <constraint firstItem="6Zj-5E-SoQ" firstAttribute="width" secondItem="6Wg-La-vUn" secondAttribute="width" id="Con-Yg-Ddm"/>
                             <constraint firstItem="CDm-9G-Rwf" firstAttribute="top" secondItem="6Wg-La-vUn" secondAttribute="bottom" constant="16" id="HTj-uA-SzE"/>
                             <constraint firstItem="CDm-9G-Rwf" firstAttribute="width" secondItem="6Wg-La-vUn" secondAttribute="width" id="HeF-fc-cE5"/>
+                            <constraint firstItem="cXy-R3-Rbt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LhL-Lv-hDX"/>
                             <constraint firstItem="6Wg-La-vUn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LlV-8D-CeH"/>
                             <constraint firstItem="5nu-mw-ZRB" firstAttribute="top" secondItem="6Zj-5E-SoQ" secondAttribute="bottom" constant="66" id="MTt-DS-aKc"/>
+                            <constraint firstItem="cXy-R3-Rbt" firstAttribute="width" secondItem="CDm-9G-Rwf" secondAttribute="width" id="NER-lI-PLz"/>
                             <constraint firstItem="6Zj-5E-SoQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QyZ-Tm-BuQ"/>
+                            <constraint firstItem="cXy-R3-Rbt" firstAttribute="top" secondItem="CDm-9G-Rwf" secondAttribute="bottom" constant="16" id="Sfd-oh-Wh1"/>
                             <constraint firstItem="6Wg-La-vUn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="UXL-EN-SMg"/>
                             <constraint firstItem="VXS-OS-kHB" firstAttribute="leading" secondItem="6Wg-La-vUn" secondAttribute="leading" id="VeZ-b1-aLA"/>
                             <constraint firstItem="CDm-9G-Rwf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VuC-FY-9mn"/>

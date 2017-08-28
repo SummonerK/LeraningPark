@@ -81,6 +81,11 @@
     [self setModelWithType:2];
 }
 
+#pragma mark 微信支付
+- (IBAction)action_unPay:(id)sender {
+    [self setModelWithType:3];
+}
+
 
 - (void)setModelWithType:(int)type{
     
@@ -89,9 +94,22 @@
         return;
     }
     
-    model.partnerId = 1713;
+    NSString * payTpye;
+    NSString * schemeStr;
+    
+    if (type == 1) {
+        payTpye = @"20002";
+        schemeStr = @"fmsdk";
+    }else if (type == 1) {
+        payTpye = @"20001";
+        schemeStr = @"fmsdk";
+    }else if (type == 1) {
+        payTpye = @"20003";
+        schemeStr = @"FmUPPaySdk";
+    }
+    
+    model.partnerId = 1443;
     model.transAmount = trueAmount;
-    model.paymentMethodCode = type == 1 ? @"20002" : @"20001";
     model.partnerOrderId = [NSString stringWithFormat:@"%.0f",[NSDate date].timeIntervalSince1970];
     NSMutableArray * products = [NSMutableArray new];
     
@@ -105,13 +123,12 @@
     }
     model.products = products;
     
-    
-    [FMNet fmCreatPay:model AndScheme:@"fmsdk" successBlock:^(id responseBody) {
-        NSLog(@"result = %@",responseBody);
-        label_msg.text = responseBody[@"msg"];
-    } failureBlock:^(NSString *error) {
-        NSLog(@"error = %@",error);
-        label_msg.text = error;
+    [FMNet fmCreatPay:model AndScheme:schemeStr AndViewController:self successBlock:^(FmResultRes *result) {
+        NSLog(@"%@",result.toDictionary);
+        label_msg.text = result.resultMsg;
+    } failureBlock:^(FmResultRes *error) {
+         NSLog(@"%@",error.toDictionary);
+        label_msg.text = error.resultMsg;
     }];
     
     

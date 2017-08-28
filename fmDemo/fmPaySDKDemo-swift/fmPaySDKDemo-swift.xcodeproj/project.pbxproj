@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6353D23D1F52BF0300563806 /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6353D23B1F52BEF700563806 /* FmOnlinePayApi.framework */; };
-		6353D23E1F52BF0300563806 /* FmOnlinePayApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6353D23B1F52BEF700563806 /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		636802EE1F4FFA8F00170A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636802ED1F4FFA8F00170A5F /* AppDelegate.swift */; };
 		636802F01F4FFA8F00170A5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636802EF1F4FFA8F00170A5F /* ViewController.swift */; };
 		636802F31F4FFA8F00170A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636802F11F4FFA8F00170A5F /* Main.storyboard */; };
 		636802F61F4FFA8F00170A5F /* fmPaySDKDemo_swift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 636802F41F4FFA8F00170A5F /* fmPaySDKDemo_swift.xcdatamodeld */; };
 		636802F81F4FFA8F00170A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636802F71F4FFA8F00170A5F /* Assets.xcassets */; };
 		636802FB1F4FFA8F00170A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636802F91F4FFA8F00170A5F /* LaunchScreen.storyboard */; };
+		637889951F5428CD0042CEB6 /* FmOnlinePayApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637889931F5428B50042CEB6 /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		637889961F5428CD0042CEB6 /* FmOnlinePayApi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 637889931F5428B50042CEB6 /* FmOnlinePayApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A8FA0E24B7E44B9CBADC50F /* Pods_fmPaySDKDemo_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B2FD8DAE1E97444DA227A47 /* Pods_fmPaySDKDemo_swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6353D2181F52B9A600563806 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6353D23E1F52BF0300563806 /* FmOnlinePayApi.framework in Embed Frameworks */,
+				637889961F5428CD0042CEB6 /* FmOnlinePayApi.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -46,7 +46,6 @@
 		6353D2311F52BC6100563806 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6353D2331F52BC6700563806 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6353D2351F52BC6E00563806 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		6353D23B1F52BEF700563806 /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FmOnlinePayApi.framework; sourceTree = "<group>"; };
 		636802EA1F4FFA8F00170A5F /* fmPaySDKDemo-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fmPaySDKDemo-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636802ED1F4FFA8F00170A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		636802EF1F4FFA8F00170A5F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		636802F71F4FFA8F00170A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		636802FA1F4FFA8F00170A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		636802FC1F4FFA8F00170A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		637889931F5428B50042CEB6 /* FmOnlinePayApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FmOnlinePayApi.framework; sourceTree = "<group>"; };
 		8B2FD8DAE1E97444DA227A47 /* Pods_fmPaySDKDemo_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fmPaySDKDemo_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2C67297B314F211B76627A7 /* Pods-fmPaySDKDemo-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fmPaySDKDemo-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-fmPaySDKDemo-swift/Pods-fmPaySDKDemo-swift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6353D23D1F52BF0300563806 /* FmOnlinePayApi.framework in Frameworks */,
+				637889951F5428CD0042CEB6 /* FmOnlinePayApi.framework in Frameworks */,
 				7A8FA0E24B7E44B9CBADC50F /* Pods_fmPaySDKDemo_swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,7 +93,7 @@
 		636802EC1F4FFA8F00170A5F /* fmPaySDKDemo-swift */ = {
 			isa = PBXGroup;
 			children = (
-				6353D23B1F52BEF700563806 /* FmOnlinePayApi.framework */,
+				637889931F5428B50042CEB6 /* FmOnlinePayApi.framework */,
 				6353D2131F52B80700563806 /* Bridging-Header.h */,
 				636802ED1F4FFA8F00170A5F /* AppDelegate.swift */,
 				636802EF1F4FFA8F00170A5F /* ViewController.swift */,
