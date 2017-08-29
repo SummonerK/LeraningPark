@@ -72,12 +72,6 @@
                                     <action selector="action_wxPay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aqB-WA-Oyk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zj-5E-SoQ">
-                                <rect key="frame" x="19" y="115" width="337.5" height="44"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.28728589415550232" green="0.1402067244052887" blue="0.30659055709838867" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXy-R3-Rbt">
                                 <rect key="frame" x="19" y="401" width="337.5" height="44"/>
                                 <color key="backgroundColor" red="0.1899853349" green="0.35768887399999999" blue="0.43821841480000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,32 +85,38 @@
                                     <action selector="action_unPay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0sd-is-wkH"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzO-NX-fre">
+                                <rect key="frame" x="19" y="50" width="337.5" height="145"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Zj-5E-SoQ" firstAttribute="height" secondItem="6Wg-La-vUn" secondAttribute="height" id="8W6-2B-0sK"/>
-                            <constraint firstItem="6Zj-5E-SoQ" firstAttribute="width" secondItem="6Wg-La-vUn" secondAttribute="width" id="Con-Yg-Ddm"/>
                             <constraint firstItem="CDm-9G-Rwf" firstAttribute="top" secondItem="6Wg-La-vUn" secondAttribute="bottom" constant="16" id="HTj-uA-SzE"/>
                             <constraint firstItem="CDm-9G-Rwf" firstAttribute="width" secondItem="6Wg-La-vUn" secondAttribute="width" id="HeF-fc-cE5"/>
                             <constraint firstItem="cXy-R3-Rbt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LhL-Lv-hDX"/>
                             <constraint firstItem="6Wg-La-vUn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LlV-8D-CeH"/>
-                            <constraint firstItem="5nu-mw-ZRB" firstAttribute="top" secondItem="6Zj-5E-SoQ" secondAttribute="bottom" constant="66" id="MTt-DS-aKc"/>
+                            <constraint firstItem="uzO-NX-fre" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="Lwg-Du-ZpH"/>
                             <constraint firstItem="cXy-R3-Rbt" firstAttribute="width" secondItem="CDm-9G-Rwf" secondAttribute="width" id="NER-lI-PLz"/>
-                            <constraint firstItem="6Zj-5E-SoQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QyZ-Tm-BuQ"/>
                             <constraint firstItem="cXy-R3-Rbt" firstAttribute="top" secondItem="CDm-9G-Rwf" secondAttribute="bottom" constant="16" id="Sfd-oh-Wh1"/>
                             <constraint firstItem="6Wg-La-vUn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="UXL-EN-SMg"/>
                             <constraint firstItem="VXS-OS-kHB" firstAttribute="leading" secondItem="6Wg-La-vUn" secondAttribute="leading" id="VeZ-b1-aLA"/>
                             <constraint firstItem="CDm-9G-Rwf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VuC-FY-9mn"/>
                             <constraint firstItem="5nu-mw-ZRB" firstAttribute="leading" secondItem="VXS-OS-kHB" secondAttribute="trailing" constant="6" id="Xjk-S9-xkt"/>
+                            <constraint firstItem="uzO-NX-fre" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zlf-xc-KPd"/>
+                            <constraint firstItem="uzO-NX-fre" firstAttribute="width" secondItem="CDm-9G-Rwf" secondAttribute="width" id="gS9-Mh-L5P"/>
                             <constraint firstItem="VXS-OS-kHB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="205" id="kHP-Cu-rPn"/>
                             <constraint firstItem="5nu-mw-ZRB" firstAttribute="centerY" secondItem="VXS-OS-kHB" secondAttribute="centerY" id="n56-qh-FF2"/>
+                            <constraint firstItem="5nu-mw-ZRB" firstAttribute="top" secondItem="uzO-NX-fre" secondAttribute="bottom" constant="30" id="pcy-pG-2Uz"/>
                             <constraint firstItem="5nu-mw-ZRB" firstAttribute="trailing" secondItem="6Wg-La-vUn" secondAttribute="trailing" id="yR6-uU-6LO"/>
                             <constraint firstItem="6Wg-La-vUn" firstAttribute="top" secondItem="VXS-OS-kHB" secondAttribute="bottom" constant="16" id="yrC-YR-j83"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="label_msg" destination="6Zj-5E-SoQ" id="PZb-bf-Ztx"/>
                         <outlet property="tf_amount" destination="VXS-OS-kHB" id="kbj-sA-lfr"/>
+                        <outlet property="tv_content" destination="uzO-NX-fre" id="efb-tw-epS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

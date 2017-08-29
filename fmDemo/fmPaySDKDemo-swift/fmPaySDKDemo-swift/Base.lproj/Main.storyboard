@@ -85,6 +85,12 @@
                                     <action selector="action_unPay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ixH-X9-7Nv"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-28-pfS">
+                                <rect key="frame" x="19" y="56" width="337.5" height="133"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -99,14 +105,19 @@
                             <constraint firstItem="yz8-P7-IdA" firstAttribute="top" secondItem="6r0-Wh-jnb" secondAttribute="bottom" constant="16" id="K6F-Gk-Mpb"/>
                             <constraint firstItem="6Nq-zo-yEj" firstAttribute="top" secondItem="LzN-QF-Ecd" secondAttribute="bottom" constant="16" id="NmW-oA-VOK"/>
                             <constraint firstItem="LzN-QF-Ecd" firstAttribute="width" secondItem="yz8-P7-IdA" secondAttribute="width" id="SNB-37-c1p"/>
+                            <constraint firstItem="Slr-c3-CVh" firstAttribute="top" secondItem="1Ua-28-pfS" secondAttribute="bottom" constant="36" id="Tfd-4c-iKU"/>
                             <constraint firstItem="Slr-c3-CVh" firstAttribute="centerY" secondItem="6r0-Wh-jnb" secondAttribute="centerY" id="TsS-0R-oX0"/>
                             <constraint firstItem="LzN-QF-Ecd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bR8-PN-VaD"/>
+                            <constraint firstItem="1Ua-28-pfS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="deV-tA-pJr"/>
+                            <constraint firstItem="1Ua-28-pfS" firstAttribute="width" secondItem="yz8-P7-IdA" secondAttribute="width" id="nW4-Tc-YnE"/>
                             <constraint firstItem="6r0-Wh-jnb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="205" id="qhe-Px-J32"/>
                             <constraint firstItem="Slr-c3-CVh" firstAttribute="trailing" secondItem="yz8-P7-IdA" secondAttribute="trailing" id="tcM-FU-DjC"/>
+                            <constraint firstItem="1Ua-28-pfS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="36" id="zul-sN-Q9Z"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tf_amount" destination="6r0-Wh-jnb" id="d3a-d6-ajn"/>
+                        <outlet property="tv_backContent" destination="1Ua-28-pfS" id="W8s-hd-uFQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

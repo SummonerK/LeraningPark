@@ -129,7 +129,7 @@ typedef void (^NetFail)(NSString *error);
  */
 - (void)fmPayGetPaySignWithParameter:(NSDictionary *)parameter successBlock:(NetSuccess )successBlock failureBlock:(NetFail)failureBlock{
     
-    [self postPath:@"account/pay/getSign" WithParameter:parameter successBlock:^(id responseBody) {
+    [self postPath:@"account/pay/unifyOrder" WithParameter:parameter successBlock:^(id responseBody) {
         successBlock(responseBody);
     } failureBlock:^(NSString *error) {
         failureBlock(error);
@@ -144,7 +144,7 @@ typedef void (^NetFail)(NSString *error);
     FmResponseData * responsedata = [FmResponseData new];
     ResultMdel.responseData = responsedata;
     
-    NSLog(@"%@",payModel.toJSONString);
+    NSLog(@"payModel Json ==> %@",payModel.toJSONString);
     
     [FMNet fmPayGetPaySignWithParameter:payModel.toDictionary successBlock:^(id responseBody) {
         
@@ -155,8 +155,7 @@ typedef void (^NetFail)(NSString *error);
         
         SentResult.responseData = wContent;
         
-        NSLog(@"SentResult = %@",SentResult);
-        
+//        NSLog(@"SentResult = %@",SentResult);
         
         if ([SentResult.paymentMethodCode  isEqual: @"20002"]) {
             //支付宝支付
@@ -267,12 +266,12 @@ typedef void (^NetFail)(NSString *error);
             }
                 break;
             case -1:{
-                ResultMdel.resultCode = FMCODE_WX_PAY_CANCEL;
+                ResultMdel.resultCode = FMCODE_WX_PAY_ERROR;
                 mFail(ResultMdel);
             }
                 break;
             case -2:{
-                ResultMdel.resultCode = FMCODE_WX_PAY_ERROR;
+                ResultMdel.resultCode = FMCODE_WX_PAY_CANCEL;
                 mFail(ResultMdel);
             }
                 break;

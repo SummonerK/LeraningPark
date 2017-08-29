@@ -38,16 +38,17 @@
     if (type == 1) {
         payTpye = @"20002";
         schemeStr = @"fmsdk";
-    }else if (type == 1) {
+    }else if (type == 2) {
         payTpye = @"20001";
         schemeStr = @"fmsdk";
-    }else if (type == 1) {
+    }else if (type == 3) {
         payTpye = @"20003";
         schemeStr = @"FmUPPaySdk";
     }
     
-    model.partnerId = 1443;
+    model.partnerId = 1447;
     model.transAmount = 1;
+    model.paymentMethodCode = payTpye;
     model.partnerOrderId = [NSString stringWithFormat:@"%.0f",[NSDate date].timeIntervalSince1970];
     NSMutableArray * products = [NSMutableArray new];
     
@@ -61,7 +62,7 @@
     }
     model.products = products;
     
-    [FMNet fmCreatPay:model AndScheme:schemeStr AndViewController:self successBlock:^(FmResultRes *result) {
+    [NetHelper.sharedInstance fmCreatPay:model AndScheme:schemeStr AndViewController:self successBlock:^(FmResultRes *result) {
         NSLog(@"%@",result.toDictionary);
     } failureBlock:^(FmResultRes *error) {
         NSLog(@"%@",error.toDictionary);

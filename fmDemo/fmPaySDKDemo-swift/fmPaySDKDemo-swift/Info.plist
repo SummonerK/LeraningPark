@@ -27,7 +27,7 @@
 			<string>zhifubao</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fmsdk</string>
+				<string>fmalipaysdk</string>
 			</array>
 		</dict>
 		<dict>
@@ -51,6 +51,11 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>weixin</string>
+		<string>wechat</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

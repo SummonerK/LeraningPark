@@ -14,6 +14,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     let model = FmPrepayModel()
 
     @IBOutlet weak var tf_amount: UITextField!
+    @IBOutlet weak var tv_backContent: UITextView!
     
     var trueAmount:Int = 0 //真实金额, Int 数据类型, 单位（分）
     
@@ -71,35 +72,43 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     
 //MARK:-调取支付操作
-    
+//    支付宝支付
     @IBAction func action_aliPay(_ sender: Any) {
         setModelWith(type: 1)
     }
-    
-    
+//    微信支付
     @IBAction func action_wxPay(_ sender: Any) {
         setModelWith(type: 2)
     }
-    
+//    银联支付
     @IBAction func action_unPay(_ sender: Any) {
         setModelWith(type: 3)
     }
     
     func setModelWith(type:Int) {
+        
+        tf_amount.resignFirstResponder()
+        
+        if trueAmount == 0{
+            tv_backContent.text = "请设置支付金额";
+            return
+        }
+        
         var payType = ""
         var schemeStr = ""
-        if type == 1 {
+        model.partnerId = 1443
+        if type == 1 {///支付宝支付
             payType = "20002"
-            schemeStr = "fmsdk"
-        }else if type == 2 {
+            schemeStr = "fmalipaysdk"
+            model.partnerId = 1447
+        }else if type == 2 {///微信支付
             payType = "20001"
         }else if type == 3 {
-            payType = "20003"
+            payType = "20003"///银联支付
             schemeStr = "FmUPPaySdk"
         }
         
-        model.partnerId = 1443
-        model.transAmount = 1
+        model.transAmount = Int32(trueAmount)
         model.paymentMethodCode = payType
         model.partnerOrderId = "\(Int(Date().timeIntervalSince1970))"
         var products = [FmPayProductModel]()
@@ -116,9 +125,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
         print("\(model.toDictionary())")
         
         manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
-            print("Result \(String(describing: Result?.toJSONString()))");
+            self.tv_backContent.text = Result?.toJSONString()
         }, failureBlock: { (EResult) in
-            print("error \(String(describing: EResult?.toJSONString()))");
+            self.tv_backContent.text = EResult?.toJSONString()
         })
     }
 }

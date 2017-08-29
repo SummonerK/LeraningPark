@@ -11,7 +11,9 @@
 
 @interface ViewController ()<UITextFieldDelegate>{
     __weak IBOutlet UITextField *tf_amount;
-    __weak IBOutlet UILabel *label_msg;
+    
+    __weak IBOutlet UITextView *tv_content;
+    
     int trueAmount;
     
     FmPrepayModel * model;
@@ -69,48 +71,53 @@
 
 
 #pragma mark-支付操作演示
-#pragma mark 支付宝支付
+//支付宝支付
 - (IBAction)action_aliPay:(id)sender {
-    
     [self setModelWithType:1];
     
 }
 
-#pragma mark 微信支付
+//微信支付
 - (IBAction)action_wxPay:(id)sender {
     [self setModelWithType:2];
 }
 
-#pragma mark 微信支付
+//银联支付
 - (IBAction)action_unPay:(id)sender {
     [self setModelWithType:3];
 }
 
 
 - (void)setModelWithType:(int)type{
+    [tf_amount resignFirstResponder];
     
     if (trueAmount == 0) {
-        label_msg.text = @"请设置支付金额";
+        tv_content.text = @"请设置支付金额";
         return;
     }
     
     NSString * payTpye;
     NSString * schemeStr;
+    model.partnerId = 1443;
     
     if (type == 1) {
         payTpye = @"20002";
-        schemeStr = @"fmsdk";
-    }else if (type == 1) {
+        schemeStr = @"fmpaysdkal";
+        model.partnerId = 1447;
+    }else if (type == 2) {
         payTpye = @"20001";
-        schemeStr = @"fmsdk";
-    }else if (type == 1) {
+    }else if (type == 3) {
         payTpye = @"20003";
         schemeStr = @"FmUPPaySdk";
     }
     
-    model.partnerId = 1443;
+    NSLog(@"%@ %@",payTpye,schemeStr);
+    
     model.transAmount = trueAmount;
+    model.paymentMethodCode = payTpye;
     model.partnerOrderId = [NSString stringWithFormat:@"%.0f",[NSDate date].timeIntervalSince1970];
+    
+    
     NSMutableArray * products = [NSMutableArray new];
     
     for (int i = 1; i<2; i++) {
@@ -125,10 +132,10 @@
     
     [FMNet fmCreatPay:model AndScheme:schemeStr AndViewController:self successBlock:^(FmResultRes *result) {
         NSLog(@"%@",result.toDictionary);
-        label_msg.text = result.resultMsg;
+        tv_content.text = result.toJSONString;
     } failureBlock:^(FmResultRes *error) {
          NSLog(@"%@",error.toDictionary);
-        label_msg.text = error.resultMsg;
+        tv_content.text = error.toJSONString;
     }];
     
     

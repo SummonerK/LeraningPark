@@ -10,7 +10,7 @@
 
 typedef enum{
     FMCODE_DEFAULT = 999,///<调取支付异常
-    FMCODE_NET_DEFAULT = 4000,///<调取支付异常
+    FMCODE_NET_DEFAULT = 500,///<调取支付异常
     
     FMCODE_AL_OPEN = 101,///<打开支付宝成功
     FMCODE_AL_OPEN_ERROR = 102,///<打开支付宝失败
