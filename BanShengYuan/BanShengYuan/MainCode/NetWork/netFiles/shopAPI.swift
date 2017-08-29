@@ -20,7 +20,8 @@ enum shopAPI {
     case shopGetDetail(PostModel:ModelGoodsDetailPost)//MARK:获取商品详细信息 - 长图
     case shopGetDetailPictures(PostModel:ModelGoodsDetailPicturePost)//MARK:获取商品详细信息 - banner
     case shopGetDetailMenus(PostModel:ModelShopDetailMenuPost)//MARK:获取商品规格
-    
+    case shopGetMenuListNextLevelByNodeid(PostModel:ModelMenuListNextLevelByNodeidPost)//MARK:获取分类列表 
+    case shopGetMenuProductsByLevelNodeid(PostModel:ModelMenuListNextLevelByNodeidPost)//MARK: 获取标签下商品
     
     case addressGetList(PostModel:ModelAddressListPost)//MARK:
     
@@ -30,7 +31,7 @@ extension shopAPI: TargetType {
 
     var parameterEncoding: ParameterEncoding {
         switch self {
-        case .shopGetAllProducts,.addressGetList,.shopGetDetail,.shopGetDetailPictures,.shopGetDetailMenus,.shopSearchProducts:
+        case .shopGetAllProducts,.addressGetList,.shopGetDetail,.shopGetDetailPictures,.shopGetDetailMenus,.shopSearchProducts,.shopGetMenuListNextLevelByNodeid,.shopGetMenuProductsByLevelNodeid:
             return URLEncoding.default
         case .test:
             return JSONEncoding.default
@@ -56,6 +57,10 @@ extension shopAPI: TargetType {
             return "/Query/Product/ListPicture"
         case .shopGetDetailMenus(_):
             return "/Query/Product/ListBaseInfos"
+        case .shopGetMenuListNextLevelByNodeid(_):
+            return "/Query/Menu/ListNextLevelByNodeId"
+        case .shopGetMenuProductsByLevelNodeid(_):
+            return "/Query/Menu/ListNextLevelByNodeId"
             
             
         case .addressGetList(_):
@@ -77,7 +82,10 @@ extension shopAPI: TargetType {
             return .get
         case .shopGetDetailMenus(_):
             return .get
-       
+        case .shopGetMenuListNextLevelByNodeid(_):
+            return .get
+        case .shopGetMenuProductsByLevelNodeid(_):
+            return .get
             
         case .addressGetList(_):
             return .get
@@ -105,7 +113,12 @@ extension shopAPI: TargetType {
         case .shopGetDetailMenus(let model):
             PrintFM(model.toDict())
             return model.toDict()
-        
+        case .shopGetMenuListNextLevelByNodeid(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
+        case .shopGetMenuProductsByLevelNodeid(let model):
+            PrintFM(model.toDict())
+            return model.toDict()
             
         case .addressGetList(let model):
             PrintFM(model.toDict())

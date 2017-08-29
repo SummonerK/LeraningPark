@@ -79,4 +79,14 @@ class shopModel {
         //.showError()
     }
     
+    func shopGetMenuListNextLevelByNodeid(amodel:ModelMenuListNextLevelByNodeidPost) -> Observable<ModelMenuListNextLevelByNodeidResult> {
+        return shopprovider.request(.shopGetMenuListNextLevelByNodeid(PostModel: amodel))
+            .mapNeObject(type: ModelMenuListNextLevelByNodeidResult.self)
+        //.showError()
+    }
+    func shopGetMenuProductsByLevelNodeid(amodel:ModelMenuListNextLevelByNodeidPost) -> Observable<ModelMenuProductsByLevelNodeidResult> {
+        return shopprovider.request(.shopGetMenuProductsByLevelNodeid(PostModel: amodel))
+            .mapNeObject(type: ModelMenuProductsByLevelNodeidResult.self)
+        //.showError()
+    }
 }

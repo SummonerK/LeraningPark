@@ -8,9 +8,22 @@
 
 import UIKit
 
+import RxSwift
+import ObjectMapper
+import SwiftyJSON
+
 class sortManagerVC: UIViewController {
     
-    let array_meun = NSMutableArray()
+    var shopStoreCode:String = "" //店铺
+    
+    //network
+    
+    let shopM = shopModel()
+    let modelMenuListLevelPost = ModelMenuListNextLevelByNodeidPost()
+    let disposeBag = DisposeBag()
+    
+//    let array_meun = NSMutableArray()
+    var array_meun = [ModelMenuListNextLevelItem]()
     
     @IBOutlet weak var CV_main: UICollectionView!
     
@@ -24,11 +37,12 @@ class sortManagerVC: UIViewController {
         
         setNavi()
         
-        array_meun.addObjects(from: [["男婴(3个月-2岁)","男婴(3个月-2岁)","男婴(3个月-2岁)","男婴(3个月-2岁)","男婴(3个月-2岁)"],["大衣外套","休闲西装","连衣裙","羊毛衫"]])
+//        array_meun.addObjects(from: [["男婴(3个月-2岁)","男婴(3个月-2岁)","男婴(3个月-2岁)","男婴(3个月-2岁)","男婴(3个月-2岁)"],["大衣外套","休闲西装","连衣裙","羊毛衫"]])
 
         setupCollectionView()
         
-        // Do any additional setup after loading the view.
+        getMenuData()
+        
     }
     
     func setNavi() {
@@ -66,6 +80,32 @@ class sortManagerVC: UIViewController {
         CV_main.register(UINib.init(nibName: "sortManagerHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "sortManagerHeader")
         
     }
+    
+    func getMenuData() {
+        modelMenuListLevelPost.shopId = PARTNERID_SHOP+"_"+shopStoreCode
+        modelMenuListLevelPost.deep = 2
+        modelMenuListLevelPost.sortName = "pid"
+        modelMenuListLevelPost.nodeId = "01"
+        modelMenuListLevelPost.sortOrder = 2
+        
+        shopM.shopGetMenuListNextLevelByNodeid(amodel: modelMenuListLevelPost)
+            .subscribe(onNext: { (Posts: ModelMenuListNextLevelByNodeidResult) in
+                
+                if let data = Posts.data{
+                    self.array_meun.removeAll()
+                    self.array_meun = self.array_meun + data
+                    self.CV_main.reloadData()
+                }
+                
+            },onError:{error in
+                if let msg = (error as? MyErrorEnum)?.drawMsgValue{
+                    HUDShowMsgQuick(msg: msg, toView: self.view, time: 0.8)
+                }else{
+                    HUDShowMsgQuick(msg: "server error", toView: self.view, time: 0.8)
+                }
+            })
+            .addDisposableTo(disposeBag)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -80,6 +120,19 @@ extension sortManagerVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
         PrintFM("")
+        
+        let Vc = StoryBoard_NextPages.instantiateViewController(withIdentifier: "sortManagerResultVC") as! sortManagerResultVC
+        
+        let item = array_meun[indexPath.section]
+        
+        let children = item.children?[indexPath.row]
+        
+        let result = children?.resultModel
+
+        Vc.noid = (result?.nid)!
+        Vc.stroeId = shopStoreCode
+        
+        self.navigationController?.pushViewController(Vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -91,14 +144,19 @@ extension sortManagerVC:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sortManagerHeader", for: indexPath) as! sortManagerHeader
         
-        if indexPath.section == 0 {
-            headerView.label_name.text = "本周新品"
-//            headerView.bton_searchDelete.isHidden = false
-        }else{
-            headerView.label_name.text = "秋冬新品-女士"
-//            headerView.bton_searchDelete.isHidden = true
-        }
+//        if indexPath.section == 0 {
+//            headerView.label_name.text = "本周新品"
+////            headerView.bton_searchDelete.isHidden = false
+//        }else{
+//            headerView.label_name.text = "秋冬新品-女士"
+////            headerView.bton_searchDelete.isHidden = true
+//        }
         
+        let item = array_meun[indexPath.section]
+        
+        let resultModel = item.resultModel
+        
+        headerView.label_name.text = resultModel?.name
         
         return headerView
     }
@@ -110,7 +168,7 @@ extension sortManagerVC:UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
-        return (array_meun[section] as! NSArray).count
+        return array_meun[section].children!.count
         
     }
     
@@ -118,10 +176,18 @@ extension sortManagerVC:UICollectionViewDataSource{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCellSortManager", for: indexPath) as! CCellSortManager
         
-        let letspecItem = (array_meun[indexPath.section] as! NSArray)
-        let str:String = letspecItem[indexPath.row] as! String
+//        let letspecItem = (array_meun[indexPath.section] as! NSArray)
+//        let str:String = letspecItem[indexPath.row] as! String
+//        
+//        cell.label_content.text = str
         
-        cell.label_content.text = str
+        let item = array_meun[indexPath.section]
+        
+        let children = item.children?[indexPath.row]
+        
+        let result = children?.resultModel
+        
+        cell.label_content.text = result?.name
         
         return cell
         

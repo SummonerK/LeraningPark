@@ -126,6 +126,8 @@ class shangHu_DetailVC: UIViewController,shhuDetailHeaderDelegate {
         
         let Vc = StoryBoard_ActivityPages.instantiateViewController(withIdentifier: "sortManagerVC") as! sortManagerVC
         
+        Vc.shopStoreCode = shopStoreCode
+        
         self.navigationController?.pushViewController(Vc, animated: true)
         
     }

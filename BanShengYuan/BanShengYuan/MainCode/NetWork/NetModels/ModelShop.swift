@@ -495,4 +495,158 @@ class ModelShoppingCarProductEditPost: Reflect {
     var number:Int!///商品数量：delete-删除的商品数量
 }
 
+//MARK:获取分类列表 post model
 
+class ModelMenuListNextLevelByNodeidPost: Reflect {
+    var shopId:String!///商户ID
+    var nodeId:String!///分类ID
+    var deep:Int!/// 2
+    var sortName:String!/// 排序字段
+    var sortOrder:Int!/// 升序 降序
+}
+
+//MARK:获取分类列表
+
+class ModelMenuListNextLevelByNodeidResult: Mappable {
+    var errcode: String?
+    var errmsg: String?
+    var data: [ModelMenuListNextLevelItem]?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        data <- map["data"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+//分类内容
+class ModelMenuListNextLevelItem: Mappable {
+    var children: [ModelMenuListNextLevelChildrenItem]?
+    var resultModel: ModelMenuListNextLevelResultItem?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        children <- map["children"]
+        resultModel <- map["resultModel"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+//分类标题
+class ModelMenuListNextLevelChildrenItem: Mappable {
+    var resultModel: ModelMenuListNextLevelResultItem?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        resultModel <- map["resultModel"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+//分类标签
+class ModelMenuListNextLevelResultItem: Mappable {
+    var hasChild: Int?
+    var level: Int?
+    var menuId: Int?
+    var name: String?
+    var nid: String?
+    
+    var productId: Int?
+    var remark: String?
+    var sequence: Int?
+    var status: Int?
+    var type: String?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        hasChild <- map["hasChild"]
+        level <- map["level"]
+        menuId <- map["menuId"]
+        name <- map["name"]
+        nid <- map["nid"]
+        productId <- map["productId"]
+        remark <- map["remark"]
+        sequence <- map["sequence"]
+        status <- map["status"]
+        type <- map["type"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+
+//MARK:获取分类下商品列表
+
+class ModelMenuProductsByLevelNodeidResult: Mappable {
+    var errcode: String?
+    var errmsg: String?
+    var data: [ModelMenuProductsByLevelResultItem]?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        errcode <- map["errcode"]
+        errmsg <- map["errmsg"]
+        data <- map["data"]
+        
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+//列表内容
+class ModelMenuProductsByLevelItem: Mappable {
+    var children: [ModelMenuProductsByLevelResultItem]?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        children <- map["children"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}
+
+//商品内容
+class ModelMenuProductsByLevelResultItem: Mappable {
+    var resultModel: ModelShopDetailItem?
+    
+    required init?(map: Map) { }
+    
+    func mapping(map: Map) {
+        resultModel <- map["resultModel"]
+    }
+    
+    public var description: String {
+        return self.toJSONString()!
+    }
+    
+}

@@ -209,6 +209,7 @@
 		639F6AE01F18680E00BE860A /* TCellPayAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639F6ADE1F18680E00BE860A /* TCellPayAddress.swift */; };
 		639F6AE11F18680E00BE860A /* TCellPayAddress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639F6ADF1F18680E00BE860A /* TCellPayAddress.xib */; };
 		63AF0E5F1EF3DC9100642DB7 /* IBHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF0E5E1EF3DC9100642DB7 /* IBHUD.swift */; };
+		63C632791F55635C00EDC3A3 /* sortManagerResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C632781F55635C00EDC3A3 /* sortManagerResultVC.swift */; };
 		63D7872B1F03B41400937135 /* IBCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D7872A1F03B41400937135 /* IBCollectionViewFlowLayout.swift */; };
 		63EC60391EF10DAB001F56D8 /* NextPages_FromHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EC60371EF10DAB001F56D8 /* NextPages_FromHome.storyboard */; };
 		63FF16C41F418B5B0061568E /* QNModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF16C31F418B5B0061568E /* QNModel.swift */; };
@@ -431,6 +432,7 @@
 		639F6AE61F18D57E00BE860A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UserCenter.strings"; sourceTree = "<group>"; };
 		639F6AE71F18D57E00BE860A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/NextPageActivity.strings"; sourceTree = "<group>"; };
 		63AF0E5E1EF3DC9100642DB7 /* IBHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBHUD.swift; sourceTree = "<group>"; };
+		63C632781F55635C00EDC3A3 /* sortManagerResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sortManagerResultVC.swift; sourceTree = "<group>"; };
 		63D7872A1F03B41400937135 /* IBCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		63EC60381EF10DAB001F56D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/NextPages_FromHome.storyboard; sourceTree = "<group>"; };
 		63FF16C31F418B5B0061568E /* QNModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QNModel.swift; sourceTree = "<group>"; };
@@ -943,6 +945,7 @@
 				6352BD191F39A15F0039C5A0 /* CCellSortManager.xib */,
 				6352BD1C1F39A1FC0039C5A0 /* sortManagerHeader.swift */,
 				6352BD1D1F39A1FC0039C5A0 /* sortManagerHeader.xib */,
+				63C632781F55635C00EDC3A3 /* sortManagerResultVC.swift */,
 			);
 			path = shanghu;
 			sourceTree = "<group>";
@@ -1306,6 +1309,7 @@
 				6353810F1EE93EA5006C0375 /* getResetCodeVC.swift in Sources */,
 				635896EB1F380D6500C945EC /* view_orderFooter.swift in Sources */,
 				634F640B1F0E172A00DE4B92 /* ModelVIPPost.swift in Sources */,
+				63C632791F55635C00EDC3A3 /* sortManagerResultVC.swift in Sources */,
 				634F63DA1F0E0A0C00DE4B92 /* CCellChooseVCHeader.swift in Sources */,
 				635897031F380D6500C945EC /* UserCenterNaviC.swift in Sources */,
 				636636091F05047E0060E7D4 /* TCellshanghu.swift in Sources */,
