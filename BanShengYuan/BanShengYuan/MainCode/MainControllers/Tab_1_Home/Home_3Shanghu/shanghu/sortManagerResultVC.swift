@@ -39,9 +39,9 @@ class sortManagerResultVC: UIViewController,shhuDetailHeaderDelegate {
             
             if oldValue == sortIndex {
                 PrintFM("sortIndex = \(sortIndex)")
-//                getIndexData()
+                getIndexData()
             }else{
-//                getData()
+                getData()
             }
             
         }
