@@ -53,8 +53,6 @@ class ViewController: UIViewController {
         }
         model.products = products
         
-        print("\(model.toDictionary())")
-        
         manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
             print("Result \(String(describing: Result?.toDictionary()))");
             self.bton_msg.setTitle(Result?.resultMsg, for: .normal)

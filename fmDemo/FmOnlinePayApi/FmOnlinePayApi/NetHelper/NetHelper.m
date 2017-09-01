@@ -10,12 +10,17 @@
 #import "FmWxPrepayRes.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "UPPaymentControl.h"
+#import "RSA.h"
 
 static NSString * const HOSTPath   = @"http://115.159.117.231:9000/";
 static NSInteger const TIMEOUT  = 30;
 
 typedef void (^NetSuccess)(id responseBody);
 typedef void (^NetFail)(NSString *error);
+
+static NSString * const app_private_key = @"MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAK9SvXc8f7UkzBw8eflQzHPADBS5uzUPbTqI9wAu0rMlw6FoUaPB85kdJ//aCbMSlXrp4N2NGHMXU0EkipixwJRXDLTvD2CDuKgekGYEitI+DG5mAHgGj/VhHqMxNePSZemRZBAWj0PT9xhW2oSsKd1e65nJYewhLIMcGD+HA79jAgMBAAECgYEAo8Im0l6h8nKia6VZULRVo7A4GIu6/r6gCdKw02zoxQh7CCJGTyzz+YowOFxSPv8WvC4EKSyHL8kTrH8TLbip5Ne0G4q+/W2RK734hUn7yna0+hzdaKyCvjyLeIFXILvrz++HlvWeHM8eiSL61IX6x7nE0G5mxYPGlLdwUPhHVlECQQDlpUypfrNlRBc2vz5kDaTfjpNXNtyXTdUIAH7IZhkI7uAxq7NMj5Z8qpEqwn4W4oI7B+wknzeP4Oj+slCMCJnnAkEAw3GDqRzIVVrTAJLajLQPgdc0uLkSwdbphkBsGmQ0VEPS5roiM6y2OhX8EigrpkCdpA7+wOi6mIWBLm54t8hXJQJANrSV+pqQKcN6tDQCrNsDN65DMzeCfRixcuKLUTnhJNui1LJOWCKseq43PrRuTQ1QcLeGbYLwPXoahvH7diBmaQJBAJiXqBQBROhfYR6xibERZIobXC5dUSfGg80tvzlbwv+HdMJv0QRHdH8lawlCE9JZ4LqWepBjJEyw74sw9U+IO4ECQQDNVjr8zWMOTmiG+kSCjzdnRDm5yh2y3Ax1WYkEQAylE3kJj+mzqDPoS8cqLOzowVVkSNBjvi2ngfSGBN2VgfAK";
+
+static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvUr13PH+1JMwcPHn5UMxzwAwUubs1D206iPcALtKzJcOhaFGjwfOZHSf/2gmzEpV66eDdjRhzF1NBJIqYscCUVwy07w9gg7ioHpBmBIrSPgxuZgB4Bo/1YR6jMTXj0mXpkWQQFo9D0/cYVtqErCndXuuZyWHsISyDHBg/hwO/YwIDAQAB";
 
 @interface NetHelper() <WXApiDelegate>{
     SuccessBlock mSuccess;
@@ -129,7 +134,7 @@ typedef void (^NetFail)(NSString *error);
  */
 - (void)fmPayGetPaySignWithParameter:(NSDictionary *)parameter successBlock:(NetSuccess )successBlock failureBlock:(NetFail)failureBlock{
     
-    [self postPath:@"account/pay/unifyOrder" WithParameter:parameter successBlock:^(id responseBody) {
+    [self postPath:@"unifyOrder" WithParameter:parameter successBlock:^(id responseBody) {
         successBlock(responseBody);
     } failureBlock:^(NSString *error) {
         failureBlock(error);
@@ -144,7 +149,12 @@ typedef void (^NetFail)(NSString *error);
     FmResponseData * responsedata = [FmResponseData new];
     ResultMdel.responseData = responsedata;
     
+    //加密拼接
+    payModel.sign = [FMNet getNeedSignStrFrom:payModel.toDictionary];
+    
     NSLog(@"payModel Json ==> %@",payModel.toJSONString);
+    
+//    /*
     
     [FMNet fmPayGetPaySignWithParameter:payModel.toDictionary successBlock:^(id responseBody) {
         
@@ -191,6 +201,7 @@ typedef void (^NetFail)(NSString *error);
         failureBlock(ResultMdel);
     }];
     
+//     */
 }
 
 - (void)doAliPay:(NSString*)bizContent AndScheme:(NSString*)shchme successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock{
@@ -280,6 +291,55 @@ typedef void (^NetFail)(NSString *error);
                 break;
         }
     }
+}
+
+- (NSString *)getNeedSignStrFrom:(NSDictionary*)Temp{
+    
+    NSMutableArray * arrayPrimary = [[NSMutableArray alloc] initWithArray:Temp.allKeys];
+    
+    [arrayPrimary removeObject:@"products"];
+    [arrayPrimary removeObject:@"sign"];
+    
+    NSArray *arrKey = [arrayPrimary sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2){
+        NSComparisonResult result = [obj1 compare:obj2];
+        return result==NSOrderedDescending;//NSOrderedAscending 倒序
+    }];
+    
+    NSString*str =@"";
+    
+    for (NSString *s in arrKey) {
+        id value = Temp[s];
+        if([value isKindOfClass:[NSDictionary class]]) {
+            value = [self getNeedSignStrFrom:value];
+        }
+        if([str length] !=0) {
+            str = [str stringByAppendingString:@"|"];
+        }
+        str = [str stringByAppendingFormat:@"%@",value];
+        
+    }
+    
+    NSLog(@"keys:%@",[arrKey componentsJoinedByString:@"|"]);
+    NSLog(@"str:%@",str);
+    
+//    NSString *encWithPubKey;
+//    NSString *decWithPrivKey;
+//    encWithPubKey = [RSA encryptString:@"1447|14433713120170809151435|20003|-1|-1|100|0|1" publicKey:app_public_key];
+//    NSLog(@"Enctypted with public key: %@", encWithPubKey);
+//    
+//    decWithPrivKey = [RSA decryptString:encWithPubKey privateKey:app_private_key];
+//    NSLog(@"Result Sign:\n%@\nend",decWithPrivKey);
+    
+    NSString *encWithPrivKey;
+    NSString *decWithPublicKey;
+    
+    encWithPrivKey = [RSA encryptString:str privateKey:app_private_key];
+    NSLog(@"app_private_key signResult: %@\nend", encWithPrivKey);
+    decWithPublicKey = [RSA decryptString:encWithPrivKey publicKey:app_public_key];
+    NSLog(@"app_public_key decResult: %@", decWithPublicKey);
+    
+    return encWithPrivKey;
+    
 }
 
 @end

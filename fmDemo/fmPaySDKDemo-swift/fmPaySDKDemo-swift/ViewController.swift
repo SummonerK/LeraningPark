@@ -93,7 +93,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
             tv_backContent.text = "请设置支付金额";
             return
         }
-        
+    
         var payType = ""
         var schemeStr = ""
         model.partnerId = 1443
@@ -102,7 +102,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
             schemeStr = "fmalipaysdk"
             model.partnerId = 1447
         }else if type == 2 {///微信支付
-            payType = "20001"
+            payType = "20001"  
         }else if type == 3 {
             payType = "20003"///银联支付
             schemeStr = "FmUPPaySdk"
@@ -120,15 +120,22 @@ class ViewController: UIViewController,UITextFieldDelegate {
             product.consumeNum = 1
             products.append(product)
         }
-        model.products = products
+//        model.products = products
         
-        print("\(model.toDictionary())")
+        print("\(model.toJSONString())")
         
-        manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
-            self.tv_backContent.text = Result?.toJSONString()
-        }, failureBlock: { (EResult) in
-            self.tv_backContent.text = EResult?.toJSONString()
-        })
+        let dic = model.toDictionary()
+        
+        print("\(String(describing: dic?.keys))")
+        print("\(String(describing: dic?.values))")
+        
+        
+//        manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
+//            self.tv_backContent.text = Result?.toJSONString()
+//        }, failureBlock: { (EResult) in
+//            self.tv_backContent.text = EResult?.toJSONString()
+//        })
+        
     }
 }
 

@@ -63,7 +63,6 @@
 		6310ED121F514C9800E357DC /* JSONKeyMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6310ECD81F514C9800E357DC /* JSONKeyMapper.m */; };
 		6310ED131F514C9800E357DC /* JSONValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6310ECD91F514C9800E357DC /* JSONValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6310ED141F514C9800E357DC /* JSONValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6310ECDA1F514C9800E357DC /* JSONValueTransformer.m */; };
-		6310ED151F514C9800E357DC /* LICENSE_jsonmodel.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6310ECDB1F514C9800E357DC /* LICENSE_jsonmodel.txt */; };
 		6310ED161F514C9800E357DC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6310ECDC1F514C9800E357DC /* README.md */; };
 		6310ED191F514CBF00E357DC /* NetHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 6310ED171F514CBF00E357DC /* NetHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6310ED1A1F514CBF00E357DC /* NetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6310ED181F514CBF00E357DC /* NetHelper.m */; };
@@ -73,6 +72,8 @@
 		6310ED231F51504900E357DC /* FmPayProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6310ED211F51504900E357DC /* FmPayProductModel.m */; };
 		6310ED261F5152A800E357DC /* FmWxPrepayRes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6310ED241F5152A800E357DC /* FmWxPrepayRes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6310ED271F5152A800E357DC /* FmWxPrepayRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 6310ED251F5152A800E357DC /* FmWxPrepayRes.m */; };
+		6350E8CF1F595190008513FE /* RSA.h in Headers */ = {isa = PBXBuildFile; fileRef = 6350E8CD1F595190008513FE /* RSA.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6350E8D01F595190008513FE /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 6350E8CE1F595190008513FE /* RSA.m */; };
 		6353D20E1F52AEC100563806 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6353D20D1F52AEC100563806 /* libsqlite3.tbd */; };
 		6353D2111F52AF0B00563806 /* FmWxPrepayDataRes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6353D20F1F52AF0B00563806 /* FmWxPrepayDataRes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6353D2121F52AF0B00563806 /* FmWxPrepayDataRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353D2101F52AF0B00563806 /* FmWxPrepayDataRes.m */; };
@@ -162,7 +163,6 @@
 		6310ECD81F514C9800E357DC /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
 		6310ECD91F514C9800E357DC /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
 		6310ECDA1F514C9800E357DC /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
-		6310ECDB1F514C9800E357DC /* LICENSE_jsonmodel.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_jsonmodel.txt; sourceTree = "<group>"; };
 		6310ECDC1F514C9800E357DC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6310ED171F514CBF00E357DC /* NetHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetHelper.h; sourceTree = "<group>"; };
 		6310ED181F514CBF00E357DC /* NetHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetHelper.m; sourceTree = "<group>"; };
@@ -172,6 +172,8 @@
 		6310ED211F51504900E357DC /* FmPayProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FmPayProductModel.m; sourceTree = "<group>"; };
 		6310ED241F5152A800E357DC /* FmWxPrepayRes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FmWxPrepayRes.h; sourceTree = "<group>"; };
 		6310ED251F5152A800E357DC /* FmWxPrepayRes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FmWxPrepayRes.m; sourceTree = "<group>"; };
+		6350E8CD1F595190008513FE /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
+		6350E8CE1F595190008513FE /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
 		6353D20D1F52AEC100563806 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		6353D20F1F52AF0B00563806 /* FmWxPrepayDataRes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FmWxPrepayDataRes.h; sourceTree = "<group>"; };
 		6353D2101F52AF0B00563806 /* FmWxPrepayDataRes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FmWxPrepayDataRes.m; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		6310EC991F514C1600E357DC /* NetHelper */ = {
 			isa = PBXGroup;
 			children = (
+				6350E8CC1F595190008513FE /* RSA */,
 				6310ED1B1F514DF500E357DC /* FmModel */,
 				6310EC9A1F514C9800E357DC /* AFNetworking */,
 				6310ECC01F514C9800E357DC /* JSONModel */,
@@ -308,7 +311,6 @@
 			isa = PBXGroup;
 			children = (
 				6310ECC11F514C9800E357DC /* JSONModel */,
-				6310ECDB1F514C9800E357DC /* LICENSE_jsonmodel.txt */,
 				6310ECDC1F514C9800E357DC /* README.md */,
 			);
 			path = JSONModel;
@@ -391,6 +393,15 @@
 				637889701F53FD620042CEB6 /* FmResponseData.m */,
 			);
 			path = FmModel;
+			sourceTree = "<group>";
+		};
+		6350E8CC1F595190008513FE /* RSA */ = {
+			isa = PBXGroup;
+			children = (
+				6350E8CD1F595190008513FE /* RSA.h */,
+				6350E8CE1F595190008513FE /* RSA.m */,
+			);
+			path = RSA;
 			sourceTree = "<group>";
 		};
 		636803971F50376C00170A5F = {
@@ -535,6 +546,7 @@
 				637889671F53F3E40042CEB6 /* UPPaymentControl.h in Headers */,
 				6310ECFE1F514C9800E357DC /* UIWebView+AFNetworking.h in Headers */,
 				6353D2111F52AF0B00563806 /* FmWxPrepayDataRes.h in Headers */,
+				6350E8CF1F595190008513FE /* RSA.h in Headers */,
 				6310ECFA1F514C9800E357DC /* UIProgressView+AFNetworking.h in Headers */,
 				6310ED041F514C9800E357DC /* JSONModelClassProperty.h in Headers */,
 			);
@@ -598,7 +610,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6310ED151F514C9800E357DC /* LICENSE_jsonmodel.txt in Resources */,
 				6310ECEA1F514C9800E357DC /* LICENSE in Resources */,
 				636803BB1F50385700170A5F /* README.txt in Resources */,
 				636803B81F50385700170A5F /* AlipaySDK.bundle in Resources */,
@@ -618,6 +629,7 @@
 				6310ED051F514C9800E357DC /* JSONModelClassProperty.m in Sources */,
 				6310ECFD1F514C9800E357DC /* UIRefreshControl+AFNetworking.m in Sources */,
 				6353D2121F52AF0B00563806 /* FmWxPrepayDataRes.m in Sources */,
+				6350E8D01F595190008513FE /* RSA.m in Sources */,
 				6310ED031F514C9800E357DC /* JSONModelArray.m in Sources */,
 				6310ECF81F514C9800E357DC /* UIImageView+AFNetworking.m in Sources */,
 				6310ED101F514C9800E357DC /* JSONModel+networking.m in Sources */,

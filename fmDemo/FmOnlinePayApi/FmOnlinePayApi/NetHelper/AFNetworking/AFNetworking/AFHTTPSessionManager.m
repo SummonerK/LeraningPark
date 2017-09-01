@@ -275,7 +275,7 @@
     NSError *serializationError = nil;
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:method URLString:[[NSURL URLWithString:URLString relativeToURL:self.baseURL] absoluteString] parameters:parameters error:&serializationError];
     
-//    NSLog(@"PATH_URL %@",[[NSURL URLWithString:URLString relativeToURL:self.baseURL] absoluteString]);
+    NSLog(@"PATH_URL %@",[[NSURL URLWithString:URLString relativeToURL:self.baseURL] absoluteString]);
     
     if (serializationError) {
         if (failure) {

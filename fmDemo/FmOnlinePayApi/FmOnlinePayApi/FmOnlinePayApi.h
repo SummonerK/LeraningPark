@@ -16,6 +16,7 @@
 #import <FmOnlinePayApi/FmResultRes.h>
 #import <FmOnlinePayApi/FmResponseData.h>
 #import <FmOnlinePayApi/FMCodeManager.h>
+#import <FmOnlinePayApi/RSA.h>
 
 //! Project version number for FmOnlinePayApi.
 FOUNDATION_EXPORT double FmOnlinePayApiVersionNumber;
