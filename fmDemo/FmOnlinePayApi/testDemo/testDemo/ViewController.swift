@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     }
     @IBAction func pay(_ sender: Any) {
         
-        setModelWith(type: 3)
+        setModelWith(type: 1)
     }
     
     func setModelWith(type:Int) {
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             schemeStr = "FmUPPaySdk"
         }
         
-        model.partnerId = 1443
+        model.partnerId = 1447
         model.transAmount = 1
           model.paymentMethodCode = payType
         model.partnerOrderId = "\(Int(Date().timeIntervalSince1970))"

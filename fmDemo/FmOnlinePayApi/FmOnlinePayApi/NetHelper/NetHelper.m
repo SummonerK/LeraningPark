@@ -12,15 +12,16 @@
 #import "UPPaymentControl.h"
 #import "RSA.h"
 
-static NSString * const HOSTPath   = @"http://115.159.117.231:9000/";
+static NSString * const HOSTPath   = @"http://115.159.117.231:8905/";
+//static NSString * const HOSTPath   = @"http://172.16.13.207:8905/";
 static NSInteger const TIMEOUT  = 30;
 
 typedef void (^NetSuccess)(id responseBody);
 typedef void (^NetFail)(NSString *error);
 
-static NSString * const app_private_key = @"MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAK9SvXc8f7UkzBw8eflQzHPADBS5uzUPbTqI9wAu0rMlw6FoUaPB85kdJ//aCbMSlXrp4N2NGHMXU0EkipixwJRXDLTvD2CDuKgekGYEitI+DG5mAHgGj/VhHqMxNePSZemRZBAWj0PT9xhW2oSsKd1e65nJYewhLIMcGD+HA79jAgMBAAECgYEAo8Im0l6h8nKia6VZULRVo7A4GIu6/r6gCdKw02zoxQh7CCJGTyzz+YowOFxSPv8WvC4EKSyHL8kTrH8TLbip5Ne0G4q+/W2RK734hUn7yna0+hzdaKyCvjyLeIFXILvrz++HlvWeHM8eiSL61IX6x7nE0G5mxYPGlLdwUPhHVlECQQDlpUypfrNlRBc2vz5kDaTfjpNXNtyXTdUIAH7IZhkI7uAxq7NMj5Z8qpEqwn4W4oI7B+wknzeP4Oj+slCMCJnnAkEAw3GDqRzIVVrTAJLajLQPgdc0uLkSwdbphkBsGmQ0VEPS5roiM6y2OhX8EigrpkCdpA7+wOi6mIWBLm54t8hXJQJANrSV+pqQKcN6tDQCrNsDN65DMzeCfRixcuKLUTnhJNui1LJOWCKseq43PrRuTQ1QcLeGbYLwPXoahvH7diBmaQJBAJiXqBQBROhfYR6xibERZIobXC5dUSfGg80tvzlbwv+HdMJv0QRHdH8lawlCE9JZ4LqWepBjJEyw74sw9U+IO4ECQQDNVjr8zWMOTmiG+kSCjzdnRDm5yh2y3Ax1WYkEQAylE3kJj+mzqDPoS8cqLOzowVVkSNBjvi2ngfSGBN2VgfAK";
+static NSString * const app_private_key = @"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBANb1LukQ3Kw/43t20SN/yyXdF5FS1T0VfsOY1PW01hXntvk+6Xz9C3VNrgTDNlKobW4KZy1xR8eI1hSWSpS4zwGXk2Hz07x0Jg+GNv9Q+Q/J9eq/QcYXw4g4+FwrAREEtIQr67LT/LOpkWq/An1QI07dU8AyCCSGafeEGMO5v6N3AgMBAAECgYASgI4mH35vERy6ftKnlJNe0fX6Wz/hfx0nJtuFvqgCwKweLg0Y5gr7cNE+tbLSUI8CvsB8x9he02dh5EHNJU8j8ohezpUoXI+omnw2gV+zj4dvvDcW1sTFt1mG/Snv08yXuXTIBEenuSPfqToNUrYrlU1uFeUQH6VWFDzgd5TIgQJBAPMSGHoXszwmbzdNi03C6imnVKQmuvYH/HFXPP2MQrHalGWmXI5UMYCOwdjrG7yNFxgIeFvIsPTXcYbE/BebmsECQQDiZEXBnwoYANgTg+N9Uz1lWxmMS99A+Rt/x1Ft8o9YagvRgKzbtMLt/JZsewPflExl5oPRNCaF7wZCLH4MXmQ3AkB/5tS0YgYxL3Q0IHydtWOr+V2jZrHYRkmChkoUjJqHpaGSf2CSkCDgKb482zHkHEW7orFacpcSrs8RAFQ6Q+nBAkBXGltYXpdkmtaH06OwMVma6I0Q1JRGDFIPPKHQ2pVaYBrB9W8MbSTeqeM6Q64+1HD8d89Zq2Xy+/79cN7iZWLLAkEA2ZbVP2N3nOWadvskoAtPDKzHKQ4FnodnGvnKRM0pNC3jOKGvvMjLcgqg6h7lueRo46Pj6wotziBsI2PtYFzNBg==";
 
-static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvUr13PH+1JMwcPHn5UMxzwAwUubs1D206iPcALtKzJcOhaFGjwfOZHSf/2gmzEpV66eDdjRhzF1NBJIqYscCUVwy07w9gg7ioHpBmBIrSPgxuZgB4Bo/1YR6jMTXj0mXpkWQQFo9D0/cYVtqErCndXuuZyWHsISyDHBg/hwO/YwIDAQAB";
+static NSString * const app_public_key = @"MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAK9SvXc8f7UkzBw8eflQzHPADBS5uzUPbTqI9wAu0rMlw6FoUaPB85kdJ//aCbMSlXrp4N2NGHMXU0EkipixwJRXDLTvD2CDuKgekGYEitI+DG5mAHgGj/VhHqMxNePSZemRZBAWj0PT9xhW2oSsKd1e65nJYewhLIMcGD+HA79jAgMBAAECgYEAo8Im0l6h8nKia6VZULRVo7A4GIu6/r6gCdKw02zoxQh7CCJGTyzz+YowOFxSPv8WvC4EKSyHL8kTrH8TLbip5Ne0G4q+/W2RK734hUn7yna0+hzdaKyCvjyLeIFXILvrz++HlvWeHM8eiSL61IX6x7nE0G5mxYPGlLdwUPhHVlECQQDlpUypfrNlRBc2vz5kDaTfjpNXNtyXTdUIAH7IZhkI7uAxq7NMj5Z8qpEqwn4W4oI7B+wknzeP4Oj+slCMCJnnAkEAw3GDqRzIVVrTAJLajLQPgdc0uLkSwdbphkBsGmQ0VEPS5roiM6y2OhX8EigrpkCdpA7+wOi6mIWBLm54t8hXJQJANrSV+pqQKcN6tDQCrNsDN65DMzeCfRixcuKLUTnhJNui1LJOWCKseq43PrRuTQ1QcLeGbYLwPXoahvH7diBmaQJBAJiXqBQBROhfYR6xibERZIobXC5dUSfGg80tvzlbwv+HdMJv0QRHdH8lawlCE9JZ4LqWepBjJEyw74sw9U+IO4ECQQDNVjr8zWMOTmiG+kSCjzdnRDm5yh2y3Ax1WYkEQAylE3kJj+mzqDPoS8cqLOzowVVkSNBjvi2ngfSGBN2VgfAK";
 
 @interface NetHelper() <WXApiDelegate>{
     SuccessBlock mSuccess;
@@ -154,9 +155,11 @@ static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBg
     
     NSLog(@"payModel Json ==> %@",payModel.toJSONString);
     
-//    /*
+    /*
     
     [FMNet fmPayGetPaySignWithParameter:payModel.toDictionary successBlock:^(id responseBody) {
+        
+        NSLog(@"responseBody = %@",responseBody);
         
         FmWxPrepayRes * SentResult = [[FmWxPrepayRes alloc] initWithDictionary:responseBody error:nil];
         
@@ -165,7 +168,7 @@ static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBg
         
         SentResult.responseData = wContent;
         
-//        NSLog(@"SentResult = %@",SentResult);
+        NSLog(@"SentResult = %@",SentResult);
         
         if ([SentResult.paymentMethodCode  isEqual: @"20002"]) {
             //支付宝支付
@@ -201,7 +204,7 @@ static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBg
         failureBlock(ResultMdel);
     }];
     
-//     */
+     */
 }
 
 - (void)doAliPay:(NSString*)bizContent AndScheme:(NSString*)shchme successBlock:(SuccessBlock )successBlock failureBlock:(FailureBlock)failureBlock{
@@ -322,24 +325,36 @@ static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBg
     NSLog(@"keys:%@",[arrKey componentsJoinedByString:@"|"]);
     NSLog(@"str:%@",str);
     
-//    NSString *encWithPubKey;
-//    NSString *decWithPrivKey;
-//    encWithPubKey = [RSA encryptString:@"1447|14433713120170809151435|20003|-1|-1|100|0|1" publicKey:app_public_key];
-//    NSLog(@"Enctypted with public key: %@", encWithPubKey);
-//    
-//    decWithPrivKey = [RSA decryptString:encWithPubKey privateKey:app_private_key];
-//    NSLog(@"Result Sign:\n%@\nend",decWithPrivKey);
-    
+    NSString *encWithPubKey;
+    str = @"1447|1504250617|20002|-1|-1|2|0|1";
     NSString *encWithPrivKey;
-    NSString *decWithPublicKey;
-    
     encWithPrivKey = [RSA encryptString:str privateKey:app_private_key];
-    NSLog(@"app_private_key signResult: %@\nend", encWithPrivKey);
-    decWithPublicKey = [RSA decryptString:encWithPrivKey publicKey:app_public_key];
+    NSLog(@"app_private_key signResult: \n%@\nend", encWithPrivKey);
+    
+    NSString * sign = @"cSz1jrmu5TC/QEmkh3i9+teWX1dU9zSDwbjwUQBt3TsprGWputE1kKSlmWW1BBIFkVZ+HHAu0X5QpiFVUN848zSljn9NyrLZj+NRRHsLeMRHVz/XLiPfkRTra6eixBZ9nyj8RvANP11aY//vDzYXRcwFQdT60R+/xKS7Ksydihg=";
+    
+    NSString * decWithPublicKey = [RSA decryptString:sign publicKey:app_public_key];
     NSLog(@"app_public_key decResult: %@", decWithPublicKey);
     
     return encWithPrivKey;
     
 }
+
+/**
+ responseBody = {
+ fmId = 92951709051000003002;
+ message = "\U6210\U529f";
+ payTransId = "online-transid";
+ paymentMethod = "\U652f\U4ed8\U5b9dapp\U652f\U4ed8";
+ paymentMethodCode = 20002;
+ responseData =     {
+ "biz_content" = "app_id=2017060807447672&biz_content=%7B%22body%22%3A%22test%22%2C%22out_trade_no%22%3A%2292951709051000003002%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22subject%22%3A%22%E9%9D%9E%E7%A0%81%22%2C%22total_amount%22%3A%220.01%22%7D&timestamp=2017-09-05+11%3A22%3A29&charset=utf-8&notify_url=http%3A%2F%2F115.159.117.231%3A8905%2Fnotify&sign_type=RSA&method=alipay.trade.app.pay&version=1.0&sign=F2AJBOqpRIgLZdezp48gzSDI5xBeyvrNbsnGBxcVTc5jhu6cwTjqsIGml%2BUjHQANMH2A6mJsT4fhKYUICn3tMZlBYbXK2TO1b2haxmQSufWzWV4mg6el1YAR%2FqL2t08tbjhJlcJIFUCbZNcTWluH%2F5Yy3LhQ2VGmuAewp7wBWC4%3D";
+ };
+ sign = "cSz1jrmu5TC/QEmkh3i9+teWX1dU9zSDwbjwUQBt3TsprGWputE1kKSlmWW1BBIFkVZ+HHAu0X5QpiFVUN848zSljn9NyrLZj+NRRHsLeMRHVz/XLiPfkRTra6eixBZ9nyj8RvANP11aY//vDzYXRcwFQdT60R+/xKS7Ksydihg=";
+ statusCode = 100;
+ ver = 1;
+ }
+ */
+
 
 @end
