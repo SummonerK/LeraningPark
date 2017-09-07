@@ -12,11 +12,12 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     let manager = NetHelper.sharedInstance()
     let model = FmPrepayModel()
-
+    
+    @IBOutlet weak var tf_storeId: UITextField!
     @IBOutlet weak var tf_amount: UITextField!
     @IBOutlet weak var tv_backContent: UITextView!
     
-    var trueAmount:Int = 0 //真实金额, Int 数据类型, 单位（分）
+    var trueAmount:Int = 1 //真实金额, Int 数据类型, 单位（分）
     
     var _tapGesture: UITapGestureRecognizer! //手势
     
@@ -25,6 +26,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
         _tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapRecognized(_:)))
         self.view.addGestureRecognizer(_tapGesture)
+        
+        tf_amount.text = "\(trueAmount)"
+        tf_storeId.text = "-1"
     }
 
     internal func tapRecognized(_ gesture: UITapGestureRecognizer) {
@@ -67,7 +71,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
         trueAmount = textField.text?.intValue ?? 0
         
-        tf_amount.text = tf_amount.text?.fixAmount()
+//        tf_amount.text = tf_amount.text?.fixAmount()
     }
     
     
@@ -107,7 +111,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
             payType = "20003"///银联支付
             schemeStr = "FmUPPaySdk"
         }
-        
+        model.storeId = tf_storeId.text
         model.transAmount = Int32(trueAmount)
         model.paymentMethodCode = payType
         model.partnerOrderId = "\(Int(Date().timeIntervalSince1970))"
@@ -120,21 +124,18 @@ class ViewController: UIViewController,UITextFieldDelegate {
             product.consumeNum = 1
             products.append(product)
         }
-//        model.products = products
-        
-        print("\(model.toJSONString())")
+        model.products = products
         
         let dic = model.toDictionary()
         
         print("\(String(describing: dic?.keys))")
         print("\(String(describing: dic?.values))")
         
-        
-//        manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
-//            self.tv_backContent.text = Result?.toJSONString()
-//        }, failureBlock: { (EResult) in
-//            self.tv_backContent.text = EResult?.toJSONString()
-//        })
+        manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
+            self.tv_backContent.text = Result?.toJSONString()
+        }, failureBlock: { (EResult) in
+            self.tv_backContent.text = EResult?.toJSONString()
+        })
         
     }
 }

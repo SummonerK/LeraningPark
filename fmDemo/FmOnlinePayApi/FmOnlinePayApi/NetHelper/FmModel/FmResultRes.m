@@ -18,7 +18,19 @@
             self.resultMsg = @"支付类型出错";
         }
             break;
+        case FMCODE_VERIFY_DEFAULT:
+        {
+            self.resultMsg = @"支付验证失败";
+        }
+            break;
+        case FMCODE_PAY_DEFAULT:
+        {
+            self.resultMsg = @"支付成功";
+        }
+            break;
 #pragma mark AL 支付宝
+            
+            /*
         case FMCODE_AL_OPEN:
         {
             self.resultMsg = @"打开支付宝成功";
@@ -44,6 +56,8 @@
             self.resultMsg = @"支付宝支付失败";
         }
             break;
+             
+             */
             
 #pragma mark WX 微信
         case FMCODE_WX_OPEN:

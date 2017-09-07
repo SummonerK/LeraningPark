@@ -3,11 +3,13 @@
  @link: https://github.com/ideawu/Objective-C-RSA
 */
 
-#import "RSA.h"
+#import "RSAFISHER.h"
 #import <Security/Security.h>
 #import "NSData+SHA.h"
 
-@implementation RSA
+#import <openssl/pem.h>
+
+@implementation RSAFISHER
 
 /*
 static NSString *base64_encode(NSString *str){
@@ -119,7 +121,7 @@ static NSData *base64_decode(NSString *str){
 	
 	// This will be base64 encoded, decode it.
 	NSData *data = base64_decode(key);
-	data = [RSA stripPublicKeyHeader:data];
+	data = [RSAFISHER stripPublicKeyHeader:data];
     
 	if(!data){
         NSLog(@"Public Data Nil");
@@ -190,7 +192,7 @@ static NSData *base64_decode(NSString *str){
 
 	// This will be base64 encoded, decode it.
 	NSData *data = base64_decode(key);
-	data = [RSA stripPrivateKeyHeader:data];
+	data = [RSAFISHER stripPrivateKeyHeader:data];
 	if(!data){
 		return nil;
 	}
@@ -288,34 +290,10 @@ static NSData *base64_decode(NSString *str){
 	CFRelease(keyRef);
 	return ret;
     
-//    size_t cipherBufferSize = SecKeyGetBlockSize(keyRef);
-//    uint8_t *cipherBuffer = malloc(cipherBufferSize * sizeof(uint8_t));
-//    NSMutableData *encryptedData = [[NSMutableData alloc] init] ;
-//
-//    NSInteger bufferSize = [data length];
-//    NSData *buffer = [data subdataWithRange:NSMakeRange(0, bufferSize)];
-//    OSStatus status = SecKeyRawSign(keyRef, kSecPaddingPKCS1SHA1, (const uint8_t *)[buffer bytes], [buffer length], cipherBuffer, &cipherBufferSize);
-//    //    OSStatus ret = SecKeyRawVerify(key1, kSecPaddingPKCS1SHA1, (const uint8_t *)[buffer bytes], [buffer length], cipherBuffer, cipherBufferSize);
-//    //    NSAssert(ret==errSecSuccess, @"验证签名失败");
-//    if (status == noErr){
-//        NSData *encryptedBytes = [[NSData alloc] initWithBytes:(const void *)cipherBuffer length:cipherBufferSize];
-//        [encryptedData appendData:encryptedBytes];
-//    }else{
-//        if (cipherBuffer) {
-//            free(cipherBuffer);
-//        }
-//        return nil;
-//    }
-//
-//    if (cipherBuffer){
-//        free(cipherBuffer);
-//    }
-//    
-//    return encryptedData;
 }
 
 + (NSString *)encryptString:(NSString *)str privateKey:(NSString *)privKey{
-	NSData *data = [RSA encryptData:[str dataUsingEncoding:NSUTF8StringEncoding].SwiftyRSASHA1 privateKey:privKey];
+	NSData *data = [RSAFISHER encryptData:[str dataUsingEncoding:NSUTF8StringEncoding].SwiftyRSASHA1 privateKey:privKey];
 	NSString *ret = base64_encode_data(data);
 	return ret;
 }
@@ -324,11 +302,11 @@ static NSData *base64_decode(NSString *str){
 	if(!data || !privKey){
 		return nil;
 	}
-	SecKeyRef keyRef = [RSA addPrivateKey:privKey];
+	SecKeyRef keyRef = [RSAFISHER addPrivateKey:privKey];
 	if(!keyRef){
 		return nil;
 	}
-	return [RSA encryptData:data withKeyRef:keyRef isSign:YES];
+	return [RSAFISHER encryptData:data withKeyRef:keyRef isSign:YES];
     
 }
 
@@ -343,7 +321,7 @@ static NSData *base64_decode(NSString *str){
 	
 	NSMutableData *ret = [[NSMutableData alloc] init];
 	for(int idx=0; idx<srclen; idx+=src_block_size){
-		//NSLog(@"%d/%d block_size: %d", idx, (int)srclen, (int)block_size);
+		NSLog(@"%d/%d block_size: %d", idx, (int)srclen, (int)block_size);
 		size_t data_len = srclen - idx;
 		if(data_len > src_block_size){
 			data_len = src_block_size;
@@ -352,12 +330,14 @@ static NSData *base64_decode(NSString *str){
 		size_t outlen = block_size;
 		OSStatus status = noErr;
 		status = SecKeyDecrypt(keyRef,
-							   kSecPaddingNone,
+							   kSecPaddingPKCS1,
 							   srcbuf + idx,
 							   data_len,
 							   outbuf,
 							   &outlen
 							   );
+        
+        
 		if (status != 0) {
 			NSLog(@"SecKeyEncrypt fail. Error Code: %d", status);
 			ret = nil;
@@ -390,7 +370,9 @@ static NSData *base64_decode(NSString *str){
 
 + (NSString *)decryptString:(NSString *)str privateKey:(NSString *)privKey{
 	NSData *data = [[NSData alloc] initWithBase64EncodedString:str options:NSDataBase64DecodingIgnoreUnknownCharacters];
-	data = [RSA decryptData:data privateKey:privKey];
+    
+	data = [RSAFISHER decryptData:data.SwiftyRSASHA1 privateKey:privKey];
+    
 	NSString *ret = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	return ret;
 }
@@ -399,11 +381,12 @@ static NSData *base64_decode(NSString *str){
 	if(!data || !privKey){
 		return nil;
 	}
-	SecKeyRef keyRef = [RSA addPrivateKey:privKey];
+	SecKeyRef keyRef = [RSAFISHER addPrivateKey:privKey];
 	if(!keyRef){
 		return nil;
 	}
-	return [RSA decryptData:data withKeyRef:keyRef];
+    
+	return [RSAFISHER decryptData:data withKeyRef:keyRef];
 }
 
 /* END: Encryption & Decryption with RSA private key */
@@ -411,7 +394,7 @@ static NSData *base64_decode(NSString *str){
 /* START: Encryption & Decryption with RSA public key */
 
 + (NSString *)encryptString:(NSString *)str publicKey:(NSString *)pubKey{
-    NSData *data = [RSA encryptData:[str dataUsingEncoding:NSUTF8StringEncoding] publicKey:pubKey];
+    NSData *data = [RSAFISHER encryptData:[str dataUsingEncoding:NSUTF8StringEncoding] publicKey:pubKey];
 	NSString *ret = base64_encode_data(data);
 	return ret;
 }
@@ -420,16 +403,16 @@ static NSData *base64_decode(NSString *str){
 	if(!data || !pubKey){
 		return nil;
 	}
-	SecKeyRef keyRef = [RSA addPublicKey:pubKey];
+	SecKeyRef keyRef = [RSAFISHER addPublicKey:pubKey];
 	if(!keyRef){
 		return nil;
 	}
-    return [RSA encryptData:data withKeyRef:keyRef isSign:NO];
+    return [RSAFISHER encryptData:data withKeyRef:keyRef isSign:NO];
 }
 
 + (NSString *)decryptString:(NSString *)str publicKey:(NSString *)pubKey{
 	NSData *data = [[NSData alloc] initWithBase64EncodedString:str options:NSDataBase64DecodingIgnoreUnknownCharacters];
-	data = [RSA decryptData:data publicKey:pubKey];
+	data = [RSAFISHER decryptData:data publicKey:pubKey];
 	NSString *ret = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	return ret;
 }
@@ -439,12 +422,74 @@ static NSData *base64_decode(NSString *str){
 	if(!data || !pubKey){
 		return nil;
 	}
-	SecKeyRef keyRef = [RSA addPublicKey:pubKey];
+	SecKeyRef keyRef = [RSAFISHER addPublicKey:pubKey];
 	if(!keyRef){
 		return nil;
 	}
-	return [RSA decryptData:data withKeyRef:keyRef];
+	return [RSAFISHER decryptData:data withKeyRef:keyRef];
 }
+
++ (BOOL)verifyString:(NSString *)string  withSign:(NSString *)signString publicKey:(NSString *)key{
+    
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *signatureData = [[NSData alloc]initWithBase64EncodedString:signString options:0];
+    
+    const char *msg = [string cStringUsingEncoding:NSUTF8StringEncoding];
+    int msglength = (int)[string lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    
+    unsigned char *sig = (unsigned char *)[signatureData bytes];
+    unsigned int sig_len = (int)[signatureData length];
+    unsigned char sha1[20];
+    SHA1((unsigned char *)msg, msglength, sha1);
+    
+    int veriufy_ok = RSA_verify(NID_sha1, sha1, 20, sig, sig_len, [[self class] RSAPublicKeyFromBase64:key]);
+    
+    if (veriufy_ok == 1)
+    {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
++ (RSA *)RSAPublicKeyFromPEM:(NSString *)publicKeyPEM
+{
+    const char *buffer = [publicKeyPEM UTF8String];
+    
+    BIO *bpubkey = BIO_new_mem_buf(buffer, (int)strlen(buffer));
+    
+    RSA *rsaPublic = PEM_read_bio_RSA_PUBKEY(bpubkey, NULL, NULL, NULL);
+    
+    BIO_free_all(bpubkey);
+    return rsaPublic;
+}
++ (RSA *)RSAPublicKeyFromBase64:(NSString *)publicKey
+{
+    //格式化公钥
+    NSMutableString *result = [NSMutableString string];
+    [result appendString:@"-----BEGIN PUBLIC KEY-----\n"];
+    int count = 0;
+    for (int i = 0; i < [publicKey length]; ++i) {
+        
+        unichar c = [publicKey characterAtIndex:i];
+        if (c == '\n' || c == '\r') {
+            continue;
+        }
+        [result appendFormat:@"%c", c];
+        if (++count == 64) {
+            [result appendString:@"\n"];
+            count = 0;
+        }
+    }
+    [result appendString:@"\n-----END PUBLIC KEY-----"];
+    
+    return [self RSAPublicKeyFromPEM:result];
+    
+}
+
+
+
 
 /* END: Encryption & Decryption with RSA public key */
 

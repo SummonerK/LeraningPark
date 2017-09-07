@@ -53,7 +53,15 @@ class ViewController: UIViewController {
         }
         model.products = products
         
-        manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
+//        manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
+//            print("Result \(String(describing: Result?.toDictionary()))");
+//            self.bton_msg.setTitle(Result?.resultMsg, for: .normal)
+//        }, failureBlock: { (EResult) in
+//            print("error \(String(describing: EResult?.toDictionary()))");
+//            self.bton_msg.setTitle(EResult?.resultMsg, for: .normal)
+//        })
+        
+        manager?.fmCreatPay(model, andScheme: schemeStr, andMode: "01", andViewController: self, successBlock: { (Result) in
             print("Result \(String(describing: Result?.toDictionary()))");
             self.bton_msg.setTitle(Result?.resultMsg, for: .normal)
         }, failureBlock: { (EResult) in

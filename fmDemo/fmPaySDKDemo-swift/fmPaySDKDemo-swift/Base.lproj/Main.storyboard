@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="支付金额" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6r0-Wh-jnb">
-                                <rect key="frame" x="19" y="225" width="291.5" height="40"/>
+                                <rect key="frame" x="19" y="225" width="245.5" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="O7n-Ui-BT4"/>
                                 </constraints>
@@ -34,14 +34,15 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="TDr-rb-eQG"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slr-c3-CVh">
-                                <rect key="frame" x="316.5" y="225" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slr-c3-CVh">
+                                <rect key="frame" x="270.5" y="225" width="86" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="HIe-Cp-5G6"/>
-                                    <constraint firstAttribute="width" constant="40" id="x9b-im-dt5"/>
+                                    <constraint firstAttribute="width" priority="200" constant="40" id="x9b-im-dt5"/>
                                 </constraints>
-                                <state key="normal" title="OK"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="金额单位（分）"/>
                                 <connections>
                                     <action selector="setAmount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kkK-be-tcT"/>
                                 </connections>
@@ -86,11 +87,36 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-28-pfS">
-                                <rect key="frame" x="19" y="56" width="337.5" height="133"/>
+                                <rect key="frame" x="19" y="36" width="337.5" height="117"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="设置门店号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ps-cy-kBC">
+                                <rect key="frame" x="19" y="169" width="247" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rwx-tB-gzu"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="zO3-yX-9gG"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72r-aI-xPo">
+                                <rect key="frame" x="271.5" y="169" width="85" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="200" constant="40" id="Ncp-3j-SxS"/>
+                                    <constraint firstAttribute="height" constant="40" id="i4k-bS-Rb1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="门店号默认为-1"/>
+                                <connections>
+                                    <action selector="setAmount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zRv-81-c3b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -98,25 +124,31 @@
                             <constraint firstItem="6r0-Wh-jnb" firstAttribute="leading" secondItem="yz8-P7-IdA" secondAttribute="leading" id="0lT-u2-ChR"/>
                             <constraint firstItem="Slr-c3-CVh" firstAttribute="leading" secondItem="6r0-Wh-jnb" secondAttribute="trailing" constant="6" id="4Sp-Xk-gPR"/>
                             <constraint firstItem="6Nq-zo-yEj" firstAttribute="width" secondItem="LzN-QF-Ecd" secondAttribute="width" id="5E7-7K-7Es"/>
+                            <constraint firstItem="72r-aI-xPo" firstAttribute="trailing" secondItem="yz8-P7-IdA" secondAttribute="trailing" id="5ol-2R-09h"/>
+                            <constraint firstItem="72r-aI-xPo" firstAttribute="centerY" secondItem="6ps-cy-kBC" secondAttribute="centerY" id="5uQ-cJ-gPs"/>
                             <constraint firstItem="LzN-QF-Ecd" firstAttribute="top" secondItem="yz8-P7-IdA" secondAttribute="bottom" constant="16" id="9hE-Kh-BII"/>
+                            <constraint firstItem="72r-aI-xPo" firstAttribute="leading" secondItem="6ps-cy-kBC" secondAttribute="trailing" constant="6" id="AIq-Te-78W"/>
                             <constraint firstItem="yz8-P7-IdA" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="CN8-K5-LNn"/>
+                            <constraint firstItem="6ps-cy-kBC" firstAttribute="leading" secondItem="yz8-P7-IdA" secondAttribute="leading" id="CoL-AU-8Ib"/>
                             <constraint firstItem="yz8-P7-IdA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E4W-rg-HQp"/>
                             <constraint firstItem="6Nq-zo-yEj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EjH-3T-dfV"/>
+                            <constraint firstItem="72r-aI-xPo" firstAttribute="top" secondItem="1Ua-28-pfS" secondAttribute="bottom" constant="16" id="G9V-4s-fjg"/>
                             <constraint firstItem="yz8-P7-IdA" firstAttribute="top" secondItem="6r0-Wh-jnb" secondAttribute="bottom" constant="16" id="K6F-Gk-Mpb"/>
                             <constraint firstItem="6Nq-zo-yEj" firstAttribute="top" secondItem="LzN-QF-Ecd" secondAttribute="bottom" constant="16" id="NmW-oA-VOK"/>
                             <constraint firstItem="LzN-QF-Ecd" firstAttribute="width" secondItem="yz8-P7-IdA" secondAttribute="width" id="SNB-37-c1p"/>
-                            <constraint firstItem="Slr-c3-CVh" firstAttribute="top" secondItem="1Ua-28-pfS" secondAttribute="bottom" constant="36" id="Tfd-4c-iKU"/>
                             <constraint firstItem="Slr-c3-CVh" firstAttribute="centerY" secondItem="6r0-Wh-jnb" secondAttribute="centerY" id="TsS-0R-oX0"/>
                             <constraint firstItem="LzN-QF-Ecd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bR8-PN-VaD"/>
                             <constraint firstItem="1Ua-28-pfS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="deV-tA-pJr"/>
                             <constraint firstItem="1Ua-28-pfS" firstAttribute="width" secondItem="yz8-P7-IdA" secondAttribute="width" id="nW4-Tc-YnE"/>
                             <constraint firstItem="6r0-Wh-jnb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="205" id="qhe-Px-J32"/>
                             <constraint firstItem="Slr-c3-CVh" firstAttribute="trailing" secondItem="yz8-P7-IdA" secondAttribute="trailing" id="tcM-FU-DjC"/>
-                            <constraint firstItem="1Ua-28-pfS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="36" id="zul-sN-Q9Z"/>
+                            <constraint firstItem="6r0-Wh-jnb" firstAttribute="top" secondItem="6ps-cy-kBC" secondAttribute="bottom" constant="16" id="yPa-kq-JVq"/>
+                            <constraint firstItem="1Ua-28-pfS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="zul-sN-Q9Z"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tf_amount" destination="6r0-Wh-jnb" id="d3a-d6-ajn"/>
+                        <outlet property="tf_storeId" destination="6ps-cy-kBC" id="4SI-Hd-UWm"/>
                         <outlet property="tv_backContent" destination="1Ua-28-pfS" id="W8s-hd-uFQ"/>
                     </connections>
                 </viewController>
