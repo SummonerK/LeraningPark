@@ -12,11 +12,13 @@
 @interface ViewController ()<UITextFieldDelegate>{
     __weak IBOutlet UITextField *tf_amount;
     
+    __weak IBOutlet UITextField *tf_storeId;
+    
     __weak IBOutlet UITextView *tv_content;
     
-    int trueAmount;
+    int trueAmount;//真实金额, Int 数据类型, 单位（分）
     
-    FmPrepayModel * model;
+    FmPrepayModel * model; //商品Model
 }
 
 @end
@@ -26,40 +28,50 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    trueAmount = 0;
+    trueAmount = 1;
     
     model = [FmPrepayModel new];
     
-    
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)]];
+    
+    tf_amount.text = [NSString stringWithFormat:@"%d",trueAmount];
+    tf_storeId.text = @"-1";
 }
 
 - (void)tapAction:(UIGestureRecognizer*)gesture
 {
     printf("tap");
     [tf_amount resignFirstResponder];
+    [tf_storeId resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    tf_amount.text = @"";
+    textField.text = @"";
     return YES;
 }
     
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
-    NSString * str = textField.text;
+    NSLog(@"string = %@",string);
     
-    if (str.intValue == 0) {
+    if ( textField == tf_amount && tf_amount.text.intValue == 0) {
         textField.text = @"";
     }
     return YES;
 }
     
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    double amount = tf_amount.text.doubleValue;
-    trueAmount = tf_amount.text.intValue;
+
+    if ([tf_storeId.text isEqualToString:@""]) {
+        tf_storeId.text = @"-1";
+    }
     
-    tf_amount.text = [self getAmountStringWithNumber:amount];
+    if (textField == tf_amount) {
+        trueAmount = tf_amount.text.intValue;
+    }
+    
+//    double amount = tf_amount.text.doubleValue;
+//    tf_amount.text = [self getAmountStringWithNumber:amount];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,6 +79,7 @@
 }
 - (IBAction)action_setAmount:(id)sender {
     [tf_amount resignFirstResponder];
+    [tf_storeId resignFirstResponder];
 }
 
 
@@ -90,6 +103,7 @@
 
 - (void)setModelWithType:(int)type{
     [tf_amount resignFirstResponder];
+    [tf_storeId resignFirstResponder];
     
     if (trueAmount == 0) {
         tv_content.text = @"请设置支付金额";
@@ -113,6 +127,7 @@
     
     NSLog(@"%@ %@",payTpye,schemeStr);
     
+    model.storeId = tf_storeId.text;
     model.transAmount = trueAmount;
     model.paymentMethodCode = payTpye;
     model.partnerOrderId = [NSString stringWithFormat:@"%.0f",[NSDate date].timeIntervalSince1970];
@@ -130,7 +145,7 @@
     }
     model.products = products;
     
-    [FMNet fmCreatPay:model AndScheme:schemeStr AndViewController:self successBlock:^(FmResultRes *result) {
+    [FMNet fmCreatPay:model AndScheme:schemeStr AndMode:@"01" AndViewController:self successBlock:^(FmResultRes *result) {
         NSLog(@"%@",result.toDictionary);
         tv_content.text = result.toJSONString;
     } failureBlock:^(FmResultRes *error) {

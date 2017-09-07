@@ -24,6 +24,7 @@
 @property(nonatomic,assign)int transAmount;
 @property(nonatomic,assign)int undiscountAmount;
 @property(nonatomic,strong)NSArray<FmPayProductModel>*products;
+@property(nonatomic,copy)NSString*sign;
 
 
 @end

@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     }
     @IBAction func pay(_ sender: Any) {
         
-        setModelWith(type: 1)
+        setModelWith(type: 2)
     }
     
     func setModelWith(type:Int) {
@@ -52,14 +52,6 @@ class ViewController: UIViewController {
             products.append(product)
         }
         model.products = products
-        
-//        manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
-//            print("Result \(String(describing: Result?.toDictionary()))");
-//            self.bton_msg.setTitle(Result?.resultMsg, for: .normal)
-//        }, failureBlock: { (EResult) in
-//            print("error \(String(describing: EResult?.toDictionary()))");
-//            self.bton_msg.setTitle(EResult?.resultMsg, for: .normal)
-//        })
         
         manager?.fmCreatPay(model, andScheme: schemeStr, andMode: "01", andViewController: self, successBlock: { (Result) in
             print("Result \(String(describing: Result?.toDictionary()))");

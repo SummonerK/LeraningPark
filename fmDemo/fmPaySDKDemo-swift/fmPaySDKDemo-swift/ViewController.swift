@@ -34,6 +34,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     internal func tapRecognized(_ gesture: UITapGestureRecognizer) {
         if gesture.state == UIGestureRecognizerState.ended {
             tf_amount.resignFirstResponder()
+            tf_storeId.resignFirstResponder()
         }
         
     }
@@ -42,13 +43,12 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func setAmount(_ sender: Any) {
-        
         tf_amount.resignFirstResponder()
+        tf_storeId.resignFirstResponder()
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
         textField.text = ""
-        trueAmount = 0
         return true
     }
     
@@ -68,8 +68,13 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField){
+        if tf_storeId.text == ""{
+            tf_storeId.text = "-1"
+        }
         
-        trueAmount = textField.text?.intValue ?? 0
+        if textField == tf_amount {
+            trueAmount = textField.text?.intValue ?? 0
+        }
         
 //        tf_amount.text = tf_amount.text?.fixAmount()
     }
@@ -90,8 +95,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     func setModelWith(type:Int) {
-        
         tf_amount.resignFirstResponder()
+        tf_storeId.resignFirstResponder()
         
         if trueAmount == 0{
             tv_backContent.text = "请设置支付金额";
@@ -131,7 +136,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         print("\(String(describing: dic?.keys))")
         print("\(String(describing: dic?.values))")
         
-        manager?.fmCreatPay(model, andScheme: schemeStr, andViewController: self, successBlock: { (Result) in
+        manager?.fmCreatPay(model, andScheme: schemeStr, andMode: "01", andViewController: self, successBlock: { (Result) in
             self.tv_backContent.text = Result?.toJSONString()
         }, failureBlock: { (EResult) in
             self.tv_backContent.text = EResult?.toJSONString()

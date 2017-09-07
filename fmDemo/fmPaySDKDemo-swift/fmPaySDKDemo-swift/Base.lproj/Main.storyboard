@@ -93,7 +93,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="设置门店号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ps-cy-kBC">
-                                <rect key="frame" x="19" y="169" width="247" height="40"/>
+                                <rect key="frame" x="19" y="169" width="222" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rwx-tB-gzu"/>
                                 </constraints>
@@ -105,14 +105,14 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72r-aI-xPo">
-                                <rect key="frame" x="271.5" y="169" width="85" height="40"/>
+                                <rect key="frame" x="246.5" y="169" width="110" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="200" constant="40" id="Ncp-3j-SxS"/>
                                     <constraint firstAttribute="height" constant="40" id="i4k-bS-Rb1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="门店号默认为-1"/>
+                                <state key="normal" title="测试门店号默认为-1"/>
                                 <connections>
                                     <action selector="setAmount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zRv-81-c3b"/>
                                 </connections>

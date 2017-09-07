@@ -84,8 +84,8 @@ static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBg
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        NSLog(@"error ==%@", [error userInfo][@"com.alamofire.serialization.response.error.string"]);
-        NSDictionary * ErrorDic = @{@"statusCode":[NSString stringWithFormat:@"%ld",(NSInteger)[error code]],@"message":[error localizedDescription]};
+//        NSLog(@"error ==%@", [error userInfo][@"com.alamofire.serialization.response.error.string"]);
+        NSDictionary * ErrorDic = @{@"statusCode":[NSString stringWithFormat:@"%d",(int)[error code]],@"message":[error localizedDescription]};
         failureBlock(ErrorDic);
     } ];
 }
@@ -108,7 +108,12 @@ static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBg
                 return;
             }else{
                 ResultMdel.resultCode = aliStatus;
-                ResultMdel.resultMsg = resultDic[@"memo"];
+                if (![resultDic[@"memo"] isEqualToString:@""]) {
+                    ResultMdel.resultMsg = resultDic[@"memo"];
+                }else{
+                    ResultMdel.resultMsg = @"支付取消";
+                }
+                
                 mFail(ResultMdel);
             }
         }];
@@ -171,7 +176,7 @@ static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBg
         
         SentResult.responseData = wContent;
         
-        NSLog(@"SentResult = %@",SentResult);
+//        NSLog(@"SentResult = %@",SentResult);
         
         if (![self getVerifyFrom:SentResult.toDictionary]) {
             ResultMdel.resultCode = FMCODE_VERIFY_DEFAULT;
@@ -208,7 +213,7 @@ static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBg
         }
         
     } failureBlock:^(id error) {
-        ResultMdel.resultCode =  [error[@"statusCode"] integerValue];
+        ResultMdel.resultCode =  [error[@"statusCode"] intValue];
         ResultMdel.resultMsg = error[@"message"];
         failureBlock(ResultMdel);
     }];
@@ -225,8 +230,15 @@ static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBg
             successBlock(ResultMdel);
         }else{
             ResultMdel.resultCode = aliStatus;
-            ResultMdel.resultMsg = resultDic[@"memo"];
+            
+            if (![resultDic[@"memo"] isEqualToString:@""]) {
+                ResultMdel.resultMsg = resultDic[@"memo"];
+            }else{
+                ResultMdel.resultMsg = @"支付取消";
+            }
+            
             failureBlock(ResultMdel);
+            
         }
     }];
 }
@@ -335,10 +347,12 @@ static NSString * const app_public_key = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBg
     
 //    NSLog(@"keys:%@",[arrKey componentsJoinedByString:@"|"]);
 //    NSLog(@"str:%@",str);
+    
 //    str = @"1447|1504250617|20002|-1|-1|2|0|1";
     
     encWithPrivKey = [RSAFISHER encryptString:str privateKey:app_private_key];
-    NSLog(@"app_private_key signResult: \n%@\nend", encWithPrivKey);
+    
+//    NSLog(@"app_private_key signResult: \n%@\nend", encWithPrivKey);
     
     return encWithPrivKey;
     
