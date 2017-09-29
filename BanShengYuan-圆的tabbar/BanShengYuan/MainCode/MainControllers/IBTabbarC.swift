@@ -39,7 +39,7 @@ class IBTabbarC: UITabBarController {
         shapeLayer.shadowColor = UIColor.init(red: 155.0/255.0, green: 155.0/255.0, blue: 155.0/255.0, alpha: 0.9).cgColor
         shapeLayer.shadowOpacity = 0.7
         shapeLayer.shadowRadius = 1.5
-        shapeLayer.shadowOffset = CGSize.init(width: 0, height: -3)
+//        shapeLayer.shadowOffset = CGSize.init(width: 0, height: -3)
         
         tabBar.backgroundColor = #colorLiteral(red: 0.9764705882, green: 0.9764705882, blue: 0.9764705882, alpha: 1)
         tabBar.layer.insertSublayer(shapeLayer, at: 0)
