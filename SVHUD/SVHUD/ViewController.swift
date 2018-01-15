@@ -41,29 +41,29 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showHudAction(_ sender: Any) {
-//        showhud()
+        showhud()
     }
 
 }
 
 func showhud() {
     
-//    let gifimage = UIImageView()
+    let gifimage = UIImageView()
 //    gifimage.image = UIImage.gifImage(data: HUDGIFData as NSData)
-//
-//    let image = UIImage.gifImage(data: HUDGIFData as NSData)
+
+    let image = UIImage.gifImage(data: HUDGIFData as NSData)
     
 //    SVProgressHUD.setContainerView(gifimage)
-    
-    SVProgressHUD.show()
+//    
+//    SVProgressHUD.show()
     
 //    SVProgressHUD.show(image, status: "")
-    
-//    SVProgressHUD.show(image, status: nil)
-    
+//
+    SVProgressHUD.show(image, status: nil)
+
 //    SVProgressHUD.setViewForExtension(gifimage)
-//    
-//    SVProgressHUD.setMinimumSize(CGSize.init(width: 100, height: 100))
+    
+    SVProgressHUD.setMinimumSize(CGSize.init(width: 100, height: 100))
     
     SVProgressHUD.dismiss(withDelay: 0.8)
     
