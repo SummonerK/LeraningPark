@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LTGPhotoCamear" customModule="EasyBuy" customModuleProvider="target">
             <connections>
                 <outlet property="btonGetPic" destination="aZf-Pb-NKd" id="Kjg-vQ-lTg"/>
+                <outlet property="label_msg" destination="XBF-oW-aD3" id="fLI-Ft-3xR"/>
                 <outlet property="showImageView" destination="Fgj-KX-E02" id="7kC-Xg-52C"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -72,16 +73,28 @@
                         <action selector="backAction" destination="-1" eventType="touchUpInside" id="A15-oQ-1TY"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBF-oW-aD3">
+                    <rect key="frame" x="-0.5" y="547" width="375" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="mxH-Qs-JlH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="DKt-iv-VXO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="26" id="8wi-TG-SUO"/>
                 <constraint firstItem="MLH-CX-r71" firstAttribute="bottom" secondItem="aZf-Pb-NKd" secondAttribute="bottom" id="AjI-Bv-TqZ"/>
                 <constraint firstItem="DKt-iv-VXO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="CWf-yM-xeG"/>
+                <constraint firstItem="XBF-oW-aD3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HGP-oM-E80"/>
                 <constraint firstAttribute="bottom" secondItem="aZf-Pb-NKd" secondAttribute="bottom" constant="20" id="Nz0-BF-63R"/>
                 <constraint firstAttribute="trailing" secondItem="Fgj-KX-E02" secondAttribute="trailing" constant="20" id="Qob-X2-dgF"/>
                 <constraint firstItem="Mp6-tM-OV8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="aPZ-Tn-CRh"/>
                 <constraint firstItem="aZf-Pb-NKd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iSh-zo-NP6"/>
+                <constraint firstItem="aZf-Pb-NKd" firstAttribute="top" secondItem="XBF-oW-aD3" secondAttribute="bottom" constant="10" id="l5h-KQ-p8h"/>
+                <constraint firstItem="XBF-oW-aD3" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="pwT-2k-vlY"/>
                 <constraint firstItem="Mp6-tM-OV8" firstAttribute="bottom" secondItem="aZf-Pb-NKd" secondAttribute="bottom" id="tck-oz-DZ9"/>
                 <constraint firstItem="Fgj-KX-E02" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="wDG-pb-dqJ"/>
                 <constraint firstItem="Fgj-KX-E02" firstAttribute="width" secondItem="Fgj-KX-E02" secondAttribute="height" multiplier="1:1" id="yHN-AO-frE"/>
