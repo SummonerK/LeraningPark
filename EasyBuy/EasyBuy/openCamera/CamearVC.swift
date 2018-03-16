@@ -34,6 +34,7 @@ class CamearVC: UIViewController,CameraSessionControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setRadiusFor(toview: btonGetPic, radius: 30, lineWidth: 0, lineColor: .clear)
 
         self.cameraSessionController = CameraSessionController()

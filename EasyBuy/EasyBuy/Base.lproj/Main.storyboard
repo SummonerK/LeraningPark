@@ -32,7 +32,7 @@
                                     <action selector="goToCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eFZ-4M-5xa"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yQa-bS-YAW">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yQa-bS-YAW">
                                 <rect key="frame" x="112" y="128.5" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yQa-bS-YAW" secondAttribute="height" multiplier="1:1" id="45e-Im-Zjb"/>
@@ -49,13 +49,22 @@
                                     <action selector="goToCamera1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KhU-3L-thQ"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s0B-rF-sDt">
+                                <rect key="frame" x="112" y="425.5" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="8bB-eQ-vCu"/>
+                                    <constraint firstAttribute="width" secondItem="s0B-rF-sDt" secondAttribute="height" multiplier="1:1" id="hha-n7-fcR"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dkF-Nb-NGu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="60" id="51x-9R-7Ib"/>
+                            <constraint firstItem="s0B-rF-sDt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CUA-bZ-K2i"/>
                             <constraint firstItem="uxX-HW-XIn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CaI-QQ-Ldk"/>
                             <constraint firstItem="uxX-HW-XIn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UZy-nv-FUF"/>
                             <constraint firstItem="yQa-bS-YAW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-130" id="WFd-1F-FYc"/>
+                            <constraint firstItem="s0B-rF-sDt" firstAttribute="top" secondItem="dkF-Nb-NGu" secondAttribute="bottom" constant="10" id="ZIS-cD-5JX"/>
                             <constraint firstItem="dkF-Nb-NGu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="d5H-Du-2sU"/>
                             <constraint firstItem="uxX-HW-XIn" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="lbG-Xd-pHt"/>
                             <constraint firstItem="yQa-bS-YAW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qdr-CT-VU3"/>
@@ -63,6 +72,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageVResult" destination="s0B-rF-sDt" id="5fB-9i-oi1"/>
                         <outlet property="imageVSumb" destination="yQa-bS-YAW" id="24J-L8-UB1"/>
                     </connections>
                 </viewController>

@@ -73,12 +73,12 @@
                         <action selector="backAction" destination="-1" eventType="touchUpInside" id="A15-oQ-1TY"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBF-oW-aD3">
-                    <rect key="frame" x="-0.5" y="547" width="375" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBF-oW-aD3">
+                    <rect key="frame" x="-0.5" y="537" width="375" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="mxH-Qs-JlH"/>
+                        <constraint firstAttribute="height" constant="40" id="mxH-Qs-JlH"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>

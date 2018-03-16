@@ -38,7 +38,7 @@ class LTGPhotoCamear: UIViewController {
             
             if let data = picData{
                 
-                showImageView?.image = UIImage(data: data)
+//                showImageView?.image = UIImage(data: data)
             }
             
         }
@@ -140,8 +140,8 @@ class LTGPhotoCamear: UIViewController {
 //        photoSettings.flashMode = flashMode
         let previewPixelType = photoSettings.availablePreviewPhotoPixelFormatTypes.first!
         let previewFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPixelType,
-                             kCVPixelBufferWidthKey as String: 720,
-                             kCVPixelBufferHeightKey as String: 720,
+                             kCVPixelBufferWidthKey as String: 160,
+                             kCVPixelBufferHeightKey as String: 160,
                              ]
         photoSettings.previewPhotoFormat = previewFormat
         imageOutput?.capturePhoto(with: photoSettings, delegate: self)
@@ -165,36 +165,45 @@ extension LTGPhotoCamear: AVCapturePhotoCaptureDelegate {
             print(error.localizedDescription)
         } else {
             
-//            if let sampleBuffer = photoSampleBuffer, let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer){
-//                
+            if let sampleBuffer = photoSampleBuffer, let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer){
+                
+                let rimage = UIImage(data: imageData)!
+                let image = self.fixOrientation(rimage)
+                picData = imageData
+                
+                let newImage = CropSubImage(image: image)
+                if TGPhotoPickerConfig.shared.saveImageToPhotoAlbum{
+                    self.saveImageToPhotoAlbum(image)
+                    self.saveImageToPhotoAlbum(newImage)
+                }
+                
 //                let newImage = CropSubImage(imageData: imageData)
-//                
 //                picData = UIImageJPEGRepresentation(newImage, 0)
 //                if TGPhotoPickerConfig.shared.saveImageToPhotoAlbum{
 //                    self.saveImageToPhotoAlbum(newImage)
 //                }
+                
+            }
+            
+//            if let sampleBuffer = photoSampleBuffer {
 //                
+//                let cropSampleBuffer:CMSampleBuffer?
+//                
+//                cropSampleBuffer = self.cropSampleBufferByHardware(buffer: sampleBuffer)
+//                
+//                if let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: cropSampleBuffer!, previewPhotoSampleBuffer: cropSampleBuffer){
+//                    
+//                    picData = imageData
+//                    
+//                    let image = UIImage(data: imageData)
+//                    
+//                    if TGPhotoPickerConfig.shared.saveImageToPhotoAlbum{
+//                        self.saveImageToPhotoAlbum(image!)
+//                    }
+//                }
+//
 //            }
             
-            if let sampleBuffer = photoSampleBuffer {
-                
-                let cropSampleBuffer:CMSampleBuffer?
-                
-                cropSampleBuffer = self.cropSampleBufferByHardware(buffer: sampleBuffer)
-                
-                if let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: cropSampleBuffer!, previewPhotoSampleBuffer: cropSampleBuffer){
-                    
-                    picData = imageData
-                    
-                    let image = UIImage(data: imageData)
-                    
-                    if TGPhotoPickerConfig.shared.saveImageToPhotoAlbum{
-                        self.saveImageToPhotoAlbum(image!)
-                    }
-                }
-
-            }
-                
             else {
                 
                 picData = nil
@@ -205,14 +214,6 @@ extension LTGPhotoCamear: AVCapturePhotoCaptureDelegate {
     fileprivate func saveImageToPhotoAlbum(_ savedImage:UIImage){
         canUseAlbum { (canUse) in
             if canUse{
-                
-//                let sourceImageRef: CGImage = savedImage.cgImage!
-//                
-//                let flipImageOrientation = 3
-//        
-//                //图片反转
-//                let normalImage = UIImage.init(cgImage: sourceImageRef, scale: 1, orientation: UIImageOrientation(rawValue: flipImageOrientation)!)
-                
                 UIImageWriteToSavedPhotosAlbum(savedImage, self, #selector(self.imageDidFinishSavingWithErrorContextInfo), nil)
             }
         }
@@ -256,27 +257,93 @@ extension LTGPhotoCamear{
         self.cropY = Int(currentResolutionH/IBScreenHeight*(IBScreenHeight-IBScreenWidth)/2)
     }
     
-    func CropSubImage(imageData:Data) -> UIImage {
+    func CropSubImage(image:UIImage) -> UIImage {
         
-        let cropX = Int(currentResolutionW/IBScreenWidth*0)
-        let cropY = Int(currentResolutionH/IBScreenHeight*(IBScreenHeight-IBScreenWidth)/2)
+        let cropPX = Int(currentResolutionW/IBScreenWidth*0)
+        let cropPY = Int(currentResolutionH/IBScreenHeight*(IBScreenHeight-IBScreenWidth)/2)
         
-        let image = UIImage(data: imageData)
-        let subCGImage:CGImage = (image?.cgImage)!
+        let subWidth = (image.cgImage?.width)!
         
-        let cropRect = CGRect.init(x: cropX, y: cropY, width: 720, height: 720)
+        let subHeight = (image.cgImage?.height)!
+        
+        let cropRect = CGRect.init(x: cropPX, y: 280, width: subWidth, height: subWidth)
+        
+        print("\(String(cropPX))------\(String(cropPY))")
+        
+        label_msg.text = "\(subWidth) - \(subHeight)"
+        
+        let subCGImage:CGImage = (image.cgImage)!.cropping(to: cropRect)!
         
         UIGraphicsBeginImageContext(cropRect.size)
         
         let content:CGContext = UIGraphicsGetCurrentContext()!
         
-        content.draw(subCGImage, in: cropRect)
+        content.draw(subCGImage, in: CGRect.init(x: 0, y: 0, width: subWidth, height: subWidth))
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
+//        let flipImage = UIImage.init(cgImage: newImage!.cgImage!, scale: 1, orientation: UIImageOrientation.downMirrored)
+//        
+//        showImageView?.image = flipImage
+//        
+//        return flipImage
+        
         return newImage!
         
+    }
+    
+    func fixOrientation(_ aImage: UIImage) -> UIImage {
+        // No-op if the orientation is already correct
+        if aImage.imageOrientation == .up {
+            return aImage
+        }
+        // We need to calculate the proper transformation to make the image upright.
+        // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+        var transform: CGAffineTransform = CGAffineTransform.identity
+        switch aImage.imageOrientation {
+        case .down, .downMirrored:
+            transform = transform.translatedBy(x: aImage.size.width, y: aImage.size.height)
+            transform = transform.rotated(by: CGFloat(Double.pi))
+        case .left, .leftMirrored:
+            transform = transform.translatedBy(x: aImage.size.width, y: 0)
+            transform = transform.rotated(by: CGFloat(Double.pi/2))
+        case .right, .rightMirrored:
+            transform = transform.translatedBy(x: 0, y: aImage.size.height)
+            transform = transform.rotated(by: CGFloat(-Double.pi/2))
+        default:
+            break
+        }
+        
+        switch aImage.imageOrientation {
+        case .upMirrored, .downMirrored:
+            transform = transform.translatedBy(x: aImage.size.width, y: 0)
+            transform = transform.scaledBy(x: -1, y: 1)
+        case .leftMirrored, .rightMirrored:
+            transform = transform.translatedBy(x: aImage.size.height, y: 0)
+            transform = transform.scaledBy(x: -1, y: 1)
+        default:
+            break
+        }
+        
+        // Now we draw the underlying CGImage into a new context, applying the transform
+        // calculated above.
+        
+        let ctx: CGContext = CGContext(data: nil, width: Int(aImage.size.width), height: Int(aImage.size.height), bitsPerComponent: aImage.cgImage!.bitsPerComponent, bytesPerRow: 0, space: aImage.cgImage!.colorSpace!, bitmapInfo: aImage.cgImage!.bitmapInfo.rawValue)!
+        ctx.concatenate(transform)
+        switch aImage.imageOrientation {
+        case .left, .leftMirrored, .right, .rightMirrored:
+            // Grr...
+            ctx.draw(aImage.cgImage!, in: CGRect(x: 0, y: 0, width: aImage.size.height, height: aImage.size.width))
+        default:
+            ctx.draw(aImage.cgImage!, in: CGRect(x: 0, y: 0, width: aImage.size.width, height: aImage.size.height))
+        }
+        
+        // And now we just create a new UIImage from the drawing context
+        let cgimg: CGImage = ctx.makeImage()!
+        
+        let img: UIImage = UIImage(cgImage: cgimg)
+        return img
     }
     
     
@@ -381,11 +448,6 @@ extension LTGPhotoCamear{
         
         let sourceImageRef: CGImage = image!.cgImage!
         let newCGImage = sourceImageRef.cropping(to: inRext)!
-        
-//        let flipImageOrientation = 3
-//
-//        //图片反转
-//        let normalImage = UIImage.init(cgImage: newCGImage, scale: 1, orientation: UIImageOrientation(rawValue: flipImageOrientation)!)
         
         let normalImage = UIImage.init(cgImage: newCGImage)
         

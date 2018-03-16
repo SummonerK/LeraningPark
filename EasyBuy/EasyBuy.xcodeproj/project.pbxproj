@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		635368FF205B9D1B003FDF46 /* WechatIMG47.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 635368FE205B9D1B003FDF46 /* WechatIMG47.jpeg */; };
 		6357D1FC20526797005F648B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357D1FB20526797005F648B /* AppDelegate.swift */; };
 		6357D1FE20526797005F648B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357D1FD20526797005F648B /* ViewController.swift */; };
 		6357D20120526797005F648B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6357D1FF20526797005F648B /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		635368FE205B9D1B003FDF46 /* WechatIMG47.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG47.jpeg; sourceTree = "<group>"; };
 		6357D1F820526797005F648B /* EasyBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6357D1FB20526797005F648B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6357D1FD20526797005F648B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		6357D22C20526884005F648B /* openCamera */ = {
 			isa = PBXGroup;
 			children = (
+				635368FE205B9D1B003FDF46 /* WechatIMG47.jpeg */,
 				638884BD2057AE1700513462 /* IBPic.png */,
 				6357D22D20526884005F648B /* CameraSessionController.swift */,
 				6357D22F20526903005F648B /* CamearVC.swift */,
@@ -335,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				635368FF205B9D1B003FDF46 /* WechatIMG47.jpeg in Resources */,
 				6357D20920526797005F648B /* LaunchScreen.storyboard in Resources */,
 				638EF41A20565BCF0067A333 /* LTGPhotoCamear.xib in Resources */,
 				638EF40F2056514A0067A333 /* TGPhotoPicker.bundle in Resources */,
