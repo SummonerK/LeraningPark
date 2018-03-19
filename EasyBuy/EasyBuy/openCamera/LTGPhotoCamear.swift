@@ -167,42 +167,21 @@ extension LTGPhotoCamear: AVCapturePhotoCaptureDelegate {
             
             if let sampleBuffer = photoSampleBuffer, let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer){
                 
-                let rimage = UIImage(data: imageData)!
-                let image = self.fixOrientation(rimage)
+                let image = UIImage(data: imageData)!
+                
+                let rimage = self.fixOrientation(image)
+                
                 picData = imageData
                 
-                let newImage = CropSubImage(image: image)
+                let new1Image = CropSubImage(image: rimage)
+                
+                showImageView?.image = new1Image
+                
                 if TGPhotoPickerConfig.shared.saveImageToPhotoAlbum{
-                    self.saveImageToPhotoAlbum(image)
-                    self.saveImageToPhotoAlbum(newImage)
+                    self.saveImageToPhotoAlbum(new1Image)
                 }
                 
-//                let newImage = CropSubImage(imageData: imageData)
-//                picData = UIImageJPEGRepresentation(newImage, 0)
-//                if TGPhotoPickerConfig.shared.saveImageToPhotoAlbum{
-//                    self.saveImageToPhotoAlbum(newImage)
-//                }
-                
             }
-            
-//            if let sampleBuffer = photoSampleBuffer {
-//                
-//                let cropSampleBuffer:CMSampleBuffer?
-//                
-//                cropSampleBuffer = self.cropSampleBufferByHardware(buffer: sampleBuffer)
-//                
-//                if let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: cropSampleBuffer!, previewPhotoSampleBuffer: cropSampleBuffer){
-//                    
-//                    picData = imageData
-//                    
-//                    let image = UIImage(data: imageData)
-//                    
-//                    if TGPhotoPickerConfig.shared.saveImageToPhotoAlbum{
-//                        self.saveImageToPhotoAlbum(image!)
-//                    }
-//                }
-//
-//            }
             
             else {
                 
@@ -237,17 +216,9 @@ extension LTGPhotoCamear: AVCapturePhotoCaptureDelegate {
         TGPhotoPickerManager.shared.authorizePhotoLibrary { (status) in
             returnClosure(status == .authorized)
         }
-        /*
-         if PHPhotoLibrary.authorizationStatus() != PHAuthorizationStatus.authorized {
-         let alertView = UIAlertView(title: TGPhotoPickerConfig.shared.PhotoLibraryUsage, message: TGPhotoPickerConfig.shared.PhotoLibraryUsageTip, delegate: nil, cancelButtonTitle: TGPhotoPickerConfig.shared.confirmTitle, otherButtonTitles: TGPhotoPickerConfig.shared.cancelTitle)
-         alertView.tag = TGPhotoPickerConfig.shared.alertViewTag
-         alertView.show()
-         return false
-         }else{
-         return true
-         }
-         */
+        
     }
+    
 }
 
 extension LTGPhotoCamear{
@@ -283,14 +254,10 @@ extension LTGPhotoCamear{
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-//        let flipImage = UIImage.init(cgImage: newImage!.cgImage!, scale: 1, orientation: UIImageOrientation.downMirrored)
-//        
-//        showImageView?.image = flipImage
-//        
-//        return flipImage
+        let flipImage = UIImage.init(cgImage: newImage!.cgImage!, scale: 1, orientation: UIImageOrientation.downMirrored)
         
-        return newImage!
-        
+        return flipImage
+
     }
     
     func fixOrientation(_ aImage: UIImage) -> UIImage {
@@ -373,6 +340,7 @@ extension LTGPhotoCamear{
             status = CVPixelBufferCreate(kCFAllocatorDefault, 720, 720, kCVPixelFormatType_420YpCbCr8BiPlanarFullRange, previewFormat, &pixbuffer)
             
             if (status != noErr) {
+                
                 print("Crop CVPixelBufferCreate error \(String(describing: status))")
                 
                 self.label_msg.text = "Crop CMSampleBufferCreateForImageBuffer error \(String(describing: status))"
