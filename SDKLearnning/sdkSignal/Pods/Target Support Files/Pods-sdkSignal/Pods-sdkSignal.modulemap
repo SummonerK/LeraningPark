@@ -1,6 +1,0 @@
-framework module Pods_sdkSignal {
-  umbrella header "Pods-sdkSignal-umbrella.h"
-
-  export *
-  module * { export * }
-}
