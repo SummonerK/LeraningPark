@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		239BEDCA1B0758CD565BBE36 /* Pods_RxText01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6E7C6F8CC1FE6A043CEC79 /* Pods_RxText01.framework */; };
+		634C43AF21250FB6000C34EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C43AE21250FB6000C34EF /* AppDelegate.swift */; };
+		634C43B121250FB6000C34EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C43B021250FB6000C34EF /* ViewController.swift */; };
+		634C43B421250FB6000C34EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634C43B221250FB6000C34EF /* Main.storyboard */; };
+		634C43B721250FB6000C34EF /* RxText01.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 634C43B521250FB6000C34EF /* RxText01.xcdatamodeld */; };
+		634C43B921250FB6000C34EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 634C43B821250FB6000C34EF /* Assets.xcassets */; };
+		634C43BC21250FB6000C34EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 634C43BA21250FB6000C34EF /* LaunchScreen.storyboard */; };
+		634C43C721250FB6000C34EF /* RxText01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C43C621250FB6000C34EF /* RxText01UITests.swift */; };
+		634C43D32125132A000C34EF /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C43D22125132A000C34EF /* MusicModel.swift */; };
+		634C43D621251456000C34EF /* TCellMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C43D421251456000C34EF /* TCellMusic.swift */; };
+		634C43D721251456000C34EF /* TCellMusic.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634C43D521251456000C34EF /* TCellMusic.xib */; };
+		63564C5F2126ADEC0018A237 /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C5A2126ADEC0018A237 /* Foundation+Extension.swift */; };
+		63564C602126ADEC0018A237 /* TBCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C5B2126ADEC0018A237 /* TBCalendar.swift */; };
+		63564C612126ADEC0018A237 /* TBCalendarAppearStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C5C2126ADEC0018A237 /* TBCalendarAppearStyle.swift */; };
+		63564C622126ADEC0018A237 /* TBCalendarDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C5D2126ADEC0018A237 /* TBCalendarDateCell.swift */; };
+		63564C632126ADEC0018A237 /* TBCalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C5E2126ADEC0018A237 /* TBCalendarHeaderView.swift */; };
+		63564C662126AE1C0018A237 /* MYCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C642126AE1C0018A237 /* MYCalendarVC.swift */; };
+		63564C672126AE1C0018A237 /* MYCalendarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63564C652126AE1C0018A237 /* MYCalendarVC.xib */; };
+		63564C6A2126B0970018A237 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C692126B0970018A237 /* Const.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		634C43C321250FB6000C34EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 634C43A321250FB6000C34EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 634C43AA21250FB6000C34EF;
+			remoteInfo = RxText01;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2D6E7C6F8CC1FE6A043CEC79 /* Pods_RxText01.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxText01.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58C6FF85413B1AFCC6D89CD3 /* Pods-RxText01.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxText01.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxText01/Pods-RxText01.debug.xcconfig"; sourceTree = "<group>"; };
+		634C43AB21250FB6000C34EF /* RxText01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxText01.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		634C43AE21250FB6000C34EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		634C43B021250FB6000C34EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		634C43B321250FB6000C34EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		634C43B621250FB6000C34EF /* RxText01.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RxText01.xcdatamodel; sourceTree = "<group>"; };
+		634C43B821250FB6000C34EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		634C43BB21250FB6000C34EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		634C43BD21250FB6000C34EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		634C43C221250FB6000C34EF /* RxText01UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxText01UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		634C43C621250FB6000C34EF /* RxText01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxText01UITests.swift; sourceTree = "<group>"; };
+		634C43C821250FB6000C34EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		634C43D22125132A000C34EF /* MusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		634C43D421251456000C34EF /* TCellMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellMusic.swift; sourceTree = "<group>"; };
+		634C43D521251456000C34EF /* TCellMusic.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCellMusic.xib; sourceTree = "<group>"; };
+		63564C5A2126ADEC0018A237 /* Foundation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
+		63564C5B2126ADEC0018A237 /* TBCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBCalendar.swift; sourceTree = "<group>"; };
+		63564C5C2126ADEC0018A237 /* TBCalendarAppearStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBCalendarAppearStyle.swift; sourceTree = "<group>"; };
+		63564C5D2126ADEC0018A237 /* TBCalendarDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBCalendarDateCell.swift; sourceTree = "<group>"; };
+		63564C5E2126ADEC0018A237 /* TBCalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBCalendarHeaderView.swift; sourceTree = "<group>"; };
+		63564C642126AE1C0018A237 /* MYCalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYCalendarVC.swift; sourceTree = "<group>"; };
+		63564C652126AE1C0018A237 /* MYCalendarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYCalendarVC.xib; sourceTree = "<group>"; };
+		63564C682126AE7F0018A237 /* bridge_bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge_bridge.h; sourceTree = "<group>"; };
+		63564C692126B0970018A237 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		83E5E44EA440879E4715CE8C /* Pods-RxText01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxText01.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxText01/Pods-RxText01.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		634C43A821250FB6000C34EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				239BEDCA1B0758CD565BBE36 /* Pods_RxText01.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		634C43BF21250FB6000C34EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04F4A8E7B15869A8E75A4672 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D6E7C6F8CC1FE6A043CEC79 /* Pods_RxText01.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2E72BFE5AED420477B55A203 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				58C6FF85413B1AFCC6D89CD3 /* Pods-RxText01.debug.xcconfig */,
+				83E5E44EA440879E4715CE8C /* Pods-RxText01.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		634C43A221250FB6000C34EF = {
+			isa = PBXGroup;
+			children = (
+				634C43AD21250FB6000C34EF /* RxText01 */,
+				634C43C521250FB6000C34EF /* RxText01UITests */,
+				634C43AC21250FB6000C34EF /* Products */,
+				2E72BFE5AED420477B55A203 /* Pods */,
+				04F4A8E7B15869A8E75A4672 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		634C43AC21250FB6000C34EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				634C43AB21250FB6000C34EF /* RxText01.app */,
+				634C43C221250FB6000C34EF /* RxText01UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		634C43AD21250FB6000C34EF /* RxText01 */ = {
+			isa = PBXGroup;
+			children = (
+				63564C592126ADEC0018A237 /* TBCalendar */,
+				634C43D121251311000C34EF /* RxModel */,
+				634C43AE21250FB6000C34EF /* AppDelegate.swift */,
+				634C43B021250FB6000C34EF /* ViewController.swift */,
+				634C43B221250FB6000C34EF /* Main.storyboard */,
+				634C43B821250FB6000C34EF /* Assets.xcassets */,
+				634C43BA21250FB6000C34EF /* LaunchScreen.storyboard */,
+				634C43BD21250FB6000C34EF /* Info.plist */,
+				634C43B521250FB6000C34EF /* RxText01.xcdatamodeld */,
+			);
+			path = RxText01;
+			sourceTree = "<group>";
+		};
+		634C43C521250FB6000C34EF /* RxText01UITests */ = {
+			isa = PBXGroup;
+			children = (
+				634C43C621250FB6000C34EF /* RxText01UITests.swift */,
+				634C43C821250FB6000C34EF /* Info.plist */,
+			);
+			path = RxText01UITests;
+			sourceTree = "<group>";
+		};
+		634C43D121251311000C34EF /* RxModel */ = {
+			isa = PBXGroup;
+			children = (
+				634C43D22125132A000C34EF /* MusicModel.swift */,
+				634C43D421251456000C34EF /* TCellMusic.swift */,
+				634C43D521251456000C34EF /* TCellMusic.xib */,
+			);
+			path = RxModel;
+			sourceTree = "<group>";
+		};
+		63564C592126ADEC0018A237 /* TBCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				63564C692126B0970018A237 /* Const.swift */,
+				63564C682126AE7F0018A237 /* bridge_bridge.h */,
+				63564C5A2126ADEC0018A237 /* Foundation+Extension.swift */,
+				63564C5B2126ADEC0018A237 /* TBCalendar.swift */,
+				63564C5C2126ADEC0018A237 /* TBCalendarAppearStyle.swift */,
+				63564C5D2126ADEC0018A237 /* TBCalendarDateCell.swift */,
+				63564C5E2126ADEC0018A237 /* TBCalendarHeaderView.swift */,
+				63564C642126AE1C0018A237 /* MYCalendarVC.swift */,
+				63564C652126AE1C0018A237 /* MYCalendarVC.xib */,
+			);
+			path = TBCalendar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		634C43AA21250FB6000C34EF /* RxText01 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 634C43CB21250FB6000C34EF /* Build configuration list for PBXNativeTarget "RxText01" */;
+			buildPhases = (
+				9AF5BD494301445E023A9D6A /* [CP] Check Pods Manifest.lock */,
+				634C43A721250FB6000C34EF /* Sources */,
+				634C43A821250FB6000C34EF /* Frameworks */,
+				634C43A921250FB6000C34EF /* Resources */,
+				C3C150E4347E865F6D709371 /* [CP] Embed Pods Frameworks */,
+				47F5BEFF1573ECC2EAE734C5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RxText01;
+			productName = RxText01;
+			productReference = 634C43AB21250FB6000C34EF /* RxText01.app */;
+			productType = "com.apple.product-type.application";
+		};
+		634C43C121250FB6000C34EF /* RxText01UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 634C43CE21250FB6000C34EF /* Build configuration list for PBXNativeTarget "RxText01UITests" */;
+			buildPhases = (
+				634C43BE21250FB6000C34EF /* Sources */,
+				634C43BF21250FB6000C34EF /* Frameworks */,
+				634C43C021250FB6000C34EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				634C43C421250FB6000C34EF /* PBXTargetDependency */,
+			);
+			name = RxText01UITests;
+			productName = RxText01UITests;
+			productReference = 634C43C221250FB6000C34EF /* RxText01UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		634C43A321250FB6000C34EF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = FreeMud;
+				TargetAttributes = {
+					634C43AA21250FB6000C34EF = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					634C43C121250FB6000C34EF = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 634C43AA21250FB6000C34EF;
+					};
+				};
+			};
+			buildConfigurationList = 634C43A621250FB6000C34EF /* Build configuration list for PBXProject "RxText01" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 634C43A221250FB6000C34EF;
+			productRefGroup = 634C43AC21250FB6000C34EF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				634C43AA21250FB6000C34EF /* RxText01 */,
+				634C43C121250FB6000C34EF /* RxText01UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		634C43A921250FB6000C34EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				634C43D721251456000C34EF /* TCellMusic.xib in Resources */,
+				63564C672126AE1C0018A237 /* MYCalendarVC.xib in Resources */,
+				634C43BC21250FB6000C34EF /* LaunchScreen.storyboard in Resources */,
+				634C43B921250FB6000C34EF /* Assets.xcassets in Resources */,
+				634C43B421250FB6000C34EF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		634C43C021250FB6000C34EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		47F5BEFF1573ECC2EAE734C5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxText01/Pods-RxText01-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AF5BD494301445E023A9D6A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C3C150E4347E865F6D709371 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxText01/Pods-RxText01-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		634C43A721250FB6000C34EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63564C612126ADEC0018A237 /* TBCalendarAppearStyle.swift in Sources */,
+				63564C632126ADEC0018A237 /* TBCalendarHeaderView.swift in Sources */,
+				634C43B721250FB6000C34EF /* RxText01.xcdatamodeld in Sources */,
+				634C43D32125132A000C34EF /* MusicModel.swift in Sources */,
+				63564C5F2126ADEC0018A237 /* Foundation+Extension.swift in Sources */,
+				63564C6A2126B0970018A237 /* Const.swift in Sources */,
+				63564C602126ADEC0018A237 /* TBCalendar.swift in Sources */,
+				634C43D621251456000C34EF /* TCellMusic.swift in Sources */,
+				63564C622126ADEC0018A237 /* TBCalendarDateCell.swift in Sources */,
+				634C43B121250FB6000C34EF /* ViewController.swift in Sources */,
+				634C43AF21250FB6000C34EF /* AppDelegate.swift in Sources */,
+				63564C662126AE1C0018A237 /* MYCalendarVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		634C43BE21250FB6000C34EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				634C43C721250FB6000C34EF /* RxText01UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		634C43C421250FB6000C34EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 634C43AA21250FB6000C34EF /* RxText01 */;
+			targetProxy = 634C43C321250FB6000C34EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		634C43B221250FB6000C34EF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				634C43B321250FB6000C34EF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		634C43BA21250FB6000C34EF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				634C43BB21250FB6000C34EF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		634C43C921250FB6000C34EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		634C43CA21250FB6000C34EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		634C43CC21250FB6000C34EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58C6FF85413B1AFCC6D89CD3 /* Pods-RxText01.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RxText01/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Freemud.CN.RxText01;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = RxText01/TBCalendar/bridge_bridge.h;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		634C43CD21250FB6000C34EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83E5E44EA440879E4715CE8C /* Pods-RxText01.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RxText01/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Freemud.CN.RxText01;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = RxText01/TBCalendar/bridge_bridge.h;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		634C43CF21250FB6000C34EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = RxText01UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Freemud.CN.RxText01UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = RxText01;
+			};
+			name = Debug;
+		};
+		634C43D021250FB6000C34EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = RxText01UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Freemud.CN.RxText01UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = RxText01;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		634C43A621250FB6000C34EF /* Build configuration list for PBXProject "RxText01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				634C43C921250FB6000C34EF /* Debug */,
+				634C43CA21250FB6000C34EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		634C43CB21250FB6000C34EF /* Build configuration list for PBXNativeTarget "RxText01" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				634C43CC21250FB6000C34EF /* Debug */,
+				634C43CD21250FB6000C34EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		634C43CE21250FB6000C34EF /* Build configuration list for PBXNativeTarget "RxText01UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				634C43CF21250FB6000C34EF /* Debug */,
+				634C43D021250FB6000C34EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		634C43B521250FB6000C34EF /* RxText01.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				634C43B621250FB6000C34EF /* RxText01.xcdatamodel */,
+			);
+			currentVersion = 634C43B621250FB6000C34EF /* RxText01.xcdatamodel */;
+			path = RxText01.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 634C43A321250FB6000C34EF /* Project object */;
+}
