@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CVCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>JTAppleCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-RxText01.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3F1976CACA711E5FD9400F4C06F7148A</key>
+		<key>36F9CBC5BB08F4A421D7F1C29CF8CB21</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>452470D58AEC7C916FDFA51A0BFDD05F</key>
+		<key>750A60FB5447F689F03B3DE93BF1B190</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>636E16B5A3379A77E4762B58BD138D15</key>
+		<key>7559006A89645FB966E3AAFB850895B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>77B5DCD9A7C822103C4F7EC60BA169FD</key>
+		<key>AB663A2703E496AF184B564126B8C876</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D54F1BA3226BC0BC9F3D23D5DC6551D0</key>
+		<key>BFED2E29E95E065400F8846E0231A970</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EEC050CBAC43078131FCCC2EA4D93A6B</key>
+		<key>D1056F991C53A270BD5DA33A32C220F6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D8A188963EEC10C9EFE15B2AEEB267A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F6204A345A37C6CEE4D4E8E67F6A48C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

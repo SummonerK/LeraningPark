@@ -1,4 +1,6 @@
 PODS:
+  - CVCalendar (1.5.0)
+  - JTAppleCalendar (7.0.4)
   - RxCocoa (3.5.0):
     - RxSwift (~> 3.4)
   - RxSwift (3.5.0)
@@ -9,6 +11,8 @@ PODS:
   - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
+  - CVCalendar
+  - JTAppleCalendar
   - RxCocoa
   - RxSwift
   - SnapKit
@@ -16,12 +20,14 @@ DEPENDENCIES:
   - YYKit
 
 SPEC CHECKSUMS:
+  CVCalendar: 5d51a7bda1b9439b612de69d86a91a73befa1936
+  JTAppleCalendar: 6def48ecd0daae1d5baaa45e813124c2a20b184d
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   Timepiece: d07900e985af4911f09146f1175fdbec37944836
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 6c49dd91cb39157cf344209a11f734dcc8c3d87d
+PODFILE CHECKSUM: f9642186c0d1b8692a6dc49160b17b1524ec3441
 
 COCOAPODS: 1.2.1

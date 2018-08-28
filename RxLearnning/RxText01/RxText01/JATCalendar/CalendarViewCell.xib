@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CalendarViewCell" customModule="RxText01" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTq-DT-StQ">
+                    <rect key="frame" x="5" y="5" width="90" height="90"/>
+                    <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="8fY-g2-ui1"/>
+                        <constraint firstAttribute="width" secondItem="uTq-DT-StQ" secondAttribute="height" multiplier="1:1" id="zPU-zH-WkR"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJe-3t-kWW">
+                    <rect key="frame" x="0.0" y="40" width="100" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="M06-Mg-1TL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3a-xb-ahe">
+                    <rect key="frame" x="0.0" y="80" width="100" height="20"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="BYt-l1-NSM"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ZJe-3t-kWW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0Qj-c5-zjR"/>
+                <constraint firstItem="uTq-DT-StQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6yK-Xk-36Y"/>
+                <constraint firstItem="ZJe-3t-kWW" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="CFl-rP-9eP"/>
+                <constraint firstItem="ZJe-3t-kWW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Nie-pr-9Rv"/>
+                <constraint firstAttribute="trailing" secondItem="J3a-xb-ahe" secondAttribute="trailing" id="Opd-bY-jr8"/>
+                <constraint firstItem="uTq-DT-StQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VBb-Um-S8q"/>
+                <constraint firstItem="J3a-xb-ahe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pQn-Qx-OOU"/>
+                <constraint firstAttribute="bottom" secondItem="J3a-xb-ahe" secondAttribute="bottom" id="xyz-Et-lvH"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="dateLabel" destination="ZJe-3t-kWW" id="a6z-sm-lgF"/>
+                <outlet property="eventView" destination="J3a-xb-ahe" id="RLH-ql-fBE"/>
+                <outlet property="selectedView" destination="uTq-DT-StQ" id="e4o-m4-hUO"/>
+                <outlet property="widthSelectedCellConstraint" destination="8fY-g2-ui1" id="8He-Vj-PMS"/>
+            </connections>
+        </view>
+    </objects>
+</document>

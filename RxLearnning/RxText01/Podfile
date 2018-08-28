@@ -9,6 +9,9 @@ target 'RxText01' do
     pod 'YYKit'
     pod 'Timepiece'
 
+    pod 'JTAppleCalendar'
+    
+    pod 'CVCalendar'
  
 end
 

@@ -141,20 +141,22 @@ class TBCalendar: UIView, UICollectionViewDelegate, UICollectionViewDataSource{
 // collectCell-dataSource
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         
-        let marginDays = self.firstDayInFirstWeekThisMonth(date: (self.style?.today)!)
-        let daysThisMonth = self.totalDaysThisMonth(date: (self.style?.today)!)
+        return true
         
-        if(indexPath.row >= marginDays && indexPath.row <= marginDays + daysThisMonth - 1)
-        {
-            var day = 0;
-            day = indexPath.row - marginDays + 1
-            let date = self.dateByday(day: day, date: (self.style?.today)!)
-            
-            return self.shouldSelectDate(date: date as NSDate)
-        }
-        else{
-            return false
-        }
+//        let marginDays = self.firstDayInFirstWeekThisMonth(date: (self.style?.today)!)
+//        let daysThisMonth = self.totalDaysThisMonth(date: (self.style?.today)!)
+//        
+//        if(indexPath.row >= marginDays && indexPath.row <= marginDays + daysThisMonth - 1)
+//        {
+//            var day = 0;
+//            day = indexPath.row - marginDays + 1
+//            let date = self.dateByday(day: day, date: (self.style?.today)!)
+//            
+//            return self.shouldSelectDate(date: date as NSDate)
+//        }
+//        else{
+//            return false
+//        }
         
     }
     

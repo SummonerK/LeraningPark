@@ -54,7 +54,7 @@ class ViewController: UIViewController {
     
     @IBAction func actionNext(_ sender: Any) {
         
-        let VC = MYCalendarVC.init(nibName: "MYCalendarVC", bundle: nil)
+        let VC = CalendarViewVC.init(nibName: "CalendarViewVC", bundle: nil)
         
         self.present(VC, animated: true, completion: nil)
         

@@ -101,6 +101,8 @@ class MYCalendarVC:UIViewController , TBCalendarDataDelegate , TBCalendarDataSou
     // delegate And dateg
     func calender(calender: TBCalendar, layoutCallBackHeight: CGFloat) {
         
+        print("layoutCallBackHeight = \(layoutCallBackHeight)")
+        
         self.calender.frame = CGRect.init(x: 0, y: 0, width: self.view.width, height: layoutCallBackHeight)
     }
     

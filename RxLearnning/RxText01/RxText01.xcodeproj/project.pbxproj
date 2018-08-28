@@ -18,6 +18,8 @@
 		634C43D32125132A000C34EF /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C43D22125132A000C34EF /* MusicModel.swift */; };
 		634C43D621251456000C34EF /* TCellMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C43D421251456000C34EF /* TCellMusic.swift */; };
 		634C43D721251456000C34EF /* TCellMusic.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634C43D521251456000C34EF /* TCellMusic.xib */; };
+		634FA2BA2134EA6900040DF9 /* CalendarViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634FA2B82134EA6900040DF9 /* CalendarViewVC.swift */; };
+		634FA2BB2134EA6900040DF9 /* CalendarViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634FA2B92134EA6900040DF9 /* CalendarViewVC.xib */; };
 		63564C5F2126ADEC0018A237 /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C5A2126ADEC0018A237 /* Foundation+Extension.swift */; };
 		63564C602126ADEC0018A237 /* TBCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C5B2126ADEC0018A237 /* TBCalendar.swift */; };
 		63564C612126ADEC0018A237 /* TBCalendarAppearStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C5C2126ADEC0018A237 /* TBCalendarAppearStyle.swift */; };
@@ -26,6 +28,14 @@
 		63564C662126AE1C0018A237 /* MYCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C642126AE1C0018A237 /* MYCalendarVC.swift */; };
 		63564C672126AE1C0018A237 /* MYCalendarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63564C652126AE1C0018A237 /* MYCalendarVC.xib */; };
 		63564C6A2126B0970018A237 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63564C692126B0970018A237 /* Const.swift */; };
+		636BB178212A5A83003337FE /* JatCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636BB176212A5A83003337FE /* JatCalendarVC.swift */; };
+		636BB179212A5A83003337FE /* JatCalendarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636BB177212A5A83003337FE /* JatCalendarVC.xib */; };
+		636BB17C212A5B88003337FE /* CalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636BB17A212A5B88003337FE /* CalendarViewCell.swift */; };
+		636BB17F212A5C3B003337FE /* CalendarViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636BB17E212A5C3B003337FE /* CalendarViewCell.xib */; };
+		636BB184212A5F03003337FE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636BB180212A5F03003337FE /* Color.swift */; };
+		636BB185212A5F03003337FE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636BB181212A5F03003337FE /* Colors.swift */; };
+		636BB186212A5F03003337FE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636BB182212A5F03003337FE /* Constants.swift */; };
+		636BB187212A5F03003337FE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636BB183212A5F03003337FE /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +65,8 @@
 		634C43D22125132A000C34EF /* MusicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
 		634C43D421251456000C34EF /* TCellMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellMusic.swift; sourceTree = "<group>"; };
 		634C43D521251456000C34EF /* TCellMusic.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCellMusic.xib; sourceTree = "<group>"; };
+		634FA2B82134EA6900040DF9 /* CalendarViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewVC.swift; sourceTree = "<group>"; };
+		634FA2B92134EA6900040DF9 /* CalendarViewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewVC.xib; sourceTree = "<group>"; };
 		63564C5A2126ADEC0018A237 /* Foundation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
 		63564C5B2126ADEC0018A237 /* TBCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBCalendar.swift; sourceTree = "<group>"; };
 		63564C5C2126ADEC0018A237 /* TBCalendarAppearStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBCalendarAppearStyle.swift; sourceTree = "<group>"; };
@@ -64,6 +76,14 @@
 		63564C652126AE1C0018A237 /* MYCalendarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MYCalendarVC.xib; sourceTree = "<group>"; };
 		63564C682126AE7F0018A237 /* bridge_bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge_bridge.h; sourceTree = "<group>"; };
 		63564C692126B0970018A237 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		636BB176212A5A83003337FE /* JatCalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JatCalendarVC.swift; sourceTree = "<group>"; };
+		636BB177212A5A83003337FE /* JatCalendarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JatCalendarVC.xib; sourceTree = "<group>"; };
+		636BB17A212A5B88003337FE /* CalendarViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewCell.swift; sourceTree = "<group>"; };
+		636BB17E212A5C3B003337FE /* CalendarViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarViewCell.xib; sourceTree = "<group>"; };
+		636BB180212A5F03003337FE /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		636BB181212A5F03003337FE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		636BB182212A5F03003337FE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		636BB183212A5F03003337FE /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		83E5E44EA440879E4715CE8C /* Pods-RxText01.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxText01.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxText01/Pods-RxText01.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +146,8 @@
 		634C43AD21250FB6000C34EF /* RxText01 */ = {
 			isa = PBXGroup;
 			children = (
+				634FA2B72134EA0700040DF9 /* CalendarView */,
+				636BB175212A5A6A003337FE /* JATCalendar */,
 				63564C592126ADEC0018A237 /* TBCalendar */,
 				634C43D121251311000C34EF /* RxModel */,
 				634C43AE21250FB6000C34EF /* AppDelegate.swift */,
@@ -158,6 +180,15 @@
 			path = RxModel;
 			sourceTree = "<group>";
 		};
+		634FA2B72134EA0700040DF9 /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				634FA2B82134EA6900040DF9 /* CalendarViewVC.swift */,
+				634FA2B92134EA6900040DF9 /* CalendarViewVC.xib */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
 		63564C592126ADEC0018A237 /* TBCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +203,21 @@
 				63564C652126AE1C0018A237 /* MYCalendarVC.xib */,
 			);
 			path = TBCalendar;
+			sourceTree = "<group>";
+		};
+		636BB175212A5A6A003337FE /* JATCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				636BB180212A5F03003337FE /* Color.swift */,
+				636BB181212A5F03003337FE /* Colors.swift */,
+				636BB182212A5F03003337FE /* Constants.swift */,
+				636BB183212A5F03003337FE /* Extension.swift */,
+				636BB176212A5A83003337FE /* JatCalendarVC.swift */,
+				636BB177212A5A83003337FE /* JatCalendarVC.xib */,
+				636BB17A212A5B88003337FE /* CalendarViewCell.swift */,
+				636BB17E212A5C3B003337FE /* CalendarViewCell.xib */,
+			);
+			path = JATCalendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +307,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				634C43D721251456000C34EF /* TCellMusic.xib in Resources */,
+				634FA2BB2134EA6900040DF9 /* CalendarViewVC.xib in Resources */,
 				63564C672126AE1C0018A237 /* MYCalendarVC.xib in Resources */,
+				636BB17F212A5C3B003337FE /* CalendarViewCell.xib in Resources */,
+				636BB179212A5A83003337FE /* JatCalendarVC.xib in Resources */,
 				634C43BC21250FB6000C34EF /* LaunchScreen.storyboard in Resources */,
 				634C43B921250FB6000C34EF /* Assets.xcassets in Resources */,
 				634C43B421250FB6000C34EF /* Main.storyboard in Resources */,
@@ -331,11 +380,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				63564C612126ADEC0018A237 /* TBCalendarAppearStyle.swift in Sources */,
+				636BB186212A5F03003337FE /* Constants.swift in Sources */,
 				63564C632126ADEC0018A237 /* TBCalendarHeaderView.swift in Sources */,
+				634FA2BA2134EA6900040DF9 /* CalendarViewVC.swift in Sources */,
+				636BB178212A5A83003337FE /* JatCalendarVC.swift in Sources */,
 				634C43B721250FB6000C34EF /* RxText01.xcdatamodeld in Sources */,
+				636BB17C212A5B88003337FE /* CalendarViewCell.swift in Sources */,
 				634C43D32125132A000C34EF /* MusicModel.swift in Sources */,
 				63564C5F2126ADEC0018A237 /* Foundation+Extension.swift in Sources */,
 				63564C6A2126B0970018A237 /* Const.swift in Sources */,
+				636BB187212A5F03003337FE /* Extension.swift in Sources */,
+				636BB184212A5F03003337FE /* Color.swift in Sources */,
+				636BB185212A5F03003337FE /* Colors.swift in Sources */,
 				63564C602126ADEC0018A237 /* TBCalendar.swift in Sources */,
 				634C43D621251456000C34EF /* TCellMusic.swift in Sources */,
 				63564C622126ADEC0018A237 /* TBCalendarDateCell.swift in Sources */,
