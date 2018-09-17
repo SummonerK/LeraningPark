@@ -50,6 +50,8 @@ class ViewController: UIViewController {
         tableView.rx.modelSelected(Music.self).subscribe(onNext: { music in
             print("你选中的歌曲信息【\(music)】")
         }).disposed(by: disposeBag)
+        
+        tableView.rowHeight = 100
     }
     
     @IBAction func actionNext(_ sender: Any) {
