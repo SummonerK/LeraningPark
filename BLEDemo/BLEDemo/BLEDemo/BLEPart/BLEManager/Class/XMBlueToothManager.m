@@ -50,6 +50,13 @@
     return manager;
 }
 
+- (void)setBlockOnCentralManagerDidUpdateState:(void (^)(CBCentralManager *central))block{
+    
+    [baby setBlockOnCentralManagerDidUpdateState:^(CBCentralManager *central) {
+        block(central);
+    }];
+}
+
 - (void)initObjects{
     WEAKSELF;
     baby = [BabyBluetooth shareBabyBluetooth];

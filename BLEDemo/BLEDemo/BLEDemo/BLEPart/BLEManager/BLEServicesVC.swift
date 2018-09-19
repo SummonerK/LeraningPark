@@ -201,11 +201,11 @@ extension BLEServicesVC:UITableViewDataSource,UITableViewDelegate{
         let characteristic = info.characteristics.object(at: indexPath.row) as! CBCharacteristic
         let value:(String,Bool) = getCharacterDes(characteristic.properties)
         
-        BLEM.characteristic = characteristic
-        
         if value.1{
             PrintFM("\(indexPath.row)")
-            BLEM.managerValueCharacteristic()
+            BLEM.characteristic = characteristic
+            HUDShowMsgQuick("连接特性：\(characteristic.uuid.uuidString)", 0.8)
+//            BLEM.managerValueCharacteristic()
         }
     }
     

@@ -23,6 +23,24 @@ extension UITableView{
     
 }
 
+/**
+ 字典转换为JSONString
+ 
+ - parameter dictionary: 字典参数
+ 
+ - returns: JSONString
+ */
+func getJSONStringFromDictionary(dictionary:NSDictionary) -> String {
+    if (!JSONSerialization.isValidJSONObject(dictionary)) {
+        print("无法解析出JSONString")
+        return ""
+    }
+    let data : NSData! = try? JSONSerialization.data(withJSONObject: dictionary, options: []) as NSData!
+    let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
+    return JSONString! as String
+    
+}
+
 func HUDShowMsgQuick(_ msg:String,_ time:Float){
     
     let hud = MBProgressHUD.showAdded(to: KeyWindow, animated: true)
@@ -58,7 +76,6 @@ class BLERootVC: UIViewController {
     
     var peripherals = NSMutableArray()
     var peripheralsAD = NSMutableArray()
-    var manager = XMBlueToothManager()
     var dataSource = NSMutableArray()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +89,12 @@ class BLERootVC: UIViewController {
         
         naviBtonTop.constant = naviXBtonTop
         naviHeight.constant = naviXBarHeight
-        botmHeight.constant = bottmXBtonH
+        botmHeight.constant = 0
+        
+        
+        BLEM.manager.cancleAllConnect()
+        BLEM.currPeripher = nil
+        BLEM.characteristic = nil
         
         SVProgressHUD.showInfo(withStatus: "准备打开设备")
         self.peripherals = NSMutableArray.init()
@@ -99,7 +121,6 @@ class BLERootVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-//        self.manager.cancleAllConnect()
         BLEM.manager.beginToScan()
     }
     
@@ -111,10 +132,9 @@ class BLERootVC: UIViewController {
     
     func setDelegate() {
         
-        self.manager.cancleAllConnect()
-        
         BLEM.manager.xm_discoverPeripherals { (central, peripheral, advertisementData, RSSI) in
             //        XMLog(message: (peripheral?.name,RSSI))
+//            peripheral.
             self.insertTableView(peripheral: peripheral!, advertisementData: advertisementData! as NSDictionary)
         }
         BLEM.manager.xm_setFilter { (peripheralName, advertisementData, RSSI) -> Bool in
@@ -190,16 +210,19 @@ extension BLERootVC:UITableViewDataSource,UITableViewDelegate{
         }
         
         cell.label_title.text = localName
-        cell.label_subtitle.text = "未读取到服务信息"
-        if (ad.object(forKey: "kCBAdvDataServiceUUIDs") != nil) {
-            let serviceUUIDs = ad.object(forKey: "kCBAdvDataServiceUUIDs") as! NSArray
-            if serviceUUIDs.count > 0 {
-                cell.label_subtitle.text = String.init(format: "%lu个服务", serviceUUIDs.count)
-            }else{
-                cell.label_subtitle.text = "0个服务"
-            } 
-        }
+//        cell.label_subtitle.text = "未读取到服务信息"
+//        if (ad.object(forKey: "kCBAdvDataServiceUUIDs") != nil) {
+//            let serviceUUIDs = ad.object(forKey: "kCBAdvDataServiceUUIDs") as! NSArray
+//            if serviceUUIDs.count > 0 {
+//                cell.label_subtitle.text = String.init(format: "%lu个服务", serviceUUIDs.count)
+//            }else{
+//                cell.label_subtitle.text = "0个服务"
+//            } 
+//        }
         
+//        cell.label_subtitle.text = getJSONStringFromDictionary(dictionary: ad)
+        
+        cell.label_subtitle.text = ad.description
         
         return cell
     }
@@ -207,7 +230,9 @@ extension BLERootVC:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         
-        return 68
+//        return 68
+        
+        return 300
         
     }
     

@@ -554,7 +554,7 @@
     return ^(CBPeripheral *peripheral,CBCharacteristic *characteristic) {
         //判断连接状态
         if (peripheral.state == CBPeripheralStateConnected) {
-            self->babyCentralManager->oneReadValueForDescriptors = YES;
+            self->babyCentralManager->oneReadValueForDescriptors = false;
             [peripheral readValueForCharacteristic:characteristic];
             [peripheral discoverDescriptorsForCharacteristic:characteristic];
         }

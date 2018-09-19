@@ -63,22 +63,26 @@ class IBBLEManager: NSObject,XMBlueToothDelegate{
         UIApplication.shared.keyWindow?.rootViewController?.present(Vc, animated: true, completion: nil)
     }
     
+    
+    //注册监听蓝牙状态
+    
     func backBleStats(bleb: @escaping BlEStats) -> Void {
         
         self.IBBack = bleb
         
-        if step == 1{
-            
-//            managerValuePer()
-            
-            self.manager.delegate = self
-        }
-        if step == 2{
-            
+//        if step == 1{
+//            
+////            managerValuePer()
+////            self.manager.delegate = self
+//        }
+//        if step == 2{
+//            
 //            managerValueCharacteristic()
-            
-            self.manager.delegate = self
-        }
+//            
+//            self.manager.delegate = self
+//        }
+        
+        
         
     }
     
@@ -106,6 +110,7 @@ class IBBLEManager: NSObject,XMBlueToothDelegate{
         //        外设断开连接的回调
         self.manager.xm_blockOnDisconnect { (central, peripheral, error) in
 
+            self.isConnect = false
             SVProgressHUD.showError(withStatus: "blockOnDisconnect 已经断开连接，请重新连接")
         }
         // 断开连接失败的回调
@@ -137,6 +142,17 @@ class IBBLEManager: NSObject,XMBlueToothDelegate{
         
     }
     
+    
+    ///注册读取蓝牙服务连接
+    func managerValueCha() -> Void {
+        
+//        self.channel = "CBCharacteristic1"
+        
+        self.channel = "CBCharacteristic"
+        
+        self.manager.readDetailValueOfCharacteristic(withChannel: self.channel, characteristic: self.characteristic, currPeripheral: self.currPeripher)
+        self.managerDelegate()
+    }
     
     ///注册读取蓝牙服务连接
     func managerValueCharacteristic() -> Void {
@@ -171,6 +187,8 @@ class IBBLEManager: NSObject,XMBlueToothDelegate{
         }
         self.manager.xm_blockOnDisconnect { (central, peripheral, error) in
             PrintFM( "连接失败")
+            
+            self.isConnect = false
             SVProgressHUD.showError(withStatus: "C blockOnDisconnect已经断开连接，请重新连接")
         }
         
@@ -181,13 +199,17 @@ class IBBLEManager: NSObject,XMBlueToothDelegate{
             }else{
                 SVProgressHUD.showError(withStatus: "C connectState已经断开连接，请重新连接")
             }
+            
+            self.isConnect = isConnect
         }
         
         self.manager.xm_peripheralManagerDidUpdateState { (peripheral) in
 
             if let isAdvertising = peripheral?.isAdvertising,isAdvertising{
+                self.isConnect = true
                 SVProgressHUD.showSuccess(withStatus: "C DidUpdateState 连接成功");
             }else{
+                self.isConnect = false
                 SVProgressHUD.showError(withStatus: "C DidUpdateState 已经断开连接，请重新连接")
             }
         }

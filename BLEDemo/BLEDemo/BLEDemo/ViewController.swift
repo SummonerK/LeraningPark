@@ -26,9 +26,15 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
 //        BLEM.backBleStats { (isConnect) in
-//            self.bton_connect.isHidden = isConnect
+//            self.bton_connect.isHidden = !isConnect
 //        }
+//        HUDShowMsgQuick(cha.uuid.uuidString, 0.8)
+        
+        if BLEM.currPeripher != nil && BLEM.characteristic != nil{
+            setRunTimer()
+        }
     }
 
     override func viewDidLoad() {
@@ -37,27 +43,35 @@ class ViewController: UIViewController {
         //注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(switchAction(notification:)), name: NSNotification.Name(rawValue: "BLESwitch"), object: nil)
         
+        //注册通知
+//        NotificationCenter.default.addObserver(self, selector: #selector(switchAction(notification:)), name: NSNotification.Name(rawValue: "BabyNotificationAtCentralManagerDidUpdateState"), object: nil)
+        
 //        bton_connect.isHidden = true
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     //通知内容接收
     func switchAction(notification: NSNotification) {
+        
         let res:NSDictionary = notification.object as! NSDictionary
         
-        HUDShowMsgQuick("switch", 0.8)
-        
-//        bton_connect.isHidden = !(res["switch"] as! Bool)
+        bton_connect.isHidden = !(res["switch"] as! Bool)
         
     }
     //选取操作响应
     @IBAction func gotoChooseAction(_ sender: Any) {
+        
+        
+        rtimer?.invalidate()
         
         BLEM.gotoManagerPages()
     }
     
     //打印
     @IBAction func writeAction(_ sender: Any) {
+       // /*
+         
+         //写入尝试
         
         if let cur = BLEM.currPeripher{
             
@@ -68,8 +82,15 @@ class ViewController: UIViewController {
             
             switch cur.state {
             case .connected:
-                if let cha = BLEM.characteristic{
+                
+                if let cha = BLEM.characteristic{                    
+                    
+                    HUDShowMsgQuick(cha.uuid.uuidString, 0.8)
+                    
+                    BLEM.managerValueCha()
+                    
                     BLEM.manager.write(PrinterInit(), to: cur, for: cha)
+                    
                 }else{
                     HUDShowMsgQuick("\(localName) 连接服务有误", 0.8)
                 }
@@ -83,6 +104,32 @@ class ViewController: UIViewController {
         }else{
             HUDShowMsgQuick("尚未链接任何蓝牙设备", 0.8)
         }
+ 
+ //*/
+    }
+    
+    
+    // 监听设置线程监听蓝牙状态
+    // 如果服务在非连接状态，自动重连
+    // 手动选择 服务时，自动断开监听.选择返回 再次开启监听
+    
+    var rtimer:Timer?
+    
+    func setRunTimer(){
+        
+        rtimer = Timer.init(fireAt: NSDate() as Date, interval: 10.0, target: self, selector: #selector(rtpick), userInfo: nil, repeats: true)
+        RunLoop.current.add(rtimer!, forMode:RunLoopMode.commonModes)
+    }
+    
+    func rtpick() {
+        
+        if BLEM.isConnect{
+            HUDShowMsgQuick("isConnect 【true】", 0.1)
+        }else{
+            BLEM.managerValueCha()
+            HUDShowMsgQuick("isConnect 【false】 ", 0.6)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,4 +159,5 @@ class ViewController: UIViewController {
     }
 
 }
+
 

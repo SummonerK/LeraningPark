@@ -111,10 +111,12 @@
             BabyLog(@">>>CBCentralManagerStateUnauthorized");
             break;
         case CBCentralManagerStatePoweredOff:
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"BLESwitch" object:@{@"switch" : @NO}];
             BabyLog(@">>>CBCentralManagerStatePoweredOff");
             break;
         case CBCentralManagerStatePoweredOn:
             BabyLog(@">>>CBCentralManagerStatePoweredOn");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"BLESwitch" object:@{@"switch" : @YES}];
             [[NSNotificationCenter defaultCenter]postNotificationName:BabyNotificationAtCentralManagerEnable object:@{@"central":central}];
             break;
         default:

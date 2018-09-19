@@ -281,6 +281,8 @@ typedef void(^XMDidWriteValueForCharacteristicAtChannel)(CBCharacteristic *chara
  */
 - (void)xm_readValueForDescriptorsAtChannel:(XMReadValueForDescriptorsAtChannel)block;
 
+- (void)setBlockOnCentralManagerDidUpdateState:(void (^)(CBCentralManager *central))block;
+
 /**
  读取RSSI
  
