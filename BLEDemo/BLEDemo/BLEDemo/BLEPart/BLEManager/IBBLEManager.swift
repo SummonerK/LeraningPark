@@ -13,6 +13,12 @@ import SVProgressHUD
 let BLEM = IBBLEManager.shared
 let StoryBoard_BLE = UIStoryboard.init(name: "BLE", bundle: nil)
 
+class BlueToothEntity: NSObject {
+    var peripheral: CBPeripheral?
+    var RSSI: NSNumber?
+    var advertisementData: Dictionary<String, Any>?
+}
+
 typealias BlEStats = (_ bletats:Bool) -> Void
 
 class IBBLEManager: NSObject,XMBlueToothDelegate{
@@ -20,7 +26,13 @@ class IBBLEManager: NSObject,XMBlueToothDelegate{
     var manager = XMBlueToothManager()
     var currPeripher:CBPeripheral?
     var channel:String = "perpheral"
+    
     var characteristic:CBCharacteristic?
+    
+    var UDIDCharacteristic:String = "perpheral"
+    var UDIDService:String = "perpheral"
+    
+    var tothEntity = BlueToothEntity()
     
     var IBBack:BlEStats!
     
@@ -83,13 +95,12 @@ class IBBLEManager: NSObject,XMBlueToothDelegate{
 //        }
         
         
-        
     }
     
     func managerValuePer() -> Void {
         //连接外设
         
-        self.manager.cancleAllConnect()
+//        self.manager.cancleAllConnect()
         
         step = 1
         
@@ -110,7 +121,7 @@ class IBBLEManager: NSObject,XMBlueToothDelegate{
         //        外设断开连接的回调
         self.manager.xm_blockOnDisconnect { (central, peripheral, error) in
 
-            self.isConnect = false
+//            self.isConnect = false
             SVProgressHUD.showError(withStatus: "blockOnDisconnect 已经断开连接，请重新连接")
         }
         // 断开连接失败的回调
@@ -142,7 +153,6 @@ class IBBLEManager: NSObject,XMBlueToothDelegate{
         
     }
     
-    
     ///注册读取蓝牙服务连接
     func managerValueCha() -> Void {
         
@@ -151,7 +161,15 @@ class IBBLEManager: NSObject,XMBlueToothDelegate{
         self.channel = "CBCharacteristic"
         
         self.manager.readDetailValueOfCharacteristic(withChannel: self.channel, characteristic: self.characteristic, currPeripheral: self.currPeripher)
+        
         self.managerDelegate()
+        
+        self.manager.xm_discoverServices { (peripheral, error) in
+            
+        }
+        self.manager.xm_xmDiscoverCharacteristics(atChannel: { (peripheral, service, error) in
+            
+        })
     }
     
     ///注册读取蓝牙服务连接

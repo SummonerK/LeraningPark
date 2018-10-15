@@ -204,6 +204,10 @@ extension BLEServicesVC:UITableViewDataSource,UITableViewDelegate{
         if value.1{
             PrintFM("\(indexPath.row)")
             BLEM.characteristic = characteristic
+            
+            BLEM.UDIDService = info.serviceUUID.uuidString
+            BLEM.UDIDCharacteristic = characteristic.uuid.uuidString
+            
             HUDShowMsgQuick("连接特性：\(characteristic.uuid.uuidString)", 0.8)
 //            BLEM.managerValueCharacteristic()
         }

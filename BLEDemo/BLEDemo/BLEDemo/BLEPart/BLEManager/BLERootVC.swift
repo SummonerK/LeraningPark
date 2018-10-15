@@ -78,6 +78,8 @@ class BLERootVC: UIViewController {
     var peripheralsAD = NSMutableArray()
     var dataSource = NSMutableArray()
     
+    var peripheralDataArray = [BlueToothEntity]()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -93,8 +95,10 @@ class BLERootVC: UIViewController {
         
         
         BLEM.manager.cancleAllConnect()
-        BLEM.currPeripher = nil
-        BLEM.characteristic = nil
+        
+        //暂时关闭断开连接 清空连接设备和连接特性。
+//        BLEM.currPeripher = nil
+//        BLEM.characteristic = nil
         
         SVProgressHUD.showInfo(withStatus: "准备打开设备")
         self.peripherals = NSMutableArray.init()
@@ -135,6 +139,31 @@ class BLERootVC: UIViewController {
         BLEM.manager.xm_discoverPeripherals { (central, peripheral, advertisementData, RSSI) in
             //        XMLog(message: (peripheral?.name,RSSI))
 //            peripheral.
+            
+            var peripherals = [CBPeripheral]()
+            for index in 0 ..< Int(self.peripheralDataArray.count) {
+                if let peripheral_ = self.peripheralDataArray[index].peripheral {
+                    peripherals.append(peripheral_)
+                }
+            }
+            
+            if (!(peripherals.contains(peripheral!))) {
+                let item = BlueToothEntity()
+                item.peripheral = peripheral
+                item.RSSI = RSSI
+                item.advertisementData = advertisementData as? Dictionary<String, Any>
+                self.peripheralDataArray.append(item)
+            }
+            
+            for index in 0 ..< Int(self.peripheralDataArray.count) {
+                print("======>>>>>>1")
+                print(self.peripheralDataArray[index].peripheral ?? "1")
+                print("======>>>>>>2")
+                print(self.peripheralDataArray[index].RSSI ?? "2")
+                print("======>>>>>>3")
+                print(self.peripheralDataArray[index].advertisementData ?? "3")
+            }
+            
             self.insertTableView(peripheral: peripheral!, advertisementData: advertisementData! as NSDictionary)
         }
         BLEM.manager.xm_setFilter { (peripheralName, advertisementData, RSSI) -> Bool in

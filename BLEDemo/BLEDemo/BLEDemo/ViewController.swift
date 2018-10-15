@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import CoreBluetooth
+import BabyBluetooth
+import CryptoSwift
+
+import SwiftyBluetooth
 
 // MARK:封装的日志输出功能（T表示不指定日志信息参数类型）
 func PrintFM<T>(_ message:T, file:String = #file, function:String = #function,
@@ -20,34 +25,20 @@ func PrintFM<T>(_ message:T, file:String = #file, function:String = #function,
 }
 
 class ViewController: UIViewController {
-    
     @IBOutlet weak var label_ble:UILabel!
     @IBOutlet weak var bton_connect:UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        BLEM.backBleStats { (isConnect) in
-//            self.bton_connect.isHidden = !isConnect
+//        if BLEM.currPeripher != nil && BLEM.characteristic != nil{
+//            setRunTimer()
 //        }
-//        HUDShowMsgQuick(cha.uuid.uuidString, 0.8)
         
-        if BLEM.currPeripher != nil && BLEM.characteristic != nil{
-            setRunTimer()
-        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //注册通知
-        NotificationCenter.default.addObserver(self, selector: #selector(switchAction(notification:)), name: NSNotification.Name(rawValue: "BLESwitch"), object: nil)
-        
-        //注册通知
-//        NotificationCenter.default.addObserver(self, selector: #selector(switchAction(notification:)), name: NSNotification.Name(rawValue: "BabyNotificationAtCentralManagerDidUpdateState"), object: nil)
-        
-//        bton_connect.isHidden = true
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     //通知内容接收
@@ -69,10 +60,39 @@ class ViewController: UIViewController {
     
     //打印
     @IBAction func writeAction(_ sender: Any) {
-       // /*
-         
-         //写入尝试
         
+        /*
+        
+        let Curper = Peripheral(peripheral: BLEM.currPeripher!)
+        
+        Curper.readValue(ofCharacWithUUID: BLEM.UDIDCharacteristic, fromServiceWithUUID: BLEM.UDIDService) { (result) in
+            switch result {
+            case .success:
+                HUDShowMsgQuick("Success", 0.8)
+            break // The write was succesful.
+            case .failure(let error):
+                HUDShowMsgQuick(result.description, 0.8)
+                break // An error happened while writting the data.
+            }
+        }
+        
+        
+        Curper.writeValue(ofCharacWithUUID: BLEM.UDIDCharacteristic, fromServiceWithUUID: BLEM.UDIDService, value: PrinterInit()) { (result) in
+            switch result {
+            case .success:
+                HUDShowMsgQuick("Success", 0.8)
+            break // The write was succesful.
+            case .failure(let error):
+                HUDShowMsgQuick(result.description, 0.8)
+                break // An error happened while writting the data.
+            }
+        }
+        
+        */
+        
+        
+        ///*
+         //写入尝试
         if let cur = BLEM.currPeripher{
             
             PrintFM(cur.state)
@@ -85,9 +105,9 @@ class ViewController: UIViewController {
                 
                 if let cha = BLEM.characteristic{                    
                     
-                    HUDShowMsgQuick(cha.uuid.uuidString, 0.8)
-                    
-                    BLEM.managerValueCha()
+//                    HUDShowMsgQuick(cha.uuid.uuidString, 0.8)
+//                    
+//                    BLEM.managerValueCha()
                     
                     BLEM.manager.write(PrinterInit(), to: cur, for: cha)
                     
@@ -104,8 +124,8 @@ class ViewController: UIViewController {
         }else{
             HUDShowMsgQuick("尚未链接任何蓝牙设备", 0.8)
         }
- 
  //*/
+        
     }
     
     
@@ -126,7 +146,8 @@ class ViewController: UIViewController {
         if BLEM.isConnect{
             HUDShowMsgQuick("isConnect 【true】", 0.1)
         }else{
-            BLEM.managerValueCha()
+//            BLEM.managerValuePer()///发现服务
+            BLEM.managerValueCha()///链接服务，绑定特性
             HUDShowMsgQuick("isConnect 【false】 ", 0.6)
         }
         

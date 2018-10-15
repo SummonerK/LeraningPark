@@ -8,6 +8,10 @@ pod 'BabyBluetooth'
 pod 'SVProgressHUD'
 
 pod 'MBProgressHUD'
+pod 'CryptoSwift'
+
+
+pod 'SwiftyBluetooth'
 
 end
 
