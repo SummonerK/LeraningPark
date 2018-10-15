@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
         locationManager?.delegate=self
         locationManager?.allowsBackgroundLocationUpdates = true
         locationManager?.requestAlwaysAuthorization()
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.pausesLocationUpdatesAutomatically = false
         
         if #available(iOS 10.0, *) {
             // iOS 10
@@ -38,8 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
                     print("获取权限成功")
                     
                     NotificationCenter.default.addObserver(self, selector: #selector(self.onMessageReceived(_:)), name: NSNotification.Name(rawValue: BGNMNoticeName), object: nil)
-                    
-                    //                application.registerForRemoteNotifications(matching: .badge)
                 }
                 else{
                     print("获取权限失败")
@@ -66,33 +66,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
             self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters;//定位精度设置为最差（减少耗电）
             var theadCount = 0;//循环计数器，这里用作时间计数
             var isShowNotice = false;//是否显示掉线通知
-            while(self.isBackground)
-            {
-                Thread.sleep(forTimeInterval: 1);//休眠
-                theadCount+=1;
-                if(theadCount > 10)//每30秒启动一次定位刷新后台在线时间
-                {
-                    self.showNotice()
-                    debugPrint("开始位置服务");
-                    self.locationManager?.startUpdatingLocation();
-                    Thread.sleep(forTimeInterval: 1);//定位休眠1秒
-                    
-                    theadCount=0;
-                }
-                let timeRemaining = UIApplication.shared.backgroundTimeRemaining;
-                NSLog("Background Time Remaining = %.02f Seconds",timeRemaining);//显示系统允许程序后台在线时间，如果保持后台成功，这里后台时间会被刷新为180s
-//                if(!ISLogined)//未登录或者掉线状态下关闭后台
+            
+//            while(self.isBackground)
+//            {
+//                Thread.sleep(forTimeInterval: 1);//休眠
+//                theadCount+=1;
+//                if(theadCount > 10)//每30秒启动一次定位刷新后台在线时间
 //                {
-//                    return;//退出循环
-//                }
-                if(timeRemaining < 60 && !isShowNotice)
-                {
 //                    self.showNotice()
-                    isShowNotice=true;
-                }
-                
-                
-            }
+//                    debugPrint("开始位置服务");
+//                    self.locationManager?.startUpdatingLocation();
+//                    Thread.sleep(forTimeInterval: 1);//定位休眠1秒
+//                    
+//                    theadCount=0;
+//                }
+//                let timeRemaining = UIApplication.shared.backgroundTimeRemaining;
+//                NSLog("Background Time Remaining = %.02f Seconds",timeRemaining);//显示系统允许程序后台在线时间，如果保持后台成功，这里后台时间会被刷新为180s
+////                if(!ISLogined)//未登录或者掉线状态下关闭后台
+////                {
+////                    return;//退出循环
+////                }
+//                if(timeRemaining < 60 && !isShowNotice)
+//                {
+////                    self.showNotice()
+//                    isShowNotice=true;
+//                }
+//                
+//                
+//            }
             
             UIApplication.shared.endBackgroundTask(self.backgroundTask)
             self.backgroundTask = UIBackgroundTaskInvalid
@@ -191,9 +192,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
                 self.backgroundTask = UIBackgroundTaskInvalid
             })
             
-            self.isBackground = true
-            BackgroundKeepTimeTask()
         }
+        
+        self.isBackground = true
+        
+        BackgroundKeepTimeTask()
+        
+        BGNM.setRunTimer()
+        
         
         
     }
@@ -205,21 +211,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
 //        let auto = comBadge%10
         comBadge += 1
 //        if auto == 0{
-            let content = UNMutableNotificationContent()
-            content.title = "我是通知"
-            content.body = "今天的你比昨天又有不同之处"
+        
+        locationManager?.startUpdatingLocation()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "我是通知"
+        content.body = "今天的你比昨天又有不同之处"
 //            content.badge = NSNumber.init(value: comBadge)
-            
-            UIApplication.shared.applicationIconBadgeNumber = comBadge
-            
-            content.sound = UNNotificationSound.default() //设置默认的三全声
-            let tigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            let request = UNNotificationRequest(identifier: "FMTestdev", content: content, trigger: tigger)
-            UNUserNotificationCenter.current().add(request) { (error) in
-                if error == nil{
-                    print("Time Interval Notification scheduled: \\\\(requestIdentifier)")
-                }
+        
+        UIApplication.shared.applicationIconBadgeNumber = comBadge
+        
+        content.sound = UNNotificationSound.default() //设置默认的三全声
+        let tigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "FMTestdev", content: content, trigger: tigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error == nil{
+                print("Time Interval Notification scheduled: \\\\(requestIdentifier)")
             }
+        }
             
             
 //        }

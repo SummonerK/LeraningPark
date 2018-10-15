@@ -28,7 +28,7 @@ class bgManager: NSObject {
     
     let constCount: TimeInterval = 500000 //重复查询次数
     var rtcount: TimeInterval = 1 //查询次数记录
-    var rtimeCell: TimeInterval = 10 //查询时间间隔
+    var rtimeCell: TimeInterval = 20 //查询时间间隔
     var rtimer:Timer?
 
     
