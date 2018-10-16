@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zFW-nm-1S6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="gIn-5B-3F8">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="zFW-nm-1S6" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vrK-DA-Xfa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HbF-pI-0Uj" kind="relationship" relationship="rootViewController" id="vxz-0V-LUp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ufN-jE-fFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-850" y="181"/>
+        </scene>
+        <!--多多-->
+        <scene sceneID="o1v-sL-EPK">
+            <objects>
+                <viewController id="f2p-Ha-hdz" customClass="MainTabOtherVC" customModule="pageSwitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dwh-In-Lot"/>
+                        <viewControllerLayoutGuide type="bottom" id="lwS-e7-r71"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SF7-1X-5eX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="多多" image="tabother" id="gtF-Gk-bxJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NfC-w1-FNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="508"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="e0v-XK-IUq">
+            <objects>
+                <viewController id="V3Q-46-VCu" customClass="MainTabHomeVC" customModule="pageSwitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Snb-cp-hZZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="WU9-Ty-qrX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dIf-CD-UUN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mZ-vq-drx">
+                                <rect key="frame" x="0.0" y="225" width="187.5" height="150"/>
+                                <color key="backgroundColor" red="0.46274509803921571" green="0.30196078431372547" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2mZ-vq-drx" secondAttribute="height" multiplier="5:4" id="JN0-dR-1yD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="订单">
+                                    <color key="titleColor" red="0.89803921568627454" green="0.73333333333333328" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionHome_1_1:" destination="V3Q-46-VCu" eventType="touchUpInside" id="lys-ou-gIx"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4s-P4-iYS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.73333333333333328" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="m4s-P4-iYS" secondAttribute="height" multiplier="5:3" id="nvo-Ly-taw"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIp-ew-tda">
+                                <rect key="frame" x="187.5" y="225" width="187.5" height="150"/>
+                                <color key="backgroundColor" red="0.13333333333333333" green="0.031372549019607843" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TIp-ew-tda" secondAttribute="height" multiplier="5:4" id="G5P-qj-Gvo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="券码">
+                                    <color key="titleColor" red="0.89803921568627454" green="0.73333333333333328" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionHome_1_2:" destination="V3Q-46-VCu" eventType="touchUpInside" id="hbV-LH-O7I"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TIp-ew-tda" firstAttribute="width" secondItem="2mZ-vq-drx" secondAttribute="width" id="0o4-W1-XbY"/>
+                            <constraint firstAttribute="trailing" secondItem="TIp-ew-tda" secondAttribute="trailing" id="6UR-fX-lgi"/>
+                            <constraint firstAttribute="trailing" secondItem="m4s-P4-iYS" secondAttribute="trailing" id="F3q-1g-CLU"/>
+                            <constraint firstItem="2mZ-vq-drx" firstAttribute="leading" secondItem="dIf-CD-UUN" secondAttribute="leading" id="JXe-xm-sa3"/>
+                            <constraint firstItem="2mZ-vq-drx" firstAttribute="top" secondItem="m4s-P4-iYS" secondAttribute="bottom" id="Nf2-Ev-7tq"/>
+                            <constraint firstItem="2mZ-vq-drx" firstAttribute="width" secondItem="dIf-CD-UUN" secondAttribute="width" multiplier="0.5" id="TA0-oS-of3"/>
+                            <constraint firstItem="TIp-ew-tda" firstAttribute="top" secondItem="m4s-P4-iYS" secondAttribute="bottom" id="UWu-0b-uGR"/>
+                            <constraint firstItem="m4s-P4-iYS" firstAttribute="top" secondItem="dIf-CD-UUN" secondAttribute="top" id="XB8-ah-MTH"/>
+                            <constraint firstItem="TIp-ew-tda" firstAttribute="width" secondItem="TIp-ew-tda" secondAttribute="height" multiplier="5:4" id="fOV-FK-Zfe"/>
+                            <constraint firstItem="m4s-P4-iYS" firstAttribute="leading" secondItem="dIf-CD-UUN" secondAttribute="leading" id="h2I-qs-Qo8"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="首页" image="tabhome" id="PLh-mH-cCM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P6D-dE-Kdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957.60000000000002" y="-147.07646176911544"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="35f-NI-Jqz">
+            <objects>
+                <tabBarController id="HbF-pI-0Uj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WGX-HL-aav"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="SBh-gn-VK6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="V3Q-46-VCu" kind="relationship" relationship="viewControllers" id="gCs-7v-S7j"/>
+                        <segue destination="f2p-Ha-hdz" kind="relationship" relationship="viewControllers" id="vMZ-fw-czm"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gUD-kP-8pt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6" y="180"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tabhome" width="26" height="26"/>
+        <image name="tabother" width="26" height="26"/>
+    </resources>
+</document>
