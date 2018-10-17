@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NextPageVC" customModule="pageSwitch" customModuleProvider="target">
             <connections>
+                <outlet property="bton_tip" destination="Gkv-F2-wfo" id="Hfb-l0-aVL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,11 +34,27 @@
                         <action selector="goBack:" destination="-1" eventType="touchUpInside" id="9HW-Mx-MYB"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkv-F2-wfo">
+                    <rect key="frame" x="162.5" y="156.5" width="50" height="50"/>
+                    <color key="backgroundColor" red="0.63137254899999995" green="0.090196078430000007" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="6ev-Xk-xLY"/>
+                        <constraint firstAttribute="width" constant="50" id="HaU-XT-J8d"/>
+                    </constraints>
+                    <state key="normal" title="tip">
+                        <color key="titleColor" red="0.8980392157" green="0.73333333329999995" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="actionTipSender:" destination="-1" eventType="touchUpInside" id="kiF-iH-axN"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.89803921568627454" green="0.73333333333333328" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="gSy-hb-1Uo" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Rsm-mx-OLV"/>
                 <constraint firstItem="gSy-hb-1Uo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ivP-pS-ra8"/>
+                <constraint firstItem="Gkv-F2-wfo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pz5-YQ-YJd"/>
+                <constraint firstItem="gSy-hb-1Uo" firstAttribute="top" secondItem="Gkv-F2-wfo" secondAttribute="bottom" constant="100" id="qZB-nd-9Kx"/>
                 <constraint firstItem="gSy-hb-1Uo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rJt-fa-zgG"/>
             </constraints>
         </view>

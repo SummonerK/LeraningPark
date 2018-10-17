@@ -6,9 +6,13 @@
 //  Copyright © 2018年 FreeMud. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
-// MARK:封装的日志输出功能（T表示不指定日志信息参数类型）
+/// keyWindow
+let KeyWindow : UIWindow = UIApplication.shared.keyWindow!
+
+/// MARK:封装的日志输出功能（T表示不指定日志信息参数类型）
 func PrintFM<T>(_ message:T, file:String = #file, function:String = #function,
              line:Int = #line) {
     #if DEBUG

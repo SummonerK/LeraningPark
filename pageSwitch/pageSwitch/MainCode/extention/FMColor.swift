@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-func AnyColor(alpha:CGFloat)->UIColor{
+func FMAnyColor(alpha:CGFloat)->UIColor{
     let anycolor = UIColor.init(hue: (CGFloat(Float(arc4random()%256) / 256.0)), saturation: (CGFloat(Float(arc4random()%256) / 256.0)), brightness: (CGFloat(Float(arc4random()%256) / 256.0)), alpha: alpha)
     return anycolor
 }

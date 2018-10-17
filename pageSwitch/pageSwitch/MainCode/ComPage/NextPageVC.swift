@@ -10,6 +10,8 @@ import UIKit
 
 class NextPageVC: UIViewController {
 
+    @IBOutlet weak var bton_tip: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +22,15 @@ class NextPageVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func actionTipSender(_ sender: Any) {
+        
+        bton_tip.IBLViewShakeShake(.horizontal)
+        
+        let isPad = IBLDeviceIPad ? "iPad" : "iPhone"
+        
+        bton_tip.setTitle(isPad, for: .normal)
+        
     }
     
     @IBAction func goBack(_ sender: Any) {

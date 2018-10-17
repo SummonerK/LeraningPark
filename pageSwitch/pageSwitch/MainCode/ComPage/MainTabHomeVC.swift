@@ -28,18 +28,27 @@ class MainTabHomeVC: UIViewController {
         
         let dic = ["key":"presentVC"] as NSDictionary
         
-        self.SWPresentVC("NextPageVC", dic, { (model) in
+//        self.SWPresentVC("NextPageVC", dic, { (model) in
+//            PrintFM("\(model as! String)")
+//        })
+        
+        self.SWGoNextVC("NextPageVC", .swPresent, dic) { (model) in
             PrintFM("\(model as! String)")
-        })
+        }
+        
     }
     
     @IBAction func actionHome_1_2(_ sender: Any) {
         
         let dic = ["key":"pushVC"] as NSDictionary
         
-        self.navigationController?.SWPushVC("NextPageVC", dic, { (model) in
+//        self.navigationController?.SWPushVC("NextPageVC", dic, { (model) in
+//            PrintFM("\(model as! String)")
+//        })
+        
+        self.SWGoNextVC("NextPageVC", .swPush, dic) { (model) in
             PrintFM("\(model as! String)")
-        })
+        }
     }
 
     /*
