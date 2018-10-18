@@ -32,7 +32,8 @@ extension UIView {
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         animation.duration = 0.6
         animation.values = [-8, 8, -7, 6, -4, 3, 0.0]
-        layer.add(animation, forKey: "shake")
+//        layer.add(animation, forKey: "shake")
+        self.layer.add(animation, forKey: "shake")
     }
     
     /// view 设置背景图片 铺开

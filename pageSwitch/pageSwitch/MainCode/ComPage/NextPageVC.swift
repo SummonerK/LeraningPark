@@ -9,14 +9,22 @@
 import UIKit
 
 class NextPageVC: UIViewController {
-
+    
+    // MARK:- viewLayout 控件区
+    
+    @IBOutlet weak var CVMain:UICollectionView!
+    
     @IBOutlet weak var bton_tip: UIButton!
     
+    // MARK:- parameter 参数区
+    
+    let arrayIcons = IBLPlistM.IBLPlistArrayFrom(plistName: "homePath")
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         print(self.SWPagePram)
-        // Do any additional setup after loading the view.
+        
+        setContentView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,11 +39,33 @@ class NextPageVC: UIViewController {
         
         bton_tip.setTitle(isPad, for: .normal)
         
+        PrintFM("arrayIcons = \(arrayIcons)")
+        
     }
     
     @IBAction func goBack(_ sender: Any) {
         self.pageBackContainer!.SWBlockBack!("hello nextvc")
         self.SWDismissScene(animated: true)
+    }
+    
+    func setContentView() {
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        
+        flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical
+        
+        flowLayout.sectionInset = UIEdgeInsetsMake(IBLDiff_home_space, IBLDiff_home_space, 0, IBLDiff_home_space)
+        
+        flowLayout.minimumLineSpacing = IBLDiff_home_space
+        
+        flowLayout.minimumInteritemSpacing = IBLDiff_home_space
+        
+        CVMain.backgroundColor = UIColor.clear
+        
+        CVMain.collectionViewLayout = flowLayout
+        
+        CVMain.registerNibClassName(CCellHomeIcon.self)
+        
     }
 
     /*
@@ -48,4 +78,72 @@ class NextPageVC: UIViewController {
     }
     */
 
+}
+
+
+extension NextPageVC:UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize{
+        return CGSize.init(width: IBScreenWidth, height: 1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+        
+        let space = (IBLDiff_home_itemNum + 1)*IBLDiff_home_space
+        
+        return CGSize.init(width: (IBScreenWidth - space)/IBLDiff_home_itemNum, height: IBLDiff_home_itemHeight)
+    }
+    
+}
+
+extension NextPageVC:UICollectionViewDataSource,UICollectionViewDelegate{
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int{
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+        
+        return arrayIcons.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CCellHomeIcon", for: indexPath) as! CCellHomeIcon
+        
+        let item = arrayIcons[indexPath.row] as! NSDictionary
+        
+        print("item = \(item["title"]!)")
+        
+        let title = item["title"] as? String
+        
+        let isValue = item["isValue"] as? Bool
+        
+        if isValue!{
+            cell.backgroundColor = IBLColorSuitDeep
+        }else{
+            cell.backgroundColor = IBLColorSuitMiRed
+        }
+        
+        cell.label_title.text = title
+        
+        return cell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! CCellHomeIcon
+        
+        let item = arrayIcons[indexPath.row] as! NSDictionary
+        
+        let isValue = item["isValue"] as? Bool
+        
+        if !isValue!{
+            cell.IBLViewShakeShake(.horizontal)
+        }
+        
+        
+    }
+    
 }

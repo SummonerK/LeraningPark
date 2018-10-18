@@ -31,3 +31,10 @@ let naviXBarHeight : CGFloat = isIphoneX ? 88 : 64
 let naviXBtonTop:CGFloat = isIphoneX ? 44 : 20
 /// Bottom高度
 let bottmXBtonH:CGFloat = isIphoneX ? 49+34 : 49
+
+
+// MARK: - Home Different
+
+let IBLDiff_home_itemNum:CGFloat = IBLDeviceIPad ? 5 : 3
+let IBLDiff_home_space:CGFloat = IBLDeviceIPad ? 20 : 10
+let IBLDiff_home_itemHeight:CGFloat = IBLDeviceIPad ? 60 : 44

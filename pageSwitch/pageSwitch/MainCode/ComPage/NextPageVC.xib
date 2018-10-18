@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NextPageVC" customModule="pageSwitch" customModuleProvider="target">
             <connections>
+                <outlet property="CVMain" destination="Af9-UT-EgE" id="6kp-p4-wQE"/>
                 <outlet property="bton_tip" destination="Gkv-F2-wfo" id="Hfb-l0-aVL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSy-hb-1Uo">
-                    <rect key="frame" x="0.0" y="306.5" width="375" height="54"/>
+                    <rect key="frame" x="0.0" y="613" width="375" height="54"/>
                     <color key="backgroundColor" red="0.46274509803921571" green="0.30196078431372547" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="54" id="w0K-jY-oPQ"/>
@@ -35,12 +36,13 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkv-F2-wfo">
-                    <rect key="frame" x="162.5" y="156.5" width="50" height="50"/>
+                    <rect key="frame" x="142.5" y="543" width="90" height="50"/>
                     <color key="backgroundColor" red="0.63137254899999995" green="0.090196078430000007" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="6ev-Xk-xLY"/>
-                        <constraint firstAttribute="width" constant="50" id="HaU-XT-J8d"/>
+                        <constraint firstAttribute="width" constant="90" id="HaU-XT-J8d"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <state key="normal" title="tip">
                         <color key="titleColor" red="0.8980392157" green="0.73333333329999995" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -48,15 +50,34 @@
                         <action selector="actionTipSender:" destination="-1" eventType="touchUpInside" id="kiF-iH-axN"/>
                     </connections>
                 </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Af9-UT-EgE">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lsw-2B-V8u">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Yfe-Kf-Qal"/>
+                        <outlet property="delegate" destination="-1" id="1lv-Iv-aQm"/>
+                    </connections>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="0.89803921568627454" green="0.73333333333333328" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="Af9-UT-EgE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5GG-xs-byF"/>
+                <constraint firstAttribute="bottom" secondItem="gSy-hb-1Uo" secondAttribute="bottom" id="DWM-Iy-zOt"/>
                 <constraint firstItem="gSy-hb-1Uo" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Rsm-mx-OLV"/>
-                <constraint firstItem="gSy-hb-1Uo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ivP-pS-ra8"/>
+                <constraint firstAttribute="trailing" secondItem="Af9-UT-EgE" secondAttribute="trailing" id="c4p-1o-XOy"/>
                 <constraint firstItem="Gkv-F2-wfo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pz5-YQ-YJd"/>
-                <constraint firstItem="gSy-hb-1Uo" firstAttribute="top" secondItem="Gkv-F2-wfo" secondAttribute="bottom" constant="100" id="qZB-nd-9Kx"/>
+                <constraint firstItem="gSy-hb-1Uo" firstAttribute="top" secondItem="Gkv-F2-wfo" secondAttribute="bottom" constant="20" id="qZB-nd-9Kx"/>
                 <constraint firstItem="gSy-hb-1Uo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rJt-fa-zgG"/>
+                <constraint firstItem="Gkv-F2-wfo" firstAttribute="top" secondItem="Af9-UT-EgE" secondAttribute="bottom" constant="26" id="tZW-sC-w6x"/>
+                <constraint firstItem="Af9-UT-EgE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="y1N-0q-6eg"/>
             </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
 </document>

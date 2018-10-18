@@ -29,15 +29,6 @@ public func IBLCellWithTableView<T: UITableViewCell>(_ tableView: UITableView) -
     return cell as! T
 }
 
-///let cell = IBLCellWithCollectionView(collectionView)
-public func IBLCellWithCollectionView<T: UITableViewCell>(_ collectionView: UICollectionView,_ indexPath:IndexPath) -> T {
-    var identifier = NSStringFromClass(T.self)
-    identifier = configIdentifier(&identifier)
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-
-    return cell as! T
-}
-
 extension  UITableView{
     
     public func registerNibClassName(_ aClass:AnyClass) -> Void {
@@ -58,7 +49,7 @@ extension  UITableView{
 extension  UICollectionView{
     
     /// tv_main.registerNibName(TCellBleroot.self)
-    
+
     public func IBLRegisterCell(_ cellCls:AnyClass){
         var identifier = NSStringFromClass(cellCls)
         identifier = configIdentifier(&identifier)
