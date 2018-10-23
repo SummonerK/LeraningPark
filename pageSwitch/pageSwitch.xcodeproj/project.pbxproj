@@ -11,6 +11,9 @@
 		634B01882178283700320B20 /* homePath.plist in Resources */ = {isa = PBXBuildFile; fileRef = 634B01872178283700320B20 /* homePath.plist */; };
 		634B018B21782D3900320B20 /* CCellHomeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B018921782D3900320B20 /* CCellHomeIcon.swift */; };
 		634B018C21782D3900320B20 /* CCellHomeIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634B018A21782D3900320B20 /* CCellHomeIcon.xib */; };
+		63504FF521798172002BB3D4 /* audioBackGroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63504FF221798172002BB3D4 /* audioBackGroundManager.swift */; };
+		63504FF621798172002BB3D4 /* deviceExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63504FF321798172002BB3D4 /* deviceExtention.swift */; };
+		63504FF721798172002BB3D4 /* switchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63504FF421798172002BB3D4 /* switchManager.swift */; };
 		6357C22521757BA400D6CB53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357C22421757BA400D6CB53 /* AppDelegate.swift */; };
 		6357C22721757BA400D6CB53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357C22621757BA400D6CB53 /* ViewController.swift */; };
 		6357C22A21757BA400D6CB53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6357C22821757BA400D6CB53 /* Main.storyboard */; };
@@ -21,13 +24,10 @@
 		6357C23F21757DE400D6CB53 /* MainTabOtherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357C23E21757DE400D6CB53 /* MainTabOtherVC.swift */; };
 		6357C24221757E5A00D6CB53 /* FMColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357C24121757E5A00D6CB53 /* FMColor.swift */; };
 		6357C2452175818200D6CB53 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6357C2442175818200D6CB53 /* Media.xcassets */; };
-		6357C2482175875D00D6CB53 /* switchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357C2472175875D00D6CB53 /* switchManager.swift */; };
 		6357C24D217593A400D6CB53 /* NextPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357C24B217593A400D6CB53 /* NextPageVC.swift */; };
 		6357C24E217593A400D6CB53 /* NextPageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6357C24C217593A400D6CB53 /* NextPageVC.xib */; };
 		6357C2502175C71A00D6CB53 /* BaseSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357C24F2175C71A00D6CB53 /* BaseSetting.swift */; };
-		63703AB82175E9EC00F086AD /* audioBackGroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63703AB72175E9EC00F086AD /* audioBackGroundManager.swift */; };
 		63703ABA2175EB1400F086AD /* xmj.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 63703AB92175EB1400F086AD /* xmj.mp3 */; };
-		63E2272421771A91004358BF /* deviceExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E2272321771A91004358BF /* deviceExtention.swift */; };
 		63E2272621771D29004358BF /* ViewSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E2272521771D29004358BF /* ViewSetting.swift */; };
 		63E227282177217D004358BF /* ListViewSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E227272177217D004358BF /* ListViewSetting.swift */; };
 		63E2272A21772288004358BF /* HUDSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E2272921772288004358BF /* HUDSetting.swift */; };
@@ -38,6 +38,9 @@
 		634B01872178283700320B20 /* homePath.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = homePath.plist; sourceTree = "<group>"; };
 		634B018921782D3900320B20 /* CCellHomeIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCellHomeIcon.swift; sourceTree = "<group>"; };
 		634B018A21782D3900320B20 /* CCellHomeIcon.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellHomeIcon.xib; sourceTree = "<group>"; };
+		63504FF221798172002BB3D4 /* audioBackGroundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = audioBackGroundManager.swift; sourceTree = "<group>"; };
+		63504FF321798172002BB3D4 /* deviceExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deviceExtention.swift; sourceTree = "<group>"; };
+		63504FF421798172002BB3D4 /* switchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = switchManager.swift; sourceTree = "<group>"; };
 		6357C22121757BA400D6CB53 /* pageSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pageSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6357C22421757BA400D6CB53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6357C22621757BA400D6CB53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,13 +53,10 @@
 		6357C23E21757DE400D6CB53 /* MainTabOtherVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabOtherVC.swift; sourceTree = "<group>"; };
 		6357C24121757E5A00D6CB53 /* FMColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMColor.swift; sourceTree = "<group>"; };
 		6357C2442175818200D6CB53 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		6357C2472175875D00D6CB53 /* switchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = switchManager.swift; sourceTree = "<group>"; };
 		6357C24B217593A400D6CB53 /* NextPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextPageVC.swift; sourceTree = "<group>"; };
 		6357C24C217593A400D6CB53 /* NextPageVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NextPageVC.xib; sourceTree = "<group>"; };
 		6357C24F2175C71A00D6CB53 /* BaseSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseSetting.swift; sourceTree = "<group>"; };
-		63703AB72175E9EC00F086AD /* audioBackGroundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = audioBackGroundManager.swift; sourceTree = "<group>"; };
 		63703AB92175EB1400F086AD /* xmj.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = xmj.mp3; sourceTree = "<group>"; };
-		63E2272321771A91004358BF /* deviceExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = deviceExtention.swift; sourceTree = "<group>"; };
 		63E2272521771D29004358BF /* ViewSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSetting.swift; sourceTree = "<group>"; };
 		63E227272177217D004358BF /* ListViewSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewSetting.swift; sourceTree = "<group>"; };
 		63E2272921772288004358BF /* HUDSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDSetting.swift; sourceTree = "<group>"; };
@@ -79,6 +79,16 @@
 				634B01872178283700320B20 /* homePath.plist */,
 			);
 			path = IBLPlistFiles;
+			sourceTree = "<group>";
+		};
+		63504FF121798172002BB3D4 /* protrolManager */ = {
+			isa = PBXGroup;
+			children = (
+				63504FF221798172002BB3D4 /* audioBackGroundManager.swift */,
+				63504FF321798172002BB3D4 /* deviceExtention.swift */,
+				63504FF421798172002BB3D4 /* switchManager.swift */,
+			);
+			path = protrolManager;
 			sourceTree = "<group>";
 		};
 		6357C21821757BA400D6CB53 = {
@@ -116,7 +126,7 @@
 		6357C23921757D8D00D6CB53 /* MainCode */ = {
 			isa = PBXGroup;
 			children = (
-				6357C2462175873C00D6CB53 /* switchManager */,
+				63504FF121798172002BB3D4 /* protrolManager */,
 				6357C2432175817300D6CB53 /* Media */,
 				6357C24021757E3D00D6CB53 /* extention */,
 				6357C23A21757D8D00D6CB53 /* ComPage */,
@@ -165,16 +175,6 @@
 				6357C2442175818200D6CB53 /* Media.xcassets */,
 			);
 			path = Media;
-			sourceTree = "<group>";
-		};
-		6357C2462175873C00D6CB53 /* switchManager */ = {
-			isa = PBXGroup;
-			children = (
-				6357C2472175875D00D6CB53 /* switchManager.swift */,
-				63703AB72175E9EC00F086AD /* audioBackGroundManager.swift */,
-				63E2272321771A91004358BF /* deviceExtention.swift */,
-			);
-			path = switchManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,17 +261,17 @@
 			files = (
 				634B018321781FE000320B20 /* PlistManager.swift in Sources */,
 				6357C24221757E5A00D6CB53 /* FMColor.swift in Sources */,
+				63504FF621798172002BB3D4 /* deviceExtention.swift in Sources */,
+				63504FF521798172002BB3D4 /* audioBackGroundManager.swift in Sources */,
 				6357C23D21757DC800D6CB53 /* MainTabHomeVC.swift in Sources */,
 				634B018B21782D3900320B20 /* CCellHomeIcon.swift in Sources */,
-				63703AB82175E9EC00F086AD /* audioBackGroundManager.swift in Sources */,
 				6357C22D21757BA400D6CB53 /* pageSwitch.xcdatamodeld in Sources */,
 				6357C23F21757DE400D6CB53 /* MainTabOtherVC.swift in Sources */,
 				63E2272621771D29004358BF /* ViewSetting.swift in Sources */,
 				63E2272A21772288004358BF /* HUDSetting.swift in Sources */,
 				63E227282177217D004358BF /* ListViewSetting.swift in Sources */,
+				63504FF721798172002BB3D4 /* switchManager.swift in Sources */,
 				6357C22721757BA400D6CB53 /* ViewController.swift in Sources */,
-				6357C2482175875D00D6CB53 /* switchManager.swift in Sources */,
-				63E2272421771A91004358BF /* deviceExtention.swift in Sources */,
 				6357C2502175C71A00D6CB53 /* BaseSetting.swift in Sources */,
 				6357C24D217593A400D6CB53 /* NextPageVC.swift in Sources */,
 				6357C22521757BA400D6CB53 /* AppDelegate.swift in Sources */,
