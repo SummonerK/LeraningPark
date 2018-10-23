@@ -1,0 +1,67 @@
+
+
+platform:ios,'10'
+target 'FMPOSRefactor' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for RxSwiftMoya
+  pod 'Moya/RxSwift'
+  pod 'ObjectMapper'
+  pod 'SwiftyJSON'
+  
+  # IQKeyboard
+  pod 'IQKeyboardManagerSwift'
+
+  # Pods Color
+  pod 'DynamicColor', '~> 3.3'  
+
+  # KingFisher Image
+  pod 'Kingfisher'
+  pod 'FSPagerView'
+
+  #progress
+  pod 'SVProgressHUD'
+  pod 'MBProgressHUD'
+  
+  pod 'SnapKit', '~> 3.2.0'
+  
+  pod 'QRCodeReader.swift'
+  
+  #refresh
+  pod 'MJRefresh'
+  
+  pod 'DeviceGuru'
+  
+  #Calendar
+  pod 'CVCalendar'
+
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '3.0'
+      config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.10'
+    end
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

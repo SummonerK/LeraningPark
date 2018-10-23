@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AzP-u4-nez">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="mkZ-Jz-hPD">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="AzP-u4-nez" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="29v-Ov-WUf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7aI-tU-fcH" kind="relationship" relationship="rootViewController" id="2Co-mD-jzE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jY7-Vn-t9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-894" y="-46"/>
+        </scene>
+        <!--Home RootVC-->
+        <scene sceneID="NIQ-Vz-y9O">
+            <objects>
+                <viewController id="7aI-tU-fcH" customClass="homeRootVC" customModule="FMPOSRefactor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jVg-0w-jeG"/>
+                        <viewControllerLayoutGuide type="bottom" id="rKd-ke-Z7g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fz7-Qk-ZDk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RcM-V9-2IA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="byb-ac-AdO">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fTV-4x-bjh">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="7aI-tU-fcH" id="Qcg-gY-7DM"/>
+                                    <outlet property="delegate" destination="7aI-tU-fcH" id="rdm-Ie-g1H"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RcM-V9-2IA" firstAttribute="top" secondItem="fz7-Qk-ZDk" secondAttribute="top" id="JQh-QG-ds2"/>
+                            <constraint firstAttribute="trailing" secondItem="RcM-V9-2IA" secondAttribute="trailing" id="Lmt-Ku-OD4"/>
+                            <constraint firstItem="RcM-V9-2IA" firstAttribute="leading" secondItem="fz7-Qk-ZDk" secondAttribute="leading" id="Pb9-hR-9L8"/>
+                            <constraint firstItem="rKd-ke-Z7g" firstAttribute="top" secondItem="RcM-V9-2IA" secondAttribute="bottom" id="UfI-fR-36q"/>
+                            <constraint firstAttribute="trailing" secondItem="RcM-V9-2IA" secondAttribute="trailing" id="iLe-3a-N82"/>
+                            <constraint firstAttribute="bottom" secondItem="RcM-V9-2IA" secondAttribute="bottom" id="ixj-Oq-mSx"/>
+                            <constraint firstItem="RcM-V9-2IA" firstAttribute="leading" secondItem="fz7-Qk-ZDk" secondAttribute="leading" id="jBb-e9-Iym"/>
+                            <constraint firstItem="RcM-V9-2IA" firstAttribute="top" secondItem="fz7-Qk-ZDk" secondAttribute="top" id="osx-pO-gAN"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JQh-QG-ds2"/>
+                                <exclude reference="Lmt-Ku-OD4"/>
+                                <exclude reference="Pb9-hR-9L8"/>
+                                <exclude reference="iLe-3a-N82"/>
+                                <exclude reference="jBb-e9-Iym"/>
+                                <exclude reference="osx-pO-gAN"/>
+                                <exclude reference="UfI-fR-36q"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Lmt-Ku-OD4"/>
+                                <include reference="jBb-e9-Iym"/>
+                                <include reference="osx-pO-gAN"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="JQh-QG-ds2"/>
+                                <include reference="Pb9-hR-9L8"/>
+                                <include reference="iLe-3a-N82"/>
+                                <include reference="UfI-fR-36q"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="XPy-mf-gtq"/>
+                    <connections>
+                        <outlet property="CVMain" destination="RcM-V9-2IA" id="MZu-n6-UzH"/>
+                        <outlet property="fixNaviTop" destination="osx-pO-gAN" id="5Ot-gu-7hW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kdc-Zj-fju" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-119.53124999999999" y="-46.875"/>
+        </scene>
+    </scenes>
+</document>
