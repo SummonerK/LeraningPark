@@ -1,0 +1,665 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6353CB7C2180669100DC9EDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CB7B2180669100DC9EDD /* AppDelegate.swift */; };
+		6353CB7E2180669100DC9EDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CB7D2180669100DC9EDD /* ViewController.swift */; };
+		6353CB812180669100DC9EDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6353CB7F2180669100DC9EDD /* Main.storyboard */; };
+		6353CB842180669100DC9EDD /* RootPrint.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6353CB822180669100DC9EDD /* RootPrint.xcdatamodeld */; };
+		6353CB862180669100DC9EDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6353CB852180669100DC9EDD /* Assets.xcassets */; };
+		6353CB892180669100DC9EDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6353CB872180669100DC9EDD /* LaunchScreen.storyboard */; };
+		6353CB942180669200DC9EDD /* RootPrintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CB932180669200DC9EDD /* RootPrintTests.swift */; };
+		6353CB9F2180669200DC9EDD /* RootPrintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CB9E2180669200DC9EDD /* RootPrintUITests.swift */; };
+		6353CBAD2180689A00DC9EDD /* RootNaviC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBAC2180689A00DC9EDD /* RootNaviC.swift */; };
+		6353CBB521806C5200DC9EDD /* BLEListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBB321806C5200DC9EDD /* BLEListVC.swift */; };
+		6353CBB621806C5200DC9EDD /* BLEListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6353CBB421806C5200DC9EDD /* BLEListVC.xib */; };
+		6353CBB921806C6F00DC9EDD /* BLESerListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBB721806C6F00DC9EDD /* BLESerListVC.swift */; };
+		6353CBBA21806C6F00DC9EDD /* BLESerListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6353CBB821806C6F00DC9EDD /* BLESerListVC.xib */; };
+		6353CBBD21806E1C00DC9EDD /* TCellBleroot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBBB21806E1C00DC9EDD /* TCellBleroot.swift */; };
+		6353CBBE21806E1C00DC9EDD /* TCellBleroot.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6353CBBC21806E1C00DC9EDD /* TCellBleroot.xib */; };
+		6353CBD321807CD400DC9EDD /* BabyBluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBC121807CD400DC9EDD /* BabyBluetooth.m */; };
+		6353CBD421807CD400DC9EDD /* BabyCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBC421807CD400DC9EDD /* BabyCallback.m */; };
+		6353CBD521807CD400DC9EDD /* BabyCentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBC621807CD400DC9EDD /* BabyCentralManager.m */; };
+		6353CBD621807CD400DC9EDD /* BabyDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBC821807CD400DC9EDD /* BabyDefine.m */; };
+		6353CBD721807CD400DC9EDD /* BabyOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBCA21807CD400DC9EDD /* BabyOptions.m */; };
+		6353CBD821807CD400DC9EDD /* BabyPeripheralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBCC21807CD400DC9EDD /* BabyPeripheralManager.m */; };
+		6353CBD921807CD400DC9EDD /* BabyRhythm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBCE21807CD400DC9EDD /* BabyRhythm.m */; };
+		6353CBDA21807CD400DC9EDD /* BabySpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBD021807CD400DC9EDD /* BabySpeaker.m */; };
+		6353CBDB21807CD400DC9EDD /* BabyToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBD221807CD400DC9EDD /* BabyToy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6353CB902180669200DC9EDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6353CB702180669100DC9EDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6353CB772180669100DC9EDD;
+			remoteInfo = RootPrint;
+		};
+		6353CB9B2180669200DC9EDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6353CB702180669100DC9EDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6353CB772180669100DC9EDD;
+			remoteInfo = RootPrint;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6353CB782180669100DC9EDD /* RootPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RootPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6353CB7B2180669100DC9EDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6353CB7D2180669100DC9EDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6353CB802180669100DC9EDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6353CB832180669100DC9EDD /* RootPrint.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RootPrint.xcdatamodel; sourceTree = "<group>"; };
+		6353CB852180669100DC9EDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6353CB882180669100DC9EDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6353CB8A2180669100DC9EDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6353CB8F2180669200DC9EDD /* RootPrintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RootPrintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6353CB932180669200DC9EDD /* RootPrintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPrintTests.swift; sourceTree = "<group>"; };
+		6353CB952180669200DC9EDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6353CB9A2180669200DC9EDD /* RootPrintUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RootPrintUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6353CB9E2180669200DC9EDD /* RootPrintUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPrintUITests.swift; sourceTree = "<group>"; };
+		6353CBA02180669200DC9EDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6353CBAC2180689A00DC9EDD /* RootNaviC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNaviC.swift; sourceTree = "<group>"; };
+		6353CBB321806C5200DC9EDD /* BLEListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEListVC.swift; sourceTree = "<group>"; };
+		6353CBB421806C5200DC9EDD /* BLEListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLEListVC.xib; sourceTree = "<group>"; };
+		6353CBB721806C6F00DC9EDD /* BLESerListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLESerListVC.swift; sourceTree = "<group>"; };
+		6353CBB821806C6F00DC9EDD /* BLESerListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLESerListVC.xib; sourceTree = "<group>"; };
+		6353CBBB21806E1C00DC9EDD /* TCellBleroot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellBleroot.swift; sourceTree = "<group>"; };
+		6353CBBC21806E1C00DC9EDD /* TCellBleroot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCellBleroot.xib; sourceTree = "<group>"; };
+		6353CBC021807CD400DC9EDD /* BabyBluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyBluetooth.h; sourceTree = "<group>"; };
+		6353CBC121807CD400DC9EDD /* BabyBluetooth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyBluetooth.m; sourceTree = "<group>"; };
+		6353CBC221807CD400DC9EDD /* BabyBlueToothForSwift-Demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BabyBlueToothForSwift-Demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		6353CBC321807CD400DC9EDD /* BabyCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCallback.h; sourceTree = "<group>"; };
+		6353CBC421807CD400DC9EDD /* BabyCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyCallback.m; sourceTree = "<group>"; };
+		6353CBC521807CD400DC9EDD /* BabyCentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyCentralManager.h; sourceTree = "<group>"; };
+		6353CBC621807CD400DC9EDD /* BabyCentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyCentralManager.m; sourceTree = "<group>"; };
+		6353CBC721807CD400DC9EDD /* BabyDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyDefine.h; sourceTree = "<group>"; };
+		6353CBC821807CD400DC9EDD /* BabyDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyDefine.m; sourceTree = "<group>"; };
+		6353CBC921807CD400DC9EDD /* BabyOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyOptions.h; sourceTree = "<group>"; };
+		6353CBCA21807CD400DC9EDD /* BabyOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyOptions.m; sourceTree = "<group>"; };
+		6353CBCB21807CD400DC9EDD /* BabyPeripheralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyPeripheralManager.h; sourceTree = "<group>"; };
+		6353CBCC21807CD400DC9EDD /* BabyPeripheralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyPeripheralManager.m; sourceTree = "<group>"; };
+		6353CBCD21807CD400DC9EDD /* BabyRhythm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyRhythm.h; sourceTree = "<group>"; };
+		6353CBCE21807CD400DC9EDD /* BabyRhythm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyRhythm.m; sourceTree = "<group>"; };
+		6353CBCF21807CD400DC9EDD /* BabySpeaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabySpeaker.h; sourceTree = "<group>"; };
+		6353CBD021807CD400DC9EDD /* BabySpeaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabySpeaker.m; sourceTree = "<group>"; };
+		6353CBD121807CD400DC9EDD /* BabyToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyToy.h; sourceTree = "<group>"; };
+		6353CBD221807CD400DC9EDD /* BabyToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyToy.m; sourceTree = "<group>"; };
+		6353CBDC21807CDD00DC9EDD /* BabyBlueToothForSwift-Demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BabyBlueToothForSwift-Demo-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6353CB752180669100DC9EDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6353CB8C2180669200DC9EDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6353CB972180669200DC9EDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6353CB6F2180669100DC9EDD = {
+			isa = PBXGroup;
+			children = (
+				6353CB7A2180669100DC9EDD /* RootPrint */,
+				6353CB922180669200DC9EDD /* RootPrintTests */,
+				6353CB9D2180669200DC9EDD /* RootPrintUITests */,
+				6353CB792180669100DC9EDD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6353CB792180669100DC9EDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6353CB782180669100DC9EDD /* RootPrint.app */,
+				6353CB8F2180669200DC9EDD /* RootPrintTests.xctest */,
+				6353CB9A2180669200DC9EDD /* RootPrintUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6353CB7A2180669100DC9EDD /* RootPrint */ = {
+			isa = PBXGroup;
+			children = (
+				6353CBAE21806BBB00DC9EDD /* BLEViews */,
+				6353CB7B2180669100DC9EDD /* AppDelegate.swift */,
+				6353CB7D2180669100DC9EDD /* ViewController.swift */,
+				6353CB7F2180669100DC9EDD /* Main.storyboard */,
+				6353CB852180669100DC9EDD /* Assets.xcassets */,
+				6353CB872180669100DC9EDD /* LaunchScreen.storyboard */,
+				6353CB8A2180669100DC9EDD /* Info.plist */,
+				6353CB822180669100DC9EDD /* RootPrint.xcdatamodeld */,
+				6353CBAC2180689A00DC9EDD /* RootNaviC.swift */,
+			);
+			path = RootPrint;
+			sourceTree = "<group>";
+		};
+		6353CB922180669200DC9EDD /* RootPrintTests */ = {
+			isa = PBXGroup;
+			children = (
+				6353CB932180669200DC9EDD /* RootPrintTests.swift */,
+				6353CB952180669200DC9EDD /* Info.plist */,
+			);
+			path = RootPrintTests;
+			sourceTree = "<group>";
+		};
+		6353CB9D2180669200DC9EDD /* RootPrintUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6353CB9E2180669200DC9EDD /* RootPrintUITests.swift */,
+				6353CBA02180669200DC9EDD /* Info.plist */,
+			);
+			path = RootPrintUITests;
+			sourceTree = "<group>";
+		};
+		6353CBAE21806BBB00DC9EDD /* BLEViews */ = {
+			isa = PBXGroup;
+			children = (
+				6353CBDC21807CDD00DC9EDD /* BabyBlueToothForSwift-Demo-Bridging-Header.h */,
+				6353CBBF21807CD400DC9EDD /* BabyBlueTooth */,
+				6353CBBB21806E1C00DC9EDD /* TCellBleroot.swift */,
+				6353CBBC21806E1C00DC9EDD /* TCellBleroot.xib */,
+				6353CBB321806C5200DC9EDD /* BLEListVC.swift */,
+				6353CBB421806C5200DC9EDD /* BLEListVC.xib */,
+				6353CBB721806C6F00DC9EDD /* BLESerListVC.swift */,
+				6353CBB821806C6F00DC9EDD /* BLESerListVC.xib */,
+			);
+			path = BLEViews;
+			sourceTree = "<group>";
+		};
+		6353CBBF21807CD400DC9EDD /* BabyBlueTooth */ = {
+			isa = PBXGroup;
+			children = (
+				6353CBC021807CD400DC9EDD /* BabyBluetooth.h */,
+				6353CBC121807CD400DC9EDD /* BabyBluetooth.m */,
+				6353CBC221807CD400DC9EDD /* BabyBlueToothForSwift-Demo-Bridging-Header.h */,
+				6353CBC321807CD400DC9EDD /* BabyCallback.h */,
+				6353CBC421807CD400DC9EDD /* BabyCallback.m */,
+				6353CBC521807CD400DC9EDD /* BabyCentralManager.h */,
+				6353CBC621807CD400DC9EDD /* BabyCentralManager.m */,
+				6353CBC721807CD400DC9EDD /* BabyDefine.h */,
+				6353CBC821807CD400DC9EDD /* BabyDefine.m */,
+				6353CBC921807CD400DC9EDD /* BabyOptions.h */,
+				6353CBCA21807CD400DC9EDD /* BabyOptions.m */,
+				6353CBCB21807CD400DC9EDD /* BabyPeripheralManager.h */,
+				6353CBCC21807CD400DC9EDD /* BabyPeripheralManager.m */,
+				6353CBCD21807CD400DC9EDD /* BabyRhythm.h */,
+				6353CBCE21807CD400DC9EDD /* BabyRhythm.m */,
+				6353CBCF21807CD400DC9EDD /* BabySpeaker.h */,
+				6353CBD021807CD400DC9EDD /* BabySpeaker.m */,
+				6353CBD121807CD400DC9EDD /* BabyToy.h */,
+				6353CBD221807CD400DC9EDD /* BabyToy.m */,
+			);
+			path = BabyBlueTooth;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6353CB772180669100DC9EDD /* RootPrint */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6353CBA32180669200DC9EDD /* Build configuration list for PBXNativeTarget "RootPrint" */;
+			buildPhases = (
+				6353CB742180669100DC9EDD /* Sources */,
+				6353CB752180669100DC9EDD /* Frameworks */,
+				6353CB762180669100DC9EDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RootPrint;
+			productName = RootPrint;
+			productReference = 6353CB782180669100DC9EDD /* RootPrint.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6353CB8E2180669200DC9EDD /* RootPrintTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6353CBA62180669200DC9EDD /* Build configuration list for PBXNativeTarget "RootPrintTests" */;
+			buildPhases = (
+				6353CB8B2180669200DC9EDD /* Sources */,
+				6353CB8C2180669200DC9EDD /* Frameworks */,
+				6353CB8D2180669200DC9EDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6353CB912180669200DC9EDD /* PBXTargetDependency */,
+			);
+			name = RootPrintTests;
+			productName = RootPrintTests;
+			productReference = 6353CB8F2180669200DC9EDD /* RootPrintTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6353CB992180669200DC9EDD /* RootPrintUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6353CBA92180669200DC9EDD /* Build configuration list for PBXNativeTarget "RootPrintUITests" */;
+			buildPhases = (
+				6353CB962180669200DC9EDD /* Sources */,
+				6353CB972180669200DC9EDD /* Frameworks */,
+				6353CB982180669200DC9EDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6353CB9C2180669200DC9EDD /* PBXTargetDependency */,
+			);
+			name = RootPrintUITests;
+			productName = RootPrintUITests;
+			productReference = 6353CB9A2180669200DC9EDD /* RootPrintUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6353CB702180669100DC9EDD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = FreeMud;
+				TargetAttributes = {
+					6353CB772180669100DC9EDD = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = BLJ7K274RB;
+						ProvisioningStyle = Manual;
+					};
+					6353CB8E2180669200DC9EDD = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6353CB772180669100DC9EDD;
+					};
+					6353CB992180669200DC9EDD = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6353CB772180669100DC9EDD;
+					};
+				};
+			};
+			buildConfigurationList = 6353CB732180669100DC9EDD /* Build configuration list for PBXProject "RootPrint" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6353CB6F2180669100DC9EDD;
+			productRefGroup = 6353CB792180669100DC9EDD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6353CB772180669100DC9EDD /* RootPrint */,
+				6353CB8E2180669200DC9EDD /* RootPrintTests */,
+				6353CB992180669200DC9EDD /* RootPrintUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6353CB762180669100DC9EDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6353CBBA21806C6F00DC9EDD /* BLESerListVC.xib in Resources */,
+				6353CB892180669100DC9EDD /* LaunchScreen.storyboard in Resources */,
+				6353CB862180669100DC9EDD /* Assets.xcassets in Resources */,
+				6353CBB621806C5200DC9EDD /* BLEListVC.xib in Resources */,
+				6353CBBE21806E1C00DC9EDD /* TCellBleroot.xib in Resources */,
+				6353CB812180669100DC9EDD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6353CB8D2180669200DC9EDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6353CB982180669200DC9EDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6353CB742180669100DC9EDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6353CBB521806C5200DC9EDD /* BLEListVC.swift in Sources */,
+				6353CBD421807CD400DC9EDD /* BabyCallback.m in Sources */,
+				6353CBD621807CD400DC9EDD /* BabyDefine.m in Sources */,
+				6353CBBD21806E1C00DC9EDD /* TCellBleroot.swift in Sources */,
+				6353CBB921806C6F00DC9EDD /* BLESerListVC.swift in Sources */,
+				6353CB7E2180669100DC9EDD /* ViewController.swift in Sources */,
+				6353CB7C2180669100DC9EDD /* AppDelegate.swift in Sources */,
+				6353CBD821807CD400DC9EDD /* BabyPeripheralManager.m in Sources */,
+				6353CB842180669100DC9EDD /* RootPrint.xcdatamodeld in Sources */,
+				6353CBD321807CD400DC9EDD /* BabyBluetooth.m in Sources */,
+				6353CBAD2180689A00DC9EDD /* RootNaviC.swift in Sources */,
+				6353CBD921807CD400DC9EDD /* BabyRhythm.m in Sources */,
+				6353CBDA21807CD400DC9EDD /* BabySpeaker.m in Sources */,
+				6353CBD721807CD400DC9EDD /* BabyOptions.m in Sources */,
+				6353CBDB21807CD400DC9EDD /* BabyToy.m in Sources */,
+				6353CBD521807CD400DC9EDD /* BabyCentralManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6353CB8B2180669200DC9EDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6353CB942180669200DC9EDD /* RootPrintTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6353CB962180669200DC9EDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6353CB9F2180669200DC9EDD /* RootPrintUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6353CB912180669200DC9EDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6353CB772180669100DC9EDD /* RootPrint */;
+			targetProxy = 6353CB902180669200DC9EDD /* PBXContainerItemProxy */;
+		};
+		6353CB9C2180669200DC9EDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6353CB772180669100DC9EDD /* RootPrint */;
+			targetProxy = 6353CB9B2180669200DC9EDD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6353CB7F2180669100DC9EDD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6353CB802180669100DC9EDD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6353CB872180669100DC9EDD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6353CB882180669100DC9EDD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6353CBA12180669200DC9EDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6353CBA22180669200DC9EDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6353CBA42180669200DC9EDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: qiyuan wang (36536N9J6G)";
+				DEVELOPMENT_TEAM = BLJ7K274RB;
+				INFOPLIST_FILE = RootPrint/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = POSMasterDev;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4f11c5ea-1bc4-48dd-9308-4a8a98b9a70d";
+				PROVISIONING_PROFILE_SPECIFIER = POSMasterDev;
+				SWIFT_OBJC_BRIDGING_HEADER = "RootPrint/BLEViews/BabyBlueToothForSwift-Demo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6353CBA52180669200DC9EDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: qiyuan wang (36536N9J6G)";
+				DEVELOPMENT_TEAM = BLJ7K274RB;
+				INFOPLIST_FILE = RootPrint/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = POSMasterDev;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4f11c5ea-1bc4-48dd-9308-4a8a98b9a70d";
+				PROVISIONING_PROFILE_SPECIFIER = POSMasterDev;
+				SWIFT_OBJC_BRIDGING_HEADER = "RootPrint/BLEViews/BabyBlueToothForSwift-Demo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		6353CBA72180669200DC9EDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RootPrintTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Freemud.CN.RootPrintTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RootPrint.app/RootPrint";
+			};
+			name = Debug;
+		};
+		6353CBA82180669200DC9EDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RootPrintTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Freemud.CN.RootPrintTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RootPrint.app/RootPrint";
+			};
+			name = Release;
+		};
+		6353CBAA2180669200DC9EDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = RootPrintUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Freemud.CN.RootPrintUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = RootPrint;
+			};
+			name = Debug;
+		};
+		6353CBAB2180669200DC9EDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = RootPrintUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Freemud.CN.RootPrintUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = RootPrint;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6353CB732180669100DC9EDD /* Build configuration list for PBXProject "RootPrint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6353CBA12180669200DC9EDD /* Debug */,
+				6353CBA22180669200DC9EDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6353CBA32180669200DC9EDD /* Build configuration list for PBXNativeTarget "RootPrint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6353CBA42180669200DC9EDD /* Debug */,
+				6353CBA52180669200DC9EDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6353CBA62180669200DC9EDD /* Build configuration list for PBXNativeTarget "RootPrintTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6353CBA72180669200DC9EDD /* Debug */,
+				6353CBA82180669200DC9EDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6353CBA92180669200DC9EDD /* Build configuration list for PBXNativeTarget "RootPrintUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6353CBAA2180669200DC9EDD /* Debug */,
+				6353CBAB2180669200DC9EDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6353CB822180669100DC9EDD /* RootPrint.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6353CB832180669100DC9EDD /* RootPrint.xcdatamodel */,
+			);
+			currentVersion = 6353CB832180669100DC9EDD /* RootPrint.xcdatamodel */;
+			path = RootPrint.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6353CB702180669100DC9EDD /* Project object */;
+}
