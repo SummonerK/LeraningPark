@@ -404,7 +404,7 @@ extension BLEListVC{
             if let peripheralName = peripheral?.name {
                 print("设备\(peripheralName)连接断开!!!")
                 SVProgressHUD.showError(withStatus: "设备\(peripheralName)连接断开!!!")
-            }
+            } 
         })
         
         //设置发现设备的Services的委托 4
