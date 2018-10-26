@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		634F2395218314910019F622 /* HLPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F2390218314910019F622 /* HLPrinter.m */; };
+		634F2396218314910019F622 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F2392218314910019F622 /* UIImage+Bitmap.m */; };
+		634F2397218314910019F622 /* UIWebView+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F2394218314910019F622 /* UIWebView+UIImage.m */; };
 		6353CB7C2180669100DC9EDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CB7B2180669100DC9EDD /* AppDelegate.swift */; };
 		6353CB7E2180669100DC9EDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CB7D2180669100DC9EDD /* ViewController.swift */; };
 		6353CB812180669100DC9EDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6353CB7F2180669100DC9EDD /* Main.storyboard */; };
@@ -18,8 +21,6 @@
 		6353CBAD2180689A00DC9EDD /* RootNaviC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBAC2180689A00DC9EDD /* RootNaviC.swift */; };
 		6353CBB521806C5200DC9EDD /* BLEListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBB321806C5200DC9EDD /* BLEListVC.swift */; };
 		6353CBB621806C5200DC9EDD /* BLEListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6353CBB421806C5200DC9EDD /* BLEListVC.xib */; };
-		6353CBB921806C6F00DC9EDD /* BLESerListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBB721806C6F00DC9EDD /* BLESerListVC.swift */; };
-		6353CBBA21806C6F00DC9EDD /* BLESerListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6353CBB821806C6F00DC9EDD /* BLESerListVC.xib */; };
 		6353CBBD21806E1C00DC9EDD /* TCellBleroot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBBB21806E1C00DC9EDD /* TCellBleroot.swift */; };
 		6353CBBE21806E1C00DC9EDD /* TCellBleroot.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6353CBBC21806E1C00DC9EDD /* TCellBleroot.xib */; };
 		6353CBD321807CD400DC9EDD /* BabyBluetooth.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBC121807CD400DC9EDD /* BabyBluetooth.m */; };
@@ -31,6 +32,7 @@
 		6353CBD921807CD400DC9EDD /* BabyRhythm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBCE21807CD400DC9EDD /* BabyRhythm.m */; };
 		6353CBDA21807CD400DC9EDD /* BabySpeaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBD021807CD400DC9EDD /* BabySpeaker.m */; };
 		6353CBDB21807CD400DC9EDD /* BabyToy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6353CBD221807CD400DC9EDD /* BabyToy.m */; };
+		6C2EDAD21FC620E458509C70 /* Pods_RootPrint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB606D940369FFB6A0C78CF /* Pods_RootPrint.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BABC66E33EA3322E2DF5D4A /* Pods-RootPrint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RootPrint.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RootPrint/Pods-RootPrint.debug.xcconfig"; sourceTree = "<group>"; };
+		634F238F218314910019F622 /* HLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPrinter.h; sourceTree = "<group>"; };
+		634F2390218314910019F622 /* HLPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPrinter.m; sourceTree = "<group>"; };
+		634F2391218314910019F622 /* UIImage+Bitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Bitmap.h"; sourceTree = "<group>"; };
+		634F2392218314910019F622 /* UIImage+Bitmap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Bitmap.m"; sourceTree = "<group>"; };
+		634F2393218314910019F622 /* UIWebView+UIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+UIImage.h"; sourceTree = "<group>"; };
+		634F2394218314910019F622 /* UIWebView+UIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+UIImage.m"; sourceTree = "<group>"; };
 		6353CB782180669100DC9EDD /* RootPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RootPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6353CB7B2180669100DC9EDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6353CB7D2180669100DC9EDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,8 +77,6 @@
 		6353CBAC2180689A00DC9EDD /* RootNaviC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNaviC.swift; sourceTree = "<group>"; };
 		6353CBB321806C5200DC9EDD /* BLEListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEListVC.swift; sourceTree = "<group>"; };
 		6353CBB421806C5200DC9EDD /* BLEListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLEListVC.xib; sourceTree = "<group>"; };
-		6353CBB721806C6F00DC9EDD /* BLESerListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLESerListVC.swift; sourceTree = "<group>"; };
-		6353CBB821806C6F00DC9EDD /* BLESerListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLESerListVC.xib; sourceTree = "<group>"; };
 		6353CBBB21806E1C00DC9EDD /* TCellBleroot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCellBleroot.swift; sourceTree = "<group>"; };
 		6353CBBC21806E1C00DC9EDD /* TCellBleroot.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCellBleroot.xib; sourceTree = "<group>"; };
 		6353CBC021807CD400DC9EDD /* BabyBluetooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyBluetooth.h; sourceTree = "<group>"; };
@@ -92,6 +99,8 @@
 		6353CBD121807CD400DC9EDD /* BabyToy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyToy.h; sourceTree = "<group>"; };
 		6353CBD221807CD400DC9EDD /* BabyToy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyToy.m; sourceTree = "<group>"; };
 		6353CBDC21807CDD00DC9EDD /* BabyBlueToothForSwift-Demo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BabyBlueToothForSwift-Demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		8CB606D940369FFB6A0C78CF /* Pods_RootPrint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RootPrint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BFEEC870569B348C6A161D0 /* Pods-RootPrint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RootPrint.release.xcconfig"; path = "Pods/Target Support Files/Pods-RootPrint/Pods-RootPrint.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C2EDAD21FC620E458509C70 /* Pods_RootPrint.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +129,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4263E334D2AFD384113C439C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8CB606D940369FFB6A0C78CF /* Pods_RootPrint.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D24C3171954BDEEB467E5AF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1BABC66E33EA3322E2DF5D4A /* Pods-RootPrint.debug.xcconfig */,
+				9BFEEC870569B348C6A161D0 /* Pods-RootPrint.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		634F238E218314910019F622 /* HLPrinter */ = {
+			isa = PBXGroup;
+			children = (
+				634F238F218314910019F622 /* HLPrinter.h */,
+				634F2390218314910019F622 /* HLPrinter.m */,
+				634F2391218314910019F622 /* UIImage+Bitmap.h */,
+				634F2392218314910019F622 /* UIImage+Bitmap.m */,
+				634F2393218314910019F622 /* UIWebView+UIImage.h */,
+				634F2394218314910019F622 /* UIWebView+UIImage.m */,
+			);
+			path = HLPrinter;
+			sourceTree = "<group>";
+		};
 		6353CB6F2180669100DC9EDD = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +166,8 @@
 				6353CB922180669200DC9EDD /* RootPrintTests */,
 				6353CB9D2180669200DC9EDD /* RootPrintUITests */,
 				6353CB792180669100DC9EDD /* Products */,
+				4D24C3171954BDEEB467E5AF /* Pods */,
+				4263E334D2AFD384113C439C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,14 +218,13 @@
 		6353CBAE21806BBB00DC9EDD /* BLEViews */ = {
 			isa = PBXGroup;
 			children = (
+				634F238E218314910019F622 /* HLPrinter */,
 				6353CBDC21807CDD00DC9EDD /* BabyBlueToothForSwift-Demo-Bridging-Header.h */,
 				6353CBBF21807CD400DC9EDD /* BabyBlueTooth */,
 				6353CBBB21806E1C00DC9EDD /* TCellBleroot.swift */,
 				6353CBBC21806E1C00DC9EDD /* TCellBleroot.xib */,
 				6353CBB321806C5200DC9EDD /* BLEListVC.swift */,
 				6353CBB421806C5200DC9EDD /* BLEListVC.xib */,
-				6353CBB721806C6F00DC9EDD /* BLESerListVC.swift */,
-				6353CBB821806C6F00DC9EDD /* BLESerListVC.xib */,
 			);
 			path = BLEViews;
 			sourceTree = "<group>";
@@ -221,9 +262,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6353CBA32180669200DC9EDD /* Build configuration list for PBXNativeTarget "RootPrint" */;
 			buildPhases = (
+				980A6A1C7395B3A8EC22A269 /* [CP] Check Pods Manifest.lock */,
 				6353CB742180669100DC9EDD /* Sources */,
 				6353CB752180669100DC9EDD /* Frameworks */,
 				6353CB762180669100DC9EDD /* Resources */,
+				54A7192980FDCC11F50704B7 /* [CP] Embed Pods Frameworks */,
+				BBF58346DB8683F98ABE5075 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -322,7 +366,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6353CBBA21806C6F00DC9EDD /* BLESerListVC.xib in Resources */,
 				6353CB892180669100DC9EDD /* LaunchScreen.storyboard in Resources */,
 				6353CB862180669100DC9EDD /* Assets.xcassets in Resources */,
 				6353CBB621806C5200DC9EDD /* BLEListVC.xib in Resources */,
@@ -347,6 +390,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		54A7192980FDCC11F50704B7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RootPrint/Pods-RootPrint-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		980A6A1C7395B3A8EC22A269 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BBF58346DB8683F98ABE5075 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RootPrint/Pods-RootPrint-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6353CB742180669100DC9EDD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -356,8 +447,8 @@
 				6353CBD421807CD400DC9EDD /* BabyCallback.m in Sources */,
 				6353CBD621807CD400DC9EDD /* BabyDefine.m in Sources */,
 				6353CBBD21806E1C00DC9EDD /* TCellBleroot.swift in Sources */,
-				6353CBB921806C6F00DC9EDD /* BLESerListVC.swift in Sources */,
 				6353CB7E2180669100DC9EDD /* ViewController.swift in Sources */,
+				634F2396218314910019F622 /* UIImage+Bitmap.m in Sources */,
 				6353CB7C2180669100DC9EDD /* AppDelegate.swift in Sources */,
 				6353CBD821807CD400DC9EDD /* BabyPeripheralManager.m in Sources */,
 				6353CB842180669100DC9EDD /* RootPrint.xcdatamodeld in Sources */,
@@ -365,8 +456,10 @@
 				6353CBAD2180689A00DC9EDD /* RootNaviC.swift in Sources */,
 				6353CBD921807CD400DC9EDD /* BabyRhythm.m in Sources */,
 				6353CBDA21807CD400DC9EDD /* BabySpeaker.m in Sources */,
+				634F2397218314910019F622 /* UIWebView+UIImage.m in Sources */,
 				6353CBD721807CD400DC9EDD /* BabyOptions.m in Sources */,
 				6353CBDB21807CD400DC9EDD /* BabyToy.m in Sources */,
+				634F2395218314910019F622 /* HLPrinter.m in Sources */,
 				6353CBD521807CD400DC9EDD /* BabyCentralManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +612,7 @@
 		};
 		6353CBA42180669200DC9EDD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BABC66E33EA3322E2DF5D4A /* Pods-RootPrint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: qiyuan wang (36536N9J6G)";
@@ -537,6 +631,7 @@
 		};
 		6353CBA52180669200DC9EDD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BFEEC870569B348C6A161D0 /* Pods-RootPrint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: qiyuan wang (36536N9J6G)";

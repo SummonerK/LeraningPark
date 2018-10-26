@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BLEListVC" customModule="RootPrint" customModuleProvider="target">
             <connections>
+                <outlet property="chaSpace" destination="CMR-qg-07V" id="mmj-bp-CpH"/>
                 <outlet property="tv_main" destination="yRq-Ik-3jw" id="uTk-PH-qJV"/>
+                <outlet property="tv_maincha" destination="ZNV-vc-efb" id="fdm-wg-ROm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -42,17 +44,30 @@
                         <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="30L-VJ-Uzd"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZNV-vc-efb">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="QoN-xv-g0u"/>
+                        <outlet property="delegate" destination="-1" id="Wtv-bZ-6WO"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="yRq-Ik-3jw" secondAttribute="trailing" id="19C-lc-Hl3"/>
                 <constraint firstItem="8if-p6-agW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2B7-vm-aHs"/>
+                <constraint firstItem="ZNV-vc-efb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CMR-qg-07V"/>
                 <constraint firstAttribute="bottom" secondItem="yRq-Ik-3jw" secondAttribute="bottom" id="GN6-BS-Siu"/>
+                <constraint firstItem="ZNV-vc-efb" firstAttribute="width" secondItem="yRq-Ik-3jw" secondAttribute="width" id="HfX-5U-0H3"/>
                 <constraint firstItem="yRq-Ik-3jw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="P1M-eV-TKF"/>
+                <constraint firstAttribute="bottom" secondItem="ZNV-vc-efb" secondAttribute="bottom" id="PMb-gf-Q4X"/>
+                <constraint firstItem="ZNV-vc-efb" firstAttribute="top" secondItem="8if-p6-agW" secondAttribute="bottom" id="Rfb-bZ-VKI"/>
                 <constraint firstItem="yRq-Ik-3jw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aEv-Vz-V3C"/>
                 <constraint firstItem="8if-p6-agW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ek6-Jl-ILO"/>
                 <constraint firstAttribute="trailing" secondItem="8if-p6-agW" secondAttribute="trailing" id="kaK-f3-CpE"/>
             </constraints>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
         </view>
     </objects>
 </document>

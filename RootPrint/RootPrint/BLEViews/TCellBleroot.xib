@@ -54,9 +54,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="label_des" destination="zjb-1Y-iwa" id="4HT-l5-mzi"/>
-                <outlet property="label_subtitle" destination="8zR-El-MLJ" id="bWm-fH-dBJ"/>
-                <outlet property="label_title" destination="M29-9Z-1a2" id="HqG-iC-hBe"/>
+                <outlet property="label_des" destination="8zR-El-MLJ" id="KN8-Nb-M52"/>
+                <outlet property="label_subtitle" destination="zjb-1Y-iwa" id="UUQ-VZ-zKC"/>
+                <outlet property="label_title" destination="M29-9Z-1a2" id="lTY-Hr-shW"/>
             </connections>
         </tableViewCell>
     </objects>

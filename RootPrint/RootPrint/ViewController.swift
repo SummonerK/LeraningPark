@@ -8,6 +8,8 @@
 
 import UIKit
 
+import SVProgressHUD
+
 class ViewController: UIViewController {
     
     var coverItemVC: BLEListVC! = nil
@@ -47,6 +49,8 @@ class ViewController: UIViewController {
     
     func showCoverView() {
         
+        coverItemVC.babyScan()
+        
         coverItemVC.view.isHidden = false
         self.view.bringSubview(toFront: coverItemVC.view)
     }
@@ -59,6 +63,9 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
+        
+        
         // Dispose of any resources that can be recreated.
     }
 
@@ -69,6 +76,37 @@ class ViewController: UIViewController {
 //        (self.navigationController as! RootNaviC).showBLEChaListV()
         
         showBLEListV()
+    }
+    
+    @IBAction func BLEWrite(_ sender: Any) {
+        
+        if coverItemVC.isWritting{
+            
+            coverItemVC.writeZero(data: PrinterInit())
+        }else{
+            SVProgressHUD.showError(withStatus: "蓝牙连接出了问题!!!")
+        }
+    }
+    
+    
+    func PrinterInit() -> Data {
+        let printInfo = HLPrinter.init()
+//        let partnerName = "FMPOS"
+//        let str1 = "测试电商服务中心(销售单)"
+//        printInfo.appendText(partnerName, alignment: HLTextAlignment.center, fontSize: HLFontSize.titleBig)
+//        printInfo.appendText(str1, alignment: HLTextAlignment.center)
+        printInfo.appendLeftText("品名", middleText: "数量／单价", rightText: "金额", isTitle: true)
+        printInfo.appendLeftText("炝锅素1小包（约27克／包）", middleText: "x2／13.44", rightText: "26.88", isTitle: false)
+        printInfo.appendLeftText("炝锅素毛肚炝锅素毛肚散称1小包（约27克／包）", middleText: "x2／13.44", rightText: "26.88", isTitle: false)
+        printInfo.appendLeftText("炝锅素毛肚炝锅素毛肚炝锅素毛肚散称1小包（约27克／包）", middleText: "x2／13.44", rightText: "26.88", isTitle: false)
+        printInfo.appendLeftText("炝锅素毛肚散称1小包（约27克／包）", middleText: "x2／13.44", rightText: "26.88", isTitle: false)
+        printInfo.appendSeperatorLine()
+//        printInfo.appendBarCode(withInfo: "SXA1205O58029444238")
+//        printInfo.appendQRCode(withInfo: "SXA1205O58029444238_20180931")
+//        printInfo.appendSeperatorLine()
+        printInfo.appendFooter("非码提供技术支持")
+        
+        return printInfo.getFinalData()
     }
 
 }

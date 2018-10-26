@@ -7,6 +7,13 @@
 //
 
 import UIKit
+import SVProgressHUD
+import CryptoSwift
+
+/// 屏幕高度
+let IBScreenHeight = UIScreen.main.bounds.size.height
+/// 屏幕宽度
+let IBScreenWidth = UIScreen.main.bounds.size.width
 
 extension UITableView{
     
@@ -29,19 +36,32 @@ class PeripheralInfo: NSObject {
     var characteristics: [CBCharacteristic]?
 }
 
+class ChooseToothEntity: NSObject {
+    var IBLentity:BlueToothEntity?
+    var IBLcurrPeripheral: CBPeripheral?
+    var IBLCha:CBCharacteristic?
+}
+
 class BLEListVC: UIViewController {
 
     @IBOutlet weak var tv_main: UITableView!
+    @IBOutlet weak var tv_maincha: UITableView!
+    
+    @IBOutlet weak var chaSpace: NSLayoutConstraint!
     
     let baby = BabyBluetooth.share()
     var peripheralDataArray = [BlueToothEntity]()
     var services = [PeripheralInfo]()
     var currentServiceCharacteristics = [CBCharacteristic]()
     var currPeripheral: CBPeripheral?
+    var isCha:Bool = false
+    var isWritting:Bool = false
     let rhythm = BabyRhythm()
     //var sect = ["red", "write", "desc", "properties"]
     var readValueArray = [NSData]()
     var descriptors = [CBDescriptor]()
+    //已选择属性集合
+    var BLEChoose = ChooseToothEntity()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,12 +81,38 @@ class BLEListVC: UIViewController {
         tv_main.estimatedRowHeight = 100
         tv_main.rowHeight = UITableViewAutomaticDimension
         
-        babyDelegate1()
+        tv_maincha.registerNibName(TCellBleroot.self)
         
-//        baby?.cancelAllPeripheralsConnection()
-        _ = baby?.scanForPeripherals().begin()
+        tv_maincha.estimatedRowHeight = 100
+        tv_maincha.rowHeight = UITableViewAutomaticDimension
+        
+//        babyScan()
         
         // Do any additional setup after loading the view.
+    }
+    
+    //  MARK:- 页面操作
+    //返回操作响应
+    @IBAction func cancelAction(_ sender: Any) {
+        
+        if isCha{
+            closeChaV()
+        }else{
+            super.view.sendSubview(toBack: self.view)
+            self.view.isHidden = true
+        }
+        
+    }
+    
+    //  MARK:- tableViewCha Controller
+    func closeChaV() -> Void {
+        isCha = false
+        chaSpace.constant = IBScreenWidth
+    }
+    
+    func openChaV() -> Void {
+        chaSpace.constant = 0
+        isCha = true
     }
     
     func setData(peripheral: CBPeripheral, advertisementData: Dictionary<String, Any>, RSSI: NSNumber) {
@@ -105,6 +151,138 @@ class BLEListVC: UIViewController {
         
     }
     
+    func setData2(service: CBService) {
+        print("搜索到服务: \(service.uuid.uuidString)")
+        let info = PeripheralInfo()
+        info.serviceUUID = service.uuid
+        info.characteristics = [CBCharacteristic]()
+        
+        self.services.append(info)
+        
+        tv_maincha.reloadData()
+    }
+    
+    func setData3(service: CBService) {
+        var sect:Int = -1
+        
+        for (index,item) in self.services.enumerated() {
+            if (item.serviceUUID == service.uuid) {
+                sect = index;
+            }
+        }
+        
+        if sect != -1 {
+            let info = self.services[sect]
+            
+            var chaList = [CBCharacteristic]()
+            
+            for (index,item) in (service.characteristics?.enumerated())! {
+                chaList.append(item)
+            }
+            
+            info.characteristics = chaList
+            tv_maincha.reloadData()
+        }
+        
+        if let characteristics_ = service.characteristics {
+            self.currentServiceCharacteristics = characteristics_
+        }
+    }
+    
+    //  MARK:- 扫描设备 
+    /// 以供选择连接设备
+    //  TODO:选择连接设备
+    /// 点击开启第一步
+    func babyScan() -> Void{
+        
+        closeChaV()
+        babyDelegate1()
+//        baby?.cancelAllPeripheralsConnection()
+        _ = baby?.scanForPeripherals().begin()
+    }
+    
+    //  MARK:- 连接设备 
+    /// 连接已选择的设备
+    //  TODO:选择设备服务
+    /// 点击开启第二步
+    func lightBtnAction() {
+        openChaV()
+        services.removeAll()
+        tv_maincha.reloadData()
+        self.baby?.cancelScan()
+//        _ = self.baby?.scanForPeripherals()
+        self.babyDelegate2()
+        self.loadData()
+    }
+    
+    //  MARK:- 连接设备
+    /// 连接已选择的设备
+    //  TODO:选择设备服务
+    /// 点击开启第三步
+    func redOrWriteBtnAction() {
+        self.babyDelegate3()
+        
+        guard let x = BLEChoose.IBLcurrPeripheral else {
+            return
+        }
+        guard let y = BLEChoose.IBLCha else {
+            return
+        }
+        let cc = baby?.channel("CharacteristicView").characteristicDetails() // 读取服务
+        
+        let _ = cc!(x,y)
+        
+        isWritting = true
+    }
+    
+    func writeZero(data:Data) -> Void {
+//        print("")
+        
+        guard let x = BLEChoose.IBLcurrPeripheral else {
+            return
+        }
+        guard let y = BLEChoose.IBLCha else {
+            return
+        }
+        
+        x.writeValue(data, for: y, type: CBCharacteristicWriteType.withResponse)
+        
+    }
+
+    
+    ///连接已选择的设备
+    func loadData() {
+        
+        baby?.cancelAllPeripheralsConnection()
+        
+        print("俺要开始连接设备...")
+        
+        guard let entityperipheral = self.BLEChoose.IBLentity?.peripheral else {
+            print("没有搜索到您想链接的蓝牙")
+            return
+        }
+        
+        _ = baby?.having(entityperipheral).and().channel("peripheralView").then().connectToPeripherals().discoverServices().discoverCharacteristics().readValueForCharacteristic().discoverDescriptorsForCharacteristic().readValueForDescriptors().begin()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+}
+
+extension BLEListVC{
     /**
      进行第一步: 搜索到周围所有的蓝牙设备
      */
@@ -200,38 +378,195 @@ class BLEListVC: UIViewController {
         baby?.setBabyOptionsWithScanForPeripheralsWithOptions(scanForPeripheralsWithOptions, connectPeripheralWithOptions: nil, scanForPeripheralsWithServices: nil, discoverWithServices: nil, discoverWithCharacteristics: nil)
     }
     
-    //返回操作响应
-    @IBAction func cancelAction(_ sender: Any) {
-        
-        super.view.sendSubview(toBack: self.view)
-        
-        self.view.isHidden = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
+    /**
+     进行第二步, 读取某个设备的某条service的所有信息
      */
+    func babyDelegate2() {
+        
+        //设置设备连接成功的委托,同一个baby对象，使用不同的channel切换委托回调 1
+        baby?.setBlockOnConnectedAtChannel("peripheralView", block: { (central, peripheral) in
+            if let peripheralName = peripheral?.name {
+                print("设备\(peripheralName)连接成功!!!")
+                SVProgressHUD.showSuccess(withStatus: "设备\(peripheralName)连接成功!!!")
+            }
+        })
+        
+        //设置设备连接失败的委托 2
+        baby?.setBlockOnFailToConnectAtChannel("peripheralView", block: { (central, peripheral, error) in
+            if let peripheralName = peripheral?.name {
+                print("设备\(peripheralName)连接失败!!!")
+                SVProgressHUD.showError(withStatus: "设备\(peripheralName)连接失败!!!")
+            }
+        })
+        
+        //设置设备断开连接的委托 3
+        baby?.setBlockOnDisconnectAtChannel("peripheralView", block: { (central, peripheral, error) in
+            if let peripheralName = peripheral?.name {
+                print("设备\(peripheralName)连接断开!!!")
+                SVProgressHUD.showError(withStatus: "设备\(peripheralName)连接断开!!!")
+            }
+        })
+        
+        //设置发现设备的Services的委托 4
+        baby?.setBlockOnDiscoverServicesAtChannel("peripheralView", block: { [unowned self] (peripheral, error) in
+            if let service_ = peripheral?.services {
+                for mService in service_ {
+                    
+//                    mService.characteristics
+                    self.setData2(service: mService)
+                }
+            }
+            // 开启计时
+            self.rhythm.beats()
+        })
+        
+        //设置发现设service的Characteristics的委托 5
+        baby?.setBlockOnDiscoverCharacteristicsAtChannel("peripheralView", block: { (peripheral, service, error) in
+            if let service_ = service {
+                print("service name:\(service_.uuid)")
+                self.setData3(service: service_)
+                
+//                if (service_.uuid.uuidString == "EC5F093D-D259-4626-B909-A830CFCFB5E2") { // 这里是 我写死的一个调试的蓝牙设备的service uuid 可以自己替换
+//                    self.setData3(service: service_)
+//                }
+            }
+        })
+        
+        //设置读取characteristics的委托 6
+        baby?.setBlockOnReadValueForCharacteristicAtChannel("peripheralView", block: { (peripheral, characteristics, error) in
+            
+            if characteristics != nil && characteristics!.value != nil {
+                print("characteristic6 name is :\(String(describing: characteristics?.uuid)) and its value is: \(characteristics!.value!.bytes.toHexString())")
+            }
+            
+/************************************* 注意这里注释了监听 ************************************************/
+//            if (characteristics != nil) {
+//                if (characteristics?.uuid.uuidString == "FFF0") {
+//                    if (!(characteristics?.isNotifying)!) {
+//                        peripheral?.setNotifyValue(true, for: characteristics!)
+//                        print("开始监听\(characteristics)")
+//                    }
+//                }
+//            }
+            
+        })
+        
+        //设置发现characteristics的descriptors的委托 7
+        baby?.setBlockOnDiscoverDescriptorsForCharacteristicAtChannel("peripheralView", block: { (peripheral, characteristics, error) in
+            if let characteristic_ = characteristics {
+                print("characteristic name is :\(characteristic_.service.uuid)")
+                if let descriptors_ = characteristic_.descriptors {
+                    for descriptors in descriptors_ {
+                        print("CBDescriptor name is:\(descriptors.uuid)")
+                    }
+                }
+            }
+        })
+        
+        //设置读取Descriptor的委托 8
+        baby?.setBlockOnReadValueForDescriptorsAtChannel("peripheralView", block: { (peripheral, descriptor, error) in
+            if let descriptors_ = descriptor {
+                print("descriptor name is :\(descriptors_.uuid) and its value is: \(String(describing: descriptors_.value))")
+            }
+        })
+        
+        //读取rssi的委托 9
+        baby?.setBlockOnDidReadRSSI({ (RSSI, error) in
+            if let RSSI_ = RSSI {
+                print("读取到RSSI:\(RSSI_)")
+            }
+        })
+        
+        //设置beats break委托 10
+        rhythm.setBlockOnBeatsBreak { (bry) in
+            print("setBlockOnBeatsBreak调用")
+        }
+        
+        //设置beats over委托 11
+        rhythm.setBlockOnBeatsOver { (bry) in
+            print("setBlockOnBeatsOver调用")
+        }
+        
+        //扫描选项->CBCentralManagerScanOptionAllowDuplicatesKey:忽略同一个Peripheral端的多个发现事件被聚合成一个发现事件
+        let scanForPeripheralsWithOptions = [CBCentralManagerScanOptionAllowDuplicatesKey: true]
+        
+        /*连接选项->
+         CBConnectPeripheralOptionNotifyOnConnectionKey :当应用挂起时，如果有一个连接成功时，如果我们想要系统为指定的peripheral显示一个提示时，就使用这个key值。
+         CBConnectPeripheralOptionNotifyOnDisconnectionKey :当应用挂起时，如果连接断开时，如果我们想要系统为指定的peripheral显示一个断开连接的提示时，就使用这个key值。
+         CBConnectPeripheralOptionNotifyOnNotificationKey:
+         当应用挂起时，使用该key值表示只要接收到给定peripheral端的通知就显示一个提
+         */
+        let connectOptions = [CBConnectPeripheralOptionNotifyOnConnectionKey: true, CBConnectPeripheralOptionNotifyOnDisconnectionKey: true, CBConnectPeripheralOptionNotifyOnNotificationKey: true]
+        
+        baby?.setBabyOptionsAtChannel("peripheralView", scanForPeripheralsWithOptions: scanForPeripheralsWithOptions, connectPeripheralWithOptions: connectOptions, scanForPeripheralsWithServices: nil, discoverWithServices: nil, discoverWithCharacteristics: nil)
+    }
     
+    /**
+     进行第三步-- 读写某个Characteristic
+     */
+    func babyDelegate3() {
+        
+        // 设置读取characteristics的委托  1
+        baby?.setBlockOnReadValueForCharacteristicAtChannel("CharacteristicView", block: { (peripheral, characteristics, error) in
+            print("CharacteristicView===>>> characteristic name: \(String(describing: characteristics?.uuid)) and value is : \(String(describing: characteristics?.value))")
+        })
+        
+        //设置发现characteristics的descriptors的委托  2
+        baby?.setBlockOnDiscoverDescriptorsForCharacteristicAtChannel("CharacteristicView", block: { (peripheral, characteristics, error) in
+            print("CharacteristicView===>>>characteristic name: \(String(describing: characteristics?.service.uuid))")
+            if (characteristics?.descriptors?.count != 0) {
+                for d in (characteristics?.descriptors)! {
+                    print("CharacteristicViewController CBDescriptor name is :\(d.uuid)")
+                }
+            }
+        })
+        
+        //设置读取Descriptor的委托 3
+        baby?.setBlockOnReadValueForDescriptorsAtChannel("CharacteristicView", block: {[unowned self] (peripheral, descriptor, error) in
+            
+            for i in 0..<self.descriptors.count {
+                if (self.descriptors[i] == descriptor) {
+                    print("我是委托3 --->>> 我找到对应的descriptor了")
+                }
+            }
+            print("CharacteristicView Descriptor name:\(String(describing: descriptor?.characteristic.uuid)) value is:\(String(describing: descriptor?.value))")
+        })
+        
+        //设置写数据成功的block    4
+        baby?.setBlockOnDidWriteValueForCharacteristicAtChannel("CharacteristicView", block: { (characteristic, error) in
+            print("setBlockOnDidWriteValueForCharacteristicAtChannel characteristic: \(String(describing: characteristic?.uuid)) and new value:\(String(describing: characteristic?.value))")
+        })
+        
+        //设置通知状态改变的block    5
+        baby?.setBlockOnDidUpdateNotificationStateForCharacteristicAtChannel("CharacteristicView", block: { (characteristic, error) in
+            
+            print("uid:\(String(describing: characteristic?.uuid)), isNotifying: \((characteristic?.isNotifying)! ? "on" : "off")")
+        })
+    }
 }
 
 extension BLEListVC:UITableViewDataSource,UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
+        if tableView == tv_maincha {
+            return self.services.count
+        }
+        
         return peripheralDataArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if tableView == tv_maincha {
+            let info = self.services[section]
+            
+            guard let chalist = info.characteristics else {
+                return 0
+            }
+            
+            return chalist.count
+        }
         
         return 1
     }
@@ -240,19 +575,54 @@ extension BLEListVC:UITableViewDataSource,UITableViewDelegate{
         return 0.1
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        
+        if tableView == tv_maincha{
+            let label = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 50))
+            let info = self.services[section]
+            label.text = String.init(format: "UUID： %@", info.serviceUUID ?? "")
+            label.backgroundColor = UIColor.black
+            label.textColor = UIColor.white
+            return label
+        }
+        
+        return nil
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         
-//        if section == 0{
-//            return 12
-//        }else{
-//            return 0.1
-//        }
+        if tableView == tv_maincha{
+            return 50
+        }
         
         return 4
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if tableView == tv_maincha{
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TCellBleroot", for: indexPath) as! TCellBleroot
+            
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            
+            //服务特性
+            
+            let info = self.services[indexPath.section]
+            let characteristic = info.characteristics?[indexPath.row]
+            
+            cell.label_des.text = "服务特性"
+            cell.label_subtitle.text = String.init(format: "%@", (characteristic?.uuid.uuidString)!)
+            
+            let value:(String,Bool) = getCharacterDes(characteristic!.properties)
+            cell.label_title.text = value.0
+            
+            cell.backgroundColor = value.1 ? UIColor.white:UIColor.lightGray
+            
+            return cell
+        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TCellBleroot", for: indexPath) as! TCellBleroot
         
@@ -262,11 +632,9 @@ extension BLEListVC:UITableViewDataSource,UITableViewDelegate{
         
         let rssi = Cindex.RSSI ?? 2
         
-//        cell.label_title.text = "rssi"
-        
         cell.label_title.text = (Cindex.peripheral?.name)! + "【\(rssi)】"
         
-        cell.label_des.text = "\(String(describing: (Cindex.advertisementData ?? [:]).description))"
+        cell.label_subtitle.text = "\(String(describing: (Cindex.advertisementData ?? [:]).description))"
         
         return cell
     }
@@ -274,12 +642,75 @@ extension BLEListVC:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         
+        if tableView == tv_maincha{
+            
+            return UITableViewAutomaticDimension
+        }
+        
         return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if tableView == tv_maincha{
+            
+            //服务特性
+            
+            let info = self.services[indexPath.section]
+            let characteristic = info.characteristics?[indexPath.row]
+            
+            let value:(String,Bool) = getCharacterDes(characteristic!.properties)
+            
+            BLEChoose.IBLCha = value.1 ? characteristic : nil
+            
+            //连接特性
+            redOrWriteBtnAction()
+            
+        }
         
+        if tableView == tv_main{
+            
+            let cindx = peripheralDataArray[indexPath.section]
+            
+            BLEChoose.IBLentity = cindx
+            BLEChoose.IBLcurrPeripheral = cindx.peripheral
+            
+            lightBtnAction()
+        }
+    }
+    
+    func getCharacterDes(_ aCharacter:CBCharacteristicProperties) -> (String,Bool) {
+        var Des:String = String.init()
+        
+        var isWrite:Bool = false
+        
+        if (aCharacter.contains(.broadcast)) {
+            Des.append("| 广播")
+        }
+        if (aCharacter.contains(.read)) {
+            Des.append(" | 读")
+        }
+//            if (p?.contains(.writeWithoutResponse))! {
+//                cell?.textLabel?.text = cell?.textLabel?.text?.appending(" | WriteWithoutResponse")
+//            }
+        if (aCharacter.contains(.write)) {
+            Des.append(" | 写")
+            isWrite = true
+        }
+        if (aCharacter.contains(.notify)) {
+            Des.append(" | 通知")
+        }
+        if (aCharacter.contains(.indicate)) {
+            Des.append(" | 指示")
+        }
+        if (aCharacter.contains(.authenticatedSignedWrites)) {
+            Des.append(" | 认证签名")
+        }
+        if (aCharacter.contains(.extendedProperties)) {
+            Des.append(" | 扩展属性")
+        }
+        
+        return (Des,isWrite)
     }
     
 }

@@ -1,0 +1,17 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'RootPrint' do
+pod 'SnapKit', '~> 3.0.2'
+pod 'CryptoSwift'
+pod 'SVProgressHUD'
+
+end
+
+
+
+
+
+
+
+

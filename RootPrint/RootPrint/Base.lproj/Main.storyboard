@@ -52,12 +52,29 @@
                                     <action selector="showBLEViews:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LQJ-d5-d0N"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1Q-dv-g8Q">
+                                <rect key="frame" x="0.0" y="388.5" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Dsb-Nt-4Ch"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="write">
+                                    <color key="titleColor" red="0.8980392157" green="0.73333333329999995" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="BLEWrite:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GGy-aV-ci6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jNi-mM-LbT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="KEM-dd-1we"/>
+                            <constraint firstItem="z1Q-dv-g8Q" firstAttribute="width" secondItem="jNi-mM-LbT" secondAttribute="width" id="P3S-PX-PZ5"/>
+                            <constraint firstItem="z1Q-dv-g8Q" firstAttribute="top" secondItem="jNi-mM-LbT" secondAttribute="bottom" constant="30" id="QRY-LH-dlv"/>
                             <constraint firstItem="jNi-mM-LbT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Zjv-C2-b38"/>
                             <constraint firstItem="jNi-mM-LbT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eJo-18-se3"/>
+                            <constraint firstItem="z1Q-dv-g8Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ysn-HY-MKs"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HT8-B5-U46"/>

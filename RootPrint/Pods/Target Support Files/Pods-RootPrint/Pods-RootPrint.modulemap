@@ -1,0 +1,6 @@
+framework module Pods_RootPrint {
+  umbrella header "Pods-RootPrint-umbrella.h"
+
+  export *
+  module * { export * }
+}
