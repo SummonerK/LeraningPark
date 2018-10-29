@@ -38,6 +38,7 @@ class PeripheralInfo: NSObject {
 
 class ChooseToothEntity: NSObject {
     var IBLentity:BlueToothEntity?
+    var serviceUUID: CBUUID?
     var IBLcurrPeripheral: CBPeripheral?
     var IBLCha:CBCharacteristic?
 }
@@ -114,6 +115,10 @@ class BLEListVC: UIViewController {
         chaSpace.constant = 0
         isCha = true
     }
+    //TODO:-重连蓝牙总结
+    ///1、重连，先扫描蓝牙，与原连接蓝牙做比较，如果没找到原蓝牙连接，则显示现有可选蓝牙列表
+    ///   如果匹配成功，则连接原蓝牙
+    ///2、重连蓝牙服务和特性。搜索服务和特性，同1操作
     
     func setData(peripheral: CBPeripheral, advertisementData: Dictionary<String, Any>, RSSI: NSNumber) {
         
@@ -121,8 +126,13 @@ class BLEListVC: UIViewController {
         for index in 0 ..< Int(peripheralDataArray.count) {
             if let peripheral_ = peripheralDataArray[index].peripheral {
                 peripherals.append(peripheral_)
+                //TODO:-重连蓝牙总结 step1
+                if let aPer = BLEChoose.IBLcurrPeripheral, aPer == peripheral{
+                    lightBtnAction()
+                }
             }
         }
+
         
         if (!(peripherals.contains(peripheral))) {
             
@@ -181,12 +191,33 @@ class BLEListVC: UIViewController {
             }
             
             info.characteristics = chaList
+            
+            //TODO:-重连蓝牙总结 step2
+            ///扫描到服务的特性并自动重连
+            if info.serviceUUID == BLEChoose.serviceUUID {
+                //连接特性
+                redOrWriteBtnAction()
+            }
+            
+            
             tv_maincha.reloadData()
         }
         
         if let characteristics_ = service.characteristics {
             self.currentServiceCharacteristics = characteristics_
         }
+    }
+    
+    ///reAchive
+    func reAchive() -> Void {
+        
+        SVProgressHUD.show()
+//        SVProgressHUD.setDefaultMaskType(.gradient)
+        
+        closeChaV()
+        babyDelegate1()
+//        baby?.cancelAllPeripheralsConnection()
+        _ = baby?.scanForPeripherals().begin()
     }
     
     //  MARK:- 扫描设备 
@@ -233,6 +264,8 @@ class BLEListVC: UIViewController {
         let _ = cc!(x,y)
         
         isWritting = true
+        
+        SVProgressHUD.dismiss(withDelay: 0.2)
     }
     
     func writeZero(data:Data) -> Void {
@@ -382,6 +415,25 @@ extension BLEListVC{
      进行第二步, 读取某个设备的某条service的所有信息
      */
     func babyDelegate2() {
+        
+//        baby?.setBlockOnCentralManagerDidUpdateState({ (central) in
+//            
+//        })
+//        
+//        baby?.setBlockOnFailToConnect({ (central, peripheral, error) in
+////            SVProgressHUD.showSuccess(withStatus: "设备\(peripheralName)连接成功!!!")
+//            if let peripheralName = peripheral?.name {
+//                print("设备\(peripheralName)连接成功!!!")
+//                SVProgressHUD.showSuccess(withStatus: "设备\(peripheralName)断开链接!!!")
+//            }
+//        })
+        
+        baby?.setBlockOnFailToConnectAtChannel("peripheralView", block: { (central, peripheral, error) in
+            if let peripheralName = peripheral?.name {
+                print("设备\(peripheralName)断开链接!!!")
+                SVProgressHUD.showError(withStatus: "设备\(peripheralName)断开链接!!!")
+            }
+        })
         
         //设置设备连接成功的委托,同一个baby对象，使用不同的channel切换委托回调 1
         baby?.setBlockOnConnectedAtChannel("peripheralView", block: { (central, peripheral) in
@@ -662,6 +714,7 @@ extension BLEListVC:UITableViewDataSource,UITableViewDelegate{
             let value:(String,Bool) = getCharacterDes(characteristic!.properties)
             
             BLEChoose.IBLCha = value.1 ? characteristic : nil
+            BLEChoose.serviceUUID = info.serviceUUID
             
             //连接特性
             redOrWriteBtnAction()

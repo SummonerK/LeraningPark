@@ -88,6 +88,11 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func BLEAchive(_ sender: Any) {
+        
+        coverItemVC.reAchive()
+    }
+    
     
     func PrinterInit() -> Data {
         let printInfo = HLPrinter.init()
