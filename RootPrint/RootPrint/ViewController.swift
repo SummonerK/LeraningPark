@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setCoverView()
+//        setCoverView()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -91,6 +91,24 @@ class ViewController: UIViewController {
     @IBAction func BLEAchive(_ sender: Any) {
         
         coverItemVC.reAchive()
+    }
+    
+    @IBAction func BLECoredata(_ sender: Any) {
+        
+        let tag = (sender as! UIButton).tag
+        
+        switch tag {
+        case 1:
+            IBLFileM.save("fm00003", Date(), .WM_SUCCESS)
+        case 2:
+            IBLFileM.update("fm00003", Date(), .WM_SUCCESS)
+        case 3:
+            let array = IBLFileM.getdate("fm00003")
+//            PrintFM("\(array)")
+            
+        default:
+            PrintFM("")
+        }
     }
     
     

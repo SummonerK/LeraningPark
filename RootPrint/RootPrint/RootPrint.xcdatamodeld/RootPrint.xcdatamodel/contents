@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="IBLLOrder" representedClassName="IBLLOrder" syncable="YES" codeGenerationType="class">
+        <attribute name="orderId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orderUpdateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="records" optional="YES" attributeType="Transformable" customClassName="NSArray" syncable="YES"/>
+        <relationship name="proClass" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="IBLLProduct" inverseName="orderClass" inverseEntity="IBLLProduct" syncable="YES"/>
+    </entity>
+    <entity name="IBLLProduct" representedClassName="IBLLProduct" syncable="YES" codeGenerationType="class">
+        <attribute name="pid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="orderClass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="IBLLOrder" inverseName="proClass" inverseEntity="IBLLOrder" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="IBLLOrder" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="IBLLProduct" positionX="439" positionY="171" width="128" height="103"/>
+    </elements>
 </model>

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -80,6 +81,60 @@
                                     <action selector="BLEAchive:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KKk-kM-thj"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXl-8a-QPN">
+                                <rect key="frame" x="0.0" y="154.5" width="375" height="54"/>
+                                <subviews>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1X-Cn-Ukl">
+                                        <rect key="frame" x="125.5" y="-0.5" width="124" height="54"/>
+                                        <color key="backgroundColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="update">
+                                            <color key="titleColor" red="0.8980392157" green="0.73333333329999995" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="BLECoredata:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FrA-op-115"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R6-F7-ed6">
+                                        <rect key="frame" x="0.0" y="0.0" width="124" height="54"/>
+                                        <color key="backgroundColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="save">
+                                            <color key="titleColor" red="0.8980392157" green="0.73333333329999995" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="BLECoredata:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ta0-OK-AiN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkb-48-l6g">
+                                        <rect key="frame" x="251" y="0.0" width="124" height="54"/>
+                                        <color key="backgroundColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="read">
+                                            <color key="titleColor" red="0.8980392157" green="0.73333333329999995" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="BLECoredata:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6gq-K1-eZw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="mkb-48-l6g" firstAttribute="height" secondItem="y1X-Cn-Ukl" secondAttribute="height" id="2Bi-Nm-cga"/>
+                                    <constraint firstItem="y1X-Cn-Ukl" firstAttribute="height" secondItem="NXl-8a-QPN" secondAttribute="height" id="3uR-9h-uNo"/>
+                                    <constraint firstItem="mkb-48-l6g" firstAttribute="centerY" secondItem="NXl-8a-QPN" secondAttribute="centerY" id="7Df-M8-sJG"/>
+                                    <constraint firstItem="y1X-Cn-Ukl" firstAttribute="width" secondItem="NXl-8a-QPN" secondAttribute="width" multiplier="0.33" id="7hl-3I-Thh"/>
+                                    <constraint firstItem="y1X-Cn-Ukl" firstAttribute="centerY" secondItem="NXl-8a-QPN" secondAttribute="centerY" id="Bo9-U6-kQs"/>
+                                    <constraint firstItem="2R6-F7-ed6" firstAttribute="height" secondItem="y1X-Cn-Ukl" secondAttribute="height" id="CN4-wW-LHn"/>
+                                    <constraint firstItem="2R6-F7-ed6" firstAttribute="centerY" secondItem="NXl-8a-QPN" secondAttribute="centerY" id="MUL-Ya-o5o"/>
+                                    <constraint firstItem="mkb-48-l6g" firstAttribute="width" secondItem="y1X-Cn-Ukl" secondAttribute="width" id="QRh-T5-lbY"/>
+                                    <constraint firstItem="2R6-F7-ed6" firstAttribute="width" secondItem="y1X-Cn-Ukl" secondAttribute="width" id="cXu-ek-tVk"/>
+                                    <constraint firstAttribute="height" constant="54" id="eFo-Ru-ejb"/>
+                                    <constraint firstItem="2R6-F7-ed6" firstAttribute="leading" secondItem="NXl-8a-QPN" secondAttribute="leading" id="kG7-g4-fFd"/>
+                                    <constraint firstAttribute="trailing" secondItem="mkb-48-l6g" secondAttribute="trailing" id="wgz-i5-DVh"/>
+                                    <constraint firstItem="y1X-Cn-Ukl" firstAttribute="centerX" secondItem="NXl-8a-QPN" secondAttribute="centerX" id="zoc-Jq-rQc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -88,9 +143,12 @@
                             <constraint firstItem="z1Q-dv-g8Q" firstAttribute="top" secondItem="jNi-mM-LbT" secondAttribute="bottom" constant="30" id="QRY-LH-dlv"/>
                             <constraint firstItem="0QC-ip-bgC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RoW-Kx-2A9"/>
                             <constraint firstItem="0QC-ip-bgC" firstAttribute="width" secondItem="jNi-mM-LbT" secondAttribute="width" id="Tc5-xh-5PB"/>
+                            <constraint firstItem="NXl-8a-QPN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UPw-x0-5Rr"/>
                             <constraint firstItem="jNi-mM-LbT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Zjv-C2-b38"/>
                             <constraint firstItem="jNi-mM-LbT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eJo-18-se3"/>
                             <constraint firstItem="jNi-mM-LbT" firstAttribute="top" secondItem="0QC-ip-bgC" secondAttribute="bottom" constant="30" id="gne-u3-szR"/>
+                            <constraint firstAttribute="trailing" secondItem="NXl-8a-QPN" secondAttribute="trailing" id="l01-LT-ab4"/>
+                            <constraint firstItem="0QC-ip-bgC" firstAttribute="top" secondItem="NXl-8a-QPN" secondAttribute="bottom" constant="20" id="lJx-jh-xZ1"/>
                             <constraint firstItem="z1Q-dv-g8Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ysn-HY-MKs"/>
                         </constraints>
                     </view>
@@ -98,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="124"/>
+            <point key="canvasLocation" x="80.799999999999997" y="123.68815592203899"/>
         </scene>
     </scenes>
 </document>
