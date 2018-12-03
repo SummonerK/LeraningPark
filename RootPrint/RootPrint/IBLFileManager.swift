@@ -31,6 +31,20 @@ class IBLFileManager: NSObject {
     let entityName = "IBLLOrder"
     let productName = "IBLLProduct"
     
+    lazy var IBLContext : NSManagedObjectContext = {
+        
+        var myContext : NSManagedObjectContext!
+        
+        if #available(iOS 10.0, *) {
+            myContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        } else {
+            myContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+        }
+        
+        return myContext
+        
+    }()
+    
     /**
      * swift3.0 单例样式
      * 使用方法：let mark = SingelClass.shared
@@ -49,13 +63,13 @@ class IBLFileManager: NSObject {
         
         PrintFM("\(orderid)\n\(data)\n\(dataString)")
         
-        if #available(iOS 10.0, *) {
-            myContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        } else {
-            myContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-        }
+//        if #available(iOS 10.0, *) {
+//            myContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        } else {
+//            myContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+//        }
         
-        let onePerson = NSEntityDescription.insertNewObject(forEntityName: entityName, into: myContext) as! IBLLOrder
+        let onePerson = NSEntityDescription.insertNewObject(forEntityName: entityName, into: IBLContext) as! IBLLOrder
         
         onePerson.orderUpdateTime = date as NSDate
         onePerson.orderId = orderid
@@ -67,15 +81,15 @@ class IBLFileManager: NSObject {
     //TODO: 全表操作 封装
     
     func save(_ orderid:String ,_ date:Date,_ type:IBL_WM_DBTYPE) -> Void {
-        var myContext : NSManagedObjectContext!;
+//        var myContext : NSManagedObjectContext!;
+//        
+//        if #available(iOS 10.0, *) {
+//            myContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        } else {
+//            myContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+//        }
         
-        if #available(iOS 10.0, *) {
-            myContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        } else {
-            myContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-        }
-        
-        let oneOrder = NSEntityDescription.insertNewObject(forEntityName: entityName, into: myContext) as! IBLLOrder
+        let oneOrder = NSEntityDescription.insertNewObject(forEntityName: entityName, into: IBLContext) as! IBLLOrder
 
         oneOrder.orderUpdateTime = date as NSDate
         oneOrder.orderId = orderid
@@ -85,12 +99,12 @@ class IBLFileManager: NSObject {
 //        onePruduct.pid = "12121212"
 //        onePruduct.productName = "fm T恤"
         
-        let onePruduct = NSEntityDescription.insertNewObject(forEntityName: productName, into: myContext) as! IBLLProduct
+        let onePruduct = NSEntityDescription.insertNewObject(forEntityName: productName, into: IBLContext) as! IBLLProduct
         
         onePruduct.pid = "12121214"
         onePruduct.productName = "fm T恤"
         
-        let twoPruduct = NSEntityDescription.insertNewObject(forEntityName: productName, into: myContext) as! IBLLProduct
+        let twoPruduct = NSEntityDescription.insertNewObject(forEntityName: productName, into: IBLContext) as! IBLLProduct
         
         twoPruduct.pid = "000002"
         twoPruduct.productName = "fm T恤1"
@@ -115,12 +129,12 @@ class IBLFileManager: NSObject {
         }
 //        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        let entity = NSEntityDescription.entity(forEntityName: entityName, in: myContext)
+        let entity = NSEntityDescription.entity(forEntityName: entityName, in: IBLContext)
         fetchRequest.entity = entity
         
         do {
             
-            let resultList = try myContext.fetch(fetchRequest) as! [IBLLOrder]
+            let resultList = try IBLContext.fetch(fetchRequest) as! [IBLLOrder]
             
             for user in resultList{
                 
@@ -178,7 +192,7 @@ class IBLFileManager: NSObject {
 //        
 //        _ = array.sortedArray(using: [nameDescriptor,dateDescriptor])
         
-        let entity = NSEntityDescription.entity(forEntityName: entityName, in: myContext)
+        let entity = NSEntityDescription.entity(forEntityName: entityName, in: IBLContext)
         fetchRequest.entity = entity
         
         var result = [IBLLOrder]()

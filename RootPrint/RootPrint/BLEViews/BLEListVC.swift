@@ -15,6 +15,8 @@ let IBScreenHeight = UIScreen.main.bounds.size.height
 /// 屏幕宽度
 let IBScreenWidth = UIScreen.main.bounds.size.width
 
+let BLEDisconnetNoticeName = "BLEDisconnetNoticeName"
+
 extension UITableView{
     
     public func registerNibName(_ aClass:AnyClass) -> Void{
@@ -23,6 +25,12 @@ extension UITableView{
         self.register(nib, forCellReuseIdentifier: className)
     }
     
+}
+
+extension DispatchQueue {
+    func after(_ delay: TimeInterval, execute: @escaping () -> Void) {
+        asyncAfter(deadline: .now() + delay, execute: execute)
+    }
 }
 
 class BlueToothEntity: NSObject {
@@ -36,6 +44,7 @@ class PeripheralInfo: NSObject {
     var characteristics: [CBCharacteristic]?
 }
 
+///已连接蓝牙设备信息集合
 class ChooseToothEntity: NSObject {
     var IBLentity:BlueToothEntity?
     var serviceUUID: CBUUID?
@@ -94,12 +103,22 @@ class BLEListVC: UIViewController {
     
     //  MARK:- 页面操作
     //返回操作响应
-    @IBAction func cancelAction(_ sender: Any) {
+    @IBAction func cancelAction(_ sender: Any) {        
         
         if isCha{
             closeChaV()
         }else{
-            super.view.sendSubview(toBack: self.view)
+            
+//            DispatchQueue.main.after(3, execute: { 
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: BLEDisconnetNoticeName), object: nil)
+//            })
+//            super.view.sendSubview(toBack: self.view)
+            //TODO:判断蓝牙设置情况
+            if BLEChoose.IBLCha == nil || BLEChoose.IBLcurrPeripheral == nil || BLEChoose.IBLentity == nil || BLEChoose.serviceUUID == nil {
+                
+                
+            }
+            
             self.view.isHidden = true
         }
         
@@ -212,7 +231,16 @@ class BLEListVC: UIViewController {
     func reAchive() -> Void {
         
         SVProgressHUD.show()
+        
+        IBLVoiceManager.shared.speechWeather(with: "开始虫连蓝牙设备")
+        
 //        SVProgressHUD.setDefaultMaskType(.gradient)
+        
+        DispatchQueue.main.after(10) {
+            IBLVoiceManager.shared.speechWeather(with: "虫连失败，请尝试手动虫连")
+            SVProgressHUD.showError(withStatus: "蓝牙打印设备连接超时,请检查设备后尝试手动虫连")
+//            SVProgressHUD.dismiss(withDelay: 0.2)
+        }
         
         closeChaV()
         babyDelegate1()
@@ -226,9 +254,11 @@ class BLEListVC: UIViewController {
     /// 点击开启第一步
     func babyScan() -> Void{
         
+        BLEChoose = ChooseToothEntity()
+        
         closeChaV()
         babyDelegate1()
-//        baby?.cancelAllPeripheralsConnection()
+        baby?.cancelAllPeripheralsConnection()
         _ = baby?.scanForPeripherals().begin()
     }
     
@@ -416,10 +446,23 @@ extension BLEListVC{
      */
     func babyDelegate2() {
         
-//        baby?.setBlockOnCentralManagerDidUpdateState({ (central) in
-//            
-//        })
-//        
+        baby?.setBlockOnCentralManagerDidUpdateState({ (central) in
+            
+        })
+        
+        baby?.peripheralModelBlock(onPeripheralManagerDidUpdateState: { (peripheral) in
+            guard let isAdvertising = peripheral?.isAdvertising else{
+                return
+            }
+            
+            if isAdvertising{
+                SVProgressHUD.showSuccess(withStatus: "设备连接成功!!!")
+            }else{
+                SVProgressHUD.showError(withStatus: "设备连接失败!!!")
+            }
+            
+        })
+//
 //        baby?.setBlockOnFailToConnect({ (central, peripheral, error) in
 ////            SVProgressHUD.showSuccess(withStatus: "设备\(peripheralName)连接成功!!!")
 //            if let peripheralName = peripheral?.name {
@@ -455,7 +498,14 @@ extension BLEListVC{
         baby?.setBlockOnDisconnectAtChannel("peripheralView", block: { (central, peripheral, error) in
             if let peripheralName = peripheral?.name {
                 print("设备\(peripheralName)连接断开!!!")
-                SVProgressHUD.showError(withStatus: "设备\(peripheralName)连接断开!!!")
+//                SVProgressHUD.showError(withStatus: "设备\(peripheralName)连接断开!!!")
+                
+//TODO: 连接打印的 频道Channel 断开连接，则发出通知，让rootvc 唤起runloop 来自动重连蓝牙打印设备和服务。如果连接5次重连失败，则断开蓝牙连接。
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: BLEDisconnetNoticeName), object: nil)
+                
+//                HUDShowMsgQuick("设备\(peripheralName)连接断开!!!", 1.0)
+                
             } 
         })
         

@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		634703A921943EAB00FCDE6B /* HUDSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634703A821943EAB00FCDE6B /* HUDSetting.swift */; };
 		634B982D21894EF60072B710 /* IBLFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B982C21894EF60072B710 /* IBLFileManager.swift */; };
+		634D347A21B5250600AA4B8C /* IBLVoiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D347921B5250600AA4B8C /* IBLVoiceManager.swift */; };
 		634F2395218314910019F622 /* HLPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F2390218314910019F622 /* HLPrinter.m */; };
 		634F2396218314910019F622 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F2392218314910019F622 /* UIImage+Bitmap.m */; };
 		634F2397218314910019F622 /* UIWebView+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F2394218314910019F622 /* UIWebView+UIImage.m */; };
@@ -55,7 +57,9 @@
 
 /* Begin PBXFileReference section */
 		1BABC66E33EA3322E2DF5D4A /* Pods-RootPrint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RootPrint.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RootPrint/Pods-RootPrint.debug.xcconfig"; sourceTree = "<group>"; };
+		634703A821943EAB00FCDE6B /* HUDSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDSetting.swift; sourceTree = "<group>"; };
 		634B982C21894EF60072B710 /* IBLFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBLFileManager.swift; sourceTree = "<group>"; };
+		634D347921B5250600AA4B8C /* IBLVoiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBLVoiceManager.swift; sourceTree = "<group>"; };
 		634F238F218314910019F622 /* HLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPrinter.h; sourceTree = "<group>"; };
 		634F2390218314910019F622 /* HLPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPrinter.m; sourceTree = "<group>"; };
 		634F2391218314910019F622 /* UIImage+Bitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Bitmap.h"; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				6353CBAE21806BBB00DC9EDD /* BLEViews */,
+				634703A821943EAB00FCDE6B /* HUDSetting.swift */,
 				6353CB7B2180669100DC9EDD /* AppDelegate.swift */,
 				6353CB7D2180669100DC9EDD /* ViewController.swift */,
 				6353CB7F2180669100DC9EDD /* Main.storyboard */,
@@ -228,6 +233,7 @@
 				6353CBBC21806E1C00DC9EDD /* TCellBleroot.xib */,
 				6353CBB321806C5200DC9EDD /* BLEListVC.swift */,
 				6353CBB421806C5200DC9EDD /* BLEListVC.xib */,
+				634D347921B5250600AA4B8C /* IBLVoiceManager.swift */,
 			);
 			path = BLEViews;
 			sourceTree = "<group>";
@@ -331,6 +337,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = BLJ7K274RB;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					6353CB8E2180669200DC9EDD = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -449,6 +460,7 @@
 				6353CBB521806C5200DC9EDD /* BLEListVC.swift in Sources */,
 				6353CBD421807CD400DC9EDD /* BabyCallback.m in Sources */,
 				634B982D21894EF60072B710 /* IBLFileManager.swift in Sources */,
+				634D347A21B5250600AA4B8C /* IBLVoiceManager.swift in Sources */,
 				6353CBD621807CD400DC9EDD /* BabyDefine.m in Sources */,
 				6353CBBD21806E1C00DC9EDD /* TCellBleroot.swift in Sources */,
 				6353CB7E2180669100DC9EDD /* ViewController.swift in Sources */,
@@ -464,6 +476,7 @@
 				6353CBD721807CD400DC9EDD /* BabyOptions.m in Sources */,
 				6353CBDB21807CD400DC9EDD /* BabyToy.m in Sources */,
 				634F2395218314910019F622 /* HLPrinter.m in Sources */,
+				634703A921943EAB00FCDE6B /* HUDSetting.swift in Sources */,
 				6353CBD521807CD400DC9EDD /* BabyCentralManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
