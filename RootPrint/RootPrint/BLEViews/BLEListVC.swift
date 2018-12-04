@@ -64,8 +64,10 @@ class BLEListVC: UIViewController {
     var services = [PeripheralInfo]()
     var currentServiceCharacteristics = [CBCharacteristic]()
     var currPeripheral: CBPeripheral?
-    var isCha:Bool = false
-    var isWritting:Bool = false
+    var isCha:Bool = false //蓝牙设备-特性 Flag
+    var isSetting:Bool = false  //连接设备 Flag
+    var isWritting:Bool = false  //写入业务 Flag
+    var isConecting:Bool = false  //连接蓝牙 Flag
     let rhythm = BabyRhythm()
     //var sect = ["red", "write", "desc", "properties"]
     var readValueArray = [NSData]()
@@ -103,21 +105,28 @@ class BLEListVC: UIViewController {
     
     //  MARK:- 页面操作
     //返回操作响应
-    @IBAction func cancelAction(_ sender: Any) {        
+    @IBAction func cancelAction(_ sender: Any) {
+        
+//        baby?.cancelAllPeripheralsConnection()
         
         if isCha{
             closeChaV()
         }else{
-            
-//            DispatchQueue.main.after(3, execute: { 
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: BLEDisconnetNoticeName), object: nil)
-//            })
-//            super.view.sendSubview(toBack: self.view)
+
             //TODO:判断蓝牙设置情况
-            if BLEChoose.IBLCha == nil || BLEChoose.IBLcurrPeripheral == nil || BLEChoose.IBLentity == nil || BLEChoose.serviceUUID == nil {
-                
-                
+            //如果设置信息不全，则：提示设置信息不全，忽略现有连接以及特性。
+            guard let blenul = BlesetNull() else {
+                SVProgressHUD.showError(withStatus: "蓝牙信息配置不全")
+                IBLVoiceManager.shared.speechWeather(with: "蓝牙信息配置不全，功能重启")
+                baby?.cancelAllPeripheralsConnection()
+                self.view.isHidden = true
+                return
             }
+            
+            //重连新特性
+//            if blenul {
+//                self.reAchive()
+//            }
             
             self.view.isHidden = true
         }
@@ -134,7 +143,7 @@ class BLEListVC: UIViewController {
         chaSpace.constant = 0
         isCha = true
     }
-    //TODO:-重连蓝牙总结
+    //MARK:-重连蓝牙总结
     ///1、重连，先扫描蓝牙，与原连接蓝牙做比较，如果没找到原蓝牙连接，则显示现有可选蓝牙列表
     ///   如果匹配成功，则连接原蓝牙
     ///2、重连蓝牙服务和特性。搜索服务和特性，同1操作
@@ -211,13 +220,12 @@ class BLEListVC: UIViewController {
             
             info.characteristics = chaList
             
-            //TODO:-重连蓝牙总结 step2
+            //MARK:-重连蓝牙总结 step2
             ///扫描到服务的特性并自动重连
             if info.serviceUUID == BLEChoose.serviceUUID {
                 //连接特性
                 redOrWriteBtnAction()
             }
-            
             
             tv_maincha.reloadData()
         }
@@ -226,32 +234,97 @@ class BLEListVC: UIViewController {
             self.currentServiceCharacteristics = characteristics_
         }
     }
-    
+    //MARK:蓝牙重连机制
     ///reAchive
     func reAchive() -> Void {
         
-        SVProgressHUD.show()
-        
-        IBLVoiceManager.shared.speechWeather(with: "开始虫连蓝牙设备")
-        
-//        SVProgressHUD.setDefaultMaskType(.gradient)
-        
-        DispatchQueue.main.after(10) {
-            IBLVoiceManager.shared.speechWeather(with: "虫连失败，请尝试手动虫连")
-            SVProgressHUD.showError(withStatus: "蓝牙打印设备连接超时,请检查设备后尝试手动虫连")
-//            SVProgressHUD.dismiss(withDelay: 0.2)
+        if BLEChoose.IBLcurrPeripheral?.state == .connected{
+            IBLVoiceManager.shared.speechWeather(with: "蓝牙连接正常")
+            SVProgressHUD.dismiss(withDelay: 0.2)
+            return
         }
         
-        closeChaV()
-        babyDelegate1()
-//        baby?.cancelAllPeripheralsConnection()
-        _ = baby?.scanForPeripherals().begin()
+        isConecting = false
+        
+        //如果配置信息不全，则回归，不予重连。
+        guard let blenul = BlesetNull() else {
+            SVProgressHUD.showError(withStatus: "蓝牙信息配置不全，请重新设置")
+            IBLVoiceManager.shared.speechWeather(with: "蓝牙信息配置不全，请重新设置")
+            SVProgressHUD.dismiss(withDelay: 0.2)
+            return
+        }
+        
+        
+        //重连蓝牙
+        //  :首先断开所有蓝牙连接，避免Block混乱，重复推送。
+        //  :建立Block绑定，业务重连
+        if blenul{
+            IBLVoiceManager.shared.speechWeather(with: "蓝牙设备连接中，，，请等待")
+            DispatchQueue.main.after(10) {
+                
+                if !self.isConecting{
+                    IBLVoiceManager.shared.speechWeather(with: "连接失败，请尝试手动虫连")
+                    HUDShowMsgQuick("蓝牙打印设备连接超时,请检查设备后尝试手动虫连", 0.8)
+                    SVProgressHUD.dismiss(withDelay: 0.8)
+                }else{
+                    IBLVoiceManager.shared.speechWeather(with: "本次虫连，心跳成功")
+                    SVProgressHUD.dismiss(withDelay: 0.2)
+                }
+            }
+            
+            closeChaV()
+            baby?.cancelAllPeripheralsConnection()
+            babyDelegate1()
+            _ = baby?.scanForPeripherals().begin()
+        }
+        
+//        if blenul && !isSetting{
+//            IBLVoiceManager.shared.speechWeather(with: "蓝牙设备连接中，，，请等待")
+//            DispatchQueue.main.after(10) {
+//                IBLVoiceManager.shared.speechWeather(with: "连接失败，请尝试手动虫连")
+//                HUDShowMsgQuick("蓝牙打印设备连接超时,请检查设备后尝试手动虫连", 0.8)
+//                SVProgressHUD.dismiss(withDelay: 0.8)
+//            }
+//            
+//            closeChaV()
+//            isSetting = true
+//            baby?.cancelAllPeripheralsConnection()
+//            babyDelegate1()
+//            _ = baby?.scanForPeripherals().begin()
+//        }
+        
+        
+//        IBLVoiceManager.shared.speechWeather(with: "开始虫连蓝牙设备")
+//        
+////        SVProgressHUD.setDefaultMaskType(.gradient)
+//        
+//        DispatchQueue.main.after(10) {
+//            IBLVoiceManager.shared.speechWeather(with: "虫连失败，请尝试手动虫连")
+////            SVProgressHUD.showError(withStatus: "蓝牙打印设备连接超时,请检查设备后尝试手动虫连")
+//            HUDShowMsgQuick("蓝牙打印设备连接超时,请检查设备后尝试手动虫连", 0.8)
+////            SVProgressHUD.dismiss(withDelay: 0.2)
+//        }
+//        
+//        closeChaV()
+//        babyDelegate1()
+////        baby?.cancelAllPeripheralsConnection()
+//        _ = baby?.scanForPeripherals().begin()
     }
     
+    //MARK:蓝牙重连判空
+    func BlesetNull() -> Bool? {
+        if BLEChoose.IBLCha == nil || BLEChoose.IBLcurrPeripheral == nil || BLEChoose.IBLentity == nil || BLEChoose.serviceUUID == nil {
+            return nil
+        }else{
+            return true
+        }
+    }
+    
+    
     //  MARK:- 扫描设备 
-    /// 以供选择连接设备
-    //  TODO:选择连接设备
-    /// 点击开启第一步
+    //  以供选择连接设备
+    //  :选择连接设备
+    //  点击开启第一步
     func babyScan() -> Void{
         
         BLEChoose = ChooseToothEntity()
@@ -264,7 +337,7 @@ class BLEListVC: UIViewController {
     
     //  MARK:- 连接设备 
     /// 连接已选择的设备
-    //  TODO:选择设备服务
+    //  选择设备服务
     /// 点击开启第二步
     func lightBtnAction() {
         openChaV()
@@ -278,7 +351,7 @@ class BLEListVC: UIViewController {
     
     //  MARK:- 连接设备
     /// 连接已选择的设备
-    //  TODO:选择设备服务
+    //  选择设备服务
     /// 点击开启第三步
     func redOrWriteBtnAction() {
         self.babyDelegate3()
@@ -295,11 +368,10 @@ class BLEListVC: UIViewController {
         
         isWritting = true
         
-        SVProgressHUD.dismiss(withDelay: 0.2)
+//        SVProgressHUD.dismiss(withDelay: 0.2)
     }
     
     func writeZero(data:Data) -> Void {
-//        print("")
         
         guard let x = BLEChoose.IBLcurrPeripheral else {
             return
@@ -363,7 +435,8 @@ extension BLEListVC{
                 print(peripheralName)
                 
                 self.setData(peripheral: peripheral!, advertisementData: advertisementData as! Dictionary<String, Any>, RSSI: RSSI!)
-                
+            
+//TODO:设备连接处
 //                if (peripheralName.hasPrefix("Printer")) {
 //                    print("搜索到了设备: \(peripheralName)")
 //                    self.setData(peripheral: peripheral!, advertisementData: advertisementData as! Dictionary<String, Any>, RSSI: RSSI!)
@@ -415,7 +488,7 @@ extension BLEListVC{
         baby?.setFilterOnDiscoverPeripherals({ (peripheralName, advertisementData, RSSI) -> Bool in
             if let peripheralName_ = peripheralName {
                 print(peripheralName_)
-                
+//TODO:设备过滤器
 //                //最常用的场景是查找某一个前缀开头的设备
 //                if (peripheralName_.hasPrefix("Printer")) {
 //                    return true
@@ -449,6 +522,7 @@ extension BLEListVC{
         baby?.setBlockOnCentralManagerDidUpdateState({ (central) in
             
         })
+
         
         baby?.peripheralModelBlock(onPeripheralManagerDidUpdateState: { (peripheral) in
             guard let isAdvertising = peripheral?.isAdvertising else{
@@ -462,7 +536,7 @@ extension BLEListVC{
             }
             
         })
-//
+
 //        baby?.setBlockOnFailToConnect({ (central, peripheral, error) in
 ////            SVProgressHUD.showSuccess(withStatus: "设备\(peripheralName)连接成功!!!")
 //            if let peripheralName = peripheral?.name {
@@ -482,7 +556,22 @@ extension BLEListVC{
         baby?.setBlockOnConnectedAtChannel("peripheralView", block: { (central, peripheral) in
             if let peripheralName = peripheral?.name {
                 print("设备\(peripheralName)连接成功!!!")
-                SVProgressHUD.showSuccess(withStatus: "设备\(peripheralName)连接成功!!!")
+                SVProgressHUD.showSuccess(withStatus: "设备\(peripheralName)连接成功!!!")                
+                HUDShowMsgQuick("设备\(peripheralName)连接成功!!!", 1)
+                
+                self.isConecting = true
+                
+                //TODO:设备重连判断。
+//                guard let blenul = self.BlesetNull() else {
+//                    return
+//                }
+//                
+//                if blenul{
+//                    DispatchQueue.main.after(2) {
+//                        IBLVoiceManager.shared.speechWeather(with: "蓝牙配置完成，请测试打印操作")
+//                    }
+//                }
+                
             }
         })
         
@@ -491,6 +580,7 @@ extension BLEListVC{
             if let peripheralName = peripheral?.name {
                 print("设备\(peripheralName)连接失败!!!")
                 SVProgressHUD.showError(withStatus: "设备\(peripheralName)连接失败!!!")
+                HUDShowMsgQuick("设备\(peripheralName)连接失败!!!", 1)
             }
         })
         
@@ -498,15 +588,13 @@ extension BLEListVC{
         baby?.setBlockOnDisconnectAtChannel("peripheralView", block: { (central, peripheral, error) in
             if let peripheralName = peripheral?.name {
                 print("设备\(peripheralName)连接断开!!!")
-//                SVProgressHUD.showError(withStatus: "设备\(peripheralName)连接断开!!!")
-                
-//TODO: 连接打印的 频道Channel 断开连接，则发出通知，让rootvc 唤起runloop 来自动重连蓝牙打印设备和服务。如果连接5次重连失败，则断开蓝牙连接。
-                
+//  TODO: 连接打印的 频道Channel 断开连接，则发出通知，让rootvc 唤起runloop 来自动重连蓝牙打印设备和服务。如果连接5次重连失败，则断开蓝牙连接。
+//                self.isSetting = false
+//                self.isConecting = false
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: BLEDisconnetNoticeName), object: nil)
-                
-//                HUDShowMsgQuick("设备\(peripheralName)连接断开!!!", 1.0)
-                
-            } 
+//                SVProgressHUD.showError(withStatus: "设备\(peripheralName)连接断开!!!")
+                HUDShowMsgQuick("设备\(peripheralName)连接断开!!!", 1)
+            }
         })
         
         //设置发现设备的Services的委托 4

@@ -13,6 +13,11 @@ import SVProgressHUD
 class ViewController: UIViewController {
     
     var coverItemVC: BLEListVC! = nil
+    
+    let constCount: Int = 50000 //重复查询次数
+    var rtcount: Int = 1 //查询次数记录
+    var rtimeCell: TimeInterval = 3 //查询时间间隔
+    var rtimer:Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +33,11 @@ class ViewController: UIViewController {
         
 //        SVProgressHUD.showError(withStatus: "设备连接断开,需要重新连接!!!")
         
+        HUDShowMsgQuick("设备连接断开,需要重新连接!!!", 1)
+        IBLVoiceManager.shared.speechWeather(with: "设备连接断开,需要重新连接!!!")
+        
         coverItemVC.reAchive()
+        SVProgressHUD.show()
     }
     
     func showBLEListV() -> Void {
@@ -58,8 +67,9 @@ class ViewController: UIViewController {
     
     func showCoverView() {
         
-        coverItemVC.babyScan()
+        setBGRun()
         
+        coverItemVC.babyScan()
         coverItemVC.view.isHidden = false
         self.view.bringSubview(toFront: coverItemVC.view)
     }
@@ -91,7 +101,7 @@ class ViewController: UIViewController {
         
         IBLVoiceManager.shared.speechWeather(with: "开始设置蓝牙配置")
         
-//        showBLEListV()
+        showBLEListV()
     }
     
     @IBAction func BLEWrite(_ sender: Any) {
@@ -105,8 +115,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func BLEAchive(_ sender: Any) {
-        
         coverItemVC.reAchive()
+        SVProgressHUD.show()
     }
     
     @IBAction func BLECoredata(_ sender: Any) {
@@ -125,7 +135,6 @@ class ViewController: UIViewController {
 //        default:
 //            PrintFM("")
 //        }
-        
         
     }
     
@@ -151,4 +160,59 @@ class ViewController: UIViewController {
     }
 
 }
+
+extension ViewController{
+    ///循环动作编辑区,打开循环动作编辑
+    func setBGRun(){
+        
+        if rtimer != nil {
+            rtcount = 1
+        }else{
+            rtimer = Timer.init(fireAt: NSDate() as Date, interval: rtimeCell, target: self, selector: #selector(rtpick), userInfo: nil, repeats: true)
+            
+            RunLoop.current.add(rtimer!, forMode:RunLoopMode.commonModes)
+        }
+    }
+    
+    fileprivate func releasepick(){
+        rtimer?.invalidate()
+        rtimer = nil
+        rtcount = 1
+    }
+    
+    func rtpick() {
+        
+        rtcount = rtcount%constCount
+        
+        if rtcount>constCount {
+            rtimer?.invalidate()
+            rtimer = nil
+            rtcount = 1
+        }else{
+            rtcount += 1
+            scrollRoundPlace()
+        }
+        
+    }
+    
+    ///循环动作编辑区
+    fileprivate func scrollRoundPlace(){
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        guard let per = coverItemVC.BLEChoose.IBLcurrPeripheral else {
+            print("还未选择连接设备")
+            return
+        }
+        
+        if per.state == .disconnected {
+            HUDShowMsgQuick("设备连接不正常!!!", 1)
+        }else{
+//            HUDShowMsgQuick("设备连接正常!!!", 1)
+        }
+        
+    }
+}
+
+
 

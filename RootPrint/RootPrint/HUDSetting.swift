@@ -29,6 +29,30 @@ func HUDShowMsgQuick(_ msg:String,_ time:Float){
 }
 
 
+/// 带状态 提示HUD
+func HUDShowNetQuick(_ msg:String,_ status:Int,_ time:Float){
+    
+    SVProgressHUD.setDefaultMaskType(.gradient)
+    
+    if status == 1 || status == 0 {
+        SVProgressHUD.showSuccess(withStatus: msg)
+        
+        SVProgressHUD.dismiss(withDelay: TimeInterval(time))
+    }else{
+        SVProgressHUD.showError(withStatus: msg)
+        
+        SVProgressHUD.dismiss(withDelay: TimeInterval(time))
+    }
+    
+}
+
+/// 网络加载动画
+func SVNetHUDShow() {
+    
+    SVProgressHUD.setDefaultMaskType(.gradient)
+    
+    SVProgressHUD.show()
+}
 
 
 
