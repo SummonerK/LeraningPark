@@ -10,6 +10,7 @@
 		634703A921943EAB00FCDE6B /* HUDSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634703A821943EAB00FCDE6B /* HUDSetting.swift */; };
 		634B982D21894EF60072B710 /* IBLFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B982C21894EF60072B710 /* IBLFileManager.swift */; };
 		634D347A21B5250600AA4B8C /* IBLVoiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D347921B5250600AA4B8C /* IBLVoiceManager.swift */; };
+		634D521F21B7ECC60034CD98 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D521E21B7ECC60034CD98 /* BLEManager.swift */; };
 		634F2395218314910019F622 /* HLPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F2390218314910019F622 /* HLPrinter.m */; };
 		634F2396218314910019F622 /* UIImage+Bitmap.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F2392218314910019F622 /* UIImage+Bitmap.m */; };
 		634F2397218314910019F622 /* UIWebView+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 634F2394218314910019F622 /* UIWebView+UIImage.m */; };
@@ -60,6 +61,7 @@
 		634703A821943EAB00FCDE6B /* HUDSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDSetting.swift; sourceTree = "<group>"; };
 		634B982C21894EF60072B710 /* IBLFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBLFileManager.swift; sourceTree = "<group>"; };
 		634D347921B5250600AA4B8C /* IBLVoiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBLVoiceManager.swift; sourceTree = "<group>"; };
+		634D521E21B7ECC60034CD98 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		634F238F218314910019F622 /* HLPrinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLPrinter.h; sourceTree = "<group>"; };
 		634F2390218314910019F622 /* HLPrinter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLPrinter.m; sourceTree = "<group>"; };
 		634F2391218314910019F622 /* UIImage+Bitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Bitmap.h"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				6353CBB321806C5200DC9EDD /* BLEListVC.swift */,
 				6353CBB421806C5200DC9EDD /* BLEListVC.xib */,
 				634D347921B5250600AA4B8C /* IBLVoiceManager.swift */,
+				634D521E21B7ECC60034CD98 /* BLEManager.swift */,
 			);
 			path = BLEViews;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				6353CBAD2180689A00DC9EDD /* RootNaviC.swift in Sources */,
 				6353CBD921807CD400DC9EDD /* BabyRhythm.m in Sources */,
 				6353CBDA21807CD400DC9EDD /* BabySpeaker.m in Sources */,
+				634D521F21B7ECC60034CD98 /* BLEManager.swift in Sources */,
 				634F2397218314910019F622 /* UIWebView+UIImage.m in Sources */,
 				6353CBD721807CD400DC9EDD /* BabyOptions.m in Sources */,
 				6353CBDB21807CD400DC9EDD /* BabyToy.m in Sources */,

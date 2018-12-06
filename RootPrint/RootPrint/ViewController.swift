@@ -10,6 +10,12 @@ import UIKit
 
 import SVProgressHUD
 
+/// 系统普通字体
+var IBFontWithSize: (CGFloat) -> UIFont = {size in
+    return UIFont.systemFont(ofSize: size)
+}
+
+
 class ViewController: UIViewController {
     
     var coverItemVC: BLEListVC! = nil
@@ -18,31 +24,93 @@ class ViewController: UIViewController {
     var rtcount: Int = 1 //查询次数记录
     var rtimeCell: TimeInterval = 3 //查询时间间隔
     var rtimer:Timer?
+    
+    //TODO:弹窗区
+    
+    var pickSwitch = 0 /// 0 蓝牙设备选择，1 设备打印特性连接
+    {
+        didSet{
+            
+        }
+    }
+    var selectedRows = [-1,-1]
+    {
+        didSet{
+            PrintFM("selectedRows = \(selectedRows)")
+        }
+    }
+    
+    @IBOutlet weak var viewCover: UIView!
+    @IBOutlet weak var viewPicker: UIPickerView!
+    @IBOutlet weak var bottomSpace: NSLayoutConstraint!
+    
+    @IBOutlet weak var btonNext:UIButton!
+    @IBOutlet weak var btonLeft:UIButton!
+    
+    //蓝牙设备名称集合
+    var arrayBlets = [String]()
+    {
+        didSet{
+            viewPicker.reloadAllComponents()
+        }
+    }
+    //选中蓝牙设备可写入协议
+    var arrayChas = [String]()
+    {
+        didSet{
+            viewPicker.reloadAllComponents()
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setCoverView()
+        closePicker()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(removePhoto(noti:)), name: NSNotification.Name(rawValue: BLEDisconnetNoticeName), object: nil)
+//        setCoverView()
+//        NotificationCenter.default.addObserver(self, selector: #selector(removePhoto(noti:)), name: NSNotification.Name(rawValue: BLEDisconnetNoticeName), object: nil)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    
+    //MARK:单例分离。
+    
+    func showBlePicker() -> Void {
+        showPicker()
+        
+        IBLVoiceManager.shared.speechWeather(with: "开始设置蓝牙配置")
+        
+        BLEM.IBBLEDevice { (blets) in
+            self.arrayBlets = blets
+        }
+        
+        BLEM.IBBLEChas { (chas) in
+            self.arrayChas = chas
+        }
+        
+        BLEM.babyScan()
+        
+    }
+    
+    
+    //MARK:普通弹窗。
+    
     @objc fileprivate func removePhoto(noti : Notification) {
         
 //        SVProgressHUD.showError(withStatus: "设备连接断开,需要重新连接!!!")
-        
-        HUDShowMsgQuick("设备连接断开,需要重新连接!!!", 1)
-        IBLVoiceManager.shared.speechWeather(with: "设备连接断开,需要重新连接!!!")
-        
-        coverItemVC.reAchive()
-        SVProgressHUD.show()
+//        
+//        HUDShowMsgQuick("设备连接断开,需要重新连接!!!", 1)
+//        IBLVoiceManager.shared.speechWeather(with: "设备连接断开,需要重新连接!!!")
+//        
+//        coverItemVC.reAchive()
+//        SVProgressHUD.show()
     }
     
     func showBLEListV() -> Void {
-        print("showBLEListV")
-        showCoverView()
+//        print("showBLEListV")
+//        showCoverView()
     }
     
     func showBLEChaListV() -> Void {
@@ -98,25 +166,36 @@ class ViewController: UIViewController {
 //            print("disconnected")
 //        }
 //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: BLEDisconnetNoticeName), object: nil)
+//        
+//        showBLEListV()
         
-        IBLVoiceManager.shared.speechWeather(with: "开始设置蓝牙配置")
+        ///弹窗
         
-        showBLEListV()
+        showBlePicker()
+        
     }
     
     @IBAction func BLEWrite(_ sender: Any) {
         
-        if coverItemVC.isWritting{
+        if BLEM.isWritting{
             
-            coverItemVC.writeZero(data: PrinterInit())
+            BLEM.writeZero(data: PrinterInit())
+            
         }else{
             SVProgressHUD.showError(withStatus: "蓝牙连接出了问题!!!")
         }
+        
+//        BLEM.testChaAdd()
     }
     
     @IBAction func BLEAchive(_ sender: Any) {
-        coverItemVC.reAchive()
-        SVProgressHUD.show()
+//        coverItemVC.reAchive()
+//        SVProgressHUD.show()
+///弹窗
+//        BLEManager.shared.lightBtnAction()
+//        BLEM.testAdd()
+        
+        BLEM.IBReachive()
     }
     
     @IBAction func BLECoredata(_ sender: Any) {
@@ -160,6 +239,149 @@ class ViewController: UIViewController {
     }
 
 }
+
+//MARK:弹窗区
+extension ViewController:UIPickerViewDelegate,UIPickerViewDataSource{
+    
+    func showPicker() -> Void {
+        
+        pickSwitch = 0
+        viewPicker.reloadAllComponents()
+        
+//        viewPicker.selectRow(selectedRows[pickSwitch], inComponent: 0, animated: false)
+        
+        UIView.animate(withDuration: 0.8) {
+            self.viewCover.isHidden = false
+            self.bottomSpace.constant = 0
+        }
+    }
+    
+    func closePicker() -> Void {
+        
+        
+        btonNext.setTitle("下一步", for: .normal)
+        btonLeft.setTitle("取消", for: .normal)
+        
+        UIView.animate(withDuration: 0.8) {
+            self.viewCover.isHidden = true
+            self.bottomSpace.constant = -228
+        }
+    }
+    
+    @IBAction func PCancelAction(_ sender: Any) {
+        
+        if pickSwitch == 1 {
+            pickSwitch = 0
+            viewPicker.reloadAllComponents()
+            viewPicker.selectRow(0, inComponent: 0, animated: true)
+            
+            btonNext.setTitle("下一步", for: .normal)
+            btonLeft.setTitle("取消", for: .normal)
+        }else{
+            closePicker()
+        }
+        
+    }
+    
+    @IBAction func PNextAction(_ sender: Any) {
+        
+        if pickSwitch == 0 {
+            pickSwitch = 1
+            viewPicker.reloadAllComponents()
+            viewPicker.selectRow(0, inComponent: 0, animated: true)
+            
+             if selectedRows[0] != -1{
+                BLEM.IBLLinkBLE(deviceIdx: selectedRows[0])
+                
+                btonNext.setTitle("完成", for: .normal)
+                btonLeft.setTitle("上一步", for: .normal)
+            }
+        }else{
+            
+            
+            if selectedRows[1] != -1{
+                
+                BLEM.IBLLinkBLE(chaIdx: selectedRows[1])
+                
+                IBLVoiceManager.shared.speechWeather(with: "开始设置蓝牙特性")
+                
+                closePicker()
+                
+                PrintFM("selectedRows = \(selectedRows)")
+            }
+            
+        }
+        
+    }
+    
+    
+    //设置选择框的列数为3列,继承于UIPickerViewDataSource协议
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    //设置选择框的行数为9行，继承于UIPickerViewDataSource协议
+    func pickerView(_ pickerView: UIPickerView,
+                    numberOfRowsInComponent component: Int) -> Int {
+        
+        if pickSwitch == 0 {
+            return arrayBlets.count
+        }
+        
+        if pickSwitch == 1 {
+            return arrayChas.count
+        }
+        
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        selectedRows[pickSwitch] = row
+//        
+//        if pickSwitch == 0 {
+//            BLEM.IBLLinkBLE(deviceIdx: row)
+//        }
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        let label=UILabel()
+        
+        label.font = IBFontWithSize(14)
+        label.textColor = .black
+        label.textAlignment = NSTextAlignment.center
+        
+        var value = String()
+        
+        if pickSwitch == 0 {
+            value = arrayBlets[row]
+        }
+        
+        if pickSwitch == 1 {
+            value = arrayChas[row]
+        }
+        
+        label.text = String.init(format: "%@", value)
+        
+        
+        return label
+    }
+    
+    //delegate
+    //设置列宽
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        
+        return IBScreenWidth
+    }
+    
+    //设置行高
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 44
+    }
+}
+
 
 extension ViewController{
     ///循环动作编辑区,打开循环动作编辑
