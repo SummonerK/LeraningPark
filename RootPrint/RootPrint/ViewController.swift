@@ -15,7 +15,6 @@ var IBFontWithSize: (CGFloat) -> UIFont = {size in
     return UIFont.systemFont(ofSize: size)
 }
 
-
 class ViewController: UIViewController {
     
     var coverItemVC: BLEListVC! = nil
@@ -33,12 +32,15 @@ class ViewController: UIViewController {
             
         }
     }
+    
     var selectedRows = [-1,-1]
     {
         didSet{
             PrintFM("selectedRows = \(selectedRows)")
         }
     }
+    
+    
     
     @IBOutlet weak var viewCover: UIView!
     @IBOutlet weak var viewPicker: UIPickerView!
@@ -67,7 +69,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         closePicker()
-        
 //        setCoverView()
 //        NotificationCenter.default.addObserver(self, selector: #selector(removePhoto(noti:)), name: NSNotification.Name(rawValue: BLEDisconnetNoticeName), object: nil)
         
@@ -82,12 +83,31 @@ class ViewController: UIViewController {
         
         IBLVoiceManager.shared.speechWeather(with: "开始设置蓝牙配置")
         
+        BLEM.IBSetAutoConnected(true, 4, 4.0)
+        
         BLEM.IBBLEDevice { (blets) in
             self.arrayBlets = blets
         }
         
         BLEM.IBBLEChas { (chas) in
             self.arrayChas = chas
+        }
+        
+        BLEM.IBBLEConnectState { (connectstate) in
+            
+            HUDShowMsgQuick("connectstate \(connectstate.rawValue)", 1)
+            switch connectstate{
+            case .connected:
+                PrintFM("")
+                IBLVoiceManager.shared.speechWeather(with: "蓝牙连接成功")
+            case .connecting:
+                PrintFM("")
+            case .disconnecting:
+                PrintFM("")
+            case .disconnected:
+                IBLVoiceManager.shared.speechWeather(with: "蓝牙失去连接")
+                PrintFM("")
+            }
         }
         
         BLEM.babyScan()
@@ -173,13 +193,15 @@ class ViewController: UIViewController {
         
         showBlePicker()
         
+//        BLEM.setBGRun()
+        
     }
     
     @IBAction func BLEWrite(_ sender: Any) {
         
         if BLEM.isWritting{
             
-            BLEM.writeZero(data: PrinterInit())
+            BLEM.IBWriteZero(data: PrinterInit())
             
         }else{
             SVProgressHUD.showError(withStatus: "蓝牙连接出了问题!!!")

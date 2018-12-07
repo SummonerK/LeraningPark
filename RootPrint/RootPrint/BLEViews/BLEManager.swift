@@ -9,9 +9,37 @@
 import UIKit
 import SVProgressHUD
 
+enum BLEConnectState:Int {
+    case disconnected
+    case connecting
+    case connected
+    case disconnecting
+}
+
 let BLEM = BLEManager.shared
 
 typealias IBBLEBack = (_ blets:[String]) -> Void
+typealias IBBLEConnect = (_ blets:BLEConnectState) -> Void
+
+///已连接蓝牙设备信息集合
+class ChooseToothEntity: NSObject {
+    var IBLentity:BlueToothEntity?
+    var serviceUUID: CBUUID?
+    var IBLcurrPeripheral: CBPeripheral?
+    var IBLCha:CBCharacteristic?
+}
+
+
+class BlueToothEntity: NSObject {
+    var peripheral: CBPeripheral?
+    var RSSI: NSNumber?
+    var advertisementData: Dictionary<String, Any>?
+}
+
+class PeripheralInfo: NSObject {
+    var serviceUUID: CBUUID?
+    var characteristics: [CBCharacteristic]?
+}
 
 class BLEManager: NSObject {
     
@@ -24,9 +52,15 @@ class BLEManager: NSObject {
     
     var services = [PeripheralInfo]()
     var currentServiceCharacteristics = [CBCharacteristic]()
-    var currPeripheral: CBPeripheral?
-    var isCha:Bool = false //蓝牙设备-特性 Flag
-    var isSetting:Bool = false  //连接设备 Flag
+    var IBPeripheral: CBPeripheral?
+    {
+        didSet{
+            if let ibper = IBPeripheral{
+                //添加KVO 监听蓝牙连接状态
+                ibper.addObserver(self, forKeyPath: "state", options: [.new,.old], context: nil)
+            }
+        }
+    }
     var isWritting:Bool = false  //写入业务 Flag
     var isConecting:Bool = false  //连接蓝牙 Flag
     let rhythm = BabyRhythm()
@@ -36,7 +70,8 @@ class BLEManager: NSObject {
     //已选择属性集合
     var BLEChoose = ChooseToothEntity()
     
-    ///单例分离。参数
+    
+    ///单例分离 Open 参数
     var arrayBlets = [String]()
     {
         didSet{
@@ -53,8 +88,16 @@ class BLEManager: NSObject {
     
     var ibBletsback:IBBLEBack!
     var ibChasback:IBBLEBack!
+    var ibBleConStateback:IBBLEConnect!
     
     
+    ////重连参数
+    
+    var isAutoConnnect:Bool = false
+    var constCount: Int = 5 //重复查询次数
+    var rtcount: Int = 1 //查询次数记录
+    var rtimeCell: TimeInterval = 10 //查询时间间隔
+    var rtimer:Timer?
     
     ///单例分离。OPEN 方法
     
@@ -65,28 +108,78 @@ class BLEManager: NSObject {
         arrayChas.append("cha2334553")
     }
     
+    /**
+     keyStep
+        -筛选连接设备
+     */
     func IBBLEDevice(back:@escaping IBBLEBack) -> Void {
         ibBletsback = back
     }
     
-    
+    /**
+     keyStep
+        -筛选连接设备的特性
+     */
     func IBBLEChas(back:@escaping IBBLEBack) -> Void {
         ibChasback = back
     }
     
+    /**
+     keyStep
+        -设备连接监听
+     */
+    func IBBLEConnectState(back:@escaping IBBLEConnect) -> Void {
+        ibBleConStateback = back
+    }
+    
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        //监听设备连接情况。
+        let changeNew = change?[.newKey] as! Int
+        
+        //蓝牙设备 失去连接
+        if changeNew == CBPeripheralState.disconnected.rawValue{
+            ibBleConStateback(.disconnected)
+            isConecting = false
+            
+            self.setBGRun()
+        }
+        //蓝牙设备 正在连接
+        if changeNew == CBPeripheralState.connecting.rawValue{
+            ibBleConStateback(.connecting)
+        }
+        //蓝牙设备 连接成功
+        if changeNew == CBPeripheralState.connected.rawValue{
+            ibBleConStateback(.connected)
+            isConecting = true
+        }
+        //蓝牙设备 正在断开连接
+        if changeNew == CBPeripheralState.disconnecting.rawValue{
+            ibBleConStateback(.disconnecting)
+        }
+    }
+    
+    
+    /**
+     筛选已选择的设备
+     */
     func IBLLinkBLE(deviceIdx:Int) -> Void {
         
+        baby?.cancelAllPeripheralsConnection()
         IBLVoiceManager.shared.speechWeather(with: "开始连接，\(deviceIdx)的蓝牙设备")
         
         DispatchQueue.main.after(2) {
             let cindx = self.peripheralDataArray[deviceIdx]
             self.BLEChoose.IBLentity = cindx
-            self.BLEChoose.IBLcurrPeripheral = cindx.peripheral
+            self.IBPeripheral = cindx.peripheral
             self.lightBtnAction()
         }
         
     }
-    
+    /**
+     筛选已选择的服务特性
+     */
     func IBLLinkBLE(chaIdx:Int) -> Void {
         
         let cindx = chaDataArray[chaIdx]
@@ -99,10 +192,13 @@ class BLEManager: NSObject {
         redOrWriteBtnAction()
     }
     
+    /**
+     蓝牙设备重连
+     */
     func IBReachive() -> Void {
-        if BLEChoose.IBLcurrPeripheral?.state == .connected{
+        if IBPeripheral?.state == .connected{
             IBLVoiceManager.shared.speechWeather(with: "蓝牙连接正常")
-            SVProgressHUD.dismiss(withDelay: 0.2)
+            SVProgressHUD.dismiss(withDelay: 0.8)
             return
         }
         
@@ -112,7 +208,7 @@ class BLEManager: NSObject {
         guard let blenul = BlesetNull() else {
             SVProgressHUD.showError(withStatus: "蓝牙信息配置不全，请重新设置")
             IBLVoiceManager.shared.speechWeather(with: "蓝牙信息配置不全，请重新设置")
-            SVProgressHUD.dismiss(withDelay: 0.2)
+            SVProgressHUD.dismiss(withDelay: 0.8)
             return
         }
         
@@ -122,18 +218,6 @@ class BLEManager: NSObject {
         //  :建立Block绑定，业务重连
         if blenul{
             IBLVoiceManager.shared.speechWeather(with: "蓝牙设备连接中，，，请等待")
-            DispatchQueue.main.after(10) {
-                
-                if !BLEM.isConecting{
-                    IBLVoiceManager.shared.speechWeather(with: "连接失败，请尝试手动虫连")
-                    HUDShowMsgQuick("蓝牙打印设备连接超时,请检查设备后尝试手动虫连", 0.8)
-                    SVProgressHUD.dismiss(withDelay: 0.8)
-                }else{
-                    IBLVoiceManager.shared.speechWeather(with: "本次虫连，心跳成功")
-                    SVProgressHUD.dismiss(withDelay: 0.2)
-                }
-            }
-            
             baby?.cancelAllPeripheralsConnection()
             babyDelegate1()
             _ = baby?.scanForPeripherals().begin()
@@ -162,15 +246,96 @@ class BLEManager: NSObject {
     
     //MARK:蓝牙重连判空
     func BlesetNull() -> Bool? {
-        if BLEChoose.IBLCha == nil || BLEChoose.IBLcurrPeripheral == nil || BLEChoose.IBLentity == nil || BLEChoose.serviceUUID == nil {
+        if BLEChoose.IBLCha == nil || IBPeripheral == nil || BLEChoose.IBLentity == nil || BLEChoose.serviceUUID == nil {
             return nil
         }else{
             return true
         }
     }
     
+    //  MARK:- 扫描设备
+    //  以供选择连接设备
+    //  :选择连接设备
+    //  点击开启第一步
+    func babyScan() -> Void{
+        
+        BLEChoose = ChooseToothEntity()
+        peripheralDataArray.removeAll()
+        arrayBlets.removeAll()
+        
+        babyDelegate1()
+        baby?.cancelAllPeripheralsConnection()
+        _ = baby?.scanForPeripherals().begin()
+    }
     
-    //MARK:-重连蓝牙总结
+    //  MARK:- 连接设备
+    /// 连接已选择的设备
+    //  选择设备服务
+    /// 点击开启第二步
+    func lightBtnAction() {
+        services.removeAll()
+        self.baby?.cancelScan()
+        self.babyDelegate2()
+        self.loadData()
+    }
+    
+    ///连接蓝牙设备
+    func loadData() {
+        
+        baby?.cancelAllPeripheralsConnection()
+        
+        //清空重连
+        chaDataArray.removeAll()
+        arrayChas.removeAll()
+        
+        print("俺要开始连接设备...")
+        
+        guard let entityperipheral = self.BLEChoose.IBLentity?.peripheral else {
+            print("没有搜索到您想链接的蓝牙")
+            return
+        }
+        
+        _ = baby?.having(entityperipheral).and().channel("peripheralView").then().connectToPeripherals().discoverServices().discoverCharacteristics().readValueForCharacteristic().discoverDescriptorsForCharacteristic().readValueForDescriptors().begin()
+    }
+    
+    //  MARK:- 连接设备
+    /// 连接已选择的设备
+    //  选择设备服务
+    /// 点击开启第三步
+    func redOrWriteBtnAction() {
+        self.babyDelegate3()
+        
+        guard let x = IBPeripheral else {
+            return
+        }
+        guard let y = BLEChoose.IBLCha else {
+            return
+        }
+        let cc = baby?.channel("CharacteristicView").characteristicDetails() // 读取服务
+        
+        let _ = cc!(x,y)
+        
+        isWritting = true
+    }
+    /**
+    往蓝牙设备写入数据
+    */
+    func IBWriteZero(data:Data) -> Void {
+        
+        guard let x = IBPeripheral else {
+            return
+        }
+        guard let y = BLEChoose.IBLCha else {
+            return
+        }
+        
+        x.writeValue(data, for: y, type: CBCharacteristicWriteType.withResponse)
+        
+    }
+    
+    
+    
+    //MARK:-相关配置操作 setData
     ///1、重连，先扫描蓝牙，与原连接蓝牙做比较，如果没找到原蓝牙连接，则显示现有可选蓝牙列表
     ///   如果匹配成功，则连接原蓝牙
     ///2、重连蓝牙服务和特性。搜索服务和特性，同1操作
@@ -182,7 +347,7 @@ class BLEManager: NSObject {
             if let peripheral_ = peripheralDataArray[index].peripheral {
                 peripherals.append(peripheral_)
                 //TODO:-重连蓝牙总结 step1
-                if let aPer = BLEChoose.IBLcurrPeripheral, aPer == peripheral{
+                if let aPer = IBPeripheral, aPer == peripheral{
                     lightBtnAction()
                 }
             }
@@ -254,87 +419,6 @@ class BLEManager: NSObject {
             self.currentServiceCharacteristics = characteristics_
         }
     }
-    
-    
-    //  MARK:- 扫描设备
-    //  以供选择连接设备
-    //  :选择连接设备
-    //  点击开启第一步
-    func babyScan() -> Void{
-        
-        BLEChoose = ChooseToothEntity()
-        peripheralDataArray.removeAll()
-        arrayBlets.removeAll()
-        
-        babyDelegate1()
-        baby?.cancelAllPeripheralsConnection()
-        _ = baby?.scanForPeripherals().begin()
-    }
-    
-    //  MARK:- 连接设备
-    /// 连接已选择的设备
-    //  选择设备服务
-    /// 点击开启第二步
-    func lightBtnAction() {
-        services.removeAll()
-        self.baby?.cancelScan()
-        self.babyDelegate2()
-        self.loadData()
-    }
-    
-    ///连接蓝牙设备
-    func loadData() {
-        
-        baby?.cancelAllPeripheralsConnection()
-        
-        //清空重连
-        chaDataArray.removeAll()
-        arrayChas.removeAll()
-        
-        print("俺要开始连接设备...")
-        
-        guard let entityperipheral = self.BLEChoose.IBLentity?.peripheral else {
-            print("没有搜索到您想链接的蓝牙")
-            return
-        }
-        
-        _ = baby?.having(entityperipheral).and().channel("peripheralView").then().connectToPeripherals().discoverServices().discoverCharacteristics().readValueForCharacteristic().discoverDescriptorsForCharacteristic().readValueForDescriptors().begin()
-    }
-    
-    //  MARK:- 连接设备
-    /// 连接已选择的设备
-    //  选择设备服务
-    /// 点击开启第三步
-    func redOrWriteBtnAction() {
-        self.babyDelegate3()
-        
-        guard let x = BLEChoose.IBLcurrPeripheral else {
-            return
-        }
-        guard let y = BLEChoose.IBLCha else {
-            return
-        }
-        let cc = baby?.channel("CharacteristicView").characteristicDetails() // 读取服务
-        
-        let _ = cc!(x,y)
-        
-        isWritting = true
-    }
-    
-    func writeZero(data:Data) -> Void {
-        
-        guard let x = BLEChoose.IBLcurrPeripheral else {
-            return
-        }
-        guard let y = BLEChoose.IBLCha else {
-            return
-        }
-        
-        x.writeValue(data, for: y, type: CBCharacteristicWriteType.withResponse)
-        
-    }
-    
-    
     
     /**
      进行第一步: 搜索到周围所有的蓝牙设备
@@ -425,37 +509,15 @@ class BLEManager: NSObject {
         baby?.setBabyOptionsWithScanForPeripheralsWithOptions(scanForPeripheralsWithOptions, connectPeripheralWithOptions: nil, scanForPeripheralsWithServices: nil, discoverWithServices: nil, discoverWithCharacteristics: nil)
     }
     
-    
     /**
      进行第二步, 读取某个设备的某条service的所有信息
      */
     func babyDelegate2() {
         
-        baby?.setBlockOnCentralManagerDidUpdateState({ (central) in
-            
-        })
-        
-        
-        baby?.peripheralModelBlock(onPeripheralManagerDidUpdateState: { (peripheral) in
-            guard let isAdvertising = peripheral?.isAdvertising else{
-                return
-            }
-            
-            if isAdvertising{
-                SVProgressHUD.showSuccess(withStatus: "设备连接成功!!!")
-            }else{
-                SVProgressHUD.showError(withStatus: "设备连接失败!!!")
-            }
-            
-        })
-        
         //设置设备连接成功的委托,同一个baby对象，使用不同的channel切换委托回调 1
         baby?.setBlockOnConnectedAtChannel("peripheralView", block: { (central, peripheral) in
             if let peripheralName = peripheral?.name {
                 print("设备\(peripheralName)连接成功!!!")
-                SVProgressHUD.showSuccess(withStatus: "设备\(peripheralName)连接成功!!!")
-                HUDShowMsgQuick("设备OnConnected连接成功!!!", 1)
-                BLEM.isConecting = true
             }
         })
         
@@ -463,9 +525,6 @@ class BLEManager: NSObject {
         baby?.setBlockOnFailToConnectAtChannel("peripheralView", block: { (central, peripheral, error) in
             if let peripheralName = peripheral?.name {
                 print("设备\(peripheralName)连接失败!!!")
-                SVProgressHUD.showError(withStatus: "设备\(peripheralName)连接失败!!!")
-//                HUDShowMsgQuick("设备OnFailToConnect连接失败!!!", 1)
-                BLEM.isConecting = false
             }
         })
         
@@ -473,10 +532,6 @@ class BLEManager: NSObject {
         baby?.setBlockOnDisconnectAtChannel("peripheralView", block: { (central, peripheral, error) in
             if let peripheralName = peripheral?.name {
                 print("设备\(peripheralName)连接断开!!!")
-//  TODO: 连接打印的 频道Channel 断开连接，则发出通知，让rootvc 唤起runloop 来自动重连蓝牙打印设备和服务。如果连接5次重连失败，则断开蓝牙连接。
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: BLEDisconnetNoticeName), object: nil)
-                HUDShowMsgQuick("设备OnDisconnect连接断开!!!", 1)
-                BLEM.isConecting = false
             }
         })
         
@@ -646,4 +701,86 @@ class BLEManager: NSObject {
         return (Des,isWrite)
     }
 
+}
+
+
+extension BLEManager{
+    
+    func IBSetAutoConnected(_ auto:Bool) -> Void {
+        isAutoConnnect = auto
+    }
+    
+    func IBSetAutoConnected(_ auto:Bool,_ autoCount:Int,_ timeCell:TimeInterval) -> Void {
+        isAutoConnnect = auto
+        constCount = autoCount
+        rtimeCell = timeCell
+    }
+    
+    ///循环动作编辑区,打开循环动作编辑
+    func setBGRun(){
+        
+        //如果配置信息不全，则回归，不予重连。
+        guard let blenul = BlesetNull() else {
+//            SVProgressHUD.showError(withStatus: "蓝牙信息配置不全，请重新设置")
+            IBLVoiceManager.shared.speechWeather(with: "蓝牙信息配置不全，请重新设置")
+//            SVProgressHUD.dismiss(withDelay: 0.8)
+            return
+        }
+        
+        if isAutoConnnect {
+            if rtimer != nil {
+                rtcount = 1
+            }else{
+                rtimer = Timer.init(fireAt: NSDate() as Date, interval: rtimeCell, target: self, selector: #selector(rtpick), userInfo: nil, repeats: true)
+                
+                RunLoop.current.add(rtimer!, forMode:RunLoopMode.commonModes)
+            }
+        }else{
+            return
+        }
+    }
+    
+    fileprivate func releasepick(){
+        rtimer?.invalidate()
+        rtimer = nil
+        rtcount = 1
+    }
+    
+    func rtpick() {
+        
+        let isConnect = IBPeripheral?.state == .connected
+        
+        if isConnect{
+            rtimer?.invalidate()
+            rtimer = nil
+            rtcount = 1
+            return
+        }
+        
+        if rtcount>constCount{
+            
+            if !isConnect {
+                HUDShowMsgQuick("蓝牙重连失败", Float(rtimeCell))
+            }
+            
+            rtimer?.invalidate()
+            rtimer = nil
+            rtcount = 1
+        }else{
+            
+            HUDShowMsgQuick("蓝牙重连【\(rtcount)】", Float(rtimeCell))
+            rtcount += 1
+            scrollRoundPlace()
+        }
+        
+    }
+    
+    ///循环动作编辑区
+    fileprivate func scrollRoundPlace(){
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        IBReachive()
+    }
+    
 }

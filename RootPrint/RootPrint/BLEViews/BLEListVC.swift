@@ -33,24 +33,6 @@ extension DispatchQueue {
     }
 }
 
-class BlueToothEntity: NSObject {
-    var peripheral: CBPeripheral?
-    var RSSI: NSNumber?
-    var advertisementData: Dictionary<String, Any>?
-}
-
-class PeripheralInfo: NSObject {
-    var serviceUUID: CBUUID?
-    var characteristics: [CBCharacteristic]?
-}
-
-///已连接蓝牙设备信息集合
-class ChooseToothEntity: NSObject {
-    var IBLentity:BlueToothEntity?
-    var serviceUUID: CBUUID?
-    var IBLcurrPeripheral: CBPeripheral?
-    var IBLCha:CBCharacteristic?
-}
 
 class BLEListVC: UIViewController {
 
