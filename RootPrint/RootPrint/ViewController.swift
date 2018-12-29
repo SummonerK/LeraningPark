@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     
     var coverItemVC: BLEListVC! = nil
     
+    
     let constCount: Int = 50000 //重复查询次数
     var rtcount: Int = 1 //查询次数记录
     var rtimeCell: TimeInterval = 3 //查询时间间隔
@@ -41,7 +42,7 @@ class ViewController: UIViewController {
     }
     
     
-    
+    @IBOutlet weak var barImageV: UIImageView!
     @IBOutlet weak var viewCover: UIView!
     @IBOutlet weak var viewPicker: UIPickerView!
     @IBOutlet weak var bottomSpace: NSLayoutConstraint!
@@ -69,8 +70,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         closePicker()
-//        setCoverView()
-//        NotificationCenter.default.addObserver(self, selector: #selector(removePhoto(noti:)), name: NSNotification.Name(rawValue: BLEDisconnetNoticeName), object: nil)
+        
+//        let barImage = [UIImage barCodeImageWithInfo:"126690064820399367_1231"];
+        
+        let barImage = UIImage.barCodeImage(withInfo: "126690064820399367_1231")
+        
+        barImageV.image = barImage
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -193,21 +199,18 @@ class ViewController: UIViewController {
         
         showBlePicker()
         
-//        BLEM.setBGRun()
-        
     }
     
     @IBAction func BLEWrite(_ sender: Any) {
         
         if BLEM.isWritting{
             
-            BLEM.IBWriteZero(data: PrinterInit())
+            BLEM.IBWriteZero(data: PrinterCode())
             
         }else{
             SVProgressHUD.showError(withStatus: "蓝牙连接出了问题!!!")
         }
         
-//        BLEM.testChaAdd()
     }
     
     @IBAction func BLEAchive(_ sender: Any) {
@@ -252,9 +255,60 @@ class ViewController: UIViewController {
 //        printInfo.appendLeftText("炝锅素毛肚炝锅素毛肚炝锅素毛肚散称1小包（约27克／包）", middleText: "x2／13.44", rightText: "26.88", isTitle: false)
         printInfo.appendLeftText("炝锅素毛肚散称1小包（约27克／包）", middleText: "x2／13.44", rightText: "26.88", isTitle: false)
 //        printInfo.appendSeperatorLine()
-//        printInfo.appendBarCode(withInfo: "SXA1205O58029444238")
-//        printInfo.appendQRCode(withInfo: "SXA1205O58029444238_20180931")
+        printInfo.appendBarCode(withInfo: "SXA1371O68807468544")
+        printInfo.appendQRCode(withInfo: "126690064820399367")
 //        printInfo.appendSeperatorLine()
+//        printInfo.appendBarCode(withInfo: "SXA1205O58029444238")
+        printInfo.appendFooter("非码提供技术支持")
+        
+        return printInfo.getFinalData()
+    }
+    
+    func PrinterCode() -> Data {
+        let printInfo = HLPrinter.init()
+        let partName = "***#5饿了么***"
+        let orderid19 = "3126690064820399367_1231"
+//        let orderid20 = "31266900648203993679"
+//        let orderid21 = "312669006482039936796"
+//        let orderid22 = "3126690064820399367965"
+        let orderid23 = "31266900648203993679657"
+        printInfo.appendText(partName, alignment: .center, fontSize: HLFontSize.titleMiddle)
+        printInfo.appendText("部分退款 重印小票", alignment: .center, fontSize: HLFontSize.titleSmalle)
+        printInfo.appendSeperatorLine()
+        printInfo.appendText(orderid19, alignment: .left)
+        printInfo.appendBarCode(withInfo: orderid19)
+//        printInfo.appendText(orderid20, alignment: .left)
+//        printInfo.appendBarCode(withInfo: orderid20)
+//        printInfo.appendText(orderid21, alignment: .left)
+//        printInfo.appendBarCode(withInfo: orderid21)
+//        printInfo.appendText(orderid22, alignment: .left)
+//        printInfo.appendBarCode(withInfo: orderid22)
+        printInfo.appendText(orderid23, alignment: .left)
+        printInfo.appendBarCode(withInfo: orderid23)
+        printInfo.appendText("支付方式：在线支付", alignment: .left)
+        //TODO:用户信息区
+        printInfo.appendSeperatorLine()
+        printInfo.appendText("客户地址：上海航天电器大厦 上海市普陀区桃浦镇祁连山南路2891弄93号111室", alignment: .left)
+        //TODO:商品区
+        printInfo.appendSeperatorLine()
+        printInfo.appendLeftText("品名/数量/单价/退数", middleText: "", rightText: "金额", isTitle: true)
+        printInfo.appendSeperatorLine()
+        printInfo.appendLeftText("矿泉水", middleText: "x2(0.10元)(退1)", rightText: "0.10", isTitle: false)
+        printInfo.appendLeftText("炫迈无糖口香糖跃动鲜果味", middleText: "x1(1.63元)(退1)", rightText: "0.00", isTitle: false)
+        printInfo.appendLeftText("炝锅素网红健康绿色减脂毛肚散称1小包（约27克／包）", middleText: "x2(13.44元)(退1)", rightText: "13.44", isTitle: false)
+        
+        printInfo.appendSeperatorLine()
+        //TODO:计费区
+        printInfo.appendTitle("商品总额", value: "13.54")
+        printInfo.appendTitle("退单数量", value: "2")
+        //TODO:统计区
+        printInfo.appendSeperatorLine()
+        printInfo.appendTitle("商品件数", value: "2")
+        printInfo.appendTitle("应收金额", value: "13.54")
+        //TODO:统计区
+        printInfo.appendSeperatorLine()
+        printInfo.appendText("打印时间：2018-12-28 18:59", alignment: .left)
+        
         printInfo.appendFooter("非码提供技术支持")
         
         return printInfo.getFinalData()

@@ -115,16 +115,16 @@
     int trueLength = data.length%32;
     [self setText:text];
     
-    if (trueLength > 13) {
-//        data = [data subdataWithRange:NSMakeRange(0, maxChar)];
-//        text = [[NSString alloc] initWithData:data encoding:enc];
-//        if (!text) {
-//            data = [data subdataWithRange:NSMakeRange(0, maxChar - 1)];
-//            text = [[NSString alloc] initWithData:data encoding:enc];
-//        }
-//        text = [text stringByAppendingString:@"..."];
-        [self appendNewLine];
-    }
+//    if (trueLength > 13) {
+////        data = [data subdataWithRange:NSMakeRange(0, maxChar)];
+////        text = [[NSString alloc] initWithData:data encoding:enc];
+////        if (!text) {
+////            data = [data subdataWithRange:NSMakeRange(0, maxChar - 1)];
+////            text = [[NSString alloc] initWithData:data encoding:enc];
+////        }
+////        text = [text stringByAppendingString:@"..."];
+//        [self appendNewLine];
+//    }
 }
 
 /**
@@ -312,8 +312,14 @@
     }
     
     if (middle) {
-        [self setOffset:150 + offset];
-        [self setText:middle];
+        
+        if (!isTitle) {
+            [self appendNewLine];
+            [self setText:middle];
+        }else{
+            [self setOffset:150 + offset];
+            [self setText:middle];
+        }
     }
     
     if (right) {
@@ -323,6 +329,30 @@
     
     [self appendNewLine];
     
+}
+
+/**
+ *  添加选购商品信息标题,一般是两列，名称、数量、单价
+ *
+ *  @param LeftText   左标题
+ *  @param rightText  右标题
+ */
+- (void)appendLeftText:(NSString *)left rightText:(NSString *)right isTitle:(BOOL)isTitle{
+    [self setAlignment:HLTextAlignmentLeft];
+    [self setFontSize:HLFontSizeTitleSmalle];
+    NSInteger offset = 0;
+    if (!isTitle) {
+        offset = 10;
+    }
+    if (left) {
+        [self setText:left maxChar:10];
+    }
+    
+    if (right) {
+        [self setOffset:295 + offset];
+        [self setText:right];
+    }
+    [self appendNewLine];
 }
 
 #pragma mark 图片
@@ -352,7 +382,7 @@
 
 - (void)appendBarCodeWithInfo:(NSString *)info
 {
-    [self appendBarCodeWithInfo:info alignment:HLTextAlignmentCenter maxWidth:380];
+    [self appendBarCodeWithInfo:info alignment:HLTextAlignmentCenter maxWidth:370];
 }
 
 - (void)appendBarCodeWithInfo:(NSString *)info alignment:(HLTextAlignment)alignment maxWidth:(CGFloat)maxWidth
@@ -408,7 +438,8 @@
     // 2.设置字号
     [self setFontSize:HLFontSizeTitleSmalle];
     // 3.添加分割线
-    NSString *line = @"- - - - - - - - - - - - - - - -";
+    NSString *line = @"----------------------------";
+//    NSString *line = @"₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋";
     NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     NSData *data = [line dataUsingEncoding:enc];
     [_printerData appendData:data];
@@ -420,7 +451,7 @@
 {
     [self appendSeperatorLine];
     if (!footerInfo) {
-        footerInfo = @"谢谢惠顾，欢迎下次光临！";
+        footerInfo = @"谢谢惠顾！";
     }
     [self appendText:footerInfo alignment:HLTextAlignmentCenter];
     // 4.换行

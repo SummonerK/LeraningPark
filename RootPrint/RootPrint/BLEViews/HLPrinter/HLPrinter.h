@@ -98,6 +98,14 @@ typedef NS_ENUM(NSInteger, HLFontSize) {
 - (void)appendLeftText:(NSString *)left middleText:(NSString *)middle rightText:(NSString *)right isTitle:(BOOL)isTitle;
 
 /**
+ *  添加选购商品信息标题,一般是两列，名称、数量、单价
+ *
+ *  @param LeftText   左标题
+ *  @param rightText  右标题
+ */
+- (void)appendLeftText:(NSString *)left rightText:(NSString *)right isTitle:(BOOL)isTitle;
+
+/**
  *  添加图片，一般是添加二维码或者条形码
  *  ⚠️提醒：这种打印图片的方式，是自己生成图片，然后用位图打印
  *
@@ -177,7 +185,7 @@ typedef NS_ENUM(NSInteger, HLFontSize) {
 
 /**
  添加自定义的data
-
+ ҉什҉么҉鬼҉ ҉
  @param data 自定义的data
  */
 - (void)appendCustomData:(NSData *)data;

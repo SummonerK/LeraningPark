@@ -225,7 +225,7 @@
     // 获得滤镜输出的图像
     CIImage *outputImage = [filter outputImage];
     // 将CIImage转换成UIImage，并放大显示
-    UIImage *image =[self createBarInterpolatedUIImageFormCIImage:outputImage withSize:380];
+    UIImage *image =[self createBarInterpolatedUIImageFormCIImage:outputImage withSize:370];
     
     return image;
 }
@@ -292,7 +292,7 @@
     CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
     // 创建bitmap;
     size_t width = CGRectGetWidth(extent) * scale;
-    size_t height = 130;
+    size_t height = 120;
     CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
     CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
     CIContext *context = [CIContext contextWithOptions:nil];

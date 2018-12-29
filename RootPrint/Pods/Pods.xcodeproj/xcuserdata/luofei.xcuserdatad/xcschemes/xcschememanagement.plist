@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ObjectMapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-RootPrint.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>17784DC050D1AD7B2F811991CA5A42F7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3CB1786660C2F23F1AABFAFEA9E259B7</key>
+		<key>3F06295F451A0572AB69569FCFE2E5A4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +47,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5845134CBFEA235EAFCFCA778477E99E</key>
+		<key>4DE7BE0283D51D630225B347D91F29E2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>6BB1C1403B2419F911818DA8413FDA07</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD6C9FB6B052E1CF663F8A56041EA163</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EAFC2F692B6414739C4D02F3B79D47F8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

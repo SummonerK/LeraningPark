@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,6 +41,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bYk-YP-oiU">
+                                <rect key="frame" x="94.5" y="60" width="185" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bYk-YP-oiU" secondAttribute="height" multiplier="37:12" id="8he-QN-5uB"/>
+                                    <constraint firstAttribute="height" constant="60" id="gTQ-kh-y2H"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNi-mM-LbT">
                                 <rect key="frame" x="-0.5" y="308.5" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
@@ -204,6 +213,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jNi-mM-LbT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="KEM-dd-1we"/>
+                            <constraint firstItem="bYk-YP-oiU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NtK-np-DYD"/>
                             <constraint firstItem="z1Q-dv-g8Q" firstAttribute="width" secondItem="jNi-mM-LbT" secondAttribute="width" id="P3S-PX-PZ5"/>
                             <constraint firstItem="z1Q-dv-g8Q" firstAttribute="top" secondItem="jNi-mM-LbT" secondAttribute="bottom" constant="30" id="QRY-LH-dlv"/>
                             <constraint firstItem="0QC-ip-bgC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RoW-Kx-2A9"/>
@@ -220,6 +230,7 @@
                             <constraint firstAttribute="trailing" secondItem="NXl-8a-QPN" secondAttribute="trailing" id="l01-LT-ab4"/>
                             <constraint firstItem="0QC-ip-bgC" firstAttribute="top" secondItem="NXl-8a-QPN" secondAttribute="bottom" constant="20" id="lJx-jh-xZ1"/>
                             <constraint firstAttribute="bottom" secondItem="fJD-pn-8WP" secondAttribute="bottom" id="qHf-DF-kht"/>
+                            <constraint firstItem="bYk-YP-oiU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="60" id="qbP-xa-Our"/>
                             <constraint firstAttribute="trailing" secondItem="muc-2k-fbV" secondAttribute="trailing" id="xBu-RF-cR8"/>
                             <constraint firstItem="fJD-pn-8WP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ysb-7T-qch"/>
                             <constraint firstItem="z1Q-dv-g8Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ysn-HY-MKs"/>
@@ -227,6 +238,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="HT8-B5-U46"/>
                     <connections>
+                        <outlet property="barImageV" destination="bYk-YP-oiU" id="LzX-Rb-C15"/>
                         <outlet property="bottomSpace" destination="qHf-DF-kht" id="WIG-V8-IhR"/>
                         <outlet property="btonLeft" destination="wGr-i0-qb5" id="5sM-xo-td9"/>
                         <outlet property="btonNext" destination="NVu-zt-gPM" id="o2J-ra-8aw"/>
