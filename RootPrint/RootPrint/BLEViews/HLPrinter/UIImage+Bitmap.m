@@ -288,17 +288,20 @@
 
 + (UIImage *)createBarInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat)size
 {
-    CGRect extent = CGRectIntegral(image.extent);
-    CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
+    CGRect extent = CGRectIntegral(image.extent);//成像范围
+//    CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
+//    CGFloat scale = size/CGRectGetHeight(extent);
     // 创建bitmap;
-    size_t width = CGRectGetWidth(extent) * scale;
+//    size_t width = CGRectGetWidth(extent) * scale;
+    size_t width = size;
     size_t height = 120;
     CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
     CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
     CIContext *context = [CIContext contextWithOptions:nil];
     CGImageRef bitmapImage = [context createCGImage:image fromRect:extent];
     CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
-    CGContextScaleCTM(bitmapRef, scale, height/CGRectGetHeight(extent));
+    CGContextScaleCTM(bitmapRef, width/CGRectGetWidth(extent), height/CGRectGetHeight(extent));
+//    CGContextScaleCTM(bitmapRef, scale, height/CGRectGetHeight(extent));
     CGContextDrawImage(bitmapRef, extent, bitmapImage);
     // 保存bitmap到图片
     CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);

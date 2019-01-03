@@ -75,7 +75,7 @@ class ViewController: UIViewController {
         
         let barImage = UIImage.barCodeImage(withInfo: "126690064820399367_1231")
         
-        barImageV.image = barImage
+        barImageV.image = barImage?.imageWithscaleMaxWidth(700)
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -285,29 +285,31 @@ class ViewController: UIViewController {
 //        printInfo.appendBarCode(withInfo: orderid22)
         printInfo.appendText(orderid23, alignment: .left)
         printInfo.appendBarCode(withInfo: orderid23)
-        printInfo.appendText("支付方式：在线支付", alignment: .left)
-        //TODO:用户信息区
-        printInfo.appendSeperatorLine()
-        printInfo.appendText("客户地址：上海航天电器大厦 上海市普陀区桃浦镇祁连山南路2891弄93号111室", alignment: .left)
-        //TODO:商品区
-        printInfo.appendSeperatorLine()
-        printInfo.appendLeftText("品名/数量/单价/退数", middleText: "", rightText: "金额", isTitle: true)
-        printInfo.appendSeperatorLine()
-        printInfo.appendLeftText("矿泉水", middleText: "x2(0.10元)(退1)", rightText: "0.10", isTitle: false)
-        printInfo.appendLeftText("炫迈无糖口香糖跃动鲜果味", middleText: "x1(1.63元)(退1)", rightText: "0.00", isTitle: false)
-        printInfo.appendLeftText("炝锅素网红健康绿色减脂毛肚散称1小包（约27克／包）", middleText: "x2(13.44元)(退1)", rightText: "13.44", isTitle: false)
+//        printInfo.appendQRCode(withInfo: orderid19)
         
-        printInfo.appendSeperatorLine()
-        //TODO:计费区
-        printInfo.appendTitle("商品总额", value: "13.54")
-        printInfo.appendTitle("退单数量", value: "2")
-        //TODO:统计区
-        printInfo.appendSeperatorLine()
-        printInfo.appendTitle("商品件数", value: "2")
-        printInfo.appendTitle("应收金额", value: "13.54")
-        //TODO:统计区
-        printInfo.appendSeperatorLine()
-        printInfo.appendText("打印时间：2018-12-28 18:59", alignment: .left)
+//        printInfo.appendText("支付方式：在线支付", alignment: .left)
+//        //TODO:用户信息区
+//        printInfo.appendSeperatorLine()
+//        printInfo.appendText("客户地址：上海航天电器大厦 上海市普陀区桃浦镇祁连山南路2891弄93号111室", alignment: .left)
+//        //TODO:商品区
+//        printInfo.appendSeperatorLine()
+//        printInfo.appendLeftText("品名/数量/单价/退数", middleText: "", rightText: "金额", isTitle: true)
+//        printInfo.appendSeperatorLine()
+//        printInfo.appendLeftText("矿泉水", middleText: "x2(0.10元)(退1)", rightText: "0.10", isTitle: false)
+//        printInfo.appendLeftText("炫迈无糖口香糖跃动鲜果味", middleText: "x1(1.63元)(退1)", rightText: "0.00", isTitle: false)
+//        printInfo.appendLeftText("炝锅素网红健康绿色减脂毛肚散称1小包（约27克／包）", middleText: "x2(13.44元)(退1)", rightText: "13.44", isTitle: false)
+//        
+//        printInfo.appendSeperatorLine()
+//        //TODO:计费区
+//        printInfo.appendTitle("商品总额", value: "13.54")
+//        printInfo.appendTitle("退单数量", value: "2")
+//        //TODO:统计区
+//        printInfo.appendSeperatorLine()
+//        printInfo.appendTitle("商品件数", value: "2")
+//        printInfo.appendTitle("应收金额", value: "13.54")
+//        //TODO:统计区
+//        printInfo.appendSeperatorLine()
+//        printInfo.appendText("打印时间：2018-12-28 18:59", alignment: .left)
         
         printInfo.appendFooter("非码提供技术支持")
         
@@ -368,6 +370,8 @@ extension ViewController:UIPickerViewDelegate,UIPickerViewDataSource{
             
              if selectedRows[0] != -1{
                 BLEM.IBLLinkBLE(deviceIdx: selectedRows[0])
+                
+                //这里需要清空 蓝牙特性配置。
                 
                 btonNext.setTitle("完成", for: .normal)
                 btonLeft.setTitle("上一步", for: .normal)
