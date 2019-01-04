@@ -10,7 +10,6 @@
 
 #define kHLMargin 20
 #define kHLPadding 2
-#define kHLPreviewWidth 320
 
 @interface HLPrinter ()
 
@@ -382,7 +381,7 @@
 
 - (void)appendBarCodeWithInfo:(NSString *)info
 {
-    [self appendBarCodeWithInfo:info alignment:HLTextAlignmentCenter maxWidth:370];
+    [self appendBarCodeWithInfo:info alignment:HLTextAlignmentCenter maxWidth:kHLPreviewWidth];
 }
 
 - (void)appendBarCodeWithInfo:(NSString *)info alignment:(HLTextAlignment)alignment maxWidth:(CGFloat)maxWidth
@@ -438,7 +437,7 @@
     // 2.设置字号
     [self setFontSize:HLFontSizeTitleSmalle];
     // 3.添加分割线
-    NSString *line = @"----------------------------";
+    NSString *line = @"--------------------------------";
 //    NSString *line = @"₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋₋";
     NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
     NSData *data = [line dataUsingEncoding:enc];

@@ -160,6 +160,11 @@ class BLEManager: NSObject {
         }
     }
     
+    /**断开蓝牙连接*/
+    func IBRemoveAllConnect() -> Void {
+        baby?.cancelAllPeripheralsConnection()
+        BLEChoose = ChooseToothEntity()
+    }
     
     /**
      筛选已选择的设备

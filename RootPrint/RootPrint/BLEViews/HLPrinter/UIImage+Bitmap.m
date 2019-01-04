@@ -225,7 +225,9 @@
     // 获得滤镜输出的图像
     CIImage *outputImage = [filter outputImage];
     // 将CIImage转换成UIImage，并放大显示
-    UIImage *image =[self createBarInterpolatedUIImageFormCIImage:outputImage withSize:370];
+    UIImage *image =[self createBarInterpolatedUIImageFormCIImage:outputImage withSize:kHLPreviewWidth];
+    
+    NSLog(@"barCodeSize = %.2f,%.2f",image.size.width,image.size.height);
     
     return image;
 }
@@ -288,20 +290,18 @@
 
 + (UIImage *)createBarInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat)size
 {
-    CGRect extent = CGRectIntegral(image.extent);//成像范围
-//    CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
-//    CGFloat scale = size/CGRectGetHeight(extent);
+    CGRect trueextent = CGRectMake(0, 0, size, IBBarCodeHight); /// 真实成像区域
+    CGRect extent = CGRectIntegral(image.extent);//成像范围 二维码图片成像区域 待处理。
+    CGFloat scale = MIN(size/CGRectGetWidth(trueextent), IBBarCodeHight/CGRectGetHeight(trueextent));
     // 创建bitmap;
-//    size_t width = CGRectGetWidth(extent) * scale;
-    size_t width = size;
-    size_t height = 120;
+    size_t width = CGRectGetWidth(trueextent) * scale;
+    size_t height = CGRectGetHeight(trueextent) * scale;
     CGColorSpaceRef cs = CGColorSpaceCreateDeviceGray();
     CGContextRef bitmapRef = CGBitmapContextCreate(nil, width, height, 8, 0, cs, (CGBitmapInfo)kCGImageAlphaNone);
     CIContext *context = [CIContext contextWithOptions:nil];
     CGImageRef bitmapImage = [context createCGImage:image fromRect:extent];
     CGContextSetInterpolationQuality(bitmapRef, kCGInterpolationNone);
-    CGContextScaleCTM(bitmapRef, width/CGRectGetWidth(extent), height/CGRectGetHeight(extent));
-//    CGContextScaleCTM(bitmapRef, scale, height/CGRectGetHeight(extent));
+    CGContextScaleCTM(bitmapRef, width/CGRectGetWidth(extent), (height)/CGRectGetHeight(extent));
     CGContextDrawImage(bitmapRef, extent, bitmapImage);
     // 保存bitmap到图片
     CGImageRef scaledImage = CGBitmapContextCreateImage(bitmapRef);

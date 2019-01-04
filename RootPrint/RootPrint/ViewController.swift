@@ -356,7 +356,10 @@ extension ViewController:UIPickerViewDelegate,UIPickerViewDataSource{
             btonNext.setTitle("下一步", for: .normal)
             btonLeft.setTitle("取消", for: .normal)
         }else{
+            
             closePicker()
+            
+            BLEM.IBRemoveAllConnect()
         }
         
     }
@@ -376,8 +379,8 @@ extension ViewController:UIPickerViewDelegate,UIPickerViewDataSource{
                 btonNext.setTitle("完成", for: .normal)
                 btonLeft.setTitle("上一步", for: .normal)
             }
-        }else{
             
+        }else{
             
             if selectedRows[1] != -1{
                 

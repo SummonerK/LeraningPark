@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define kHLPreviewWidth 370
+#define IBBarCodeHight 140
+
 typedef NS_ENUM(NSInteger,BitPixels) {
     BPAlpha = 0,
     BPBlue = 1,
