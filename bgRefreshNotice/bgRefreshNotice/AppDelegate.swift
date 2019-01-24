@@ -65,35 +65,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
             self.locationManager?.distanceFilter = kCLDistanceFilterNone;//任何运动均接受
             self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters;//定位精度设置为最差（减少耗电）
             var theadCount = 0;//循环计数器，这里用作时间计数
-            var isShowNotice = false;//是否显示掉线通知
+//            var isShowNotice = false;//是否显示掉线通知
             
-//            while(self.isBackground)
-//            {
-//                Thread.sleep(forTimeInterval: 1);//休眠
-//                theadCount+=1;
-//                if(theadCount > 10)//每30秒启动一次定位刷新后台在线时间
-//                {
-//                    self.showNotice()
-//                    debugPrint("开始位置服务");
-//                    self.locationManager?.startUpdatingLocation();
-//                    Thread.sleep(forTimeInterval: 1);//定位休眠1秒
-//                    
-//                    theadCount=0;
-//                }
+            while(self.isBackground)
+            {
+                Thread.sleep(forTimeInterval: 1);//休眠
+                theadCount+=1;
+                if(theadCount > 10)//每30秒启动一次定位刷新后台在线时间
+                {
+                    self.showNotice()
+                    debugPrint("开始位置服务");
+                    self.locationManager?.startUpdatingLocation();
+                    Thread.sleep(forTimeInterval: 1);//定位休眠1秒
+                    
+                    theadCount=0;
+                }else{
+                    self.locationManager?.stopUpdatingLocation()
+                }
 //                let timeRemaining = UIApplication.shared.backgroundTimeRemaining;
 //                NSLog("Background Time Remaining = %.02f Seconds",timeRemaining);//显示系统允许程序后台在线时间，如果保持后台成功，这里后台时间会被刷新为180s
-////                if(!ISLogined)//未登录或者掉线状态下关闭后台
-////                {
-////                    return;//退出循环
-////                }
 //                if(timeRemaining < 60 && !isShowNotice)
 //                {
-////                    self.showNotice()
+//                    self.showNotice()
 //                    isShowNotice=true;
 //                }
-//                
-//                
-//            }
+                
+            }
             
             UIApplication.shared.endBackgroundTask(self.backgroundTask)
             self.backgroundTask = UIBackgroundTaskInvalid
@@ -142,17 +139,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         debugPrint("位置改变，做点儿事情来更新后台时间");
-        let loc = locations.last;
-        let latitudeMe = loc?.coordinate.latitude;
-        let longitudeMe = loc?.coordinate.longitude;
-        debugPrint("\(latitudeMe)");
+//        let loc = locations.last;
+//        let latitudeMe = loc?.coordinate.latitude;
+//        let longitudeMe = loc?.coordinate.longitude;
+//        debugPrint("\(latitudeMe)");
     }
     
     func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         NSLog("进入方位测定");
         //[NSThread sleepForTimeInterval:1];
-        let oldRad =  -manager.heading!.trueHeading * M_PI / 180.0;
-        let newRad =  -newHeading.trueHeading * M_PI / 180.0;
+//        let oldRad =  -manager.heading!.trueHeading * M_PI / 180.0;
+//        let newRad =  -newHeading.trueHeading * M_PI / 180.0;
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -198,7 +195,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
         
         BackgroundKeepTimeTask()
         
-        BGNM.setRunTimer()
+//        BGNM.setRunTimer()
         
         
         
