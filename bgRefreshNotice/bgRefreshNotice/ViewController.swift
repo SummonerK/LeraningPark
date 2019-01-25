@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 //        }
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onMessageReceived(_:)), name: NSNotification.Name(rawValue: BGNMNoticeName), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.onMessageReceived(_:)), name: NSNotification.Name(rawValue: BGNMNoticeName), object: nil)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -39,6 +39,10 @@ class ViewController: UIViewController {
 //        BGNM.setRunTimer()
         //关闭后台轮询调取releasepick()  //或者强制杀死程序。
 //        BGNM.releasepick()
+        
+        self.SWGoNextVC("WMLogPageVC", .swPresent, [:], { (back) in
+            print("\(back)")
+        })
         
     }
     

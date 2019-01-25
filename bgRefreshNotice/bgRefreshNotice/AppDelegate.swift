@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
 
     var locationManager : CLLocationManager?//定位服务
     var isBackground:Bool = false;//标志是否在后台运行
+    var isCollect = false //后台定位中
     var backgroundTask:UIBackgroundTaskIdentifier! = nil//后台任务标志
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -32,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
         locationManager?.requestAlwaysAuthorization()
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.pausesLocationUpdatesAutomatically = false
+        locationManager?.distanceFilter = kCLDistanceFilterNone
         
         if #available(iOS 10.0, *) {
             // iOS 10
@@ -39,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
                 if success{
                     print("获取权限成功")
                     
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.onMessageReceived(_:)), name: NSNotification.Name(rawValue: BGNMNoticeName), object: nil)
+//                    NotificationCenter.default.addObserver(self, selector: #selector(self.onMessageReceived(_:)), name: NSNotification.Name(rawValue: BGNMNoticeName), object: nil)
                 }
                 else{
                     print("获取权限失败")
@@ -59,9 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
     
     func BackgroundKeepTimeTask()
     {
-        debugPrint("进入后台进程");
+        debugPrint("进入后台进程")
         
-        DispatchQueue.global(qos: .default).async { 
+        DispatchQueue.global(qos: .default).async {
+//            self.locationManager?.delegate=self
             self.locationManager?.distanceFilter = kCLDistanceFilterNone;//任何运动均接受
             self.locationManager?.desiredAccuracy = kCLLocationAccuracyHundredMeters;//定位精度设置为最差（减少耗电）
             var theadCount = 0;//循环计数器，这里用作时间计数
@@ -71,24 +74,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
             {
                 Thread.sleep(forTimeInterval: 1);//休眠
                 theadCount+=1;
-                if(theadCount > 10)//每30秒启动一次定位刷新后台在线时间
+                if(theadCount > 15)//每30秒启动一次定位刷新后台在线时间
                 {
-                    self.showNotice()
+//                    self.showNotice()
                     debugPrint("开始位置服务");
                     self.locationManager?.startUpdatingLocation();
+                    IBLFileLogM.IBLogAppend(fromData: "定位打开", type: .IBLOG_TPYE_WM)
                     Thread.sleep(forTimeInterval: 1);//定位休眠1秒
                     
                     theadCount=0;
-                }else{
-                    self.locationManager?.stopUpdatingLocation()
                 }
-//                let timeRemaining = UIApplication.shared.backgroundTimeRemaining;
-//                NSLog("Background Time Remaining = %.02f Seconds",timeRemaining);//显示系统允许程序后台在线时间，如果保持后台成功，这里后台时间会被刷新为180s
-//                if(timeRemaining < 60 && !isShowNotice)
-//                {
-//                    self.showNotice()
-//                    isShowNotice=true;
-//                }
+                else if (theadCount == 6){
+                    debugPrint("停止位置服务")
+                    // self.locationManager?.delegate = nil
+                    self.locationManager?.stopUpdatingLocation()
+                    IBLFileLogM.IBLogAppend(fromData: "定位关闭 定位心跳 完成", type: .IBLOG_TPYE_WM)
+                    Thread.sleep(forTimeInterval: 1);//定位休眠1秒
+                }
                 
             }
             
@@ -99,34 +101,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
         
     }
     
-    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        
-        debugPrint("停止位置服务")
-        self.locationManager?.stopUpdatingLocation()
-        self.locationManager?.delegate = nil
-        
-        switch (status) {
-        case CLAuthorizationStatus.authorizedAlways:
-            break;
-        case CLAuthorizationStatus.authorizedWhenInUse:
-            break;
-        case CLAuthorizationStatus.denied:
-            break;
-        case CLAuthorizationStatus.notDetermined:
-            break;
-        case CLAuthorizationStatus.restricted:
-            break;
-        default:
-            break;
-        }
-    }
+//    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+//        
+//        debugPrint("停止位置服务")
+//        self.locationManager?.stopUpdatingLocation()
+//        // self.locationManager?.delegate = nil
+//        
+//        switch (status) {
+//        case CLAuthorizationStatus.authorizedAlways:
+//            break;
+//        case CLAuthorizationStatus.authorizedWhenInUse:
+//            break;
+//        case CLAuthorizationStatus.denied:
+//            break;
+//        case CLAuthorizationStatus.notDetermined:
+//            break;
+//        case CLAuthorizationStatus.restricted:
+//            break;
+//        default:
+//            break;
+//        }
+//    }
     
     //定位失败或无权限将会回调这个方法
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
         debugPrint("停止位置服务")
         self.locationManager?.stopUpdatingLocation()
-        self.locationManager?.delegate = nil
+        // self.locationManager?.delegate = nil
         
         let errors = error as! NSError
         
@@ -137,16 +139,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
         
     }
 
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        debugPrint("位置改变，做点儿事情来更新后台时间");
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        debugPrint("位置改变，做点儿事情来更新后台时间");
+//        Thread.sleep(forTimeInterval: 1);//定位休眠1秒
+//        self.locationManager?.stopUpdatingLocation()
+//        IBLFileLogM.IBLogAppend(fromData: "定位成功 定位心跳", type: .IBLOG_TPYE_WM)
+        
+        if isCollect{
+            return
+        }
+        
+        debugPrint("位置改变，做点儿事情来更新后台时间")
+        self.perform(#selector(reStartLocation), with: nil, afterDelay: 50)
+        self.perform(#selector(stopLocation), with: nil, afterDelay: 10)
+        
+        isCollect = true
+        
 //        let loc = locations.last;
 //        let latitudeMe = loc?.coordinate.latitude;
 //        let longitudeMe = loc?.coordinate.longitude;
 //        debugPrint("\(latitudeMe)");
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        NSLog("进入方位测定");
+    func reStartLocation() -> Void {
+        
+        debugPrint("进入方位测定");
+        self.locationManager?.startUpdatingLocation()
+        IBLFileLogM.IBLogAppend(fromData: "定位打开", type: .IBLOG_TPYE_WM)
+        //注册后台任务
+        self.backgroundTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
+            () -> Void in
+            //如果没有调用endBackgroundTask，时间耗尽时应用程序将被终止
+            UIApplication.shared.endBackgroundTask(self.backgroundTask)
+            self.backgroundTask = UIBackgroundTaskInvalid
+        })
+        
+    }
+    
+    func stopLocation() -> Void {
+        debugPrint("关闭方位测定");
+        isCollect = false
+        self.locationManager?.stopUpdatingLocation()
+        IBLFileLogM.IBLogAppend(fromData: "定位关闭 定位心跳 完成", type: .IBLOG_TPYE_WM)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+//        debugPrint("进入方位测定");
+//        Thread.sleep(forTimeInterval: 1);//定位休眠1秒
+//        self.locationManager?.stopUpdatingLocation()
+//        // self.locationManager?.delegate = nil
+//        IBLFileLogM.IBLogAppend(fromData: "定位成功 定位心跳", type: .IBLOG_TPYE_WM)
+        
         //[NSThread sleepForTimeInterval:1];
 //        let oldRad =  -manager.heading!.trueHeading * M_PI / 180.0;
 //        let newRad =  -newHeading.trueHeading * M_PI / 180.0;
@@ -154,7 +197,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
 
     func applicationWillResignActive(_ application: UIApplication) {
         
-        self.isBackground = false;
+//        self.isBackground = false;
         
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -166,7 +209,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
         print("background")
-        
 //        if(CLLocationManager.authorizationStatus() != .denied) {
 //            print("应用拥有定位权限")
 //            USERM.getLocation { (alocation) in
@@ -176,7 +218,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
 //            
 //        }
         
-        //如果已存在后台任务，先将其设为完成
+//        如果已存在后台任务，先将其设为完成
         if self.backgroundTask != nil{
             application.endBackgroundTask(self.backgroundTask)
             self.backgroundTask = UIBackgroundTaskInvalid
@@ -191,13 +233,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
             
         }
         
-        self.isBackground = true
+//        self.isBackground = true
+//        BackgroundKeepTimeTask()
         
-        BackgroundKeepTimeTask()
+        // 开启定位
         
-//        BGNM.setRunTimer()
-        
-        
+        self.locationManager?.startUpdatingLocation()
         
     }
     
@@ -259,10 +300,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
     func applicationDidBecomeActive(_ application: UIApplication) {
 //        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: BGNMNoticeName), object: nil)
         
-        USERM.stopUpdatingLocation()
+//        USERM.stopUpdatingLocation()
         
-        comBadge = 0        
-        UIApplication.shared.applicationIconBadgeNumber = comBadge
+        debugPrint("app活跃进程")
+        self.isBackground = false
+        self.locationManager?.stopUpdatingLocation()
+        
+//        //如果已存在后台任务，先将其设为完成
+//        if self.backgroundTask != nil{
+//            UIApplication.shared.endBackgroundTask(self.backgroundTask)
+//            self.backgroundTask = UIBackgroundTaskInvalid
+//        }
+        
+//        comBadge = 0        
+//        UIApplication.shared.applicationIconBadgeNumber = comBadge
         
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
